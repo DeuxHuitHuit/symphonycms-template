@@ -1,0 +1,92 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = VARIABLES GLOBALES
+//=========================
+
+
+
+//=========================
+// = MIXINS
+//=========================
+
+.opacity ( @o ) {
+	@o100 : @o*100;
+	opacity: @o;
+	filter: ~"alpha(opacity=@{o100})";
+}
+
+// En attente d'un meilleur support de calc() de CSS3
+.box-sizing ( @bs ) {
+	-moz-box-sizing: @bs;
+	     box-sizing: @bs;
+}
+
+.border-radius ( @br ) {
+	-webkit-border-radius: @br;
+	   -moz-border-radius: @br;
+	        border-radius: @br;
+}
+
+.transition ( @t ) {
+	-webkit-transition: @t;
+	   -moz-transition: @t;
+	    -ms-transition: @t;
+	     -o-transition: @t;
+	        transition: @t;
+}
+
+
+
+//=========================
+// = IMPORTATIONS
+//=========================
+
+// Importations LESS
+
+
+
+
+//=========================
+// = STYLES GÉNÉRAUX
+//=========================
+
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+
+#site {
+	position: relative;
+	height:100%;
+}
+
+a {
+	color: #7d7d7d;
+	
+	&:hover {
+		color: darken(#7d7d7d, 30%);
+	}
+}
+
+
+
+
+.error {
+	outline: red solid 1px !important;
+	color: red !important;
+}
+
+//=========================
+// = TEMPLATE GÉNÉRAL
+//=========================
+
+// ----------------
+// == Entête principal
+// ----------------
+
