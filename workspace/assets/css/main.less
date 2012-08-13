@@ -3,20 +3,114 @@
  *****************************/
 
 //=========================
-// = VARIABLES GLOBALES
-//=========================
-
-
-
-//=========================
 // = MIXINS
 //=========================
 
-.opacity ( @o ) {
-	@o100 : @o*100;
-	opacity: @o;
-	filter: ~"alpha(opacity=@{o100})";
+.marpad (@width: 0) {
+	padding: @width;
+	margin: @width;
 }
+
+.wh (@width: 100%) {
+	width: @width;
+	height: @width;
+}
+
+.sq(@side) {
+	width:@side;
+	height:@side;
+	display:block;
+}
+
+.absolute (@zindex: 10) {
+	position:absolute;
+	display:block;
+	z-index: @zindex;
+}
+
+.relative (@zindex: 10) {
+	position:relative;
+	display:block;
+	z-index: @zindex;
+}
+
+.fixed (@zindex: 10) {
+	position:fixed;
+	display:block;
+	z-index: @zindex;
+}
+
+.fright {
+	display:block;
+	float:right;
+}
+
+.fleft {
+	display:block;
+	float:left;
+}
+
+.clear {
+	clear:both;
+}
+
+.hand {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.no-outline {
+	outline:none;
+	border:none;
+	-moz-outline:none;
+	-webkit-outline:none;
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.capital {
+	text-transform: capitalize;
+}
+
+.upper {
+	text-transform: uppercase;
+}
+
+.lower {
+	text-transform: lowercase;
+}
+
+.center {
+	text-align: center;
+}
+
+.ul {
+	.marpad;
+	list-style: none;
+	list-style-type: none;
+	
+	li {
+		.marpad;
+		display:block;
+	}
+}
+
+.opacity(@val) {
+	
+	@ms-val: @val * 100;
+	zoom: 1;
+	filter:~"alpha(opacity=@{ms-val})";
+	
+	opacity:@val;
+	-moz-opacity:@val;
+	-webkit-opacity:@val;
+	-ms-opacity:@val;
+	-k-opacity:@val;
+	-o-opacity:@val;
+}
+
 
 // En attente d'un meilleur support de calc() de CSS3
 .box-sizing ( @bs ) {
@@ -38,6 +132,12 @@
 	        transition: @t;
 }
 
+//=========================
+// = VARIABLES GLOBALES
+//=========================
+
+@col: 10px;
+@typo: #000;
 
 
 //=========================
@@ -54,10 +154,8 @@
 //=========================
 
 html, body {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+	.marpad;
+	.wh;
 }
 
 
@@ -66,27 +164,62 @@ html, body {
 	height:100%;
 }
 
+p, .p {
+	margin: @col 0;
+	padding: 0;
+	font-size: 13px;
+	color: @typo;
+}
+
+p:first {
+	margin: 0 0 @col 0;
+}
+
 a {
 	color: #7d7d7d;
 	
-	&:hover {
+	
+	&:visited {
+		
+	}
+	
+	&:hover, &:active {
 		color: darken(#7d7d7d, 30%);
+	}
+	
+	&:focus {
+		-moz-outline-style: none;
+	}
+	
+	img {
+		border:none;
 	}
 }
 
-
-
-
-.error {
-	outline: red solid 1px !important;
-	color: red !important;
+*, *:focus {
+	.no-outline;
 }
+
+/*
+ * HTML5
+ */
+section, nav, article, footer, header, menu {
+	display:block;
+	.marpad;
+	position:static;
+}
+
+/* 
+ * CSS 3
+ */
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+
+
 
 //=========================
 // = TEMPLATE GÉNÉRAL
 //=========================
 
-// ----------------
-// == Entête principal
-// ----------------
 
