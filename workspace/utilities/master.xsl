@@ -7,6 +7,7 @@
 <xsl:import href="ga.xsl" />
 <xsl:import href="date-time.xsl" />
 <xsl:import href="page-title.xsl" />
+<xsl:import href="ie.xsl" />
 
 <xsl:output method="html"
 	omit-xml-declaration="yes"
