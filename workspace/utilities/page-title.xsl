@@ -15,4 +15,12 @@
 	<xsl:value-of select="/data/config/entry [1]/site-name" />
 </xsl:template>
 
+<xsl:template name="page-title-header">
+	<xsl:variable name="title">
+		<xsl:call-template name="page-title" />
+	</xsl:variable>
+	<title><xsl:value-of select="$title" /></title>
+	<meta name="title" content="{$title}" />
+</xsl:template>
+
 </xsl:stylesheet>
