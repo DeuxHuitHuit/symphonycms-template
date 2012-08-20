@@ -15,7 +15,7 @@
 	indent="no" />
 	 
 <xsl:variable name="is-loggued-in" select="/data/events/login-info/@logged-in = 'true'" />
-
+<xsl:variable name="url-language" select="'fr'"/>
 <xsl:variable name="metas" select="/data/metas/entry[1]" />
 
 <xsl:template match="/">
@@ -35,7 +35,7 @@
 	<link rel="apple-touch-icon" href="{$root}/favicon.png" type="image/png" />
 	<link rel="pavatar" href="{$root}/favicon.png" type="image/png" />
 	  
-	<link rel="stylesheet/less" type="text/css" href="/workspace/assets/styles/main.less" />
+	<link rel="stylesheet/less" type="text/css" href="/workspace/assets/css/main.less" />
 	<script>less = { env: 'development' }; </script>
 	<script src="/workspace/assets/js/lib/less-1.3.0.min.js"></script>
 	<!--script>//less.watch();</script-->
