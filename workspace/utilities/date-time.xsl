@@ -255,13 +255,13 @@ d/n/y t => 21/09/81 6:30pm
   <xsl:param name="lg" select="$url-language" />
   <xsl:param name="result">
   <xsl:choose>
-    <xsl:when test="$lg = 'fr' and $weekday = 1">Lundi</xsl:when>
-    <xsl:when test="$lg = 'fr' and $weekday = 2">Mardi</xsl:when>
-    <xsl:when test="$lg = 'fr' and $weekday = 3">Mercredi</xsl:when>
-    <xsl:when test="$lg = 'fr' and $weekday = 4">Jeudi</xsl:when>
-    <xsl:when test="$lg = 'fr' and $weekday = 5">Vendredi</xsl:when>
-    <xsl:when test="$lg = 'fr' and $weekday = 6">Samedi</xsl:when>
-    <xsl:when test="$lg = 'fr' and $weekday = 7">Dimanche</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 1">lundi</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 2">mardi</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 3">mercredi</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 4">jeudi</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 5">vendredi</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 6">samedi</xsl:when>
+    <xsl:when test="$lg = 'fr' and $weekday = 7">dimanche</xsl:when>
     
     <xsl:when test="$weekday = 1">Monday</xsl:when>
     <xsl:when test="$weekday = 2">Tuesday</xsl:when>
