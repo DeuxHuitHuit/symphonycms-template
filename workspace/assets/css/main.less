@@ -97,6 +97,17 @@
 	}
 }*/
 
+#font-face(@font-family, @font-weight:normal, @font-style: normal) {
+	font-family: @fontfamily;
+	src: url("@{font-path}@{fontfamily}.eot");
+	src: url("@{font-path}@{fontfamily}.eot?#iefix") format('embedded-opentype'),
+		 url("@{font-path}@{fontfamily}.woff") format('woff'),
+		 url("@{font-path}@{fontfamily}.ttf") format('truetype'),
+		 url("@{font-path}@{fontfamily}.svg#@{fontfamily}") format('svg');
+	font-weight: @font-weight;
+	font-style: @font-style;
+}
+
 .opacity(@val) {
 	
 	@ms-val: @val * 100;
@@ -112,24 +123,71 @@
 }
 
 
-// En attente d'un meilleur support de calc() de CSS3
-.box-sizing ( @bs ) {
-	-moz-box-sizing: @bs;
-	     box-sizing: @bs;
-}
+/*** Mixin CSS 3 ***/
 
-.border-radius ( @br ) {
+#border-radius ( @br ) {
 	-webkit-border-radius: @br;
 	   -moz-border-radius: @br;
-	        border-radius: @br;
+			border-radius: @br;
+}
+#transition(@transition) {
+	-webkit-transition: @transition;
+	   -moz-transition: @transition;
+		-ms-transition: @transition;
+		 -o-transition: @transition;
+			transition: @transition;
+}
+#transform(@transform) {
+	-webkit-transform: @transform;
+	   -moz-transform: @transform;
+		-ms-transform: @transform;
+		 -o-transform: @transform;
+			transform: @transform;
+}
+#transform-origin(@origin) {
+	-webkit-transform-origin: @origin;
+	   -moz-transform-origin: @origin;
+		-ms-transform-origin: @origin;
+		 -o-transform-origin: @origin;
+			transform-origin: @origin;
+}
+#filter(@filter) {
+	-webkit-filter: @filter;
+	   -moz-filter: @filter;
+		-ms-filter: @filter;
+		 -o-filter: @filter;
+			filter: @filter;
+}
+#preserve-3d() {
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		 -o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
 }
 
-.transition ( @t ) {
-	-webkit-transition: @t;
-	   -moz-transition: @t;
-	    -ms-transition: @t;
-	     -o-transition: @t;
-	        transition: @t;
+#scale(@scaleX,@scaleY) {
+	-webkit-transform:scale3d(@scaleX,@scaleY,1);
+	   -moz-transform:scale(@scaleX,@scaleY);
+		-ms-transform:scale(@scaleX,@scaleY);
+		 -o-transform:scale(@scaleX,@scaleY);
+			transform:scale(@scaleX,@scaleY);
+}
+
+#skew(@skew){
+	-webkit-transform: skew(@skew);
+	   -moz-transform: skew(@skew);
+		-ms-transform:scale(@skew); // ms does not support skew
+		 -o-transform: skew(@skew);
+			transform: skew(@skew);
+}
+
+#perspective(@perspective){
+	-webkit-perspective: @perspective;
+	   -moz-perspective: @perspective;
+		-ms-perspective: @perspective;
+		 -o-perspective: @perspective;
+			perspective: @perspective;
 }
 
 //=========================
@@ -213,8 +271,12 @@ section, nav, article, footer, header, menu {
  * CSS 3
  */
 * {
-	-webkit-tap-highlight-color: rgba(0,0,0,0); 
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-font-smoothing: antialiased;
+	-webkit-backface-visibility: hidden; // prevents flicker
+	-webkit-transform: scale3d(1,1,1);
 }
+
 
 
 
