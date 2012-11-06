@@ -14,11 +14,11 @@
 			return 'POST';
 		}
 
-		public function load(){
+		public function load() {
 			return $this->__trigger();
 		}
 
-		protected function __trigger(){
+		protected function __trigger() {
 
 			$result = null;
 			$actionName = $this->getActionName();
