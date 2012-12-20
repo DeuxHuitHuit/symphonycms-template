@@ -4,6 +4,13 @@
 
 	Class eventLogin extends Event{
 
+		/*public function __construct(&$context) {
+			parent::__construct($context);
+			
+			
+			//$context['param']['login-filter'] = 'yes';
+		}*/
+
 		public static function about(){
 
 			$description = new XMLElement('p', 'This is an event that displays basic login details (such as their real name, username and author type) if the person viewing the site have been authenticated by logging in to Symphony. It is useful if you want to do something special with the site if the person viewing it is an authenticated member.');
@@ -84,7 +91,11 @@
 				$result = new XMLElement('user');
 				$result->setAttribute('logged-in', 'false');
 			}
-
+			
+			// param output
+			Frontend::Page()->_param['login'] =  $loggedin ? 'yes' : 'no';
+			Frontend::Page()->_param['login-filter'] = $loggedin ? 'yes,no' : 'yes';
+			
 			return $result;
 
 		}

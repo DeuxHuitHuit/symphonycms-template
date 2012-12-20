@@ -13,9 +13,12 @@
 	omit-xml-declaration="yes"
 	encoding="UTF-8"
 	indent="no" />
-	 
+
+<xsl:variable name="version" select="'0.1'" />
+<xsl:variable name="debug" select="contains($root, '288dev.com')" />
 <xsl:variable name="is-loggued-in" select="/data/events/login-info/@logged-in = 'true'" />
-<xsl:variable name="url-language" select="'fr'"/>
+<xsl:variable name="url-language" select="/data/events/flang-redirect/current-language/@handle"/>
+
 <xsl:variable name="metas" select="/data/metas/entry[1]" />
 
 <xsl:template match="/">
@@ -29,16 +32,25 @@
 	
 	<xsl:call-template name="page-metas" />
 	
-	<link rel="shortcut icon" href="{$root}/favicon.ico" />
-	<link rel="icon" href="{$root}/favicon.ico" />
-	<link rel="icon" type="images/png" href="{$root}/favicon.png" />
-	<link rel="apple-touch-icon" href="{$root}/favicon.png" type="image/png" />
-	<link rel="pavatar" href="{$root}/favicon.png" type="image/png" />
-	  
-	<link rel="stylesheet/less" type="text/css" href="/workspace/assets/css/main.less" />
-	<script>less = { env: 'development' }; </script>
-	<script src="/workspace/assets/js/lib/less-1.3.0.min.js"></script>
-	<!--script>//less.watch();</script-->
+	<link rel="shortcut icon"     href="{$root}/favicon.ico" />
+	<link rel="icon"              href="{$root}/favicon.ico" />
+	<link rel="icon"              href="{$root}/favicon.png" type="images/png" />
+	<link rel="apple-touch-icon"  href="{$root}/favicon.png" type="image/png" />
+	<link rel="pavatar"           href="{$root}/favicon.png" type="image/png" />
+	
+	<xsl:choose>
+		<xsl:when test="$debug = true()">
+			<link rel="stylesheet/less" type="text/css" href="/workspace/assets/css/main.less?v={$version}" />
+			<script>less = { env: 'development' }; </script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js"></script>
+			<script>less.watch();</script>
+		</xsl:when>
+		<xsl:otherwise>
+			<link rel="stylesheet" type="text/css" href="/workspace/assets/css/main.css?v={$version}" />
+		</xsl:otherwise>
+	</xsl:choose>
+	
+	
 	<xsl:call-template name="extra-css" />
 
 	<xsl:call-template name="ga">
@@ -52,10 +64,10 @@
 	</div>
 
 	<!-- scripts -->	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script src="/workspace/assets/js/lib/jquery.easing.1.3.js"></script>
-	<script src="/workspace/assets/js/lib/jquery.sizing.min.js"></script>
-	<script src="/workspace/assets/js/main.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="/workspace/assets/js/lib/jquery.sizing.min.js?v={$version}"></script>
+	<script src="/workspace/assets/js/main.js?v={$version}"></script>
 	
 	<xsl:call-template name="extra-js" />
 	
