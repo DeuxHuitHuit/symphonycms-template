@@ -14,7 +14,16 @@
 	encoding="UTF-8"
 	indent="no" />
 
-<xsl:variable name="version" select="'0.1'" />
+<xsl:variable name="debug" select="contains($root, '288dev.com')" />
+<xsl:variable name="version">
+	<xsl:text>0.1</xsl:text>
+	<xsl:if test="$debug = true()">
+		<xsl:text>-</xsl:text>
+		<xsl:value-of select="$today" />
+		<xsl:text>-</xsl:text>
+		<xsl:value-of select="$current-time" />
+	</xsl:if>
+</xsl:variable>
 <xsl:variable name="debug" select="contains($root, '288dev.com')" />
 <xsl:variable name="is-loggued-in" select="/data/events/login-info/@logged-in = 'true'" />
 <xsl:variable name="url-language" select="/data/events/flang-redirect/current-language/@handle"/>
