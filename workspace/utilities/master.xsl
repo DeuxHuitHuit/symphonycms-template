@@ -60,7 +60,7 @@
 
 <body class="{$url-language} page-{$current-page}">
 	<div id="site">
-		
+		<xsl:apply-templates select="data" />
 	</div>
 
 	<!-- scripts -->	
