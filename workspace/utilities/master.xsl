@@ -30,6 +30,14 @@
 
 <xsl:variable name="metas" select="/data/metas/entry[1]" />
 
+<xsl:template name="admin-menu">
+	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
+		<a id="top-admin" href="/symphony/">ADMIN</a>
+		<a id="top-debug" href="?debug">debug</a>
+		<a id="top-logout" href="/symphony/logout/">déconnection</a>
+	</xsl:if>
+</xsl:template>
+
 <xsl:template match="/">
 <xsl:text disable-output-escaping="yes">&lt;</xsl:text>!DOCTYPE html public "✰"<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 <html lang="{$url-language}">
