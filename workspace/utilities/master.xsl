@@ -33,7 +33,9 @@
 <xsl:template name="admin-menu">
 	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
 		<a id="top-admin" href="/symphony/">ADMIN</a>
-		<a id="top-debug" href="?debug">debug</a>
+		<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+			<a id="top-debug" href="?debug">debug</a>
+		</xsl:if>
 		<a id="top-logout" href="/symphony/logout/">déconnection</a>
 	</xsl:if>
 </xsl:template>
