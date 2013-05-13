@@ -24,7 +24,7 @@
 		<xsl:value-of select="$current-time" />
 	</xsl:if>
 </xsl:variable>
-<xsl:variable name="debug" select="contains($root, '288dev.com')" />
+
 <xsl:variable name="is-loggued-in" select="/data/events/login-info/@logged-in = 'true'" />
 <xsl:variable name="url-language" select="/data/events/flang-redirect/current-language/@handle"/>
 
@@ -65,7 +65,7 @@
 			<script>less.watch();</script>
 		</xsl:when>
 		<xsl:otherwise>
-			<link rel="stylesheet" type="text/css" href="/workspace/assets/css/main.css?v={$version}" />
+			<link rel="stylesheet" type="text/css" href="/workspace/assets/css/main.min.css?v={$version}" />
 		</xsl:otherwise>
 	</xsl:choose>
 	
@@ -83,7 +83,7 @@
 	</div>
 
 	<!-- scripts -->	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="/workspace/assets/js/lib/jquery.sizing.min.js?v={$version}"></script>
 	<script src="/workspace/assets/js/main.js?v={$version}"></script>
