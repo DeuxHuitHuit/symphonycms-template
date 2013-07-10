@@ -100,7 +100,7 @@
 #font-face(@font-family, @font-weight:normal, @font-style: normal) {
 	font-family: @fontfamily;
 	src: url("@{font-path}@{fontfamily}.eot");
-	src: url("@{font-path}@{fontfamily}.eot?#iefix") format('embedded-opentype'),
+	src: local('?'),
 		 url("@{font-path}@{fontfamily}.woff") format('woff'),
 		 url("@{font-path}@{fontfamily}.ttf") format('truetype'),
 		 url("@{font-path}@{fontfamily}.svg#@{fontfamily}") format('svg');
