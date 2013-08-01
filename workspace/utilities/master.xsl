@@ -62,19 +62,20 @@
 			<link rel="stylesheet/less" type="text/css" href="/workspace/assets/css/main.less?v={$version}" />
 			<script>less = { env: 'development' }; </script>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js"></script>
-			<script>less.watch();</script>
+			<script>//less.watch();</script>
 		</xsl:when>
 		<xsl:otherwise>
 			<link rel="stylesheet" type="text/css" href="/workspace/assets/css/main.min.css?v={$version}" />
 		</xsl:otherwise>
 	</xsl:choose>
 	
-	
 	<xsl:call-template name="extra-css" />
 
-	<xsl:call-template name="ga">
-		<xsl:with-param name="ua" select="''" />
-	</xsl:call-template>
+	<xsl:when test="$debug = false()">
+		<xsl:call-template name="ga">
+			<xsl:with-param name="ua" select="''" />
+		</xsl:call-template>
+	</xsl:when>
 </head>
 
 <body class="{$url-language} page-{$current-page}">
@@ -82,11 +83,20 @@
 		<xsl:apply-templates select="data" />
 	</div>
 
-	<!-- scripts -->	
+	<!-- scripts from cdns and libs -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="/workspace/assets/js/lib/jquery.sizing.min.js?v={$version}"></script>
-	<script src="/workspace/assets/js/main.js?v={$version}"></script>
+	
+	<!-- Local scripts -->
+	<xsl:choose>
+		<xsl:when test="$debug = true()">
+			<script src="/workspace/assets/js/main.js?v={$version}"></script>
+		</xsl:when>
+		<xsl:otherwise>
+			<script src="/workspace/assets/js/main.min.js?v={$version}"></script>
+		</xsl:otherwise>
+	</xsl:choose>
 	
 	<xsl:call-template name="extra-js" />
 	
