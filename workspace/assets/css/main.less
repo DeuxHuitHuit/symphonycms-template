@@ -126,6 +126,8 @@
 
 /*** Mixin CSS 3 ***/
 
+/*** Mixin CSS 3 ***/
+
 #border-radius ( @br ) {
 	-webkit-border-radius: @br;
 	   -moz-border-radius: @br;
@@ -138,6 +140,28 @@
 		 -o-transition: @transition;
 			transition: @transition;
 }
+#transition-delay(@delay) {
+	-webkit-transition-delay: @delay;
+	   -moz-transition-delay: @delay;
+		-ms-transition-delay: @delay;
+		 -o-transition-delay: @delay;
+			transition-delay: @delay;
+}
+#transition-duration(@duration) {
+	-webkit-transition-duration: @duration;
+	   -moz-transition-duration: @duration;
+		-ms-transition-duration: @duration;
+		 -o-transition-duration: @duration;
+			transition-duration: @duration;
+}
+#cb-transition(@transition) {
+	-webkit-transition: ~"-webkit-@{transition}";
+	   -moz-transition: ~"-moz-@{transition}";
+		-ms-transition: ~"-ms-@{transition}";
+		 -o-transition: ~"-o-@{transition}";
+			transition: @transition;
+}
+
 #transform(@transform) {
 	-webkit-transform: @transform;
 	   -moz-transform: @transform;
@@ -159,21 +183,37 @@
 		 -o-filter: @filter;
 			filter: @filter;
 }
-#preserve-3d() {
-	-webkit-transform-style: preserve-3d;
-	   -moz-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
-		 -o-transform-style: preserve-3d;
-			transform-style: preserve-3d;
+#translate(@x, @y, @z:0px) {
+	-webkit-transform:translate(@x,@y);
+	   -moz-transform:translate(@x,@y);
+		-ms-transform:translate(@x,@y);
+		 -o-transform:translate(@x,@y);
+			transform:translate(@x,@y);
+			
+	-webkit-transform:translate3d(@x,@y,@z);
+	   -moz-transform:translate3d(@x,@y,@z);
+		-ms-transform:translate3d(@x,@y,@z);
+		 -o-transform:translate3d(@x,@y,@z);
+			transform:translate3d(@x,@y,@z);
+}
+#scale2d(@scaleX,@scaleY) {
+	-webkit-transform:scale(@scale,@scale);
+	   -moz-transform:scale(@scale,@scale);
+		-ms-transform:scale(@scale,@scale);
+		 -o-transform:scale(@scale,@scale);
+			transform:scale(@scale,@scale);
+			
+	-webkit-transform:scale3d(@scale,@scale,1);
+	   -moz-transform:scale3d(@scale,@scale,1);
+		-ms-transform:scale3d(@scale,@scale,1);
+		 -o-transform:scale3d(@scale,@scale,1);
+			transform:scale3d(@scale,@scale,1);
 }
 
-#scale(@scaleX,@scaleY) {
-	-webkit-transform:scale3d(@scaleX,@scaleY,1);
-	   -moz-transform:scale(@scaleX,@scaleY);
-		-ms-transform:scale(@scaleX,@scaleY);
-		 -o-transform:scale(@scaleX,@scaleY);
-			transform:scale(@scaleX,@scaleY);
+#scale(@scale) {
+	#scale2d(@scale, @scale);
 }
+
 
 #skew(@skew){
 	-webkit-transform: skew(@skew);
@@ -191,6 +231,22 @@
 			perspective: @perspective;
 }
 
+#perspective-origin(@origin){
+	-webkit-perspective-origin: @origin;
+	   -moz-perspective-origin: @origin;
+		-ms-perspective-origin: @origin;
+		 -o-perspective-origin: @origin;
+			perspective-origin: @origin;
+}
+
+#preserve-3d() {
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		 -o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+}
+
 #box-sizing(@box-sizing: border-box){
 	-webkit-box-sizing: @box-sizing;
 	   -moz-box-sizing: @box-sizing;
@@ -199,6 +255,52 @@
 			box-sizing: @box-sizing;
 }
 
+#background-size(@bs: cover){
+	-webkit-background-size: @bs;
+	   -moz-background-size: @bs;
+		-ms-background-size: @bs;
+		 -o-background-size: @bs;
+			background-size: @bs;
+}
+
+#user-select(@select: none) {
+	-webkit-touch-callout: @select;
+	-webkit-user-select: @select;
+	 -khtml-user-select: @select;
+	   -moz-user-select: @select;
+		-ms-user-select: @select;
+			user-select: @select;
+}
+
+#animation(...) {
+	-webkit-animation: @arguments;
+	   -moz-animation: @arguments;
+	    -ms-animation: @arguments;
+		 -o-animation: @arguments;
+			animation: @arguments;
+}
+
+#backface(@visibility: hidden) {
+	-webkit-backface-visibility: @visibility;
+	   -moz-backface-visibility: @visibility;
+	    -ms-backface-visibility: @visibility;
+		 -o-backface-visibility: @visibility;
+			backface-visibility: @visibility;
+}
+
+.noanim {
+	&, & * {
+		#transition(none) !important;
+	}
+}
+
+.not-visible {
+	visibility: hidden;
+}
+
+.visible {
+	visibility: visible !important;
+}
 
 //=========================
 // = VARIABLES GLOBALES
