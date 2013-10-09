@@ -3,12 +3,14 @@
 
 <xsl:template name="site-header">
 	<header>
+		<a href="/">
 		<h2>
 			<!-- Logo -->
 			<img src="/workspace/assets/img/logo.png" />
 			<!-- Nom du site -->
 			<span><xsl:value-of select="$metas/site-titre" /></span>
 		</h2>
+		</a>
 	</header>
 </xsl:template>
 
