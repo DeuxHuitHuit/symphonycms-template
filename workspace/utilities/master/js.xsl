@@ -49,6 +49,7 @@
 			<script src="{$jsPath}pages/default-page.js"></script>
 		</xsl:when>
 		<xsl:otherwise>
+			<script src="{$jsPath}core/framework.min.js?v={$version}"></script>
 			<script src="{$jsPath}{$site-ref}.min.js?v={$version}"></script>
 		</xsl:otherwise>
 	</xsl:choose>
