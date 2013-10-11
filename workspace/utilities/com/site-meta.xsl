@@ -6,9 +6,16 @@
 </xsl:template>
 
 <xsl:template name="default-page-metas">
+	<xsl:call-template name="html-metas" />
 	<xsl:call-template name="open-graph" />
 	<xsl:call-template name="twitter-card" />
 </xsl:template>
+
+<xsl:template name="html-metas">
+	<xsl:param name="description" select="$metas/site-description" />
+
+	<meta name="description" content="{$description}" />
+</xsl:stylesheet>
 
 <xsl:template name="twitter-card">
 	<xsl:param name="titre" select="$metas/site-titre" />
