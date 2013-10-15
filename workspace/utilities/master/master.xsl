@@ -35,6 +35,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE8" />
+	<meta name="viewport" content="initial-scale=1" />
 	
 	<xsl:call-template name="page-title-header" />
 	
