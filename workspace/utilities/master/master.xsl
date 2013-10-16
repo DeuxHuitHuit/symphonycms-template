@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE stylesheet [
 	<!ENTITY nbsp "&#160;">
+	<!ENTITY dot "&#8901;">
+	<!ENTITY left "&#9668;">
+	<!ENTITY right "&#9658;">
+	<!ENTITY dquote "&#34;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
