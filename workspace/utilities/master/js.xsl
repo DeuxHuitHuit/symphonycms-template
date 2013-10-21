@@ -43,7 +43,7 @@
 			<script src="{$js-path}modules/transition-animation.js?v={$version}"></script>
 			
 			<!-- Transitions -->
-			<script src="{$js-path}transitions/default-transition"></script>
+			<script src="{$js-path}transitions/default-transition.js?v={$version}"></script>
 			
 			<!-- Pages -->
 			<script src="{$js-path}pages/default-page.js"></script>
