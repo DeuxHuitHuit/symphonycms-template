@@ -15,18 +15,18 @@
 <xsl:import href="css.xsl" />
 
 <!-- LIB -->
-<xsl:import href="lib/create-page-url.xsl" />
-<xsl:import href="lib/date-time.xsl" />
-<xsl:import href="lib/fx-url-creator.xsl" />
-<xsl:import href="lib/ga.xsl" />
-<xsl:import href="lib/ie.xsl" />
+<xsl:import href="../lib/create-page-url.xsl" />
+<xsl:import href="../lib/date-time.xsl" />
+<xsl:import href="../lib/fx-url-creator.xsl" />
+<xsl:import href="../lib/ga.xsl" />
+<xsl:import href="../lib/ie.xsl" />
 
 <!-- COMPONENTS -->
-<xsl:import href="com/page-title.xsl" />
-<xsl:import href="com/page-meta.xsl" />
-<xsl:import href="com/site-footer.xsl" />
-<xsl:import href="com/site-header.xsl" />
-<xsl:import href="com/menu-admin.xsl" />
+<xsl:import href="../com/page-title.xsl" />
+<xsl:import href="../com/site-meta.xsl" />
+<xsl:import href="../com/site-footer.xsl" />
+<xsl:import href="../com/site-header.xsl" />
+<xsl:import href="../com/menu-admin.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
@@ -68,10 +68,10 @@
 	</div>
 	
 	<xsl:call-template name="master-js">
-		<xsl:with-praram name="extra-js">
+		<xsl:with-param name="extra-js">
 			<!-- Register URL for the site-->
 			<xsl:call-template name="framework-288-url-creator" /> 
-		</xsl:with-praram>
+		</xsl:with-param>
 	</xsl:call-template>
 </body>
 </html>

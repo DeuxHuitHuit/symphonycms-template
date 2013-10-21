@@ -15,7 +15,7 @@
 	<xsl:param name="description" select="$metas/site-description" />
 
 	<meta name="description" content="{$description}" />
-</xsl:stylesheet>
+</xsl:template>
 
 <xsl:template name="twitter-card">
 	<xsl:param name="titre" select="$metas/site-titre" />
