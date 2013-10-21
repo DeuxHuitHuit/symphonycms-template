@@ -38,7 +38,7 @@
 <html lang="{$url-language}">
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE9" />
 	<meta name="viewport" content="initial-scale=1" />
 	
 	<xsl:call-template name="page-title-header" />
@@ -46,6 +46,8 @@
 	<xsl:call-template name="page-metas" />
 	
 	<xsl:call-template name="favicon" />
+	
+	<xsl:call-template name="master-css" />
 	
 	<xsl:if test="$debug != true()">
 		<xsl:call-template name="ga">
