@@ -1,0 +1,120 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = MIXINS
+//=========================
+
+#marpad (@width: 0) {
+	padding: @width;
+	margin: @width;
+}
+
+#wh (@width: 100%) {
+	width: @width;
+	height: @width;
+}
+
+#sq(@side) {
+	width:@side;
+	height:@side;
+	display:block;
+}
+
+#absolute (@zindex: 10) {
+	position:absolute;
+	display:block;
+	z-index: @zindex;
+}
+
+#relative (@zindex: 10) {
+	position:relative;
+	display:block;
+	z-index: @zindex;
+}
+
+#fixed (@zindex: 10) {
+	position:fixed;
+	display:block;
+	z-index: @zindex;
+}
+
+// ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
+#font-face(@font-family, @font-weight:normal, @font-style: normal) {
+	font-family: @fontfamily;
+	src: url("@{font-path}@{fontfamily}.eot");
+	src: local('?'),
+		 url("@{font-path}@{fontfamily}.woff") format('woff'),
+		 url("@{font-path}@{fontfamily}.ttf") format('truetype'),
+		 url("@{font-path}@{fontfamily}.svg#@{fontfamily}") format('svg');
+	font-weight: @font-weight;
+	font-style: @font-style;
+}
+
+#opacity(@val) {
+	
+	@ms-val: @val * 100;
+	zoom: 1;
+	filter:~"alpha(opacity=@{ms-val})";
+	
+	opacity:@val;
+	-moz-opacity:@val;
+	-webkit-opacity:@val;
+	-ms-opacity:@val;
+	-k-opacity:@val;
+	-o-opacity:@val;
+}
+
+
+#no-outline() {
+	outline:none;
+	border:none;
+	-moz-outline:none;
+	-webkit-outline:none;
+}
+
+
+//=========================
+// = REUSABLE CLASSES
+//=========================
+
+
+.bold {
+	font-weight: bold;
+}
+
+.capital {
+	text-transform: capitalize;
+}
+
+.upper {
+	text-transform: uppercase;
+}
+
+.lower {
+	text-transform: lowercase;
+}
+
+.center {
+	text-align: center;
+}
+
+.cursor-hand {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.noanim {
+	&, & * {
+		#transition(none) !important;
+	}
+}
+
+.not-visible {
+	visibility: hidden !important;
+}
+
+.visible {
+	visibility: visible !important;
+}
