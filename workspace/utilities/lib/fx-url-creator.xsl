@@ -2,21 +2,10 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:variable name="allowArgsName" select="'f288-allowArgs'" />
-<xsl:variable name="multi-langues" >
-	<xsl:choose>
-		<xsl:when test="count(/data/fl-languages/supported-languages/item) &gt; 1">
-			<xsl:text>yes</xsl:text>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>no</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:variable>
 
 <xsl:template name="framework-288-url-creator">
 	<xsl:apply-templates select="/data/pages" mode="framework-288-url-creator" />
 </xsl:template>
-
 
 <xsl:template match="data/pages" mode="framework-288-url-creator">
 	<script>
