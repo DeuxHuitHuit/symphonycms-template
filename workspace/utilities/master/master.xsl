@@ -51,7 +51,7 @@
 	
 	<xsl:if test="$debug != true()">
 		<xsl:call-template name="ga">
-			<xsl:with-param name="ua" select="'UA-33016559-2'" />
+			<xsl:with-param name="ua" select="''" />
 			<xsl:with-param name="domain" select="''" />
 		</xsl:call-template>
 	</xsl:if>
