@@ -42,12 +42,12 @@
 
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
 #font-face(@font-family, @font-weight:normal, @font-style: normal) {
-	font-family: @fontfamily;
-	src: url("@{font-path}@{fontfamily}.eot");
+	font-family: @font-family;
+	src: url("@{font-path}@{font-family}.eot");
 	src: local('?'),
-		 url("@{font-path}@{fontfamily}.woff") format('woff'),
-		 url("@{font-path}@{fontfamily}.ttf") format('truetype'),
-		 url("@{font-path}@{fontfamily}.svg#@{fontfamily}") format('svg');
+		 url("@{font-path}@{font-family}.woff") format('woff'),
+		 url("@{font-path}@{font-family}.ttf") format('truetype'),
+		 url("@{font-path}@{font-family}.svg#@{font-family}") format('svg');
 	font-weight: @font-weight;
 	font-style: @font-style;
 }
