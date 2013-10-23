@@ -19,16 +19,41 @@
 		<xsl:when test="count(./parent::page) &gt; 0">
 			<xsl:apply-templates select="./parent::page" mode="url" >
 				<xsl:with-param name="url">
-					<!--xsl:value-of select="item [@lang = $url-language]/@handle" />/<xsl:value-of select="$url" /-->
-					<xsl:value-of select="$url" />
+					<xsl:choose>
+						<xsl:when test="$multi-langues = 'yes'">
+							<xsl:value-of select="item [@lang = $url-language]/@handle" />/<xsl:value-of select="$url" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="$url" />
+						</xsl:otherwise>
+					</xsl:choose>
 				</xsl:with-param>
 			</xsl:apply-templates>
 		</xsl:when>
 		<xsl:otherwise>
-			<!--xsl:text>/</xsl:text><xsl:value-of select="$url-language" />/<xsl:value-of select="item [@lang = $url-language]/@handle" />/<xsl:value-of select="$url" /-->
-			<xsl:text>/</xsl:text><xsl:value-of select="@handle" />/<xsl:value-of select="$url" />
+			<xsl:choose>
+				<xsl:when test="$multi-langues = 'yes'">
+					<xsl:text>/</xsl:text><xsl:value-of select="$url-language" />/<xsl:value-of select="item [@lang = $url-language]/@handle" />/<xsl:value-of select="$url" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>/</xsl:text><xsl:value-of select="@handle" />/<xsl:value-of select="$url" />
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:otherwise>
 	</xsl:choose>
+</xsl:template>
+
+<xsl:template name="create-page-handle-by-id">
+	<xsl:param name="id" />
+	<xsl:apply-templates select="/data/pages//page [@id=$id]" mode="full-page-handle-creator" />
+</xsl:template>
+
+<xsl:template match="page" mode="full-page-handle-creator">
+	<xsl:for-each select="./ancestor::page">
+		<xsl:value-of select="item [@lang='fr']/@handle" />
+		<xsl:text>-</xsl:text>
+	</xsl:for-each>
+	<xsl:value-of select="item [@lang='fr']/@handle" />
 </xsl:template>
 
 </xsl:stylesheet>

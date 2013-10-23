@@ -2,21 +2,10 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:variable name="allowArgsName" select="'f288-allowArgs'" />
-<xsl:variable name="multi-langues" >
-	<xsl:choose>
-		<xsl:when test="count(/data/fl-languages/supported-languages/item) &gt; 1">
-			<xsl:text>yes</xsl:text>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:text>no</xsl:text>
-		</xsl:otherwise>
-	</xsl:choose>
-</xsl:variable>
 
 <xsl:template name="framework-288-url-creator">
 	<xsl:apply-templates select="/data/pages" mode="framework-288-url-creator" />
 </xsl:template>
-
 
 <xsl:template match="data/pages" mode="framework-288-url-creator">
 	<script>
@@ -32,25 +21,7 @@
 	<xsl:variable name="item" select="." />
 	
 	<xsl:variable name="handle">
-		<xsl:for-each select="./ancestor::page">
-			<xsl:choose>
-				<xsl:when test="$multi-langues = 'yes'">
-					<xsl:value-of select="item [@lang='fr']/@handle" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="@handle" />
-				</xsl:otherwise>
-			</xsl:choose>
-			<xsl:text>-</xsl:text>
-		</xsl:for-each>
-		<xsl:choose>
-			<xsl:when test="$multi-langues = 'yes'">
-				<xsl:value-of select="item [@lang='fr']/@handle" />
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="@handle" />
-			</xsl:otherwise>
-		</xsl:choose>
+		<xsl:apply-templates select="." mode="full-page-handle-creator" />
 	</xsl:variable>
 
 
@@ -64,7 +35,6 @@
 						<xsl:call-template name="framework-288-url-creator-page-route" >
 							<xsl:with-param name="item" select="$item" />
 						</xsl:call-template>
-						
 					</xsl:for-each>
 					
 					<!-- other language -->
@@ -157,7 +127,7 @@
 	<xsl:if test="$isIndex != 'yes'">
 		<xsl:choose>
 			<xsl:when test="$multi-langues = 'yes'">
-				<xsl:value-of select="item [@lang=$lg]/@handle" />
+				<xsl:value-of select="$item/item [@lang=$lg]/@handle" />
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:value-of select="@handle" />
