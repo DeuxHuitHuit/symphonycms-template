@@ -23,7 +23,6 @@
     "grunt-contrib-concat": "~0.2.0",
     "grunt-contrib-less": "~0.5",
     "grunt-contrib-watch": "~0.4.4",
-    "grunt-casperjs": "~1.0.6",
     "grunt-banner": "~0.2.0",
     "matchdep": "~0.3.0"
   }

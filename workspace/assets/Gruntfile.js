@@ -1,4 +1,4 @@
-/*global module:false*/
+/*global module:false, require:false*/
 var md = require('matchdep');
 
 module.exports = function(grunt) {
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
 		less: {
 			development: {
 				files: {
-					'css/main.css': lessFile,
+					'css/main.css': lessFile
 					//'css/main.mobile.css': lessMobileFile,
 					//'css/ie9.css': 'css/ie9.less'
 				}
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
 					yuicompress: true
 				},
 				files: {
-					'css/main.min.css': lessFile,
+					'css/main.min.css': lessFile
 					//'css/main.mobile.min.css': lessMobileFile,
 					//'css/ie9.min.css': 'css/ie9.less'
 				}
@@ -144,20 +144,12 @@ module.exports = function(grunt) {
 					maintainability: 95 //100
 				}
 			}
-		},
-		
-		casperjs: {
-			options: {
-				
-			},
-			files: testFiles
 		}
 	});
 
 	// Default task.
-	grunt.registerTask('default', ['jshint','complexity','casperjs','concat','uglify','less']);
+	
 	grunt.registerTask('dev', ['jshint','complexity']);
 	grunt.registerTask('build', ['concat','uglify','less','usebanner']);
-	grunt.registerTask('test', ['jshint','casperjs']);
-
+	grunt.registerTask('default', ['dev','build']);
 };
