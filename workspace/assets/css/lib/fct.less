@@ -91,6 +91,25 @@
 	cursor: wait;
 }
 
+#ib() {
+      display: inline-block;
+      vertical-align: top;
+}
+
+#vh-center(@moitier-horizontale : 0px, @moitier-verticale : 0px) {
+      #absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -@moitier-horizontale;
+      margin-top: -@moitier-verticale;
+}
+
+#wrap (@val : break-word) {
+      overflow-wrap: @val;
+      word-wrap: @val;
+}
+
+
 
 
 //=========================
