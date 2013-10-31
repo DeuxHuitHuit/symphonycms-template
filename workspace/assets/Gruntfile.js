@@ -128,7 +128,7 @@ module.exports = function(grunt) {
 					linebreak: true
 				},
 				files: {
-					src: [ 'css/main.min.css', 'css/ie9.min.css' ]
+					src: [ 'css/main.min.css'/*, 'css/ie9.min.css'*/ ]
 				}
 			}
 		},
