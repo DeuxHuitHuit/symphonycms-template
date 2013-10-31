@@ -3,7 +3,7 @@ var md = require('matchdep');
 
 module.exports = function(grunt) {
 
-	"use strict";
+	'use strict';
 	
 	var gruntfile = 'Gruntfile.js';
 	var lessFile = 'css/main.less';
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 		
 		watch: {
 			files: sources.concat(gruntfile),
-			tasks: ['jshint', 'complexity']
+			tasks: ['dev']
 		},
 		
 		jshint: {
