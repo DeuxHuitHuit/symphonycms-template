@@ -23,8 +23,7 @@
 	<xsl:variable name="handle">
 		<xsl:apply-templates select="." mode="full-page-handle-creator" />
 	</xsl:variable>
-
-
+	
 	<xsl:variable name="routes">
 		<xsl:text>[</xsl:text>
 		
@@ -67,14 +66,15 @@
 		</xsl:choose>
 	</xsl:variable>
 	
-	<xsl:text>App.pages.create({key: '#page-</xsl:text>
-	<xsl:value-of select="$handle" />
-	<xsl:text>',routes: </xsl:text>
-	<xsl:value-of select="$routes" />
-	<xsl:text>},'</xsl:text>
-	<xsl:value-of select="$model" />
-	<xsl:text>');</xsl:text>
-	
+	<xsl:if test="count(types/type[. = 'hidden']) = 0">
+		<xsl:text>App.pages.create({key: '#page-</xsl:text>
+		<xsl:value-of select="$handle" />
+		<xsl:text>',routes: </xsl:text>
+		<xsl:value-of select="$routes" />
+		<xsl:text>},'</xsl:text>
+		<xsl:value-of select="$model" />
+		<xsl:text>');</xsl:text>
+	</xsl:if>
 </xsl:template>
 
 <xsl:template name="framework-288-url-creator-page-route">
