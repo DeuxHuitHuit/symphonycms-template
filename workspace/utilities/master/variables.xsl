@@ -75,7 +75,7 @@
 <!-- Facebook script -->
 <xsl:variable name="facebook-script">
 	<xsl:choose>
-		<xsl:when test="$debug = true()">debug</xsl:when>
+		<xsl:when test="$debug = true()">all/debug</xsl:when>
 		<xsl:otherwise>all</xsl:otherwise>
 	</xsl:choose>
 </xsl:variable>
