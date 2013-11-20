@@ -2,3 +2,12 @@
 .project
 .settings
 *~
+
+node_modules
+
+project-name.min.js.map
+project-name.min.js
+project-name.js
+
+main.css
+main.min.css

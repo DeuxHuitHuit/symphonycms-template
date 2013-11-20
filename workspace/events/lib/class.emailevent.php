@@ -78,7 +78,7 @@
 		
 		protected final function getHTTPInfos() {
 			$infos = 'Site Language: '  . General::sanitize( $_POST['language'] ) . PHP_EOL;
-			$infos .=  'Referer: ' 		. General::sanitize( $_SERVER['HTTP_REFERER'] ) . PHP_EOL;
+			$infos .= 'Referer: ' 		. General::sanitize( $_SERVER['HTTP_REFERER'] ) . PHP_EOL;
 			$infos .= 'User-Agent: '	. General::sanitize( $_SERVER['HTTP_USER_AGENT'] ) . PHP_EOL;
 			$infos .= 'IP: '			. General::sanitize( $_SERVER['REMOTE_ADDR'] ) . PHP_EOL;
 			$infos .= 'HTTP Method: '	. General::sanitize( $_SERVER['REQUEST_METHOD'] ) . PHP_EOL;

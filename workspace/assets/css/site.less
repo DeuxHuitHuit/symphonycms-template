@@ -1,0 +1,42 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = SITE WIDE SETTINGS
+//=========================
+#site {
+	position: relative;
+	height: 100%;
+}
+
+p, .p {
+	margin: @col 0;
+	padding: 0;
+	font-size: @initial-font-size;
+	color: @font-color;
+}
+
+p:first-child {
+	margin-top: 0;
+}
+
+a {
+	color: @link-color;
+	
+	&:visited {
+		color: @link-color-visited;
+	}
+	
+	&:hover, &:active {
+		color: darken(@link-color, 30%);
+	}
+	
+	&:focus {
+		#no-outline;
+	}
+	
+	img {
+		border: none;
+	}
+}

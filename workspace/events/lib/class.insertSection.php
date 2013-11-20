@@ -63,15 +63,11 @@
 			// section id
 			$source = $this->getSection();
 
-			$sectionManager = new SectionManager(Symphony::Engine());
-
-			$section = $sectionManager->fetch($source);
+			$section = SectionManager::fetch($source);
 
 			$fields = $section->fetchFields();
 
-			$entryManager = new EntryManager(Symphony::Engine());
-
-			$entry = $entryManager->create();
+			$entry = EntryManager::create();
 			$entry->set('section_id', $source);
 
 			foreach ($fields as $f) {
