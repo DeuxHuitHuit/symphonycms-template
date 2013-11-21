@@ -96,7 +96,7 @@
       vertical-align: top;
 }
 
-#vh-center(@moitier-horizontale : 0px, @moitier-verticale : 0px) {
+#vh-center(@moitier-horizontale: 0px, @moitier-verticale: 0px) {
       #absolute;
       top: 50%;
       left: 50%;
@@ -104,9 +104,21 @@
       margin-top: -@moitier-verticale;
 }
 
-#wrap (@val : break-word) {
+#wrap (@val: break-word) {
       overflow-wrap: @val;
       word-wrap: @val;
+}
+
+#ellipsis(@mw: 100%) {
+	max-width: @mw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+          box-shadow: @shadow;
 }
 
 

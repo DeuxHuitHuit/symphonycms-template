@@ -183,7 +183,7 @@
 	filter: none; /* IE 6-9 */
 }
 
-#grad (@color1: #000, @color2: #000){
+#grad-vertical-two (@color1: #000, @color2: #000){
 	background: @color1;
 	background: -moz-linear-gradient(top,  @color1 0%, @color2 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@color1), color-stop(100%,@color2));
@@ -194,7 +194,7 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color1', endColorstr='@color2',GradientType=0 );
 }
 
-#grad-positions (@color1: #000, @position1: 0%, @color2: #000, @position2: 100%){
+#grad-vertical-two-position (@color1: #000, @position1: 0%, @color2: #000, @position2: 100%){
 	background: @color1;
 	background: -moz-linear-gradient(top,  @color1 @position1, @color2 @position2);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(@position1,@color1), color-stop(@position2,@color2));
@@ -203,6 +203,14 @@
 	background: -ms-linear-gradient(top,  @color1 @position1,@color2 @position2);
 	background: linear-gradient(to bottom,  @color1 @position1,@color2 @position2);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color1', endColorstr='@color2',GradientType=0 );
+}
+
+#grad-radial(@inner-color: #000; @outer-color: #fff) {
+	background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@inner-color), to(@outer-color));
+	background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
+	background-image: -moz-radial-gradient(circle, @inner-color, @outer-color);
+	background-image: radial-gradient(circle, @inner-color, @outer-color);
+	background-repeat: no-repeat;
 }
 
 #flipX {
@@ -221,4 +229,29 @@
 			transform: scaleY(-1);
 	filter: FlipV;
 	-ms-filter: "FlipV";
+}
+
+#content-columns(@column-count: 1; @column-gap: 20px) {
+  -webkit-column-count: @column-count;
+     -moz-column-count: @column-count;
+          column-count: @column-count;
+  -webkit-column-gap: @column-gap;
+     -moz-column-gap: @column-gap;
+          column-gap: @column-gap;
+}
+
+#hyphens(@val: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @val;
+     -moz-hyphens: @val;
+      -ms-hyphens: @val; 
+       -o-hyphens: @val;
+          hyphens: @val;
+}
+
+#placeholder(@color) {
+  &:-moz-placeholder            { color: @color; } // Firefox 4-18
+  &::-moz-placeholder           { color: @color; } // Firefox 19+
+  &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
 }
