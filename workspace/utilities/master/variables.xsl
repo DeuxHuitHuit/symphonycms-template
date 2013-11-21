@@ -62,12 +62,22 @@
 
 <!-- Facebook Language based on url-language -->
 <xsl:variable name="facebook-language">
-	<xsl:if test="$url-language = 'fr'">
-		<xsl:text>fr_CA</xsl:text>
-	</xsl:if>
-	<xsl:if test="$url-language = 'en'">
-		<xsl:text>en_US</xsl:text>
-	</xsl:if>
+	<xsl:choose>
+		<xsl:when test="$url-language = 'fr'">
+			<xsl:text>fr_CA</xsl:text>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:text>en_US</xsl:text>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:variable>
+
+<!-- Facebook script -->
+<xsl:variable name="facebook-script">
+	<xsl:choose>
+		<xsl:when test="$debug = true()">all/debug</xsl:when>
+		<xsl:otherwise>all</xsl:otherwise>
+	</xsl:choose>
 </xsl:variable>
 
 </xsl:stylesheet>

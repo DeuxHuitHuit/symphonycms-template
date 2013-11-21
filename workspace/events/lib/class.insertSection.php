@@ -13,6 +13,10 @@
 		protected function getRequestMethod() {
 			return 'POST';
 		}
+		
+		protected function getRequestArray() {
+			return $_POST;
+		}
 
 		public function load() {
 			return $this->__trigger();
@@ -23,8 +27,9 @@
 			$result = null;
 			$actionName = $this->getActionName();
 			$requestMethod = $this->getRequestMethod();
+			$requestArray = $this->getRequestArray();
 			
-			if($_SERVER['REQUEST_METHOD'] == $requestMethod && isset($_POST[$actionName]) ){
+			if($_SERVER['REQUEST_METHOD'] == $requestMethod && isset($requestArray[$actionName]) ){
 
 				$result = new XMLElement($actionName);
 				

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- See: http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references -->
 <!DOCTYPE stylesheet [
 	<!ENTITY nbsp "&#160;">
 	<!ENTITY dot "&#8901;">
 	<!ENTITY left "&#9668;">
 	<!ENTITY right "&#9658;">
 	<!ENTITY dquote "&#34;">
+	<!ENTITY copy "&#169;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
