@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<!-- Numero de version -->
+<xsl:variable name="version">
+	<xsl:text>0.1</xsl:text>
+	<xsl:if test="$debug = true()">
+		<xsl:text>-</xsl:text>
+		<xsl:value-of select="$today" />
+		<!--xsl:text>-</xsl:text>
+		<xsl:value-of select="$current-time" /-->
+	</xsl:if>
+</xsl:variable>
+
 <!-- Debug flag -->
 <xsl:variable name="debug" select="contains($root, '288dev.com')" />
 
@@ -18,17 +29,6 @@
 
 <!-- Site reference code -->
 <xsl:variable name="site-ref" select="'TODO: FILL IN'" />
-
-<!-- Numero de version -->
-<xsl:variable name="version">
-	<xsl:text>0.1</xsl:text>
-	<xsl:if test="$debug = true()">
-		<xsl:text>-</xsl:text>
-		<xsl:value-of select="$today" />
-		<!--xsl:text>-</xsl:text>
-		<xsl:value-of select="$current-time" /-->
-	</xsl:if>
-</xsl:variable>
 
 <!-- Handle de la page courrante -->
 <xsl:variable name="full-page-handle">
