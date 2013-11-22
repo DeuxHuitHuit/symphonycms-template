@@ -26,6 +26,7 @@
 <!-- COMPONENTS -->
 <xsl:import href="../com/page-title.xsl" />
 <xsl:import href="../com/site-meta.xsl" />
+<xsl:import href="../com/site-meta-alt-link.xsl" />
 <xsl:import href="../com/site-footer.xsl" />
 <xsl:import href="../com/site-header.xsl" />
 <xsl:import href="../com/menu-admin.xsl" />
@@ -46,6 +47,7 @@
 	<xsl:call-template name="page-title-header" />
 	
 	<xsl:call-template name="page-metas" />
+	<xsl:call-template name="page-metas-alt-link" />
 	
 	<xsl:call-template name="favicon" />
 	

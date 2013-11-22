@@ -36,6 +36,7 @@
 			
 			<!-- Output Modules-->
 			<script src="{$js-path}modules/title-updater.js?v={$version}"></script>
+			<script src="{$js-path}modules/alt-language-link-updater.js?v={$version}"></script>
 			<script src="{$js-path}modules/share-this.js?v={$version}"></script>
 			<script src="{$js-path}modules/format-twitter.js?v={$version}"></script>
 			<script src="{$js-path}modules/blank-target-link.js?v={$version}"></script>
