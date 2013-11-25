@@ -1,0 +1,84 @@
+﻿ ######                          #     #                   #     #                
+ #     # ###### #    # #    #    #     # #    # # #####    #     # #    # # ##### 
+ #     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
+ #     # #####  #    #   ##      ####### #    # #   #      ####### #    # #   #   
+ #     # #      #    #   ##      #     # #    # #   #      #     # #    # #   #   
+ #     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
+ ######  ######  ####  #    #    #     #  ####  #   #      #     #  ####  #   #   
+                                                                                  
+
+# The humans behind this site
+# Les humains derrière ce site
+# humanstxt.org
+
+Made with love by Deux Huit Huit.
+Fait avec beaucoup d'amour par Deux Huit Huit.
+http://deuxhuithuit.com/
+
+
+/* TEAM */
+/* EQUIPE */
+
+Gabrielle Normand Viau
+Managing Director / Directrice générale
+
+Alex Leduc 
+Art director / Directeur artistique
+
+Louis-Pierre Chouinard
+Art director / Directeur artistique
+
+Vincent Malo
+Account direction / Directeur conseil
+
+Nicolas Brassard-Ferron
+Web Software Lead / Directeur du développement web 
+
+Pascal Piché
+Developer / Intégrateur
+
+Patrick Martel
+Developer / Intégrateur
+
+Francois Vandal
+Developer / Intégrateur
+
+Jean-Philippe Gélinas
+Developer / Intégrateur
+
+Jean-Phillippe Cyr
+UX Strategist / Stratège expérience usager
+
+Philippe Gauthier
+Designer 
+
+Noémie Laurendeau
+Project manager / Chargée de compte
+
+Alice Dufour Thériault
+Copywriter / Conception-rédaction
+
+Twitter: https://twitter.com/DeuxHuitHuit
+Facebook: https://www.facebook.com/DeuxHuitHuit
+Google+: https://google.com/+Deuxhuithuit
+Github: https://github.com/DeuxHuitHuit
+
+
+Montréal, Québec, Canada.
+
+
+/* THANKS */
+/* MERCI */
+
+Anybody that contributed jQuery plugins or other open source project used in this site.
+À tous ceux qui ont contribué avec des plug-ins jQuery ou toutes autres sources utilisées dans ce site.
+
+/* SITE */
+
+Standards: HTML5, CSS3, ES5
+
+Components: jQuery, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo, Vimeo's froogaloops, jQuery Tools, jQuery.easySlider, jQuery.touchwipe
+
+Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Grunt, Blood sweat and tears
+
+
