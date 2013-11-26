@@ -3,7 +3,7 @@
 
 <xsl:template name="site-footer">
 	<footer>
-		<iframe id="copy-288" src="http://watermark.deuxhuithuit.com/?lang=fr&amp;bg=000&amp;text=FFF&amp;font='Arial Helvetica serif'&amp;font-size=12&amp;w=200&amp;h=33&amp;logo=/logo-w.png&amp;ref={$site-ref}" margin="0" border="0" scrolling="no" frameborder="no" width="200" height="33"></iframe>
+		<iframe id="copy-288" src="http://watermark.deuxhuithuit.com/?lang={$url-language}&amp;bg=000&amp;text=FFF&amp;font='Arial Helvetica serif'&amp;font-size=12&amp;w=200&amp;h=33&amp;logo=/logo-w.png&amp;ref={$site-ref}" margin="0" border="0" scrolling="no" frameborder="no" width="200" height="33"></iframe>
 	</footer>
 </xsl:template>
 
