@@ -13,6 +13,8 @@ module.exports = function(grunt) {
 	md.filter('grunt-*').forEach(grunt.loadNpmTasks);
 	md.filter('karma-*').forEach(grunt.loadNpmTasks);
 	
+	grunt.file.preserveBOM = true;
+	
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -36,7 +38,7 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: sources,
-				dest: 'js/<%= pkg.name %>.min.js'
+				dest: 'js/<%= pkg.name %>.js'
 			}
 		},
 		
