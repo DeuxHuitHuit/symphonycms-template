@@ -146,12 +146,52 @@ module.exports = function(grunt) {
 					maintainability: 95 //100
 				}
 			}
+		},
+		clean: {
+			copy: {
+				options: {
+					force: true
+				},
+				src:['../../../dist/**']
+			}
+		},
+		
+		copy: {
+			main: {
+				files: [
+					{expand: true, cwd: '../../', src: ['**', '.htaccess'], dest: '../../../dist/', filter: 'isFile'}
+				],
+				options: {
+					processContentExclude: ['**/img/*.{png,gif,jpg,ico,psd}', '**/symphony/*.{png,gif,jpg,ico,psd}', '**/extensions/*.{png,gif,jpg,ico,psd}'],
+					processContent: function (content, srcpath) {
+						var r = [
+							/Gruntfile\.js/g, 
+							/package\.json/g, 
+							/node_modules(.*)/g, 
+							/\/js\/modules\/(.*)\.js/g, 
+							/\/js\/pages\/(.*)\.js/g, 
+							/\/js\/transitions\/(.*)\.js/g, 
+							/\/js\/utils\/(.*)\.js/g, 
+							/\/css\/(.*)\.less/g
+							];
+						var res = true;
+						r.forEach(function (re) {
+							if (re.test(srcpath)) {
+								res = false;
+								return false; // break;
+							}
+							return true;
+						});
+						return res ? content : res;
+					}
+				}
+			}
 		}
 	});
 
-	// Default task.
-	
-	grunt.registerTask('dev', ['jshint','complexity']);
-	grunt.registerTask('build', ['concat','uglify','less','usebanner']);
+	// Default tasks.
+	grunt.registerTask('dev',     ['jshint','complexity']);
+	grunt.registerTask('build',   ['concat','uglify','less','usebanner']);
+	grunt.registerTask('dist',    ['clean:copy','build','copy']);
 	grunt.registerTask('default', ['dev','build']);
 };
