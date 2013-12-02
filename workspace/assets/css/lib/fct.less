@@ -53,17 +53,7 @@
 }
 
 #opacity(@val) {
-	
-	@ms-val: @val * 100;
-	zoom: 1;
-	filter:~"alpha(opacity=@{ms-val})";
-	
 	opacity:@val;
-	-moz-opacity:@val;
-	-webkit-opacity:@val;
-	-ms-opacity:@val;
-	-k-opacity:@val;
-	-o-opacity:@val;
 }
 
 
