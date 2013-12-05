@@ -1,0 +1,19 @@
+/*
+ * SVG icons
+ */
+
+a.svg-icon {
+	display: inline-block;
+}
+
+svg.svg-icon {
+	display: inline-block;
+	
+	path {
+		#transition(fill @duration @ease);
+	}
+	
+	&:hover path {
+		fill: @link-color-hover;
+	}
+}

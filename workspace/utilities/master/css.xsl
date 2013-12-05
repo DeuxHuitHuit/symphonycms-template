@@ -8,7 +8,7 @@
 		<xsl:when test="$debug = true()">
 			<link rel="stylesheet/less" type="text/css" href="{$css-path}main.less?v={$version}" />
 			<script>less = { env: 'development' }; </script>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js"></script>
+			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js"></script>
 			<!-- script>less.watch();</script -->
 		</xsl:when>
 		<xsl:otherwise>
