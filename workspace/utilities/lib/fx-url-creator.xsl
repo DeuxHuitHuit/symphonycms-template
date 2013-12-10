@@ -9,7 +9,13 @@
 
 <xsl:template match="data/pages" mode="framework-288-url-creator">
 	<script>
-		<xsl:apply-templates select="page" mode="framework-288-url-creator"/>
+		<xsl:for-each select="page">
+			<xsl:if test="count(./types/type [. = 'index']) = 0">
+				<xsl:apply-templates select="." mode="framework-288-url-creator"/>	
+			</xsl:if>
+		</xsl:for-each>
+		
+		<xsl:apply-templates select="page[./types/type = 'index']" mode="framework-288-url-creator" />
 	</script>
 </xsl:template>
 
