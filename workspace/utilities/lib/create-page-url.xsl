@@ -28,7 +28,7 @@
 				<xsl:with-param name="url">
 					<xsl:choose>
 						<xsl:when test="$multi-langues = 'yes'">
-							<xsl:value-of select="item [@lang = $url-language]/@handle" />/<xsl:value-of select="$url" />
+							<xsl:value-of select="item [@lang = $lg]/@handle" />/<xsl:value-of select="$url" />
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="$url" />
@@ -40,10 +40,19 @@
 		<xsl:otherwise>
 			<xsl:choose>
 				<xsl:when test="$multi-langues = 'yes'">
-					<xsl:text>/</xsl:text><xsl:value-of select="$url-language" />/<xsl:value-of select="item [@lang = $url-language]/@handle" />/<xsl:value-of select="$url" />
+					<xsl:text>/</xsl:text><xsl:value-of select="$lg" />
+					<xsl:text>/</xsl:text>
+					<xsl:if test="count(types/type [. = 'index']) = 0">
+						<xsl:value-of select="item [@lang = $lg]/@handle" />
+						<xsl:text>/</xsl:text>
+					</xsl:if>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:text>/</xsl:text><xsl:value-of select="@handle" />/<xsl:value-of select="$url" />
+					<xsl:text>/</xsl:text>
+					<xsl:if test="count(types/type [. = 'index']) = 0">
+						<xsl:value-of select="@handle" />
+						<xsl:text>/</xsl:text>
+					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:otherwise>
