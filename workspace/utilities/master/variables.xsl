@@ -48,7 +48,7 @@
 <!-- Url language -->
 <xsl:variable name="url-language" >
 	<xsl:choose>
-		<xsl:when test="$multi-langues = 'yes'">
+		<xsl:when test="$multi-langues = 'yes' and count(/data/events/flang-redirect/current-language) = 1">
 			<xsl:value-of select="/data/events/flang-redirect/current-language/@handle" />
 		</xsl:when>
 		<xsl:otherwise>
