@@ -27,7 +27,7 @@
 	<xsl:param name="domain" select="'         '" />
 	
 	<xsl:choose>
-		<xsl:when test="string-length($image) != 0">
+		<xsl:when test="string-length($image-path) != 0">
 			<meta name="twitter:card" content="summary_large_image" />
 		</xsl:when>
 		<xsl:otherwise>
@@ -39,7 +39,7 @@
 	<meta name="twitter:title" content="{$titre}" />
 	<meta name="twitter:creator" content="{$creator}" />
 	<meta name="twitter:domain" content="{$domain}" />
-	<xsl:if test="string-length($image) != 0">
+	<xsl:if test="string-length($image-path) != 0">
 		<meta name="twitter:image:src" content="{$image-path}" />
 	</xsl:if>
 	<meta name="twitter:description" content="{$description}" />
@@ -56,8 +56,11 @@
 	<meta property="og:title" content="{$titre}" />
 	<meta property="og:url" content="{$url}" />
 	<meta property="og:type" content="{$type}" />
-	<xsl:if test="string-length($image) != 0">
+	<xsl:if test="string-length($image-path) != 0">
 		<meta property="og:image:url" content="{$image-path}" />
+	</xsl:if>
+	<xsl:if test="string-length($image) != 0">
+		
 		<meta property="og:image:width" content="{$image/meta/@width}" />
 		<meta property="og:image:height" content="{$image/meta/@height}" />
 	</xsl:if>
