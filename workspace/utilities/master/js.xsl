@@ -12,12 +12,18 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<!--  jQuery Sizing -->
+	<!-- jQuery Sizing -->
 	<script src="{$js-path}lib/jquery.sizing.min.js?v={$version}"></script>
 	<!-- BBQ -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.ba-bbq/1.2.1/jquery.ba-bbq.min.js"></script>
 	<!-- Underscore -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+	
+	<!-- Vimeo -->
+	<!-- script src="//a.vimeocdn.com/js/froogaloop2.min.js"></script -->
+	
+	<!-- Youtube -->
+	<!-- script src="//www.youtube.com/player_api"></script -->
 	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">
