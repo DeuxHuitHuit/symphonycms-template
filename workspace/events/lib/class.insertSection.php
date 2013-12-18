@@ -39,11 +39,14 @@
 				
 				$r = new XMLElement('result');
 				
+				$id = intval($_POST['id']);
+				
 				try {
 					
 					$this->validate();
-					$this->createEntryFromPost();
+					$entry = $this->createEntryFromPost($id);
 					$r->setAttribute('success', 'yes');
+					$r->setAttribute('id', $entry->get('id'));
 					
 				} catch (Exception $ex) {
 					
@@ -81,8 +84,19 @@
 			
 			$fields = $section->fetchFields();
 			
-			$entry = EntryManager::create();
-			$entry->set('section_id', $source);
+			$entry = null;
+			if ($id > 0) {
+				// edit
+				$entry = EntryManager::fetch($id);
+				if (empty($entry)) {
+					throw new Exception(sprintf(__('Entry id %s not found'), $id));
+				}
+				$entry = $entry[0];
+			} else {
+				// create
+				$entry = EntryManager::create();
+				$entry->set('section_id', $source);
+			}
 			
 			foreach ($fields as $f) {
 				$data = $this->getFieldValue($f->get('element_name'));
@@ -94,5 +108,7 @@
 			if(!$entry->commit()) {
 				throw new Exception('Could not create entry');
 			}
+			
+			return $entry;
 		} 
 	}
