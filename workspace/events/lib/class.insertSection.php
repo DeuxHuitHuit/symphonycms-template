@@ -63,6 +63,8 @@
 					$result->appendChild($xmlEx);
 					
 					$r->setAttribute('success', 'no');
+					
+					Symphony::Log()->pushExceptionToLog($ex, true);
 				}
 				
 				$result->appendChild($r);
