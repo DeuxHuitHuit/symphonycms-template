@@ -14,6 +14,8 @@
 		abstract protected function getSection();
 		abstract protected function getFieldValue($field);
 		
+		protected function visitEntry(&$entry) {}
+		
 		protected function getRequestMethod() {
 			return 'POST';
 		}
@@ -45,6 +47,7 @@
 					
 					$this->validate();
 					$entry = $this->createEntryFromPost($id);
+					$this->visitEntry($entry);
 					$r->setAttribute('success', 'yes');
 					$r->setAttribute('id', $entry->get('id'));
 					
