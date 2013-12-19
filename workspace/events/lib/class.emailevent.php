@@ -4,6 +4,10 @@
 
 	require_once(TOOLKIT . '/class.event.php');
 
+	class EmailEventException extends Exception {
+		
+	}
+
 	Abstract Class EmailEvent extends Event {
 		
 		protected abstract function getSubject();
@@ -35,24 +39,33 @@
 			return false;
 		}
 		
-		protected function __trigger(){
+		protected function __trigger() {
 			$result = new XMLElement($this->getRootElement());
 			try {
 				
 				if ($this->isValid()) {
-					
 					if ($this->__sendEmail()) {
-						$result->setAttribute("result", "success");
+						$r->setAttribute('success', 'yes');
 					} else {
-						throw new Exception('Error sending email');
+						throw new EmailEventException('Error sending email');
 					}
 				} else {
-					throw new Exception('Form ins invalid');
+					throw new EmailEventException('Form is invalid');
 				}
 				
 			} catch(Exception $e) {
-				$result->setAttribute("result", "error");
-				$result->appendChild(new XMLElement('error',$e->getMessage()));
+				$xmlEx = new XMLElement('error');
+				
+				$showMsg = $ex instanceof EmailEventException || Symphony::Engine()->isLoggedIn();
+				$errorMessage = $showMsg ? $ex->getMessage() : __('A Fatal error occured');
+				
+				$xmlEx->setValue($errorMessage); 
+				
+				$result->appendChild($xmlEx);
+				
+				$r->setAttribute('success', 'no');
+				
+				Symphony::Log()->pushExceptionToLog($ex, true);
 			}
 
 			return $result;
@@ -67,17 +80,11 @@
 			$email->setSubject($this->getSubject());
 			$email->setTextPlain($this->getBody()); 
 			
-			if ($email->validate()) {
-				$email->send();
-			} else {
-				return false;
-			}
-			
-			return true;
+			return $email->validate() && $email->send();
 		}
 		
 		protected final function getHTTPInfos() {
-			$infos = 'Site Language: '  . General::sanitize( $_POST['language'] ) . PHP_EOL;
+			$infos = 'Site Language: '  . General::sanitize( $_POST['fl-language'] ) . PHP_EOL;
 			$infos .= 'Referer: ' 		. General::sanitize( $_SERVER['HTTP_REFERER'] ) . PHP_EOL;
 			$infos .= 'User-Agent: '	. General::sanitize( $_SERVER['HTTP_USER_AGENT'] ) . PHP_EOL;
 			$infos .= 'IP: '			. General::sanitize( $_SERVER['REMOTE_ADDR'] ) . PHP_EOL;
