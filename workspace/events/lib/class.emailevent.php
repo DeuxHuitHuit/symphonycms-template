@@ -40,7 +40,7 @@
 		}
 		
 		protected function __trigger() {
-			$result = new XMLElement($this->getRootElement());
+			$r = new XMLElement($this->getRootElement());
 			try {
 				
 				if ($this->isValid()) {
@@ -61,14 +61,14 @@
 				
 				$xmlEx->setValue($errorMessage); 
 				
-				$result->appendChild($xmlEx);
+				$r->appendChild($xmlEx);
 				
 				$r->setAttribute('success', 'no');
 				
 				Symphony::Log()->pushExceptionToLog($ex, true);
 			}
 
-			return $result;
+			return $r;
 		}
 
 		private function __sendEmail() {
