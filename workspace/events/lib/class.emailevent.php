@@ -53,7 +53,7 @@
 					throw new EmailEventException('Form is invalid');
 				}
 				
-			} catch(Exception $e) {
+			} catch(Exception $ex) {
 				$xmlEx = new XMLElement('error');
 				
 				$showMsg = $ex instanceof EmailEventException || Symphony::Engine()->isLoggedIn();
