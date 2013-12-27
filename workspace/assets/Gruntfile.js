@@ -244,7 +244,6 @@ module.exports = function (grunt) {
 	
 	var load = function (grunt) {
 		md.filter('grunt-*').forEach(grunt.loadNpmTasks);
-		md.filter('karma-*').forEach(grunt.loadNpmTasks);
 		
 		config.build = getBuildNumber();
 		
