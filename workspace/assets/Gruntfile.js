@@ -5,31 +5,46 @@ module.exports = function(grunt) {
 
 	'use strict';
 	
-	var gruntfile = 'Gruntfile.js';
-	var lessFile = 'css/main.less';
-	var sources = ['js/modules/*.js', 'js/pages/*.js', 'js/utils/*.js', 'js/transitions/*.js'];
-	var tests = ['js/tests/*.js'];
+	var GRUNT_FILE = 'Gruntfile.js';
 	
-	md.filter('grunt-*').forEach(grunt.loadNpmTasks);
-	md.filter('karma-*').forEach(grunt.loadNpmTasks);
+	var BUILD_FILE = './dist/build.json';
 	
-	grunt.file.preserveBOM = true;
+	var LESS_FILE = 'css/main.less';
 	
-	// Project configuration.
-	grunt.initConfig({
+	var SRC_FILFES = [
+		'./src/com/*.js',
+		'./src/modules/*.js',
+		'./src/transitions/*.js',
+		'./src/pages/*.js',
+		'./src/utils/*.js'
+	];
+	
+	var TEST_FILES = ['js/tests/*.js'];
+	
+	var getBuildNumber = function () {
+		var b = {};
+		
+		try {
+			b = grunt.file.readJSON(BUILD_FILE);
+		} catch (e) {}
+		
+		b.lastBuild = b.lastBuild > 0 ? b.lastBuild + 1 : 1;
+		
+		grunt.file.write(BUILD_FILE, JSON.stringify(b));
+		
+		return b.lastBuild;
+	};
+	
+	var config = {
 		pkg: grunt.file.readJSON('package.json'),
+		build: 'auto',
 		meta: {
-			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> ' +
+			'- build <%= build %> - ' +
 			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
 			'* Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
-		},
-		min: {
-			dist: {
-				src: ['<banner:meta.banner>', 'js/<%= pkg.name %>.js'],
-				dest: 'js/<%= pkg.name %>.min.js'
-			}
 		},
 		concat: {
 			options: {
@@ -37,18 +52,18 @@ module.exports = function(grunt) {
 				banner: '<%= meta.banner %>'
 			},
 			dist: {
-				src: sources,
+				src: SRC_FILFES,
 				dest: 'js/<%= pkg.name %>.js'
 			}
 		},
 		
 		watch: {
-			files: sources.concat(gruntfile),
+			files: SRC_FILFES.concat(GRUNT_FILE),
 			tasks: ['dev']
 		},
 		
 		jshint: {
-			files: sources.concat(gruntfile),
+			files: SRC_FILFES.concat(GRUNT_FILE),
 			options: {
 				curly: true,
 				eqeqeq: false, // allow ==
@@ -105,7 +120,7 @@ module.exports = function(grunt) {
 		less: {
 			development: {
 				files: {
-					'css/main.css': lessFile
+					'css/main.css': LESS_FILE
 					//'css/main.mobile.css': lessMobileFile,
 					//'css/ie9.css': 'css/ie9.less'
 				}
@@ -115,7 +130,7 @@ module.exports = function(grunt) {
 					yuicompress: true
 				},
 				files: {
-					'css/main.min.css': lessFile
+					'css/main.min.css': LESS_FILE
 					//'css/main.mobile.min.css': lessMobileFile,
 					//'css/ie9.min.css': 'css/ie9.less'
 				}
@@ -137,7 +152,7 @@ module.exports = function(grunt) {
 		
 		complexity: {
 			generic: {
-				src: sources,
+				src: SRC_FILFES,
 				options: {
 					//jsLintXML: 'report.xml', // create XML JSLint-like report
 					errorsOnly: false, // show only maintainability errors
@@ -168,6 +183,7 @@ module.exports = function(grunt) {
 							/Gruntfile\.js/g, 
 							/package\.json/g, 
 							/node_modules(.*)/g, 
+							/\/js\/com\/(.*)\.js/g, 
 							/\/js\/modules\/(.*)\.js/g, 
 							/\/js\/pages\/(.*)\.js/g, 
 							/\/js\/transitions\/(.*)\.js/g, 
@@ -187,11 +203,29 @@ module.exports = function(grunt) {
 				}
 			}
 		}
-	});
+	};
+	
+	var init = function (grunt) {
+		grunt.file.preserveBOM = true;
+		
+		// Project configuration.
+		grunt.initConfig(config);
 
-	// Default tasks.
-	grunt.registerTask('dev',     ['jshint','complexity']);
-	grunt.registerTask('build',   ['concat','uglify','less','usebanner']);
-	grunt.registerTask('dist',    ['clean:copy','build','copy']);
-	grunt.registerTask('default', ['dev','build']);
+		// Default tasks.
+		grunt.registerTask('dev',     ['jshint','complexity']);
+		grunt.registerTask('build',   ['concat','uglify','less','usebanner']);
+		grunt.registerTask('dist',    ['clean:copy','build','copy']);
+		grunt.registerTask('default', ['dev','build']);
+	};
+	
+	var load = function (grunt) {
+		md.filter('grunt-*').forEach(grunt.loadNpmTasks);
+		md.filter('karma-*').forEach(grunt.loadNpmTasks);
+		
+		config.build = getBuildNumber();
+		
+		init(grunt);
+	};
+	
+	load(grunt);
 };
