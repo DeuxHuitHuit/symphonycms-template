@@ -7,16 +7,16 @@ module.exports = function(grunt) {
 	
 	var GRUNT_FILE = 'Gruntfile.js';
 	
-	var BUILD_FILE = './dist/build.json';
+	var BUILD_FILE = './build.json';
 	
 	var LESS_FILE = 'css/main.less';
 	
-	var SRC_FILFES = [
-		'./src/com/*.js',
-		'./src/modules/*.js',
-		'./src/transitions/*.js',
-		'./src/pages/*.js',
-		'./src/utils/*.js'
+	var SRC_FILES = [
+		'./js/com/*.js',
+		'./js/modules/*.js',
+		'./js/transitions/*.js',
+		'./js/pages/*.js',
+		'./js/utils/*.js'
 	];
 	
 	var TEST_FILES = ['js/tests/*.js'];
@@ -52,18 +52,18 @@ module.exports = function(grunt) {
 				banner: '<%= meta.banner %>'
 			},
 			dist: {
-				src: SRC_FILFES,
+				src: SRC_FILES,
 				dest: 'js/<%= pkg.name %>.js'
 			}
 		},
 		
 		watch: {
-			files: SRC_FILFES.concat(GRUNT_FILE),
+			files: SRC_FILES.concat(GRUNT_FILE),
 			tasks: ['dev']
 		},
 		
 		jshint: {
-			files: SRC_FILFES.concat(GRUNT_FILE),
+			files: SRC_FILES.concat(GRUNT_FILE),
 			options: {
 				curly: true,
 				eqeqeq: false, // allow ==
@@ -152,7 +152,7 @@ module.exports = function(grunt) {
 		
 		complexity: {
 			generic: {
-				src: SRC_FILFES,
+				src: SRC_FILES,
 				options: {
 					//jsLintXML: 'report.xml', // create XML JSLint-like report
 					errorsOnly: false, // show only maintainability errors
