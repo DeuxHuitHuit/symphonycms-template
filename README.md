@@ -1,4 +1,4 @@
-# Symphony 2 Template
+# Symphony 2 Template [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 #### Version 1.1
 
