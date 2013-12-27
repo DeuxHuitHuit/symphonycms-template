@@ -13,3 +13,6 @@ main.css
 main.min.css
 
 npm-debug.log
+
+build.json
+dist
