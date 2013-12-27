@@ -2,12 +2,20 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="menu-admin">
-	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
-		<a id="top-admin" href="/symphony/">ADMIN</a>
-		<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-			<a id="top-debug" href="?debug">debug</a>
-		</xsl:if>
-		<a id="top-logout" href="/symphony/logout/">déconnection</a>
+		<xsl:if test="/data/events/login-info/@logged-in = 'true'">
+		<div id="menu-admin">
+			<span><xsl:value-of select="/data/events/login-info/name" /></span>
+			
+			<span><xsl:text> - </xsl:text></span>
+			
+			<a href="/symphony/">Symphony</a>
+			
+			<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+				<a href="?debug">debug</a>
+			</xsl:if>
+			
+			<a href="/symphony/logout/">déconnection</a>
+		</div>
 	</xsl:if>
 </xsl:template>
 
