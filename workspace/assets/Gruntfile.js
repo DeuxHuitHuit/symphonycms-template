@@ -1,7 +1,7 @@
 /*global module:false, require:false*/
 var md = require('matchdep');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	'use strict';
 	
@@ -43,7 +43,8 @@ module.exports = function(grunt) {
 			'- build <%= build %> - ' +
 			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
+			'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
+			'<%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
 			'* Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
 		},
 		concat: {
@@ -65,32 +66,47 @@ module.exports = function(grunt) {
 		jshint: {
 			files: SRC_FILES.concat(GRUNT_FILE),
 			options: {
+				bitwise: false,
+				camelcase: false,
 				curly: true,
 				eqeqeq: false, // allow ==
+				forin: true,
+				//freeze: true,
 				immed: false, //
-				latedef: false, // late definition
-				newcap: false, // capitalize ctos
+				latedef: true, // late definition
+				newcap: true, // capitalize ctos
+				noempty: true,
 				nonew: true, // no new ..()
 				noarg: true, 
-				sub: true,
+				plusplus: false,
+				quotmark: 'single',
 				undef: true,
+				maxparams: 5,
+				maxdepth: 5,
+				maxstatements: 30,
+				maxlen: 100,
+				//maxcomplexity: 10,
+				
+				// relax options
 				//boss: true,
-				eqnull: true, // relax
-				browser: true,
+				//eqnull: true, 
+				esnext: true,
 				regexp: true,
 				strict: true,
 				trailing: false,
+				sub: true, // [] notation
 				smarttabs: true,
-				lastsemic: true,
+				lastsemic: false, // enforce semicolons
+				white: true,
+				
+				// env
+				browser: true,
+				
 				globals: {
-					console: true,
 					jQuery: true,
-					pd: true,
-					_: true,
-					Popcorn: true,
-					DEBUG: true,
-					CSS3: true,
-					JSON: true
+					console: true,
+					App: true,
+					Loader: true
 				}
 			}
 		},
@@ -167,17 +183,25 @@ module.exports = function(grunt) {
 				options: {
 					force: true
 				},
-				src:['../../../dist/**']
+				src: ['../../../dist/**']
 			}
 		},
 		
 		copy: {
 			main: {
-				files: [
-					{expand: true, cwd: '../../', src: ['**', '.htaccess'], dest: '../../../dist/', filter: 'isFile'}
-				],
+				files: [{
+					expand: true,
+					cwd: '../../',
+					src: ['**', '.htaccess'],
+					dest: '../../../dist/',
+					filter: 'isFile'
+				}],
 				options: {
-					processContentExclude: ['**/img/*.{png,gif,jpg,ico,psd}', '**/symphony/*.{png,gif,jpg,ico,psd}', '**/extensions/*.{png,gif,jpg,ico,psd}'],
+					processContentExclude: [
+						'**/img/*.{png,gif,jpg,ico,psd}',
+						'**/symphony/*.{png,gif,jpg,ico,psd}',
+						'**/extensions/*.{png,gif,jpg,ico,psd}'
+					],
 					processContent: function (content, srcpath) {
 						var r = [
 							/Gruntfile\.js/g, 
@@ -189,7 +213,7 @@ module.exports = function(grunt) {
 							/\/js\/transitions\/(.*)\.js/g, 
 							/\/js\/utils\/(.*)\.js/g, 
 							/\/css\/(.*)\.less/g
-							];
+						];
 						var res = true;
 						r.forEach(function (re) {
 							if (re.test(srcpath)) {
@@ -212,10 +236,10 @@ module.exports = function(grunt) {
 		grunt.initConfig(config);
 
 		// Default tasks.
-		grunt.registerTask('dev',     ['jshint','complexity']);
-		grunt.registerTask('build',   ['concat','uglify','less','usebanner']);
-		grunt.registerTask('dist',    ['clean:copy','build','copy']);
-		grunt.registerTask('default', ['dev','build']);
+		grunt.registerTask('dev',     ['jshint', 'complexity']);
+		grunt.registerTask('build',   ['concat', 'uglify', 'less', 'usebanner']);
+		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
+		grunt.registerTask('default', ['dev', 'build']);
 	};
 	
 	var load = function (grunt) {
