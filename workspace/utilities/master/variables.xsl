@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+<!-- Site reference code -->
+<xsl:variable name="site-ref" select="'TODO: FILL IN'" />
+
 <!-- Numero de version -->
 <xsl:variable name="version">
 	<xsl:text>0.1</xsl:text>
@@ -13,7 +16,7 @@
 </xsl:variable>
 
 <!-- Debug flag -->
-<xsl:variable name="debug" select="contains($root, '288dev.com')" />
+<xsl:variable name="debug" select="contains($root, '288dev.com') and count(/data/params/url-no-debug) = 0" />
 
 <!-- Lang flag -->
 <xsl:variable name="multi-langues" >
@@ -26,9 +29,6 @@
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:variable>
-
-<!-- Site reference code -->
-<xsl:variable name="site-ref" select="'TODO: FILL IN'" />
 
 <!-- Handle de la page courrante -->
 <xsl:variable name="full-page-handle">
