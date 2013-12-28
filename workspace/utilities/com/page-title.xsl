@@ -8,7 +8,7 @@
 </xsl:template>
 
 <xsl:template name="default-page-title">
-	<xsl:if test="count(/data/params/page-types/item[@handle = 'index']) = 0 and string-length($plh-page-title) &gt; 0">
+	<xsl:if test="string-length($plh-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
 		<xsl:value-of select="$plh-page-title"/>
 		<xsl:text> - </xsl:text>
 	</xsl:if>
