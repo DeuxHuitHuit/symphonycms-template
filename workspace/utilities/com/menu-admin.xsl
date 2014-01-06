@@ -8,13 +8,13 @@
 			
 			<span><xsl:text> - </xsl:text></span>
 			
-			<a href="/symphony/">Symphony</a>
+			<a data-action="full" href="/symphony/">Symphony</a>
 			
 			<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-				<a href="?debug">debug</a>
+				<a data-action="full" href="?debug">debug</a>
 			</xsl:if>
 			
-			<a href="/symphony/logout/">déconnection</a>
+			<a data-action="full" href="/symphony/logout/">déconnection</a>
 		</div>
 	</xsl:if>
 </xsl:template>
