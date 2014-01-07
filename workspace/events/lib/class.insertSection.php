@@ -111,9 +111,55 @@
 			}
 			
 			if(!$entry->commit()) {
-				throw new Exception('Could not create entry');
+				throw new Exception(sprintf('Could not create entry: %s', mysql_error()));
 			}
 			
 			return $entry;
-		} 
+		}
+		
+		// Per file setting
+		const MAX_SIZE = 5242880; // 5 Mo = 1024 o * 1024 k * 5
+		const DIR = '/uploads/';
+		
+		private static $EXT = array();
+		
+		protected function processFileUpload($key) {
+			$value = array();
+			$file = $_FILES[$key];
+			
+			if (empty($file) || empty($file['name']) || empty($file['tmp_name'])) {
+				return $value;
+			}
+			
+			$size = intval($file['size']);
+			$ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+			$filename = $file['name'];
+			
+			if ($size > self::MAX_SIZE) {
+				throw new Exception(sprintf("File is too big: %d when the max is %d", $size, self::MAX_SIZE));
+			}
+			
+			if (!$ext || !in_array($ext, self::$EXT) ) {
+				throw new Exception(sprintf("File '%s' is not allowed. Please upload '%s' files only", $filename, implode(', ', self::$EXT)));
+			}
+			
+			// unique file name
+			$filename = time() . '-' . Lang::createFilename($file['name']);
+			
+			$value['file'] = self::DIR . $filename;
+			$value['size'] = $size;
+			
+			// make a copy - to have the good name and ext
+			$ret = General::uploadFile(
+				WORKSPACE . self::DIR, $filename, $file['tmp_name'],
+				Symphony::Configuration()->get('write_mode', 'file')
+			);
+			
+			if ($ret) {
+				return $value;
+			} else {
+				throw new Exception(sprintf('Could not save file `%s`. ', $filename));
+			}
+			return null;
+		}
 	}
