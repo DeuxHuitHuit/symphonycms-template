@@ -192,4 +192,31 @@
 </svg>
 </xsl:template>
 
+<!-- LINKEDIN -->
+<xsl:template name="svg-icons-li">
+	<xsl:param name="color" select="$svg-icons-default-fill-color" />
+	<xsl:param name="height" select="$svg-icons-default-height" />
+	
+	<xsl:variable name="width">
+		<xsl:call-template name="svg-icons-get-width">
+			<xsl:with-param name="width" select="'62'" />
+			<xsl:with-param name="height" select="$height" />
+		</xsl:call-template>
+	</xsl:variable>
+	
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	class="svg-icon svg-icon-li"
+	x="0px" y="0px"
+	width="{$width}px" height="{$height}px"
+	viewBox="0 0 61.34 60.543">
+<g>
+	<path fill="{$color}" d="M13.904,6.563c0,3.627-2.677,6.564-7.082,6.564C2.678,13.127,0,10.189,0,6.563C0,2.85,2.764,0,6.995,0
+		C11.227-0.001,13.818,2.85,13.904,6.563z M0.345,60.543V18.309h13.128v42.234H0.345z"/>
+	<path fill="{$color}" d="M21.33,31.782c0-5.269-0.172-9.673-0.346-13.474h11.399l0.605,5.873h0.259c1.729-2.765,5.96-6.823,13.042-6.823
+		c8.637,0,15.112,5.788,15.112,18.225v24.961H48.277V37.137c0-5.44-1.9-9.154-6.65-9.154c-3.628,0-5.786,2.505-6.736,4.922
+		c-0.346,0.864-0.434,2.073-0.434,3.283v24.355H21.33V31.782z"/>
+</g>
+</svg>
+</xsl:template>
+
 </xsl:stylesheet>
