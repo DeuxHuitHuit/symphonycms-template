@@ -46,6 +46,7 @@
 						<xsl:value-of select="item [@lang = $lg]/@handle" />
 						<xsl:text>/</xsl:text>
 					</xsl:if>
+					<xsl:value-of select="$url" />
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text>/</xsl:text>
@@ -53,6 +54,7 @@
 						<xsl:value-of select="@handle" />
 						<xsl:text>/</xsl:text>
 					</xsl:if>
+					<xsl:value-of select="$url" />
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:otherwise>
