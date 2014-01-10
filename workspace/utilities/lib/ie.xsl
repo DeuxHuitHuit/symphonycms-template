@@ -5,7 +5,7 @@
 
 <xsl:template name="ie-cc">
 	<xsl:param name="content" />
-	<xsl:param name="condition" select='IE' />
+	<xsl:param name="condition" select="'IE'" />
 	
 	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!--[if <xsl:value-of select="$condition" />]<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	<xsl:copy-of select="exsl:node-set($content)/*" />
