@@ -11,7 +11,7 @@
 </xsl:template>
 
 <xsl:template name="create-page-url-by-id">
-	<xsl:param name="id" />
+	<xsl:param name="id" select="$current-page-id" />
 	<xsl:param name="lg" select="$url-language" />
 	<xsl:apply-templates select="/data/pages//page [@id = $id]" mode="url" >
 		<xsl:with-param name="lg" select="$lg" />
