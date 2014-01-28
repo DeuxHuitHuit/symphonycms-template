@@ -55,7 +55,7 @@
 	<xsl:param name="image-path" select="concat($image/@path, '/', $image/filename)" />
 	<xsl:param name="description" select="$metas/site-description" />
 	<xsl:param name="type" select="'website'" />
-	<xsl:param name="url" select="$current-url" />
+	<xsl:param name="url" select="concat($current-url, '/')" />
 	
 	<xsl:variable name="image-full-path" select="concat($root,'/workspace', $image-path)" />
 	
