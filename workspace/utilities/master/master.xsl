@@ -82,7 +82,7 @@
 </body>
 </html>
 <xsl:comment>
-	<xsl:value-of select="concat('cache-stamp: ', $today, 'T', $current-time)" />
+	<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
 </xsl:comment>
 </xsl:template>
 
