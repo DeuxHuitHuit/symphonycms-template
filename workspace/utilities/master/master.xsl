@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- See: http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references -->
 <!DOCTYPE stylesheet [
 	<!ENTITY nbsp "&#160;">
@@ -81,6 +81,9 @@
 	</xsl:call-template>
 </body>
 </html>
+<xsl:comment>
+	<xsl:value-of select="concat('cache-stamp: ', $today, 'T', $current-time)" />
+</xsl:comment>
 </xsl:template>
 
 </xsl:stylesheet>
