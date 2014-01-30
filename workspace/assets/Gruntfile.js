@@ -133,7 +133,7 @@ module.exports = function (grunt) {
 			},
 			production: {
 				options: {
-					yuicompress: true
+					cleancss: true
 				},
 				files: {
 					'css/main.min.css': LESS_FILE
