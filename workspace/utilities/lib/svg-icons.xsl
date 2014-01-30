@@ -244,4 +244,31 @@
 </svg>
 </xsl:template>
 
+<!-- VIMEO -->
+<xsl:template name="svg-icons-vo">
+	<xsl:param name="color" select="$svg-icons-default-fill-color" />
+	<xsl:param name="height" select="$svg-icons-default-height" />
+	
+	<xsl:variable name="width">
+		<xsl:call-template name="svg-icons-get-width">
+			<xsl:with-param name="width" select="'61'" />
+			<xsl:with-param name="height" select="$height" />
+		</xsl:call-template>
+	</xsl:variable>
+	
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	class="svg-icon svg-icon-vo"
+	x="0px" y="0px"
+	width="{$width}px" height="{$height}px" viewBox="0 0 74 60">
+	
+	<path fill="{$color}" d="M68.638,14.444c-0.306,6.688-4.974,15.844-14.005,27.466c-9.336,12.139-17.236,18.208-23.698,18.208
+	c-4.001,0-7.39-3.695-10.157-11.089c-1.848-6.778-3.695-13.555-5.542-20.332c-2.055-7.39-4.258-11.09-6.615-11.09
+	c-0.514,0-2.312,1.081-5.389,3.236L0,16.68C3.39,13.7,6.733,10.722,10.022,7.74c4.52-3.907,7.913-5.962,10.175-6.17
+	c5.344-0.513,8.634,3.142,9.868,10.964c1.334,8.44,2.258,13.689,2.776,15.743c1.541,7.004,3.235,10.5,5.087,10.5
+	c1.437,0,3.596-2.271,6.476-6.813c2.875-4.542,4.416-7.999,4.623-10.374c0.41-3.92-1.131-5.885-4.623-5.885
+	c-1.645,0-3.339,0.378-5.083,1.127c3.375-11.059,9.823-16.431,19.34-16.124C65.718,0.917,69.043,5.495,68.638,14.444z"/>
+</svg>
+
+</xsl:template>
+
 </xsl:stylesheet>
