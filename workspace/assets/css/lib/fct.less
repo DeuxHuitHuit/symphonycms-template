@@ -52,6 +52,11 @@
 	font-style: @font-style;
 }
 
+#font-size(@size, @ratio: @golden-ratio) {
+	font-size: @size;
+	line-height: @ratio;
+}
+
 #opacity(@val) {
 	opacity:@val;
 }
@@ -116,11 +121,6 @@
 	left: @left;
 	right: @right;
 	bottom: @bottom;
-}
-
-#font-size(@size, @ratio: @golden-ratio) {
-	font-size: @size;
-	line-height: @ratio;
 }
 
 
