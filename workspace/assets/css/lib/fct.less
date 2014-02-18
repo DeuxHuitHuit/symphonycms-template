@@ -123,6 +123,16 @@
 	bottom: @bottom;
 }
 
+#selection-color(@color) {
+	::selection {
+		background-color: @color;
+	}
+	
+	::-moz-selection {
+		background-color: @color;
+	}
+}
+
 
 //=========================
 // = REUSABLE CLASSES
