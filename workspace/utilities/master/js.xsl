@@ -24,7 +24,7 @@
 	
 	<!-- Underscore -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
-	<script src="/cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js"></script>
 	
 	<!-- Vimeo -->
 	<!-- script src="//a.vimeocdn.com/js/froogaloop2.min.js"></script -->
