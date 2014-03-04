@@ -22,6 +22,7 @@
 	</xsl:attribute>
 </xsl:template>
 
+<!-- Override example 
 <xsl:template match="//h2" mode="ninja" priority="1">
 	<xsl:param name="key" />
 
@@ -32,5 +33,6 @@
 		<xsl:apply-templates select="* | @* | text()" mode="ninja" />
 	</xsl:element>
 </xsl:template>
+-->
 
 </xsl:stylesheet>
