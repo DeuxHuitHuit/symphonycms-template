@@ -14,8 +14,13 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<!-- jQuery Sizing -->
 	<script src="{$js-path}lib/jquery.sizing.min.js?v={$version}"></script>
+	
 	<!-- BBQ -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.ba-bbq/1.2.1/jquery.ba-bbq.min.js"></script>
+	<xsl:call-template name="ie-cc">
+		<xsl:with-param name="content">
+			<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.ba-bbq/1.2.1/jquery.ba-bbq.min.js"></script>
+		</xsl:with-param>
+	</xsl:call-template>
 	
 	<!-- Underscore -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
