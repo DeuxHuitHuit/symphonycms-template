@@ -250,7 +250,9 @@ module.exports = function (grunt) {
 
 		// Default tasks.
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
-		grunt.registerTask('build',   ['buildnum', 'concat', 'uglify', 'less', 'usebanner']);
+		grunt.registerTask('js',      ['concat', 'uglify']);
+		grunt.registerTask('css',     ['less', 'usebanner']);
+		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
 	};
