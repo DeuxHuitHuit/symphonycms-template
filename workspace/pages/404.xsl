@@ -6,9 +6,7 @@
 <xsl:import href="../utilities/lib/erreurs.xsl" />
 
 <xsl:template match="data">
-	<xsl:apply-templates select="erreurs/entry[1]">
-		<xsl:with-param name="code" select="'404'" />
-	</xsl:apply-templates>
+	<xsl:apply-templates select="erreurs/entry[1]" />
 </xsl:template>
 
 </xsl:stylesheet>
