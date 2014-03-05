@@ -574,7 +574,7 @@ INSERT INTO `sym_fields_checkbox` (`id`, `field_id`, `default_state`, `descripti
 --
 
 INSERT INTO `sym_fields_image_upload` (`id`, `field_id`, `destination`, `validator`, `unique`, `min_width`, `min_height`, `max_width`, `max_height`, `resize`) VALUES
-(3, 3, '/workspace', '/\\.(?:gif|jpe?g|png)$/i', 'yes', 300, 300, 1600, 1200, 'no');
+(3, 3, '/workspace/uploads/meta', '/\\.(?:gif|jpe?g|png)$/i', 'yes', 300, 300, 1600, 1200, 'no');
 
 -- --------------------------------------------------------
 
