@@ -52,6 +52,7 @@
 	
 	<xsl:call-template name="page-metas" />
 	<xsl:call-template name="page-metas-alt-link" />
+	<xsl:call-template name="canonical-url" />
 	
 	<xsl:call-template name="favicon" />
 	
