@@ -1,0 +1,25 @@
+#load-progress {
+	#fixed(999999);
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 3px;
+	
+	background-color: @page-load-color;
+	
+	.not-visible;
+	#opacity(0);
+	
+	@duration: 700ms;
+	@transition: ~'all @{ease} @{duration}';
+	
+	&.start {
+		#transition(~'@{transition}, @{visanim} @{duration}');
+	}
+	
+	&.show {
+		.visible;
+		#transition(~'@{transition}, @{visanim} 0ms');
+		#opacity(1);
+	}
+}

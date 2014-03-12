@@ -32,6 +32,9 @@
 <xsl:import href="../com/site-header.xsl" />
 <xsl:import href="../com/menu-admin.xsl" />
 
+<!-- Extensions -->
+<xsl:import href="../../../extensions/block_user_agent/utilities/block_user_agent.xsl" />
+
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
 	encoding="UTF-8"
@@ -61,7 +64,12 @@
 		</xsl:call-template>
 	</xsl:if>
 </head>
-<body class="{$url-language}">
+<body class="{$url-language} page-{$full-page-handle}" data-version="{$version}">
+	<xsl:call-template name="block-user-agent">
+		<xsl:with-param name="title" select="$metas/navigateurs-non-supportes-titre" />
+		<xsl:with-param name="subtitle" select="$metas/navigateurs-non-supportes-texte" />
+		<xsl:with-param name="close" select="$metas/navigateurs-non-supportes-poursuivre" />
+	</xsl:call-template>
 	<div id="site">
 		<xsl:call-template name="site-header" />
 		
@@ -73,6 +81,8 @@
 		
 		<xsl:call-template name="site-footer" />
 	</div>
+	
+	<div id="load-progress"></div>
 	
 	<xsl:call-template name="master-js">
 		<xsl:with-param name="extra-js">

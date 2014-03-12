@@ -1,0 +1,227 @@
+/**
+ * 	Base typo
+ */
+
+.xxlarge-typo {
+	*, & {
+		font-size: 15rem;
+		line-height: 15.5rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			font-size: 17rem;
+			line-height: 16rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			font-size: 15rem !important;
+			line-height: 8rem !important;
+		}
+	}
+}
+
+.xlarge-typo {
+	*, & {
+		font-size: 8rem;
+		line-height: 9rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			font-size: 14rem;
+			line-height: 16rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			line-height: 10rem !important;
+		}
+	}
+}
+
+.large-typo {
+	*, & {
+		font-size: 3.2rem;
+		line-height: 3.8rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			font-size: 5rem;
+			line-height: 6.4rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			line-height: 3.6rem !important;
+		}
+	}
+}
+
+.medium-typo {
+	*, & {
+		#font-size(2.4rem);
+		//line-height: 3.4rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			#font-size(3.8rem);
+			//line-height: 4.4rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			line-height: 3.2rem !important;
+		}
+	}
+}
+
+.normal-typo {
+	*, & {
+		#font-size(1.8rem);
+		//line-height: 2.3rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			#font-size(2.8rem);
+			//line-height: 3.6rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			line-height: 2rem !important;
+		}
+	}
+}
+
+.small-typo {
+	*, & {
+		#font-size(1.6rem);
+		//line-height: 2.1rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			#font-size(2.4rem);
+			//line-height: 3rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			line-height: 1.6rem !important;
+		}
+	}
+}
+
+.xsmall-typo {
+	*, & {
+		#font-size(1.4rem);
+		//line-height: 1.8rem;
+		
+		@media screen and (@maxQuery),
+		(@orientationQuery) {
+			#font-size(2rem);
+			//line-height: 2.6rem;
+		}
+		
+		@media screen and (@retinaRatioQuery)
+		and (@retinaMaxQuery) {
+			line-height: 1rem !important;
+		}
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: @font-cabin;
+	color: @font-color;
+	text-transform: uppercase;
+	font-weight: normal;
+	
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+h1 {
+	.xsmall-typo;
+}
+
+h2 {
+	.large-typo;
+}
+
+h3 {
+	.medium-typo;
+}
+
+div, p, .p, li, a {
+	font-family: @font-cabin;
+	.small-typo;
+	color: @font-color;
+}
+
+p, .p, li, a {
+	margin: @col 0;
+	padding: 0;
+	
+	a {
+		margin: 0;
+	}
+}
+
+p {
+	&:first-child {
+		margin-top: 0;
+	}
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 2px solid;
+	#transition(color @duration-short @ease);
+	color: @link-color;
+	margin: 0;
+	
+	&:visited {
+		color: @link-color-visited;
+	}
+	
+	&:focus {
+		#no-outline;
+	}
+	
+	html:not(.mobile) &:hover, &:active {
+		color: @link-color-hover;
+	}
+	
+	img {
+		border: none;
+		display: block;
+	}
+}
+
+span {
+	
+}
+
+em {
+	
+}
+
+strong {
+	
+}
+
+em strong, strong em {
+	
+}
+
+ul, ol {
+	
+	
+	li {
+		
+	}
+}
+
+time {
+	
+}
