@@ -9,6 +9,7 @@
 	"modules/blank-target-link.js",
 	"modules/oEmbed.js",
 	"modules/transition-animation.js",
+	"modules/page-load.js",
 	
 	"transitions/default-transition.js",
 	
