@@ -42,28 +42,7 @@
 				<xsl:text>})();</xsl:text>
 			</script>
 			
-			<!-- Modules -->
-			<!-- Input Modules -->
-			<script src="{$js-path}modules/links.js?v={$version}"></script>
-			<script src="{$js-path}modules/url-changer.js?v={$version}"></script>
-			
-			<!-- Output Modules-->
-			<script src="{$js-path}modules/title-updater.js?v={$version}"></script>
-			<script src="{$js-path}modules/alt-language-link-updater.js?v={$version}"></script>
-			<script src="{$js-path}modules/share-this.js?v={$version}"></script>
-			<script src="{$js-path}modules/format-twitter.js?v={$version}"></script>
-			<script src="{$js-path}modules/blank-target-link.js?v={$version}"></script>
-			<script src="{$js-path}modules/oEmbed.js?v={$version}"></script>
-			<script src="{$js-path}modules/transition-animation.js?v={$version}"></script>
-			
-			<!-- Transitions -->
-			<script src="{$js-path}transitions/default-transition.js?v={$version}"></script>
-			
-			<!-- Utils -->
-			<script src="{$js-path}utils/ga.js"></script>
-			
-			<!-- Pages -->
-			<script src="{$js-path}pages/default-page.js"></script>
+			<xsl:apply-templates select="/data/javascript/file" />
 		</xsl:when>
 		<xsl:otherwise>
 			<script src="{$js-path}core/framework.min.js?v={$version}"></script>
@@ -80,6 +59,10 @@
 		<xsl:text>})();</xsl:text>
 	</script>
 	
+</xsl:template>
+
+<xsl:template match="javascript/file">
+	<script src="{$js-path}{.}?v={$version}"></script>
 </xsl:template>
 
 </xsl:stylesheet>

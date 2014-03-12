@@ -1,0 +1,18 @@
+[
+	"modules/links.js",
+	"modules/url-changer.js",
+	
+	"modules/title-updater.js",
+	"modules/alt-language-link-updater.js",
+	"modules/share-this.js",
+	"modules/format-twitter.js",
+	"modules/blank-target-link.js",
+	"modules/oEmbed.js",
+	"modules/transition-animation.js",
+	
+	"transitions/default-transition.js",
+	
+	"utils/ga.js",
+	
+	"pages/default-page.js"
+]

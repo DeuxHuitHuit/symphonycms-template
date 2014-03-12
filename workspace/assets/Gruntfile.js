@@ -11,13 +11,9 @@ module.exports = function (grunt) {
 	
 	var LESS_FILE = 'css/main.less';
 	
-	var SRC_FILES = [
-		'./js/com/*.js',
-		'./js/modules/*.js',
-		'./js/transitions/*.js',
-		'./js/pages/*.js',
-		'./js/utils/*.js'
-	];
+	var SRC_FILES = grunt.file.readJSON('./js.json').map(function (f) {
+		return './js/' + f;
+	});
 	
 	var TEST_FILES = ['js/tests/*.js'];
 	
