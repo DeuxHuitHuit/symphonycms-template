@@ -59,6 +59,9 @@
 			<!-- Transitions -->
 			<script src="{$js-path}transitions/default-transition.js?v={$version}"></script>
 			
+			<!-- Utils -->
+			<script src="{$js-path}utils/ga.js"></script>
+			
 			<!-- Pages -->
 			<script src="{$js-path}pages/default-page.js"></script>
 		</xsl:when>
