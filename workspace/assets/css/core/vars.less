@@ -4,6 +4,16 @@
 
 @golden-ratio: 1.61803398875;
 
+//====== COLORS ================
+@white: #ffffff;
+@black: #000000;
+
+@page-load-color: @white;
+
+@text-lead-color: darken(@dark, 20%);
+@text-second-color: darken(@dark, 40%);
+@text-color: darken(@dark, 40%);
+
 //====== PATH ==================
 @css-path: '/workspace/assets/css/';
 @font-path: '/workspace/assets/fonts/';
@@ -17,8 +27,6 @@
 @link-color: #7d7d7d;
 @link-color-hover: #000;
 @link-color-visited: @link-color;
-
-@page-load-color: #fff;
 
 //====== SITE WIDTH ============
 @col: 10px;
@@ -37,6 +45,32 @@
 @duration-longer: 500ms;
 @duration-longest: 750ms;
 
+@visanim: visibility 0ms linear;
+
 @ease: ease-in-out;
 @ease-in: ease-in;
 @ease-out: ease-out;
+
+//====== Medias Queries ============
+@webkitQuery: ~'-webkit-min-device-pixel-ratio: 1.5';
+@mobileQuery: ~'min-device-pixel-ratio: 1.0';
+@maxQuery: ~'max-width: 700px';
+@siteMediumWidthQuery: ~'max-width: 1280px';
+@orientationQuery: ~'orientation: portrait';
+@landscapeQuery: ~'orientation: landscape';
+
+@retinaRatioQuery: ~'-webkit-device-pixel-ratio: 2.0';
+@retinaResolutionQuery: ~'min-resolution: 192dpi';
+@retinaMaxQuery: @maxQuery;
+
+// ##### POUR IPHONES #####
+@media screen and (@retinaRatioQuery)
+and (@retinaMaxQuery) {
+	
+}
+
+// ##### POUR AUTRES #####
+@media screen and (@maxQuery),
+(@orientationQuery) {
+	
+}
