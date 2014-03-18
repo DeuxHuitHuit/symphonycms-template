@@ -133,8 +133,6 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'css/main.min.css': LESS_FILE
-					//'css/main.mobile.min.css': lessMobileFile,
-					//'css/ie9.min.css': 'css/ie9.less'
 				}
 			}
 		},
@@ -147,7 +145,7 @@ module.exports = function (grunt) {
 					linebreak: true
 				},
 				files: {
-					src: [ 'css/main.min.css'/*, 'css/ie9.min.css'*/ ]
+					src: [ 'css/main.min.css' ]
 				}
 			}
 		},
@@ -240,8 +238,9 @@ module.exports = function (grunt) {
 			};
 
 			var buildnum = getBuildNumber();
-			grunt.log.writeln('New build num: ', buildnum);
 			grunt.config.set('buildnum.num', buildnum);
+			grunt.log.writeln('New build num:', buildnum);
+			grunt.log.writeln('For version:', config.pkg.version);
 		});
 
 		// Default tasks.
