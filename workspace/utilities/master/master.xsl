@@ -23,6 +23,8 @@
 <xsl:import href="../lib/ga.xsl" />
 <xsl:import href="../lib/ninja.xsl" />
 <xsl:import href="../lib/ie.xsl" />
+<xsl:import href="../lib/svg-icons.xsl" />
+<xsl:import href="../lib/prefetch.xsl" />
 
 <!-- COMPONENTS -->
 <xsl:import href="../com/page-title.xsl" />
