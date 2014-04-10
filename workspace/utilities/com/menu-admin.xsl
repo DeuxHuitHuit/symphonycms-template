@@ -15,6 +15,12 @@
 			</xsl:if>
 			
 			<a data-action="full" href="/symphony/logout/">déconnection</a>
+			
+			<span><xsl:text> Cache: </xsl:text></span>
+			
+			<a data-action="full" href="?flush">flush page cache</a>
+			
+			<a data-action="full" href="?flush=site">flush site cache</a>
 		</div>
 	</xsl:if>
 </xsl:template>
