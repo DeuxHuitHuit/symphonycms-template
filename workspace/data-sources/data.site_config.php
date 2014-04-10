@@ -16,6 +16,7 @@
 		
 		public $dsParamINCLUDEDELEMENTS = array(
 				'site-titre: formatted',
+				'site-titre: formatted: all-languages',
 				'description: formatted',
 				'twitter-url: unformatted',
 				'twitter-user: formatted',

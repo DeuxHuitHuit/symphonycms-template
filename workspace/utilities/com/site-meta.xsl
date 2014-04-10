@@ -38,7 +38,7 @@
 
 <!-- TODO : Fill -->
 <xsl:template name="twitter-card">
-	<xsl:param name="titre" select="$metas/site-titre" />
+	<xsl:param name="titre" select="$metas/site-titre[1]" />
 	<xsl:param name="image" select="$metas/image-partage" />
 	<xsl:param name="image-path" />
 	<xsl:param name="description" select="$metas/site-description" />
@@ -77,7 +77,7 @@
 </xsl:template>
 
 <xsl:template name="open-graph">
-	<xsl:param name="titre" select="$metas/site-titre" />
+	<xsl:param name="titre" select="$metas/site-titre[1]" />
 	<xsl:param name="image" select="$metas/image-partage" />
 	<xsl:param name="image-path" />
 	<xsl:param name="description" select="$metas/site-description" />

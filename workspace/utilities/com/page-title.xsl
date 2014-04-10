@@ -12,7 +12,8 @@
 		<xsl:value-of select="$plh-page-title"/>
 		<xsl:text> - </xsl:text>
 	</xsl:if>
-	<xsl:value-of select="/data/site-config/entry [1]/site-titre" />
+	
+	<xsl:value-of select="$metas/site-titre[1]" />
 </xsl:template>
 
 <xsl:template name="page-title-header">

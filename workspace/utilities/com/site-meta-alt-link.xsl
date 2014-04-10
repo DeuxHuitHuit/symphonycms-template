@@ -47,9 +47,13 @@
 
 <xsl:template name="page-alt-link-title">
 	<xsl:param name="lg" />
-	<xsl:value-of select="/data/plh-page/page/item[@lang=$lg]" />
-	<xsl:text> - </xsl:text>
-	<xsl:value-of select="/data/site-titre-bilingue/entry [1]/site-titre/item[@lang=$lg]" />
+	
+	<xsl:if test="count(/data/params/page-types/item[@handle = 'index']) = 0">
+		<xsl:value-of select="/data/plh-page/page/item[@lang=$lg]" />
+		<xsl:text> - </xsl:text>
+	</xsl:if>
+	
+	<xsl:value-of select="$metas/site-titre/item[@lang=$lg]" />
 </xsl:template>
 
 </xsl:stylesheet>
