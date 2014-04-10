@@ -18,7 +18,7 @@
 				'site-titre: formatted',
 				'site-titre: formatted: all-languages',
 				'description: formatted',
-				'image',
+				'image-partage',
 				'twitter-url: unformatted',
 				'twitter-user: formatted',
 				'twitter-site-domain: formatted',
