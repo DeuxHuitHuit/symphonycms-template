@@ -18,6 +18,7 @@
 				'site-titre: formatted',
 				'site-titre: formatted: all-languages',
 				'description: formatted',
+				'image',
 				'twitter-url: unformatted',
 				'twitter-user: formatted',
 				'twitter-site-domain: formatted',

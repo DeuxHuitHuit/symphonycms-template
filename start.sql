@@ -536,7 +536,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_22` (
 INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section`, `required`, `sortorder`, `location`, `show_column`) VALUES
 (1, 'Site Web', 'site-web-tab', 'publish_tabs', 1, 'no', 0, 'main', 'no'),
 (2, 'Site titre', 'site-titre', 'multilingual_textbox', 1, 'yes', 1, 'main', 'yes'),
-(3, 'Logo', 'logo', 'image_upload', 1, 'no', 2, 'sidebar', 'yes'),
+(3, 'Logo', 'image', 'image_upload', 1, 'no', 2, 'sidebar', 'yes'),
 (4, 'Description (Ce texte affichera pour les partages sur les médias sociaux et sur Google)', 'description', 'multilingual_textbox', 1, 'yes', 3, 'main', 'yes'),
 (5, 'Twitter url', 'twitter-url', 'textbox', 1, 'no', 4, 'sidebar', 'no'),
 (6, 'Twitter user', 'twitter-user', 'textbox', 1, 'no', 5, 'sidebar', 'no'),
