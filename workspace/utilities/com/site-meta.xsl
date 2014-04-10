@@ -42,9 +42,9 @@
 	<xsl:param name="image" select="$metas/image-partage" />
 	<xsl:param name="image-path" />
 	<xsl:param name="description" select="$metas/site-description" />
-	<xsl:param name="site" select="'@        '" />
-	<xsl:param name="creator" select="'@        '" />
-	<xsl:param name="domain" select="'         '" />
+	<xsl:param name="site" select="$metas/twitter-user" />
+	<xsl:param name="creator" select="$metas/twitter-user" />
+	<xsl:param name="domain" select="$metas/twitter-site-domain" />
 	
 	<xsl:variable name="image-full-path">
 		<xsl:choose>
