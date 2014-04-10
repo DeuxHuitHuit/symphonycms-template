@@ -9,7 +9,7 @@
 				<!-- Logo -->
 				<img src="/workspace/assets/img/logo.png" />
 				<!-- Nom du site -->
-				<span><xsl:value-of select="$metas/site-titre[1]" /></span>
+				<span><xsl:value-of select="$metas/site-titre/item[@lang=$url-language]" /></span>
 			</h2>
 		</a>
 	</header>

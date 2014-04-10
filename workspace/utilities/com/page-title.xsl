@@ -13,7 +13,7 @@
 		<xsl:text> - </xsl:text>
 	</xsl:if>
 	
-	<xsl:value-of select="$metas/site-titre[1]" />
+	<xsl:value-of select="$metas/site-titre/item[@lang=$url-language]" />
 </xsl:template>
 
 <xsl:template name="page-title-header">
