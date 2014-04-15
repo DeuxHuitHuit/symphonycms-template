@@ -51,10 +51,10 @@
 							$result->appendChild(new XMLElement('file', $file));
 						}
 					} else {
-						throw new Extension(__('Could not read json from %s', array($filePath)));
+						throw new Exception(__('Could not read json from %s', array($filePath)));
 					}
 				} else {
-					throw new Extension(__('File %s not found', array($filePath)));
+					throw new Exception(__('File %s not found', array($filePath)));
 				}
 			}
 			catch(FrontendPageNotFoundException $e){
