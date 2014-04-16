@@ -2,9 +2,9 @@
 
 	require_once(DATASOURCES . '/lib/class.json.datasource.php');
 
-	Class datasourcejavascript extends JSONDataSource {
+	Class datasourcepackage extends JSONDataSource {
 
-		public $dsParamROOTELEMENT = 'javascript';
+		public $dsParamROOTELEMENT = 'package';
 
 		public function __construct($env=NULL, $process_params=true) {
 			parent::__construct($env, $process_params);
@@ -13,7 +13,7 @@
 
 		public function about() {
 			return array(
-				'name' => 'Javascript',
+				'name' => 'Package.json',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhutihuit.com',
@@ -24,19 +24,18 @@
 		}
 
 		public function getSource() {
-			return 'js.json';
+			return 'package.json';
 		}
 
 		protected function getJSONFilePath() {
-			return WORKSPACE . '/assets/js.json';
+			return WORKSPACE . '/assets/package.json';
 		}
 		
 		protected function decode(XMLElement &$result, array $json) {
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 			
-			foreach ($json as $index => $file) {
-				$result->appendChild(new XMLElement('file', $file));
-			}
+			$result->appendChild(new XMLElement('name', $json['name']));
+			$result->appendChild(new XMLElement('version', $json['version']));
 			
 			return $result;
 		}
