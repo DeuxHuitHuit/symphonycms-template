@@ -4,10 +4,16 @@
 <xsl:template name="site-header">
 	<header>
 		<xsl:call-template name="menu-admin" />
-		<a href="/">
+		<a>
+			<xsl:attribute name="href">
+				<xsl:call-template name="create-page-url-by-id">
+					<xsl:with-param name="page-id" select="$page-index-id" />
+				</xsl:call-template>
+			</xsl:attribute>
+			
 			<h2>
 				<!-- Logo -->
-				<img src="/workspace/assets/img/logo.png" />
+				
 				<!-- Nom du site -->
 				<span><xsl:value-of select="$metas/site-titre/item[@lang=$url-language]" /></span>
 			</h2>
