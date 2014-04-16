@@ -12,9 +12,9 @@
 
 <!-- MASTER -->
 <xsl:import href="variables.xsl" />
-<xsl:import href="favicon.xsl" />
-<xsl:import href="js.xsl" />
-<xsl:import href="css.xsl" />
+<xsl:import href="../site-variables.xsl" />
+<xsl:import href="master-head.xsl" />
+<xsl:import href="master-body.xsl" />
 
 <!-- LIB -->
 <xsl:import href="../lib/create-page-url.xsl" />
@@ -24,18 +24,9 @@
 <xsl:import href="../lib/ninja.xsl" />
 <xsl:import href="../lib/ie.xsl" />
 <xsl:import href="../lib/svg-icons.xsl" />
+<xsl:import href="../lib/svg-socials-icons.xsl" />
+
 <xsl:import href="../lib/prefetch.xsl" />
-
-<!-- COMPONENTS -->
-<xsl:import href="../com/page-title.xsl" />
-<xsl:import href="../com/site-meta.xsl" />
-<xsl:import href="../com/site-meta-alt-link.xsl" />
-<xsl:import href="../com/site-footer.xsl" />
-<xsl:import href="../com/site-header.xsl" />
-<xsl:import href="../com/menu-admin.xsl" />
-
-<!-- Extensions -->
-<xsl:import href="../../../extensions/block_user_agent/utilities/block_user_agent.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
@@ -43,61 +34,26 @@
 	indent="no" />
 
 <xsl:template match="/">
-<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!DOCTYPE html public "✰"<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
-<html lang="{$url-language}">
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE9" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
+
+	<!-- Doctype -->
+	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!DOCTYPE html public "✰"<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	
-	<xsl:call-template name="page-title-header" />
-	
-	<xsl:call-template name="page-metas" />
-	<xsl:call-template name="page-metas-alt-link" />
-	<xsl:call-template name="canonical-url" />
-	
-	<xsl:call-template name="favicon" />
-	
-	<xsl:call-template name="master-css" />
-	
-	<xsl:if test="$debug != true()">
-		<xsl:call-template name="ga">
-			<xsl:with-param name="ua" select="''" />
-			<xsl:with-param name="domain" select="''" />
-		</xsl:call-template>
-	</xsl:if>
-</head>
-<body class="{$url-language} page-{$full-page-handle}" data-version="{$version}">
-	<xsl:call-template name="block-user-agent">
-		<xsl:with-param name="title" select="$metas/navigateurs-non-supportes-titre" />
-		<xsl:with-param name="subtitle" select="$metas/navigateurs-non-supportes-texte" />
-		<xsl:with-param name="close" select="$metas/navigateurs-non-supportes-poursuivre" />
-	</xsl:call-template>
-	<div id="site">
-		<xsl:call-template name="site-header" />
+	<!-- Html -->
+	<html lang="{$url-language}">
+
+		<!-- html head -->
+		<xsl:call-template name="master-head" />
+
+		<!-- html body -->
+		<xsl:call-template name="master-body" />
 		
-		<div id="site-pages">
-			<div id="page-{$full-page-handle}" class="page">
-				<xsl:apply-templates select="data" />
-			</div>
-		</div>
-		
-		<xsl:call-template name="site-footer" />
-	</div>
+	</html>
+
+	<!-- Comment for debug -->
+	<xsl:comment>
+		<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
+	</xsl:comment>
 	
-	<div id="load-progress"></div>
-	
-	<xsl:call-template name="master-js">
-		<xsl:with-param name="extra-js">
-			<!-- Register URL for the site-->
-			<xsl:call-template name="framework-288-url-creator" /> 
-		</xsl:with-param>
-	</xsl:call-template>
-</body>
-</html>
-<xsl:comment>
-	<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
-</xsl:comment>
 </xsl:template>
 
 </xsl:stylesheet>

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:variable name="js-path" select="'/workspace/assets/js/'" />
-
 <xsl:template name="master-js">
 	<xsl:param name="extra-js" />
 	
 	<!-- jQuery -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	
 	<!-- jQuery Migrate-->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
+	<!--script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script-->
+	
 	<!-- jQuery Easing -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	
 	<!-- jQuery Sizing -->
-	<script src="{$js-path}lib/jquery.sizing.min.js?v={$version}"></script>
+	<!--script src="{$js-path}lib/jquery.sizing.min.js?v={$version}"></script-->
+	
 	
 	<!-- BBQ -->
 	<xsl:call-template name="ie-cc">
