@@ -7,6 +7,7 @@
 <xsl:template name="dns-prefetch">
 	<xsl:variable name="domains">
 		<domains>
+			<domain>watermark.deuxhuithuit.com</domain>
 			<domain>www.google-analytics.com</domain>
 			<domain>cdnjs.cloudflare.com</domain>
 			<domain>maps.googleapis.com</domain>
