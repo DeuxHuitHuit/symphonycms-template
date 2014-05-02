@@ -17,7 +17,6 @@
 	<xsl:if test="string-length($description) != 0">
 		<meta name="description" content="{$description}" />
 	</xsl:if>
-	
 </xsl:template>
 
 <xsl:template name="twitter-card">
@@ -64,14 +63,14 @@
 <xsl:template name="open-graph">
 	<xsl:param name="title" select="$default-share-page-title" />
 	<xsl:param name="image" select="$site-share-image" />
-	
 	<xsl:param name="image-path" />
-	
+	<xsl:param name="image-width" select="''" />
+	<xsl:param name="image-height" select="''" />
 	<xsl:param name="description" select="$site-description" />
-	
 	<xsl:param name="type" select="'website'" />
 	<xsl:param name="url" select="concat($current-url, '/')" />
 	
+	<!-- Variables -->
 	<xsl:variable name="image-full-path">
 		<xsl:call-template name="get-image-full-path">
 			<xsl:with-param name="image" select="$image" />
@@ -79,17 +78,42 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
+	<xsl:variable name="image-real-width">
+		<xsl:choose>
+			<xsl:when test="string-length($image) != 0">
+				<xsl:value-of select="$image/meta/@width" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$image-width" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	
+	<xsl:variable name="image-real-height">
+		<xsl:choose>
+			<xsl:when test="string-length($image) != 0">
+				<xsl:value-of select="$image/meta/@height" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$image-height" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	
+	<!-- Output -->
 	<meta property="og:title" content="{$title}" />
 	<meta property="og:url" content="{$url}" />
 	<meta property="og:type" content="{$type}" />
 	
-	<xsl:if test="string-length($image-full-path) &gt; 1">
+	<xsl:if test="string-length($image-path) != 1">
+		<meta property="og:image" content="{$image-full-path}" />
 		<meta property="og:image:url" content="{$image-full-path}" />
 	</xsl:if>
-	
-	<xsl:if test="string-length($image) != 0">
-		<meta property="og:image:width" content="{$image/meta/@width}" />
-		<meta property="og:image:height" content="{$image/meta/@height}" />
+	<xsl:if test="string-length($image-real-width) != 0">
+		<meta property="og:image:width" content="{$image-real-width}" />
+	</xsl:if>
+	<xsl:if test="string-length($image-real-height) != 0">
+		<meta property="og:image:height" content="{$image-real-height}" />
 	</xsl:if>
 	
 	<xsl:if test="string-length($description) != 0">
