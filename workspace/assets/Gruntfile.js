@@ -253,7 +253,7 @@ module.exports = function (grunt) {
 	};
 	
 	var load = function (grunt) {
-		md.filter('grunt-*').forEach(grunt.loadNpmTasks);
+		md.filterAll('grunt-*').forEach(grunt.loadNpmTasks);
 		
 		init(grunt);
 	};
