@@ -105,8 +105,8 @@ module.exports = function (grunt) {
 			options: {
 				banner: '<%= meta.banner %>',
 				report: 'gzip',
-				sourceMap: 'js/<%= pkg.name %>.min.js.map',
-				sourceMappingURL: '<%= pkg.name %>.min.js.map',
+				sourceMap: true,
+				sourceMapName: 'js/<%= pkg.name %>.min.js.map',
 				mangle: true,
 				compress: {
 					global_defs: {
@@ -236,7 +236,7 @@ module.exports = function (grunt) {
 				
 				return b.lastBuild;
 			};
-
+			
 			var buildnum = getBuildNumber();
 			grunt.config.set('buildnum.num', buildnum);
 			grunt.log.writeln('New build num:', buildnum);
