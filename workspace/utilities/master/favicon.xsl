@@ -7,6 +7,7 @@
 	<link rel="icon"              href="{$root}/favicon.png" type="image/png" />
 	<link rel="apple-touch-icon"  href="{$root}/favicon.png" type="image/png" />
 	<link rel="pavatar"           href="{$root}/favicon.png" type="image/png" />
+	<meta name="msapplication-TileImage" content="{$root}/favicon.png" />
 </xsl:template>
 
 </xsl:stylesheet>
