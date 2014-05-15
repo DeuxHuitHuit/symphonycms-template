@@ -154,14 +154,6 @@
 			user-select: @select;
 }
 
-#animation(...) {
-	-webkit-animation: @arguments;
-	   -moz-animation: @arguments;
-	    -ms-animation: @arguments;
-		 -o-animation: @arguments;
-			animation: @arguments;
-}
-
 #backface(@visibility: hidden) {
 	-webkit-backface-visibility: @visibility;
 	   -moz-backface-visibility: @visibility;
@@ -224,6 +216,25 @@
   &::-moz-placeholder           { color: @color; } // Firefox 19+
   &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
   &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+
+#animation(...) {
+	-webkit-animation: @arguments;
+	   -moz-animation: @arguments;
+	    -ms-animation: @arguments;
+		 -o-animation: @arguments;
+			animation: @arguments;
+}
+
+#animation-key(@name, @rules) {
+	@-webkit-keyframes @name {
+		@rules();
+	}
+
+	/* Standard syntax */
+	@keyframes @name {
+		@rules();
+	}
 }
 
 // BOOTSRAP GRADIENTS
