@@ -14,7 +14,7 @@
 				<a data-action="full" href="?debug">debug</a>
 			</xsl:if>
 			
-			<a data-action="full" href="/symphony/logout/">déconnection</a>
+			<a data-action="full" href="/symphony/logout/">déconnexion</a>
 		</div>
 	</xsl:if>
 </xsl:template>
