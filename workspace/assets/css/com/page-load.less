@@ -10,11 +10,14 @@
 	.not-visible;
 	#opacity(0);
 	
-	@duration: 700ms;
-	@transition: ~'all @{ease} @{duration}';
+	@load-duration: 1200ms;
+	@load-duration-fast: 600ms;
+	@transition: ~'all @{ease} @{load-duration}';
+	
+	#transition(none);
 	
 	&.start {
-		#transition(~'@{transition}, @{visanim} @{duration}');
+		#transition(~'@{transition}, @{visanim} @{load-duration}');
 	}
 	
 	&.show {
@@ -22,4 +25,9 @@
 		#transition(~'@{transition}, @{visanim} 0ms');
 		#opacity(1);
 	}
+	
+	&.end {
+		#transition-duration(@load-duration-fast);
+	}
+	
 }
