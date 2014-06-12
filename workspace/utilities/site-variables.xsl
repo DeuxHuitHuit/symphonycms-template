@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:variable name="site-name" select="$config/site-name" />
-<xsl:variable name="site-description" select="$config/site-name" />
+<xsl:variable name="site-description" select="$config/description" />
 <xsl:variable name="site-share-image" select="$config/site-share-image" />
 
 <xsl:variable name="default-share-page-title" >
