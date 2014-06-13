@@ -4,7 +4,7 @@
 
 	Class datasourcejavascript_libs extends JSONDataSource {
 
-		public $dsParamROOTELEMENT = 'javascript';
+		public $dsParamROOTELEMENT = 'javascript-libs';
 
 		public function __construct($env=NULL, $process_params=true) {
 			parent::__construct($env, $process_params);
