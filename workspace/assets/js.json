@@ -10,6 +10,7 @@
 	"modules/oEmbed.js",
 	"modules/transition-animation.js",
 	"modules/page-load.js",
+	"modules/window-notifier.js",
 	
 	"transitions/default-transition.js",
 	
