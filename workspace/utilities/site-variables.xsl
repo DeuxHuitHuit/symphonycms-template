@@ -27,5 +27,7 @@
 <xsl:variable name="css-path" select="'/workspace/assets/css/'" />
 <xsl:variable name="js-path" select="'/workspace/assets/js/'" />
 
+<!-- Default Path -->
+<xsl:variable name="page-index-id" select="'1'" />
 
 </xsl:stylesheet>
