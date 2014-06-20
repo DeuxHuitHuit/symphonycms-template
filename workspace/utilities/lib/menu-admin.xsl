@@ -16,7 +16,7 @@
 			
 			<a data-action="full" href="/symphony/logout/">Déconnexion</a>
 			
-			<span><xsl:text> Cache: </xsl:text></span>
+			<span class="cache"><xsl:text> Cache: </xsl:text></span>
 			
 			<a data-action="full" href="?flush">Flush page</a>
 			
