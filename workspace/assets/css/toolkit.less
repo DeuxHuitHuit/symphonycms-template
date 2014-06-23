@@ -1,0 +1,106 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = IMPORTS
+//=========================
+@import "core/vars-colors";
+@import "core/vars-typo";
+@import "lib/fct";
+@import "lib/reset";
+@import "lib/css3";
+@import "lib/svg-icons";
+
+@import "core/site";
+
+@ui-bg-main: #ffffff;
+@ui-bg-items: #eef2f3;
+
+#ui-toolkit {
+	background-color: @ui-bg-main;
+	
+	.ui-toolkit-ctn {
+		padding: 50px 100px;
+	}
+	
+	.ui-item {
+		margin: 30px 0;
+		background-color: @ui-bg-items;
+		
+		.ui-item-title {
+			font-family: Arial, helvetica, sans-serif;
+			margin: 0 0 10px 0;
+			font-size: 1.8rem;
+			line-height: 2.4rem;
+		}
+		
+		.ui-item-ctn {
+			
+			@import "main";
+		}
+	}
+
+	.ui-group {
+		#relative;
+		margin-bottom: 120px;
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+	.ui-group-title {
+		font-family: Arial, helvetica, sans-serif;
+		margin: 0 0 30px -20px;
+		font-size: 6rem;
+		line-height: 7.4rem;
+		color: lighten(#000000, 20%);
+	}
+		
+	.ui-palette-ctn {
+		.ui-palette-couleurs {
+			#ib;
+			
+			.ui-color-title {
+				text-align: center;
+				font-size: 12px;
+				line-height: 14px;
+				color: @font-color;
+				font-family: Arial, helvetica, 'sans-serif';
+			}
+			
+			.ui-color-ctn {
+				#relative;
+				margin-bottom: 10px;
+				
+				.ui-color {
+					#wh(165px);
+
+					&.gray {
+						background-color: @black;
+					}
+					
+					&.white {
+						background-color: @white;
+					}
+					
+					&.ui-darker {
+						#absolute;
+						#fill(auto, 0, 0, 0);
+						height: 30%;
+						
+						&.black {
+							background-color: darken(@black, 10%);
+						}
+						
+						&.white {
+							background-color: darken(@white, 10%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
