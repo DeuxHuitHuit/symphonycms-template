@@ -55,12 +55,8 @@
 	</xsl:choose>
 </xsl:variable>
 
-<!-- Metas variable -->
-<xsl:variable name="metas" select="/data/site-metas/entry[1]" />
-
-<!-- Metas variable -->
+<!-- Metas/config variable -->
 <xsl:variable name="config" select="/data/site-config/entry[1]" />
-
 
 <!-- Facebook Language based on url-language -->
 <xsl:variable name="facebook-language">
