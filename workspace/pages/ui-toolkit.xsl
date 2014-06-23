@@ -207,88 +207,12 @@
 					</xsl:call-template>
 				</div>
 			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">link-pin</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="link-pin">
-						<xsl:with-param name="url" select="'http://www.google.com'" />
-						<xsl:with-param name="titre" select="'localisation'" />
-					</xsl:call-template>
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">link-image</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="link-image">
-						<xsl:with-param name="url" select="'http://www.google.com'" />
-						<xsl:with-param name="image" select="'http://www.placehold.it/110x110.jpg'" />
-						<xsl:with-param name="titre" select="'John Doe'" />
-					</xsl:call-template>
-				</div>
-			</div>
 		</div>
 		
 		<div class="ui-group">
 			<h1 class="ui-group-title">Boutons</h1>
 			
-			<div class="ui-item">
-				<h2 class="ui-item-title">social-nav</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="social-nav" />
-				</div>
-			</div>
 			
-			<div class="ui-item">
-				<h2 class="ui-item-title">btn-close</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="btn-close" />
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">btn-print</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="btn-print">
-						<xsl:with-param name="url" select="'http://www.google.com'" />
-					</xsl:call-template>
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">btn-select-box</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="btn-select-box">
-						<xsl:with-param name="title" select="'Filtres'" />
-					</xsl:call-template>
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">btn-prix</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="btn-prix">
-						<xsl:with-param name="url" select="'http://www.google.com'" />
-						<xsl:with-param name="prix" select="'24.34'" />
-						<xsl:with-param name="fournisseur" select="'SAQ'" />
-						<xsl:with-param name="id" select="'1023547'" />
-					</xsl:call-template>
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">btn-prix small</h2>
-				<div class="ui-item-ctn">
-					<xsl:call-template name="btn-prix">
-						<xsl:with-param name="url" select="'http://www.google.com'" />
-						<xsl:with-param name="prix" select="'24.34'" />
-						<xsl:with-param name="fournisseur" select="'SAQ'" />
-						<xsl:with-param name="id" select="'1023547'" />
-						<xsl:with-param name="isSmall" select="'Yes'" />
-					</xsl:call-template>
-				</div>
-			</div>
 		</div>
 	</section>
 </xsl:template>
