@@ -2,13 +2,13 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="iframe-copyright-288">
-	<xsl:variable name="bg-color" select="'transparent'" />
-	<xsl:variable name="text-color" select="'FFF'" />
-	<xsl:variable name="font" select="'Arial, Helvetica, sans-serif'" />
-	<xsl:variable name="font-size" select="'0'" />
-	<xsl:variable name="w" select="'125'" />
-	<xsl:variable name="h" select="'28'" />
-	<xsl:variable name="logo" select="'/logo-w.png'" />
+	<xsl:param name="bg-color" select="'transparent'" />
+	<xsl:param name="text-color" select="'FFF'" />
+	<xsl:param name="font" select="'Arial, Helvetica, sans-serif'" />
+	<xsl:param name="font-size" select="'0'" />
+	<xsl:param name="w" select="'125'" />
+	<xsl:param name="h" select="'28'" />
+	<xsl:param name="logo" select="'/logo-w.png'" />
 
 	<xsl:variable name="url">
 		<xsl:text>http://watermark.deuxhuithuit.com/?</xsl:text>

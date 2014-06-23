@@ -26,6 +26,7 @@
 <xsl:import href="../lib/svg-icons.xsl" />
 <xsl:import href="../lib/svg-socials-icons.xsl" />
 <xsl:import href="../lib/pages-erreurs.xsl" />
+<xsl:import href="../lib/iframe-copyright-288.xsl" />
 
 <xsl:import href="../lib/prefetch.xsl" />
 
