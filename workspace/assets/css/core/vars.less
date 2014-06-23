@@ -4,18 +4,6 @@
 
 @golden-ratio: 1.61803398875;
 
-//====== COLORS ================
-@white: #ffffff;
-@black: #000000;
-
-@page-load-color: @white;
-
-@dark: @black;
-@light: @white;
-
-@text-lead-color: darken(@dark, 20%);
-@text-second-color: darken(@dark, 40%);
-@text-color: darken(@dark, 40%);
 
 //====== PATH ==================
 @css-path: '/workspace/assets/css/';
@@ -24,32 +12,15 @@
 @cur-path: '/workspace/assets/cur/';
 @svg-path: '@{css-path}svg/';
 
-//====== FONTS ==== 
-@initial-font-size: 1.4rem;
-@font-color: #000;
-@link-color: #7d7d7d;
-@link-color-hover: #000;
-@link-color-visited: @link-color;
-
-@font-headings: 'serif';
-@font-text: 'sans-serif';
-
-//====== SITE WIDTH ============
-@col: 10px;
-
-@site-large-width: 1440px;
-@site-medium-width: 1280px;
-@site-small-width: 1024px;
-@site-mobile-width: 640px;
 
 //====== Animation ============
-@duration-shortest: 50ms;
-@duration-shorter: 100ms;
-@duration-short: 150ms;
-@duration: 300ms;
-@duration-long: 400ms;
-@duration-longer: 500ms;
-@duration-longest: 750ms;
+@duration-shortest: 150ms;
+@duration-shorter: 200ms;
+@duration-short: 300ms;
+@duration: 500ms;
+@duration-long: 750ms;
+@duration-longer: 1000ms;
+@duration-longest: 1500ms;
 
 @visanim: visibility 0ms linear;
 
@@ -57,26 +28,106 @@
 @ease-in: ease-in;
 @ease-out: ease-out;
 
+//====== SITE WIDTH ============
+@col: 10px;
+
+@site-xxlarge-width: 		1920px;
+@site-xlarge-width: 		1600px;
+@site-large-width: 			1440px;
+@site-medium-width: 		1280px;
+@site-small-medium-width: 	1140px;
+@site-small-width: 			1024px;
+@site-xsmall-width: 		800px;
+@site-mobile-width: 		640px;
+
+
 //====== Medias Queries ============
-@webkitQuery: ~'-webkit-min-device-pixel-ratio: 1.5';
-@mobileQuery: ~'min-device-pixel-ratio: 1.0';
-@maxQuery: ~'max-width: 700px';
-@siteMediumWidthQuery: ~'max-width: 1280px';
-@orientationQuery: ~'orientation: portrait';
-@landscapeQuery: ~'orientation: landscape';
+@media-xxlarge: 	~'max-width: @{site-xxlarge-width}';
+@media-xlarge: 		~'max-width: @{site-xlarge-width}';
+@media-large: 		~'max-width: @{site-large-width}';
+@media-medium: 		~'max-width: @{site-medium-width}';
+@media-medium-min: 		~'min-width: @{site-medium-width}';
+@media-small-medium: ~'max-width: @{site-small-medium-width}';
+@media-small: 		~'max-width: @{site-small-width}';
+@media-xsmall: 		~'max-width: @{site-xsmall-width}';
+@media-mobile: 		~'max-width: @{site-mobile-width}';
+
+@media-portrait: 	~'orientation: portrait';
+@media-landscape:	~'orientation: landscape';
 
 @retinaRatioQuery: ~'-webkit-device-pixel-ratio: 2.0';
-@retinaResolutionQuery: ~'min-resolution: 192dpi';
-@retinaMaxQuery: @maxQuery;
 
-// ##### POUR IPHONES #####
-@media screen and (@retinaRatioQuery)
-and (@retinaMaxQuery) {
+
+
+#media-small-medium-width-and-less (@rules) {
+	@media screen and (@media-small-medium) {
+		@rules();
+	}
+}
+
+#media-small-width-and-less (@rules) {
+	@media screen and (@media-small) {
+		@rules();
+	}
+}
+
+#media-medium-to-large-width (@rules) {
+	@media screen and (@media-medium-min) and (@media-large) {
+		@rules();
+	}
+}
+
+//#### Pour LowDpi #####
+#media-default-dpi (@rules) {
+	@media screen and (~'max-resolution: 96dpi') {
+		html:not(.mobile) & {
+			@rules();
+		}
+	}
+}
+
+#media-xsmall(@xsmall) {
+	@media screen and (@media-xsmall) {
+		@rules();
+	}
+}
+
+#media-mobile(@rules) {
+	html.mobile &, &.mobile{
+		@media screen and (@media-small) {
+			@rules();
+		}
+	}
+}
+
+#media-not-mobile(@rules) {
+	html:not(.mobile) & {
+		@rules();
+	}
+}
+
+//##### Pour Phone #####
+#media-phone(@rules) {
+	
+	@media screen and (@media-mobile) {
+		html.mobile.phone &, &.mobile.phone {
+			@rules();
+		}
+	}
 	
 }
 
-// ##### POUR AUTRES #####
-@media screen and (@maxQuery),
-(@orientationQuery) {
-	
+#media-not-phone(@rules) {
+		html:not(.phone) & {
+			@rules();
+		}
 }
+
+//##### Pour Iphone Retina #####
+#media-phone-retina (@rules) {
+	@media screen and (@retinaRatioQuery)
+	and (@media-mobile) {
+		@rules();
+	}
+}
+

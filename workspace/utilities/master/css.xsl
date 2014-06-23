@@ -4,9 +4,11 @@
 
 
 <xsl:template name="master-css">
+	<xsl:param name="less-file" select="'main'" />
+	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">
-			<link rel="stylesheet/less" type="text/css" href="{$css-path}main.less?v={$version}" />
+			<link rel="stylesheet/less" type="text/css" href="{$css-path}{$less-file}.less?v={$version}" />
 			<script>less = { env: 'development' }; </script>
 			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
 			<xsl:if test="count(/data/params/url-watch) != 0">
