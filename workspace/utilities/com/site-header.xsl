@@ -15,7 +15,7 @@
 				<!-- Logo -->
 				
 				<!-- Nom du site -->
-				<span><xsl:value-of select="$metas/site-titre/item[@lang=$url-language]" /></span>
+				<span><xsl:value-of select="$config/site-titre/item[@lang=$url-language]" /></span>
 			</h2>
 		</a>
 	</header>

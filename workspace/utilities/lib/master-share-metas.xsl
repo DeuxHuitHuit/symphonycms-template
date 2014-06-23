@@ -9,6 +9,7 @@
 	<xsl:call-template name="html-metas" />
 	<xsl:call-template name="open-graph" />
 	<xsl:call-template name="twitter-card" />
+	<xsl:call-template name="fb-app-id" />
 </xsl:template>
 
 <xsl:template name="html-metas">
@@ -118,6 +119,14 @@
 	
 	<xsl:if test="string-length($description) != 0">
 		<meta property="og:description" content="{$description}" />
+	</xsl:if>
+</xsl:template>
+
+<xsl:template name="fb-app-id">
+	<xsl:param name="app-id" select="$config/facebook-page-id" />
+	
+	<xsl:if test="string-length($app-id) != 0">
+		<meta property="fb:app_id" content="{$app-id}" />
 	</xsl:if>
 </xsl:template>
 
