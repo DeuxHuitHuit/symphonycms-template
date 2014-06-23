@@ -661,9 +661,10 @@ INSERT INTO `sym_fields_textbox` (`id`, `field_id`, `column_length`, `text_size`
 --
 
 INSERT INTO `sym_pages` (`id`, `parent`, `title`, `handle`, `path`, `params`, `data_sources`, `events`, `sortorder`, `plh_t-en`, `plh_h-en`, `plh_t-fr`, `plh_h-fr`) VALUES
-(1, NULL, 'Index', 'index', NULL, NULL, 'pages,plh_page,fl_languages,menu,site_config', 'flang_redirect,login', 1, 'Index', 'index', 'Index', 'index'),
-(2, NULL, '403', '403', NULL, NULL, 'pages,plh_page,fl_languages,pages_erreurs,menu,site_config', 'flang_redirect,login', 2, '403', '403', '403', '403'),
-(3, NULL, '404', '404', NULL, NULL, 'pages,plh_page,fl_languages,pages_erreurs,menu,site_config', 'flang_redirect,login', 3, '404', '404', '404', '404');
+(1, NULL, 'Index', 'index', NULL, NULL,           'javascript,javascript_libs,menu,package,pages,plh_page,site_config', 'flang_redirect,login', 1, 'Index', 'index', 'Index', 'index'),
+(2, NULL, '403', '403', NULL, NULL,               'javascript,javascript_libs,menu,package,pages,pages_erreurs,plh_page,site_config', 'flang_redirect,login', 2, '403', '403', '403', '403'),
+(3, NULL, '404', '404', NULL, NULL,               'javascript,javascript_libs,menu,package,pages,pages_erreurs,plh_page,site_config', 'flang_redirect,login', 3, '404', '404', '404', '404'),
+(4, NULL, 'UI-toolkit', 'ui-toolkit', NULL, NULL, 'javascript,javascript_libs,menu,package,pages,plh_page,site_config', 'flang_redirect,login', 4, 'UI-toolkit', 'ui-toolkit', 'UI-toolkit', 'ui-toolkit')
 
 -- --------------------------------------------------------
 
