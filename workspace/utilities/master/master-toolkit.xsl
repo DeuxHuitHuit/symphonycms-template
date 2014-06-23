@@ -59,9 +59,7 @@
 			
 			<!-- Master css -->
 			<xsl:call-template name="master-css" >
-				<xsl:with-param name="extra-less" >
-					<link rel="stylesheet/less" type="text/css" href="{$css-path}ui-toolkit-style.less?v={$version}" />
-				</xsl:with-param>
+				<xsl:with-param name="less-file" select="'toolkit'" />
 			</xsl:call-template>
 			
 		</head>

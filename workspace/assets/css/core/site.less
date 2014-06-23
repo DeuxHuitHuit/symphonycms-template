@@ -5,42 +5,37 @@
 //=========================
 // = SITE WIDE SETTINGS
 //=========================
+@site-min-width: 700px;
+
+html, body {
+	height: 100%;
+	background-color: @bg-color;
+	
+	//Default is font-size: 10px;
+	
+	@media screen and (@media-large) {
+		font-size: 9px;
+	}
+	
+	@media screen and (@media-medium) {
+		font-size: 8px;
+	}
+	
+	#media-mobile ({
+		font-size: 7px;
+	});
+	
+	#media-phone ({
+		font-size: 5px;
+	});
+}
+
 #site {
 	position: relative;
-	height: 100%;
-	
-	// TODO: change
-	font-size: 1.6rem;
-	line-height: 2rem;
 }
 
-p, .p {
-	margin: @col 0;
-	padding: 0;
-	#font-size(@initial-font-size);
-	color: @font-color;
-}
-
-p:first-child {
-	margin-top: 0;
-}
-
-a {
-	color: @link-color;
-	
-	&:visited {
-		color: @link-color-visited;
-	}
-	
-	&:hover, &:active {
-		color: darken(@link-color, 30%);
-	}
-	
-	&:focus {
-		#no-outline;
-	}
-	
-	img {
-		border: none;
+#site-pages {
+	.page {
+		#relative(10);
 	}
 }
