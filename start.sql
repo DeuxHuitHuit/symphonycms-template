@@ -528,6 +528,26 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_22` (
 
 -- --------------------------------------------------------
 
+--
+-- Structure de la table `sym_entries_data_23`
+--
+
+CREATE TABLE IF NOT EXISTS `sym_entries_data_23` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(11) unsigned NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `value_formatted` text COLLATE utf8_unicode_ci,
+  `word_count` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
+  KEY `handle` (`handle`),
+  FULLTEXT KEY `value` (`value`),
+  FULLTEXT KEY `value_formatted` (`value_formatted`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
 
 --
 -- Contenu de la table `sym_fields`
@@ -554,7 +574,8 @@ INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section
 (20, 'Page', 'page', 'pages', 3, 'yes', 1, 'sidebar', 'yes'),
 (19, 'Texte', 'texte', 'multilingual_textbox', 3, 'no', 2, 'main', 'no'),
 (21, 'Vimeo url', 'vimeo-url', 'textbox', 1, 'no', 8, 'sidebar', 'no'),
-(22, 'Instagram url', 'instagram-url', 'textbox', 1, 'no', 9, 'sidebar', 'no');
+(22, 'Instagram url', 'instagram-url', 'textbox', 1, 'no', 9, 'sidebar', 'no'),
+(23, 'Facebook page id', 'facebook-page-id', 'textbox', 1, 'no', 7, 'sidebar', 'no');
 
 -- --------------------------------------------------------
 
