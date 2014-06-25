@@ -1,0 +1,51 @@
+/**
+ * 	Base typo
+ */
+
+@nb-cols: 12;
+@max-deepness: 2;
+@gutter-width: 1.6rem;
+
+.col-ctn {
+	#relative();
+	
+	// recursive definition
+	.generate-columns(@n, @i: 1, @d: 1) when (@i > 0) and (@i <= @n) and (@d <= @max-deepness) {
+		// col definition
+		> .col-@{i} {
+			width: (@i * 100% / @n);
+			
+			/*#media-mobile-width({
+				width: 100%;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			});*/
+			
+			#ib;
+			#box-sizing();
+			
+			// deepness
+			.generate-columns(@i, 1, (@d + 1));
+		}
+		
+		// recursive call
+		.generate-columns(@n, (@i + 1), @d);
+	}
+	
+	// first call
+	.generate-columns(@nb-cols);
+	
+	// spacing
+	.gutter-left {
+		padding-left: @gutter-width;
+	}
+	.gutter-right {
+		padding-right: @gutter-width;
+	}
+	.margin-top {
+		margin-top: @gutter-width;
+	}
+	.margin-bottom {
+		margin-top: @gutter-width;
+	}
+}
