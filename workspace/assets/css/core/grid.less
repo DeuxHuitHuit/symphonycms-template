@@ -6,46 +6,126 @@
 @max-deepness: 2;
 @gutter-width: 1.6rem;
 
+
+@screen-ph: 320px;
+@screen-xs: 768px;
+@screen-sm: 1024px;
+@screen-md: 1280px;
+@screen-lg: 1440px;
+@screen-xl: 1600px;
+
+// spacing
+.gutter-left {
+	padding-left: @gutter-width;
+	#box-sizing();
+}
+.gutter-right {
+	padding-right: @gutter-width;
+	#box-sizing();
+}
+.margin-top {
+	margin-top: @gutter-width;
+	#box-sizing();
+}
+.margin-bottom {
+	margin-top: @gutter-width;
+	#box-sizing();
+}
+
+// general
 .col-ctn {
 	#relative();
+}
+
+.col {
+	#ib;
+}
+
+// not responsive
+#generate-ctn();
+
+// recursive definitions
+#generate-ctn(@n: @nb-cols, @i: 1) when (@i > 0) and (@i <= @n) {
+	.ctn-@{i} {
+		// cols
+		#generate-cols(@i);
+	}
 	
-	// recursive definition
-	.generate-columns(@n, @i: 1, @d: 1) when (@i > 0) and (@i <= @n) and (@d <= @max-deepness) {
-		// col definition
-		> .col-@{i} {
-			width: (@i * 100% / @n);
-			
-			/*#media-mobile-width({
-				width: 100%;
-				padding-left: 0 !important;
-				padding-right: 0 !important;
-			});*/
-			
-			#ib;
-			#box-sizing();
-			
-			// deepness
-			.generate-columns(@i, 1, (@d + 1));
-		}
+	// recursion
+	#generate-ctn(@n, (@i + 1));
+}
+
+#generate-cols(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
+	// col definition
+	> .col-@{i} {
+		width: percentage(@i / @n);
+		#ib;
+	}
+	
+	// recursion
+	#generate-cols(@n, (@i + 1));
+}
+
+#mq-min-width(@min-width, @rules) {
+	@media screen and (min-width: @min-width) {
+		@rules();
+	}
+}
+#mq-max-width(@max-width, @rules) {
+	@media screen and (max-width: @max-width) {
+		@rules();
+	}
+}
+#mq-min-max-width(@min-width, @max-width, @rules) {
+	@media screen and (min-width: @min-width) and (max-width: @max-width) {
+		@rules();
+	}
+}
+
+
+// responsive
+#mq-max-width(@screen-ph, { #generate-resp-ctn(ph); });
+#mq-min-max-width(@screen-ph, @screen-xs, { #generate-resp-ctn(xs); });
+#mq-min-max-width(@screen-xs, @screen-sm, { #generate-resp-ctn(sm); });
+#mq-min-max-width(@screen-sm, @screen-md, { #generate-resp-ctn(md); });
+#mq-min-max-width(@screen-md, @screen-lg, { #generate-resp-ctn(lg); });
+#mq-min-width(@screen-xl, { #generate-resp-ctn(xl); });
+
+
+// recursive definitions
+#generate-resp-ctn(@prefix, @n: @nb-cols, @i: 1) when (@i > 0) and (@i <= @n) {
+	.ctn-@{prefix}-@{i} {
+		// cols
+		#generate-cols(@i);
 		
-		// recursive call
-		.generate-columns(@n, (@i + 1), @d);
+		// cols, resp
+		#generate-resp-cols-in(@prefix, @i);
+		#generate-resp-cols-ex(@prefix, @n, @i);
 	}
 	
-	// first call
-	.generate-columns(@nb-cols);
+	// recursion
+	#generate-resp-ctn(@prefix, @n, (@i + 1));
+}
+
+// included col
+#generate-resp-cols-in(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
+	// col definition
+	> .col-@{prefix}-@{i} {
+		width: percentage(@i / @n);
+		#ib;
+	}
 	
-	// spacing
-	.gutter-left {
-		padding-left: @gutter-width;
+	// recursion
+	#generate-resp-cols-in(@prefix, @i, (@i + 1));
+	
+}
+// excluded cols
+#generate-resp-cols-ex(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
+	// col definition
+	> .col-@{i}, > .col-@{prefix}-@{i} {
+		width: 100%;
 	}
-	.gutter-right {
-		padding-right: @gutter-width;
-	}
-	.margin-top {
-		margin-top: @gutter-width;
-	}
-	.margin-bottom {
-		margin-top: @gutter-width;
-	}
+	
+	// recursion
+	#generate-resp-cols-ex(@prefix, @n, (@i + 1));
 }
