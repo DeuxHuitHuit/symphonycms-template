@@ -105,15 +105,34 @@
 #generate-resp-ctn(@prefix, @n) {
 	.ctn-@{prefix}-@{n} {
 		// cols
-		#generate-cols(@n);
+		#generate-cols-in(@n);
+		#generate-cols-ex(@nb-cols, @n);
 		
 		// cols, resp
 		#generate-resp-cols-in(@prefix, @n);
 		#generate-resp-cols-ex(@prefix, @nb-cols, @n);
 	}
 	
+	// standard
+	#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n)  {
+		// col definition
+		> .col-@{i} {
+			width: percentage(@i / @n);
+		}
+		// recursion
+		#generate-cols-in(@n, (@i + 1));
+	}
+	#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
+		// col definition
+		> .col-@{i} {
+			width: 100%;
+		}
+		// recursion
+		#generate-cols-ex(@n, (@i + 1));
+	}
+	
 	// included col
-	#generate-resp-cols-in(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
+	#generate-resp-cols-in(@prefix, @n, @i: 1) when (@i > 0) and (@i < @n) {
 		// col definition
 		> .col-@{prefix}-@{i} {
 			width: percentage(@i / @n);
@@ -124,12 +143,11 @@
 		
 		// recursion
 		#generate-resp-cols-in(@prefix, @n, (@i + 1));
-		
 	}
 	// excluded cols
 	#generate-resp-cols-ex(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
 		// col definition
-		> .col-@{i}, > .col-@{prefix}-@{i} {
+		> .col-@{prefix}-@{i} {
 			width: 100%;
 		}
 		
