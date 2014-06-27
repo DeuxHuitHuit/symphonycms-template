@@ -33,23 +33,24 @@
 }
 
 // general
-.col-ctn {
-	#relative();
+.ctn, *[class^=ctn-] {
+	position: relative;
+	display: block;
 }
 
-.col {
+.col, *[class^=col-] {
 	#ib;
 }
 
 // default grid
 #generate-grid(@nb-cols);
-#generate-grid(8);
-#generate-grid(6);
+#generate-grid(@nb-cols - 4);
+#generate-grid(@nb-cols / 2);
 #generate-grid(2);
 #generate-grid(1);
 
 // generator
-#generate-grid(@cols) {
+#generate-grid(@cols) when (@cols > 0) {
 	// not responsive
 	#generate-ctn(@cols);
 	// fully responsive
@@ -72,7 +73,9 @@
 		// col definition
 		> .col-@{i} {
 			width: percentage(@i / @n);
-			#ib;
+		}
+		> .col-offset-@{i} {
+			margin-left: percentage(@i / @n);
 		}
 		
 		// recursion
@@ -114,11 +117,13 @@
 		// col definition
 		> .col-@{prefix}-@{i} {
 			width: percentage(@i / @n);
-			#ib;
+		}
+		> .col-offset-@{prefix}-@{i} {
+			margin-left: percentage(@i / @n);
 		}
 		
 		// recursion
-		#generate-resp-cols-in(@prefix, @i, (@i + 1));
+		#generate-resp-cols-in(@prefix, @n, (@i + 1));
 		
 	}
 	// excluded cols
