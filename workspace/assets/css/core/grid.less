@@ -3,7 +3,6 @@
  */
 
 @nb-cols: 12;
-@max-deepness: 2;
 @gutter-width: 1.6rem;
 
 
@@ -37,12 +36,11 @@
 	position: relative;
 	display: block;
 }
-
 .col, *[class^=col-] {
 	#ib;
 }
 
-// default grid
+// default grids
 #generate-grid(@nb-cols);
 #generate-grid(@nb-cols - 4);
 #generate-grid(@nb-cols / 2);
