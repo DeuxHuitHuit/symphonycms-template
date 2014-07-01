@@ -17,6 +17,10 @@
 		
 		protected abstract function decode(XMLElement &$result, array $json);
 		
+		public function getSource() {
+			return basename($this->getJSONFilePath());
+		}
+		
 		public function execute(array &$param_pool = null) {
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 			
@@ -24,7 +28,7 @@
 				$filePath = $this->getJSONFilePath();
 				
 				if (file_exists($filePath)) {
-					$fileString = file_get_contents($filePath);
+					$fileString = @file_get_contents($filePath);
 					
 					$json = @json_decode($fileString, true);
 					

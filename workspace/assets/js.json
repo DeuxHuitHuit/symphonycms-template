@@ -1,24 +1,44 @@
-[
-	"modules/links.js",
-	"modules/url-changer.js",
-	
-	"modules/title-updater.js",
-	"modules/alt-language-link-updater.js",
-	"modules/share-this.js",
-	"modules/format-twitter.js",
-	"modules/blank-target-link.js",
-	"modules/oEmbed.js",
-	"modules/transition-animation.js",
-	"modules/page-load.js",
-	"modules/window-notifier.js",
-	
-	"transitions/default-transition.js",
-	
-	"utils/global.js",
-	"utils/css3-generator.js",
-	"utils/disable.js",
-	"utils/ga.js",
-	"utils/jquery.transitionend.js",
-	
-	"pages/default-page.js"
-]
+{
+	"sources": [
+		"modules/links.js",
+		"modules/url-changer.js",
+		
+		"modules/title-updater.js",
+		"modules/alt-language-link-updater.js",
+		"modules/share-this.js",
+		"modules/format-twitter.js",
+		"modules/blank-target-link.js",
+		"modules/oEmbed.js",
+		"modules/transition-animation.js",
+		"modules/page-load.js",
+		"modules/window-notifier.js",
+		
+		"transitions/default-transition.js",
+		
+		"utils/global.js",
+		"utils/css3-generator.js",
+		"utils/disable.js",
+		"utils/ga.js",
+		"utils/jquery.transitionend.js",
+		
+		"pages/default-page.js"
+	],
+	"libs": [
+		"lib/jquery.sizing.min.js",
+		"lib/jquery.jit-image.min.js"
+	],
+	"dev": [
+		"dev/dev.js"
+	],
+	"cdn-before": [
+		"//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js",
+		"//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js",
+		"//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js",
+		"//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js",
+		"//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.11/jquery.scrollTo.min.js"
+	],
+	"cdn-after": [
+		"//www.youtube.com/player_api",
+		"//a.vimeocdn.com/js/froogaloop2.min.js"
+	]
+}

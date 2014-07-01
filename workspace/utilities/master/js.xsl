@@ -5,8 +5,7 @@
 	<xsl:param name="extra-js" />
 	
 	<!-- Libs -->
-	<xsl:apply-templates select="/data/javascript-libs/file" />
-	
+	<xsl:apply-templates select="/data/javascript/cdn-before/file" mode="cdn" />
 	
 	<!-- IE JS -->
 	<xsl:call-template name="ie-cc">
@@ -18,6 +17,8 @@
 	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">
+			<!-- Local libs -->
+			<xsl:apply-templates select="/data/javascript/libs/file" mode="local" />
 			<!-- FX -->
 			<script src="{$js-path}core/framework.js?v={$version}"></script>
 			<script>
@@ -26,7 +27,9 @@
 				<xsl:text>})();</xsl:text>
 			</script>
 			
-			<xsl:apply-templates select="/data/javascript/file" />
+			<!-- Local sources -->
+			<xsl:apply-templates select="/data/javascript/sources/file" mode="local" />
+			<xsl:apply-templates select="/data/javascript/dev/file" mode="local" />
 		</xsl:when>
 		<xsl:otherwise>
 			<script src="{$js-path}core/framework.min.js?v={$version}"></script>
@@ -43,13 +46,16 @@
 		<xsl:text>})();</xsl:text>
 	</script>
 	
+	<!-- Libs -->
+	<xsl:apply-templates select="/data/javascript/cdn-after/file" mode="cdn" />
+	
 </xsl:template>
 
-<xsl:template match="javascript/file">
+<xsl:template match="javascript/*/file" mode="local">
 	<script src="{$js-path}{.}?v={$version}"></script>
 </xsl:template>
 
-<xsl:template match="javascript-libs/file">
+<xsl:template match="javascript/*/file" mode="cdn">
 	<script src="{.}"></script>
 </xsl:template>
 

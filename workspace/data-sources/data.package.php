@@ -23,10 +23,6 @@
 			);
 		}
 
-		public function getSource() {
-			return 'package.json';
-		}
-
 		protected function getJSONFilePath() {
 			return WORKSPACE . '/assets/package.json';
 		}

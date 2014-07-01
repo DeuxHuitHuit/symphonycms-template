@@ -1,3 +1,9 @@
+/**
+ * @author Deux Huit Huit
+ *
+ * Google Analytics wrapper
+ */
+
 (function ($) {
 	'use strict';
 	

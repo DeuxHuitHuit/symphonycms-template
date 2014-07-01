@@ -23,10 +23,6 @@
 			);
 		}
 
-		public function getSource() {
-			return 'js.json';
-		}
-
 		protected function getJSONFilePath() {
 			return WORKSPACE . '/assets/js.json';
 		}
@@ -34,8 +30,12 @@
 		protected function decode(XMLElement &$result, array $json) {
 			$result = new XMLElement($this->dsParamROOTELEMENT);
 			
-			foreach ($json as $index => $file) {
-				$result->appendChild(new XMLElement('file', $file));
+			foreach ($json as $group => $files) {
+				$xmlGroup = new XMLElement($group);
+				foreach ($files as $index => $file) {
+					$xmlGroup->appendChild(new XMLElement('file', $file));
+				}
+				$result->appendChild($xmlGroup);
 			}
 			
 			return $result;
