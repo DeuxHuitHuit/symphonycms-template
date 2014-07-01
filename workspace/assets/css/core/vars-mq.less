@@ -10,17 +10,17 @@
 
 
 //====== Medias Queries ============
-#mq-min-width(@min-width, @rules) {
+#mq-min-width (@min-width, @rules) {
 	@media screen and (min-width: @min-width) {
 		@rules();
 	}
 }
-#mq-max-width(@max-width, @rules) {
+#mq-max-width (@max-width, @rules) {
 	@media screen and (max-width: @max-width) {
 		@rules();
 	}
 }
-#mq-min-max-width(@min-width, @max-width, @rules) {
+#mq-min-max-width (@min-width, @max-width, @rules) {
 	@media screen and (min-width: @min-width) and (max-width: @max-width) {
 		@rules();
 	}
