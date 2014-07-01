@@ -42,7 +42,7 @@
 					'name' => 'Nicolas Brassard',
 					'website' => 'http://pm.288dev.com',
 					'email' => 'n@deuxhuithuit.com'),
-				'version' => 'Symphony 2.3.6',
+				'version' => 'Symphony 2.4.x',
 				'release-date' => '2014-03-04T16:36:22+00:00'
 			);
 		}

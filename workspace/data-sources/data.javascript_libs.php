@@ -18,7 +18,7 @@
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhutihuit.com',
 					'email' => 'open-source@deuxhuithuit.com'),
-				'version' => 'Symphony 2.4.0',
+				'version' => 'Symphony 2.4.x',
 				'release-date' => '2014-04-16T17:08:30+00:00'
 			);
 		}
