@@ -16,15 +16,16 @@
   ],
   "dependencies": {
     "grunt": "~0.4.4",
-    "grunt-complexity": "~0.1.6",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-contrib-concat": "~0.4.0",
-    "grunt-contrib-less": "~0.11.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-clean": "~0.5.0",
     "grunt-banner": "~0.2.2",
+    "grunt-complexity": "~0.1.6",
+    "grunt-contrib-analyze-css": "^0.1.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1",
     "matchdep": "~0.3.0"
   }
 }

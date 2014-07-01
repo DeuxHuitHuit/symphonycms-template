@@ -162,6 +162,22 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		
+		analyzecss: {
+			prod: {
+				sources: [
+					'css/main.min.css'
+				]
+			},
+			options: {
+				error: 0.72,
+				outputMetrics: 'warn',
+				thresholds: {
+					
+				}
+			}
+		},
+		
 		clean: {
 			copy: {
 				options: {
@@ -246,7 +262,7 @@ module.exports = function (grunt) {
 		// Default tasks.
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat', 'uglify']);
-		grunt.registerTask('css',     ['less', 'usebanner']);
+		grunt.registerTask('css',     ['less', 'usebanner', 'analyzecss']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
