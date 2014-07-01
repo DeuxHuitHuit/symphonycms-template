@@ -16,7 +16,7 @@
 		
 	global.craf = window.cancelAnimationFrame || window.webkitCancelRequestAnimationFrame ||
 				window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame ||
-				window.msCancelRequestAnimationFrame  || window.clearTimeout,
+				window.msCancelRequestAnimationFrame  || window.clearTimeout;
 	
 	global.preventNextClick = function (e) {
 		var t = $(this);

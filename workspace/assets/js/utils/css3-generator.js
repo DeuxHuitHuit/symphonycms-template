@@ -10,17 +10,24 @@
 	
 	'use strict';
 	
-	//var VENDOR_PREFIXES = ['', '-webkit-', '-moz-', '-o-', '-ms-'];
-	
 	/* jshint ignore:start */
-	// from https://github.com/DeuxHuitHuit/jQuery-Animate-Enhanced/blob/master/scripts/src/jquery.animate-enhanced.js
+	DEBUG;// @from https://github.com/DeuxHuitHuit/jQuery-Animate-Enhanced/blob/master/scripts/src/jquery.animate-enhanced.js
 	/* jshint ignore:end */
-	var HAS_3D =  ('WebKitCSSMatrix' in window && 'm11' in new window.WebKitCSSMatrix());
+	
+	var HAS_3D = ('WebKitCSSMatrix' in window && 'm11' in new window.WebKitCSSMatrix());
+	
+	var intValue = function (p) {
+		return ~~(!p || $.isNumeric(p) ? (p || 0) : p);
+	};
+	
+	var pixelValue = function (p) {
+		return !p || $.isNumeric(p) ? ~~(p || 0) + 'px' : p;
+	};
 	
 	var _getTranslation = function (x, y, z) {
-		x = !x || $.isNumeric(x) ? (x || 0) + 'px' : x;
-		y = !y || $.isNumeric(y) ? (y || 0) + 'px' : y;
-		z = !z || $.isNumeric(z) ? (z || 0) + 'px' : z;
+		x = pixelValue(x);
+		y = pixelValue(y);
+		z = pixelValue(z);
 		
 		var prefix = (HAS_3D ? '3d(' : '(');
 		var suffix = (HAS_3D ? ',' + z + ')' : ')');
@@ -29,9 +36,9 @@
 	};
 	
 	var _getRotation = function (x, y, z, theta) {
-		x = !x || $.isNumeric(x) ? (x || 0) : x;
-		y = !y || $.isNumeric(y) ? (y || 0) : y;
-		z = !z || $.isNumeric(z) ? (z || 0) : z;
+		x = intValue(x);
+		y = intValue(y);
+		z = intValue(z);
 		theta = !theta || $.isNumeric(theta) ? (theta || 0) + 'deg' : theta;
 		
 		var prefix = (HAS_3D ? '3d('  + x + ',' + y + ',' + z + ',' : 'Z(');

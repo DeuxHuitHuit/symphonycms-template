@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 	
 	var LESS_FILE = 'css/main.less';
 	
-	var SRC_FILES = grunt.file.readJSON('./js.json').map(function (f) {
+	var SRC_FILES = grunt.file.readJSON('./js.json').sources.map(function (f) {
 		return './js/' + f;
 	});
 	
