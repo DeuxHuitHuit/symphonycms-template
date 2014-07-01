@@ -32,7 +32,7 @@
 	</xsl:variable>
 	
 	<xsl:variable name="selected"> 
-		<xsl:if test="selected-on-sub-page = 'yes'">
+		<xsl:if test="$selected-on-sub-page = 'yes'">
 			<xsl:if test="count(/data/pages//page [@id = $page/@id]//page[@id = $current-page-id]) != 0">
 				<xsl:text>selected</xsl:text>
 			</xsl:if>
