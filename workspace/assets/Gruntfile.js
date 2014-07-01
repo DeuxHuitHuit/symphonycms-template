@@ -48,8 +48,8 @@ module.exports = function (grunt) {
 				dest: 'js/<%= pkg.name %>.js'
 			},
 			libs: {
-				src: ['js/<%= pkg.name %>.min.js'].concat(LIB_FILES),
-				dest: '<%= concat.libs.src[0] %>'
+				src: LIB_FILES.concat(['js/<%= pkg.name %>.min.js']),
+				dest: '<%= concat.libs.src[concat.libs.src.length - 1] %>'
 			}
 		},
 		
