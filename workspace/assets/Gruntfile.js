@@ -11,9 +11,15 @@ module.exports = function (grunt) {
 	
 	var LESS_FILE = 'css/main.less';
 	
-	var SRC_FILES = grunt.file.readJSON('./js.json').sources.map(function (f) {
+	var JSON_JS_FILE = grunt.file.readJSON('./js.json');
+	
+	var fixJsFilePath = function (f) {
 		return './js/' + f;
-	});
+	};
+	
+	var SRC_FILES = JSON_JS_FILE.sources.map(fixJsFilePath);
+	
+	var LIB_FILES = JSON_JS_FILE.libs.map(fixJsFilePath);
 	
 	var TEST_FILES = ['js/tests/*.js'];
 	
@@ -35,18 +41,21 @@ module.exports = function (grunt) {
 		},
 		concat: {
 			options: {
-				process: true,
-				banner: '<%= meta.banner %>'
+				process: true
 			},
-			dist: {
+			sources: {
 				src: SRC_FILES,
 				dest: 'js/<%= pkg.name %>.js'
+			},
+			libs: {
+				src: ['js/<%= pkg.name %>.min.js'].concat(LIB_FILES),
+				dest: '<%= concat.libs.src[0] %>'
 			}
 		},
 		
 		watch: {
 			files: SRC_FILES.concat(GRUNT_FILE),
-			tasks: ['dev']
+			tasks: ['dev', 'css']
 		},
 		
 		jshint: {
@@ -99,7 +108,7 @@ module.exports = function (grunt) {
 		uglify: {
 			prod: {
 				files: {
-					'js/<%= pkg.name %>.min.js': '<%= concat.dist.dest %>' 
+					'js/<%= pkg.name %>.min.js': '<%= concat.sources.dest %>' 
 				}
 			},
 			options: {
@@ -123,8 +132,6 @@ module.exports = function (grunt) {
 			development: {
 				files: {
 					'css/main.css': LESS_FILE
-					//'css/main.mobile.css': lessMobileFile,
-					//'css/ie9.css': 'css/ie9.less'
 				}
 			},
 			production: {
@@ -261,7 +268,7 @@ module.exports = function (grunt) {
 
 		// Default tasks.
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
-		grunt.registerTask('js',      ['concat', 'uglify']);
+		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
 		grunt.registerTask('css',     ['less', 'usebanner', 'analyzecss']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
