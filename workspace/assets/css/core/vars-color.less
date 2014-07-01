@@ -2,9 +2,20 @@
 @white: #ffffff;
 @black: #000000;
 
-@page-load-color: @white;
 
+//====== SYMBOLIC ================
+@dark: @black;
+@light: @white;
+
+@page-load-color: @dark;
+
+
+//====== FONTS ================
 @font-color: @dark;
 @link-color: @dark;
-@link-color-hover: @blue;
+@link-color-hover: lighten(@dark, 20%);
 @link-color-visited: @link-color;
+
+
+//====== BACKGROUND ================
+@bg-color: @light;

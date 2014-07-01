@@ -38,7 +38,7 @@
 <xsl:template match="/">
 
 	<!-- Doctype -->
-	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!DOCTYPE html public "✰"<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!DOCTYPE html<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	
 	<!-- Html -->
 	<html lang="{$url-language}">
@@ -71,12 +71,6 @@
 			
 		</div>
 	</html>
-
-	<!-- Comment for debug -->
-	<xsl:comment>
-		<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
-	</xsl:comment>
-	
 </xsl:template>
 
 </xsl:stylesheet>

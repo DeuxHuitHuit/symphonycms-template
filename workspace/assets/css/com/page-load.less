@@ -8,7 +8,7 @@
 	background-color: @page-load-color;
 	
 	.not-visible;
-	#opacity(0);
+	opacity: 0;
 	
 	@load-duration: 1200ms;
 	@load-duration-fast: 600ms;
@@ -23,7 +23,7 @@
 	&.show {
 		.visible;
 		#transition(~'@{transition}, @{visanim} 0ms');
-		#opacity(1);
+		opacity: 1;
 	}
 	
 	&.end {

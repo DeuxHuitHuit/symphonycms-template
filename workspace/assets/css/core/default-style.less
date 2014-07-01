@@ -2,51 +2,22 @@
  * @author DeuxHuitHuit
  *****************************/
 
-@paragraphe-margin: 10px 0;
-@paragraphe-font: '';
-
 
 h1, h2, h3, h4, h5, h6 {
-	color: @font-color;
-	font-weight: normal;
-	text-transform: uppercase;
-	font-family: @heading-font;
+	margin: @gutter-width 0;
 	
 	&:first-child {
 		margin-top: 0;
 	}
-}
-
-h1, .h1 {
-	.title-large;
-}
-
-h2, .h2 {
-	.title-medium;
-}
-
-h3, .h3 {
-	.title-medium;
-}
-
-h4, .h4 {
-	.title-normal;
-}
-
-h5, .h5 {
-	.title-small;
-}
-
-h6, .h6 {
-	.title-xsmall;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 p, .p {
-	font-family: @text-font;
-	.text-medium;
-	color: @font-color;
 	padding: 0;
-	margin: @paragraphe-margin;
+	margin: @gutter-width 0;
 	
 	&:first-child {
 		margin-top: 0;
@@ -59,25 +30,13 @@ p, .p {
 
 a {
 	margin: 0;
-	color: @link-color;
-	font-family: @text-font;
-	.text-medium;
 	padding: 3px 0;
 	border-bottom: 1px solid @link-color-hover;
 	#transition(~'border-bottom-color @{duration-short} @{ease}, color @{duration-short} @{ease}');
 	text-decoration: none;
-	font-weight: bold;
-	
-	&:visited {
-		color: @link-color-visited;
-	}
 	
 	&:focus {
 		#no-outline;
-	}
-	
-	html:not(.mobile) &:hover, &:active {
-		color: @link-color-hover;
 	}
 	
 	img {
@@ -111,10 +70,10 @@ time {
 }
 
 blockquote {
+	
 }
 
 table {
-	
 	tr {
 		
 		th, td {

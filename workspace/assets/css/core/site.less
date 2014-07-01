@@ -5,33 +5,16 @@
 //=========================
 // = SITE WIDE SETTINGS
 //=========================
-@site-min-width: 700px;
 
 html, body {
-	height: 100%;
+	min-height: 100%;
 	background-color: @bg-color;
-	
-	//Default is font-size: 10px;
-	
-	@media screen and (@media-large) {
-		font-size: 9px;
-	}
-	
-	@media screen and (@media-medium) {
-		font-size: 8px;
-	}
-	
-	#media-mobile ({
-		font-size: 7px;
-	});
-	
-	#media-phone ({
-		font-size: 5px;
-	});
 }
 
 #site {
 	position: relative;
+	max-width: @screen-max;
+	margin: 0 auto;
 }
 
 #site-pages {

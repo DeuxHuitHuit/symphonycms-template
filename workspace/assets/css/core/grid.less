@@ -1,17 +1,9 @@
 /**
- * 	Base typo
+ * Grid System
  */
 
 @nb-cols: 12;
 @gutter-width: 1.6rem;
-
-
-@screen-ph: 320px;
-@screen-xs: 768px;
-@screen-sm: 1024px;
-@screen-md: 1280px;
-@screen-lg: 1440px;
-@screen-xl: 1600px;
 
 // spacing
 .gutter-left {
@@ -80,23 +72,6 @@
 		#generate-cols(@n, (@i + 1));
 	}
 }
-
-#mq-min-width(@min-width, @rules) {
-	@media screen and (min-width: @min-width) {
-		@rules();
-	}
-}
-#mq-max-width(@max-width, @rules) {
-	@media screen and (max-width: @max-width) {
-		@rules();
-	}
-}
-#mq-min-max-width(@min-width, @max-width, @rules) {
-	@media screen and (min-width: @min-width) and (max-width: @max-width) {
-		@rules();
-	}
-}
-
 
 
 // recursive definitions
