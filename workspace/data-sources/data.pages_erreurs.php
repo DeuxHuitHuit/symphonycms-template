@@ -34,9 +34,9 @@
 			return array(
 				'name' => 'Pages Erreurs',
 				'author' => array(
-					'name' => 'Nicolas Brassard',
-					'website' => 'http://pm.288dev.com',
-					'email' => 'n@deuxhuithuit.com'),
+					'name' => 'Deux Huit Huit',
+					'website' => 'http://deuxhuithuit.com',
+					'email' => 'open-source@deuxhuithuit.com'),
 				'version' => 'Symphony 2.4.x',
 				'release-date' => '2014-03-04T16:31:59+00:00'
 			);
