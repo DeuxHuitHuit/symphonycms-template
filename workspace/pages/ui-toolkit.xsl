@@ -35,41 +35,14 @@
 			<h1 class="ui-group-title">Typographie</h1>
 				
 			<div class="ui-item">
-				<h2 class="ui-item-title">Oenonew</h2>
-				<div class="ui-font-oenonew ui-item-ctn">
+				<h2 class="ui-item-title">Font 1</h2>
+				<div class="ui-font- ui-item-ctn">
 					ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
 					abcdefghijklmnopqrstuvwxyz<br />
 					1234567890
 				</div>
 			</div>
 			
-				
-			<div class="ui-item">
-				<h2 class="ui-item-title">Oenotalian</h2>
-				<div class="ui-font-oenotalian ui-item-ctn">
-					ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
-					abcdefghijklmnopqrstuvwxyz<br />
-					1234567890
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">Lato Bold (Google Font)</h2>
-				<div class="ui-font-lato-bold ui-item-ctn">
-					ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
-					abcdefghijklmnopqrstuvwxyz<br />
-					1234567890
-				</div>
-			</div>
-			
-			<div class="ui-item">
-				<h2 class="ui-item-title">Lato Light (Google Font)</h2>
-				<div class="ui-font-lato-light ui-item-ctn">
-					ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
-					abcdefghijklmnopqrstuvwxyz<br />
-					1234567890
-				</div>
-			</div>
 			
 			<div class="ui-item">
 				<h2 class="ui-item-title">H1</h2>
