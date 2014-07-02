@@ -36,12 +36,12 @@
 
 <!-- Default master title template -->
 <xsl:template name="default-master-title">
-	<xsl:variable name="page-title">
+	<xsl:variable name="cur-page-title">
 		<xsl:call-template name="page-title" />
 	</xsl:variable>
 	
-	<xsl:if test="string-length($page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
-		<xsl:value-of select="page-title"/>
+	<xsl:if test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
+		<xsl:value-of select="$cur-page-title"/>
 		<xsl:text> - </xsl:text>
 	</xsl:if>
 	
@@ -54,6 +54,5 @@
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
-
 
 </xsl:stylesheet>
