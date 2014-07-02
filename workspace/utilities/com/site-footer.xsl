@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="site-footer">
-	<footer>
+	<footer class="site-footer">
 		<xsl:call-template name="iframe-copyright-288">
 			<!--
 			<xsl:with-param name="bg-color" select="'transparent'" />
