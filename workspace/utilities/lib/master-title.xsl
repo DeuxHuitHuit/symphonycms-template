@@ -36,10 +36,12 @@
 
 <!-- Default master title template -->
 <xsl:template name="default-master-title">
-	<xsl:variable name="plh-page-title" select="/data/plh-page//page [@handle=$current-page]/item [@lang=$url-language]" />
+	<xsl:variable name="page-title">
+		<xsl:call-template name="page-title" />
+	</xsl:variable>
 	
-	<xsl:if test="string-length($plh-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
-		<xsl:value-of select="$plh-page-title"/>
+	<xsl:if test="string-length($page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
+		<xsl:value-of select="page-title"/>
 		<xsl:text> - </xsl:text>
 	</xsl:if>
 	
