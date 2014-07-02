@@ -23,6 +23,7 @@
 <xsl:import href="../lib/ga.xsl" />
 <xsl:import href="../lib/ninja.xsl" />
 <xsl:import href="../lib/ie.xsl" />
+<xsl:import href="../lib/nav-link.xsl" />
 <xsl:import href="../lib/svg-icons.xsl" />
 <xsl:import href="../lib/svg-socials-icons.xsl" />
 <xsl:import href="../lib/pages-erreurs.xsl" />
