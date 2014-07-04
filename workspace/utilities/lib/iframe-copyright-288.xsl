@@ -6,7 +6,7 @@
 	<xsl:param name="text-color" select="'FFF'" />
 	<xsl:param name="font" select="'Arial, Helvetica, sans-serif'" />
 	<xsl:param name="font-size" select="'0'" />
-	<xsl:param name="w" select="'125'" />
+	<xsl:param name="w" select="'150'" />
 	<xsl:param name="h" select="'28'" />
 	<xsl:param name="logo" select="'/logo-w.png'" />
 
@@ -31,7 +31,7 @@
 			scrolling="no" 
 			frameborder="no" 
 			width="{$w}" 
-			height="{$h}"></iframe>
+			height="{number($h) + 8}"></iframe>
 
 </xsl:template>
 
