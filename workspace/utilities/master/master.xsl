@@ -17,6 +17,7 @@
 <xsl:import href="master-body.xsl" />
 
 <!-- LIB -->
+<xsl:import href="../lib/page-title.xsl" />
 <xsl:import href="../lib/create-page-url.xsl" />
 <xsl:import href="../lib/date-time.xsl" />
 <xsl:import href="../lib/fx-url-creator.xsl" />
