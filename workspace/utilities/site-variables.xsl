@@ -21,9 +21,9 @@
 <xsl:variable name="ga-domain" select="''" />
 
 <!-- Twitter Card -->
-<xsl:variable name="twitter-card-site" select="''" />
-<xsl:variable name="twitter-card-creator" select="'@'" />
-<xsl:variable name="twitter-card-domain" select="''" />
+<xsl:variable name="twitter-card-site" select="$config/twitter-url" />
+<xsl:variable name="twitter-card-creator" select="concat('@', $config/twitter-user)" />
+<xsl:variable name="twitter-card-domain" select="$config/twitter-site-domain" />
 
 
 <!-- Default langue if fl-languages not found -->
