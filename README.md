@@ -1,6 +1,6 @@
 # Symphony 2 Template [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-#### Version 1.2.0
+#### Version 1.2.1
 
 This is the template we use internally for creating new websites with Symphony CMS.
 
