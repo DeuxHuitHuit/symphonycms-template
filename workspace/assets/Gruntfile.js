@@ -136,7 +136,11 @@ module.exports = function (grunt) {
 			},
 			production: {
 				options: {
-					cleancss: true
+					cleancss: true,
+					report: 'gzip',
+					sourceMap: true,
+					sourceMapFilename: 'css/main.min.css.map',
+					sourceMappingURL: 'main.min.css.map'
 				},
 				files: {
 					'css/main.min.css': LESS_FILE
