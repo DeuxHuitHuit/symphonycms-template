@@ -652,7 +652,8 @@ INSERT INTO `sym_fields_textbox` (`id`, `field_id`, `column_length`, `text_size`
 (12, 7, 75, 'single', 'none', NULL, 0, 'no', 'no'),
 (13, 8, 75, 'single', 'none', NULL, 0, 'no', 'no'),
 (14, 21, 75, 'single', 'none', NULL, 0, 'no', 'no'),
-(15, 22, 75, 'single', 'none', NULL, 0, 'no', 'no');
+(15, 22, 75, 'single', 'none', NULL, 0, 'no', 'no'),
+(16, 23, 75, 'single', 'none', NULL, 0, 'no', 'no');
 
 -- --------------------------------------------------------
 
