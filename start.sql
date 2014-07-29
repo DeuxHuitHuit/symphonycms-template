@@ -691,9 +691,9 @@ INSERT INTO `sym_pages_types` (`id`, `page_id`, `type`) VALUES
 --
 
 INSERT INTO `sym_sections` (`id`, `name`, `handle`, `sortorder`, `hidden`, `max_entries`, `navigation_group`) VALUES
-(1, 'Configuration ', 'configuration', 1, 'no', 1, 'Configuration '),
-(2, 'Menu', 'menu', 2, 'no', 6, 'Configuration '),
-(3, 'Pages d''erreurs', 'pages-derreurs', 3, 'no', 0, 'Configuration ');
+(1, 'Configuration', 'configuration', 1, 'no', 1, 'Configuration'),
+(2, 'Menu', 'menu', 2, 'no', 6, 'Configuration'),
+(3, 'Pages d''erreurs', 'pages-derreurs', 3, 'no', 0, 'Configuration');
 
 -- --------------------------------------------------------
 
