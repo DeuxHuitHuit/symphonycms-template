@@ -18,6 +18,7 @@
 <xsl:import href="css.xsl" />
 
 <!-- LIB -->
+<xsl:import href="../lib/page-title.xsl" />
 <xsl:import href="../lib/master-title.xsl" />
 <xsl:import href="../lib/create-page-url.xsl" />
 <xsl:import href="../lib/date-time.xsl" />
