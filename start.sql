@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_1` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_2` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_3` (
   UNIQUE KEY `entry_id` (`entry_id`),
   KEY `file` (`file`),
   KEY `mimetype` (`mimetype`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_4` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_5` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_6` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_7` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -199,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_8` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_9` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_10` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -282,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_11` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -316,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_12` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -334,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_13` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `page_id` (`page_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -368,7 +368,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_14` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -383,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_15` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -398,7 +398,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_16` (
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -432,9 +432,26 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_17` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
+
+
+--
+-- Structure de la table `sym_entries_data_18`
+--
+
+CREATE TABLE IF NOT EXISTS `sym_entries_data_18` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(11) unsigned NOT NULL,
+  `page_id` int(11) unsigned NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `entry_id` (`entry_id`),
+  KEY `handle` (`handle`),
+  KEY `page_id` (`page_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 --
 -- Structure de la table `sym_entries_data_19`
@@ -466,7 +483,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_19` (
   FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -484,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_20` (
   KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `page_id` (`page_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -504,7 +521,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_21` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -524,7 +541,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_22` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -544,10 +561,55 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_23` (
   KEY `handle` (`handle`),
   FULLTEXT KEY `value` (`value`),
   FULLTEXT KEY `value_formatted` (`value_formatted`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
+--
+-- Structure de la table `sym_entries_data_24`
+--
+
+CREATE TABLE IF NOT EXISTS `sym_entries_data_24` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(11) unsigned NOT NULL,
+  `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `value_formatted` text COLLATE utf8_unicode_ci,
+  `word_count` int(11) unsigned DEFAULT NULL,
+  `handle-fr` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value-fr` text COLLATE utf8_unicode_ci,
+  `value_formatted-fr` text COLLATE utf8_unicode_ci,
+  `word_count-fr` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `entry_id` (`entry_id`),
+  KEY `handle-fr` (`handle-fr`),
+  KEY `handle` (`handle`),
+  FULLTEXT KEY `value-fr` (`value-fr`),
+  FULLTEXT KEY `value_formatted-fr` (`value_formatted-fr`),
+  FULLTEXT KEY `value` (`value`),
+  FULLTEXT KEY `value_formatted` (`value_formatted`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sym_entries_data_25`
+--
+
+CREATE TABLE IF NOT EXISTS `sym_entries_data_25` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `entry_id` int(11) unsigned NOT NULL,
+  `file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `size` int(11) unsigned DEFAULT NULL,
+  `mimetype` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
+  KEY `file` (`file`),
+  KEY `mimetype` (`mimetype`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
+
+-- --------------------------------------------------------
 
 --
 -- Contenu de la table `sym_fields`
@@ -575,7 +637,10 @@ INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section
 (19, 'Texte', 'texte', 'multilingual_textbox', 3, 'no', 2, 'main', 'no'),
 (21, 'Vimeo url', 'vimeo-url', 'textbox', 1, 'no', 8, 'sidebar', 'no'),
 (22, 'Instagram url', 'instagram-url', 'textbox', 1, 'no', 9, 'sidebar', 'no'),
-(23, 'Facebook page id', 'facebook-page-id', 'textbox', 1, 'no', 7, 'sidebar', 'no');
+(23, 'Facebook page id', 'facebook-page-id', 'textbox', 1, 'no', 7, 'sidebar', 'no'),
+(18, 'Page', 'page', 'pages', 4, 'yes', 0, 'main', 'no'),
+(24, 'Description', 'description', 'multilingual_textbox', 4, 'yes', 1, 'main', 'yes'),
+(25, 'Image partage', 'image-partage', 'image_upload', 4, 'no', 2, 'sidebar', 'yes');
 
 -- --------------------------------------------------------
 
@@ -595,7 +660,8 @@ INSERT INTO `sym_fields_checkbox` (`id`, `field_id`, `default_state`, `descripti
 --
 
 INSERT INTO `sym_fields_image_upload` (`id`, `field_id`, `destination`, `validator`, `unique`, `min_width`, `min_height`, `max_width`, `max_height`, `resize`) VALUES
-(3, 3, '/workspace/uploads/config', '/\\.(?:gif|jpe?g|png)$/i', 'yes', 300, 300, 1600, 1200, 'no');
+(1, 3, '/workspace/uploads/config', '/\\.(?:jpe?g|png)$/i', 'yes', 300, 300, 1200, 1200, 'no'),
+(2, 25, '/workspace/uploads/metas', '/\\.(?:jpe?g|png)$/i', 'yes', 300, 300, 1200, 1200, 'no');
 
 -- --------------------------------------------------------
 
@@ -611,7 +677,8 @@ INSERT INTO `sym_fields_multilingual_textbox` (`id`, `field_id`, `column_length`
 (19, 11, 75, 'medium', 'markdown', NULL, 0, 'no', 'no', 'yes', 'all'),
 (11, 14, 75, 'single', 'none', NULL, 0, 'no', 'yes', 'no', 'all'),
 (14, 17, 75, 'single', 'none', NULL, 0, 'no', 'yes', 'no', 'all'),
-(15, 19, 75, 'medium', 'markdown', NULL, 0, 'no', 'no', 'yes', '');
+(15, 19, 75, 'medium', 'markdown', NULL, 0, 'no', 'no', 'yes', ''),
+(21, 24, 75, 'small', 'none', NULL, 0, 'no', 'yes', 'no', 'all');
 
 -- --------------------------------------------------------
 
@@ -628,7 +695,8 @@ INSERT INTO `sym_fields_order_entries` (`id`, `field_id`, `force_sort`, `hide`) 
 
 INSERT INTO `sym_fields_pages` (`id`, `field_id`, `allow_multiple_selection`, `page_types`) VALUES
 (1, 13, 'no', NULL),
-(2, 20, 'no', '403, 404');
+(2, 20, 'no', '403, 404'),
+(3, 18, 'no', 'f288-model-defaultPage, f288-model-index');
 
 -- --------------------------------------------------------
 
@@ -693,7 +761,8 @@ INSERT INTO `sym_pages_types` (`id`, `page_id`, `type`) VALUES
 INSERT INTO `sym_sections` (`id`, `name`, `handle`, `sortorder`, `hidden`, `max_entries`, `navigation_group`) VALUES
 (1, 'Configuration', 'configuration', 1, 'no', 1, 'Configuration'),
 (2, 'Menu', 'menu', 2, 'no', 6, 'Configuration'),
-(3, 'Pages d''erreurs', 'pages-derreurs', 3, 'no', 0, 'Configuration');
+(3, 'Pages d''erreurs', 'pages-derreurs', 3, 'no', 2, 'Configuration'),
+(4, 'Pages Metas', 'pages-metas', 4, 'no', 0, 'yes', 'Configuration ');
 
 -- --------------------------------------------------------
 
