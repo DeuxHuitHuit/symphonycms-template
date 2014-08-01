@@ -638,7 +638,7 @@ INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section
 (21, 'Vimeo url', 'vimeo-url', 'textbox', 1, 'no', 8, 'sidebar', 'no'),
 (22, 'Instagram url', 'instagram-url', 'textbox', 1, 'no', 9, 'sidebar', 'no'),
 (23, 'Facebook page id', 'facebook-page-id', 'textbox', 1, 'no', 7, 'sidebar', 'no'),
-(18, 'Page', 'page', 'pages', 4, 'yes', 0, 'main', 'no'),
+(18, 'Page', 'page', 'pages', 4, 'yes', 0, 'main', 'yes'),
 (24, 'Description', 'description', 'multilingual_textbox', 4, 'yes', 1, 'main', 'yes'),
 (25, 'Image partage', 'image-partage', 'image_upload', 4, 'no', 2, 'sidebar', 'yes');
 
