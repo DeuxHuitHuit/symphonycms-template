@@ -2,7 +2,38 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="master-share-metas">
-	<xsl:call-template name="default-master-share-metas" />
+	<xsl:choose>
+		<xsl:when test="count(/data/page-metas/entry) != 1">
+			<xsl:call-template name="default-master-share-metas" />
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:variable name="page-metas" select="/data/page-metas/entry[1]" />
+			<xsl:variable name="image-path">
+				<xsl:choose>
+					<xsl:when test="string-length($page-metas/image-partage) != 0">
+						<xsl:value-of select="concat($root, '/workspace', $page-metas/image-partage/@path, '/', $page-metas/image-partage/filename)" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="concat($root, '/workspace', $site-share-image/@path, '/', $site-share-image/filename)" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+			
+			<xsl:call-template name="html-metas">
+				<xsl:with-param name="description" select="$page-metas/description" />
+			</xsl:call-template>
+			<xsl:call-template name="open-graph">
+				<xsl:with-param name="description" select="$page-metas/description" />
+				<xsl:with-param name="image-path" select="$image-path" />
+				<xsl:with-param name="image" select="''" />
+			</xsl:call-template>
+			<xsl:call-template name="twitter-card">
+				<xsl:with-param name="description" select="$page-metas/description" />
+				<xsl:with-param name="image-path" select="$image-path" />
+				<xsl:with-param name="image" select="''" />
+			</xsl:call-template>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <xsl:template name="default-master-share-metas">
