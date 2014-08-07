@@ -212,11 +212,18 @@
 }
 
 //Documentation http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element
-#placeholder(@rules) {
-  &:-moz-placeholder            { @rules(); } // Firefox 4-18
-  &::-moz-placeholder           { @rules(); } // Firefox 19+
-  &:-ms-input-placeholder       { @rules(); } // Internet Explorer 10+
-  &::-webkit-input-placeholder  { @rules(); } // Safari and Chrome
+#placeholder(@color) when (iscolor(@color)) {
+	&:-moz-placeholder            { color: @color; } // Firefox 4-18
+	&::-moz-placeholder           { color: @color; } // Firefox 19+
+	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+
+#placeholder(@rules) when (false = iscolor(@rules)) {
+	&:-moz-placeholder            { @rules(); } // Firefox 4-18
+	&::-moz-placeholder           { @rules(); } // Firefox 19+
+	&:-ms-input-placeholder       { @rules(); } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { @rules(); } // Safari and Chrome
 }
 
 #animation(...) {
