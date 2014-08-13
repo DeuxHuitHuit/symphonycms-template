@@ -18,7 +18,7 @@
 	
 		<!-- Use Master title if available or $website-name -->
 		<xsl:choose>
-			<xsl:when test="string-length($master-title)">
+			<xsl:when test="string-length($master-title) != 0">
 				<xsl:value-of select="$master-title" />
 			</xsl:when>
 			
