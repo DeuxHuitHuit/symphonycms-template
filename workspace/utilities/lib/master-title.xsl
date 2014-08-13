@@ -29,8 +29,8 @@
 		</xsl:choose>
 	</xsl:variable>
 	
-	<title><xsl:value-of select="$title" /></title>
-	<meta name="title" content="{$title}" />
+	<title><xsl:value-of select="normalize-space($title)" /></title>
+	<meta name="title" content="{normalize-space($title)}" />
 </xsl:template>
 
 
