@@ -189,6 +189,25 @@ module.exports = function (grunt) {
 			}
 		},
 		
+		csslint: {
+			options: {
+				// errors
+				import: 2,
+				
+				// warnings
+				'font-sizes': true,
+				'unqualified-attributes': true,
+				
+				// disable
+				important: false,
+				'unique-headings': false,
+				ids: false,
+				'box-model': false,
+				'universal-selector': false,
+			},
+			src: ['css/main.css']
+		},
+		
 		clean: {
 			copy: {
 				options: {
@@ -273,7 +292,7 @@ module.exports = function (grunt) {
 		// Default tasks.
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
-		grunt.registerTask('css',     ['less', 'usebanner', 'analyzecss']);
+		grunt.registerTask('css',     ['less', 'usebanner', 'analyzecss', 'csslint']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
