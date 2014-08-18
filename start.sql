@@ -762,7 +762,7 @@ INSERT INTO `sym_sections` (`id`, `name`, `handle`, `sortorder`, `hidden`, `max_
 (1, 'Configuration', 'configuration', 1, 'no', 1, 'Configuration'),
 (2, 'Menu', 'menu', 2, 'no', 6, 'Configuration'),
 (3, 'Pages d''erreurs', 'pages-derreurs', 3, 'no', 2, 'Configuration'),
-(4, 'Pages Metas', 'pages-metas', 4, 'no', 0, 'Configuration ');
+(4, 'Pages Metas', 'pages-metas', 4, 'no', 0, 'Configuration');
 
 -- --------------------------------------------------------
 
