@@ -11,11 +11,11 @@
 	var DISABLED = 'disabled';
 
 	$.fn.disable = function () {
-		$(this).attr(DISABLED, DISABLED).addClass(DISABLED);
+		return $(this).attr(DISABLED, DISABLED).addClass(DISABLED);
 	};
 	
 	$.fn.enable = function () {
-		$(this).removeAttr(DISABLED).removeClass(DISABLED);
+		return $(this).removeAttr(DISABLED).removeClass(DISABLED);
 	};
 	
 })(jQuery);
