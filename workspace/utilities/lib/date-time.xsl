@@ -107,7 +107,7 @@ d/n/y t => 21/09/81 6:30pm
 		</xsl:when>
 		<xsl:when test="$tletter = 'w'">
 			<xsl:call-template name="format-weekday">
-				<xsl:with-param name="weekday" select="$date/@weekday"/>
+				<xsl:with-param name="weekday" select="number($date/@weekday)"/>
 				<xsl:with-param name="format" select="$letter"/>
 		<xsl:with-param name="lg" select="$lg"/>
 			</xsl:call-template>
