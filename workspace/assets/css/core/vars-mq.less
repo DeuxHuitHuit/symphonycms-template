@@ -28,13 +28,17 @@
 
 #mq-max-dpi (@dpi, @rules) {
 	@media screen and (max-resolution: @dpi) {
-		html:not(.mobile) & {
-			@rules();
-		}
+		@rules();
 	}
 }
 
-#mq-max-px-ratio (@px-ratio, @rules) {
+#mq-min-dpi (@dpi, @rules) {
+	@media screen and (min-resolution: @dpi) {
+		@rules();
+	}
+}
+
+#mq-px-ratio (@px-ratio, @rules) {
 	@media screen and (-webkit-device-pixel-ratio: @px-ratio),
 	@media screen and (device-pixel-ratio: @px-ratio) {
 		@rules();
