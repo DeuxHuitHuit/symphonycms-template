@@ -231,7 +231,7 @@
 </xsl:template>
 
 <!-- Pinterest -->
-<xsl:template name="svg-icons-vo">
+<xsl:template name="svg-icons-pi">
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		 width="144.713px" height="139.075px" viewBox="0 0 144.713 139.075" xml:space="preserve" preserveAspectRatio="xMinYMin meet">
 		<path fill="#CA2027" d="M74.947,0C36.416,0,5.177,31.237,5.177,69.77c0,28.569,17.18,53.111,41.762,63.902
