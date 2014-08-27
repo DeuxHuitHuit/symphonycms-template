@@ -85,7 +85,7 @@
 		<meta name="twitter:title" content="{$title}" />
 		<meta name="twitter:creator" content="{$creator}" />
 		<meta name="twitter:domain" content="{$domain}" />
-		<xsl:if test="string-length($image-full-path) != 1">
+		<xsl:if test="string-length($image-full-path) &gt; 1">
 			<meta name="twitter:image:src" content="{$image-full-path}" />
 		</xsl:if>
 		<meta name="twitter:description" content="{$description}" />
