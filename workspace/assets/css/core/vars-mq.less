@@ -45,6 +45,16 @@
 	}
 }
 
+#mq-min-px-ratio (@px-ratio, @rules) {
+	@media screen and (-webkit-min-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+	
+	@media screen and (min-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+}
+
 #mq-orientation (@orientation: @rules) {
 	@media screen and (orientation: @orientation) {
 		@rules();
