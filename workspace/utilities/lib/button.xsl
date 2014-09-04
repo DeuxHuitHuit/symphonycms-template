@@ -54,7 +54,10 @@
 				<xsl:value-of select="$text" />
 			</xsl:when>
 			<xsl:when test="exslt:object-type($text) = 'RTF'">
-				<xsl:copy-of select="$text" disable-output-escaping="yes"/>
+				<xsl:copy-of select="$text"/>
+			</xsl:when>
+			<xsl:when test="exslt:object-type($text) = 'node-set' and count($text/*) = 0">
+				<xsl:value-of select="$text" />
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:copy-of select="$text/*" />
