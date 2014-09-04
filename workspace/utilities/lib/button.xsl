@@ -12,6 +12,7 @@
 	<xsl:param name="action" select="''" />
 	<xsl:param name="type" select="''" />
 	<xsl:param name="failover-element" select="'button'" />
+	<xsl:param name="extra-key" select="''" />
 	
 	<xsl:variable name="node-type">
 		<xsl:choose>
@@ -47,6 +48,12 @@
 			<xsl:attribute name="type">
 				<xsl:value-of select="$type" />
 			</xsl:attribute>
+		</xsl:if>
+		
+		<xsl:if test="string-length($extra-key) != 0">
+			<xsl:call-template name="extra-btn-attributes" mode="{$extra-key}">
+				<xsl:with-param name="extra-key" select="$extra-key" />
+			</xsl:call-template>
 		</xsl:if>
 		
 		<xsl:choose>
