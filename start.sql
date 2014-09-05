@@ -696,7 +696,7 @@ INSERT INTO `sym_fields_order_entries` (`id`, `field_id`, `force_sort`, `hide`) 
 INSERT INTO `sym_fields_pages` (`id`, `field_id`, `allow_multiple_selection`, `page_types`) VALUES
 (1, 13, 'no', NULL),
 (2, 20, 'no', '403, 404'),
-(3, 18, 'no', 'f288-model-defaultPage, f288-model-index');
+(3, 18, 'no', 'custom-metas');
 
 -- --------------------------------------------------------
 
