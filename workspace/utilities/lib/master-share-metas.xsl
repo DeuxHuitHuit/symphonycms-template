@@ -13,12 +13,11 @@
 					<xsl:when test="string-length($page-metas/image-partage) != 0">
 						<xsl:value-of select="concat($root, '/workspace', $page-metas/image-partage/@path, '/', $page-metas/image-partage/filename)" />
 					</xsl:when>
-					<xsl:otherwise>
+					<xsl:when test="string-length($site-share-image/filename) != 0">
 						<xsl:value-of select="concat($root, '/workspace', $site-share-image/@path, '/', $site-share-image/filename)" />
-					</xsl:otherwise>
+					</xsl:when>
 				</xsl:choose>
 			</xsl:variable>
-			
 			<xsl:call-template name="html-metas">
 				<xsl:with-param name="description" select="$page-metas/description" />
 			</xsl:call-template>
@@ -73,7 +72,7 @@
 	
 		<!-- get the right card style if we have an image -->
 		<xsl:choose>
-			<xsl:when test="string-length($image-full-path) &gt; 1">
+			<xsl:when test="string-length($image-full-path) != 0">
 				<meta name="twitter:card" content="summary_large_image" />
 			</xsl:when>
 			<xsl:otherwise>
@@ -85,7 +84,7 @@
 		<meta name="twitter:title" content="{$title}" />
 		<meta name="twitter:creator" content="{$creator}" />
 		<meta name="twitter:domain" content="{$domain}" />
-		<xsl:if test="string-length($image-full-path) &gt; 1">
+		<xsl:if test="string-length($image-full-path) != 0">
 			<meta name="twitter:image:src" content="{$image-full-path}" />
 		</xsl:if>
 		<meta name="twitter:description" content="{$description}" />
@@ -137,7 +136,7 @@
 	<meta property="og:url" content="{$url}" />
 	<meta property="og:type" content="{$type}" />
 	
-	<xsl:if test="string-length($image-full-path) &gt; 1">
+	<xsl:if test="string-length($image-full-path) != 0">
 		<meta property="og:image" content="{$image-full-path}" />
 		<meta property="og:image:url" content="{$image-full-path}" />
 	</xsl:if>
