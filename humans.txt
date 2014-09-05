@@ -13,7 +13,7 @@
 
 Made with love by Deux Huit Huit.
 Fait avec beaucoup d'amour par Deux Huit Huit.
-http://deuxhuithuit.com/
+https://deuxhuithuit.com/
 
 
 /* TEAM */
@@ -59,6 +59,7 @@ Twitter: https://twitter.com/DeuxHuitHuit
 Facebook: https://www.facebook.com/DeuxHuitHuit
 Google+: https://google.com/+Deuxhuithuit
 Github: https://github.com/DeuxHuitHuit
+Instagram: http://instagram.com/deuxhuithuit
 
 
 Montréal, Québec, Canada.

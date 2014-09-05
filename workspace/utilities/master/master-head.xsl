@@ -9,6 +9,7 @@
 <xsl:import href="../lib/master-share-metas.xsl" />
 <xsl:import href="../lib/master-canonical-url-meta.xsl" />
 <xsl:import href="../lib/master-alt-link-metas.xsl" />
+<xsl:import href="../lib/master-author-metas.xsl" />
 
 <xsl:template name="master-head">
 	<head>
@@ -39,6 +40,9 @@
 		
 		<!-- Favicon -->
 		<xsl:call-template name="favicon" />
+		
+		<!-- author meta -->
+		<xsl:call-template name="author-meta" />
 		
 		<!-- Master css -->
 		<xsl:call-template name="master-css" />
