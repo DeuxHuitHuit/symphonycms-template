@@ -7,7 +7,7 @@
 		<a>
 			<xsl:attribute name="href">
 				<xsl:call-template name="create-page-url-by-id">
-					<xsl:with-param name="page-id" select="$page-index-id" />
+					<xsl:with-param name="id" select="$page-index-id" />
 				</xsl:call-template>
 			</xsl:attribute>
 			
