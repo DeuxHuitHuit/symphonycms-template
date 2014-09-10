@@ -39,6 +39,6 @@
 	],
 	"cdn-after": [
 		"//www.youtube.com/player_api",
-		"//a.vimeocdn.com/js/froogaloop2.min.js"
+		"//f.vimeocdn.com/js/froogaloop2.min.js"
 	]
 }
