@@ -105,7 +105,7 @@
 	}
 	
 	// included col
-	#generate-resp-cols-in(@prefix, @n, @i: 1) when (@i > 0) and (@i < @n) {
+	#generate-resp-cols-in(@prefix, @n, @i: 0) when (@i >= 0) and (@i < @n) {
 		// col definition
 		> .col-@{prefix}-@{i} {
 			width: percentage(@i / @n);
