@@ -105,9 +105,9 @@
 	}
 	
 	// included col
-	#generate-resp-cols-in(@prefix, @n, @i: 1) when (@i > 0) and (@i < @n) {
+	#generate-resp-cols-in(@prefix, @n, @i: 0) when (@i >= 0) and (@i < @n) {
 		// col definition
-		> .col-@{prefix}-@{i} {
+		> .col-@{prefix}-@{i} when (@i > 0) {
 			width: percentage(@i / @n);
 		}
 		> .col-offset-@{prefix}-@{i} {
