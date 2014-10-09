@@ -29,6 +29,10 @@
 												));
 		}
 
+		public static function getSource(){
+			return 'Symphony';
+		}
+
 		public function load(){
 			return $this->__trigger();
 		}
