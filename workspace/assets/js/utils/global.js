@@ -21,7 +21,7 @@
 	global.preventNextClick = function (e) {
 		var t = $(this);
 		var href = t.attr('href');
-		if (t.data('action') == 'full') {
+		if (t.attr('data-action') === 'full') {
 			return false;
 		}
 		if (!!href) {
