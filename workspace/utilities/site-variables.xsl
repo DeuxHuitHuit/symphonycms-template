@@ -3,7 +3,7 @@
 
 <xsl:variable name="site-name" select="$config/site-name" />
 <xsl:variable name="site-description" select="$config/description" />
-<xsl:variable name="site-share-image" select="$config/site-share-image" />
+<xsl:variable name="site-share-image" select="$config/image-partage" />
 
 <xsl:variable name="default-share-page-title" >
 	<xsl:call-template name="default-master-title" />

@@ -68,7 +68,7 @@
 	</xsl:variable>
 	
 	<!-- output only if twitter card site is set -->
-	<xsl:if test="string-length($twitter-card-site) != 0">
+	<xsl:if test="string-length($site) != 0">
 	
 		<!-- get the right card style if we have an image -->
 		<xsl:choose>
