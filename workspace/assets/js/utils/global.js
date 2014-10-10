@@ -21,6 +21,9 @@
 	global.preventNextClick = function (e) {
 		var t = $(this);
 		var href = t.attr('href');
+		if (t.data('action') == 'full') {
+			return false;
+		}
 		if (!!href) {
 			return !/^(https?|mailto|skype|tel|ftps?)/im.test(href);
 		}
