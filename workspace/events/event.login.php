@@ -4,29 +4,22 @@
 
 	Class eventLogin extends Event{
 
-		/*public function __construct(&$context) {
-			parent::__construct($context);
-			
-			
-			//$context['param']['login-filter'] = 'yes';
-		}*/
-
 		public static function about(){
 
 			$description = new XMLElement('p', 'This is an event that displays basic login details (such as their real name, username and author type) if the person viewing the site have been authenticated by logging in to Symphony. It is useful if you want to do something special with the site if the person viewing it is an authenticated member.');
 
 			return array(
-						 'name' => 'Login Info',
-						 'author' => array('name' => 'Alistair Kearney',
-										   'website' => 'http://www.pointybeard.com',
-										   'email' => 'alistair@pointybeard.com'),
-						 'version' => '1.5',
-						 'release-date' => '2010-01-10',
-						 'trigger-condition' => 'action[login] field or an already valid Symphony cookie',
-						 'recognised-fields' => array(
-													array('username', true),
-													array('password', true)
-												));
+				'name' => 'Login Info',
+				'author' => array('name' => 'Alistair Kearney',
+								   'website' => 'http://www.pointybeard.com',
+								   'email' => 'alistair@pointybeard.com'),
+				'version' => '1.5',
+				'release-date' => '2010-01-10',
+				'trigger-condition' => 'action[login] field or an already valid Symphony cookie',
+				'recognised-fields' => array(
+							array('username', true),
+							array('password', true)
+						));
 		}
 
 		public static function getSource(){
@@ -43,22 +36,29 @@
 
 		protected function __trigger(){
 
-			## Cookies only show up on page refresh. This flag helps in making sure the correct XML is being set
+			// Cookies only show up on page refresh.
+			// This flag helps in making sure the correct XML is being set
 			$loggedin = false;
 
-			if(isset($_REQUEST['action']['login'])){
+			if (isset($_REQUEST['action']['login'])){
 				$username = $_REQUEST['username'];
 				$password = $_REQUEST['password'];
 				$loggedin = Frontend::instance()->login($username, $password);
 			}
 
-			else $loggedin = Frontend::instance()->isLoggedIn();
-
-			if($loggedin){
+			else {
+				$loggedin = Frontend::instance()->isLoggedIn();
+			}
+			
+			if ($loggedin){
 				$result = new XMLElement('login-info');
 				$result->setAttribute('logged-in', 'true');
 
-				$author = Frontend::instance()->Author;
+				if (is_callable(array('Symphony', 'Author'))) {
+					$author = Symphony::Author();
+				} else {
+					$author = Frontend::instance()->Author;
+				}
 
 				$result->setAttributeArray(array(
 					'id' => $author->get('id'),
@@ -72,10 +72,12 @@
 					'email' => new XMLElement('email', $author->get('email'))
 				);
 
-				if($author->isTokenActive()) $fields['author-token'] = new XMLElement('author-token', $author->createAuthToken());
+				if ($author->isTokenActive()) {
+					$fields['author-token'] = new XMLElement('author-token', $author->createAuthToken());
+				}
 
 				// Section
-				if($section = Symphony::Database()->fetchRow(0, "SELECT `id`, `handle`, `name` FROM `tbl_sections` WHERE `id` = '".$author->get('default_area')."' LIMIT 1")){
+				if ($section = Symphony::Database()->fetchRow(0, "SELECT `id`, `handle`, `name` FROM `tbl_sections` WHERE `id` = '".$author->get('default_area')."' LIMIT 1")){
 					$default_area = new XMLElement('default-area', $section['name']);
 					$default_area->setAttributeArray(array('id' => $section['id'], 'handle' => $section['handle'], 'type' => 'section'));
 					$fields['default-area'] = $default_area;
@@ -87,11 +89,12 @@
 					$fields['default-area'] = $default_area;
 				}
 
-				foreach($fields as $f) $result->appendChild($f);
+				foreach($fields as $f) {
+					$result->appendChild($f);
+				}
 			}
 
-			else{
-
+			else {
 				$result = new XMLElement('user');
 				$result->setAttribute('logged-in', 'false');
 			}
