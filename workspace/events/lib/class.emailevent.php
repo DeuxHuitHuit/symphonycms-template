@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 	if(!defined('__IN_SYMPHONY__')) die('<h2>Error</h2><p>You cannot directly access this file</p>');
 
@@ -38,7 +38,7 @@
 		
 		public function load() {
 			if (isset($_POST['action'][$this->getActionKey()])) {
-				return $this->__trigger();	
+				return $this->__trigger();
 			}
 			return false;
 		}
