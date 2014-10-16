@@ -32,6 +32,10 @@
 			return true;
 		}
 		
+		public static function getSource(){
+			return 'Symphony';
+		}
+		
 		public function load() {
 			if (isset($_POST['action'][$this->getActionKey()])) {
 				return $this->__trigger();	
