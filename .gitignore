@@ -11,8 +11,12 @@ project-name.js
 
 main.css
 main.min.css
+main.min.css.map
 
 npm-debug.log
 
 build.json
 dist
+
+.htaccess
+manifest

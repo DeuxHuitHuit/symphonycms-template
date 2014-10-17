@@ -55,7 +55,6 @@
 
 #no-outline() {
 	outline:none;
-	border:none;
 	-moz-outline:none;
 	-webkit-outline:none;
 }
@@ -82,12 +81,12 @@
 	vertical-align: @valign;
 }
 
-#vh-center(@top-offset: 0px, @left-top: 0px, @zindex: 10) {
+#vh-center(@top-offset: 0px, @left-offset: @top-offset, @zindex: 10) {
 	#absolute(@zindex);
 	top: 50%;
 	left: 50%;
-	margin-left: -@moitier-horizontale;
-	margin-top: -@moitier-verticale;
+	margin-left: -@top-offset;
+	margin-top: -@left-offset;
 }
 
 #text-wrap (@val: break-word) {

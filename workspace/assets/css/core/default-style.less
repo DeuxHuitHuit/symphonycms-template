@@ -3,7 +3,6 @@
  *****************************/
 body {
 	font-size: 1.6rem;
-	line-height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -32,20 +31,15 @@ p, .p {
 }
 
 a {
-	margin: 0;
-	padding: 3px 0;
-	border-bottom: 1px solid @link-color-hover;
+	#marpad;
+	border-bottom: 1px solid @link-color;
 	#transition(~'border-bottom-color @{duration-short} @{ease}, color @{duration-short} @{ease}');
 	text-decoration: none;
 	
-	&:focus {
-		#no-outline;
-	}
-	
-	img {
-		border: none;
-		display: block;
-	}
+	#hover({
+		color: @link-color-hover;
+		border-bottom-color: @link-color-hover;
+	});
 }
 
 em {

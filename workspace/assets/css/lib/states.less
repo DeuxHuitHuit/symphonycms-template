@@ -1,0 +1,13 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = STATES PSEUDO CLASSES HELPERS
+//=========================
+
+#hover(@rules) {
+	html:not(.mobile) &:hover, &:focus, &:active {
+		@rules();
+	}
+}

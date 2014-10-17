@@ -3,7 +3,7 @@
  */
 html {
 	font-size: 62.5%;
-	line-height: 100%;
+	line-height: normal;
 }
 
 html, body {
@@ -11,12 +11,19 @@ html, body {
 	#marpad;
 }
 
-*, *:focus {
+*:focus {
 	#no-outline;
 }
 
 h1, h2, h3, h4, h5, h6, p {
 	margin: 1rem 0;
+}
+
+a {
+	img {
+		border: none;
+		display: block;
+	}
 }
 
 
