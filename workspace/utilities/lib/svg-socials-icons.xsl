@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- FACEBOOK -->
-<xsl:template name="svg-icons-fb">
+<xsl:template name="svg-icon-fb">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -23,7 +23,7 @@
 
 
 <!-- TWITTER -->
-<xsl:template name="svg-icons-tw">
+<xsl:template name="svg-icon-tw">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -48,7 +48,7 @@
 
 
 <!-- INSTAGRAM -->
-<xsl:template name="svg-icons-ig">
+<xsl:template name="svg-icon-ig">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -75,7 +75,7 @@
 
 
 <!-- YOUTUBE -->
-<xsl:template name="svg-icons-yt">
+<xsl:template name="svg-icon-yt">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -97,7 +97,7 @@
 
 
 <!-- SOUND CLOUD -->
-<xsl:template name="svg-icons-sc">
+<xsl:template name="svg-icon-sc">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -120,7 +120,7 @@
 
 
 <!-- TUMBLR -->
-<xsl:template name="svg-icons-tb">
+<xsl:template name="svg-icon-tb">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -143,7 +143,7 @@
 </xsl:template>
 
 <!-- BANDCAMP -->
-<xsl:template name="svg-icons-bc">
+<xsl:template name="svg-icon-bc">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -177,7 +177,7 @@
 </xsl:template>
 
 <!-- LINKEDIN -->
-<xsl:template name="svg-icons-li">
+<xsl:template name="svg-icon-li">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
@@ -204,7 +204,7 @@
 </xsl:template>
 
 <!-- VIMEO -->
-<xsl:template name="svg-icons-vo">
+<xsl:template name="svg-icon-vo">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	

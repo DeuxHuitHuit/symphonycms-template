@@ -54,6 +54,7 @@
 				$result = new XMLElement('login-info');
 				$result->setAttribute('logged-in', 'true');
 
+				$author = null;
 				if (is_callable(array('Symphony', 'Author'))) {
 					$author = Symphony::Author();
 				} else {

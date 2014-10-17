@@ -20,7 +20,7 @@
 </xsl:template>
 
 <!-- RSS -->
-<xsl:template name="svg-icons-rss">
+<xsl:template name="svg-icon-rss">
 	<xsl:param name="color" select="$svg-icons-default-fill-color" />
 	<xsl:param name="height" select="$svg-icons-default-height" />
 	
