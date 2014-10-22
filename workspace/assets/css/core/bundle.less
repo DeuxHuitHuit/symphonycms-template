@@ -1,0 +1,185 @@
+/*
+ * HTML
+ */
+html {
+	font-size: 62.5%;
+	line-height: normal;
+}
+
+html, body {
+	width: 100%;
+	#marpad;
+}
+
+*:focus {
+	#no-outline;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 1rem 0;
+}
+
+a {
+	img {
+		border: none;
+		display: block;
+	}
+}
+
+
+/*
+ * HTML5
+ */
+section, nav, article, footer, header, menu, aside, figure, figcaption {
+	display: block;
+	#marpad;
+	position: static;
+}
+
+/*
+ * FORMS
+ */
+
+button {
+	margin: 0;
+	border: none;
+	background: none;
+}
+
+/* 
+ * CSS 3
+ */
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+}
+
+/*
+ * SVG
+ */
+svg {
+	text, textpath {
+		alignment-baseline: central;
+		text-rendering: geometricPrecision;
+	}
+}
+
+/*
+ * FIGURE
+ */
+figure {
+	margin: 0;
+}
+
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = Responsive REM
+//=========================
+
+html {
+	font-size: 6px;
+	line-height: normal;
+	
+	#mq-min-px-ratio(1.5, {
+		font-size: 5px;
+		
+		#mq-min-width(@screen-xs, {
+			font-size: 6px;
+		});
+	});
+	
+	#mq-min-width(@screen-xs, {
+		font-size: 8px;
+	});
+	
+	#mq-min-width(@screen-sm, {
+		font-size: 8px;
+	});
+
+	#mq-min-width(@screen-md, {
+		font-size: 10px;
+	});
+}
+
+//====== Animation ============
+@duration-shortest: 150ms;
+@duration-shorter: 200ms;
+@duration-short: 300ms;
+@duration: 500ms;
+@duration-long: 750ms;
+@duration-longer: 1000ms;
+@duration-longest: 1500ms;
+
+@visanim: visibility 0ms linear;
+
+@ease: ease-in-out;
+@ease-in: ease-in;
+@ease-out: ease-out;
+
+//====== COLORS ================
+@white: #ffffff;
+@black: #000000;
+
+
+//====== SYMBOLIC ================
+@dark: @black;
+@light: @white;
+
+@page-load-color: @dark;
+
+
+//====== FONTS ================
+@font-color: @dark;
+@link-color: @dark;
+@link-color-hover: lighten(@dark, 20%);
+@link-color-visited: @link-color;
+
+
+//====== BACKGROUND ================
+@bg-color: @light;
+//====== SCREEN WIDTHS ============
+
+@screen-ph: 320px;
+@screen-xs: 768px;
+@screen-sm: 1024px;
+@screen-md: 1280px;
+@screen-lg: 1440px;
+@screen-xl: 1600px;
+@screen-max: 1920px;
+
+
+//====== FONTS ==== 
+
+/* Text */
+@text-font: 'sans-serif';
+@text-color: @font-color;
+
+/* Heading */
+@heading-font: 'serif';
+@heading-color: @dark;
+
+/* font Face */
+/*@typo-filename: 'typo';
+
+@font-face {
+	#font-face(@typo-filename);
+}*/
+
+//=========================
+// = VARIABLES GLOBALES
+//=========================
+
+@golden-ratio: 1.61803398875;
+
+
+//====== PATH ==================
+@css-path: '/workspace/assets/css/';
+@font-path: '/workspace/assets/fonts/';
+@img-path: '/workspace/assets/img/';
+@cur-path: '/workspace/assets/cur/';
+@svg-path: '@{css-path}svg/';
+

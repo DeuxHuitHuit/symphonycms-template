@@ -5,29 +5,20 @@
 //=========================
 // = IMPORTS
 //=========================
-@import "core/vars";
-@import "core/vars-color";
-@import "core/vars-typo";
-@import "core/vars-mq";
-@import "core/vars-anim";
-@import "core/root-font-base";
+@import "core/bundle";
+@import "lib/bundle";
 
-@import "lib/fct";
-@import "lib/reset";
-@import "lib/typo";
-@import "lib/css3";
-@import "lib/svg-icons";
-@import "lib/markdown";
-@import "lib/states";
+@import "site/vars-overrides";
+@import "site/vars-site";
+@import "site/default-style";
+@import "site/site";
 
-@import "core/default-style";
-@import "core/site";
-@import "core/grid";
-
+@import "com/markdown";
 @import "com/button";
 @import "com/page-load";
 @import "com/menu-admin";
 @import "com/site-header";
 @import "com/site-footer";
+@import "com/svg-icons.less";
 
 @import "pages/page";

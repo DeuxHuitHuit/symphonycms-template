@@ -50,6 +50,14 @@ module.exports = function (grunt) {
 			libs: {
 				src: LIB_FILES.concat(['js/<%= pkg.name %>.min.js']),
 				dest: '<%= concat.libs.src[concat.libs.src.length - 1] %>'
+			},
+			lessLibs: {
+				src: 'css/lib/*.less',
+				dest: 'css/lib/bundle.less'
+			},
+			lessCore: {
+				src: 'css/core/*.less',
+				dest: 'css/core/bundle.less'
 			}
 		},
 		
@@ -214,6 +222,12 @@ module.exports = function (grunt) {
 					force: true
 				},
 				src: ['../../../dist/**']
+			},
+			bundle: {
+				options: {
+					force: true
+				},
+				src: ['<%= concat.lessLibs.dest %>', '<%= concat.lessCore.dest %>']
 			}
 		},
 		
@@ -292,7 +306,8 @@ module.exports = function (grunt) {
 		// Default tasks.
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
-		grunt.registerTask('css',     ['less', 'usebanner', 'analyzecss', 'csslint']);
+		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
+		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'analyzecss', 'csslint']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);

@@ -1,0 +1,78 @@
+//====== Medias Queries ============
+
+#mq-min-width (@min-width, @rules) {
+	@media screen and (min-width: @min-width) {
+		@rules();
+	}
+}
+#mq-max-width (@max-width, @rules) {
+	@media screen and (max-width: @max-width) {
+		@rules();
+	}
+}
+#mq-min-max-width (@min-width, @max-width, @rules) {
+	@media screen and (min-width: @min-width) and (max-width: @max-width) {
+		@rules();
+	}
+}
+
+#mq-max-dpi (@dpi, @rules) {
+	@media screen and (max-resolution: @dpi) {
+		@rules();
+	}
+}
+
+#mq-min-dpi (@dpi, @rules) {
+	@media screen and (min-resolution: @dpi) {
+		@rules();
+	}
+}
+
+#mq-px-ratio (@px-ratio, @rules) {
+	@media screen and (-webkit-device-pixel-ratio: @px-ratio),
+	@media screen and (device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+}
+
+#mq-min-px-ratio (@px-ratio, @rules) {
+	@media screen and (-webkit-min-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+	
+	@media screen and (min-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+}
+
+#mq-orientation (@orientation, @rules) {
+	@media screen and (orientation: @orientation) {
+		@rules();
+	}
+}
+
+//====== "Only" Queries ============
+
+#only-mobile(@rules) {
+	html.mobile &, &.mobile {
+		@rules();
+	}
+}
+
+#only-not-mobile(@rules) {
+	html:not(.mobile) & {
+		@rules();
+	}
+}
+
+#only-phone(@rules) {
+	html.mobile.phone &, &.mobile.phone {
+		@rules();
+	}
+}
+
+#only-not-phone(@rules) {
+	html:not(.phone) & {
+		@rules();
+	}
+}
