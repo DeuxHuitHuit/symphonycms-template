@@ -7,12 +7,12 @@
   "homepage": "",
   "author": {
     "name": "Deux Huit Huit",
-    "url": "http://deuxhuithuit.com/"
+    "url": "https://deuxhuithuit.com/"
   },
   "licenses": [
     {
       "type": "Private. All rights reserved. Deux Huit Huit and others.",
-      "url": "http://deuxhuithuit.com/"
+      "url": "https://deuxhuithuit.com/"
     }
   ],
   "dependencies": {
