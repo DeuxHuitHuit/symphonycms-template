@@ -21,7 +21,7 @@
 <xsl:import href="../lib/page-title.xsl" />
 <xsl:import href="../lib/master-title.xsl" />
 <xsl:import href="../lib/create-page-url.xsl" />
-<xsl:import href="../lib/date-time.xsl" />
+<xsl:import href="../../../extensions/datetime/utilities/datetime.xsl" />
 <xsl:import href="../lib/fx-url-creator.xsl" />
 <xsl:import href="../lib/ga.xsl" />
 <xsl:import href="../lib/ninja.xsl" />
@@ -71,10 +71,6 @@
 			
 			<xsl:apply-templates select="data" />
 			
-		</div>
-	</html>
-</xsl:template>
-
 		</div>
 	</html>
 
