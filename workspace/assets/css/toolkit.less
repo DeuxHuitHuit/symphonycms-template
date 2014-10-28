@@ -8,8 +8,9 @@
 @import "core/bundle";
 @import "lib/bundle";
 
-@ui-bg-main: #ffffff;
-@ui-bg-items: #eef2f3;
+@ui-bg-main: @dark;
+@ui-bg-items: fade(@light, 10%);
+@ui-heading-color: @light;
 
 #ui-toolkit {
 	background-color: @ui-bg-main;
@@ -28,6 +29,7 @@
 			margin: 0 0 10px 0;
 			font-size: 1.8rem;
 			line-height: 2.4rem;
+			color: @ui-heading-color;
 		}
 		
 		.ui-item-ctn {
@@ -60,7 +62,7 @@
 				text-align: center;
 				font-size: 12px;
 				line-height: 14px;
-				color: @font-color;
+				color: @ui-heading-color;
 				font-family: Arial, helvetica, 'sans-serif';
 			}
 			
@@ -71,26 +73,18 @@
 				.ui-color {
 					#wh(165px);
 
-					&.gray {
-						background-color: @black;
+					&.dark {
+						.ui-palette-coloring(@dark);
 					}
 					
-					&.white {
-						background-color: @white;
+					&.light {
+						.ui-palette-coloring(@light);
 					}
 					
 					&.ui-darker {
 						#absolute;
 						#fill(auto, 0, 0, 0);
 						height: 30%;
-						
-						&.black {
-							background-color: darken(@black, 10%);
-						}
-						
-						&.white {
-							background-color: darken(@white, 10%);
-						}
 					}
 				}
 			}
@@ -98,3 +92,10 @@
 	}
 }
 
+.ui-palette-coloring(@color) {
+	background-color: @color;
+	
+	&.ui-darker {
+		background-color: darken(@color, 10%);
+	}
+}
