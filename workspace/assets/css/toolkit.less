@@ -7,10 +7,13 @@
 //=========================
 @import "core/bundle";
 @import "lib/bundle";
+@import "site/vars-overrides";
 
 @ui-bg-main: @dark;
 @ui-bg-items: fade(@light, 10%);
 @ui-heading-color: @light;
+@ui-groupe-title-color: @ui-bg-items;
+@ui-font-family: Arial, helvetica, sans-serif;
 
 #ui-toolkit {
 	background-color: @ui-bg-main;
@@ -25,7 +28,7 @@
 		background-color: @ui-bg-items;
 		
 		.ui-item-title {
-			font-family: Arial, helvetica, sans-serif;
+			font-family: @ui-font-family;
 			margin: 0 0 10px 0;
 			font-size: 1.8rem;
 			line-height: 2.4rem;
@@ -34,6 +37,10 @@
 		
 		.ui-item-ctn {
 			@import "main";
+			
+			ul li, ol li {
+				list-style-position: inside;
+			}
 		}
 	}
 
@@ -47,11 +54,11 @@
 	}
 	
 	.ui-group-title {
-		font-family: Arial, helvetica, sans-serif;
+		font-family: @ui-font-family;
 		margin: 0 0 30px -20px;
 		font-size: 6rem;
 		line-height: 7.4rem;
-		color: lighten(#000000, 20%);
+		color: @ui-groupe-title-color;
 	}
 		
 	.ui-palette-ctn {
@@ -62,8 +69,9 @@
 				text-align: center;
 				font-size: 12px;
 				line-height: 14px;
+				max-width: 165px;
 				color: @ui-heading-color;
-				font-family: Arial, helvetica, 'sans-serif';
+				font-family: @ui-font-family;
 			}
 			
 			.ui-color-ctn {
@@ -72,7 +80,7 @@
 				
 				.ui-color {
 					#wh(165px);
-
+					
 					&.dark {
 						.ui-palette-coloring(@dark);
 					}
