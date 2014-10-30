@@ -2,7 +2,7 @@
 
 #### Version 1.3.x
 
-This is the template we use internally for creating new websites with Symphony CMS.
+This is the template we use internally for creating new websites with [Symphony CMS](http://www.getsymphony.com/).
 
 <https://deuxhuithuit.com>
 
