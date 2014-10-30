@@ -7,6 +7,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	margin: @gutter-width 0;
+	font-family: @heading-font;
+	color: @heading-color;
+	text-transform: uppercase;
+	font-weight: normal;
 	
 	&:first-child {
 		margin-top: 0;
@@ -15,6 +19,40 @@ h1, h2, h3, h4, h5, h6 {
 	&:last-child {
 		margin-bottom: 0;
 	}
+}
+
+h1 {
+	.heading-xl;
+}
+
+h2 {
+	.heading-lg;
+}
+
+h3 {
+	.heading-md;
+}
+
+h4, h5, h6 {
+	.heading-sm;
+}
+
+p, .p, li, a {
+	font-family: @text-font;
+	color: @text-color;
+	#font-size();
+}
+
+a {
+	&:visited {
+		color: @link-color-visited;
+	}
+	
+	#only-not-mobile({
+		&:hover, &:active {
+			color: @link-color-hover;
+		}
+	});
 }
 
 p, .p {
