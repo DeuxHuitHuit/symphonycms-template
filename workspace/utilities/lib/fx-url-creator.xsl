@@ -32,10 +32,9 @@
 	
 	<xsl:variable name="routes">
 		<xsl:text>[</xsl:text>
-		
-			<!-- main language -->
 			<xsl:choose>
 				<xsl:when test="$multi-langues = 'yes'">
+					<!-- main language -->
 					<xsl:for-each select="/data/fl-languages/supported-languages/item [@main = 'yes']">
 						<xsl:call-template name="framework-288-url-creator-page-route" >
 							<xsl:with-param name="item" select="$item" />
@@ -58,6 +57,9 @@
 				</xsl:otherwise>
 			</xsl:choose>
 			
+			<xsl:if test="@id = '1'">
+				<xsl:text>,'/'</xsl:text>
+			</xsl:if>
 		<xsl:text>]</xsl:text>
 	</xsl:variable>
 	
