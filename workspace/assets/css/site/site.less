@@ -22,9 +22,9 @@ html, body {
 	}
 }
 
-// default grids
-#generate-grid(@nb-cols);
-#generate-grid(@nb-cols - 4);
-#generate-grid(@nb-cols / 2);
-#generate-grid(2);
+// default grids (order IS important: must be ASC)
 #generate-grid(1);
+#generate-grid(2);
+#generate-grid(@nb-cols / 2);
+#generate-grid(@nb-cols - 4);
+#generate-grid(@nb-cols);

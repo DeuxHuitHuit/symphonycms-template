@@ -30,29 +30,32 @@
 }
 .col, [class^=col-] {
 	#ib;
+	width: 100%;
 }
 
 // generator
 #generate-grid(@cols) when (@cols > 0) {
+	// fully responsive
+	#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
+	#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols); });
+	#mq-min-width(@screen-sm, { #generate-resp-ctn(sm, @cols); });
+	#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols); });
+	#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols); });
+	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
+	
 	// not responsive
 	#generate-ctn(@cols);
-	// fully responsive
-	#mq-max-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
-	#mq-min-max-width(@screen-ph, @screen-xs, { #generate-resp-ctn(xs, @cols); });
-	#mq-min-max-width(@screen-xs, @screen-sm, { #generate-resp-ctn(sm, @cols); });
-	#mq-min-max-width(@screen-sm, @screen-md, { #generate-resp-ctn(md, @cols); });
-	#mq-min-max-width(@screen-md, @screen-lg, { #generate-resp-ctn(lg, @cols); });
-	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
 }
 
 // recursive definitions
 #generate-ctn(@n) {
 	.ctn-@{n} {
 		// cols
-		#generate-cols(@n);
+		#generate-cols-in(@n);
+		//#generate-cols-ex(@nb-cols, @n);
 	}
 	
-	#generate-cols(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
+	#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n) {
 		// col definition
 		> .col-@{i} {
 			width: percentage(@i / @n);
@@ -62,7 +65,15 @@
 		}
 		
 		// recursion
-		#generate-cols(@n, (@i + 1));
+		#generate-cols-in(@n, (@i + 1));
+	}
+	#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n) {
+		// col definition
+		> .col-@{i} {
+			width: 100%;
+		}
+		// recursion
+		#generate-cols-ex(@n, (@i + 1));
 	}
 }
 
@@ -72,11 +83,11 @@
 	.ctn-@{prefix}-@{n} {
 		// cols
 		#generate-cols-in(@n);
-		#generate-cols-ex(@nb-cols, @n);
+		//#generate-cols-ex(@nb-cols, @n);
 		
 		// cols, resp
 		#generate-resp-cols-in(@prefix, @n);
-		#generate-resp-cols-ex(@prefix, @nb-cols, @n);
+		//#generate-resp-cols-ex(@prefix, @nb-cols, @n);
 	}
 	
 	// standard
