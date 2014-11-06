@@ -65,6 +65,11 @@
 							<xsl:with-param name="item" select="$item" />
 						</xsl:call-template>
 					</xsl:for-each>
+					
+					<!-- Index page -->
+					<xsl:if test="@id = '1'">
+						<xsl:text>,'/'</xsl:text>
+					</xsl:if>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:call-template name="framework-288-url-creator-page-route" >
@@ -72,10 +77,6 @@
 					</xsl:call-template>
 				</xsl:otherwise>
 			</xsl:choose>
-			
-			<xsl:if test="@id = '1'">
-				<xsl:text>,'/'</xsl:text>
-			</xsl:if>
 		<xsl:text>]</xsl:text>
 	</xsl:variable>
 	
