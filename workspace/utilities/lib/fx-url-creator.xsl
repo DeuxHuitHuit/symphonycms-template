@@ -143,7 +143,7 @@
 				<xsl:value-of select="@handle" />
 			</xsl:otherwise>
 		</xsl:choose>
-		<xsl:text>/</xsl:text>	
+		<xsl:text>/</xsl:text>
 	</xsl:for-each>
 	
 	<!-- Current (if not index)-->
