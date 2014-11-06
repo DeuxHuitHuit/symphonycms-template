@@ -690,7 +690,7 @@
 	.ctn-@{n} {
 		// cols
 		#generate-cols-in(@n);
-		//#generate-cols-ex(@nb-cols, @n);
+		#generate-cols-ex(@nb-cols, @n);
 	}
 	
 	#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n) {
@@ -725,7 +725,7 @@
 		
 		// cols, resp
 		#generate-resp-cols-in(@prefix, @n);
-		//#generate-resp-cols-ex(@prefix, @nb-cols, @n);
+		#generate-resp-cols-ex(@prefix, @nb-cols, @n);
 	}
 	
 	// standard
