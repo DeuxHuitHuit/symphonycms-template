@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+	xmlns:exsl="http://exslt.org/common"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	exclude-result-prefixes="exsl"
+	>
 
 <xsl:variable name="allowArgsName" select="'f288-allowArgs'" />
 
@@ -21,11 +25,21 @@
 			<xsl:when test="count(/data/params/page-types/item[@handle='404']) != 0">
 				<xsl:call-template name="framework-288-render-page">
 					<xsl:with-param name="handle" select="'404'" />
+					<xsl:with-param name="model">
+						<xsl:call-template name="framework-288-page-model">
+							<xsl:with-param name="types" select="/data/params/page-types/item" />
+						</xsl:call-template>
+					</xsl:with-param>
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="count(/data/params/page-types/item[@handle='403']) != 0">
 				<xsl:call-template name="framework-288-render-page">
 					<xsl:with-param name="handle" select="'403'" />
+					<xsl:with-param name="model">
+						<xsl:call-template name="framework-288-page-model">
+							<xsl:with-param name="types" select="/data/params/page-types/item" />
+						</xsl:call-template>
+					</xsl:with-param>
 				</xsl:call-template>
 			</xsl:when>
 		</xsl:choose>
@@ -81,14 +95,9 @@
 	</xsl:variable>
 	
 	<xsl:variable name="model" >
-		<xsl:choose>
-			<xsl:when test="count($item/types/type [substring-before(.,'-model-') = 'f288']) &gt; 0">
-				<xsl:value-of select="substring-after($item/types/type [string-length(substring-after(.,'f288-model-')) &gt; 0],'f288-model-')" />
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:text>defaultPage</xsl:text>
-			</xsl:otherwise>
-		</xsl:choose>
+		<xsl:call-template name="framework-288-page-model">
+			<xsl:with-param name="types" select="types/type" />
+		</xsl:call-template>
 	</xsl:variable>
 	
 	<xsl:if test="count(types/type[. = 'hidden']) = 0 and (count(types/type[. = 'admin']) = 0 or $is-loggued-in = true())">
@@ -164,6 +173,18 @@
 		<xsl:text>*</xsl:text>
 	</xsl:if>
 	<xsl:text>'</xsl:text>
+</xsl:template>
+
+<xsl:template name="framework-288-page-model">
+	<xsl:param name="types" />
+	<xsl:choose>
+		<xsl:when test="count(exsl:node-set($types)[substring-before(.,'-model-') = 'f288']) &gt; 0">
+			<xsl:value-of select="substring-after(exsl:node-set($types)[string-length(substring-after(.,'f288-model-')) &gt; 0],'f288-model-')" />
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:text>defaultPage</xsl:text>
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:template>
 
 <xsl:template name="framework-288-render-page">
