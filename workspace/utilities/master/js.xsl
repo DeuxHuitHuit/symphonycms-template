@@ -20,7 +20,7 @@
 			<!-- Local libs -->
 			<xsl:apply-templates select="/data/javascript/libs/file" mode="local" />
 			<!-- FX -->
-			<script src="{$js-path}core/framework.js?v={$version}"></script>
+			<script src="{$js-path}core/framework.{$version}.js"></script>
 			<script>
 				<xsl:text>(function(){</xsl:text>
 					<xsl:text>App.debug(true);</xsl:text>
@@ -32,8 +32,8 @@
 			<xsl:apply-templates select="/data/javascript/dev/file" mode="local" />
 		</xsl:when>
 		<xsl:otherwise>
-			<script src="{$js-path}core/framework.min.js?v={$version}"></script>
-			<script src="{$js-path}{$site-ref}.min.js?v={$version}"></script>
+			<script src="{$js-path}core/framework.min.{$version}.js"></script>
+			<script src="{$js-path}{$site-ref}.min.{$version}.js"></script>
 		</xsl:otherwise>
 	</xsl:choose>
 	
@@ -52,7 +52,7 @@
 </xsl:template>
 
 <xsl:template match="javascript/*/file" mode="local">
-	<script src="{$js-path}{.}?v={$version}"></script>
+	<script src="{$js-path}{.}"></script>
 </xsl:template>
 
 <xsl:template match="javascript/*/file" mode="cdn">
