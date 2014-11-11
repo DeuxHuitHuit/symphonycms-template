@@ -18,6 +18,9 @@
 				<span><xsl:value-of select="$config/site-titre/item[@lang=$url-language]" /></span>
 			</h2>
 		</a>
+		
+		<!-- Nav -->
+		<xsl:call-template name="site-nav" />
 	</header>
 </xsl:template>
 

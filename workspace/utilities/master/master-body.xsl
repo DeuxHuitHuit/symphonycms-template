@@ -6,6 +6,7 @@
 <xsl:import href="../lib/menu-admin.xsl" />
 <xsl:import href="../com/site-footer.xsl" />
 <xsl:import href="../com/site-header.xsl" />
+<xsl:import href="../com/site-nav.xsl" />
 
 <!-- Extensions -->
 <xsl:import href="../../../extensions/block_user_agent/utilities/block_user_agent.xsl" />
