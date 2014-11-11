@@ -62,7 +62,7 @@
 	
 	
 	<xsl:if test="$has-url = 'yes' or $has-page = 'yes'">
-		<a target="_self">
+		<a target="_self" role="menuitem">
 			<xsl:if test="string-length($reel-class) != 0">
 				<xsl:attribute name="class">
 					<xsl:value-of select="$reel-class" />
