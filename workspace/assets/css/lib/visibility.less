@@ -1,0 +1,62 @@
+/**
+ * Visibility classes
+ */
+
+.not-visible {
+	visibility: hidden !important;
+}
+
+.visible {
+	visibility: visible !important;
+}
+
+.hidden {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+.inline-block {
+	display: inline-block;
+}
+
+#generate-visibility-classes(@suffix) {
+	.not-visible-@{suffix} {
+		visibility: hidden !important;
+	}
+	.visible-@{suffix} {
+		visibility: visible !important;
+	}
+	.hidden-@{suffix} {
+		display: none;
+	}
+	.block-@{suffix} {
+		display: block;
+	}
+	.inline-block-@{suffix} {
+		display: inline-block;
+	}
+}
+
+#mq-min-width(@screen-ip, {
+	#generate-visibility-classes(ip);
+});
+#mq-min-width(@screen-ph, {
+	#generate-visibility-classes(ph);
+});
+#mq-min-width(@screen-xs, {
+	#generate-visibility-classes(xs);
+});
+#mq-min-width(@screen-sm, {
+	#generate-visibility-classes(sm);
+});
+#mq-min-width(@screen-md, {
+	#generate-visibility-classes(md);
+});
+#mq-min-width(@screen-lg, {
+	#generate-visibility-classes(lg);
+});
+#mq-min-width(@screen-xl, {
+	#generate-visibility-classes(xl);
+});
