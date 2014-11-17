@@ -20,17 +20,16 @@
 }
 
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
-#font-face(@font-family, @font-weight:normal, @font-style: normal) {
+#font-face(@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
 	font-family: @font-family;
-	src: url("@{font-path}@{font-family}.eot");
+	src: url("@{font-path}@{font-filename}.eot");
 	src: local('?'),
-		 url("@{font-path}@{font-family}.woff") format('woff'),
-		 url("@{font-path}@{font-family}.ttf") format('truetype'),
-		 url("@{font-path}@{font-family}.svg#@{font-family}") format('svg');
+		url("@{font-path}@{font-filename}.woff") format('woff'),
+		url("@{font-path}@{font-filename}.ttf") format('truetype'),
+		url("@{font-path}@{font-filename}.svg#@{font-family}") format('svg');
 	font-weight: @font-weight;
 	font-style: @font-style;
 }
-
 
 //====== HEADINGS ============
 .heading-xxl {
