@@ -1,0 +1,71 @@
+/**
+ * 	Base typo
+ */
+
+//====== HEADINGS ============
+.heading-xxl {
+	#font-size(15rem, 15.5rem);
+}
+
+.heading-xl {
+	#font-size(8rem, 9rem);
+}
+
+.heading-lg {
+	#font-size(3.2rem, 3.8rem);
+}
+
+.heading-md {
+	#font-size(2.4rem, 3rem);
+}
+
+.heading-sm {
+	#font-size(1.6rem, 2rem);
+}
+
+.heading-xs {
+	#font-size(1.4rem, 1.6rem);
+}
+
+.heading-xxs {
+	#font-size(1rem, 1.1rem);
+}
+
+
+//====== TYPO ============
+.typo-xxl {
+	#font-size(5rem);
+}
+
+.typo-xl {
+	#font-size(4rem);
+}
+
+.typo-lg {
+	#font-size(3rem);
+}
+
+.typo-md {
+	#font-size(2.4rem);
+}
+
+.typo-sm {
+	#font-size(1.6rem);
+}
+
+.typo-xs {
+	#font-size(1.4rem);
+}
+
+.typo-xxs {
+	#font-size(1rem);
+}
+
+//====== RESPONSIVE ============
+#generate-typo-level();
+#mq-min-width(@screen-ph, { #generate-typo-level(ph-); });
+#mq-min-width(@screen-xs, { #generate-typo-level(xs-); });
+#mq-min-width(@screen-sm, { #generate-typo-level(sm-); });
+#mq-min-width(@screen-md, { #generate-typo-level(md-); });
+#mq-min-width(@screen-lg, { #generate-typo-level(lg-); });
+#mq-min-width(@screen-xl, { #generate-typo-level(xl-); });
