@@ -887,6 +887,14 @@
 	display: inline-block;
 }
 
+.off-screen {
+	position: fixed;
+	left: -100000px;
+	right: -100000px;
+	width: 0;
+	height: 0;
+}
+
 #generate-visibility-classes(@suffix) {
 	.not-visible-@{suffix} {
 		visibility: hidden !important;
