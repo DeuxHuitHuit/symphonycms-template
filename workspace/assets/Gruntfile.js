@@ -212,6 +212,13 @@ module.exports = function (grunt) {
 				ids: false,
 				'box-model': false,
 				'universal-selector': false,
+				'adjoining-classes': false,
+				'font-faces': false,
+				shorthand: false,
+				'box-sizing': false,
+				'qualified-headings': false,
+				'fallback-colors': false,
+				'bulletproof-font-face': false
 			},
 			src: ['css/main.css']
 		},
@@ -307,7 +314,7 @@ module.exports = function (grunt) {
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
-		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'analyzecss', 'csslint']);
+		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint', 'analyzecss']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
