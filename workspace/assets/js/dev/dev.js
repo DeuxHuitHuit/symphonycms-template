@@ -6,4 +6,8 @@
 
 (function ($, global, undefined) {
 	
-});
+	global.lr = function () {
+		return less.refresh(true);
+	};
+	
+})(jQuery, window);
