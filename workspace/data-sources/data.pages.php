@@ -15,7 +15,7 @@
 		
 		public function about() {
 			return array(
-				'name' => 'Pages',
+				'name' => 'Site: Pages',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhuithuit.com',
@@ -30,7 +30,7 @@
 		}
 		
 		public function allowEditorToParse() {
-			return true;
+			return false;
 		}
 		
 		public function execute(array &$param_pool = null) {

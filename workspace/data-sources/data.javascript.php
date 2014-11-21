@@ -13,7 +13,7 @@
 
 		public function about() {
 			return array(
-				'name' => 'Javascript',
+				'name' => 'Site: Javascript',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhutihuit.com',

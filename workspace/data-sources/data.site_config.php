@@ -37,7 +37,7 @@
 
 		public function about() {
 			return array(
-				'name' => 'Site Config',
+				'name' => 'Site: Config',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhuithuit.com',

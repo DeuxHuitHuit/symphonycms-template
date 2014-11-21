@@ -13,7 +13,7 @@
 
 		public function about() {
 			return array(
-				'name' => 'Package.json',
+				'name' => 'Site: package.json',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhutihuit.com',

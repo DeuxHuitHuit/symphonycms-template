@@ -29,7 +29,7 @@
 
 		public function about() {
 			return array(
-				'name' => 'Page Metas',
+				'name' => 'Site: Page Metas',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
 					'website' => 'http://deuxhuithuit.com',
