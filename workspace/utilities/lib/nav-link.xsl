@@ -62,7 +62,7 @@
 	
 	
 	<xsl:if test="$has-url = 'yes' or $has-page = 'yes'">
-		<a target="_self" role="menuitem">
+		<a target="_self" role="menuitem" data-ga-cat="menu" data-ga-value="{$url-language}/{$title}">
 			<xsl:if test="string-length($reel-class) != 0">
 				<xsl:attribute name="class">
 					<xsl:value-of select="$reel-class" />
