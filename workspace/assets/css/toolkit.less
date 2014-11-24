@@ -9,10 +9,10 @@
 @import "lib/bundle";
 @import "site/vars-overrides";
 
-@ui-bg-main: @dark;
-@ui-bg-items: fade(@light, 10%);
-@ui-heading-color: @light;
-@ui-groupe-title-color: @ui-bg-items;
+@ui-bg-main: @light;
+@ui-bg-items: fade(@ui-heading-color, 10%);
+@ui-heading-color: @dark;
+@ui-groupe-title-color: @ui-heading-color;
 @ui-font-family: Arial, helvetica, sans-serif;
 
 #ui-toolkit {
@@ -41,6 +41,10 @@
 			ul li, ol li {
 				list-style-position: inside;
 			}
+		}
+		
+		.ui-font {
+			#font-size(3rem,3rem);
 		}
 	}
 
@@ -81,12 +85,12 @@
 				.ui-color {
 					#wh(165px);
 					
-					&.dark {
-						.ui-palette-coloring(@dark);
+					&.black {
+						.ui-palette-coloring(@black);
 					}
 					
-					&.light {
-						.ui-palette-coloring(@light);
+					&.white {
+						.ui-palette-coloring(@white);
 					}
 					
 					&.ui-darker {
