@@ -51,27 +51,19 @@
 		</xsl:if>
 		
 		<xsl:if test="string-length($extra-key) != 0">
-			<xsl:call-template name="extra-btn-attributes" mode="{$extra-key}">
+			<xsl:call-template name="btn-attributes" mode="{$extra-key}">
 				<xsl:with-param name="extra-key" select="$extra-key" />
 			</xsl:call-template>
 		</xsl:if>
 		
-		<xsl:choose>
-			<xsl:when test="exslt:object-type($text) = 'string'">
-				<xsl:value-of select="$text" />
-			</xsl:when>
-			<xsl:when test="exslt:object-type($text) = 'RTF'">
-				<xsl:copy-of select="$text"/>
-			</xsl:when>
-			<xsl:when test="exslt:object-type($text) = 'node-set' and count($text/*) = 0">
-				<xsl:value-of select="$text" />
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:copy-of select="$text/*" />
-			</xsl:otherwise>
-		</xsl:choose>
+		<xsl:call-template name="content">
+			<xsl:with-param name="content" select="$text" />
+		</xsl:call-template>
+		
 	</xsl:element>
 </xsl:template>
+
+
 
 
 </xsl:stylesheet>
