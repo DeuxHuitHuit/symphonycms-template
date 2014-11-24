@@ -1,0 +1,13 @@
+#### CUSTOM 
+<IfModule mod_rewrite.c>
+    ### ASSETS
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)\.([\d\.\-]+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp|less)$ $1.$3 [L]
+</IfModule>
+
+### Security
+Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' cdnjs.cloudflare.com *.googleapis.com *.gstatic.com ajax.googleapis.com *.deuxhuithuit.com *.youtube.com *.ytimg.com *.vimeo.com *.vimeocdn.com www.gravatar.com *.google-analytics.com *.doubleclick.net *.google.com data:; connect-src 'self' *.288dev.com *.deuxhuithuit.com"
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Credentials true
+Header always set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, HEAD, OPTIONS"
