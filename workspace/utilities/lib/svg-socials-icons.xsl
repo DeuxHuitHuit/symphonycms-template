@@ -233,7 +233,7 @@
 	
 	<xsl:variable name="width">
 		<xsl:call-template name="svg-icons-get-width">
-			<xsl:with-param name="width" select="'140'" />
+			<xsl:with-param name="width" select="'60'" />
 			<xsl:with-param name="height" select="$height" />
 		</xsl:call-template>
 	</xsl:variable>
@@ -241,9 +241,9 @@
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 		class="svg-icon svg-icon-pi"
 		x="0px" y="0px"
-		width="{$width}px" height="{$height}px" viewBox="0 0 140 140">
+		width="{$width}px" height="{$height}px" viewBox="0 0 144 144">
 		
-		<path d="M74.947,0C36.416,0,5.177,31.237,5.177,69.77c0,28.569,17.18,53.111,41.762,63.902c-0.196-4.872-0.035-10.72,1.215-16.021
+		<path fill="{$color}" d="M74.947,0C36.416,0,5.177,31.237,5.177,69.77c0,28.569,17.18,53.111,41.762,63.902c-0.196-4.872-0.035-10.72,1.215-16.021
 			c1.341-5.664,8.978-38.017,8.978-38.017s-2.229-4.454-2.229-11.04c0-10.339,5.993-18.061,13.456-18.061
 			c6.346,0,9.411,4.767,9.411,10.475c0,6.38-4.067,15.922-6.161,24.76c-1.748,7.401,3.711,13.438,11.013,13.438
 			c13.219,0,22.121-16.978,22.121-37.094c0-15.292-10.3-26.737-29.03-26.737c-21.164,0-34.349,15.783-34.349,33.413
