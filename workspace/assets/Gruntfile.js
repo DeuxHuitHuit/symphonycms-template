@@ -23,6 +23,17 @@ module.exports = function (grunt) {
 	
 	var TEST_FILES = ['js/tests/*.js'];
 	
+	var visitor = (function () {
+		try {
+			return require('./Gruntcustom.js');
+		} catch (e) {}
+		var noop = function () {};
+		return {
+			config: noop,
+			register: noop
+		};
+	})();
+	
 	var config = {
 		pkg: grunt.file.readJSON('package.json'),
 		buildnum: {
@@ -283,6 +294,9 @@ module.exports = function (grunt) {
 	var init = function (grunt) {
 		grunt.file.preserveBOM = true;
 		
+		// visit config
+		visitor.config(config);
+		
 		// Project configuration.
 		grunt.initConfig(config);
 
@@ -318,6 +332,9 @@ module.exports = function (grunt) {
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
+		
+		// visit grunt
+		visitor.register(grunt, config);
 	};
 	
 	var load = function (grunt) {
