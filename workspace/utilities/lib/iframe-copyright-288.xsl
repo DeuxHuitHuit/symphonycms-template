@@ -4,24 +4,35 @@
 <xsl:template name="iframe-copyright-288">
 	<xsl:param name="bg-color" select="'transparent'" />
 	<xsl:param name="text-color" select="'FFF'" />
+	<xsl:param name="logo-color" select="'fff'" />
 	<xsl:param name="font" select="'Arial, Helvetica, sans-serif'" />
-	<xsl:param name="font-size" select="'0'" />
+	<xsl:param name="font-size" select="'12'" />
 	<xsl:param name="w" select="'150'" />
 	<xsl:param name="h" select="'28'" />
-	<xsl:param name="logo" select="'/logo-w.png'" />
+	<xsl:param name="word" select="'Credits'" />
+	<xsl:param name="text-transform" select="'none'" />
+	<xsl:param name="display" select="'inline'" />
+	<xsl:param name="t-align" select="'left'" />
+	<xsl:param name="l-height" select="'0'" />
+	<xsl:param name="logo-align" select="'left'" />
 
 	<xsl:variable name="url">
-		<xsl:text>http://watermark.deuxhuithuit.com/?</xsl:text>
+		<xsl:text>//watermark.deuxhuithuit.com/v2/?</xsl:text>
 		<xsl:text>lang=</xsl:text><xsl:value-of select="$url-language" />
 		<xsl:text>&amp;bg=</xsl:text><xsl:value-of select="$bg-color" />
 		<xsl:text>&amp;text=</xsl:text><xsl:value-of select="$text-color" />
+		<xsl:text>&amp;logo-color=</xsl:text><xsl:value-of select="$logo-color" />
 		<xsl:text>&amp;font=</xsl:text><xsl:value-of select="$font" />
 		<xsl:text>&amp;font-size=</xsl:text><xsl:value-of select="$font-size" />
 		<xsl:text>&amp;w=</xsl:text><xsl:value-of select="$w" />
 		<xsl:text>&amp;h=</xsl:text><xsl:value-of select="$h" />
-		<xsl:text>&amp;logo=</xsl:text><xsl:value-of select="$logo" />
 		<xsl:text>&amp;ref=</xsl:text><xsl:value-of select="$site-ref" />
-		<xsl:text>&amp;word=</xsl:text>
+		<xsl:text>&amp;word=</xsl:text><xsl:value-of select="$word" />
+		<xsl:text>&amp;transform=</xsl:text><xsl:value-of select="$text-transform" />
+		<xsl:text>&amp;display=</xsl:text><xsl:value-of select="$display" />
+		<xsl:text>&amp;t-align=</xsl:text><xsl:value-of select="$t-align" />
+		<xsl:text>&amp;l-height=</xsl:text><xsl:value-of select="$l-height" />
+		<xsl:text>&amp;logo-align=</xsl:text><xsl:value-of select="$logo-align" />
 	</xsl:variable>
 	
 	<iframe class="copy-288" 
