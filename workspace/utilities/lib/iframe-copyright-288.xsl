@@ -9,7 +9,7 @@
 	<xsl:param name="font-size" select="'12'" />
 	<xsl:param name="w" select="'150'" />
 	<xsl:param name="h" select="'28'" />
-	<xsl:param name="word" select="'Credit'" />
+	<xsl:param name="word" select="'Credits'" />
 	<xsl:param name="text-transform" select="'none'" />
 	<xsl:param name="display" select="'inline'" />
 	<xsl:param name="t-align" select="'left'" />
