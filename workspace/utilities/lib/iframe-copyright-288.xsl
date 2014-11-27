@@ -17,7 +17,7 @@
 	<xsl:param name="logo-align" select="'left'" />
 
 	<xsl:variable name="url">
-		<xsl:text>http://watermark.deuxhuithuit.com/v2/index.php?</xsl:text>
+		<xsl:text>http://watermark.deuxhuithuit.com/v2/?</xsl:text>
 		<xsl:text>lang=</xsl:text><xsl:value-of select="$url-language" />
 		<xsl:text>&amp;bg=</xsl:text><xsl:value-of select="$bg-color" />
 		<xsl:text>&amp;text=</xsl:text><xsl:value-of select="$text-color" />
