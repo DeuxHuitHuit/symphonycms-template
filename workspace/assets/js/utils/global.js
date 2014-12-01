@@ -18,6 +18,26 @@
 				window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame ||
 				window.msCancelRequestAnimationFrame  || window.clearTimeout;
 	
+	// polyfill jQuery animation engine
+	if (!!$.fn.velocity) {
+		$.fn.animate = $.fn.velocity;
+		$.fn.fadeTo = function (duration, opacity) {
+			return this.velocity({opacity: opacity}, { duration: duration });
+		};
+		$.fn.fadeIn = function (duration) {
+			return this.velocity('fadeIn', { duration: duration });
+		};
+		$.fn.fadeOut = function (duration) {
+			return this.velocity('fadeOut', { duration: duration });
+		};
+		$.fn.slideUp = function (duration) {
+			return this.velocity('slideUp', { duration: duration });
+		};
+		$.fn.slideDown = function (duration) {
+			return this.velocity('slideDown', { duration: duration });
+		};
+	}
+	
 	global.preventNextClick = function (e) {
 		var t = $(this);
 		var href = t.attr('href');
