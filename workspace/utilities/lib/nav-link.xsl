@@ -6,6 +6,7 @@
 	<xsl:param name="page" select="page/page" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="action" select="''" />
+	<xsl:param name="content" select="$title" />
 	<xsl:param name="extra-param-key" select="''" />
 	<xsl:param name="selected-on-sub-page" select="'yes'" />
 	
@@ -90,9 +91,10 @@
 					<xsl:with-param name="key" select="$extra-param-key" />
 				</xsl:apply-templates>
 			</xsl:if>
-			<span>
-				<xsl:value-of select="$title" />
-			</span>
+			<xsl:call-template name="content" >
+				<xsl:with-param name="content" select="$content"/>
+			</xsl:call-template>
+			
 		</a>
 	</xsl:if>
 		
