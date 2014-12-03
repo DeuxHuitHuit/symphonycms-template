@@ -9,6 +9,7 @@
 	$.jitImage.defaults.forceCssResize = false;
 	$.jitImage.defaults.parallelLoadingLimit = 3;
 	$.jitImage.defaults.nonVisibleDelay = 0;
+	$.jitImage.defaults.forceEvenSize = true;
 	
 	global.raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||  
 		window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
