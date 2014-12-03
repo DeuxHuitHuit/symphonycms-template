@@ -489,6 +489,13 @@
 	text-transform: uppercase;
 }
 
+//::first-letter needs to be put on a block-like element
+.first-letter-upper {
+	&::first-letter {
+		.upper;
+	}
+}
+
 .lower {
 	text-transform: lowercase;
 }
