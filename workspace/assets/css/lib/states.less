@@ -11,3 +11,9 @@
 		@rules();
 	}
 }
+
+#hover-no-focus(@rules) {
+	html:not(.mobile) &:hover, &:active {
+		@rules();
+	}
+}

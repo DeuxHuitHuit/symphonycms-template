@@ -489,6 +489,13 @@
 	text-transform: uppercase;
 }
 
+//::first-letter needs to be put on a block-like element
+.first-letter-upper {
+	&::first-letter {
+		.upper;
+	}
+}
+
 .lower {
 	text-transform: lowercase;
 }
@@ -546,7 +553,7 @@
 
 #generate-typo-level(@prefix: '') {
 	
-	//====== HEADINGS ============
+	/*//====== HEADINGS ============
 	.heading-@{prefix}xxl { .heading-xxl; }
 	.heading-@{prefix}xl { .heading-xl; }
 	.heading-@{prefix}lg { .heading-lg; }
@@ -562,7 +569,7 @@
 	.typo-@{prefix}-md { .typo-md; }
 	.typo-@{prefix}-sm { .typo-sm; }
 	.typo-@{prefix}-xs { .typo-xs; }
-	.typo-@{prefix}-xxs { .typo-xxs; }
+	.typo-@{prefix}-xxs { .typo-xxs; }*/
 }
 
 /**
@@ -570,7 +577,7 @@
  */
 
 @nb-cols: 12;
-@gutter-width: 1.6rem;
+@gutter-width: 2rem;
 
 // spacing
 .gutter-left {
@@ -790,6 +797,12 @@
 
 #hover(@rules) {
 	html:not(.mobile) &:hover, &:focus, &:active {
+		@rules();
+	}
+}
+
+#hover-no-focus(@rules) {
+	html:not(.mobile) &:hover, &:active {
 		@rules();
 	}
 }
