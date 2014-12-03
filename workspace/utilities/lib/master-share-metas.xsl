@@ -8,11 +8,13 @@
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:variable name="page-metas" select="/data/page-metas/entry[1]" />
+			
+			<xsl:call-template name="html-metas">
+				<xsl:with-param name="description" select="$page-metas/description" />
+			</xsl:call-template>
+			
 			<xsl:choose>
 				<xsl:when test="string-length($page-metas/image-partage) != 0">
-					<xsl:call-template name="html-metas">
-						<xsl:with-param name="description" select="$page-metas/description" />
-					</xsl:call-template>
 					<xsl:call-template name="open-graph">
 						<xsl:with-param name="description" select="$page-metas/description" />
 						<xsl:with-param name="image" select="$page-metas/image-partage" />
@@ -23,9 +25,6 @@
 					</xsl:call-template>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:call-template name="html-metas">
-						<xsl:with-param name="description" select="$page-metas/description" />
-					</xsl:call-template>
 					<xsl:call-template name="open-graph">
 						<xsl:with-param name="description" select="$page-metas/description" />
 					</xsl:call-template>
