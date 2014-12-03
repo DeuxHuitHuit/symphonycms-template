@@ -10,4 +10,8 @@
 		return less.refresh(true);
 	};
 	
+	less.pageLoadFinished.then(function () {
+		$(window).trigger('resize');
+	});
+	
 })(jQuery, window);
