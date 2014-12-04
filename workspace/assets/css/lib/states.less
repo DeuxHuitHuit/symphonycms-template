@@ -17,3 +17,9 @@
 		@rules();
 	}
 }
+
+#hover-only(@rules) {
+    html:not(.mobile) &:hover {
+        @rules();
+    }
+}
