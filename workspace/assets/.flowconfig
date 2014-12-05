@@ -1,0 +1,6 @@
+# .flowconfig
+[include]
+.*/js
+
+[libs]
+.*/js/lib

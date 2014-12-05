@@ -193,6 +193,10 @@ module.exports = function (grunt) {
 			}
 		},
 		
+		flow: {
+			options: {}
+		},
+		
 		analyzecss: {
 			prod: {
 				sources: [
@@ -325,7 +329,7 @@ module.exports = function (grunt) {
 		});
 
 		// Default tasks.
-		grunt.registerTask('dev',     ['jshint', 'complexity']);
+		grunt.registerTask('dev',     ['jshint', 'complexity', 'flow']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
 		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint', 'analyzecss']);

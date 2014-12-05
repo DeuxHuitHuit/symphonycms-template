@@ -14,4 +14,9 @@
 		$(window).trigger('resize');
 	});
 	
+	function x(x) {
+		return x * 10;
+	}
+	x('allo');
+	
 })(jQuery, window);
