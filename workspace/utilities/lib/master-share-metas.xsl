@@ -8,29 +8,33 @@
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:variable name="page-metas" select="/data/page-metas/entry[1]" />
-			<xsl:variable name="image-path">
-				<xsl:choose>
-					<xsl:when test="string-length($page-metas/image-partage) != 0">
-						<xsl:value-of select="concat($root, '/workspace', $page-metas/image-partage/@path, '/', $page-metas/image-partage/filename)" />
-					</xsl:when>
-					<xsl:when test="string-length($site-share-image/filename) != 0">
-						<xsl:value-of select="concat($root, '/workspace', $site-share-image/@path, '/', $site-share-image/filename)" />
-					</xsl:when>
-				</xsl:choose>
-			</xsl:variable>
+			
 			<xsl:call-template name="html-metas">
 				<xsl:with-param name="description" select="$page-metas/description" />
 			</xsl:call-template>
-			<xsl:call-template name="open-graph">
-				<xsl:with-param name="description" select="$page-metas/description" />
-				<xsl:with-param name="image-path" select="$image-path" />
-				<xsl:with-param name="image" select="''" />
-			</xsl:call-template>
-			<xsl:call-template name="twitter-card">
-				<xsl:with-param name="description" select="$page-metas/description" />
-				<xsl:with-param name="image-path" select="$image-path" />
-				<xsl:with-param name="image" select="''" />
-			</xsl:call-template>
+			
+			<xsl:choose>
+				<xsl:when test="string-length($page-metas/image-partage) != 0">
+					<xsl:call-template name="open-graph">
+						<xsl:with-param name="description" select="$page-metas/description" />
+						<xsl:with-param name="image" select="$page-metas/image-partage" />
+					</xsl:call-template>
+					<xsl:call-template name="twitter-card">
+						<xsl:with-param name="description" select="$page-metas/description" />
+						<xsl:with-param name="image" select="$page-metas/image-partage" />
+					</xsl:call-template>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:call-template name="open-graph">
+						<xsl:with-param name="description" select="$page-metas/description" />
+					</xsl:call-template>
+					<xsl:call-template name="twitter-card">
+						<xsl:with-param name="description" select="$page-metas/description" />
+					</xsl:call-template>
+				</xsl:otherwise>
+			</xsl:choose>
+			
+			<xsl:call-template name="fb-app-id" />
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
