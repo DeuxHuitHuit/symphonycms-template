@@ -1,6 +1,9 @@
-# .flowconfig
 [include]
-.*/js
+.*/.*/js
+Gruntfile.js
 
 [libs]
-.*/js/lib
+./js/lib
+
+[ignore]
+.*/node_modules

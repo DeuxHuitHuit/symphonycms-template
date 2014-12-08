@@ -194,7 +194,10 @@ module.exports = function (grunt) {
 		},
 		
 		flow: {
-			options: {}
+			options: {
+				style: 'color'
+			},
+			dev: {}
 		},
 		
 		analyzecss: {
