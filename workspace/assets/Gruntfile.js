@@ -332,7 +332,7 @@ module.exports = function (grunt) {
 		});
 
 		// Default tasks.
-		grunt.registerTask('dev',     ['jshint', 'complexity', 'flow']);
+		grunt.registerTask('dev',     ['jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
 		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint', 'analyzecss']);
