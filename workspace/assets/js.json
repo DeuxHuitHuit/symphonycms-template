@@ -2,7 +2,7 @@
 	"sources": [
 		"modules/links.js",
 		"modules/url-changer.js",
-		
+		"modules/site-error.js",
 		"modules/title-updater.js",
 		"modules/alt-language-link-updater.js",
 		"modules/share-this.js",
