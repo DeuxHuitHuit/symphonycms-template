@@ -30,6 +30,7 @@
 <xsl:import href="../lib/iframe-copyright-288.xsl" />
 <xsl:import href="../lib/render-image.xsl" />
 <xsl:import href="../lib/prefetch.xsl" />
+<xsl:import href="../lib/content.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
