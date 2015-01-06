@@ -489,6 +489,13 @@
 	text-transform: uppercase;
 }
 
+//::first-letter needs to be put on a block-like element
+.first-letter-upper {
+	&::first-letter {
+		.upper;
+	}
+}
+
 .lower {
 	text-transform: lowercase;
 }
@@ -719,6 +726,18 @@
 	}
 }
 
+#mq-min-height (@min-height, @rules) {
+	@media screen and (min-height: @min-height) {
+		@rules();
+	}
+}
+
+#mq-max-height (@min-height, @rules) {
+	@media screen and (max-height: @min-height) {
+		@rules();
+	}
+}
+
 #mq-max-dpi (@dpi, @rules) {
 	@media screen and (max-resolution: @dpi) {
 		@rules();
@@ -792,6 +811,18 @@
 	html:not(.mobile) &:hover, &:focus, &:active {
 		@rules();
 	}
+}
+
+#hover-no-focus(@rules) {
+	html:not(.mobile) &:hover, &:active {
+		@rules();
+	}
+}
+
+#hover-only(@rules) {
+    html:not(.mobile) &:hover {
+        @rules();
+    }
 }
 /**
  * Visibility classes
