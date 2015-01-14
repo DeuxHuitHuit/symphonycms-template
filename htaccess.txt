@@ -13,3 +13,4 @@
     Header always set Access-Control-Allow-Credentials true
     Header always set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, HEAD, OPTIONS"
 </IfModule>
+
