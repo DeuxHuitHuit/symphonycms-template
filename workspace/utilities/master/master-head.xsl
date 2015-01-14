@@ -48,7 +48,7 @@
 		<xsl:call-template name="master-css" />
 		
 		<!-- GA -->
-		<xsl:if test="$debug != true()">
+		<xsl:if test="$debug != true() and string-length($ga-ua) != 0">
 			<xsl:call-template name="ga">
 				<xsl:with-param name="ua" select="$ga-ua" />
 				<xsl:with-param name="domain" select="$ga-domain" />
