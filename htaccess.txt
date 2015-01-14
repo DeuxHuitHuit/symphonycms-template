@@ -7,7 +7,9 @@
 </IfModule>
 
 ### Security
-Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' cdnjs.cloudflare.com *.googleapis.com *.gstatic.com ajax.googleapis.com *.deuxhuithuit.com *.youtube.com *.ytimg.com *.vimeo.com *.vimeocdn.com www.gravatar.com *.google-analytics.com *.doubleclick.net *.google.com data:; connect-src 'self' *.288dev.com *.deuxhuithuit.com"
-Header always set Access-Control-Allow-Origin "*"
-Header always set Access-Control-Allow-Credentials true
-Header always set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, HEAD, OPTIONS"
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' cdnjs.cloudflare.com *.googleapis.com *.gstatic.com ajax.googleapis.com *.deuxhuithuit.com *.youtube.com *.ytimg.com *.vimeo.com *.vimeocdn.com www.gravatar.com *.google-analytics.com *.doubleclick.net *.google.com data:; connect-src 'self' *.288dev.com *.deuxhuithuit.com"
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Credentials true
+    Header always set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, HEAD, OPTIONS"
+</IfModule>
