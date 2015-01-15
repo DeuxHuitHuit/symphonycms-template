@@ -155,11 +155,16 @@ module.exports = function (grunt) {
 			},
 			production: {
 				options: {
+					ieCompat: false,
 					cleancss: true,
+					strictUnits: true,
 					report: 'gzip',
 					sourceMap: true,
 					sourceMapFilename: 'css/main.min.css.map',
-					sourceMappingURL: 'main.min.css.map'
+					sourceMappingURL: 'main.min.css.map',
+					plugins: [
+						new (require('less-plugin-clean-css'))({})
+					]
 				},
 				files: {
 					'css/main.min.css': LESS_FILE
@@ -172,10 +177,10 @@ module.exports = function (grunt) {
 				options: {
 					position: 'top',
 					banner: '<%= meta.banner %>',
-					linebreak: true
+					linebreak: false
 				},
 				files: {
-					src: [ 'css/main.min.css' ]
+					src: [ 'css/main.css', 'css/main.min.css' ]
 				}
 			}
 		},
