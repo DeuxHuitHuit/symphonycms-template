@@ -1,11 +1,11 @@
-/*! jQuery JIT image - v1.3.1 - build 16 - 2014-12-12
+/*! jQuery JIT image - v1.3.2 - build 17 - 2015-01-20
 * https://github.com/DeuxHuitHuit/jQuery-jit-image
-* Copyright (c) 2014 Deux Huit Huit (https://deuxhuithuit.com/);
+* Copyright (c) 2015 Deux Huit Huit (https://deuxhuithuit.com/);
 * Licensed MIT */
 /*
- *  jQuery JIT image v1.2.1 - jQuery plugin
+ *  jQuery JIT image - jQuery plugin
  *
- *  Copyright (c) 2013-2014 Deux Huit Huit (http://www.deuxhuithuit.com/)
+ *  Copyright (c) 2013-2015 Deux Huit Huit (http://www.deuxhuithuit.com/)
  *  Licensed under the MIT LICENSE
  *  (https://raw.github.com/DeuxHuitHuit/jQuery-jit-image/master/LICENSE.txt)
  */
@@ -217,7 +217,9 @@
 			var size = o.size(o);
 			var urlFormat = _getUrlFromFormat(t, o, size);
 			var urlFormatSuccess = !!urlFormat && !!urlFormat.url;
-			var sizeSucces = !!size && (size.height > 0 || size.width > 0);
+			var sizeSucces = !!size && !!urlFormat &&
+				(!urlFormat.width || size.width > 0) &&
+				(!urlFormat.height || size.height > 0);
 			
 			if (urlFormatSuccess && sizeSucces) {
 				// fix for aspect ratio scaling
