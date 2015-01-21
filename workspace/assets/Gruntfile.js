@@ -48,7 +48,7 @@ module.exports = function (grunt) {
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
 			'<%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
-			'* Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
+			'* Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
 		},
 		concat: {
 			options: {
@@ -176,7 +176,7 @@ module.exports = function (grunt) {
 			build: {
 				options: {
 					position: 'top',
-					banner: '<%= meta.banner %>',
+					banner: '<%= meta.banner %>\n',
 					linebreak: false
 				},
 				files: {
