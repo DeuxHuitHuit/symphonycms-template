@@ -17,9 +17,17 @@ module.exports = function (grunt) {
 		return './js/' + f;
 	};
 	
+	var fixCdnJsFilePath = function (file) {
+		var filename = file.split('/');
+		filename = filename[filename.length - 1];
+		return './js/libs/' + filename;
+	};
+	
 	var SRC_FILES = JSON_JS_FILE.sources.map(fixJsFilePath);
 	
 	var LIB_FILES = JSON_JS_FILE.libs.map(fixJsFilePath);
+	
+	var LIBS_FILES = JSON_JS_FILE['cdn-before'].map(fixCdnJsFilePath);
 	
 	var TEST_FILES = ['js/tests/*.js'];
 	
@@ -59,8 +67,14 @@ module.exports = function (grunt) {
 				dest: 'js/<%= pkg.name %>.js'
 			},
 			libs: {
-				src: LIB_FILES.concat(['js/<%= pkg.name %>.min.js']),
-				dest: '<%= concat.libs.src[concat.libs.src.length - 1] %>'
+				src: LIBS_FILES.concat(LIB_FILES).concat([
+					'js/core/framework.min.js',
+					'js/<%= pkg.name %>.min.js'
+				]),
+				dest: '<%= concat.libs.src[concat.libs.src.length - 1] %>',
+				options: {
+					process: false
+				}
 			},
 			lessLibs: {
 				src: 'css/lib/*.less',
@@ -71,6 +85,18 @@ module.exports = function (grunt) {
 				dest: 'css/core/bundle.less'
 			}
 		},
+		
+		curl: (function (cdn) {
+			var ret = {};
+			cdn.forEach(function (file) {
+				var filename = fixCdnJsFilePath(file);
+				if (file.indexOf('//') === 0) {
+					file = 'http:' + file;
+				}
+				ret[filename] = file;
+			});
+			return ret;
+		})(JSON_JS_FILE['cdn-before']),
 		
 		watch: {
 			files: SRC_FILES.concat(GRUNT_FILE),
@@ -338,7 +364,7 @@ module.exports = function (grunt) {
 
 		// Default tasks.
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
-		grunt.registerTask('js',      ['concat:sources', 'uglify', 'concat:libs']);
+		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
 		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint', 'analyzecss']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
