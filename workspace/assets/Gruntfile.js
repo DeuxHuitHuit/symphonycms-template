@@ -307,7 +307,7 @@ module.exports = function (grunt) {
 		grunt.file.preserveBOM = true;
 		
 		// visit config
-		visitor.config(config);
+		visitor.config(grunt, config);
 		
 		// Project configuration.
 		grunt.initConfig(config);
