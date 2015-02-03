@@ -47,6 +47,9 @@
 		<!-- Master css -->
 		<xsl:call-template name="master-css" />
 		
+		<!-- RSS -->
+		<xsl:call-template name="page-metas-alt-rss" />
+		
 		<!-- GA -->
 		<xsl:if test="$debug != true() and string-length($ga-ua) != 0">
 			<xsl:call-template name="ga">
