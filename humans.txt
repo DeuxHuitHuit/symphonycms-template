@@ -75,8 +75,7 @@ Anybody that contributed jQuery plugins or other open source project used in thi
 
 Standards: HTML5, CSS3, ES5
 
-Components: jQuery, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo, Vimeo's froogaloops, jQuery Tools, jQuery.easySlider, jQuery.touchwipe
+Components: jQuery, Velocity.js, TweenMax, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo
 
 Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Bash, Grunt, Blood sweat and tears
-
 
