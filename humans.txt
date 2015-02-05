@@ -77,6 +77,6 @@ Standards: HTML5, CSS3, ES5
 
 Components: jQuery, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo, Vimeo's froogaloops, jQuery Tools, jQuery.easySlider, jQuery.touchwipe
 
-Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Grunt, Blood sweat and tears
+Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Bash, Grunt, Blood sweat and tears
 
 
