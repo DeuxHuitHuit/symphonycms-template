@@ -123,22 +123,28 @@
 	
 	<xsl:variable name="image-real-width">
 		<xsl:choose>
+			<xsl:when test="string-length($image-path) != 0">
+				<xsl:value-of select="$image-width" />
+			</xsl:when>
 			<xsl:when test="string-length($image) != 0">
 				<xsl:value-of select="$image/meta/@width" />
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="$image-width" />
+				<xsl:value-of select="$site-share-image/meta/@width" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
 	
 	<xsl:variable name="image-real-height">
 		<xsl:choose>
+			<xsl:when test="string-length($image-path) != 0">
+				<xsl:value-of select="$image-height" />
+			</xsl:when>
 			<xsl:when test="string-length($image) != 0">
 				<xsl:value-of select="$image/meta/@height" />
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="$image-height" />
+				<xsl:value-of select="$site-share-image/meta/@height" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
