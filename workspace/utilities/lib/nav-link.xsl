@@ -11,11 +11,7 @@
 	<xsl:param name="selected-on-sub-page" select="'yes'" />
 	<xsl:param name="url" select="url" />
 	
-	<xsl:variable name="has-page">
-		<xsl:if test="string-length(page) != 0">
-			<xsl:text>yes</xsl:text>
-		</xsl:if>
-	</xsl:variable>
+	<xsl:variable name="has-page" select="string-length($page) != 0" />
 	
 	<xsl:variable name="page-handle">
 		<xsl:text>btn-page-</xsl:text>
@@ -46,7 +42,7 @@
 	</xsl:variable>
 	
 	<xsl:variable name="reel-class">
-		<xsl:if test="$has-page = 'yes'">
+		<xsl:if test="$has-page = 'true'">
 			<xsl:value-of select="$page-handle" />
 			<xsl:value-of select="$sub-pages-handle" />
 			<xsl:text> </xsl:text>
@@ -56,14 +52,10 @@
 		<xsl:value-of select="$class" />
 	</xsl:variable>
 	
-	<xsl:variable name="has-url">
-		<xsl:if test="string-length($url) != 0">
-			<xsl:text>yes</xsl:text>
-		</xsl:if>
-	</xsl:variable>
+	<xsl:variable name="has-url" select="string-length($url) != 0" />
 	
 	
-	<xsl:if test="$has-url = 'yes' or $has-page = 'yes'">
+	<xsl:if test="$has-url = 'true' or $has-page = 'true'">
 		<a target="_self" role="menuitem" data-ga-cat="menu" data-ga-value="{$url-language}/{$title}">
 			<xsl:if test="string-length($reel-class) != 0">
 				<xsl:attribute name="class">
@@ -77,12 +69,12 @@
 			</xsl:if>
 			<xsl:attribute name="href">
 				<xsl:choose>
-					<xsl:when test="$has-page = 'yes'">
+					<xsl:when test="$has-page = 'true'">
 						<xsl:call-template name="create-page-url">
 							<xsl:with-param name="page" select="page" />
 						</xsl:call-template>
 					</xsl:when>
-					<xsl:when test="$has-url = 'yes'">
+					<xsl:when test="$has-url = 'true'">
 						<xsl:value-of select="$url" />
 					</xsl:when>
 				</xsl:choose>
