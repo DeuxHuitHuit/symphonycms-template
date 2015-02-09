@@ -9,6 +9,7 @@
 	<xsl:param name="content" select="$title" />
 	<xsl:param name="extra-param-key" select="''" />
 	<xsl:param name="selected-on-sub-page" select="'yes'" />
+	<xsl:param name="url" select="url" />
 	
 	<xsl:variable name="has-page">
 		<xsl:if test="string-length(page) != 0">
@@ -56,7 +57,7 @@
 	</xsl:variable>
 	
 	<xsl:variable name="has-url">
-		<xsl:if test="string-length(url) != 0">
+		<xsl:if test="string-length($url) != 0">
 			<xsl:text>yes</xsl:text>
 		</xsl:if>
 	</xsl:variable>
@@ -82,7 +83,7 @@
 						</xsl:call-template>
 					</xsl:when>
 					<xsl:when test="$has-url = 'yes'">
-						<xsl:value-of select="url" />
+						<xsl:value-of select="$url" />
 					</xsl:when>
 				</xsl:choose>
 			</xsl:attribute>
