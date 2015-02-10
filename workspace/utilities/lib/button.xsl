@@ -28,6 +28,7 @@
 	<xsl:element name="{$node-type}">
 		<xsl:if test="string-length($class) != 0">
 			<xsl:attribute name="class">
+				<xsl:text>button </xsl:text>
 				<xsl:value-of select="$class" />
 			</xsl:attribute>
 		</xsl:if>
