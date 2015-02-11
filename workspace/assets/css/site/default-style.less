@@ -43,18 +43,6 @@ p, .p, li, a {
 	#font-size();
 }
 
-a {
-	&:visited {
-		color: @link-color-visited;
-	}
-	
-	#only-not-mobile({
-		&:hover, &:active {
-			color: @link-color-hover;
-		}
-	});
-}
-
 p, .p {
 	padding: 0;
 	margin: @gutter-width 0;
@@ -68,7 +56,17 @@ p, .p {
 	}
 }
 
-a {
+a:not(.button) {
+	&:visited {
+		color: @link-color-visited;
+	}
+	
+	#only-not-mobile({
+		&:hover, &:active {
+			color: @link-color-hover;
+		}
+	});
+	
 	#marpad;
 	border-bottom: 1px solid @link-color;
 	#transition(~'border-bottom-color @{duration-short} @{ease}, color @{duration-short} @{ease}');
