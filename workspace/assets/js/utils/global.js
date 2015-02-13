@@ -51,4 +51,8 @@
 		return true;
 	};
 	
+	global.remToPx = function (value) {
+		return value * parseInt($('html').css('fontSize'),10);
+	};
+	
 })(jQuery, window);
