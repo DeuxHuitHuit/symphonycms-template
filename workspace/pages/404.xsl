@@ -3,7 +3,7 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:import href="../utilities/master/master.xsl" />
-<xsl:import href="../utilities/lib/erreurs.xsl" />
+<xsl:import href="../utilities/com/erreurs.xsl" />
 
 <xsl:template match="data">
 	<xsl:apply-templates select="pages-erreurs/entry[1]" />
