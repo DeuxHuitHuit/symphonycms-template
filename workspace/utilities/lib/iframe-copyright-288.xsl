@@ -44,7 +44,7 @@
 			scrolling="no" 
 			frameborder="no" 
 			width="{$w}" 
-			height="{number($h) + 8}"></iframe>
+			height="{number($h)}"></iframe>
 
 </xsl:template>
 
