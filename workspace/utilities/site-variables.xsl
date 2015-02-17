@@ -14,6 +14,14 @@
 <xsl:variable name="site-description" select="$config/description" />
 <xsl:variable name="site-share-image" select="$config/image-partage" />
 
+<!-- Dates -->
+<xsl:variable name="date-format">
+	<xsl:choose>
+		<xsl:when test="$url-language = 'en'">M D Y</xsl:when>
+		<xsl:otherwise>d M Y</xsl:otherwise>
+	</xsl:choose>
+</xsl:variable>
+
 <xsl:variable name="default-share-page-title" >
 	<xsl:call-template name="default-master-title" />
 </xsl:variable>
