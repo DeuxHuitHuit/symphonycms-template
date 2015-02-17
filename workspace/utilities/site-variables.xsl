@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:variable name="site-name" select="$config/site-titre" />
+<xsl:variable name="site-name">
+	<xsl:choose>
+		<xsl:when test="count($config/site-titre/item) != 0">
+			<xsl:value-of select="$config/site-titre/item[@lang=$url-language]"/>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$config/site-titre"/>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:variable>
 <xsl:variable name="site-description" select="$config/description" />
 <xsl:variable name="site-share-image" select="$config/image-partage" />
 
