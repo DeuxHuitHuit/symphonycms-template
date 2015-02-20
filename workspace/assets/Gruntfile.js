@@ -146,7 +146,8 @@ module.exports = function (grunt) {
 					jQuery: true,
 					console: true,
 					App: true,
-					Loader: true
+					Loader: true,
+					_: true
 				}
 			}
 		},
