@@ -1,5 +1,6 @@
 //Source : https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
 //Source : http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+//Source : https://msdn.microsoft.com/en-us/library/ie/dn265027(v=vs.85).aspx
 
 .flexbox {
 	display: -ms-flexbox;
@@ -18,18 +19,48 @@
 }
 
 .flex-align-items(@value: center) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
 	-webkit-align-items: @value;
+		-ms-flex-align: @value;
 			align-items: @value;
+}
+
+.flex-align-items(@value: center) when (@value = flex-start) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
+	-ms-flex-align: start;
+}
+
+.flex-align-items(@value: center) when (@value = flex-end) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
+	-ms-flex-align: end;
 }
 
 .flex-justify-content(@value: center) {
 	-webkit-justify-content: @value;
+		-ms-flex-pack: @value;
 			justify-content: @value;
 }
 
+.flex-justify-content(@value: center) when (@value = flex-start) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
+	-ms-flex-pack: start;
+}
+
+.flex-justify-content(@value: center) when (@value = flex-end) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
+	-ms-flex-pack: end;
+}
+
 .flex-wrap(@value: wrap) {
+	//For IE10- : "nowrap" = "none"
 	-webkit-flex-wrap: @value;
+		-ms-flex-wrap: @value;
 			flex-wrap: @value;
+}
+
+.flex-wrap(@value: wrap) when (@value = nowrap) {
+	//For IE10- : "nowrap" = "none"
+	-ms-flex-wrap: none;
 }
 
 .flex-direction(@value: row) {
@@ -47,7 +78,18 @@
 
 .flex-align-self(@value: stretch) {
 	-webkit-align-self: @value;
+		-ms-flex-item-align: @value;
 			align-self: @value;
+}
+
+.flex-align-self(@value: stretch) when (@value = flex-start) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
+		-ms-flex-item-align: start;
+}
+
+.flex-align-self(@value: stretch) when (@value = flex-end) {
+	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
+		-ms-flex-item-align: end;
 }
 
 .flex-basis(@value: auto) {
