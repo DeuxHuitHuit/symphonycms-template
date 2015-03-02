@@ -4,9 +4,6 @@
 <xsl:template name="master-js">
 	<xsl:param name="extra-js" />
 	
-	<!-- Libs -->
-	<xsl:apply-templates select="/data/javascript/cdn-before/file" mode="cdn" />
-	
 	<!-- IE JS -->
 	<xsl:call-template name="ie-cc">
 		<xsl:with-param name="content">
@@ -17,6 +14,8 @@
 	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">
+			<!-- Remote Libs -->
+			<xsl:apply-templates select="/data/javascript/cdn-before/file" mode="cdn" />
 			<!-- Local libs -->
 			<xsl:apply-templates select="/data/javascript/libs/file" mode="local" />
 			<!-- FX -->
@@ -32,7 +31,6 @@
 			<xsl:apply-templates select="/data/javascript/dev/file" mode="local" />
 		</xsl:when>
 		<xsl:otherwise>
-			<script src="{$js-path}core/framework.min.{$version}.js"></script>
 			<script src="{$js-path}{$site-ref}.min.{$version}.js"></script>
 		</xsl:otherwise>
 	</xsl:choose>
