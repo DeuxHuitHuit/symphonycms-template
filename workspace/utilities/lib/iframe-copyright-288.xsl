@@ -15,6 +15,7 @@
 	<xsl:param name="t-align" select="'left'" />
 	<xsl:param name="l-height" select="'0'" />
 	<xsl:param name="logo-align" select="'left'" />
+	<xsl:param name="logo-always-animated" select="'false'" />
 
 	<xsl:variable name="url">
 		<xsl:text>//watermark.deuxhuithuit.com/v2/?</xsl:text>
@@ -33,6 +34,7 @@
 		<xsl:text>&amp;t-align=</xsl:text><xsl:value-of select="$t-align" />
 		<xsl:text>&amp;l-height=</xsl:text><xsl:value-of select="$l-height" />
 		<xsl:text>&amp;logo-align=</xsl:text><xsl:value-of select="$logo-align" />
+		<xsl:text>&amp;logo-always-animated=</xsl:text><xsl:value-of select="$logo-always-animated" />
 	</xsl:variable>
 	
 	<iframe class="copy-288" 
@@ -42,7 +44,7 @@
 			scrolling="no" 
 			frameborder="no" 
 			width="{$w}" 
-			height="{number($h) + 8}"></iframe>
+			height="{number($h)}"></iframe>
 
 </xsl:template>
 
