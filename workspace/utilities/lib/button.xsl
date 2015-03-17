@@ -6,7 +6,7 @@
 
 <!-- Main template -->
 <xsl:template name="button">
-	<xsl:param name="text" />
+	<xsl:param name="content" />
 	<xsl:param name="url" select="''" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="action" select="''" />
@@ -65,7 +65,7 @@
 		</xsl:if>
 		
 		<xsl:call-template name="content">
-			<xsl:with-param name="content" select="$text" />
+			<xsl:with-param name="content" select="$content" />
 		</xsl:call-template>
 		
 	</xsl:element>
