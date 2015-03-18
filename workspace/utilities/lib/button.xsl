@@ -11,6 +11,7 @@
 	<xsl:param name="class" select="''" />
 	<xsl:param name="action" select="''" />
 	<xsl:param name="type" select="''" />
+	<xsl:param name="target" select="''" />
 	<xsl:param name="failover-element" select="'button'" />
 	<xsl:param name="extra-key" select="''" />
 	
@@ -28,6 +29,7 @@
 	<xsl:element name="{$node-type}">
 		<xsl:if test="string-length($class) != 0">
 			<xsl:attribute name="class">
+				<xsl:text>button </xsl:text>
 				<xsl:value-of select="$class" />
 			</xsl:attribute>
 		</xsl:if>
@@ -47,6 +49,12 @@
 		<xsl:if test="string-length($type) != 0">
 			<xsl:attribute name="type">
 				<xsl:value-of select="$type" />
+			</xsl:attribute>
+		</xsl:if>
+		
+		<xsl:if test="string-length($target) != 0">
+			<xsl:attribute name="target">
+				<xsl:value-of select="$target" />
 			</xsl:attribute>
 		</xsl:if>
 		

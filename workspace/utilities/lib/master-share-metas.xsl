@@ -12,28 +12,16 @@
 			<xsl:call-template name="html-metas">
 				<xsl:with-param name="description" select="$page-metas/description" />
 			</xsl:call-template>
-			
-			<xsl:choose>
-				<xsl:when test="string-length($page-metas/image-partage) != 0">
-					<xsl:call-template name="open-graph">
-						<xsl:with-param name="description" select="$page-metas/description" />
-						<xsl:with-param name="image" select="$page-metas/image-partage" />
-					</xsl:call-template>
-					<xsl:call-template name="twitter-card">
-						<xsl:with-param name="description" select="$page-metas/description" />
-						<xsl:with-param name="image" select="$page-metas/image-partage" />
-					</xsl:call-template>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:call-template name="open-graph">
-						<xsl:with-param name="description" select="$page-metas/description" />
-					</xsl:call-template>
-					<xsl:call-template name="twitter-card">
-						<xsl:with-param name="description" select="$page-metas/description" />
-					</xsl:call-template>
-				</xsl:otherwise>
-			</xsl:choose>
-			
+
+			<xsl:call-template name="open-graph">
+				<xsl:with-param name="description" select="$page-metas/description" />
+				<xsl:with-param name="image" select="$page-metas/image-partage" />
+			</xsl:call-template>
+			<xsl:call-template name="twitter-card">
+				<xsl:with-param name="description" select="$page-metas/description" />
+				<xsl:with-param name="image" select="$page-metas/image-partage" />
+			</xsl:call-template>
+				
 			<xsl:call-template name="fb-app-id" />
 		</xsl:otherwise>
 	</xsl:choose>
@@ -65,10 +53,20 @@
 	<xsl:param name="domain" select="$twitter-card-domain" />
 	
 	<xsl:variable name="image-full-path">
-		<xsl:call-template name="get-image-full-path">
-			<xsl:with-param name="image" select="$image" />
-			<xsl:with-param name="image-path" select="$image-path" />
-		</xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="string-length($image) != 0">
+				<xsl:call-template name="get-image-full-path">
+					<xsl:with-param name="image" select="$image" />
+					<xsl:with-param name="image-path" select="$image-path" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="get-image-full-path">
+					<xsl:with-param name="image" select="$site-share-image" />
+					<xsl:with-param name="image-path" select="$image-path" />
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:variable>
 	
 	<!-- output only if twitter card site is set -->
@@ -107,30 +105,46 @@
 	
 	<!-- Variables -->
 	<xsl:variable name="image-full-path">
-		<xsl:call-template name="get-image-full-path">
-			<xsl:with-param name="image" select="$image" />
-			<xsl:with-param name="image-path" select="$image-path" />
-		</xsl:call-template>
+		<xsl:choose>
+			<xsl:when test="string-length($image) != 0">
+				<xsl:call-template name="get-image-full-path">
+					<xsl:with-param name="image" select="$image" />
+					<xsl:with-param name="image-path" select="$image-path" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="get-image-full-path">
+					<xsl:with-param name="image" select="$site-share-image" />
+					<xsl:with-param name="image-path" select="$image-path" />
+				</xsl:call-template>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:variable>
 	
 	<xsl:variable name="image-real-width">
 		<xsl:choose>
+			<xsl:when test="string-length($image-path) != 0">
+				<xsl:value-of select="$image-width" />
+			</xsl:when>
 			<xsl:when test="string-length($image) != 0">
 				<xsl:value-of select="$image/meta/@width" />
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="$image-width" />
+				<xsl:value-of select="$site-share-image/meta/@width" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
 	
 	<xsl:variable name="image-real-height">
 		<xsl:choose>
+			<xsl:when test="string-length($image-path) != 0">
+				<xsl:value-of select="$image-height" />
+			</xsl:when>
 			<xsl:when test="string-length($image) != 0">
 				<xsl:value-of select="$image/meta/@height" />
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="$image-height" />
+				<xsl:value-of select="$site-share-image/meta/@height" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>

@@ -22,37 +22,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	.heading-xl;
+	.heading-76;
 }
 
 h2 {
-	.heading-lg;
+	.heading-30;
 }
 
 h3 {
-	.heading-md;
+	.heading-24;
 }
 
 h4, h5, h6 {
-	.heading-sm;
+	.heading-16;
 }
 
 p, .p, li, a {
 	font-family: @text-font;
 	color: @font-color;
 	#font-size();
-}
-
-a {
-	&:visited {
-		color: @link-color-visited;
-	}
-	
-	#only-not-mobile({
-		&:hover, &:active {
-			color: @link-color-hover;
-		}
-	});
 }
 
 p, .p {
@@ -68,7 +56,17 @@ p, .p {
 	}
 }
 
-a {
+a:not(.button) {
+	&:visited {
+		color: @link-color-visited;
+	}
+	
+	#only-not-mobile({
+		&:hover, &:active {
+			color: @link-color-hover;
+		}
+	});
+	
 	#marpad;
 	border-bottom: 1px solid @link-color;
 	#transition(~'border-bottom-color @{duration-short} @{ease}, color @{duration-short} @{ease}');

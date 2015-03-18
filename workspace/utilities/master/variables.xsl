@@ -30,16 +30,9 @@
 
 <!-- Handle de la page courrante -->
 <xsl:variable name="full-page-handle">
-	<xsl:choose>
-		<xsl:when test="$multi-langues = 'yes'">
-			<xsl:apply-templates select="/data/plh-page//page [@id=$current-page-id]" mode="full-page-handle-creator" />
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:call-template name="create-page-handle-by-id">
-				<xsl:with-param name="id" select="$current-page-id" />
-			</xsl:call-template>
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:call-template name="create-page-handle-by-id">
+		<xsl:with-param name="id" select="$current-page-id" />
+	</xsl:call-template>
 </xsl:variable>
 
 <!-- loggued in info -->

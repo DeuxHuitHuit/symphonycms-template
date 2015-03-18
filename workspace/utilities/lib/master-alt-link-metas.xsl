@@ -47,9 +47,25 @@
 
 <xsl:template name="page-alt-link-title">
 	<xsl:param name="lg" />
-	<xsl:value-of select="/data/plh-page/page/item[@lang=$lg]" />
-	<xsl:text> - </xsl:text>
-	<xsl:value-of select="/data/site-titre-bilingue/entry [1]/site-titre/item[@lang=$lg]" />
+	<xsl:if test="count(/data/params/page-types/item[@handle = 'index']) = 0">
+		<xsl:value-of select="/data/plh-page/page/item[@lang=$lg]" />
+		<xsl:text> - </xsl:text>
+	</xsl:if>
+	<xsl:value-of select="$config/site-titre/item[@lang=$lg]" />
 </xsl:template>
+
+<xsl:template name="page-alt-link-rss">
+	<xsl:param name="page-id" />
+	
+	<xsl:variable name="path">
+		<xsl:call-template name="create-page-url-by-id">
+			<xsl:with-param name="id" select="$page-id" />
+		</xsl:call-template>
+	</xsl:variable>
+	
+	<link rel="alternate" href="{$root}{$path}" type="application/rss+xml" title="RSS 2.0"  />
+</xsl:template>
+
+<xsl:template name="page-metas-alt-rss"></xsl:template>
 
 </xsl:stylesheet>

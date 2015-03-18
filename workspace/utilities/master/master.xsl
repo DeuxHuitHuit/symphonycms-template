@@ -26,10 +26,10 @@
 <xsl:import href="../lib/nav-link.xsl" />
 <xsl:import href="../lib/svg-icons.xsl" />
 <xsl:import href="../lib/svg-socials-icons.xsl" />
-<xsl:import href="../lib/pages-erreurs.xsl" />
 <xsl:import href="../lib/iframe-copyright-288.xsl" />
 <xsl:import href="../lib/render-image.xsl" />
 <xsl:import href="../lib/prefetch.xsl" />
+<xsl:import href="../lib/content.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"

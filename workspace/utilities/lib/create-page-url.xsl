@@ -67,22 +67,11 @@
 </xsl:template>
 
 <xsl:template match="page" mode="full-page-handle-creator">
-	<xsl:choose>
-		<xsl:when test="$multi-langues = 'yes'">
-			<xsl:for-each select="./ancestor::page">
-				<xsl:value-of select="item [@lang='fr']/@handle" />
-				<xsl:text>-</xsl:text>
-			</xsl:for-each>
-			<xsl:value-of select="item [@lang='fr']/@handle" />
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:for-each select="./ancestor::page">
-				<xsl:value-of select="@handle" />
-				<xsl:text>-</xsl:text>
-			</xsl:for-each>
-			<xsl:value-of select="@handle" />
-		</xsl:otherwise>
-	</xsl:choose>
+	<xsl:for-each select="./ancestor::page">
+		<xsl:value-of select="@handle" />
+		<xsl:text>-</xsl:text>
+	</xsl:for-each>
+	<xsl:value-of select="@handle" />
 </xsl:template>
 
 
