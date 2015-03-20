@@ -79,23 +79,23 @@
 }
 
 /* SCALE */
-#scale3d(@scaleX, @scaleY, @scaleZ) {
+/* SCALE */
+#scale3d(@scaleX, @scaleY: @scaleX, @scaleZ: 1) {
 	#scale2d(@scaleX, @scaleY);
-			
-	-webkit-transform:scale3d(@scaleX,@scale,@scaleZ);
-	   -moz-transform:scale3d(@scaleX,@scale,@scaleZ);
-		-ms-transform:scale3d(@scaleX,@scale,@scaleZ);
-		 -o-transform:scale3d(@scaleX,@scale,@scaleZ);
-			transform:scale3d(@scaleX,@scale,@scaleZ);
-
+	
+	-webkit-transform:scale3d(@scaleX,@scaleY,@scaleZ);
+	   -moz-transform:scale3d(@scaleX,@scaleY,@scaleZ);
+		-ms-transform:scale3d(@scaleX,@scaleY,@scaleZ);
+		 -o-transform:scale3d(@scaleX,@scaleY,@scaleZ);
+			transform:scale3d(@scaleX,@scaleY,@scaleZ);
 }
 
-#scale2d(@scaleX, @scaleY) {
-	-webkit-transform:scale(@scaleX,@scale);
-	   -moz-transform:scale(@scaleX,@scale);
-		-ms-transform:scale(@scaleX,@scale);
-		 -o-transform:scale(@scaleX,@scale);
-			transform:scale(@scaleX,@scale);
+#scale2d(@scaleX, @scaleY: @scaleX) {
+	-webkit-transform:scale(@scaleX,@scaleY);
+	   -moz-transform:scale(@scaleX,@scaleY);
+		-ms-transform:scale(@scaleX,@scaleY);
+		 -o-transform:scale(@scaleX,@scaleY);
+			transform:scale(@scaleX,@scaleY);
 }
 
 #scale(@scale) {
@@ -549,27 +549,6 @@
 		url("@{font-path}@{font-filename}.svg#@{font-family}") format('svg');
 	font-weight: @font-weight;
 	font-style: @font-style;
-}
-
-#generate-typo-level(@prefix: '') {
-	
-	//====== HEADINGS ============
-	.heading-@{prefix}xxl { .heading-xxl; }
-	.heading-@{prefix}xl { .heading-xl; }
-	.heading-@{prefix}lg { .heading-lg; }
-	.heading-@{prefix}md { .heading-md; }
-	.heading-@{prefix}sm { .heading-sm; }
-	.heading-@{prefix}xs { .heading-xs; }
-	.heading-@{prefix}xxs { .heading-xxs; }
-
-	//====== TYPO ============
-	.typo-@{prefix}-xxl { .typo-xxl; }
-	.typo-@{prefix}-xl { .typo-xl; }
-	.typo-@{prefix}-lg { .typo-lg; }
-	.typo-@{prefix}-md { .typo-md; }
-	.typo-@{prefix}-sm { .typo-sm; }
-	.typo-@{prefix}-xs { .typo-xs; }
-	.typo-@{prefix}-xxs { .typo-xxs; }
 }
 
 /**
