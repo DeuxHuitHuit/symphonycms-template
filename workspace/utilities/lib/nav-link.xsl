@@ -6,6 +6,7 @@
 	<xsl:param name="page" select="page/page" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="action" select="''" />
+	<xsl:param name="target" select="''" />
 	<xsl:param name="content" select="$title" />
 	<xsl:param name="extra-param-key" select="''" />
 	<xsl:param name="selected-on-sub-page" select="'yes'" />
@@ -57,6 +58,11 @@
 	
 	<xsl:if test="$has-url = true() or $has-page = true()">
 		<a target="_self" role="menuitem" data-ga-cat="menu" data-ga-value="{$url-language}/{$title}">
+			<xsl:if test="string-length($target) != 0">
+				<xsl:attribute name="target">
+					<xsl:value-of select="$target" />
+				</xsl:attribute>
+			</xsl:if>
 			<xsl:if test="string-length($reel-class) != 0">
 				<xsl:attribute name="class">
 					<xsl:value-of select="$reel-class" />
