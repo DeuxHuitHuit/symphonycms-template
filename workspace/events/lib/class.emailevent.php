@@ -25,7 +25,7 @@
 		protected abstract function getReceipients();
 		
 		protected function getSenderEmail() {
-			return $this->getFromName();
+			return $this->getFromEmail();
 		}
 		
 		protected function isValid() {
@@ -77,7 +77,7 @@
 
 		private function __sendEmail() {
 			$email = Email::create();
-			$email->setSenderEmailAddress($this->getFromEmail());
+			$email->setSenderEmailAddress($this->getSenderEmail);
 			$email->setFrom($this->getFromEmail(), $this->getFromName());
 			$email->setReplyToEmailAddress($this->getFromEmail());
 			$email->setRecipients($this->getReceipients());
