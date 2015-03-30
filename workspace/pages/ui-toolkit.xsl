@@ -89,7 +89,7 @@
 				<xsl:with-param name="titre" select="'Lien normal'" />
 				<xsl:with-param name="content">
 					<xsl:call-template name="button">
-						<xsl:with-param name="text" select="'Nous joindre'" />
+						<xsl:with-param name="content" select="'Nous joindre'" />
 						<xsl:with-param name="url" select="'http://www.google.com'"/>
 					</xsl:call-template>
 				</xsl:with-param>
@@ -99,7 +99,7 @@
 				<xsl:with-param name="titre" select="'Lien normal'" />
 				<xsl:with-param name="content">
 					<xsl:call-template name="button">
-						<xsl:with-param name="text" select="'Nous joindre'" />
+						<xsl:with-param name="content" select="'Nous joindre'" />
 						<xsl:with-param name="url" select="'http://www.google.com'"/>
 						<xsl:with-param name="class" select="'nav-item-link'" />
 					</xsl:call-template>
