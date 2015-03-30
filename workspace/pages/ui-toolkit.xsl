@@ -228,11 +228,11 @@
 </xsl:template>
 
 <xsl:template name="typo-template">
-	<xsl:param name="titre" select="''" />
+	<xsl:param name="titre" select="'Font'" />
 	<xsl:param name="class" select="''" />
 	
 	<xsl:call-template name="ui-item">
-		<xsl:with-param name="titre" select="'Font'" />
+		<xsl:with-param name="titre" select="$titre" />
 		<xsl:with-param name="class">
 			<xsl:text>ui-font </xsl:text>
 			<xsl:value-of select="$class" />
