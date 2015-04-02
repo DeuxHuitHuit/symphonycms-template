@@ -100,13 +100,23 @@
 	bottom: @bottom;
 }
 
-#selection-color(@color) {
+#selection-color(@color) when (iscolor(@color)) {
 	::selection {
 		background-color: @color;
 	}
 	
 	::-moz-selection {
 		background-color: @color;
+	}
+}
+
+#selection-color(@rules) when (false = iscolor(@rules)) {
+	::selection {
+		@rules();
+	}
+	
+	::-moz-selection {
+		@rules();
 	}
 }
 
