@@ -19,7 +19,7 @@
 </xsl:template>
 
 <xsl:template match="menu/entry" mode="nav-link-extra-param">
-	<xsl:if test="string(access-key) != 0">
+	<xsl:if test="string-length(access-key) != 0">
 		<xsl:attribute name="accesskey">
 			<xsl:value-of select="access-key" />
 		</xsl:attribute>
