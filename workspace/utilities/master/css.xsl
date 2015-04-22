@@ -8,7 +8,7 @@
 		<xsl:when test="$debug = true()">
 			<link rel="stylesheet/less" type="text/css" href="{$css-path}{$less-file}.{$version}.less" />
 			<script>less = { env: 'development', useFileCache: false }; </script>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.2.0/less.min.js"></script>
 			<xsl:if test="count(/data/params/url-watch) != 0">
 				<script>less.watchTimer = 3; less.watch();</script>
 			</xsl:if>
