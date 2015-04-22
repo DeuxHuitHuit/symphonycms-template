@@ -31,14 +31,14 @@
 		"dev/dev.js"
 	],
 	"cdn-before": [
-		"//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js",
-		"//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js",
-		"//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js",
-		"//cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js",
-		"//cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.14/jquery.scrollTo.min.js"
+		"https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/underscore.string/2.3.3/underscore.string.min.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/1.4.14/jquery.scrollTo.min.js"
 	],
 	"cdn-after": [
-		"//www.youtube.com/player_api",
-		"//f.vimeocdn.com/js/froogaloop2.min.js"
+		"https://www.youtube.com/player_api",
+		"https://f.vimeocdn.com/js/froogaloop2.min.js"
 	]
 }
