@@ -39,7 +39,7 @@
 <xsl:template match="/">
 
 	<!-- Doctype -->
-	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!DOCTYPE html<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!doctype html<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	
 	<!-- Html -->
 	<html lang="{$url-language}">
