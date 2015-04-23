@@ -71,7 +71,24 @@
 	</xsl:element>
 </xsl:template>
 
-
+<xsl:template name="button-tel">
+	<xsl:param name="tel" />
+	<xsl:param name="class" select="''" />
+	<xsl:param name="action" select="''" />
+	<xsl:param name="type" select="''" />
+	<xsl:param name="failover-element" select="'a'" />
+	<xsl:param name="extra-key" select="''" />
+	
+	<xsl:call-template name="button">
+		<xsl:with-param name="text" select="$tel" />
+		<xsl:with-param name="url" select="concat('tel:+1-', translate($tel, ' ()', '-'))" />
+		<xsl:with-param name="class" select="$class" />
+		<xsl:with-param name="action" select="$action" />
+		<xsl:with-param name="type" select="$type" />
+		<xsl:with-param name="failover-element" select="$failover-element" />
+		<xsl:with-param name="extra-key" select="$extra-key" />
+	</xsl:call-template>
+</xsl:template>
 
 
 </xsl:stylesheet>
