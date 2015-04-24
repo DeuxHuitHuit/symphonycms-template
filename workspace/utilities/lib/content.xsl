@@ -22,4 +22,46 @@
 	</xsl:choose>
 </xsl:template>
 
+<xsl:template name="default-value">
+	<xsl:param name="a" select="''" />
+	<xsl:param name="b" select="''" />
+	<xsl:param name="c" select="''" />
+	<xsl:param name="d" select="''" />
+	<xsl:param name="e" select="''" />
+	<xsl:param name="f" select="''" />
+	
+	<xsl:choose>
+		<xsl:when test="string-length($a) != 0">
+			<xsl:call-template name="content">
+				<xsl:with-param name="content" select="$a" />
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:when test="string-length($b) != 0">
+			<xsl:call-template name="content">
+				<xsl:with-param name="content" select="$b" />
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:when test="string-length($c) != 0">
+			<xsl:call-template name="content">
+				<xsl:with-param name="content" select="$c" />
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:when test="string-length($d) != 0">
+			<xsl:call-template name="content">
+				<xsl:with-param name="content" select="$d" />
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:when test="string-length($e) != 0">
+			<xsl:call-template name="content">
+				<xsl:with-param name="content" select="$e" />
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:when test="string-length($f) != 0">
+			<xsl:call-template name="content">
+				<xsl:with-param name="content" select="$f" />
+			</xsl:call-template>
+		</xsl:when>
+	</xsl:choose>
+</xsl:template>
+
 </xsl:stylesheet>
