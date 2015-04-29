@@ -35,6 +35,9 @@
 
 // generator
 #generate-grid(@cols) when (@cols > 0) {
+	// not responsive
+	#generate-ctn(@cols);
+	
 	// fully responsive
 	#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
 	#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols); });
@@ -42,9 +45,6 @@
 	#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols); });
 	#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols); });
 	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
-	
-	// not responsive
-	#generate-ctn(@cols);
 }
 
 // recursive definitions

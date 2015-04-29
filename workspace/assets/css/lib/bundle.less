@@ -344,11 +344,11 @@
     background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
   }
-  .radial(@inner-color: #555; @outer-color: #333) {
-    background-image: -webkit-gradient(radial, center center, 0, center center, 460, from(@inner-color), to(@outer-color));
-    background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
-    background-image: -moz-radial-gradient(circle, @inner-color, @outer-color);
-    background-image: radial-gradient(circle, @inner-color, @outer-color);
+  .radial(@inner-color: #555; @outer-color: #333; @x-origin: center; @y-origin: center) {
+    background-image: -webkit-gradient(radial, @x-origin @y-origin, 0, @x-origin @y-origin, 1011, from(@inner-color), to(@outer-color));
+    background-image: -webkit-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
+    background-image: -moz-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
+    background-image: radial-gradient(ellipse farthest-corner at @x-origin @y-origin, @inner-color 0%, @outer-color 100%);
     background-repeat: no-repeat;
   }
   .striped(@color: rgba(255,255,255,.15); @angle: 45deg) {
@@ -461,13 +461,23 @@
 	bottom: @bottom;
 }
 
-#selection-color(@color) {
+#selection-color(@color) when (iscolor(@color)) {
 	::selection {
 		background-color: @color;
 	}
 	
 	::-moz-selection {
 		background-color: @color;
+	}
+}
+
+#selection-color(@rules) when (false = iscolor(@rules)) {
+	::selection {
+		@rules();
+	}
+	
+	::-moz-selection {
+		@rules();
 	}
 }
 
@@ -588,6 +598,9 @@
 
 // generator
 #generate-grid(@cols) when (@cols > 0) {
+	// not responsive
+	#generate-ctn(@cols);
+	
 	// fully responsive
 	#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
 	#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols); });
@@ -595,9 +608,6 @@
 	#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols); });
 	#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols); });
 	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
-	
-	// not responsive
-	#generate-ctn(@cols);
 }
 
 // recursive definitions
