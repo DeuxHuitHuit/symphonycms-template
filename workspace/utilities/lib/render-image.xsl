@@ -9,7 +9,7 @@
 	<xsl:param name="alt" select="titre" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="factor" select="'3'" />
-	<xsl:param name="format" select="'/image/2/$w/$h/5'" />
+	<xsl:param name="format" select="''" />
 	<xsl:param name="container" select="''" />
 
 	<!--img 
@@ -57,6 +57,77 @@
 			</xsl:attribute>
 		</xsl:if>
 	</img>
+</xsl:template>
+
+<xsl:template name="render-image-crop">
+	<xsl:param name="image" select="image" />
+	<xsl:param name="alt" select="titre" />
+	<xsl:param name="class" select="''" />
+	<xsl:param name="factor" select="'3'" />
+	<xsl:param name="container" select="''" />
+	<xsl:param name="width" select="'$w'" />
+	<xsl:param name="height" select="'$h'" />
+	<xsl:param name="position" select="'5'" />
+
+	<xsl:call-template name="render-image">
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="class" select="$class" />
+		<xsl:with-param name="factor" select="$factor" />
+		<xsl:with-param name="container" select="$container" />
+		<xsl:with-param name="format">
+			<xsl:text>/image/2/</xsl:text>
+			<xsl:value-of select="concat($width, '/')" />
+			<xsl:value-of select="concat($height, '/')" />
+			<xsl:value-of select="$position" />
+		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="render-image-resize">
+	<xsl:param name="image" select="image" />
+	<xsl:param name="alt" select="titre" />
+	<xsl:param name="class" select="''" />
+	<xsl:param name="factor" select="'3'" />
+	<xsl:param name="container" select="''" />
+	<xsl:param name="width" select="'$w'" />
+	<xsl:param name="height" select="'0'" />
+
+	<xsl:call-template name="render-image">
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="class" select="$class" />
+		<xsl:with-param name="factor" select="$factor" />
+		<xsl:with-param name="container" select="$container" />
+		<xsl:with-param name="format">
+			<xsl:text>/image/1/</xsl:text>
+			<xsl:value-of select="concat($width, '/')" />
+			<xsl:value-of select="$height" />
+		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="render-image-fit">
+	<xsl:param name="image" select="image" />
+	<xsl:param name="alt" select="titre" />
+	<xsl:param name="class" select="''" />
+	<xsl:param name="factor" select="'3'" />
+	<xsl:param name="container" select="''" />
+	<xsl:param name="width" select="'$w'" />
+	<xsl:param name="height" select="'0'" />
+
+	<xsl:call-template name="render-image">
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="class" select="$class" />
+		<xsl:with-param name="factor" select="$factor" />
+		<xsl:with-param name="container" select="$container" />
+		<xsl:with-param name="format">
+			<xsl:text>/image/4/</xsl:text>
+			<xsl:value-of select="concat($width, '/')" />
+			<xsl:value-of select="$height" />
+		</xsl:with-param>
+	</xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>
