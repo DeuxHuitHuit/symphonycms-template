@@ -114,7 +114,7 @@
 	<xsl:param name="factor" select="'3'" />
 	<xsl:param name="container" select="''" />
 	<xsl:param name="width" select="'$w'" />
-	<xsl:param name="height" select="'0'" />
+	<xsl:param name="height" select="'$h'" />
 
 	<xsl:call-template name="render-image">
 		<xsl:with-param name="image" select="$image" />
