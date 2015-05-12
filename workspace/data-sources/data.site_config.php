@@ -52,7 +52,7 @@
 		}
 
 		public function allowEditorToParse() {
-			return true;
+			return false;
 		}
 
 		public function execute(array &$param_pool = null) {
