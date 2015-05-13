@@ -39,7 +39,16 @@
 
 <!-- Twitter Card -->
 <xsl:variable name="twitter-card-site" select="$config/twitter-url" />
-<xsl:variable name="twitter-card-creator" select="concat('@', $config/twitter-user)" />
+<xsl:variable name="twitter-card-creator">
+	<xsl:choose>
+		<xsl:when test="starts-with($config/twitter-user, '@')">
+			<xsl:value-of select="$config/twitter-user" />
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="concat('@', $config/twitter-user)" />
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:variable>
 <xsl:variable name="twitter-card-domain" select="$config/twitter-site-domain" />
 
 
