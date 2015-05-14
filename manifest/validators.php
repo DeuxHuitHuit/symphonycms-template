@@ -10,7 +10,8 @@
 
 	$upload = array(
 		'image' => '/\.(?:jpe?g|png)$/i',
-		'image-all' => '/\.(?:bmp|gif|jpe?g|png)$/i',
+		'image-svg' => '/\.(?:svg|gif|jpe?g|png)$/i',
+		'image-all' => '/\.(?:svg|bmp|gif|jpe?g|png)$/i',
 		'document' => '/\.(?:docx?|pdf)$/i',
 		'document-all' => '/\.(?:docx?|pdf|rtf|txt)$/i',
 		'video-mp4' => '/\.(?:mp4|m4v)$/i',
