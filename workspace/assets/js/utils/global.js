@@ -37,6 +37,13 @@
 		$.fn.slideDown = function (duration, complete) {
 			return this.velocity('slideDown', { duration: duration, complete: complete });
 		};
+		$.fn.stop = function (clearQueue, jumpToEnd) {
+			var t = this.velocity('stop', clearQueue);
+			if (jumpToEnd) {
+				this.velocity('finish');
+			}
+			return t;
+		};
 	}
 	
 	global.preventNextClick = function (e) {
