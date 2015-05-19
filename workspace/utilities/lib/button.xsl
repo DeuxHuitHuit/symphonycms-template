@@ -10,8 +10,10 @@
 	<xsl:param name="url" select="''" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="action" select="''" />
-	<xsl:param name="ga-value" select="''" />
 	<xsl:param name="ga-cat" select="''" />
+	<xsl:param name="ga-action" select="''" />
+	<xsl:param name="ga-label" select="''" />
+	<xsl:param name="ga-value" select="''" />
 	<xsl:param name="type" select="''" />
 	<xsl:param name="target" select="''" />
 	<xsl:param name="failover-element" select="'button'" />
@@ -48,15 +50,27 @@
 			</xsl:attribute>
 		</xsl:if>
 		
-		<xsl:if test="string-length($ga-value) != 0">
-			<xsl:attribute name="data-ga-value">
-				<xsl:value-of select="$ga-value" />
-			</xsl:attribute>
-		</xsl:if>
-		
 		<xsl:if test="string-length($ga-cat) != 0">
 			<xsl:attribute name="data-ga-cat">
 				<xsl:value-of select="$ga-cat" />
+			</xsl:attribute>
+		</xsl:if>
+		
+		<xsl:if test="string-length($ga-action) != 0">
+			<xsl:attribute name="data-ga-action">
+				<xsl:value-of select="$ga-action" />
+			</xsl:attribute>
+		</xsl:if>
+		
+		<xsl:if test="string-length($ga-label) != 0">
+			<xsl:attribute name="data-ga-label">
+				<xsl:value-of select="$ga-label" />
+			</xsl:attribute>
+		</xsl:if>
+		
+		<xsl:if test="string-length($ga-value) != 0">
+			<xsl:attribute name="data-ga-value">
+				<xsl:value-of select="$ga-value" />
 			</xsl:attribute>
 		</xsl:if>
 		
@@ -89,8 +103,10 @@
 	<xsl:param name="tel" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="action" select="''" />
-	<xsl:param name="ga-value" select="''" />
 	<xsl:param name="ga-cat" select="''" />
+	<xsl:param name="ga-action" select="''" />
+	<xsl:param name="ga-label" select="''" />
+	<xsl:param name="ga-value" select="''" />
 	<xsl:param name="type" select="''" />
 	<xsl:param name="failover-element" select="'a'" />
 	<xsl:param name="extra-key" select="''" />
@@ -100,8 +116,10 @@
 		<xsl:with-param name="url" select="concat('tel:+1-', translate($tel, ' ()', '-'))" />
 		<xsl:with-param name="class" select="$class" />
 		<xsl:with-param name="action" select="$action" />
-		<xsl:with-param name="ga-value" select="$ga-value" />
 		<xsl:with-param name="ga-cat" select="$ga-cat" />
+		<xsl:with-param name="ga-action" select="$ga-action" />
+		<xsl:with-param name="ga-label" select="$ga-label" />
+		<xsl:with-param name="ga-value" select="$ga-value" />
 		<xsl:with-param name="type" select="$type" />
 		<xsl:with-param name="failover-element" select="$failover-element" />
 		<xsl:with-param name="extra-key" select="$extra-key" />
