@@ -28,8 +28,11 @@ Art director / Directeur artistique
 Louis-Pierre Chouinard
 Art director / Directeur artistique
 
-Charles Deluvio
-Art director / Directeur artistique
+Charles Fortier
+Designer
+
+David Beauchemin
+Designer
 
 Nicolas Brassard-Ferron
 Web Software Lead / Directeur du développement web 
@@ -42,9 +45,6 @@ Developer / Intégrateur
 
 Francois Vandal
 Developer / Intégrateur
-
-Jean-Phillippe Cyr
-UX Strategist / Stratège expérience usager
 
 Caroline L.Couture
 Project manager / Chargée de compte
@@ -75,7 +75,7 @@ Anybody that contributed jQuery plugins or other open source project used in thi
 
 Standards: HTML5, CSS3, ES5
 
-Components: jQuery, Velocity.js, TweenMax, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo
+Components: jQuery, Velocity.js, TweenMax, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo, framework.js
 
-Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Bash, Grunt, Blood sweat and tears
+Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Bash, vi, Grunt, Blood sweat and tears
 
