@@ -5,7 +5,9 @@
 <xsl:template match="pages-erreurs/entry">
 	<section class="section-erreurs">
 		<h1><xsl:value-of select="titre" /></h1>
-		<xsl:copy-of select="texte/*" />
+		<div class="markdown-style">
+			<xsl:copy-of select="texte/*" />
+		</div>
 	</section>
 </xsl:template>
 
