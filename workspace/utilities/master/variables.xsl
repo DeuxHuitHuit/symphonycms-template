@@ -14,7 +14,7 @@
 </xsl:variable>
 
 <!-- Debug flag -->
-<xsl:variable name="debug" select="contains($root, '288dev.com') and count(/data/params/url-no-debug) = 0" />
+<xsl:variable name="debug" select="contains($root, '288dev.com') and count(/data/params/url-no-debug) = 0 and count(/data/params/url-nodebug) = 0 and count(/data/params/url-ndbg) = 0" />
 
 <!-- Lang flag For multi langue -->
 <xsl:variable name="multi-langues" >
