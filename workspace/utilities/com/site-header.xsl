@@ -11,12 +11,12 @@
 				</xsl:call-template>
 			</xsl:attribute>
 			
-			<h2>
+			<h1>
 				<!-- Logo -->
 				
 				<!-- Nom du site -->
 				<span><xsl:value-of select="$config/site-titre/item[@lang=$url-language]" /></span>
-			</h2>
+			</h1>
 		</a>
 		
 		<!-- Nav -->
