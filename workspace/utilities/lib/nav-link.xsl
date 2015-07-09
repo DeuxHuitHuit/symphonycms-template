@@ -75,13 +75,13 @@
 			</xsl:if>
 			<xsl:attribute name="href">
 				<xsl:choose>
+					<xsl:when test="$has-url = true()">
+						<xsl:value-of select="$url" />
+					</xsl:when>
 					<xsl:when test="$has-page = true()">
 						<xsl:call-template name="create-page-url-by-id">
 							<xsl:with-param name="id" select="$page/@id" />
 						</xsl:call-template>
-					</xsl:when>
-					<xsl:when test="$has-url = true()">
-						<xsl:value-of select="$url" />
 					</xsl:when>
 				</xsl:choose>
 			</xsl:attribute>
