@@ -22,6 +22,20 @@ html, body {
 	}
 }
 
+.site-centerer {
+	width: 100%;
+	max-width: @site-max-width;
+	margin: 0 auto;
+	padding-left: @site-padding-mobile;
+	padding-right: @site-padding-mobile;
+	#box-sizing;
+	
+	#mq-min-width(@screen-ph, {
+		padding-left: @site-padding;
+		padding-right: @site-padding;
+	});
+}
+
 /* font Face */
 /*@typo-filename: 'typo';
 
