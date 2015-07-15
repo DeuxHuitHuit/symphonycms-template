@@ -11,7 +11,16 @@
 			<a data-action="full" href="/symphony/">Symphony</a>
 			
 			<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-				<a data-action="full" href="?debug">DEBUG</a>
+				<a data-action="full">
+					<xsl:attribute name="href">
+						<xsl:text>?debug</xsl:text>
+						<xsl:if test="string-length(/data/params/current-query-string) != 0">
+							<xsl:text>&amp;</xsl:text>
+							<xsl:value-of select="/data/params/current-query-string" />
+						</xsl:if>
+					</xsl:attribute>
+					DEBUG
+				</a>
 			</xsl:if>
 			
 			<a data-action="full" href="/symphony/logout/">Déconnexion</a>
