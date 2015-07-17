@@ -11,7 +11,6 @@
 <xsl:import href="../lib/master-title.xsl" />
 <!-- LIB -->
 <xsl:import href="../lib/create-page-url.xsl" />
-<xsl:import href="../lib/date-time.xsl" />
 <xsl:import href="../lib/fx-url-creator.xsl" />
 <!-- Extensions -->
 <xsl:import href="../../../extensions/datetime/utilities/datetime.xsl" />
