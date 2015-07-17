@@ -17,7 +17,7 @@
 
 <xsl:output method="xml" encoding="UTF-8" indent="yes" />
 
-<xsl:variable name="rss-image" select="concat($root, '/image/1/1400/1400', $config/image-partage/@path, '/', $config/image-partage/filename)" />
+<xsl:variable name="rss-image" select="concat($root, '/image/1/1400/1400', $site-share-image/@path, '/', $site-share-image/filename)" />
 
 <xsl:template match="/"><rss version="2.0" 
 	xmlns:atom="http://www.w3.org/2005/Atom"
