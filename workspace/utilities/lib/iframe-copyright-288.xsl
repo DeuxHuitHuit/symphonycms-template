@@ -18,7 +18,7 @@
 	<xsl:param name="logo-always-animated" select="'false'" />
 
 	<xsl:variable name="url">
-		<xsl:text>//watermark.deuxhuithuit.com/v2/?</xsl:text>
+		<xsl:text>https://watermark.deuxhuithuit.com/v2/?</xsl:text>
 		<xsl:text>lang=</xsl:text><xsl:value-of select="$url-language" />
 		<xsl:text>&amp;bg=</xsl:text><xsl:value-of select="$bg-color" />
 		<xsl:text>&amp;text=</xsl:text><xsl:value-of select="$text-color" />
