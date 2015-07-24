@@ -44,6 +44,25 @@
 			}
 			return t;
 		};
+		$.scrollTo = function (target, duration, options) {
+			var win = $(window);
+			if (!target) {
+				return win;
+			}
+			if (typeof duration === 'number') {
+				duration = {
+					duration: duration
+				};
+			}
+			if (!!options) {
+				options.duration = duration.duration;
+			}
+			if (!options && typeof duration === 'object') {
+				options = duration;
+			}
+			target.velocity('scroll', options);
+			return win;
+		};
 	}
 	
 	global.preventNextClick = function (e) {
