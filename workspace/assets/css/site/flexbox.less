@@ -208,3 +208,19 @@
 	.flex-direction(column);
 	.flex-wrap(nowrap);
 }
+
+.flex-flow-column-to-desktop-row-wrap {
+	.flex-flow-column-wrap;
+	
+	#mq-min-width(@screen-xs, {
+		.flex-flow-row-wrap;
+	});
+}
+
+.flex-flow-column-to-desktop-row-no-wrap {
+	.flex-flow-column-no-wrap;
+	
+	#mq-min-width(@screen-xs, {
+		.flex-flow-row-no-wrap;
+	});
+}
