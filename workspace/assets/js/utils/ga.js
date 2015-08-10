@@ -29,7 +29,12 @@
 			hostname: window.location.hostname
 		};
 		var args = !opts ? defaults : $.extend(defaults, opts);
-		
+		if ($.isFunction($.formatPage)) {
+			args.page = $.formatPage(args.page);
+		}
+		if ($.isFunction($.formatLocation)) {
+			args.location = $.formatLocation(args.location);
+		}
 		ga('send', 'pageview', args);
 	};
 	
