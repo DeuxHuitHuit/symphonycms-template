@@ -17,6 +17,9 @@
 		alt="{$alt}" -->
 	
 	<xsl:choose>
+		<xsl:when test="contains($image/@type, 'svg')">
+			<img src="/workspace{$image/@path}/{$image/filename}" alt="{$alt}" class="{$class}" />
+		</xsl:when>
 		<xsl:when test="exslt:object-type($image) != 'string'">
 			<img alt="{$alt}">
 				<xsl:attribute name="src">
