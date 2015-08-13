@@ -11,6 +11,7 @@
 	<xsl:param name="factor" select="'3'" />
 	<xsl:param name="format" select="''" />
 	<xsl:param name="container" select="''" />
+	<xsl:param name="use-format" select="true()" />
 
 	<!--img 
 		src="/image/1/{$width}/{$height}{$image/@path}/{$image/filename}" 
@@ -27,6 +28,12 @@
 						<xsl:when test="exslt:object-type($image) = 'string'">
 							<xsl:value-of select="$image" />
 						</xsl:when>
+						<xsl:when test="$use-format = false()">
+							<xsl:text>/workspace</xsl:text>
+							<xsl:value-of select="$image/@path" />
+							<xsl:text>/</xsl:text>
+							<xsl:value-of select="$image/filename" />
+						</xsl:when>
 						<xsl:when test="exslt:object-type($image) = 'node-set'">
 							<xsl:variable name="width" select="round($image/meta/@width div $factor)" />
 							<xsl:variable name="height" select="round($image/meta/@height div $factor)" />
@@ -42,7 +49,7 @@
 					</xsl:choose>
 				</xsl:attribute>
 				
-				<xsl:if test="string-length($format) != 0 and exslt:object-type($image) = 'node-set'">
+				<xsl:if test="$use-format = true() and string-length($format) != 0 and exslt:object-type($image) = 'node-set'">
 					<xsl:attribute name="data-src-format">
 						<xsl:value-of select="$format" />
 						<xsl:value-of select="$image/@path" />
