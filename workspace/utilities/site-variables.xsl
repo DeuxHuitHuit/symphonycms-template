@@ -35,7 +35,7 @@
 
 <!-- Google Analytics -->
 <xsl:variable name="ga-ua" select="''" />
-<xsl:variable name="ga-domain" select="''" />
+<xsl:variable name="ga-domain" select="'auto'" />
 
 <!-- Twitter Card -->
 <xsl:variable name="twitter-card-site" select="$config/twitter-url" />
