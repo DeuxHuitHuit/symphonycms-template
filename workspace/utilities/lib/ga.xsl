@@ -3,7 +3,7 @@
 
 <xsl:template name="ga">
 	<xsl:param name="ua" />
-	<xsl:param name="domain" />
+	<xsl:param name="domain" select="'auto'" />
 	<xsl:param name="send-pageview" select="false()" />
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
