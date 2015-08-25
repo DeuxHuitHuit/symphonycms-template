@@ -23,7 +23,8 @@
 	if (!!$.fn.velocity) {
 		$.fn.animate = $.fn.velocity;
 		$.fn.fadeTo = function (duration, opacity, complete) {
-			return this.velocity({opacity: opacity}, { duration: duration, complete: complete });
+			var display = (opacity === 0) ? 'none' : '';
+			return this.velocity({opacity: opacity}, { duration: duration, complete: complete, display: display });
 		};
 		$.fn.fadeIn = function (duration, complete) {
 			return this.velocity('fadeIn', { duration: duration, complete: complete });
