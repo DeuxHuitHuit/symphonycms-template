@@ -12,5 +12,7 @@
     #Header always set Access-Control-Allow-Origin "*"
     #Header always set Access-Control-Allow-Credentials true
     #Header always set Access-Control-Allow-Methods "GET, PUT, POST, DELETE, HEAD, OPTIONS"
+    #Header always set X-XSS-Protection "X-XSS-Protection: 1; mode=block"
+    #Header always set X-Content-Type-Options nosniff
 </IfModule>
 
