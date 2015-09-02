@@ -5,7 +5,12 @@ body {
 	font-size: 1.6rem;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
 	margin: @gutter-width 0;
 	font-family: @heading-font;
 	color: @font-color;
@@ -38,7 +43,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	.heading-16;
 }
 
-p, .p, li, a {
+p, .p, li, a, blockquote {
 	font-family: @text-font;
 	color: @font-color;
 	#font-size();
@@ -58,16 +63,6 @@ p, .p {
 }
 
 a:not(.button) {
-	&:visited {
-		color: @link-color-visited;
-	}
-	
-	#only-not-mobile({
-		&:hover, &:active {
-			color: @link-color-hover;
-		}
-	});
-	
 	#marpad;
 	border-bottom: 1px solid @link-color;
 	#transition(~'border-bottom-color @{duration-short} @{ease}, color @{duration-short} @{ease}');
@@ -77,6 +72,10 @@ a:not(.button) {
 		color: @link-color-hover;
 		border-bottom-color: @link-color-hover;
 	});
+	
+	&:visited {
+		color: @link-color-visited;
+	}
 }
 
 em {
@@ -92,7 +91,6 @@ em strong, strong em {
 }
 
 ul, ol {
-	
 	
 	li {
 		

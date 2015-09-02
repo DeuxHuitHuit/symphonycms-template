@@ -1,0 +1,355 @@
+//=========================
+// = VENDOR PREFIXES
+//=========================
+
+/* BORDER RADIUS */
+#border-radius (@br) {
+	-webkit-border-radius: @br;
+	   -moz-border-radius: @br;
+			border-radius: @br;
+}
+
+/* TRANSITION */
+#transition (...) {
+	-webkit-transition: @arguments;
+	   -moz-transition: @arguments;
+		-ms-transition: @arguments;
+		 -o-transition: @arguments;
+			transition: @arguments;
+}
+
+#transition-delay (@delay) {
+	-webkit-transition-delay: @delay;
+	   -moz-transition-delay: @delay;
+		-ms-transition-delay: @delay;
+		 -o-transition-delay: @delay;
+			transition-delay: @delay;
+}
+
+#transition-duration (@duration) {
+	-webkit-transition-duration: @duration;
+	   -moz-transition-duration: @duration;
+		-ms-transition-duration: @duration;
+		 -o-transition-duration: @duration;
+			transition-duration: @duration;
+}
+
+#cb-transition (...) {
+	-webkit-transition: ~"-webkit-@{arguments}";
+	   -moz-transition: ~"-moz-@{arguments}";
+		-ms-transition: ~"-ms-@{arguments}";
+		 -o-transition: ~"-o-@{arguments}";
+			transition: @arguments;
+}
+
+/* TRANSFORM */
+#transform (...) {
+	-webkit-transform: @arguments;
+	   -moz-transform: @arguments;
+		-ms-transform: @arguments;
+		 -o-transform: @arguments;
+			transform: @arguments;
+}
+
+#transform-origin (@origin) {
+	-webkit-transform-origin: @origin;
+	   -moz-transform-origin: @origin;
+		-ms-transform-origin: @origin;
+		 -o-transform-origin: @origin;
+			transform-origin: @origin;
+}
+
+/* TRANSLATE */
+#translate2d (@x, @y) {
+	-webkit-transform:translate(@x, @y);
+	   -moz-transform:translate(@x, @y);
+		-ms-transform:translate(@x, @y);
+		 -o-transform:translate(@x, @y);
+			transform:translate(@x, @y);
+}
+
+#translate (@x, @y, @z:0px) {
+	#translate2d(@x, @y);
+
+	-webkit-transform:translate3d(@x, @y, @z);
+	   -moz-transform:translate3d(@x, @y, @z);
+		-ms-transform:translate3d(@x, @y, @z);
+		 -o-transform:translate3d(@x, @y, @z);
+			transform:translate3d(@x, @y, @z);
+}
+
+/* SCALE */
+#scale3d (@scaleX, @scaleY: @scaleX, @scaleZ: 1) {
+	#scale2d(@scaleX, @scaleY);
+	
+	-webkit-transform:scale3d(@scaleX, @scaleY, @scaleZ);
+	   -moz-transform:scale3d(@scaleX, @scaleY, @scaleZ);
+		-ms-transform:scale3d(@scaleX, @scaleY, @scaleZ);
+		 -o-transform:scale3d(@scaleX, @scaleY, @scaleZ);
+			transform:scale3d(@scaleX, @scaleY, @scaleZ);
+}
+
+#scale2d (@scaleX, @scaleY: @scaleX) {
+	-webkit-transform:scale(@scaleX,@scaleY);
+	   -moz-transform:scale(@scaleX,@scaleY);
+		-ms-transform:scale(@scaleX,@scaleY);
+		 -o-transform:scale(@scaleX,@scaleY);
+			transform:scale(@scaleX,@scaleY);
+}
+
+#scale (@scale) {
+	#scale2d(@scale, @scale);
+}
+
+/* ROTATE */
+#rotateZ (@a) {
+	-webkit-transform: rotateZ(@a);
+	   -moz-transform: rotateZ(@a);
+		-ms-transform: rotateZ(@a);
+		 -o-transform: rotateZ(@a);
+			transform: rotateZ(@a);
+}
+
+/* SKEW */
+#skew (@skew) {
+	-webkit-transform: skew(@skew);
+	   -moz-transform: skew(@skew);
+		-ms-transform:scale(@skew); // ms does not support skew
+		 -o-transform: skew(@skew);
+			transform: skew(@skew);
+}
+
+/* FLIP */
+#flipX () {
+	-webkit-transform: scaleX(-1);
+	   -moz-transform: scaleX(-1);
+	     -o-transform: scaleX(-1);
+			transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+#flipY {
+	-webkit-transform: scaleY(-1);
+	   -moz-transform: scaleY(-1);
+	     -o-transform: scaleY(-1);
+			transform: scaleY(-1);
+	filter: FlipV;
+	-ms-filter: "FlipV";
+}
+
+/* PERSPECTIVE */
+#perspective (@perspective) {
+	-webkit-perspective: @perspective;
+	   -moz-perspective: @perspective;
+		-ms-perspective: @perspective;
+		 -o-perspective: @perspective;
+			perspective: @perspective;
+}
+
+#perspective-origin (@origin) {
+	-webkit-perspective-origin: @origin;
+	   -moz-perspective-origin: @origin;
+		-ms-perspective-origin: @origin;
+		 -o-perspective-origin: @origin;
+			perspective-origin: @origin;
+}
+
+/* PRESERVE 3D */
+#preserve-3d () {
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		 -o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+}
+
+/* FILTER */
+#filter (@filter) {
+	-webkit-filter: @filter;
+	   -moz-filter: @filter;
+		-ms-filter: @filter;
+		 -o-filter: @filter;
+			filter: @filter;
+}
+
+
+
+/* BOX SIZING */
+#box-sizing (@box-sizing: border-box) {
+	-webkit-box-sizing: @box-sizing;
+	   -moz-box-sizing: @box-sizing;
+		-ms-box-sizing: @box-sizing;
+		 -o-box-sizing: @box-sizing;
+			box-sizing: @box-sizing;
+}
+
+/* BACKGROUND-SIZE */
+#background-size (@bs: cover) {
+	-webkit-background-size: @bs;
+	   -moz-background-size: @bs;
+		-ms-background-size: @bs;
+		 -o-background-size: @bs;
+			background-size: @bs;
+}
+
+/* USER-SELECT */
+#user-select (@select: none) {
+	-webkit-touch-callout: @select;
+	-webkit-user-select: @select;
+	 -khtml-user-select: @select;
+	   -moz-user-select: @select;
+		-ms-user-select: @select;
+			user-select: @select;
+}
+
+/* BACKFACE-VISIBILITY */
+#backface (@visibility: hidden) {
+	-webkit-backface-visibility: @visibility;
+	   -moz-backface-visibility: @visibility;
+	    -ms-backface-visibility: @visibility;
+		 -o-backface-visibility: @visibility;
+			backface-visibility: @visibility;
+}
+
+/* GRAYSCALE */
+#add-grayscale (){
+	/* Firefox 4+ */
+	filter: url(~"@{svg-path}grayscale.svg#grayscale");
+	filter: gray; /* IE 6-9 */
+	-webkit-filter: grayscale(100%);
+}
+
+#remove-grayscale (){
+	-webkit-filter: grayscale(0%);
+
+	/* Firefox 4+ */
+	filter: none; /* IE 6-9 */
+}
+
+#hyphens(@val: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @val;
+     -moz-hyphens: @val;
+      -ms-hyphens: @val; 
+       -o-hyphens: @val;
+          hyphens: @val;
+}
+
+//Documentation http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element
+#placeholder (@color) when (iscolor(@color)) {
+	&:-moz-placeholder            { color: @color; } // Firefox 4-18
+	&::-moz-placeholder           { color: @color; } // Firefox 19+
+	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+
+#placeholder (@rules) when (false = iscolor(@rules)) {
+	&:-moz-placeholder            { @rules(); } // Firefox 4-18
+	&::-moz-placeholder           { @rules(); } // Firefox 19+
+	&:-ms-input-placeholder       { @rules(); } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { @rules(); } // Safari and Chrome
+}
+
+#animation (...) {
+	-webkit-animation: @arguments;
+	   -moz-animation: @arguments;
+	    -ms-animation: @arguments;
+		 -o-animation: @arguments;
+			animation: @arguments;
+}
+
+#animation-key (@name, @rules) {
+	@-webkit-keyframes @name {
+		@rules();
+	}
+	
+	@-moz-keyframes @name {
+		@rules();
+	}
+	
+	@-ms-keyframes @name {
+		@rules();
+	}
+	
+	@-o-keyframes @name {
+		@rules();
+	}
+
+	/* Standard syntax */
+	@keyframes @name {
+		@rules();
+	}
+}
+
+// GRADIENTS
+// --------------------------------------------------
+
+#gradient {
+
+	// Horizontal gradient, from left to right
+	//
+	// Creates two color stops, start and end, by specifying a color and position for each color stop.
+	// Color stops are not available in IE9 and below.
+	.horizontal (@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+		background-image: -webkit-gradient(linear, @start-percent top, @end-percent top, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1+, Chrome 10+
+		background-image: -moz-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
+		background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
+	}
+
+	// Vertical gradient, from top to bottom
+	//
+	// Creates two color stops, start and end, by specifying a color and position for each color stop.
+	// Color stops are not available in IE9 and below.
+	.vertical (@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+		background-image: -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // Safari 5.1+, Chrome 10+
+		background-image:  -moz-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
+		background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+		background-repeat: repeat-x;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+	}
+
+	.directional (@start-color: #555; @end-color: #333; @deg: 45deg) {
+		background-repeat: repeat-x;
+		background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1+, Chrome 10+
+		background-image: -moz-linear-gradient(@deg, @start-color, @end-color); // FF 3.6+
+		background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10
+	}
+
+	.horizontal-three-colors (@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
+		background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
+		background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
+		background-image: -moz-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
+		background-image: linear-gradient(to right, @start-color, @mid-color @color-stop, @end-color);
+		background-repeat: no-repeat;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+	}
+
+	.vertical-three-colors (@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
+		background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
+		background-image: -moz-linear-gradient(top, @start-color, @mid-color @color-stop, @end-color);
+		background-image: linear-gradient(@start-color, @mid-color @color-stop, @end-color);
+		background-repeat: no-repeat;
+		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+	}
+
+	.radial (@inner-color: #555; @outer-color: #333; @x-origin: center; @y-origin: center) {
+		background-image: -webkit-gradient(radial, @x-origin @y-origin, 0, @x-origin @y-origin, 1011, from(@inner-color), to(@outer-color));
+		background-image: -webkit-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
+		background-image: -moz-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
+		background-image: radial-gradient(ellipse farthest-corner at @x-origin @y-origin, @inner-color 0%, @outer-color 100%);
+		background-repeat: no-repeat;
+	}
+ 
+	.striped (@color: rgba(255,255,255,.15); @angle: 45deg) {
+		background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, @color), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, @color), color-stop(.75, @color), color-stop(.75, transparent), to(transparent));
+		background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+		background-image: -moz-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+		background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+	}
+}

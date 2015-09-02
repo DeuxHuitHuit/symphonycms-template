@@ -1,29 +1,31 @@
 //====== Medias Queries ============
 
-#mq-min-width (@min-width, @rules) {
-	@media screen and (min-width: @min-width) {
+#mq-min-width (@width, @rules) {
+	@media screen and (min-width: @width) {
 		@rules();
 	}
 }
-#mq-max-width (@max-width, @rules) {
-	@media screen and (max-width: @max-width) {
+
+#mq-max-width (@width, @rules) {
+	@media screen and (max-width: @width) {
 		@rules();
 	}
 }
+
 #mq-min-max-width (@min-width, @max-width, @rules) {
 	@media screen and (min-width: @min-width) and (max-width: @max-width) {
 		@rules();
 	}
 }
 
-#mq-min-height (@min-height, @rules) {
-	@media screen and (min-height: @min-height) {
+#mq-min-height (@height, @rules) {
+	@media screen and (min-height: @height) {
 		@rules();
 	}
 }
 
-#mq-max-height (@min-height, @rules) {
-	@media screen and (max-height: @min-height) {
+#mq-max-height (@height, @rules) {
+	@media screen and (max-height: @height) {
 		@rules();
 	}
 }
@@ -41,7 +43,10 @@
 }
 
 #mq-px-ratio (@px-ratio, @rules) {
-	@media screen and (-webkit-device-pixel-ratio: @px-ratio),
+	@media screen and (-webkit-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+	
 	@media screen and (device-pixel-ratio: @px-ratio) {
 		@rules();
 	}
@@ -65,25 +70,25 @@
 
 //====== "Only" Queries ============
 
-#only-mobile(@rules) {
+#only-mobile (@rules) {
 	html.mobile &, &.mobile {
 		@rules();
 	}
 }
 
-#only-not-mobile(@rules) {
+#only-not-mobile (@rules) {
 	html:not(.mobile) & {
 		@rules();
 	}
 }
 
-#only-phone(@rules) {
+#only-phone (@rules) {
 	html.mobile.phone &, &.mobile.phone {
 		@rules();
 	}
 }
 
-#only-not-phone(@rules) {
+#only-not-phone (@rules) {
 	html:not(.phone) & {
 		@rules();
 	}

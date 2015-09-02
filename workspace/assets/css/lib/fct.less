@@ -11,96 +11,121 @@
 	margin: @width;
 }
 
-#wh (@width: 100%) {
+/* *************************** SIZE FCT ****** */
+#wh (@width: 100%, @height: @width) {
 	width: @width;
-	height: @width;
+	height: @height;
 }
 
-#sq(@side) {
-	width:@side;
-	height:@side;
-	display:block;
+#sq (@side) {
+	#wh(@side, @side);
 }
 
-#absolute (@zindex: 10) {
-	position:absolute;
-	display:block;
-	z-index: @zindex;
-}
-
-#relative (@zindex: 10) {
-	position:relative;
-	display:block;
-	z-index: @zindex;
-}
-
-#fixed (@zindex: 10) {
-	position:fixed;
-	display:block;
-	z-index: @zindex;
-}
-
-#no-outline() {
-	outline:none;
-	-moz-outline:none;
-	-webkit-outline:none;
-}
-
-#cursor-normal() {
-	cursor: auto;
-}
-
-#cursor-drag() {
-	cursor: move;
-}
-
-#cursor-hand() {
-	cursor: pointer;
-	cursor: hand;
-}
-
-#cursor-loading() {
-	cursor: wait;
-}
-
-#ib(@valign: top) {
-	display: inline-block;
-	vertical-align: @valign;
-}
-
-#vh-center(@top-offset: 0px, @left-offset: @top-offset, @zindex: 10) {
-	#absolute(@zindex);
-	top: 50%;
-	left: 50%;
-	margin-left: -@top-offset;
-	margin-top: -@left-offset;
-}
-
-#text-wrap (@val: break-word) {
-	overflow-wrap: @val;
-	word-wrap: @val;
-}
-
-#ellipsis(@mw: 100%) {
-	max-width: @mw;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-#box-shadow(@shadow) {
-	-webkit-box-shadow: @shadow;
-	        box-shadow: @shadow;
-}
-
-#fill(@top: 0, @right: 0, @bottom: 0, @left: 0) {
+#fill (@top: 0, @right: @top, @bottom: @top, @left: @top) {
 	top: @top;
 	left: @left;
 	right: @right;
 	bottom: @bottom;
 }
 
-#selection-color(@color) when (iscolor(@color)) {
+/* *************************** DISPLAY FCT ****** */
+#block () {
+	display: block;
+}
+
+#ib (@valign: top) {
+	display: inline-block;
+	vertical-align: @valign;
+}
+
+/* *************************** POSITION FCT ****** */
+
+// ***** Absolute *****
+#absolute () {
+	position: absolute;
+}
+
+#absolute (@zindex) {
+	position: absolute;
+	z-index: @zindex;
+}
+
+// ***** Relative *****
+#relative () {
+	position: relative;
+}
+
+#relative (@zindex) {
+	#relative();
+	z-index: @zindex;
+}
+
+// ***** Fixed *****
+#fixed () {
+	position: fixed;
+}
+
+#fixed (@zindex: 10) {
+	.fixed;
+	z-index: @zindex;
+}
+
+
+/* *************************** CENTER FCT ****** */
+#vh-center (@top-offset: 0px, @left-offset: @top-offset) {
+	#absolute();
+	top: 50%;
+	left: 50%;
+	margin-left: -@top-offset;
+	margin-top: -@left-offset;
+}
+
+/* *************************** CURSOR FCT ****** */
+#cursor-normal () {
+	cursor: auto;
+}
+
+#cursor-drag () {
+	cursor: move;
+}
+
+#cursor-hand () {
+	cursor: pointer;
+	cursor: hand;
+}
+
+#cursor-loading () {
+	cursor: wait;
+}
+
+/* *************************** TEXT FCT (wrap, ellipsis)****** */
+#text-wrap (@val: break-word) {
+	overflow-wrap: @val;
+	word-wrap: @val;
+}
+
+#ellipsis (@mw: 100%) {
+	max-width: @mw;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* *************************** BOX SHADOW FCT ****** */
+#box-shadow (@shadow) {
+	-webkit-box-shadow: @shadow;
+	        box-shadow: @shadow;
+}
+
+/* *************************** OUTLINE FCT ****** */
+#no-outline () {
+	outline:none;
+	-moz-outline:none;
+	-webkit-outline:none;
+}
+
+/* *************************** SELECTION COLOR FCT ****** */
+#selection-color (@color) when (iscolor(@color)) {
 	::selection {
 		background-color: @color;
 	}
@@ -110,7 +135,7 @@
 	}
 }
 
-#selection-color(@rules) when (false = iscolor(@rules)) {
+#selection-color (@rules) when (false = iscolor(@rules)) {
 	::selection {
 		@rules();
 	}
@@ -118,55 +143,4 @@
 	::-moz-selection {
 		@rules();
 	}
-}
-
-
-//=========================
-// = REUSABLE CLASSES
-//=========================
-
-
-.bold {
-	font-weight: bold;
-}
-
-.capital {
-	text-transform: capitalize;
-}
-
-.upper {
-	text-transform: uppercase;
-}
-
-//::first-letter needs to be put on a block-like element
-.first-letter-upper {
-	&::first-letter {
-		.upper;
-	}
-}
-
-.lower {
-	text-transform: lowercase;
-}
-
-.center {
-	text-align: center;
-}
-
-.cursor-hand {
-	#cursor-hand();
-}
-
-.noanim {
-	&, & * {
-		#transition(none) !important;
-	}
-}
-
-.not-visible {
-	visibility: hidden !important;
-}
-
-.visible {
-	visibility: visible !important;
 }
