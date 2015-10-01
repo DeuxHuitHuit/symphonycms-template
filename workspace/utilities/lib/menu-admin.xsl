@@ -19,7 +19,7 @@
 							<xsl:value-of select="/data/params/current-query-string" />
 						</xsl:if>
 					</xsl:attribute>
-					DEBUG
+					<xsl:text>DEBUG</xsl:text>
 				</a>
 			</xsl:if>
 			
