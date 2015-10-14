@@ -13,6 +13,8 @@ main.css
 main.min.css
 main.min.css.map
 
+workspace/assets/js/libs
+
 npm-debug.log
 
 build.json
