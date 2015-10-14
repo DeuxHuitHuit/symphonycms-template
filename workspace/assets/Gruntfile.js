@@ -224,29 +224,7 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		
-		flow: {
-			options: {
-				style: 'color'
-			},
-			dev: {}
-		},
-		
-		analyzecss: {
-			prod: {
-				sources: [
-					'css/main.min.css'
-				]
-			},
-			options: {
-				error: 0.72,
-				outputMetrics: 'warn',
-				thresholds: {
-					
-				}
-			}
-		},
-		
+
 		csslint: {
 			options: {
 				// errors
@@ -367,7 +345,7 @@ module.exports = function (grunt) {
 		grunt.registerTask('dev',     ['jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
-		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint', 'analyzecss']);
+		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
