@@ -1,7 +1,7 @@
 /**
  * Visibility classes
  */
-
+ 
 .not-visible {
 	visibility: hidden !important;
 }
@@ -14,13 +14,6 @@
 	display: none;
 }
 
-.block {
-	display: block;
-}
-.inline-block {
-	display: inline-block;
-}
-
 .off-screen {
 	position: fixed;
 	left: -100000px;
@@ -29,19 +22,24 @@
 	height: 0;
 }
 
-#generate-visibility-classes(@suffix) {
+#generate-visibility-classes (@suffix) {
+
 	.not-visible-@{suffix} {
 		visibility: hidden !important;
 	}
+	
 	.visible-@{suffix} {
 		visibility: visible !important;
 	}
+	
 	.hidden-@{suffix} {
 		display: none;
 	}
+	
 	.block-@{suffix} {
 		display: block;
 	}
+	
 	.inline-block-@{suffix} {
 		display: inline-block;
 	}

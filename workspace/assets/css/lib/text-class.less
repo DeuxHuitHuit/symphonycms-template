@@ -1,0 +1,46 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = REUSABLE TEXT CLASSES
+//=========================
+
+.text-bold, .bold {
+	font-weight: bold;
+}
+
+.text-capital {
+	text-transform: capitalize;
+}
+
+.text-upper, .upper {
+	text-transform: uppercase;
+}
+
+.text-no-upper {
+	text-transform: none;
+}
+
+.text-lower {
+	text-transform: lower;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+//::first-letter needs to be put on a block-like element
+.first-letter-upper {
+	&::first-letter {
+		.upper;
+	}
+}

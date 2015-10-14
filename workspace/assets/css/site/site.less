@@ -6,9 +6,35 @@
 // = SITE WIDE SETTINGS
 //=========================
 
+html {
+	overflow: visible;
+	
+	&.no-scroll {
+		overflow: hidden;
+	}
+	
+	&.block-scroll {
+		height: 100%;
+		
+		body {
+			height: 100%;
+		}
+		
+		#site {
+			height: 100%;
+			overflow: hidden;
+		}
+	}
+}
+
 html, body {
 	min-height: 100%;
 	background-color: @bg-color;
+}
+
+body {
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 #site {

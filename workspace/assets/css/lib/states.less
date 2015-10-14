@@ -6,37 +6,37 @@
 // = STATES PSEUDO CLASSES HELPERS
 //=========================
 
-#hover(@rules) {
+#hover (@rules) {
 	html:not(.mobile) &:hover, &:focus, &:active {
 		@rules();
 	}
 }
 
-#hover(@selected, @rules) {
+#hover (@selected, @rules) {
 	html:not(.mobile) &:hover, &:focus, &:active, &@{selected} {
 		@rules();
 	}
 }
 
-#hover-no-focus(@rules) {
+#hover-no-focus (@rules) {
 	html:not(.mobile) &:hover, &:active {
 		@rules();
 	}
 }
 
-#hover-no-focus(@selected, @rules) {
+#hover-no-focus (@selected, @rules) {
 	html:not(.mobile) &:hover, &:active, &@{selected} {
 		@rules();
 	}
 }
 
-#hover-only(@rules) {
+#hover-only (@rules) {
 	html:not(.mobile) &:hover {
 		@rules();
 	}
 }
 
-#hover-only(@selected, @rules) {
+#hover-only (@selected, @rules) {
 	html:not(.mobile) &:hover, &@{selected} {
 		@rules();
 	}
