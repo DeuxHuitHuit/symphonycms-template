@@ -45,7 +45,7 @@
 	</script>
 	
 	<!-- Libs -->
-	<xsl:apply-templates select="/data/javascript/cdn-after/file" mode="cdn" />
+	<xsl:apply-templates select="/data/javascript/cdn-after/file" mode="cdn-async" />
 	
 </xsl:template>
 
@@ -55,6 +55,10 @@
 
 <xsl:template match="javascript/*/file" mode="cdn">
 	<script src="{.}"></script>
+</xsl:template>
+
+<xsl:template match="javascript/*/file" mode="cdn-async">
+	<script src="{.}" async="" defer=""></script>
 </xsl:template>
 
 </xsl:stylesheet>
