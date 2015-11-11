@@ -12,6 +12,7 @@
 		"modules/transition-animation.js",
 		"modules/page-load.js",
 		"modules/window-notifier.js",
+		"modules/route-not-found.js",
 		
 		"transitions/default-transition.js",
 		
