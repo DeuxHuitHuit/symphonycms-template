@@ -31,17 +31,20 @@ Art director / Directeur artistique
 Charles Fortier
 Designer
 
-David Beauchemin
-Designer
+Frédéric Lord
+Interface designer / Designer d'interface
 
 Nicolas Brassard-Ferron
 Web Software Lead / Directeur du développement web 
 
 Pascal Piché
-Developer / Intégrateur
+Full Stack Developer / Intégrateur
 
 Patrick Martel
-Developer / Intégrateur
+Full Stack Developer / Intégrateur
+
+Marc-André Charpentier
+Frontend Developer / Intégrateur
 
 Caroline L.Couture
 Project manager / Chargée de compte
