@@ -17,7 +17,7 @@
 			}
 			args.push(a);
 		});
-		App.log({args: ['%cga(' + args.join(',') + ');', 'color:green']});
+		App.log({args: ['%cga(' + args.join(',') + ');', 'color:navy']});
 	};
 	
 	// ga facilitators
