@@ -50,20 +50,20 @@
 			options.action = 'click';
 		}
 		if (!options.label) {
-			options.label = t.text();
+			options.label = $.trim(t.text());
 		}
 		var o = $.extend({}, options, {
-			cat: t.attr('data-ga-cat'),
-			action: t.attr('data-ga-action'),
-			label: t.attr('data-ga-label'),
+			cat: t.attr('data-ga-cat') || undefined,
+			action: t.attr('data-ga-action') || undefined,
+			label: t.attr('data-ga-label') || undefined,
 			value: parseInt(t.attr('data-ga-value'), 10) || undefined
 		});
 		if (!o.cat) {
-			App.log('No ga-cat found. Cannot continue.');
+			App.log({fx: 'err', args: 'No ga-cat found. Cannot continue.'});
 			return;
 		}
 		if (!o.label) {
-			App.log('No ga-label found. Reverting to text');
+			App.log({fx: 'err', args: 'No ga-label found. Reverting to text'});
 		}
 		$.sendEvent(o.cat, o.action, o.label, o.value);
 	};
@@ -71,9 +71,7 @@
 	// auto-hook
 	$(function () {
 		$('#site').on($.click, '*[data-ga-cat]', function (e) {
-			$(this).sendClickEvent({
-				cat: 'click'
-			});
+			$(this).sendClickEvent();
 		});
 	});
 	
