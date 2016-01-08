@@ -12,6 +12,7 @@
 	<xsl:param name="format" select="''" />
 	<xsl:param name="container" select="''" />
 	<xsl:param name="use-format" select="true()" />
+	<xsl:param name="itemprop" select="''" />
 
 	<!--img 
 		src="/image/1/{$width}/{$height}{$image/@path}/{$image/filename}" 
@@ -68,10 +69,21 @@
 						<xsl:value-of select="$class" />
 					</xsl:attribute>
 				</xsl:if>
+				<xsl:if test="string-length($itemprop) != 0">
+					<xsl:attribute name="itemprop">
+						<xsl:value-of select="$itemprop" />
+					</xsl:attribute>
+				</xsl:if>
 			</img>
 		</xsl:when>
 		<xsl:otherwise>
-			<img src="{$image}" alt="{$alt}" class="{$class}" />
+			<img src="{$image}" alt="{$alt}" class="{$class}">
+				<xsl:if test="string-length($itemprop) != 0">
+					<xsl:attribute name="itemprop">
+						<xsl:value-of select="$itemprop" />
+					</xsl:attribute>
+				</xsl:if>
+			</img>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
