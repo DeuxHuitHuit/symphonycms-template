@@ -5,11 +5,6 @@ html {
 	#transition(~'all @{duration} @{easeInOutQuart}');
 }
 
-.TODO {
-	outline: rgba(255,0,0,36%) 1px solid;
-	outline-offset: 10px;
-}
-
 body {
 	.text-19;
 	font-family: @text-current;
@@ -35,12 +30,6 @@ h6, .h6 {
 	}
 }
 
-
-// // seule façon trouvée pour gérer un surplus d'espace pris par des elements block qui sont en mode « fill »...
-// div, section, aside, article {
-// 	// line-height: 0;
-// }
-
 p, .p, li, a, blockquote, button {
 	font-family: inherit;
 	color: inherit;
@@ -50,9 +39,6 @@ p, .p, li, a, blockquote, button {
 p, .p {
 	padding: 0;
 	margin-bottom: @spacing-smaller;
-	// max-width: 40em;
-	// margin-left: auto;
-	// margin-right: auto;
 	&:last-child {
 		margin-bottom: 0;
 	}
