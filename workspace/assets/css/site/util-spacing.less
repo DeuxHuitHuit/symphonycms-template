@@ -1,0 +1,446 @@
+//=========================
+// = UTILITIES FOR SPACING
+//=========================
+
+
+//====== GRIDS ============
+
+// #generate-strict-guttered-grid(1);
+// #generate-strict-guttered-grid(2);
+// #generate-strict-guttered-grid(3);
+// #generate-strict-guttered-grid(4);
+// #generate-strict-guttered-grid(5);
+
+
+//====== SERIES RHYTHM ============
+
+.spaced-vertical-small {
+	> * + * {
+		margin-top: @spacing-small;
+	}
+}
+
+.spaced-vertical-smallest {
+	> * + * {
+		margin-top: @spacing-smallest;
+	}
+}
+
+//====== MAX-WIDTHS ============
+
+.column-to-sm-row {
+	.flex-flow-column-wrap;
+	
+	#mq-min-width(@screen-sm, {
+		.flex-flow-row-wrap;
+	});
+}
+
+.column-to-xs-row {
+	.flex-flow-column-wrap;
+	
+	#mq-min-width(@screen-xs, {
+		.flex-flow-row-wrap;
+	});
+}
+
+
+//====== MAX-WIDTHS ============
+
+.max-width-smaller {
+	max-width: @spacing-smaller * 10;
+}
+
+.max-width-small {
+	max-width: @spacing-small * 10;
+}
+
+.max-width-mid {
+	max-width: @spacing-mid * 10;
+}
+
+.max-width-large {
+	max-width: @spacing-large * 10;
+}
+
+.max-width-larger {
+	max-width: @spacing-larger * 10;
+}
+
+.max-width-largest {
+	max-width: @spacing-larger * 10;
+}
+
+
+.max-width-huge {
+	max-width: @spacing-huge * 10;
+}
+
+// create equal viewport margins on small screens
+[class*="max-width"] {
+	#mq-max-width(@screen-sm - 1, {
+		max-width: calc(~'100% - @{spacing-mid} * 2');
+	});
+	#mq-max-width(@screen-xs - 1, {
+		max-width: calc(~'100% - @{spacing-small} * 2');
+	});
+
+}
+
+//====== CONTEXT SHORTCUTS ============
+#mq-mobile-design(@rules) {
+	#mq-max-width(@screen-xs - 1, @rules);
+}
+
+#mq-desktop-design(@rules) {
+	#mq-min-width(@screen-xs, @rules);
+}
+
+.mobile-design {
+	#mq-desktop-design({
+		display: none!important;
+	});
+}
+
+.desktop-design {
+	#mq-mobile-design({
+		display: none!important;
+	});
+}
+
+//====== SPACERS ============
+.top-micro {
+	top: @spacing-micro;
+}
+
+//====== PADDINGS ============
+.padding-large {
+	padding: @spacing-large @spacing-large;
+}
+.padding-larger {
+	padding: @spacing-larger @spacing-larger;
+}
+
+.padding-small {
+	padding: @spacing-small @spacing-small;
+}
+
+.padding-smaller-none {
+	padding: @spacing-smaller 0;
+}
+
+.padding-small-none {
+	padding: @spacing-small 0;
+}
+.padding-smallest {
+	padding: @spacing-smallest @spacing-smallest;
+}
+.padding-smaller {
+	padding: @spacing-smaller @spacing-smaller;
+}
+
+.padding-micro {
+	padding: @spacing-micro @spacing-micro;
+}
+.padding-none {
+	padding: 0;
+}
+.padding-none-micro {
+	padding: 0 @spacing-micro;
+}
+
+.padding-none-mid {
+	padding: 0 @spacing-mid;	
+}
+
+.padding-right-micro {
+	padding-right: @spacing-micro;
+}
+
+.padding-right-mid {
+	padding-right: @spacing-mid;
+}
+
+.padding-right-large {
+	padding-right: @spacing-large;
+}
+
+.padding-left-micro {
+	padding-left: @spacing-micro;
+}
+.padding-left-mid {
+	padding-left: @spacing-mid;
+}
+
+.padding-left-huge {
+		padding-left: @spacing-huge;
+}
+
+.padding-left-small {
+	padding-left: @spacing-small;
+}
+
+.padding-left-smaller {
+	padding-left: @spacing-smaller;
+}
+
+.padding-left-smallest {
+	padding-left: @spacing-smallest;
+}
+
+.padding-right-small {
+	padding-right: @spacing-small;
+}
+
+.padding-right-smaller {
+	padding-right: @spacing-smaller;
+}
+
+.padding-right-smallest {
+	padding-right: @spacing-smallest;
+}
+
+
+.padding-top-smallest {
+	padding-top: @spacing-smallest;	
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-smallest;
+	});
+}
+
+.padding-top-smaller {
+	padding-top: @spacing-smaller;	
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-smaller;
+	});
+}
+
+.padding-top-small {
+	padding-top: @spacing-small;	
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-small;
+	});
+}
+
+.padding-top-mid {
+	padding-top: @spacing-small;	
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-mid;
+	});
+}
+
+
+.padding-top-large {
+	padding-top: @spacing-mid;	
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-large;
+	});
+}
+
+.padding-top-larger {
+	padding-top: @spacing-mid;
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-larger;
+	});
+}
+
+.padding-top-huge {
+	padding-top: @spacing-mid;	
+	#mq-min-width(@screen-xs, {
+		padding-top: @spacing-large;
+	});
+	#mq-min-width(@screen-sm, {
+		padding-top: @spacing-huge;
+	});
+}
+
+.padding-bottom-smaller {
+	padding-bottom: @spacing-smaller;	
+	#mq-min-width(@screen-xs, {
+		padding-bottom: @spacing-smaller;
+	});
+}
+.padding-bottom-small {
+	padding-bottom: @spacing-small;	
+	#mq-min-width(@screen-xs, {
+		padding-bottom: @spacing-small;
+	});
+}
+
+.padding-bottom-mid {
+	padding-bottom: @spacing-small;	
+	#mq-min-width(@screen-xs, {
+		padding-bottom: @spacing-mid;
+	});
+}
+
+
+.padding-bottom-large {
+	padding-bottom: @spacing-mid;	
+	#mq-min-width(@screen-xs, {
+		padding-bottom: @spacing-large;
+	});
+}
+
+
+
+.padding-bottom-larger {
+	padding-bottom: @spacing-mid;	
+	#mq-min-width(@screen-xs, {
+		padding-bottom: @spacing-larger;
+	});
+}
+
+.padding-bottom-huge {
+	padding-bottom: @spacing-mid;	
+	#mq-min-width(@screen-xs, {
+		padding-bottom: @spacing-large;
+	});
+	#mq-min-width(@screen-sm, {
+		padding-bottom: @spacing-huge;
+	});
+}
+
+
+//====== MARGINS ============
+
+.margin-none {
+	margin: 0;
+}
+
+.margin-none-micro {
+	margin: 0 @spacing-micro;
+	#mq-min-width(@screen-xs, {
+		margin: 0 @spacing-micro;
+	});
+}
+
+.margin-none-smallest {
+	margin: 0 @spacing-smallest / 2;
+	#mq-min-width(@screen-xs, {
+		margin: 0 @spacing-smallest;
+	});
+}
+
+.margin-none-smaller {
+	margin: 0 @spacing-smallest / 2;
+	#mq-min-width(@screen-xs, {
+		margin: 0 @spacing-smaller;
+	});
+}
+
+.margin-left-small {
+	margin-left: @spacing-small;
+}
+
+.margin-left-smaller {
+	margin-left: @spacing-smaller;
+}
+
+.margin-left-micro {
+	margin-left: @spacing-micro / 2;
+	#mq-min-width(@screen-xs, {
+		margin-left: @spacing-micro;
+	});
+}
+
+.margin-auto {
+	margin: auto;
+}
+
+.margin-left-auto {
+	margin-left: auto;
+}
+
+.margin-right-auto {
+	margin-right: auto;
+}
+.margin-right-micro {
+	margin-right: @spacing-micro;
+}
+.margin-right-small {
+	margin-right: @spacing-small;
+}
+
+.margin-right-smaller {
+	margin-right: @spacing-smaller;
+}
+
+.margin-right-smallest {
+	margin-right: @spacing-smallest;
+}
+
+.margin-right-mid {
+	margin-right: @spacing-mid;
+}
+
+.margin-right-large {
+	margin-right: @spacing-large;
+}
+
+.margin-left-mid {
+	margin-left: @spacing-mid;
+}
+
+.margin-bottom-small {
+	margin-bottom: @spacing-small;
+}
+
+.margin-bottom-smaller {
+	margin-bottom: @spacing-smaller;
+}
+
+.margin-bottom-smallest {
+	margin-bottom: @spacing-smallest;
+}
+
+.margin-bottom-micro {
+	margin-bottom: @spacing-micro;
+}
+
+.margin-bottom-mid {
+	margin-bottom: @spacing-small;
+	#mq-min-width(@screen-xs, {
+		margin-bottom: @spacing-mid;
+	});
+}
+
+.margin-bottom-large {
+	margin-bottom: @spacing-large;	
+}
+
+.margin-bottom-larger {
+	margin-bottom: @spacing-larger;	
+}
+
+.margin-bottom-huge {
+	margin-bottom: @spacing-huge;	
+}
+
+.margin-top-auto {
+	margin-top: auto;	
+}
+
+.margin-top-large {
+	margin-top: @spacing-large;	
+}
+
+.margin-top-mid {
+	margin-top: @spacing-mid;		
+}
+
+.margin-top-huge {
+	margin-top: @spacing-huge;	
+}
+
+.margin-top-small {
+	margin-top: @spacing-small;		
+}
+
+.margin-top-smaller {
+	margin-top: @spacing-smaller;		
+}
+
+.margin-top-micro {
+	margin-top: @spacing-micro;		
+}

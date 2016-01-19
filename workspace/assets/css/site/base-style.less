@@ -1,0 +1,49 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+html {
+	#transition(~'all @{duration} @{easeInOutQuart}');
+}
+
+body {
+	.text-19;
+	font-family: @text-current;
+	color: @text-color;
+	-webkit-font-feature-settings: "hist";
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+	margin-bottom: @spacing-smaller;
+	font-family: inherit;
+	color: inherit;
+	text-rendering: optimizeLegibility;
+	margin-top: 0;
+	font-weight: inherit;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+p, .p, li, a, blockquote, button {
+	font-family: inherit;
+	color: inherit;
+	#font-size();
+}
+
+p, .p {
+	padding: 0;
+	margin-bottom: @spacing-smaller;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+a {
+	text-decoration: none;
+}
