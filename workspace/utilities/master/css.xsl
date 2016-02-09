@@ -6,7 +6,7 @@
 	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">
-			<link rel="stylesheet/less" type="text/css" href="{$css-path}{$less-file}.{$version}.less" />
+			<link rel="stylesheet/less" type="text/css" href="{$css-path}dev/{$less-file}.{$version}.less" />
 			<script>less = { env: 'development', useFileCache: false }; </script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 			<xsl:if test="count(/data/params/url-watch) != 0">
