@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 			cdn.forEach(function (file) {
 				var filename = fixCdnJsFilePath(file);
 				if (file.indexOf('//') === 0) {
-					file = 'http:' + file;
+					file = 'https:' + file;
 				}
 				ret[filename] = file;
 			});
