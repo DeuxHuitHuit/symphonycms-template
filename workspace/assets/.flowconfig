@@ -1,9 +1,0 @@
-[include]
-.*/.*/js
-Gruntfile.js
-
-[libs]
-./js/lib
-
-[ignore]
-.*/node_modules
