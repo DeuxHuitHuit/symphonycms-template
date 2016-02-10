@@ -151,6 +151,15 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		jscs: {
+			src: SRC_FILES.concat(GRUNT_FILE),
+			options: {
+				config: '.jscsrc',
+				esnext: false,
+				verbose: true,
+				fix: true
+			}
+		},
 		uglify: {
 			prod: {
 				files: {
@@ -342,7 +351,7 @@ module.exports = function (grunt) {
 		});
 
 		// Default tasks.
-		grunt.registerTask('dev',     ['jshint', 'complexity']);
+		grunt.registerTask('dev',     ['jscs', 'jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
 		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint']);
