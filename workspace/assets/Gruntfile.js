@@ -172,6 +172,9 @@ module.exports = function (grunt) {
 				sourceMap: true,
 				sourceMapName: 'js/<%= pkg.name %>.min.js.map',
 				mangle: true,
+				preserveComments: 'some',
+				screwIE8: true,
+				quoteStyle: 3,
 				compress: {
 					global_defs: {
 						DEBUG: false
@@ -184,39 +187,29 @@ module.exports = function (grunt) {
 		},
 		
 		less: {
-			development: {
-				files: {
-					'css/main.css': LESS_FILE
-				}
-			},
 			production: {
 				options: {
 					ieCompat: false,
-					cleancss: true,
 					strictUnits: true,
 					report: 'gzip',
 					sourceMap: true,
-					sourceMapFilename: 'css/main.min.css.map',
-					sourceMappingURL: 'main.min.css.map',
-					plugins: [
-						new (require('less-plugin-clean-css'))({})
-					]
+					sourceMapFilename: 'css/main.css.map',
+					sourceMappingURL: 'main.css.map',
 				},
 				files: {
-					'css/main.min.css': LESS_FILE
+					'css/main.css': LESS_FILE
 				}
 			}
 		},
 		
-		usebanner: {
-			build: {
+		csso: {
+			compress: {
 				options: {
-					position: 'top',
+					report: 'gzip',
 					banner: '<%= meta.banner %>\n',
-					linebreak: false
 				},
 				files: {
-					src: [ 'css/main.css', 'css/main.min.css' ]
+					'css/main.min.css': ['css/main.css']
 				}
 			}
 		},
@@ -261,12 +254,6 @@ module.exports = function (grunt) {
 		},
 		
 		clean: {
-			copy: {
-				options: {
-					force: true
-				},
-				src: ['../../../dist/**']
-			},
 			bundle: {
 				options: {
 					force: true
@@ -274,47 +261,6 @@ module.exports = function (grunt) {
 				src: ['<%= concat.lessLibs.dest %>', '<%= concat.lessCore.dest %>']
 			}
 		},
-		
-		copy: {
-			main: {
-				files: [{
-					expand: true,
-					cwd: '../../',
-					src: ['**', '.htaccess'],
-					dest: '../../../dist/',
-					filter: 'isFile'
-				}],
-				options: {
-					processContentExclude: [
-						'**/img/*.{png,gif,jpg,ico,psd}',
-						'**/symphony/*.{png,gif,jpg,ico,psd}',
-						'**/extensions/*.{png,gif,jpg,ico,psd}'
-					],
-					processContent: function (content, srcpath) {
-						var r = [
-							/Gruntfile\.js/g, 
-							/package\.json/g, 
-							/node_modules(.*)/g, 
-							/\/js\/com\/(.*)\.js/g, 
-							/\/js\/modules\/(.*)\.js/g, 
-							/\/js\/pages\/(.*)\.js/g, 
-							/\/js\/transitions\/(.*)\.js/g, 
-							/\/js\/utils\/(.*)\.js/g, 
-							/\/css\/(.*)\.less/g
-						];
-						var res = true;
-						r.forEach(function (re) {
-							if (re.test(srcpath)) {
-								res = false;
-								return false; // break;
-							}
-							return true;
-						});
-						return res ? content : res;
-					}
-				}
-			}
-		}
 	};
 	
 	var init = function (grunt) {
@@ -322,6 +268,9 @@ module.exports = function (grunt) {
 		
 		// visit config
 		visitor.config(grunt, config);
+		
+		// verbose by default
+		grunt.option('verbose', true);
 		
 		// Project configuration.
 		grunt.initConfig(config);
@@ -354,9 +303,8 @@ module.exports = function (grunt) {
 		grunt.registerTask('dev',     ['jscs', 'jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
-		grunt.registerTask('css',     ['bundle', 'less', 'usebanner', 'csslint']);
+		grunt.registerTask('css',     ['bundle', 'less', 'csso']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
-		grunt.registerTask('dist',    ['clean:copy', 'build', 'copy']);
 		grunt.registerTask('default', ['dev', 'build']);
 		
 		// visit grunt
