@@ -202,6 +202,20 @@ module.exports = function (grunt) {
 			}
 		},
 		
+		purifycss: {
+			options: {
+				minify: false,
+				info: true,
+				rejected: true,
+				whitelist: ['hidden', 'show', 'end', 'js-*']
+			},
+			target: {
+				src: ['../pages/*.xsl', '../utilities/*.xsl', '../utilities/**/*.xsl'],
+				css: ['css/main.css'],
+				dest: 'css/main.pure.css'
+			}
+		},
+		
 		csso: {
 			compress: {
 				options: {
@@ -209,7 +223,7 @@ module.exports = function (grunt) {
 					banner: '<%= meta.banner %>\n',
 				},
 				files: {
-					'css/main.min.css': ['css/main.css']
+					'css/main.min.css': ['css/main.pure.css']
 				}
 			}
 		},
@@ -303,7 +317,7 @@ module.exports = function (grunt) {
 		grunt.registerTask('dev',     ['jscs', 'jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
-		grunt.registerTask('css',     ['bundle', 'less', 'csso']);
+		grunt.registerTask('css',     ['bundle', 'less', 'purifycss', 'csso']);
 		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
 		grunt.registerTask('default', ['dev', 'build']);
 		

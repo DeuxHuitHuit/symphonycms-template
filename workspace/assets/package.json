@@ -25,6 +25,7 @@
     "grunt-csso": "^0.8.1",
     "grunt-curl": "^2.2.0",
     "grunt-jscs": "^2.7.0",
+    "grunt-purifycss": "^0.1.1",
     "matchdep": "~1.0.1"
   }
 }
