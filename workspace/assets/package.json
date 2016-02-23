@@ -13,7 +13,6 @@
   "license": "Private. All rights reserved. Deux Huit Huit and others.",
   "dependencies": {
     "grunt": "^0.4.5",
-    "grunt-banner": "~0.6.0",
     "grunt-complexity": "~0.3.0",
     "grunt-contrib-clean": "~0.7.0",
     "grunt-contrib-concat": "~0.5.1",
