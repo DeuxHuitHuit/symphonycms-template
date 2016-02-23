@@ -1,6 +1,8 @@
 /*global module:false, require:false*/
 var md = require('matchdep');
 
+global.svn_info = {};
+
 module.exports = function (grunt) {
 
 	'use strict';
@@ -50,8 +52,8 @@ module.exports = function (grunt) {
 			}
 		},
 		meta: {
-			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> ' +
-			'- build <%= buildnum.num %> - ' +
+			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+			'r<%= svninfo.rev %> - build <%= buildnum.num %> - ' +
 			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
@@ -275,6 +277,11 @@ module.exports = function (grunt) {
 				src: ['<%= concat.lessLibs.dest %>', '<%= concat.lessCore.dest %>']
 			}
 		},
+
+		svninfo: {
+			options: {
+			}
+		}
 	};
 	
 	var init = function (grunt) {
@@ -318,7 +325,7 @@ module.exports = function (grunt) {
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
 		grunt.registerTask('css',     ['bundle', 'less', 'purifycss', 'csso']);
-		grunt.registerTask('build',   ['buildnum', 'js', 'css']);
+		grunt.registerTask('build',   ['buildnum', 'svninfo', 'js', 'css']);
 		grunt.registerTask('default', ['dev', 'build']);
 		
 		// visit grunt
