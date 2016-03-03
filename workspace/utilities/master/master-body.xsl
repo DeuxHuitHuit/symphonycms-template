@@ -46,10 +46,8 @@
 		<div id="load-progress"></div>
 		
 		<!-- Block user agent -->
-		<xsl:call-template name="block-user-agent">
-			<xsl:with-param name="title" select="$config/navigateurs-non-supportes-titre" />
-			<xsl:with-param name="subtitle" select="$config/navigateurs-non-supportes-texte" />
-			<xsl:with-param name="close" select="$config/navigateurs-non-supportes-poursuivre" />
+		<xsl:call-template name="block-user-agent-light">
+			<xsl:with-param name="text" select="$config/navigateurs-non-supportes-texte" />
 			<xsl:with-param name="client-side-detection" select="true()" />
 		</xsl:call-template>
 		
