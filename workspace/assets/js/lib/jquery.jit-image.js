@@ -1,11 +1,11 @@
-/*! jQuery JIT image - v1.3.2 - build 17 - 2015-01-20
+/*! jQuery JIT image - v1.4.0 - build 23 - 2016-03-04
 * https://github.com/DeuxHuitHuit/jQuery-jit-image
-* Copyright (c) 2015 Deux Huit Huit (https://deuxhuithuit.com/);
-* Licensed MIT */
+* Copyright (c) 2016 Deux Huit Huit (https://deuxhuithuit.com/);
+* Licensed  */
 /*
  *  jQuery JIT image - jQuery plugin
  *
- *  Copyright (c) 2013-2015 Deux Huit Huit (http://www.deuxhuithuit.com/)
+ *  Copyright (c) 2013-2016 Deux Huit Huit (http://www.deuxhuithuit.com/)
  *  Licensed under the MIT LICENSE
  *  (https://raw.github.com/DeuxHuitHuit/jQuery-jit-image/master/LICENSE.txt)
  */
@@ -136,6 +136,18 @@
 		return size;
 	};
 	
+	var _getPreviousSize = function (t, o) {
+		var data = t.data(DATA_KEY);
+		if (!!data && !!data.prev) {
+			return data.prev;
+		}
+		return _getSize(o);
+	};
+	
+	var _isSizeSmallerThen = function (size, compareTo) {
+		return (size.width <= compareTo.width && size.height <= compareTo.height);
+	};
+	
 	var _set = function (t, size, url, o) {
 		if (!!t && !!size) {
 			if (!!o.forceCssResize && !!size.width) {
@@ -213,8 +225,10 @@
 	
 	var _update = function (t, o) {
 		var success = false;
+		var abort = false;
 		if (!!o && !!t) {
 			var size = o.size(o);
+			var previousSize = !o.fetchSmallerImages && o.previousSize(t, o);
 			var urlFormat = _getUrlFromFormat(t, o, size);
 			var urlFormatSuccess = !!urlFormat && !!urlFormat.url;
 			var sizeSucces = !!size && !!urlFormat &&
@@ -222,20 +236,38 @@
 				(!urlFormat.height || size.height > 0);
 			
 			if (urlFormatSuccess && sizeSucces) {
-				// fix for aspect ratio scaling
-				// Only pass the size value if it was matched
-				size.width = urlFormat.width ? size.width : false;
-				size.height = urlFormat.height ? size.height : false;
-				// set the image's url and css
-				success = o.set(
-					t,
-					size,
-					urlFormat.url,
-					o
-				);
+				if (!o.fetchSmallerImages) {
+					if (_isSizeSmallerThen(size, previousSize)) {
+						// abort
+						abort = true;
+					}
+					else {
+						// save new bigger size
+						t.data(DATA_KEY).prev = size;
+					}
+				}
 				
-				if (success && $.isFunction(o.updated)) {
-					o.updated.call(t, urlFormat, o, size);
+				if (!abort) {
+					// fix for aspect ratio scaling
+					// Only pass the size value if it was matched
+					size.width = urlFormat.width ? size.width : false;
+					size.height = urlFormat.height ? size.height : false;
+					// set the image's url and css
+					success = o.set(
+						t,
+						size,
+						urlFormat.url,
+						o
+					);
+					
+					if (success && $.isFunction(o.updated)) {
+						o.updated.call(t, urlFormat, o, size);
+					}
+				} else {
+					success = false;
+					if ($.isFunction(o.aborted)) {
+						o.aborted.call(t, urlFormat, o, size);
+					}
 				}
 			}
 		}
@@ -249,7 +281,7 @@
 		$.each(instances, function _resize(index, element) {
 			var $el = $(element);
 			var data = $el.data(DATA_KEY);
-			var visible = $el.is(':visible');
+			var visible = true;
 			var update = function () {
 				_update($el, data);
 			};
@@ -263,6 +295,9 @@
 				// cancel any pending timeouts
 				clearTimeout(data.jitTimeout);
 				
+				// check if current element is visible
+				visible =  $el.is(':visible');
+				
 				if (!!_defaults.nonVisibleDelay && !visible) {
 					data.jitTimeout = setTimeout(update, _defaults.nonVisibleDelay);
 				} else {
@@ -273,7 +308,6 @@
 			else {
 				loader.push({
 					elem: $el,
-					visible: visible,
 					update: update,
 					limit: data.parallelLoadingLimit
 				});
@@ -302,7 +336,7 @@
 		updateEvents: 'resize orientationchange',
 		eventTimeout: 50,
 		load: null, // function (size, e, err)
-		nonVisibleDelay: 1000,
+		nonVisibleDelay: 1000, // only when parallelLoadingLimit = 0
 		forceCssResize: true,
 		parallelLoadingLimit: 0,
 		format: null, // function (urlFormat, o, size)
@@ -310,7 +344,10 @@
 		updated: null, // function (urlFormat, o, size)
 		forceEvenSize: false,
 		useDevicePixelRatio: true,
-		devicePixelRatio: 1
+		devicePixelRatio: 1,
+		fetchSmallerImages: true,
+		previousSize: _getPreviousSize,
+		aborted: null // function (urlFormat, o, size)
 	};
 	
 	var _registerOnce = function () {
@@ -360,7 +397,7 @@
 			t.data(DATA_KEY, o);
 			
 			var update = function () {
-				_update(t, o);	
+				_update(t, o);
 			};
 			
 			// No limit
