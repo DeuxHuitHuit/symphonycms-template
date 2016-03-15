@@ -212,7 +212,7 @@ module.exports = function (grunt) {
 				whitelist: ['hidden', 'show', 'end', 'js-*', 'is-*', '#bg-transition']
 			},
 			target: {
-				src: ['../pages/*.xsl', '../utilities/*.xsl', '../utilities/**/*.xsl'],
+				src: ['../pages/*.xsl', '../utilities/*.xsl', '../utilities/**/*.xsl', 'js/<%= pkg.name %>.js'],
 				css: ['css/main.css'],
 				dest: 'css/main.pure.css'
 			}
