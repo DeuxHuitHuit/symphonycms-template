@@ -1,0 +1,28 @@
+
+@valuenameprefix: '';
+
+#import() {
+	@import 'responsive-imports';
+}
+
+#import-min(@size, @prefix) {
+	import: @size, @prefix;
+	#mq-min-width(@size, {
+		import-inside: @size, @valuenameprefix;
+		#import;
+	});
+}
+
+#import();
+test {
+#import-min(0, 'from-0-');
+#import-min(@screen-ip, 'from-ip-');
+#import-min(@screen-ph, 'from-ph-');
+}
+/*
+#import-min(@screen-xs);
+#import-min(@screen-sm);
+#import-min(@screen-md);
+#import-min(@screen-lg);
+#import-min(@screen-xl);
+*/
