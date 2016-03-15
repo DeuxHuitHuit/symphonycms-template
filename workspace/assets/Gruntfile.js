@@ -1,4 +1,4 @@
-/*global module:false, require:false*/
+/*global global:false, module:false, require:false*/
 var md = require('matchdep');
 
 global.svn_info = {};
@@ -212,7 +212,12 @@ module.exports = function (grunt) {
 				whitelist: ['hidden', 'show', 'end', 'js-*', 'is-*', '#bg-transition']
 			},
 			target: {
-				src: ['../pages/*.xsl', '../utilities/*.xsl', '../utilities/**/*.xsl', 'js/<%= pkg.name %>.js'],
+				src: [
+					'../pages/*.xsl',
+					'../utilities/*.xsl',
+					'../utilities/**/*.xsl',
+					'js/<%= pkg.name %>.js'
+				],
 				css: ['css/main.css'],
 				dest: 'css/main.pure.css'
 			}
