@@ -1,0 +1,154 @@
+/*******************************
+ * @author Bad Religion
+ *****************************/
+
+//=========================
+// = Generator
+// = Like a rock, like a planet, Like a fucking atom bomb,
+// = ...
+// = Like the blood on my door, it's the generator
+//=========================
+// = Will generate a class and data-class selectors automatically
+//=========================
+
+#generate(@class, @property, @valuename, @value) {
+	#generate-no-mq(@class, @property, @valuename, @value);
+	#generate-all-mq(@class, @property, @valuename, @value) 
+}
+#generate(@class, @value) {
+	#generate(@class, @class, @value, @value);
+}
+#generate(@class, @valuename, @value) {
+	#generate(@class, @class, @valuename, @value);
+}
+
+#generate-no-mq(@class, @property, @valuename, @value) {
+	// No media query
+	#generate-class(@class, @property, @valuename, @value);
+	#generate-attribute(@class, @property, @valuename, @value);
+}
+
+#generate-all-mq(@class, @property, @valuename, @value) {
+	// Min width (from-x)
+	#generate-from(@class, @property, @valuename, @value);
+	
+	// Max width (to-x)
+	#generate-to(@class, @property, @valuename, @value);
+	
+	// Min - Max width (from-x-to-y)
+	#generate-from-to(@class, @property, @valuename, @value);
+}
+
+// Min width (from-x) ----------------------------------------------------------
+#generate-from(@class, @property, @valuename, @value) {
+	#generate-from(0, @class, @property, @valuename, @value);
+	#generate-from(ip, @class, @property, @valuename, @value);
+	#generate-from(ph, @class, @property, @valuename, @value);
+	#generate-from(xs, @class, @property, @valuename, @value);
+	#generate-from(sm, @class, @property, @valuename, @value);
+	#generate-from(md, @class, @property, @valuename, @value);
+	#generate-from(lg, @class, @property, @valuename, @value);
+	#generate-from(xl, @class, @property, @valuename, @value);
+}
+#generate-from(@screenvalue, @class, @property, @valuename, @value) when (@screenvalue = 0) {
+	#mq-min-width(0px, {
+		#generate-attribute(@class, @property, "from-0-@{valuename}", @value);
+	});
+}
+#generate-from(@screenvalue, @class, @property, @valuename, @value) when (default()) {
+	@screen: 'screen-@{screenvalue}';
+	#mq-min-width(@@screen, {
+		#generate-attribute(@class, @property, "from-@{screenvalue}-@{valuename}", @value);
+	});
+}
+
+// Max width (to-x) ------------------------------------------------------------
+#generate-to(@class, @property, @valuename, @value) {
+	#generate-to(xl, @class, @property, @valuename, @value);
+	#generate-to(lg, @class, @property, @valuename, @value);
+	#generate-to(md, @class, @property, @valuename, @value);
+	#generate-to(sm, @class, @property, @valuename, @value);
+	#generate-to(xs, @class, @property, @valuename, @value);
+	#generate-to(ph, @class, @property, @valuename, @value);
+	#generate-to(ip, @class, @property, @valuename, @value);
+}
+#generate-to(@screenvalue, @class, @property, @valuename, @value) when (default()) {
+	@screen: 'screen-@{screenvalue}';
+	#mq-max-width(@@screen, {
+		#generate-attribute(@class, @property, "to-@{screenvalue}-@{valuename}", @value);
+	});
+}
+
+// Min - Max width (from-x-to-y) -----------------------------------------------
+#generate-from-to(@class, @property, @valuename, @value) {
+	#generate-from-to(0, ip, @class, @property, @valuename, @value);
+	#generate-from-to(0, ph, @class, @property, @valuename, @value);
+	#generate-from-to(0, xs, @class, @property, @valuename, @value);
+	#generate-from-to(0, sm, @class, @property, @valuename, @value);
+	#generate-from-to(0, md, @class, @property, @valuename, @value);
+	#generate-from-to(0, lg, @class, @property, @valuename, @value);
+	#generate-from-to(0, xl, @class, @property, @valuename, @value);
+
+	#generate-from-to(ip, ph, @class, @property, @valuename, @value);
+	#generate-from-to(ip, xs, @class, @property, @valuename, @value);
+	#generate-from-to(ip, sm, @class, @property, @valuename, @value);
+	#generate-from-to(ip, md, @class, @property, @valuename, @value);
+	#generate-from-to(ip, lg, @class, @property, @valuename, @value);
+	#generate-from-to(ip, xl, @class, @property, @valuename, @value);
+
+	#generate-from-to(ph, xs, @class, @property, @valuename, @value);
+	#generate-from-to(ph, sm, @class, @property, @valuename, @value);
+	#generate-from-to(ph, md, @class, @property, @valuename, @value);
+	#generate-from-to(ph, lg, @class, @property, @valuename, @value);
+	#generate-from-to(ph, xl, @class, @property, @valuename, @value);
+
+	#generate-from-to(xs, sm, @class, @property, @valuename, @value);
+	#generate-from-to(xs, md, @class, @property, @valuename, @value);
+	#generate-from-to(xs, lg, @class, @property, @valuename, @value);
+	#generate-from-to(xs, xl, @class, @property, @valuename, @value);
+
+	#generate-from-to(sm, md, @class, @property, @valuename, @value);
+	#generate-from-to(sm, lg, @class, @property, @valuename, @value);
+	#generate-from-to(sm, xl, @class, @property, @valuename, @value);
+
+	#generate-from-to(md, lg, @class, @property, @valuename, @value);
+	#generate-from-to(md, xl, @class, @property, @valuename, @value);
+
+	#generate-from-to(lg, xl, @class, @property, @valuename, @value);
+}
+#generate-from-to(@screenvaluefrom, @screenvalueto, @class, @property, @valuename, @value) when (@screenvaluefrom = 0) {
+	@screento: 'screen-@{screenvalueto}';
+	#mq-min-max-width(0px, @@screento, {
+		#generate-attribute(@class, @property, "0-to-@{screenvalueto}-@{valuename}", @value);
+	});
+}
+#generate-from-to(@screenvaluefrom, @screenvalueto, @class, @property, @valuename, @value) when (default()) {
+	@screenfr: 'screen-@{screenvaluefrom}';
+	@screento: 'screen-@{screenvalueto}';
+	#mq-min-max-width(@@screenfr, @@screento, {
+		#generate-attribute(@class, @property, "@{screenvaluefrom}-to-@{screenvalueto}-@{valuename}", @value);
+	});
+}
+
+// Class (constants)
+#generate-class(@class, @property, @valuename, @value) when(isstring(@valuename)) {
+	@fixedvaluename: replace(@valuename, "/", "_");
+	@selector: e(".@{class}-@{fixedvaluename}");
+	@{selector} {
+		@{property}: @value;
+	}
+}
+#generate-class(@class, @property, @valuename, @value) when(default()) {
+	@selector: e(".@{class}-@{valuename}");
+	@{selector} {
+		@{property}: @value;
+	}
+}
+
+// Data-attribute (variable with the viewport)
+#generate-attribute(@class, @property, @valuename, @value) {
+	@attribute: e(%('[data-%s*=".%s;"]', @class, @valuename));
+	@{attribute} {
+		@{property}: @value;
+	}
+}

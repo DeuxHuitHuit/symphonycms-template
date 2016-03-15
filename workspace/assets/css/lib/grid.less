@@ -1,119 +1,14 @@
 /**
  * Grid System
  */
-
-@nb-cols: 12;
 @gutter-width: 1.6rem;
 
-// general
-.ctn, [class^=ctn-] {
-	position: relative;
-	display: block;
+#generate-grid(@cols) {
+	#generate-grid(@cols, width);
 }
-
-.col, [class^=col-] {
-	#ib;
-	width: 100%;
+#generate-grid(@cols, @prop, @i: 1) when (@cols > 0) and (@i <= @cols) {
+	#generate-attribute(@prop, @prop, '@{i}/@{cols}', percentage(@i/@cols));
+	#generate-all-mq(@prop, @prop, '@{i}/@{cols}', percentage(@i/@cols));
+	#generate-grid(@cols, @prop, @i + 1);
 }
-
-// generator
-#generate-grid (@cols) when (@cols > 0) {
-
-	// recursive definitions
-	#generate-ctn (@n) {
-		.ctn-@{n} {
-			// cols
-			#generate-cols-in(@n);
-			#generate-cols-ex(@nb-cols, @n);
-		}
-		
-		#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n) {
-			// col definition
-			> .col-@{i} {
-				width: percentage(@i / @n);
-			}
-			> .col-offset-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			
-			// recursion
-			#generate-cols-in(@n, (@i + 1));
-		}
-		#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n) {
-			// col definition
-			> .col-@{i} {
-				width: 100%;
-			}
-			// recursion
-			#generate-cols-ex(@n, (@i + 1));
-		}
-	}
-
-
-	// recursive definitions
-	#generate-resp-ctn(@prefix, @n) {
-		.ctn-@{prefix}-@{n} {
-			// cols
-			#generate-cols-in(@n);
-			
-			// cols, resp
-			#generate-resp-cols-in(@prefix, @n);
-			#generate-resp-cols-ex(@prefix, @nb-cols, @n);
-		}
-		
-		// standard
-		#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n)  {
-			// col definition
-			> .col-@{i} {
-				width: percentage(@i / @n);
-			}
-			// recursion
-			#generate-cols-in(@n, (@i + 1));
-		}
-		#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
-			// col definition
-			> .col-@{i} {
-				width: 100%;
-			}
-			// recursion
-			#generate-cols-ex(@n, (@i + 1));
-		}
-		
-		// included col
-		#generate-resp-cols-in(@prefix, @n, @i: 0) when (@i >= 0) and (@i < @n) {
-			// col definition
-			> .col-@{prefix}-@{i} when (@i > 0) {
-				width: percentage(@i / @n);
-			}
-			> .col-offset-@{prefix}-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			
-			// recursion
-			#generate-resp-cols-in(@prefix, @n, (@i + 1));
-		}
-		// excluded cols
-		#generate-resp-cols-ex(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
-			// col definition
-			> .col-@{prefix}-@{i} {
-				width: 100%;
-			}
-			
-			// recursion
-			#generate-resp-cols-ex(@prefix, @n, (@i + 1));
-		}
-	}
-
-	// not responsive
-	#generate-ctn(@cols);
-	
-	// fully responsive
-	#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
-	#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols); });
-	#mq-min-width(@screen-sm, { #generate-resp-ctn(sm, @cols); });
-	#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols); });
-	#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols); });
-	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
-}
-
-
+#generate-grid(@cols, @i: 0) when(default()) {}
