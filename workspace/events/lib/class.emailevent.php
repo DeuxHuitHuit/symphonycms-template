@@ -77,7 +77,7 @@
 
 		private function __sendEmail() {
 			$email = Email::create();
-			$email->setSenderEmailAddress($this->getSenderEmail);
+			$email->setSenderEmailAddress($this->getSenderEmail());
 			$email->setFrom($this->getFromEmail(), $this->getFromName());
 			$email->setReplyToEmailAddress($this->getFromEmail());
 			$email->setRecipients($this->getReceipients());
