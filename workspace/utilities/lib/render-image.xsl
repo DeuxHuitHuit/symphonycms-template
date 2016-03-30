@@ -39,6 +39,13 @@
 						<xsl:text>/</xsl:text>
 						<xsl:value-of select="$image/filename" />
 					</xsl:attribute>
+					
+					<xsl:attribute name="data-original-src">
+						<xsl:call-template name="render-image-src">
+							<xsl:with-param name="image" select="$image" />
+							<xsl:with-param name="use-format" select="false()" />
+						</xsl:call-template>
+					</xsl:attribute>
 				</xsl:if>
 				
 				<xsl:if test="string-length($container) != 0">
@@ -56,13 +63,6 @@
 						<xsl:value-of select="$itemprop" />
 					</xsl:attribute>
 				</xsl:if>
-				
-				<xsl:attribute name="data-original-src">
-					<xsl:call-template name="render-image-src">
-						<xsl:with-param name="image" select="$image" />
-						<xsl:with-param name="use-format" select="false()" />
-					</xsl:call-template>
-				</xsl:attribute>
 			</img>
 		</xsl:when>
 		<xsl:otherwise>
