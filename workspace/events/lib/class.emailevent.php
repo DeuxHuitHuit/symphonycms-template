@@ -24,6 +24,10 @@
 		
 		protected abstract function getReceipients();
 		
+		protected function throw404WhenNotTriggered() {
+			return false;
+		}
+		
 		protected function getSenderEmail() {
 			return $this->getFromEmail();
 		}
@@ -39,6 +43,9 @@
 		public function load() {
 			if (isset($_POST['action'][$this->getActionKey()])) {
 				return $this->__trigger();
+			}
+			else if ($this->throw404WhenNotTriggered()) {
+				throw new FrontendPageNotFoundException();
 			}
 			return false;
 		}
