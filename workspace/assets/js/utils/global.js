@@ -12,6 +12,16 @@
 	$.jitImage.defaults.forceEvenSize = true;
 	$.jitImage.defaults.fetchSmallerImages = false;
 	
+	$.jitImage.defaults.format = function (urlFormat, o, size) {
+		var pattern = /\$([0-9])+\/([0-9]+)/;
+		if (pattern.test(urlFormat.url)) {
+			var captures = pattern.exec(urlFormat.url);
+			var ratio = captures[1] / captures[2] || 1;
+			urlFormat.url = urlFormat.url
+				.replace(pattern, ~~(size.width * ratio * o.devicePixelRatio));
+		}
+	};
+	
 	global.raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||  
 		window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
 		window.oRequestAnimationFrame || function (fx) { window.setTimeout(fx, 16); };
