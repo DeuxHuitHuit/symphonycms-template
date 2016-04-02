@@ -97,10 +97,7 @@
 	</xsl:variable>
 	
 	<xsl:choose>
-		<xsl:when test="exslt:object-type($image) = 'string'">
-			<xsl:value-of select="$image" />
-		</xsl:when>
-		<xsl:when test="$use-format = false()">
+		<xsl:when test="exslt:object-type($image) = 'node-set' and $use-format = false()">
 			<xsl:text>/workspace</xsl:text>
 			<xsl:value-of select="$image/@path" />
 			<xsl:text>/</xsl:text>
@@ -133,6 +130,9 @@
 			<xsl:text>/</xsl:text>
 			<xsl:value-of select="$image/filename" />
 		</xsl:when>
+		<xsl:otherwise>
+			<xsl:copy-of select="$image" />
+		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
 
