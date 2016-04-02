@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
- xmlns:exslt="http://exslt.org/common"
- exclude-result-prefixes="exslt"
->
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:exslt="http://exslt.org/common"
+	xmlns:str="http://exslt.org/strings"
+	exclude-result-prefixes="exslt str"
+	>
 
 <xsl:template name="render-image">
 	<xsl:param name="image" select="image" />
 	<xsl:param name="alt" select="titre" />
 	<xsl:param name="class" select="''" />
 	<xsl:param name="factor" select="'3'" />
+	<xsl:param name="ratio" select="''" />
 	<xsl:param name="format" select="''" />
 	<xsl:param name="container" select="''" />
 	<xsl:param name="use-format" select="true()" />
@@ -19,15 +22,16 @@
 		alt="{$alt}" -->
 	
 	<xsl:choose>
-		<xsl:when test="contains($image/@type, 'svg')">
+		<xsl:when test="exslt:object-type($image) = 'node-set' and contains($image/@type, 'svg')">
 			<img src="/workspace{$image/@path}/{$image/filename}" alt="{$alt}" class="{$class}" />
 		</xsl:when>
-		<xsl:when test="exslt:object-type($image) != 'string'">
+		<xsl:otherwise>
 			<img alt="{$alt}">
 				<xsl:attribute name="src">
 					<xsl:call-template name="render-image-src">
 						<xsl:with-param name="image" select="$image" />
 						<xsl:with-param name="factor" select="$factor" />
+						<xsl:with-param name="ratio" select="$ratio" />
 						<xsl:with-param name="use-format" select="$use-format" />
 					</xsl:call-template>
 				</xsl:attribute>
@@ -64,15 +68,6 @@
 					</xsl:attribute>
 				</xsl:if>
 			</img>
-		</xsl:when>
-		<xsl:otherwise>
-			<img src="{$image}" alt="{$alt}" class="{$class}">
-				<xsl:if test="string-length($itemprop) != 0">
-					<xsl:attribute name="itemprop">
-						<xsl:value-of select="$itemprop" />
-					</xsl:attribute>
-				</xsl:if>
-			</img>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -80,7 +75,26 @@
 <xsl:template name="render-image-src">
 	<xsl:param name="image" select="image" />
 	<xsl:param name="factor" select="'3'" />
+	<xsl:param name="ratio" select="''" />
 	<xsl:param name="use-format" select="true()" />
+	
+	<xsl:variable name="parsed-ratio">
+		<xsl:choose>
+			<xsl:when test="string-length($ratio) = 0"></xsl:when>
+			<xsl:when test="number($ratio) = $ratio">
+				<xsl:value-of select="$ratio" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="ratio-tokens" select="str:tokenize($ratio, '/')" />
+				<xsl:choose>
+					<xsl:when test="count($ratio-tokens) = 2">
+						<xsl:value-of select="number($ratio-tokens[1]) div number($ratio-tokens[2])" />
+					</xsl:when>
+					<xsl:otherwise>1</xsl:otherwise>
+				</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
 	
 	<xsl:choose>
 		<xsl:when test="exslt:object-type($image) = 'string'">
@@ -94,12 +108,27 @@
 		</xsl:when>
 		<xsl:when test="exslt:object-type($image) = 'node-set'">
 			<xsl:variable name="width" select="round($image/meta/@width div $factor)" />
-			<xsl:variable name="height" select="round($image/meta/@height div $factor)" />
+			<xsl:variable name="height">
+				<xsl:choose>
+					<xsl:when test="number($parsed-ratio) = $parsed-ratio">
+						<xsl:value-of select="round(($image/meta/@width * number($parsed-ratio)) div $factor)" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="round($image/meta/@height div $factor)" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
 			
-			<xsl:text>/image/1/</xsl:text>
+			<xsl:text>/image/</xsl:text>
+			<xsl:choose>
+				<xsl:when test="number($parsed-ratio) = $parsed-ratio">2</xsl:when>
+				<xsl:otherwise>1</xsl:otherwise>
+			</xsl:choose>
+			<xsl:text>/</xsl:text>
 			<xsl:value-of select="$width" />
 			<xsl:text>/</xsl:text>
 			<xsl:value-of select="$height" />
+			<xsl:if test="number($parsed-ratio) = $parsed-ratio">/5</xsl:if>
 			<xsl:value-of select="$image/@path" />
 			<xsl:text>/</xsl:text>
 			<xsl:value-of select="$image/filename" />
@@ -129,6 +158,50 @@
 			<xsl:value-of select="concat($height, '/')" />
 			<xsl:value-of select="$position" />
 		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="render-image-crop-ratio">
+	<xsl:param name="image" select="image" />
+	<xsl:param name="alt" select="titre" />
+	<xsl:param name="class" select="''" />
+	<xsl:param name="factor" select="'8'" />
+	<xsl:param name="ratio" select="''" />
+	<xsl:param name="container" select="''" />
+	<xsl:param name="position" select="'5'" />
+
+	<xsl:call-template name="render-image">
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="class" select="$class" />
+		<xsl:with-param name="factor" select="$factor" />
+		<xsl:with-param name="ratio" select="$ratio" />
+		<xsl:with-param name="container" select="$container" />
+		<xsl:with-param name="format">
+			<xsl:text>/image/2/$w/$</xsl:text>
+			<xsl:value-of select="$ratio" />
+			<xsl:text>/</xsl:text>
+			<xsl:value-of select="$position" />
+		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="render-image-crop-34">
+	<xsl:param name="image" select="image" />
+	<xsl:param name="alt" select="titre" />
+	<xsl:param name="class" select="''" />
+	<xsl:param name="factor" select="'8'" />
+	<xsl:param name="container" select="''" />
+	<xsl:param name="position" select="'5'" />
+
+	<xsl:call-template name="render-image-crop-ratio">
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="class" select="$class" />
+		<xsl:with-param name="factor" select="$factor" />
+		<xsl:with-param name="ratio" select="'3/4'" />
+		<xsl:with-param name="container" select="$container" />
+		<xsl:with-param name="position" select="$position" />
 	</xsl:call-template>
 </xsl:template>
 
