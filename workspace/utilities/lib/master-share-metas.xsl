@@ -187,7 +187,7 @@
 		<xsl:when test="string-length($image-path) != 0">
 			<xsl:value-of select="$image-path" />
 		</xsl:when>
-		<xsl:when test="string-length($image)">
+		<xsl:when test="string-length($image) != 0">
 			<xsl:value-of select="concat($root, '/workspace', $image/@path, '/', $image/filename)" />
 		</xsl:when>
 	</xsl:choose>
