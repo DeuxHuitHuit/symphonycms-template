@@ -13,7 +13,7 @@
 
 #generate(@class, @property, @valuename, @value) {
 	#generate-no-mq(@class, @property, @valuename, @value);
-	#generate-all-mq(@class, @property, @valuename, @value) 
+	#generate-all-mq(@class, @property, @valuename, @value);
 }
 #generate(@class, @value) {
 	#generate(@class, @class, @value, @value);
@@ -144,11 +144,19 @@
 		@{property}: @value;
 	}
 }
+#generate-class(@class, @property, @valuename, @value, @mode) when(@mode = important) {
+	@fixedvaluename: replace(@valuename, "/", "_");
+	@selector: e(".@{class}-@{fixedvaluename}");
+	@{selector} {
+		@{property}: @value !important;
+	}
+}
 
 // Data-attribute (variable with the viewport)
-#generate-attribute(@class, @property, @valuename, @value) {
+#generate-attribute(@class, @property, @valuename, @value) when(default()) {
 	@attribute: e(%('[data-%s*=".%s;"]', @class, @valuename));
 	@{attribute} {
 		@{property}: @value;
 	}
 }
+#generate-attribute(@class, @property, @valuename, @value) when(@valuename = ''), (@value = null) {}

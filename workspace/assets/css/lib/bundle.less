@@ -1,13 +1,3 @@
-/**
- * Anim classes
- */
- 
-.noanim {
-	&, & * {
-		#transition(none) !important;
-	}
-}
-
 //=========================
 // = MULTILE COLUMNS VENDOR PREFIXES MIXINS
 //=========================
@@ -395,47 +385,6 @@
  * @author DeuxHuitHuit
  *****************************/
 
-/* *************************** CURSOR FCT ****** */
-#cursor-normal () {
-	cursor: auto;
-}
-
-#cursor-drag () {
-	cursor: move;
-}
-
-#cursor-hand () {
-	cursor: pointer;
-	cursor: hand;
-}
-
-#cursor-loading () {
-	cursor: wait;
-}
-
-//=========================
-// = CURSOR CLASSES
-//=========================
-
-.cursor-hand {
-	#cursor-hand();
-}
-
-.cursor-drag {
-	#cursor-drag();
-}
-
-.cursor-normal {
-	cursor: auto;
-}
-
-.cursor-loading {
-	cursor: wait;
-}
-/*******************************
- * @author DeuxHuitHuit
- *****************************/
-
 //=========================
 // = MIXINS
 //=========================
@@ -460,48 +409,6 @@
 	left: @left;
 	right: @right;
 	bottom: @bottom;
-}
-
-/* *************************** DISPLAY FCT ****** */
-#block () {
-	display: block;
-}
-
-#ib (@valign: top) {
-	display: inline-block;
-	vertical-align: @valign;
-}
-
-/* *************************** POSITION FCT ****** */
-
-// ***** Absolute *****
-#absolute () {
-	position: absolute;
-}
-
-#absolute (@zindex) {
-	position: absolute;
-	z-index: @zindex;
-}
-
-// ***** Relative *****
-#relative () {
-	position: relative;
-}
-
-#relative (@zindex) {
-	#relative();
-	z-index: @zindex;
-}
-
-// ***** Fixed *****
-#fixed () {
-	position: fixed;
-}
-
-#fixed (@zindex: 10) {
-	.fixed;
-	z-index: @zindex;
 }
 
 
@@ -559,128 +466,6 @@
 	::-moz-selection {
 		@rules();
 	}
-}
-/* ### Flex class ### */
-
-.flexbox {
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-}
-
-.flexbox-inline {
-	display: -ms-inline-flexbox;
-	display: -webkit-inline-flex;
-	display: inline-flex;
-}
-
-.flex-center {
-	#flex-justify-content(center);
-	#flex-align-items(center);
-}
-
-.flex-stretch {
-	#flex-align-items(stretch);
-}
-
-.flex-align-items-start {
-	#flex-align-items(flex-start);
-}
-
-.flex-align-items-center {
-	#flex-align-items(center);
-}
-
-.flex-align-items-end {
-	#flex-align-items(flex-end);
-}
-
-.flex-align-items-baseline {
-	#flex-align-items(baseline);
-}
-
-.flex-justify-start {
-	#flex-justify-content(flex-start);
-}
-
-.flex-justify-center {
-	#flex-justify-content(center);
-}
-
-.flex-justify-end {
-	#flex-justify-content(flex-end);
-}
-
-.flex-justify-space-between {
-	#flex-justify-content(space-between);
-}
-
-.flex-justify-space-around {
-	#flex-justify-content(space-around);
-}
-
-.flex-grow-2 {
-	#flex-grow(2);
-}
-
-.flex-order-1 {
-	#flex-order(1);
-}
-
-.flex-order-2 {
-	#flex-order(2);
-}
-
-.flex-row {
-	#flex-direction(row);
-}
-
-.flex-column {
-	#flex-direction(column);
-}
-
-.flex-wrap {
-	#flex-wrap(wrap);
-}
-
-.flex-nowrap {
-	#flex-wrap(nowrap);
-}
-
-.flex-flow-row-wrap {
-	#flex-direction(row);
-	#flex-wrap(wrap);
-}
-
-.flex-flow-row-nowrap {
-	#flex-direction(row);
-	#flex-wrap(nowrap);
-}
-
-.flex-flow-column-wrap {
-	#flex-direction(column);
-	#flex-wrap(wrap);
-}
-
-.flex-flow-column-nowrap {
-	#flex-direction(column);
-	#flex-wrap(nowrap);
-}
-
-.flex-flow-column-to-desktop-row-wrap {
-	.flex-flow-column-wrap;
-	
-	#mq-min-width(@screen-xs, {
-		.flex-flow-row-wrap;
-	});
-}
-
-.flex-flow-column-to-desktop-row-nowrap {
-	.flex-flow-column-nowrap;
-	
-	#mq-min-width(@screen-xs, {
-		.flex-flow-row-nowrap;
-	});
 }
 //Source : https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
 //Source : http://css-tricks.com/snippets/css/a-guide-to-flexbox/
@@ -808,7 +593,7 @@
 }
 
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
-#font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
+#font-face (@font-family, @font-filename: @font-family, @font-weight: normal, @font-style: normal) {
 	font-family: @font-family;
 	src: url("@{font-path}@{font-filename}.eot");
 	src: local('?'),
@@ -834,7 +619,7 @@
 
 #generate(@class, @property, @valuename, @value) {
 	#generate-no-mq(@class, @property, @valuename, @value);
-	#generate-all-mq(@class, @property, @valuename, @value) 
+	#generate-all-mq(@class, @property, @valuename, @value);
 }
 #generate(@class, @value) {
 	#generate(@class, @class, @value, @value);
@@ -965,36 +750,22 @@
 		@{property}: @value;
 	}
 }
+#generate-class(@class, @property, @valuename, @value, @mode) when(@mode = important) {
+	@fixedvaluename: replace(@valuename, "/", "_");
+	@selector: e(".@{class}-@{fixedvaluename}");
+	@{selector} {
+		@{property}: @value !important;
+	}
+}
 
 // Data-attribute (variable with the viewport)
-#generate-attribute(@class, @property, @valuename, @value) {
+#generate-attribute(@class, @property, @valuename, @value) when(default()) {
 	@attribute: e(%('[data-%s*=".%s;"]', @class, @valuename));
 	@{attribute} {
 		@{property}: @value;
 	}
 }
-
-/**
- * Grid Base class
- */
-
-// spacing
-.gutter-left {
-	padding-left: @gutter-width;
-	#box-sizing();
-}
-.gutter-right {
-	padding-right: @gutter-width;
-	#box-sizing();
-}
-.margin-top {
-	margin-top: @gutter-width;
-	#box-sizing();
-}
-.margin-bottom {
-	margin-bottom: @gutter-width;
-	#box-sizing();
-}
+#generate-attribute(@class, @property, @valuename, @value) when(@valuename = ''), (@value = null) {}
 
 /**
  * Grid System
@@ -1010,142 +781,6 @@
 	#generate-grid(@cols, @prop, @i + 1);
 }
 #generate-grid(@cols, @i: 0) when(default()) {}
-
-//=========================
-// = LAYOUT CLASS
-//=========================
-
-
-
-/****************** POSITION *********/
-.absolute {
-	position: absolute;
-}
-
-.fixed {
-	position: fixed;
-}
-
-.relative {
-	position: relative;
-}
-
-
-/****************** DISPLAY *********/
-.block {
-	display: block;
-}
-
-.inline-block {
-	display: inline-block;
-}
-
-/****************** SIZE *********/
-.fill {
-	#fill();
-}
-
-.top {
-	top: 0;
-}
-
-.left {
-	left: 0;
-}
-
-.right {
-	right: 0;
-}
-
-.bottom {
-	bottom: 0;
-}
-
-.full-width {
-	width: 100%;
-}
-
-.half-width {
-	width: 100%;
-	
-	#mq-min-width(@screen-ph, {
-		width: 50%;
-	});
-}
-
-.half-min-width {
-	min-width: 50%;
-}
-
-.full-height {
-	height: 100%;
-}
-
-.half-height {
-	height: 50%;
-}
-
-.float-left {
-	float: left;
-}
-
-.float-right {
-	float: right;
-}
-
-.clear {
-	clear: both;
-}
-
-.clear-left {
-	clear: left;
-}
-
-.clear-right {
-	clear: right;
-}
-
-/* ********************* MARGIN *******/
-
-.margin-auto {
-	margin: auto;
-}
-
-.margin-auto-h {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-/* ********************* VERTICAL ALIGN *******/
-.valign-top {
-	vertical-align: top;
-}
-
-.valign-bottom {
-	vertical-align: bottom;
-}
-
-.valign-middle {
-	vertical-align: middle;
-}
-
-
-.border-box {
-	#box-sizing();
-}
-
-/* ********************* VERTICAL ALIGN *******/
-.overflow-hidden {
-	overflow: hidden;
-}
-
-.overflow-visible {
-	overflow: visible;
-}
-
-.overflow-y-scroll {
-	overflow-y: scroll;
-}
 
 //====== Medias Queries ============
 
@@ -1294,63 +929,41 @@
 // = REUSABLE TEXT CLASSES
 //=========================
 
-.text-bold, .bold {
-	font-weight: bold;
-}
+#generate-class(text, font-weight, bold, bold);
+#generate-class(text, font-weight, normal, normal);
 
-.text-capital {
-	text-transform: capitalize;
-}
+#generate-class(text, text-transform, capital, capitalize);
+#generate-class(text, text-transform, upper, uppercase);
+#generate-class(text, text-transform, lower, lowercase);
 
-.text-upper, .upper {
-	text-transform: uppercase;
-}
-
-.text-no-upper {
-	text-transform: none;
-}
-
-.text-lower {
-	text-transform: lower;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.text-left {
-	text-align: left;
-}
-
-.text-right {
-	text-align: right;
-}
+#generate-class(text, text-align, center, center);
+#generate-class(text, text-align, left, left);
+#generate-class(text, text-align, right, right);
 
 //::first-letter needs to be put on a block-like element
 .first-letter-upper {
 	&::first-letter {
-		.upper;
+		text-transform: uppercase;
 	}
 }
 /**
  * Visibility classes
  */
- 
-.not-visible {
-	visibility: hidden !important;
-}
 
-.collapse {
-	visibility: collapse;
-}
+#generate-class(is, visibility, hidden, hidden);
+#generate-class(is, visibility, collapse, collapse);
+#generate-class(is, visibility, visible, visible);
+#generate-class(is-important, visibility, hidden, hidden, important);
+#generate-class(is-important, visibility, collapse, collapse, important);
+#generate-class(is-important, visibility, visible, visible, important);
 
-.visible {
-	visibility: visible !important;
-}
+#generate-attribute(is, visibility, hidden, hidden);
+#generate-attribute(is, visibility, collapse, collapse);
+#generate-attribute(is, visibility, visible, visible);
 
-.hidden {
-	display: none;
-}
+#generate-all-mq(is, visibility, hidden, hidden);
+#generate-all-mq(is, visibility, collapse, collapse);
+#generate-all-mq(is, visibility, visible, visible);
 
 .off-screen {
 	position: fixed;
@@ -1360,111 +973,8 @@
 	height: 0;
 }
 
-#generate-visibility-classes (@suffix) {
-
-	.not-visible-@{suffix} {
-		visibility: hidden !important;
-	}
-	
-	.collapse-@{suffix} {
-		visibility: collapse;
-	}
-	
-	.visible-@{suffix} {
-		visibility: visible !important;
-	}
-	
-	.hidden-@{suffix} {
-		display: none;
-	}
-	
-	.block-@{suffix} {
-		display: block;
-	}
-	
-	.inline-block-@{suffix} {
-		display: inline-block;
-	}
-}
-
-#mq-min-width(@screen-ip, {
-	#generate-visibility-classes(ip);
-});
-#mq-min-width(@screen-ph, {
-	#generate-visibility-classes(ph);
-});
-#mq-min-width(@screen-xs, {
-	#generate-visibility-classes(xs);
-});
-#mq-min-width(@screen-sm, {
-	#generate-visibility-classes(sm);
-});
-#mq-min-width(@screen-md, {
-	#generate-visibility-classes(md);
-});
-#mq-min-width(@screen-lg, {
-	#generate-visibility-classes(lg);
-});
-#mq-min-width(@screen-xl, {
-	#generate-visibility-classes(xl);
-});
-
-//=========================
-// = ZINDEX CLASS
-//=========================
-
-.z-index-1 {
-	z-index: 1;
-}
-
-.z-index-5 {
-	z-index: 5;
-}
-
-.z-index-10 {
-	z-index: 10;
-}
-
-.z-index-15 {
-	z-index: 15;
-}
-
-.z-index-20 {
-	z-index: 20;
-}
-
-.z-index-25 {
-	z-index: 25;
-}
-
-.z-index-50 {
-	z-index: 50;
-}
-
-.z-index-100 {
-	z-index: 100;
-}
-
-.z-index-200 {
-	z-index: 200;
-}
-
-.z-index-300 {
-	z-index: 300;
-}
-
-.z-index-400 {
-	z-index: 400;
-}
-
-.z-index-500 {
-	z-index: 500;
-}
-
-.z-index-1000 {
-	z-index: 1000;
-}
-
-.z-index-10000 {
-	z-index: 10000;
-}
+#generate(off-screen, position, '', fixed);
+#generate(off-screen, left, '', -100000px);
+#generate(off-screen, right, '', -100000px);
+#generate(off-screen, width, '', 0);
+#generate(off-screen, height, '', 0);

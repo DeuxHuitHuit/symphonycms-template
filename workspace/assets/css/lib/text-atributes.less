@@ -1,0 +1,25 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+//=========================
+// = REUSABLE TEXT CLASSES
+//=========================
+
+#generate-class(text, font-weight, bold, bold);
+#generate-class(text, font-weight, normal, normal);
+
+#generate-class(text, text-transform, capital, capitalize);
+#generate-class(text, text-transform, upper, uppercase);
+#generate-class(text, text-transform, lower, lowercase);
+
+#generate-class(text, text-align, center, center);
+#generate-class(text, text-align, left, left);
+#generate-class(text, text-align, right, right);
+
+//::first-letter needs to be put on a block-like element
+.first-letter-upper {
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
