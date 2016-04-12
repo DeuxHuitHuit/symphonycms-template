@@ -1,22 +1,21 @@
 /**
  * Visibility classes
  */
- 
-.not-visible {
-	visibility: hidden !important;
-}
 
-.collapse {
-	visibility: collapse;
-}
+#generate-class(is, visibility, hidden, hidden);
+#generate-class(is, visibility, collapse, collapse);
+#generate-class(is, visibility, visible, visible);
+#generate-class(is-important, visibility, hidden, hidden, important);
+#generate-class(is-important, visibility, collapse, collapse, important);
+#generate-class(is-important, visibility, visible, visible, important);
 
-.visible {
-	visibility: visible !important;
-}
+#generate-attribute(is, visibility, hidden, hidden);
+#generate-attribute(is, visibility, collapse, collapse);
+#generate-attribute(is, visibility, visible, visible);
 
-.hidden {
-	display: none;
-}
+#generate-all-mq(is, visibility, hidden, hidden);
+#generate-all-mq(is, visibility, collapse, collapse);
+#generate-all-mq(is, visibility, visible, visible);
 
 .off-screen {
 	position: fixed;
@@ -25,52 +24,3 @@
 	width: 0;
 	height: 0;
 }
-
-#generate-visibility-classes (@suffix) {
-
-	.not-visible-@{suffix} {
-		visibility: hidden !important;
-	}
-	
-	.collapse-@{suffix} {
-		visibility: collapse;
-	}
-	
-	.visible-@{suffix} {
-		visibility: visible !important;
-	}
-	
-	.hidden-@{suffix} {
-		display: none;
-	}
-	
-	.block-@{suffix} {
-		display: block;
-	}
-	
-	.inline-block-@{suffix} {
-		display: inline-block;
-	}
-}
-
-#mq-min-width(@screen-ip, {
-	#generate-visibility-classes(ip);
-});
-#mq-min-width(@screen-ph, {
-	#generate-visibility-classes(ph);
-});
-#mq-min-width(@screen-xs, {
-	#generate-visibility-classes(xs);
-});
-#mq-min-width(@screen-sm, {
-	#generate-visibility-classes(sm);
-});
-#mq-min-width(@screen-md, {
-	#generate-visibility-classes(md);
-});
-#mq-min-width(@screen-lg, {
-	#generate-visibility-classes(lg);
-});
-#mq-min-width(@screen-xl, {
-	#generate-visibility-classes(xl);
-});

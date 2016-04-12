@@ -28,48 +28,6 @@
 	bottom: @bottom;
 }
 
-/* *************************** DISPLAY FCT ****** */
-#block () {
-	display: block;
-}
-
-#ib (@valign: top) {
-	display: inline-block;
-	vertical-align: @valign;
-}
-
-/* *************************** POSITION FCT ****** */
-
-// ***** Absolute *****
-#absolute () {
-	position: absolute;
-}
-
-#absolute (@zindex) {
-	position: absolute;
-	z-index: @zindex;
-}
-
-// ***** Relative *****
-#relative () {
-	position: relative;
-}
-
-#relative (@zindex) {
-	#relative();
-	z-index: @zindex;
-}
-
-// ***** Fixed *****
-#fixed () {
-	position: fixed;
-}
-
-#fixed (@zindex: 10) {
-	.fixed;
-	z-index: @zindex;
-}
-
 
 /* *************************** CENTER FCT ****** */
 #vh-center (@top-offset: 0px, @left-offset: @top-offset) {
