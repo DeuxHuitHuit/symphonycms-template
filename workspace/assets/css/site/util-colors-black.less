@@ -1,0 +1,39 @@
+//=========================
+// = UTILITIES FOR COLORS
+//=========================
+
+// Black
+.color-black {
+	color: @black;
+}
+
+.hover-and-selected-color-black {
+	#transition(~'color @{duration-short} @{ease}');
+	#hover-only({
+		color: @black;
+	});
+	&.selected {
+		color: @black;
+	}
+}
+
+.border-color-black {
+	border-color: @black;
+}
+
+.bg-color-black {
+	background-color: @black;
+}
+
+.fill-black {
+	&, path, polygon, rect {
+		fill: @black;
+	}
+}
+
+.stroke-black {
+	&, path, polygon, rect, line, polyline {
+		stroke: @black;
+		stroke-width: @border-large;
+	}
+}

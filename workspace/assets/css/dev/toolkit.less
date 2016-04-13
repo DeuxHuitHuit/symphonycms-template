@@ -119,3 +119,105 @@
 		background-color: darken(@color, 10%);
 	}
 }
+
+.color-element {
+	position: relative;
+	&:after {
+		display: block;
+		position: absolute;
+		top: 100%;
+		margin-top: @spacing-smallest;
+	}
+	&.bg-color-black:after {
+		content: '@black : @{black}';	
+	}
+	&.bg-color-grey:after {
+		content: '@grey : @{grey}';	
+	}
+	&.bg-color-lightest-grey:after {
+		content: '@lightest-grey : @{lightest-grey}';	
+	}
+	&.bg-color-red:after {
+		content: '@red : @{red}';	
+	}
+	&.bg-color-white:after {
+		content: '@white : @{white}';	
+	}
+}
+
+.spacing-element {
+	position: relative;
+	&:after {
+		display: block;
+		position: absolute;
+		top: 100%;
+		margin-top: @spacing-smallest;
+		.span-11;
+	}
+	&.square-micro:after {
+		content: '@spacing-micro : @{spacing-micro}';	
+	}
+	&.square-smallest:after {
+		content: '@spacing-smallest : @{spacing-smallest}';	
+	}
+	&.square-smaller:after {
+		content: '@spacing-smaller : @{spacing-smaller}';	
+	}
+	&.square-small:after {
+		content: '@spacing-small : @{spacing-small}';	
+	}
+	&.square-mid:after {
+		content: '@spacing-mid : @{spacing-mid}';	
+	}
+	&.square-large:after {
+		content: '@spacing-large : @{spacing-large}';	
+	}
+	&.square-larger:after {
+		content: '@spacing-larger : @{spacing-larger}';	
+	}
+	&.square-largest:after {
+		content: '@spacing-largest : @{spacing-largest}';	
+	}
+	&.square-huge:after {
+		content: '@spacing-huge : @{spacing-huge}';	
+	}
+}
+
+
+.radius-element {
+	position: relative;
+	&:after {
+		display: block;
+		position: absolute;
+		top: 100%;
+		margin-top: @spacing-smallest;
+		.span-11;
+	}
+	&.square-micro:after {
+		content: '@spacing-micro : @{spacing-micro}';	
+	}
+	&.square-smallest:after {
+		content: '@spacing-smallest : @{spacing-smallest}';	
+	}
+	&.square-smaller:after {
+		content: '@spacing-smaller : @{spacing-smaller}';	
+	}
+	&.square-small:after {
+		content: '@spacing-small : @{spacing-small}';	
+	}
+	&.square-mid:after {
+		content: '@spacing-mid : @{spacing-mid}';	
+	}
+	&.square-large:after {
+		content: '@spacing-large : @{spacing-large}';	
+	}
+	&.square-larger:after {
+		content: '@spacing-larger : @{spacing-larger}';	
+	}
+	&.square-largest:after {
+		content: '@spacing-largest : @{spacing-largest}';	
+	}
+	&.square-huge:after {
+		content: '@spacing-huge : @{spacing-huge}';	
+	}
+}

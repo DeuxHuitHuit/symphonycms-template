@@ -1,0 +1,164 @@
+//=========================
+// = LAYOUT CLASS
+//=========================
+
+
+
+/****************** POSITION *********/
+.absolute {
+	position: absolute;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.relative {
+	position: relative;
+}
+
+
+/****************** DISPLAY *********/
+.block {
+	display: block;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+/****************** SIZE *********/
+.fill {
+	#fill();
+}
+
+.top {
+	top: 0;
+}
+
+.left {
+	left: 0;
+}
+
+.right {
+	right: 0;
+}
+
+.bottom {
+	bottom: 0;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.half-width {
+	width: 100%;
+	
+	#mq-min-width(@screen-ph, {
+		width: 50%;
+	});
+}
+
+.half-min-width {
+	min-width: 50%;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.half-height {
+	height: 50%;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.clear-left {
+	clear: left;
+}
+
+.clear-right {
+	clear: right;
+}
+
+/* ********************* MARGIN *******/
+
+.margin-auto {
+	margin: auto;
+}
+
+.margin-auto-h {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ********************* VERTICAL ALIGN *******/
+.valign-top {
+	vertical-align: top;
+}
+
+.valign-bottom {
+	vertical-align: bottom;
+}
+
+.valign-middle {
+	vertical-align: middle;
+}
+
+
+.border-box {
+	#box-sizing();
+}
+
+/* ********************* VERTICAL ALIGN *******/
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.overflow-visible {
+	overflow: visible;
+}
+
+overflow-y-visible {
+	overflow-y: visible;
+}
+
+.overflow-y-scroll {
+	overflow-y: scroll;
+}
+
+.overflow-y-auto {
+	overflow-y: auto;
+}
+
+.overflow-y-hidden {
+	overflow-y: hidden;
+}
+
+
+.overflow-x-visible {
+	overflow-x: visible;
+}
+
+.overflow-x-scroll {
+	overflow-x: scroll;
+}
+
+.overflow-x-auto {
+	overflow-x: auto;
+}
+
+.overflow-x-hidden {
+	overflow-x: hidden;
+}
