@@ -19,6 +19,9 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:attribute>
+		<xsl:attribute name="data-video-title">
+			<xsl:value-of select="$video-complet/title" />
+		</xsl:attribute>
 	</xsl:if>
 </xsl:template>
 
