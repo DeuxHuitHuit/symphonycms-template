@@ -31,7 +31,7 @@
 			<xsl:apply-templates select="/data/javascript/dev/file" mode="local" />
 		</xsl:when>
 		<xsl:otherwise>
-			<script src="{$js-path}{$site-ref}.min.{$version}.js"></script>
+			<script src="{$js-path}{$site-ref}.min.{$version}.js" integrity="{/data/sri/file[@filename=concat($site-ref, '.min.js')]/@integrity}"></script>
 		</xsl:otherwise>
 	</xsl:choose>
 	

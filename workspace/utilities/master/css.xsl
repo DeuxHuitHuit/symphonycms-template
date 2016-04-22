@@ -14,7 +14,7 @@
 			</xsl:if>
 		</xsl:when>
 		<xsl:otherwise>
-			<link rel="stylesheet" type="text/css" href="{$css-path}main.min.{$version}.css" />
+			<link rel="stylesheet" type="text/css" href="{$css-path}main.min.{$version}.css" integrity="{/data/sri/file[@filename='main.min.css']/@integrity}" />
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
