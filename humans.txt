@@ -1,11 +1,11 @@
-﻿ ######                          #     #                   #     #                
- #     # ###### #    # #    #    #     # #    # # #####    #     # #    # # ##### 
- #     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
- #     # #####  #    #   ##      ####### #    # #   #      ####### #    # #   #   
- #     # #      #    #   ##      #     # #    # #   #      #     # #    # #   #   
- #     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
- ######  ######  ####  #    #    #     #  ####  #   #      #     #  ####  #   #   
-                                                                                  
+﻿######                          #     #                   #     #                
+#     # ###### #    # #    #    #     # #    # # #####    #     # #    # # ##### 
+#     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
+#     # #####  #    #   ##      ####### #    # #   #      ####### #    # #   #   
+#     # #      #    #   ##      #     # #    # #   #      #     # #    # #   #   
+#     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
+######  ######  ####  #    #    #     #  ####  #   #      #     #  ####  #   #   
+                                                                               
 
 # The humans behind this site
 # Les humains derrière ce site
@@ -35,16 +35,19 @@ Frédéric Lord
 Interface designer / Designer d'interface
 
 Nicolas Brassard-Ferron
-Web Software Lead / Directeur du développement web 
+Web Software Lead / Directeur du développement web
 
 Pascal Piché
-Full Stack Developer / Intégrateur
+Full Stack Developer / Programmeur
 
 Patrick Martel
-Full Stack Developer / Intégrateur
+Full Stack Developer / Programmeur
 
 Marc-André Charpentier
-Frontend Developer / Intégrateur
+Frontend Designer / Intégrateur
+
+Dominic Blain
+Frontend Designer / Intégrateur
 
 Caroline L.Couture
 Project manager / Chargée de compte
@@ -52,15 +55,21 @@ Project manager / Chargée de compte
 David Mercier
 Project manager / Chargé de compte
 
+Marie-France Latour
+Project manager / Chargé de compte
+
+Jésabel St-Jean
+Coordinator / Coordonatrice
+
 Alice Dufour Thériault
-Copywriter / Conception-rédaction
+Copywriter-Strategist / Conception-rédaction-stratégie
 
 Twitter: https://twitter.com/DeuxHuitHuit
 Facebook: https://www.facebook.com/DeuxHuitHuit
 Google+: https://google.com/+Deuxhuithuit
 Github: https://github.com/DeuxHuitHuit
 Instagram: http://instagram.com/deuxhuithuit
-
+Medium: https://medium.com/@DeuxHuitHuit
 
 Montréal, Québec, Canada.
 
