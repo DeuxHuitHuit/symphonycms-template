@@ -154,7 +154,7 @@
 
 // Data-attribute (variable with the viewport)
 #generate-attribute(@class, @property, @valuename, @value) when(default()) {
-	@attribute: e(%('[data-%s*=".%s;"]', @class, @valuename));
+	@attribute: e(%('[data-%s~="%s"]', @class, @valuename));
 	@{attribute} {
 		@{property}: @value;
 	}
