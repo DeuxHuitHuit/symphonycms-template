@@ -57,6 +57,10 @@
 		
 		<xsl:apply-templates match="data" />
 	</channel>
+	<!-- Comment for debug -->
+	<xsl:comment>
+		<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
+	</xsl:comment>
 </rss>
 </xsl:template>
 
