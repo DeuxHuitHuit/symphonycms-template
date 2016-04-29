@@ -16,8 +16,10 @@
 	<xsl:param name="ga-value" select="''" />
 	<xsl:param name="type" select="''" />
 	<xsl:param name="target" select="''" />
+	<xsl:param name="rel" select="''" />
 	<xsl:param name="failover-element" select="'button'" />
 	<xsl:param name="extra-key" select="''" />
+	<xsl:param name="name" select="''" />
 	
 	<xsl:variable name="node-type">
 		<xsl:choose>
@@ -86,6 +88,18 @@
 			</xsl:attribute>
 		</xsl:if>
 		
+		<xsl:if test="string-length($rel) != 0">
+			<xsl:attribute name="rel">
+				<xsl:value-of select="$rel" />
+			</xsl:attribute>
+		</xsl:if>
+		
+		<xsl:if test="string-length($name) != 0">
+			<xsl:attribute name="name">
+				<xsl:value-of select="$name" />
+			</xsl:attribute>
+		</xsl:if>
+		
 		<xsl:if test="string-length($extra-key) != 0">
 			<xsl:call-template name="btn-attributes" mode="{$extra-key}">
 				<xsl:with-param name="extra-key" select="$extra-key" />
@@ -112,7 +126,7 @@
 	<xsl:param name="extra-key" select="''" />
 	
 	<xsl:call-template name="button">
-		<xsl:with-param name="text" select="$tel" />
+		<xsl:with-param name="content" select="$tel" />
 		<xsl:with-param name="url" select="concat('tel:+1-', translate($tel, ' ()', '-'))" />
 		<xsl:with-param name="class" select="$class" />
 		<xsl:with-param name="action" select="$action" />
