@@ -25,8 +25,6 @@
 				'vimeo-url: formatted',
 				'instagram-url: formatted',
 				'navigateurs-non-supportes-titre: formatted',
-				'navigateurs-non-supportes-texte: formatted',
-				'navigateurs-non-supportes-poursuivre: formatted'
 		);
 		
 
