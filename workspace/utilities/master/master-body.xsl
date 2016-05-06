@@ -12,7 +12,7 @@
 
 <!-- Extensions -->
 <xsl:import href="../../../extensions/block_user_agent/utilities/block_user_agent.xsl" />
-
+<xsl:import href="../../../extensions/datetime/utilities/datetime.xsl" />
 
 <xsl:template name="master-body">
 
