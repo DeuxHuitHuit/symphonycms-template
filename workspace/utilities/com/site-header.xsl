@@ -21,6 +21,11 @@
 		
 		<!-- Nav -->
 		<xsl:call-template name="site-nav" />
+		
+		<!-- Alt langs -->
+		<xsl:apply-templates select="/data/fl-languages/supported-languages/item[@handle != $url-language]" mode="revert-language">
+			<xsl:with-param name="class" select="'js-nav-link-button'" />
+		</xsl:apply-templates>
 	</header>
 </xsl:template>
 
