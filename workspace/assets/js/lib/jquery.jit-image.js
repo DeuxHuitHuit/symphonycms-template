@@ -1,4 +1,4 @@
-/*! jQuery JIT image - v1.4.0 - build 23 - 2016-03-04
+/*! jQuery JIT image - v1.4.1 - build 25 - 2016-03-30
 * https://github.com/DeuxHuitHuit/jQuery-jit-image
 * Copyright (c) 2016 Deux Huit Huit (https://deuxhuithuit.com/);
 * Licensed  */
@@ -141,7 +141,10 @@
 		if (!!data && !!data.prev) {
 			return data.prev;
 		}
-		return _getSize(o);
+		return {
+			width: 0,
+			height: 0
+		};
 	};
 	
 	var _isSizeSmallerThen = function (size, compareTo) {
@@ -242,8 +245,8 @@
 						abort = true;
 					}
 					else {
-						// save new bigger size
-						t.data(DATA_KEY).prev = size;
+						// copy new bigger size
+						t.data(DATA_KEY).prev = $.extend({}, size);
 					}
 				}
 				
