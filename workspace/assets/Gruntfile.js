@@ -1,4 +1,4 @@
-/*global module:false, require:false*/
+/*global global:false, module:false, require:false*/
 var md = require('matchdep');
 
 global.svn_info = {};
