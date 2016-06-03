@@ -11,6 +11,8 @@
 	<xsl:param name="extra-param-key" select="''" />
 	<xsl:param name="selected-on-sub-page" select="'yes'" />
 	<xsl:param name="url" select="url" />
+	<xsl:param name="ga-cat" select="'menu'" />
+	<xsl:param name="ga-label" select="concat($url-language, '/', $title)" />
 	
 	<xsl:variable name="has-page" select="string-length($page) != 0" />
 	
@@ -57,7 +59,7 @@
 	
 	
 	<xsl:if test="$has-url = true() or $has-page = true()">
-		<a target="_self" role="menuitem" data-ga-cat="menu" data-ga-label="{$url-language}/{$title}">
+		<a target="_self" role="menuitem" data-ga-cat="{$ga-cat}" data-ga-label="{$ga-label}">
 			<xsl:if test="string-length($target) != 0">
 				<xsl:attribute name="target">
 					<xsl:value-of select="$target" />
