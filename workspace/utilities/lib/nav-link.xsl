@@ -57,7 +57,7 @@
 	
 	
 	<xsl:if test="$has-url = true() or $has-page = true()">
-		<a target="_self" role="menuitem" data-ga-cat="menu" data-ga-value="{$url-language}/{$title}">
+		<a target="_self" role="menuitem" data-ga-cat="menu" data-ga-label="{$url-language}/{$title}">
 			<xsl:if test="string-length($target) != 0">
 				<xsl:attribute name="target">
 					<xsl:value-of select="$target" />
