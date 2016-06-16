@@ -1,0 +1,422 @@
+//=====================================
+//= MARGIN CLASS
+//=====================================
+
+
+#generate-margin-classes (@direction: ~'', @suffix: ~'') {
+	
+	.margin@{direction}-0@{suffix}, .margin@{direction}-none@{suffix} {
+		margin@{direction}: 0;
+	}
+	
+	.margin@{direction}-auto@{suffix} {
+		margin@{direction}: auto;
+	}
+	
+	.margin@{direction}-atto@{suffix} {
+		margin@{direction}: @spacing-atto;
+	}
+
+	.margin@{direction}-femto@{suffix} {
+		margin@{direction}: @spacing-femto;
+	}
+
+	.margin@{direction}-pico@{suffix} {
+		margin@{direction}: @spacing-pico;
+	}
+	
+	.margin@{direction}-half-nano@{suffix} {
+		margin@{direction}: @spacing-nano * 0.5;
+	}
+
+	.margin@{direction}-nano@{suffix} {
+		margin@{direction}: @spacing-nano;
+	}
+
+	.margin@{direction}-micro@{suffix} {
+		margin@{direction}: @spacing-micro;
+	}
+
+	.margin@{direction}-xsmall@{suffix} {
+		margin@{direction}: @spacing-xsmall;
+	}
+
+	.margin@{direction}-smallest@{suffix} {
+		margin@{direction}: @spacing-smallest;
+	}
+	
+	.margin@{direction}-half-smaller@{suffix} {
+		margin@{direction}: @spacing-smaller * 0.5;
+	}
+
+	.margin@{direction}-smaller@{suffix} {
+		margin@{direction}: @spacing-smaller;
+	}
+
+	.margin@{direction}-small@{suffix} {
+		margin@{direction}: @spacing-small;
+	}
+	
+	.margin@{direction}-mid@{suffix} {
+		margin@{direction}: @spacing-mid;
+	}
+	
+	.margin@{direction}-half-large@{suffix} {
+		margin@{direction}: @spacing-large * 0.5;
+	}
+	
+	.margin@{direction}-large@{suffix} {
+		margin@{direction}: @spacing-large;
+	}
+
+	.margin@{direction}-larger@{suffix} {
+		margin@{direction}: @spacing-larger;
+	}
+
+	.margin@{direction}-largest@{suffix} {
+		margin@{direction}: @spacing-largest;
+	}
+
+	.margin@{direction}-xlarge@{suffix} {
+		margin@{direction}: @spacing-xlarge;
+	}
+
+	.margin@{direction}-huge@{suffix} {
+		margin@{direction}: @spacing-huge;
+	}
+
+	.margin@{direction}-mega@{suffix} {
+		margin@{direction}: @spacing-mega;
+	}
+
+	.margin@{direction}-giga@{suffix} {
+		margin@{direction}: @spacing-giga;
+	}
+
+	.margin@{direction}-tera@{suffix} {
+		margin@{direction}: @spacing-tera;
+	}
+
+	.margin@{direction}-peta@{suffix} {
+		margin@{direction}: @spacing-peta;
+	}
+
+	.margin@{direction}-zetta@{suffix} {
+		margin@{direction}: @spacing-zetta;
+	}
+
+	.margin@{direction}-yotta@{suffix} {
+		margin@{direction}: @spacing-yotta;
+	}
+	
+	//MINUS
+	.margin@{direction}-minus-atto@{suffix} {
+		margin@{direction}: -@spacing-atto;
+	}
+	
+	.margin@{direction}-minus-femto@{suffix} {
+		margin@{direction}: -@spacing-femto;
+	}
+	
+	.margin@{direction}-minus-pico@{suffix} {
+		margin@{direction}: -@spacing-pico;
+	}
+	
+	.margin@{direction}-minus-nano@{suffix} {
+		margin@{direction}: -@spacing-nano;
+	}
+	
+	.margin@{direction}-minus-micro@{suffix} {
+		margin@{direction}: -@spacing-micro;
+	}
+	
+	.margin@{direction}-minus-xsmall@{suffix} {
+		margin@{direction}: -@spacing-xsmall;
+	}
+	
+	.margin@{direction}-minus-smallest@{suffix} {
+		margin@{direction}: -@spacing-smallest;
+	}
+	
+	.margin@{direction}-minus-smaller@{suffix} {
+		margin@{direction}: -@spacing-smaller;
+	}
+	
+	.margin@{direction}-minus-small@{suffix} {
+		margin@{direction}: -@spacing-small;
+	}
+	
+	.margin@{direction}-minus-mid@{suffix} {
+		margin@{direction}: -@spacing-mid;
+	}
+	
+	.margin@{direction}-minus-half-large@{suffix} {
+		margin@{direction}: -@spacing-large * 0.5;
+	}
+	
+	.margin@{direction}-minus-large@{suffix} {
+		margin@{direction}: -@spacing-large;
+	}
+	
+	.margin@{direction}-minus-larger@{suffix} {
+		margin@{direction}: -@spacing-larger;
+	}
+	
+	.margin@{direction}-minus-largest@{suffix} {
+		margin@{direction}: -@spacing-largest;
+	}
+	
+	.margin@{direction}-minus-xlarge@{suffix} {
+		margin@{direction}: -@spacing-xlarge;
+	}
+	
+	.margin@{direction}-minus-huge@{suffix} {
+		margin@{direction}: -@spacing-huge;
+	}
+	
+	.margin@{direction}-minus-mega@{suffix} {
+		margin@{direction}: -@spacing-mega;
+	}
+	
+	.margin@{direction}-minus-giga@{suffix} {
+		margin@{direction}: -@spacing-giga;
+	}
+	
+	.margin@{direction}-minus-tera@{suffix} {
+		margin@{direction}: -@spacing-tera;
+	}
+	
+	.margin@{direction}-minus-peta@{suffix} {
+		margin@{direction}: -@spacing-peta;
+	}
+	
+	.margin@{direction}-minus-zetta@{suffix} {
+		margin@{direction}: -@spacing-zetta;
+	}
+	
+	.margin@{direction}-minus-yotta@{suffix} {
+		margin@{direction}: -@spacing-yotta;
+	}
+}
+
+#generate-margin-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
+	
+	.margin-@{direction}-0@{suffix}, .margin-@{direction}-none@{suffix} {
+		margin-@{axe1}: 0;
+		margin-@{axe2}: 0;
+	}
+	
+	.margin-@{direction}-auto@{suffix} {
+		margin-@{axe1}: auto;
+		margin-@{axe2}: auto;
+	}
+	
+	.margin-@{direction}-atto@{suffix} {
+		margin-@{axe1}: @spacing-atto;
+		margin-@{axe2}: @spacing-atto;
+	}
+	
+	.margin-@{direction}-femto@{suffix} {
+		margin-@{axe1}: @spacing-femto;
+		margin-@{axe2}: @spacing-femto;
+	}
+	
+	.margin-@{direction}-pico@{suffix} {
+		margin-@{axe1}: @spacing-pico;
+		margin-@{axe2}: @spacing-pico;
+	}
+	
+	.margin-@{direction}-nano@{suffix} {
+		margin-@{axe1}: @spacing-nano;
+		margin-@{axe2}: @spacing-nano;
+	}
+	
+	.margin-@{direction}-micro@{suffix} {
+		margin-@{axe1}: @spacing-micro;
+		margin-@{axe2}: @spacing-micro;
+	}
+	
+	.margin-@{direction}-xsmall@{suffix} {
+		margin-@{axe1}: @spacing-xsmall;
+		margin-@{axe2}: @spacing-xsmall;
+	}
+
+	.margin-@{direction}-smallest@{suffix} {
+		margin-@{axe1}: @spacing-smallest;
+		margin-@{axe2}: @spacing-smallest;
+	}
+	
+	.margin-@{direction}-smaller@{suffix} {
+		margin-@{axe1}: @spacing-smaller;
+		margin-@{axe2}: @spacing-smaller;
+	}
+
+	.margin-@{direction}-small@{suffix} {
+		margin-@{axe1}: @spacing-small;
+		margin-@{axe2}: @spacing-small;
+	}
+
+	.margin-@{direction}-mid@{suffix} {
+		margin-@{axe1}: @spacing-mid;
+		margin-@{axe2}: @spacing-mid;
+	}
+
+	.margin-@{direction}-large@{suffix} {
+		margin-@{axe1}: @spacing-large;
+		margin-@{axe2}: @spacing-large;
+	}
+
+	.margin-@{direction}-larger@{suffix} {
+		margin-@{axe1}: @spacing-larger;
+		margin-@{axe2}: @spacing-larger;
+	}
+
+	.margin-@{direction}-largest@{suffix} {
+		margin-@{axe1}: @spacing-largest;
+		margin-@{axe2}: @spacing-largest;
+	}
+
+	.margin-@{direction}-xlarge@{suffix} {
+		margin-@{axe1}: @spacing-xlarge;
+		margin-@{axe2}: @spacing-xlarge;
+	}
+
+	.margin-@{direction}-huge@{suffix} {
+		margin-@{axe1}: @spacing-huge;
+		margin-@{axe2}: @spacing-huge;
+	}
+	
+	.margin-@{direction}-mega@{suffix} {
+		margin-@{axe1}: @spacing-mega;
+		margin-@{axe2}: @spacing-mega;
+	}
+	
+	.margin-@{direction}-giga@{suffix} {
+		margin-@{axe1}: @spacing-giga;
+		margin-@{axe2}: @spacing-giga;
+	}
+	
+	.margin-@{direction}-tera@{suffix} {
+		margin-@{axe1}: @spacing-tera;
+		margin-@{axe2}: @spacing-tera;
+	}
+	
+	.margin-@{direction}-peta@{suffix} {
+		margin-@{axe1}: @spacing-peta;
+		margin-@{axe2}: @spacing-peta;
+	}
+	
+	.margin-@{direction}-zetta@{suffix} {
+		margin-@{axe1}: @spacing-zetta;
+		margin-@{axe2}: @spacing-zetta;
+	}
+	
+	.margin-@{direction}-yotta@{suffix} {
+		margin-@{axe1}: @spacing-yotta;
+		margin-@{axe2}: @spacing-yotta;
+	}
+}
+
+#generate-margin-all-classes(@suffix: ~'') {
+	#generate-margin-classes(~'', @suffix);
+	
+	#generate-margin-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-margin-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-margin-classes(~'-bottom', @suffix);
+	#generate-margin-classes(~'-left', @suffix);
+	#generate-margin-classes(~'-right', @suffix);
+	#generate-margin-classes(~'-top', @suffix);
+}
+
+#generate-margin-all-classes() ;
+
+// FROM
+#mq-min-width(@screen-ip, {
+	#generate-margin-all-classes(~'-from-ip');
+});
+
+#mq-min-width(@screen-ph, {
+	#generate-margin-all-classes(~'-from-ph');
+});
+
+#mq-min-width(@screen-xs, {
+	#generate-margin-all-classes(~'-from-xs');
+});
+
+#mq-desktop-design({
+	#generate-margin-all-classes(~'-from-desktop');
+});
+
+#mq-min-width(@screen-sm, {
+	#generate-margin-all-classes(~'-from-sm');
+});
+
+#mq-min-width(@screen-md, {
+	#generate-margin-all-classes(~'-from-md');
+});
+
+#mq-min-width(@screen-lg, {
+	#generate-margin-all-classes(~'-from-lg');
+});
+
+#mq-min-width(@screen-xl, {
+	#generate-margin-all-classes(~'-from-xl');
+});
+
+#mq-min-width(@screen-hd, {
+	#generate-margin-all-classes(~'-from-hd');
+});
+
+#mq-min-width(@screen-2k, {
+	#generate-margin-all-classes(~'-from-2k');
+});
+
+#mq-min-width(@screen-4k, {
+	#generate-margin-all-classes(~'-from-4k');
+});
+
+// TO
+#mq-max-width(@screen-4k - 1, {
+	#generate-margin-all-classes(~'-to-4k');
+});
+
+#mq-max-width(@screen-2k - 1, {
+	#generate-margin-all-classes(~'-to-2k');
+});
+
+#mq-max-width(@screen-hd - 1, {
+	#generate-margin-all-classes(~'-to-hd');
+});
+
+#mq-max-width(@screen-xl - 1, {
+	#generate-margin-all-classes(~'-to-xl');
+});
+
+#mq-max-width(@screen-lg - 1, {
+	#generate-margin-all-classes(~'-to-lg');
+});
+
+#mq-max-width(@screen-md - 1, {
+	#generate-margin-all-classes(~'-to-md');
+});
+
+#mq-max-width(@screen-sm - 1, {
+	#generate-margin-all-classes(~'-to-sm');
+});
+
+#mq-mobile-design({
+	#generate-margin-all-classes(~'-to-desktop');
+});
+
+#mq-max-width(@screen-xs - 1, {
+	#generate-margin-all-classes(~'-to-xs');
+});
+
+#mq-max-width(@screen-ph - 1, {
+	#generate-margin-all-classes(~'-to-ph');
+});
+
+#mq-max-width(@screen-ip - 1, {
+	#generate-margin-all-classes(~'-to-ip');
+});

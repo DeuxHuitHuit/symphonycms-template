@@ -1,0 +1,74 @@
+ 
+//=========================
+// = OPACITY CLASS
+//=========================
+
+.opacity-full, .opacity-opaque, .opaque {
+	opacity: 1;
+}
+
+.opacity-very-opaque, .very-opaque {
+	opacity: 0.9;
+}
+
+.opacity-quasi-opaque, .quasi-opaque {
+	opacity: 0.8;
+}
+
+.opacity-semi-opaque, .semi-opaque {
+	opacity: 0.7;
+}
+
+.opacity-partialy-opaque {
+	opacity: 0.6;
+}
+
+.opacity-half, .opacity-half-transparent, .opacity-translucent, .translucent {
+	opacity: 0.5;
+}
+
+.opacity-partialy-transparent, .opacity-partialy-translucent {
+	opacity: 0.4;
+}
+
+.opacity-semi-transparent, .opacity-semi-translucent, .semi-translucent {
+	opacity: 0.3;
+}
+
+.opacity-quasi-transparent, .opacity-quasi-translucent, .quasi-translucent, .quasi-trans {
+	opacity: 0.2;
+}
+
+.opacity-quasi-transparent, .opacity-very-translucent, .very-translucent, .very-trans {
+	opacity: 0.1;
+}
+
+.opacity-0, .opacity-transparent, .transparent {
+	opacity: 0;
+}
+
+// FROM SM
+.opacity-0-from-sm, .opacity-transparent-from-sm, .transparent-from-sm {
+	#mq-min-width(@screen-sm, {
+		.opacity-0;
+	});
+}
+
+.opacity-half-from-sm, .opacity-half-transparent-from-sm, .opacity-translucent-from-sm, .translucent-from-sm {
+	#mq-min-width(@screen-sm, {
+		.opacity-half;
+	});
+}
+
+// FROM MD
+.opacity-0-from-md, .opacity-transparent-from-md, .transparent-from-md {
+	#mq-min-width(@screen-md, {
+		.opacity-0;
+	});
+}
+
+.opacity-half-from-md, .opacity-half-transparent-from-md, .opacity-translucent-from-md, .translucent-from-md {
+	#mq-min-width(@screen-md, {
+		.opacity-half;
+	});
+}

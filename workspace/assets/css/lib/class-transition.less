@@ -1,0 +1,26 @@
+
+//=====================================
+//=== TRANSITION CLASS
+//=====================================
+
+.noanim {
+	&, & * {
+		#transition(none) !important;
+	}
+}
+
+.transition-none {
+	#transition(none);
+}
+
+.transition-none-important {
+	#transition(none) !important;
+}
+
+.transition-color-short-ease {
+	#transition(~'color @{duration-short} @{ease}');
+}
+
+.transition-opacity-short-ease {
+	#transition(opacity @duration-short @ease);
+}

@@ -1,0 +1,92 @@
+
+//=========================
+// = MQ FUNCTIONS
+//=========================
+
+#mq-min-width (@width, @rules) {
+	@media screen and (min-width: @width) {
+		@rules();
+	}
+}
+
+#mq-max-width (@width, @rules) {
+	@media screen and (max-width: @width) {
+		@rules();
+	}
+}
+
+#mq-min-max-width (@min-width, @max-width, @rules) {
+	@media screen and (min-width: @min-width) and (max-width: @max-width) {
+		@rules();
+	}
+}
+
+#mq-min-height (@height, @rules) {
+	@media screen and (min-height: @height) {
+		@rules();
+	}
+}
+
+#mq-max-height (@height, @rules) {
+	@media screen and (max-height: @height) {
+		@rules();
+	}
+}
+
+#mq-min-dpi (@dpi, @rules) {
+	@media screen and (min-resolution: @dpi) {
+		@rules();
+	}
+}
+
+#mq-max-dpi (@dpi, @rules) {
+	@media screen and (max-resolution: @dpi) {
+		@rules();
+	}
+}
+
+#mq-px-ratio (@px-ratio, @rules) {
+	@media screen and (-webkit-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+	
+	@media screen and (device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+}
+
+#mq-min-px-ratio (@px-ratio, @rules) {
+	@media screen and (-webkit-min-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+	
+	@media screen and (min-device-pixel-ratio: @px-ratio) {
+		@rules();
+	}
+}
+
+#mq-orientation (@orientation, @rules) {
+	@media screen and (orientation: @orientation) {
+		@rules();
+	}
+}
+
+#mq-mobile-design(@rules) {
+	#mq-max-width(@screen-xs - 1, @rules);
+}
+
+#mq-desktop-design(@rules) {
+	#mq-min-width(@screen-xs, @rules);
+}
+
+#mq-semi-desktop-design(@rules) {
+	#mq-min-max-width(@screen-xs, @screen-sm - 1, @rules);
+};
+
+#mq-semi-desktop-and-mobile-design(@rules) {
+	#mq-max-width(@screen-sm - 1, @rules);
+}
+
+#mq-upper-desktop-design(@rules) {
+	#mq-min-width(@screen-sm, @rules);
+}

@@ -1,0 +1,57 @@
+
+//=====================================
+// = POSITION CLASS
+//=====================================
+.position-absolute, .absolute {
+	position: absolute;
+}
+
+.position-fixed, .fixed {
+	position: fixed;
+}
+
+.position-relative, .relative {
+	position: relative;
+}
+
+//=== POSITION === RESPONSIVE =========
+// FROM PH
+.absolute-from-ph {
+	#mq-min-width(@screen-ph, {
+		.absolute;
+	});
+}
+
+// FROM XS
+.position-absolute-from-xs, .absolute-from-xs {
+	#mq-min-width(@screen-xs, {
+		.absolute;
+	});
+}
+
+// FROM SM
+.position-absolute-from-sm, .absolute-from-sm {
+	#mq-min-width(@screen-sm, {
+		.absolute;
+	});
+}
+
+.position-fixed-from-sm, .fixed-from-sm {
+	#mq-min-width(@screen-sm, {
+		.fixed;
+	});
+}
+
+// FROM MD
+.position-absolute-from-md, .absolute-from-md {
+	#mq-min-width(@screen-md, {
+		.absolute;
+	});
+}
+
+// TO XS
+.absolute-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.absolute;
+	});
+}

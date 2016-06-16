@@ -1,0 +1,162 @@
+
+//=========================
+// = DISPLAY CLASS
+//=========================
+
+.hidden() {
+	display: none;
+}
+
+.inline() {
+	display: inline;
+}
+
+.inline-block() {
+	display: inline-block;
+}
+
+.block() {
+	display: block;
+}
+
+.table() {
+	display: table;
+}
+
+.table-cell() {
+	display: table-cell;
+}
+
+.list-item() {
+	display: list-item;
+}
+
+#generate-display-classes (@suffix: ~'') {
+	
+	.hidden@{suffix} {
+		.hidden();
+	}
+	
+	.table@{suffix} {
+		.table();
+	}
+
+	.table-cell@{suffix} {
+		.table-cell();
+	}
+	
+	.list-item@{suffix} {
+		.list-item();
+	}
+	
+	.inline@{suffix} {
+		.inline();
+	}
+	
+	.inline-block@{suffix} {
+		.inline-block();
+	}
+	
+	.block@{suffix} {
+		.block();
+	}
+}
+
+.hidden-when-selected {
+	&.is-selected {
+		.hidden();
+	}
+}
+
+#generate-display-classes();
+
+// FROM
+#mq-min-width(@screen-ip, {
+	#generate-display-classes(~'-from-ip');
+});
+
+#mq-min-width(@screen-ph, {
+	#generate-display-classes(~'-from-ph');
+});
+
+#mq-min-width(@screen-xs, {
+	#generate-display-classes(~'-from-xs');
+});
+
+#mq-min-width(@screen-sm, {
+	#generate-display-classes(~'-from-sm');
+});
+
+#mq-desktop-design({
+	#generate-display-classes(~'-from-desktop');
+});
+
+#mq-min-width(@screen-md, {
+	#generate-display-classes(~'-from-md');
+});
+
+#mq-min-width(@screen-lg, {
+	#generate-display-classes(~'-from-lg');
+});
+
+#mq-min-width(@screen-xl, {
+	#generate-display-classes(~'-from-xl');
+});
+
+#mq-min-width(@screen-hd, {
+	#generate-display-classes(~'-from-hd');
+});
+
+#mq-min-width(@screen-2k, {
+	#generate-display-classes(~'-from-2k');
+});
+
+#mq-min-width(@screen-4k, {
+	#generate-display-classes(~'-from-4k');
+});
+
+
+// TO
+#mq-max-width(@screen-4k - 1, {
+	#generate-display-classes(~'-to-4k');
+});
+
+#mq-max-width(@screen-2k - 1, {
+	#generate-display-classes(~'-to-2k');
+});
+
+#mq-max-width(@screen-hd - 1, {
+	#generate-display-classes(~'-to-hd');
+});
+
+#mq-max-width(@screen-xl - 1, {
+	#generate-display-classes(~'-to-xl');
+});
+
+#mq-max-width(@screen-lg - 1, {
+	#generate-display-classes(~'-to-lg');
+});
+
+#mq-max-width(@screen-md - 1, {
+	#generate-display-classes(~'-to-md');
+});
+
+#mq-mobile-design({
+	#generate-display-classes(~'-to-desktop');
+});
+
+#mq-max-width(@screen-sm - 1, {
+	#generate-display-classes(~'-to-sm');
+});
+
+#mq-max-width(@screen-xs - 1, {
+	#generate-display-classes(~'-to-xs');
+});
+
+#mq-max-width(@screen-ph - 1, {
+	#generate-display-classes(~'-to-ph');
+});
+
+#mq-max-width(@screen-ip - 1, {
+	#generate-display-classes(~'-to-ip');
+});

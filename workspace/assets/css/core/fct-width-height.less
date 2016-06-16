@@ -1,0 +1,13 @@
+
+//=========================
+// = WH AND SQ FUNCTION
+//=========================
+
+#wh (@width: 100%, @height: @width) {
+	width: @width;
+	height: @height;
+}
+
+#sq (@side) {
+	#wh(@side, @side);
+}

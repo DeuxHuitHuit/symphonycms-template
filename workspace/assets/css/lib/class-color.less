@@ -1,0 +1,59 @@
+ 
+//=========================
+// = COLOR CLASS
+//=========================
+
+.color-transparent {
+	color: transparent;
+}
+
+// White
+.color-white {
+	color: @white;
+}
+
+// Black
+.color-black {
+	color: @black;
+}
+
+// ON HOVER
+// WHITE
+.color-white-on-hover{
+	#hover-only({
+		.color-white();
+	});
+}
+
+// BLACK
+.color-black-on-hover{
+	#hover-only({
+		.color-black();
+	});
+}
+
+
+// ON HOVER AND IS SELECTED
+// WHITE
+.color-white-on-hover-and-is-selected {
+	
+	#hover-only({
+		.color-white();
+	});
+	
+	&.is-selected {
+		.color-white();
+	}
+}
+
+// BLACK
+.color-black-on-hover-and-is-selected {
+	
+	#hover-only({
+		.color-black();
+	});
+	
+	&.is-selected {
+		.color-black();
+	}
+}

@@ -1,0 +1,40 @@
+ 
+//=========================
+// = BORDER-LEFT CLASS
+//=========================
+
+.border-left, .border-left-base, .bordered-left {
+	border-left: @border-base;
+}
+
+.border-left-small, .bordered-left-small {
+	border-left: @border-width-small solid;
+}
+
+.border-left-mid, .bordered-left-mid {
+	border-left: @border-width-mid solid;
+}
+
+.border-left-large, .bordered-left-large {
+	border-left: @border-width-large solid;
+}
+
+.border-left-on-hover, .border-left-base-on-hover, .bordered-left-on-hover {
+	#hover-only({
+		.border-left;
+	});
+}
+
+
+// DASHED
+.border-left-small-dashed , .bordered-left-small-dashed  {
+	border-left: @border-width-small dashed;
+}
+
+.border-left-mid-dashed, .bordered-left-mid-dashed {
+	border-left: @border-width-mid dashed;
+}
+
+.border-left-large-dashed , .bordered-left-large-dashed  {
+	border-left: @border-width-large dashed;
+}

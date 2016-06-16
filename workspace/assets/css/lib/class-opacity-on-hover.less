@@ -1,0 +1,40 @@
+ 
+//=========================
+// = OPACITY ON HOVER CLASS
+//=========================
+
+.opacity-quasi-transparent-on-hover, .quasi-trans-on-hover{
+	#hover-only({
+		.quasi-trans
+	});
+}
+
+.opacity-half-on-hover, .opacity-half-transparent-on-hover, .opacity-translucent-on-hover, .translucent-on-hover {
+	#hover-only({
+		.opacity-half;
+	});
+}
+
+.opacity-semi-opaque-on-hover, .semi-opaque-on-hover{
+	#hover-only({
+		.opacity-semi-opaque;
+	});
+}
+
+.opacity-quasi-opaque-on-hover, .quasi-opaque-on-hover {
+	#hover-only({
+		.opacity-quasi-opaque;
+	});
+}
+
+.opacity-full-on-hover, .opaque-on-hover {
+	#hover-only({
+		.opaque();
+	});
+}
+
+.opacity-full-when-is-selected, .opaque-when-is-selected {
+	&.is-selected {
+		.opaque();
+	}
+}

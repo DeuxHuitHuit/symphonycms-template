@@ -1,0 +1,49 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+
+html {
+	min-height: 100%;
+	overflow: visible;
+	
+	body {
+		-webkit-font-feature-settings: "hist";
+		min-height: 100%;
+		.overflow-y-scroll;
+		.overflow-x-hidden;
+	}
+	
+	&.no-scroll {
+		overflow: hidden;
+		
+		body {
+			.overflow-y-hidden;
+		}
+	}
+	
+	&.block-scroll {
+		height: 100%;
+		
+		body {
+			height: 100%;
+		}
+		
+		#site {
+			height: 100%;
+			overflow: hidden;
+		}
+	}
+}
+
+#site {
+	position: relative;
+}
+
+#site-pages .page {
+	
+}
+
+// @TODO : Add to reset?
+#site address {
+	font-style: normal;
+}

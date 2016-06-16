@@ -1,0 +1,26 @@
+ 
+//=========================
+// = BORDER-TOP CLASS
+//=========================
+
+.border-top, .border-top-base, .bordered-top {
+	border-top: @border-base;
+}
+
+.border-top-small, .bordered-top-small {
+	border-top: @border-width-small solid;
+}
+
+.border-top-mid, .bordered-top-mid {
+	border-top: @border-width-mid solid;
+}
+
+.border-top-large, .bordered-top-large {
+	border-top: @border-width-large solid;
+}
+
+.border-top-on-hover, .border-top-base-on-hover, .bordered-top-on-hover {
+	#hover-only({
+		.border-top;
+	});
+}

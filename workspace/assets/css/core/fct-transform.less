@@ -1,0 +1,110 @@
+
+//=========================
+// = TRANSFORM FUNCTIONS
+//=========================
+
+/* TRANSFORM */
+#transform (...) {
+	-webkit-transform: @arguments;
+	   -moz-transform: @arguments;
+		-ms-transform: @arguments;
+		 -o-transform: @arguments;
+			transform: @arguments;
+}
+
+#transform-origin (@origin) {
+	-webkit-transform-origin: @origin;
+	   -moz-transform-origin: @origin;
+		-ms-transform-origin: @origin;
+		 -o-transform-origin: @origin;
+			transform-origin: @origin;
+}
+
+/* TRANSLATE */
+#translate2d (@x, @y) {
+	-webkit-transform: translate(@x, @y);
+	   -moz-transform: translate(@x, @y);
+		-ms-transform: translate(@x, @y);
+		 -o-transform: translate(@x, @y);
+			transform: translate(@x, @y);
+}
+
+#translate (@x, @y, @z:0px) {
+	#translate2d(@x, @y);
+
+	-webkit-transform: translate3d(@x, @y, @z);
+	   -moz-transform: translate3d(@x, @y, @z);
+		-ms-transform: translate3d(@x, @y, @z);
+		 -o-transform: translate3d(@x, @y, @z);
+			transform: translate3d(@x, @y, @z);
+}
+
+/* SCALE */
+#scale3d (@scaleX, @scaleY: @scaleX, @scaleZ: 1) {
+	#scale2d(@scaleX, @scaleY);
+	
+	-webkit-transform: scale3d(@scaleX, @scaleY, @scaleZ);
+	   -moz-transform: scale3d(@scaleX, @scaleY, @scaleZ);
+		-ms-transform: scale3d(@scaleX, @scaleY, @scaleZ);
+		 -o-transform: scale3d(@scaleX, @scaleY, @scaleZ);
+			transform: scale3d(@scaleX, @scaleY, @scaleZ);
+}
+
+#scale2d (@scaleX, @scaleY: @scaleX) {
+	-webkit-transform: scale(@scaleX,@scaleY);
+	   -moz-transform: scale(@scaleX,@scaleY);
+		-ms-transform: scale(@scaleX,@scaleY);
+		 -o-transform: scale(@scaleX,@scaleY);
+			transform: scale(@scaleX,@scaleY);
+}
+
+#scale (@scale) {
+	#scale2d(@scale, @scale);
+}
+
+/* ROTATE */
+#rotateZ (@a) {
+	-webkit-transform: rotateZ(@a);
+	   -moz-transform: rotateZ(@a);
+		-ms-transform: rotateZ(@a);
+		 -o-transform: rotateZ(@a);
+			transform: rotateZ(@a);
+}
+
+/* SKEW */
+#skew (@skew) {
+	-webkit-transform: skew(@skew);
+	   -moz-transform: skew(@skew);
+		-ms-transform: scale(@skew); // ms does not support skew
+		 -o-transform: skew(@skew);
+			transform: skew(@skew);
+}
+
+/* FLIP */
+#flipX () {
+	-webkit-transform: scaleX(-1);
+	   -moz-transform: scaleX(-1);
+	     -o-transform: scaleX(-1);
+			transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
+}
+
+#flipY () {
+	-webkit-transform: scaleY(-1);
+	   -moz-transform: scaleY(-1);
+	     -o-transform: scaleY(-1);
+			transform: scaleY(-1);
+	filter: FlipV;
+	-ms-filter: "FlipV";
+}
+
+
+/* PRESERVE 3D */
+#preserve-3d () {
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+		 -o-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+}

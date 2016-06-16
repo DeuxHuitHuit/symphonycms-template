@@ -2,14 +2,14 @@
  * HTML
  */
 html {
-	font-size: 62.5%;
 	line-height: normal;
 	font-family: serif;
 }
 
 html, body {
 	width: 100%;
-	#marpad;
+	margin: 0;
+	padding: 0;
 }
 
 *:focus {
@@ -33,22 +33,24 @@ a {
  */
 section, nav, article, footer, header, menu, aside, figure, figcaption {
 	display: block;
-	#marpad;
+	margin: 0;
+	padding: 0;
 	position: static;
+}
+
+input, textarea, keygen, select, button {
+	font-family: serif;
 }
 
 /*
  * FORMS
  */
 
-input, textarea, keygen, select, button {
-	display: inline-block;
+button {
 	margin: 0;
 	padding: 0;
-	font-size: inherit;
-	line-height: normal;
 	border: none;
-	background-color: transparent;
+	background: none;
 }
 
 /* 
@@ -68,11 +70,6 @@ svg {
 		alignment-baseline: central;
 		text-rendering: geometricPrecision;
 	}
-	* {
-		color: inherit;
-		fill: currentColor;
-		stroke: currentColor;
-	}
 }
 
 /*
@@ -80,18 +77,4 @@ svg {
  */
 figure {
 	margin: 0;
-}
-
-/*
- * ADDRESS
- */
-address {
-	font-style: normal;
-}
-
-/*
- * CITE
- */
-cite {
-	font-style: normal;
 }

@@ -1,0 +1,59 @@
+
+//=========================
+// = VISIBILITY CLASS
+//=========================
+ 
+#generate-visibility-classes (@suffix: ~'') {
+	
+	.visibility-collapse@{suffix},
+	.collapse@{suffix} {
+		visibility: collapse;
+	}
+
+	.visibility-hidden@{suffix},
+	.not-visible@{suffix} {
+		visibility: hidden;
+	}
+	
+	.visibility-visible@{suffix},
+	.visible@{suffix} {
+		visibility: visible;
+	}
+}
+
+#generate-visibility-classes();
+
+#mq-min-width(@screen-ip, {
+	#generate-visibility-classes(~'-ip');
+	#generate-visibility-classes(~'-from-ip');
+});
+
+#mq-min-width(@screen-ph, {
+	#generate-visibility-classes(~'-ph');
+	#generate-visibility-classes(~'-from-ph');
+});
+
+#mq-min-width(@screen-xs, {
+	#generate-visibility-classes(~'-xs');
+	#generate-visibility-classes(~'-from-xs');
+});
+
+#mq-min-width(@screen-sm, {
+	#generate-visibility-classes(~'-sm');
+	#generate-visibility-classes(~'-from-sm');
+});
+
+#mq-min-width(@screen-md, {
+	#generate-visibility-classes(~'-md');
+	#generate-visibility-classes(~'-from-md');
+});
+
+#mq-min-width(@screen-lg, {
+	#generate-visibility-classes(~'-lg');
+	#generate-visibility-classes(~'-from-lg');
+});
+
+#mq-min-width(@screen-xl, {
+	#generate-visibility-classes(~'-xl');
+	#generate-visibility-classes(~'-from-xl');
+});

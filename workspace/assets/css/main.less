@@ -5,24 +5,23 @@
 //=========================
 // = IMPORTS
 //=========================
+@debug: true;
+.DEPRECATED() {}
+
 @import "core/bundle";
 @import "lib/bundle";
 
-@import "site/vars-overrides";
-@import "site/vars-site";
-@import "site/fonts";
-@import "site/default-style";
-@import "site/site";
-@import "site/site-layout-tools";
-@import "site/site-colors.less";
+@import "site/vars-colors";
+@import "site/vars-spacing";
+@import "site/vars-type";
 
-@import "com/markdown";
-@import "com/button";
+@import "site/base-site";
+@import "site/base-style";
+
+@import "site/util-type";
+@import "site/util-colors";
+@import "site/util-custom";
+
 @import "com/page-load";
 @import "com/menu-admin";
-@import "com/site-header";
-@import "com/site-footer";
-@import "com/svg-icons.less";
 @import "com/error-pages";
-
-@import "pages/page";

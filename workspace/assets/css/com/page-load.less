@@ -1,13 +1,15 @@
+@page-load-color: @black;
+
 #load-progress {
-	#fixed(999999);
+	position: fixed;
+	z-index: 999999;
 	top: 0;
 	left: 0;
 	width: 0%;
 	height: 3px;
-	
 	background-color: @page-load-color;
 	
-	.not-visible;
+	visibility: collapse;
 	opacity: 0;
 	
 	@load-duration: 1200ms;
@@ -21,8 +23,8 @@
 	}
 	
 	&.show {
-		.visible;
 		#transition(~'@{transition}, @{visanim} 0ms');
+		visibility: visible;
 		opacity: 1;
 	}
 	

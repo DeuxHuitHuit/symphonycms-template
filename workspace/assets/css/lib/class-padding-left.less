@@ -1,0 +1,129 @@
+//=====================================
+// = PADDING-LEFT CLASS
+//=====================================
+
+.padding-left-none {
+	padding-left: 0;
+}
+
+.padding-left-none-important {
+	padding-left: 0 !important;
+}
+
+.padding-left-pico {
+	padding-left: @spacing-pico;
+}
+
+.padding-left-half-nano {
+	padding-left: @spacing-nano * .5;
+}
+
+.padding-left-nano {
+	padding-left: @spacing-nano;
+}
+
+.padding-left-micro {
+	padding-left: @spacing-micro;
+}
+
+.padding-left-smallest {
+	padding-left: @spacing-smallest;
+}
+
+.padding-left-smaller {
+	padding-left: @spacing-smaller;
+}
+
+.padding-left-smaller-double {
+	padding-left: @spacing-smaller * 2;
+}
+
+.padding-left-double-smaller {
+	.DEPRECATED;
+	.padding-left-smaller-double;
+}
+
+.padding-left-small {
+	padding-left: @spacing-small;
+}
+
+.padding-left-mid {
+	padding-left: @spacing-mid;
+}
+
+.padding-left-large {
+	padding-left: @spacing-large;
+}
+
+.padding-left-larger {
+	padding-left: @spacing-larger;
+}
+
+.padding-left-largest {
+	padding-left: @spacing-largest;
+}
+
+.padding-left-xlarge {
+	padding-left: @spacing-xlarge;
+}
+
+.padding-left-huge {
+	padding-left: @spacing-huge;
+}
+
+//Proportional Value
+.padding-left-full {
+	padding-left: 100%;
+}
+
+.padding-left-half {
+	padding-left: 50%;
+}
+
+.padding-left-third {
+	padding-left: 100% / 3;
+}
+
+.padding-left-quarter {
+	padding-left: 25%;
+}
+
+// PADDING-LEFT RESPONSIVE
+// FROM XS
+.padding-left-micro-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-left-micro;
+	});
+}
+
+.padding-left-mid-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-left-mid;
+	});
+}
+
+.padding-left-large-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-left-large;
+	});
+}
+
+// FROM SM
+.padding-left-large-from-sm {
+	#mq-min-width(@screen-sm, {
+		.padding-left-large;
+	});
+}
+
+.padding-left-largest-from-sm {
+	#mq-min-width(@screen-sm, {
+		.padding-left-largest;
+	});
+}
+
+//FROM DESKTOP
+.padding-left-small-from-desktop {
+	#mq-desktop-design({
+		padding-left: @spacing-small;
+	});
+}

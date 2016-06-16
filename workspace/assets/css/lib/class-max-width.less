@@ -1,0 +1,236 @@
+
+//=========================
+// = MAX-WIDTH CLASS
+//=========================
+//Spacing Value
+.max-width-micro {
+	max-width: @spacing-micro;
+}
+
+.max-width-micro-double {
+	max-width: @spacing-micro * 2;
+}
+
+.max-width-micro-triple {
+	max-width: @spacing-micro * 3;
+}
+
+.max-width-smallest {
+	max-width: @spacing-smallest ;
+}
+
+.max-width-smallest-double {
+	max-width: @spacing-smallest  * 2;
+}
+
+.max-width-smallest-triple {
+	max-width: @spacing-smallest  * 3;
+}
+
+.max-width-smaller {
+	max-width: @spacing-smaller;
+}
+
+.max-width-smaller-double {
+	max-width: @spacing-smaller * 2;
+}
+
+.max-width-smaller-triple {
+	max-width: @spacing-smaller * 3;
+}
+
+.max-width-small {
+	max-width: @spacing-small;
+}
+
+.max-width-small-double {
+	max-width: @spacing-small * 2;
+}
+
+.max-width-small-triple {
+	max-width: @spacing-small * 3;
+}
+
+.max-width-mid {
+	max-width: @spacing-mid;
+}
+
+.max-width-mid-double {
+	max-width: @spacing-mid * 2;
+}
+
+.max-width-mid-triple {
+	max-width: @spacing-mid * 3;
+}
+
+.max-width-large {
+	max-width: @spacing-large;
+}
+
+.max-width-large-double {
+	max-width: @spacing-large * 2;
+}
+
+.max-width-large-triple {
+	max-width: @spacing-large * 3;
+}
+
+.max-width-larger {
+	max-width: @spacing-larger;
+}
+
+.max-width-larger-double {
+	max-width: @spacing-larger * 2;
+}
+
+.max-width-larger-triple {
+	max-width: @spacing-larger * 3;
+}
+
+.max-width-largest {
+	max-width: @spacing-largest;
+}
+
+.max-width-largest-double {
+	max-width: @spacing-largest * 2;
+}
+
+.max-width-largest-triple {
+	max-width: @spacing-largest * 3;
+}
+
+.max-width-huge {
+	max-width: @spacing-huge;
+}
+
+.max-width-huge-double {
+	max-width: @spacing-huge * 2;
+}
+
+.max-width-huge-triple {
+	max-width: @spacing-huge * 3;
+}
+
+// PROPORTIONAL VALUE
+.max-width-quarter {
+	max-width: 25%;
+}
+
+.max-width-half {
+	max-width: 50%;
+}
+
+.max-width-three-quarter {
+	max-width: 75%;
+}
+
+.max-width-full {
+	max-width: 100%;
+}
+
+.max-width-screen-max {
+	max-width: @screen-max;
+}
+
+// PROPORTIONAL VIEWPORT VALUE
+.max-width-quarter-viewport {
+	max-width: 25vh;
+}
+
+.max-width-half-viewport {
+	max-width: 50vh;
+}
+
+.max-width-three-quarter-viewport {
+	max-width: 75vw;
+}
+
+.max-width-full-viewport {
+	max-width: 100vh;
+}
+
+// MAX-WIDTH RESPONSIVE
+// FROM PH
+.max-width-smallest-from-ph {
+	#mq-min-width(@screen-ph, {
+		.max-width-smallest
+	});
+}
+
+.max-width-small-from-ph {
+	#mq-min-width(@screen-ph, {
+		.max-width-small;
+	});
+}
+
+// FROM XS
+.max-width-smallest-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-smallest
+	});
+}
+
+.max-width-huge-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-huge;
+	});
+}
+
+.max-width-small-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-small;
+	});
+}
+
+.max-width-larger-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-larger;
+	});	
+}
+
+// TO XS
+.max-width-micro-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.max-width-micro;
+	});
+}
+
+.max-width-large-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.max-width-large;
+	});
+}
+
+.max-width-mid-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.max-width-mid;
+	});
+}
+
+// TO PH
+.max-width-mid-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.max-width-mid;
+	});
+}
+
+.max-width-large-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.max-width-large;
+	});
+}
+
+// FROM PH TO SM
+.max-width-larger-from-ph-to-sm {
+	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
+		.max-width-larger;
+	});
+}
+
+// FROM PH TO XS
+.max-width-large-from-ph-to-xs {
+	#mq-min-max-width(@screen-ph, @screen-xs - 1, {
+		.max-width-large;
+	});
+}
+

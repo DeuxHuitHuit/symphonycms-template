@@ -1,1 +1,248 @@
-@debug: true;
+
+.TODO {
+	outline: rgba(255,0,0,36%) 1px solid;
+	outline-offset: 10px;
+}
+
+.DEPRECATED {
+	outline: rgba(255,200,0,36%) 1px solid;
+	outline-offset: 10px;
+}
+
+.desaturate-dummy-images when (@debug = true) {
+	img[alt=""], .jit-image-bg {
+		#filter(~'grayscale(100%) brightness(250%) contrast(50%)');
+		mix-blend-mode: multiply;
+	}
+}
+
+.show-classes-on-hover {
+	 *[class]:hover:before {
+			content: attr(class);
+			white-space: nowrap;
+			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			background-color: red;
+			color: white;
+			line-height: @spacing-smaller * .5;
+			font-size: 1.4rem;
+			font-weight: 600;
+			font-family: helvetica, arial, sans-serif;
+			display: block;
+			position: absolute;
+			left: auto;
+			top: auto;
+			margin-top: -@spacing-smaller;
+			margin-bottom: @spacing-smaller * .25;
+			text-transform: uppercase;
+			letter-spacing: .025em;
+			z-index: 1;
+		}
+		
+	 *:not(body)[class] *[class]:hover:before {
+		 //margin-top: 0;
+		 background-color: fuchsia;
+		 padding-left: @spacing-smaller * .5;
+	 }
+
+	 *:not(body)[class] *[class] *[class]:hover:before {
+		 background-color: purple;
+		 padding-left: @spacing-smaller;
+	 }
+	 
+	 *:not(body)[class] *[class] *[class] *[class]:hover:before {
+		 background-color: teal;
+		 padding-left: @spacing-smaller * 1.5;
+	 }
+		
+	 *[class]:hover {
+			outline: 1px dashed red;
+		}
+
+	 *:not(body)[class] *[class]:hover {
+		 outline: 1px dashed fuchsia;
+	 }
+
+	 *:not(body)[class] *[class] *[class]:hover {
+		 outline: 1px dashed purple;
+	 }
+	 
+	 *:not(body)[class] *[class] *[class] *[class]:hover {
+		 outline: 1px dashed teal;
+	 }
+}
+
+.show-names {
+	 *[data-component-name]:hover:before {
+			content: attr(data-component-name);
+			white-space: nowrap;
+			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			background-color: red;
+			color: white;
+			line-height: @spacing-smaller * .5;
+			font-size: 1.4rem;
+			font-weight: 600;
+			font-family: helvetica, arial, sans-serif;
+			display: block;
+			position: absolute;
+			left: auto;
+			top: auto;
+			margin-top: -@spacing-smaller;
+			margin-bottom: @spacing-smaller * .25;
+			text-transform: uppercase;
+			letter-spacing: .025em;
+			z-index: 1;
+		}
+		
+	 *:not(body)[data-component-name] *[data-component-name]:hover:before {
+		 //margin-top: 0;
+		 background-color: fuchsia;
+		 padding-left: @spacing-smaller * .5;
+	 }
+
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:hover:before {
+		 background-color: purple;
+		 padding-left: @spacing-smaller;
+	 }
+	 
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:hover:before {
+		 background-color: teal;
+		 padding-left: @spacing-smaller * 1.5;
+	 }
+		
+	 *[data-component-name]:hover {
+			outline: 1px dashed red;
+		}
+
+	 *:not(body)[data-component-name] *[data-component-name]:hover {
+		 outline: 1px dashed fuchsia;
+	 }
+
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:hover {
+		 outline: 1px dashed purple;
+	 }
+	 
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:hover {
+		 outline: 1px dashed teal;
+	 }
+}
+
+.show-classes {
+	 *[class]:hover:before {
+			content: attr(class);
+			white-space: nowrap;
+			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			background-color: red;
+			color: white;
+			line-height: @spacing-smaller * .5;
+			font-size: 1.4rem;
+			font-weight: 600;
+			font-family: helvetica, arial, sans-serif;
+			display: block;
+			position: absolute;
+			left: auto;
+			top: auto;
+			margin-top: -@spacing-smaller;
+			margin-bottom: @spacing-smaller * .25;
+			text-transform: uppercase;
+			letter-spacing: .025em;
+			z-index: 1;
+		}
+		
+	 *:not(body)[class] *[class]:hover:before {
+		 //margin-top: 0;
+		 background-color: fuchsia;
+		 padding-left: @spacing-smaller * .5;
+	 }
+
+	 *:not(body)[class] *[class] *[class]:hover:before {
+		 background-color: purple;
+		 padding-left: @spacing-smaller;
+	 }
+	 
+	 *:not(body)[class] *[class] *[class] *[class]:hover:before {
+		 background-color: teal;
+		 padding-left: @spacing-smaller * 1.5;
+	 }
+		
+	 *[class]:hover {
+			outline: 1px dashed red;
+		}
+
+	 *:not(body)[class] *[class]:hover {
+		 outline: 1px dashed fuchsia;
+	 }
+
+	 *:not(body)[class] *[class] *[class]:hover {
+		 outline: 1px dashed purple;
+	 }
+	 
+	 *:not(body)[class] *[class] *[class] *[class]:hover {
+		 outline: 1px dashed teal;
+	 }
+}
+
+.show-names {
+	 *[data-component-name]:before {
+			content: attr(data-component-name);
+			white-space: nowrap;
+			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			background-color: red;
+			color: white;
+			line-height: @spacing-smaller * .5;
+			font-size: 1.4rem;
+			font-weight: 600;
+			font-family: helvetica, arial, sans-serif;
+			display: block;
+			position: absolute;
+			left: auto;
+			top: auto;
+			margin-top: -@spacing-smaller;
+			margin-bottom: @spacing-smaller * .25;
+			text-transform: uppercase;
+			letter-spacing: .025em;
+			z-index: 1;
+		}
+		
+	 *:not(body)[data-component-name] *[data-component-name]:before {
+		 //margin-top: 0;
+		 background-color: fuchsia;
+		 padding-left: @spacing-smaller * .5;
+	 }
+
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:before {
+		 background-color: purple;
+		 padding-left: @spacing-smaller;
+	 }
+	 
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:before {
+		 background-color: teal;
+		 padding-left: @spacing-smaller * 1.5;
+	 }
+		
+	 *[data-component-name]:hover {
+			outline: 1px dashed red;
+		}
+
+	 *:not(body)[data-component-name] *[data-component-name]:hover {
+		 outline: 1px dashed fuchsia;
+	 }
+
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:hover {
+		 outline: 1px dashed purple;
+	 }
+	 
+	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:hover {
+		 outline: 1px dashed teal;
+	 }
+}
+
+.debug {
+	* { outline: 2px dotted red }
+	* * { outline: 2px dotted green }
+	* * * { outline: 2px dotted orange }
+	* * * * { outline: 2px dotted blue }
+	* * * * * { outline: 1px solid red }
+	* * * * * * { outline: 1px solid green }
+	* * * * * * * { outline: 1px solid orange }
+	* * * * * * * * { outline: 1px solid blue }
+}

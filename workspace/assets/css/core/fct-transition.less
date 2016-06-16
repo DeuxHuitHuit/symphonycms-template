@@ -1,0 +1,37 @@
+
+//=========================
+// = TRANSITION FUNCTIONS
+//=========================
+
+/* TRANSITION */
+#transition (...) {
+	-webkit-transition: @arguments;
+	   -moz-transition: @arguments;
+		-ms-transition: @arguments;
+		 -o-transition: @arguments;
+			transition: @arguments;
+}
+
+#cb-transition (...) {
+	-webkit-transition: ~"-webkit-@{arguments}";
+	   -moz-transition: ~"-moz-@{arguments}";
+		-ms-transition: ~"-ms-@{arguments}";
+		 -o-transition: ~"-o-@{arguments}";
+			transition: @arguments;
+}
+
+#transition-duration (@duration) {
+	-webkit-transition-duration: @duration;
+	   -moz-transition-duration: @duration;
+		-ms-transition-duration: @duration;
+		 -o-transition-duration: @duration;
+			transition-duration: @duration;
+}
+
+#transition-delay (@delay) {
+	-webkit-transition-delay: @delay;
+	   -moz-transition-delay: @delay;
+		-ms-transition-delay: @delay;
+		 -o-transition-delay: @delay;
+			transition-delay: @delay;
+}

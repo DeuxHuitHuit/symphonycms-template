@@ -1,0 +1,152 @@
+//=====================================
+// = PADDING-TOP CLASS
+//=====================================
+.padding-top-none {
+	padding-top: 0;
+}
+
+.padding-top-none-important {
+	padding-top: 0 !important;
+}
+
+.padding-top-pico {
+	padding-top: @spacing-pico;
+}
+
+.padding-top-half-nano {
+	padding-top: @spacing-nano * .5;
+}
+
+.padding-top-nano {
+	padding-top: @spacing-nano;
+}
+
+.padding-top-micro {
+	padding-top: @spacing-micro;
+}
+
+.padding-top-smallest {
+	padding-top: @spacing-smallest;
+}
+
+.padding-top-smaller {
+	padding-top: @spacing-smaller;
+}
+
+.padding-top-smaller {
+	padding-top: @spacing-smaller;
+}
+
+.padding-top-smaller-double {
+	padding-left: @spacing-smaller * 2;
+}
+
+.padding-top-small {
+	padding-top: @spacing-small;
+}
+
+.padding-top-mid {
+	padding-top: @spacing-mid;
+}
+
+.padding-top-large {
+	padding-top: @spacing-large;
+}
+
+.padding-top-larger {
+	padding-top: @spacing-larger;
+}
+
+.padding-top-largest {
+	padding-top: @spacing-largest;
+}
+
+.padding-top-xlarge {
+	padding-top: @spacing-xlarge;
+}
+
+.padding-top-huge {
+	padding-top: @spacing-huge;
+}
+
+//Proportional Value
+.padding-top-full {
+	padding-top: 100%;
+}
+
+.padding-top-half {
+	padding-top: 50%;
+}
+
+.padding-top-third {
+	padding-top: 100% / 3;
+}
+
+.padding-top-quarter {
+	padding-top: 25%;
+}
+
+// Responsive Value
+// FROM XS
+.padding-top-micro-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-top-micro();
+	});
+}
+
+.padding-top-small-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-top-small();
+	});
+}
+
+.padding-top-mid-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-top-mid;
+	});
+}
+
+.padding-top-xlarge-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-top-xlarge;
+	});
+}
+
+.padding-top-third-from-xs {
+	#mq-min-width(@screen-xs, {
+		.padding-top-third();
+	});
+}
+
+//TO XS
+.padding-top-nano-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.padding-top-nano();
+	});
+}
+
+.padding-top-smallest-to-xs {
+	#mq-max-width((@screen-xs - 1), {
+		.padding-top-smallest;
+	});
+}
+
+.padding-top-micro-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.padding-top-micro();
+	});
+}
+
+.padding-top-mid-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.padding-top-mid();
+	});
+}
+
+.padding-top-large-to-xs {
+	
+	#mq-max-width(@screen-xs - 1, {
+		.padding-top-large();
+	});
+
+}

@@ -5,14 +5,18 @@
 //=========================
 // = IMPORTS
 //=========================
-@import "../core/bundle";
-@import "../lib/bundle";
-@import "../site/vars-overrides";
 
-@ui-bg-main: @light;
-@ui-bg-items: fade(@ui-heading-color, 10%);
-@ui-heading-color: @dark;
+@debug: false;
+
+@import "../lib/bundle";
+@import "../core/bundle";
+
+@ui-bg-main: white;
+@ui-heading-color: black;
+
 @ui-groupe-title-color: @ui-heading-color;
+
+@ui-bg-items: fade(@ui-heading-color, 10%);
 @ui-font-family: Arial, helvetica, sans-serif;
 
 #ui-toolkit {
@@ -37,27 +41,15 @@
 		
 		.ui-item-ctn {
 			@import "main";
-			
-			ul li, ol li {
-				list-style-position: inside;
-			}
 		}
 		
 		.ui-font {
 			#font-size(3rem,3rem);
-			
-			&.typo {
-				//Insert typo here;
-			}
-		}
-		
-		.strong {
-			#font-size(2.4rem,2.4rem);
 		}
 	}
 
 	.ui-group {
-		#relative;
+		position: relative;
 		margin-bottom: 120px;
 		
 		&:last-child {
@@ -72,10 +64,10 @@
 		line-height: 7.4rem;
 		color: @ui-groupe-title-color;
 	}
-		
+	
 	.ui-palette-ctn {
 		.ui-palette-couleurs {
-			#ib;
+			display: inline-block;
 			
 			.ui-color-title {
 				text-align: center;
@@ -87,35 +79,14 @@
 			}
 			
 			.ui-color-ctn {
-				#relative;
+				position: relative;
 				margin-bottom: 10px;
 				
 				.ui-color {
-					#wh(165px);
-					
-					&.black {
-						.ui-palette-coloring(@black);
-					}
-					
-					&.white {
-						.ui-palette-coloring(@white);
-					}
-					
-					&.ui-darker {
-						#absolute;
-						#fill(auto, 0, 0, 0);
-						height: 30%;
-					}
+					width: 165px;
+					height: 165px;
 				}
 			}
 		}
-	}
-}
-
-.ui-palette-coloring(@color) {
-	background-color: @color;
-	
-	&.ui-darker {
-		background-color: darken(@color, 10%);
 	}
 }

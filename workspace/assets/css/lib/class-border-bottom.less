@@ -1,0 +1,26 @@
+ 
+//=========================
+// = BORDER-BOTTOM CLASS
+//=========================
+
+.border-bottom, .border-bottom-base, .bordered-bottom {
+	border-bottom: @border-base;
+}
+
+.border-bottom-small, .bordered-bottom-small {
+	border-bottom: @border-width-small solid;
+}
+
+.border-bottom-mid, .bordered-bottom-mid {
+	border-bottom: @border-width-mid solid;
+}
+
+.border-bottom-large, .bordered-bottom-large {
+	border-bottom: @border-width-large solid;
+}
+
+.border-bottom-on-hover, .border-bottom-base-on-hover, .bordered-bottom-on-hover {
+	#hover-only({
+		.border-bottom;
+	});
+}

@@ -1,0 +1,42 @@
+ 
+//=========================
+// = BORDER-RADIUS CLASS
+//=========================
+.border-radius-small, 
+.radius-small {
+	border-radius: @border-radius-small;
+}
+
+.border-radius-mid,
+.radius-mid {
+	border-radius: @border-radius-mid;
+}
+
+.border-radius-large,
+.radius-large {
+	border-radius: @border-radius-large;
+}
+
+.border-radius-larger,
+.radius-larger {
+	border-radius: @border-radius-larger;
+}
+
+.border-radius-full,
+.radius-full {
+	border-radius: @border-radius-full;
+}
+
+.border-radius-left-small,
+.radius-left-small {
+	border-bottom-left-radius: @border-radius-small;
+	border-top-left-radius: @border-radius-small;
+}
+
+// BORDER-RADIUS RESPONSIVE
+// FROM XS
+.border-radius-mid-from-xs {
+	#mq-min-width(@screen-xs, {
+		.border-radius-mid;
+	});
+}
