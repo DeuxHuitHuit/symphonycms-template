@@ -157,8 +157,6 @@ module.exports = function (grunt) {
 			src: SRC_FILES.concat(GRUNT_FILE),
 			options: {
 				config: '.jscsrc',
-				esnext: false,
-				verbose: true,
 				fix: true
 			}
 		},

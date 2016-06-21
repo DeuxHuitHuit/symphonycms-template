@@ -2,4 +2,6 @@
     "preset": "crockford",
     "disallowKeywordsOnNewLine": [
     ]
+    "esnext": false,
+    "vertbose": true
 }
