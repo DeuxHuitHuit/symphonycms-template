@@ -1,6 +1,8 @@
 /*global global:false, module:false, require:false*/
 var md = require('matchdep');
 var stripJsonComments = require('strip-json-comments');
+
+// Object holder for svn infos
 global.svn_info = {};
 
 module.exports = function (grunt) {
