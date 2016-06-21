@@ -23,9 +23,11 @@
     "grunt-contrib-watch": "~1.0.0",
     "grunt-csso": "^1.0.0",
     "grunt-curl": "^2.2.0",
+    "grunt-ftps-deploy": "^0.1.16",
     "grunt-jscs": "^3.0.0",
     "grunt-purifycss": "^0.1.1",
+    "grunt-svninfo": "^0.1.5",
     "matchdep": "~1.0.1",
-    "grunt-svninfo": "^0.1.5"
+    "strip-json-comments": "^2.0.1"
   }
 }

@@ -1,6 +1,6 @@
 /*global global:false, module:false, require:false*/
 var md = require('matchdep');
-
+var stripJsonComments = require('strip-json-comments');
 global.svn_info = {};
 
 module.exports = function (grunt) {
@@ -10,6 +10,9 @@ module.exports = function (grunt) {
 	var GRUNT_FILE = 'Gruntfile.js';
 	
 	var BUILD_FILE = './build.json';
+	
+	var FTP_FILE = JSON.parse(stripJsonComments(grunt.file.read('../../ftpsync.settings')));
+	var FTP_PASS = '.ftppass';
 	
 	var LESS_FILE = 'css/main.less';
 	
@@ -284,6 +287,28 @@ module.exports = function (grunt) {
 		svninfo: {
 			options: {
 			}
+		},
+
+		ftps_deploy: {
+			build: {
+				options: {
+					auth:{
+						host: FTP_FILE.default.host,
+						port: FTP_FILE.default.port || 21,
+						authKey: 'default',
+						secure: true
+					}
+				},
+				files: [{
+					cwd: '.',
+					src: [
+						'js/<%= pkg.name %>.min.js',
+						'css/main.min.css',
+						BUILD_FILE
+					],
+					dest: FTP_FILE.default.path + 'workspace/assets/',
+				}]
+			}
 		}
 	};
 	
@@ -300,7 +325,7 @@ module.exports = function (grunt) {
 		grunt.initConfig(config);
 
 		// generate build number
-		grunt.registerTask('buildnum', 
+		grunt.registerTask('buildnum',
 			'Generates and updates the current build number', function () {
 			var options = this.options();
 			var getBuildNumber = function () {
@@ -323,7 +348,18 @@ module.exports = function (grunt) {
 			grunt.log.writeln('For version:', config.pkg.version);
 		});
 
+		// ftps boot
+		grunt.registerTask('ftps_boot', 'Cleans shit up', function () {
+			grunt.file.write(FTP_PASS, JSON.stringify(FTP_FILE));
+		});
+
+		// ftps clean up
+		grunt.registerTask('ftps_cleanup', 'Cleans shit up', function () {
+			grunt.file.delete(FTP_PASS);
+		});
+
 		// Default tasks.
+		grunt.registerTask('push',    ['ftps_boot', 'ftps_deploy', 'ftps_cleanup']);
 		grunt.registerTask('dev',     ['jscs', 'jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
