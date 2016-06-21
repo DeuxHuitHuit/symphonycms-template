@@ -315,6 +315,8 @@ module.exports = function (grunt) {
 	};
 	
 	var init = function (grunt) {
+		// Overrides some values
+		grunt.util.linefeed = '\n';
 		grunt.file.preserveBOM = true;
 		
 		// visit config
