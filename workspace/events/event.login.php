@@ -4,38 +4,42 @@
 
 	Class eventLogin extends Event{
 
-		public static function about(){
-
-			$description = new XMLElement('p', 'This is an event that displays basic login details (such as their real name, username and author type) if the person viewing the site have been authenticated by logging in to Symphony. It is useful if you want to do something special with the site if the person viewing it is an authenticated member.');
-
+		public static function about()
+		{
 			return array(
 				'name' => 'Login Info',
-				'author' => array('name' => 'Alistair Kearney',
-								   'website' => 'http://www.pointybeard.com',
-								   'email' => 'alistair@pointybeard.com'),
-				'version' => '1.5',
+				'author' => array(
+					'name' => 'Alistair Kearney',
+					'website' => 'http://www.pointybeard.com',
+					'email' => 'alistair@pointybeard.com',
+				),
+				'version' => '1.5.0',
 				'release-date' => '2010-01-10',
 				'trigger-condition' => 'action[login] field or an already valid Symphony cookie',
 				'recognised-fields' => array(
-							array('username', true),
-							array('password', true)
-						));
+					array('username', true),
+					array('password', true),
+				)
+			);
 		}
 
-		public static function getSource(){
+		public static function getSource()
+		{
 			return 'Symphony';
 		}
 
-		public function load(){
+		public function load()
+		{
 			return $this->__trigger();
 		}
 
-		public static function documentation(){
+		public static function documentation()
+		{
 			return new XMLElement('p', 'This is an event that displays basic login details (such as their real name, username and author type) if the person viewing the site have been authenticated by logging in to Symphony. It is useful if you want to do something special with the site if the person viewing it is an authenticated member.');
 		}
 
-		protected function __trigger(){
-
+		protected function __trigger()
+		{
 			// Cookies only show up on page refresh.
 			// This flag helps in making sure the correct XML is being set
 			$loggedin = false;
