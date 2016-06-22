@@ -4,6 +4,9 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)\.([\d\.\-]+)\.(bmp|css|cur|gif|ico|jpe?g|js|png|svgz?|webp|less)$ $1.$3 [L]
+    
+    ## Block json config
+    RewriteRule ^workspace\/assets\/(.+)\.json - [F,L]
 </IfModule>
 
 ### Security
