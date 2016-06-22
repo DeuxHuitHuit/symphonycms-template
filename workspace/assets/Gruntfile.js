@@ -55,12 +55,12 @@ module.exports = function (grunt) {
 		},
 		meta: {
 			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-			'r<%= svninfo.last.rev %> - build <%= buildnum.num %> - ' +
+			'r<%= svninfo.last ? svninfo.last.rev : "X" %> - build <%= buildnum.num %> - ' +
 			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-			'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
+			'<%= pkg.homepage ? " * " + pkg.homepage + "\\n" : "" %>' +
+			' * Copyright (c) <%= grunt.template.today("yyyy") %> ' +
 			'<%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
-			'* <%= pkg.license %> license */'
+			' * <%= pkg.license %> */'
 		},
 		concat: {
 			options: {
