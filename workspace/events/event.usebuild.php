@@ -46,7 +46,7 @@ class eventUsebuild extends Event
 		$cookieName = __SYM_COOKIE_PREFIX__ . 'use-build';
 		$isCookie = isset($_COOKIE[$cookieName]);
 
-		if ($isQuery || $isCookie) {
+		if ($isQuery) {
 			setcookie(
 				$cookieName,
 				'1',
