@@ -10,6 +10,10 @@
 <!-- Numero de version -->
 <xsl:variable name="version">
 	<xsl:value-of select="/data/package/version" />
+	<xsl:if test="string-length($build) != 0">
+		<xsl:text>.</xsl:text>
+		<xsl:value-of select="$build" />
+	</xsl:if>
 	<xsl:if test="$debug = true()">
 		<xsl:text>-</xsl:text>
 		<xsl:value-of select="$today" />
