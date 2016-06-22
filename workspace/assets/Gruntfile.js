@@ -353,7 +353,7 @@ module.exports = function (grunt) {
 		});
 
 		// ftps boot
-		grunt.registerTask('ftps_boot', 'Cleans shit up', function () {
+		grunt.registerTask('ftps_boot', 'Creates FTP files', function () {
 			grunt.file.write(FTP_PASS, JSON.stringify(FTP_FILE));
 		});
 
