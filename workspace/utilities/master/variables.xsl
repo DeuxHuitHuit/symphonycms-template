@@ -4,6 +4,9 @@
 <!-- Site reference code -->
 <xsl:variable name="site-ref" select="/data/package/name" />
 
+<!-- Dev env -->
+<xsl:variable name="dev" select="contains($root, '.288dev.com')" />
+
 <!-- Numero de version -->
 <xsl:variable name="version">
 	<xsl:value-of select="/data/package/version" />
@@ -15,7 +18,7 @@
 
 <!-- Debug flag -->
 <xsl:variable name="debug" select="
-	contains($root, '.288dev.com') and
+	$dev = true() and
 	count(/data/params/url-no-debug) = 0 and
 	count(/data/params/url-nodebug) = 0 and
 	count(/data/params/url-ndbg) = 0 and
