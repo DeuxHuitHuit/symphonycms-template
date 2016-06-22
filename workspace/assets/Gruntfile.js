@@ -63,7 +63,7 @@ module.exports = function (grunt) {
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
 			'<%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
-			'* Licensed <%= pkg.license %> */'
+			'* <%= pkg.license %> license */'
 		},
 		concat: {
 			options: {
