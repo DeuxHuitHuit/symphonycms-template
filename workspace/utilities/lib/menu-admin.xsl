@@ -27,7 +27,7 @@
 				<xsl:choose>
 					<xsl:when test="$debug = true()">
 						<span class="debug">
-							Running DEV CODE.
+							<xsl:text>DEV CODE</xsl:text>
 							<a data-action="full" href="?use-build">
 								I want to test builds
 							</a>
@@ -35,7 +35,17 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<span class="build">
-							Running build X
+							<strong>
+								<xsl:choose>
+									<xsl:when test="string-length(/data/build/last) != 0">
+										<xsl:text>Build </xsl:text>
+										<xsl:value-of select="/data/build/last" />
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:text>No build infos found.</xsl:text>
+									</xsl:otherwise>
+								</xsl:choose>
+							</strong>
 						</span>
 					</xsl:otherwise>
 				</xsl:choose>
