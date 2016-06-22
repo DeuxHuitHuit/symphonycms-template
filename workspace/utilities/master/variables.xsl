@@ -7,6 +7,15 @@
 <!-- Dev env -->
 <xsl:variable name="dev" select="contains($root, '.288dev.com')" />
 
+<!-- Numero de build, si disponible et valide -->
+<xsl:variable name="build">
+	<xsl:if test="
+		/data/params/use-build = 'yes' and
+		string-length(/data/build/last) != 0">
+		<xsl:value-of select="/data/build/last" />
+	</xsl:if>
+</xsl:variable>
+
 <!-- Numero de version -->
 <xsl:variable name="version">
 	<xsl:value-of select="/data/package/version" />
