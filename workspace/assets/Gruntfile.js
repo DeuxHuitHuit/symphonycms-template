@@ -2,9 +2,6 @@
 var md = require('matchdep');
 var stripJsonComments = require('strip-json-comments');
 
-// Object holder for svn infos
-global.svn_info = {};
-
 module.exports = function (grunt) {
 
 	'use strict';
@@ -58,7 +55,7 @@ module.exports = function (grunt) {
 		},
 		meta: {
 			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-			'r<%= svninfo.rev %> - build <%= buildnum.num %> - ' +
+			'r<%= svninfo.last.rev %> - build <%= buildnum.num %> - ' +
 			'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
@@ -288,6 +285,7 @@ module.exports = function (grunt) {
 
 		svninfo: {
 			options: {
+				cwd: '../../'
 			}
 		},
 
