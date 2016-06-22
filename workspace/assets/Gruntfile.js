@@ -337,9 +337,25 @@ module.exports = function (grunt) {
 					b = grunt.file.readJSON(options.file);
 				} catch (e) {}
 				
+				b.previous = {
+					lastBuild: b.lastBuild,
+					svn: Object.assign({}, b.svn)
+				};
+				
 				b.lastBuild = b.lastBuild > 0 ? b.lastBuild + 1 : 1;
 				
-				grunt.file.write(options.file, JSON.stringify(b));
+				b.date = (new Date()).toISOString();
+				
+				var svn = grunt.config.get('svninfo');
+				if (!!svn) {
+					b.svn = {
+						rev: svn.rev,
+						last: svn.last,
+						url: svn.url
+					};
+				}
+				
+				grunt.file.write(options.file, JSON.stringify(b, null, 4));
 				
 				return b.lastBuild;
 			};
