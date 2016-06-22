@@ -15,11 +15,10 @@
 <xsl:import href="../../../extensions/datetime/utilities/datetime.xsl" />
 
 <xsl:template name="master-body">
-
 	<!-- Body -->
 	<body 
 		class="{$url-language} page-{$full-page-handle}" 
-		data-version="{$version}" >
+		data-version="{$version}">
 		
 		<!-- Site -->
 		<div id="site">
