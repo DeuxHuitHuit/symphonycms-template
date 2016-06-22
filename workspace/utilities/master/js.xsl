@@ -4,14 +4,6 @@
 <xsl:template name="master-js">
 	<xsl:param name="extra-js" />
 	
-	<!-- IE JS -->
-	<xsl:call-template name="ie-cc">
-		<xsl:with-param name="content">
-			<!-- BBQ -->
-			<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.ba-bbq/1.2.1/jquery.ba-bbq.min.js"></script>
-		</xsl:with-param>
-	</xsl:call-template>
-	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">
 			<!-- Remote Libs -->
