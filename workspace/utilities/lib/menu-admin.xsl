@@ -22,6 +22,24 @@
 					<xsl:text>DEBUG</xsl:text>
 				</a>
 			</xsl:if>
+
+			<xsl:if test="count(/data/params/use-build) != 0">
+				<xsl:choose>
+					<xsl:when test="$debug = true()">
+						<span class="debug">
+							Running DEV CODE.
+							<a data-action="full" href="?use-build">
+								I want to test builds
+							</a>
+						</span>
+					</xsl:when>
+					<xsl:otherwise>
+						<span class="build">
+							Running build X
+						</span>
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:if>
 			
 			<a data-action="full" href="/symphony/logout/">Déconnexion</a>
 			
