@@ -255,7 +255,6 @@ module.exports = function (grunt) {
 				
 				// warnings
 				'font-sizes': true,
-				'unqualified-attributes': true,
 				
 				// disable
 				important: false,
@@ -269,7 +268,9 @@ module.exports = function (grunt) {
 				'box-sizing': false,
 				'qualified-headings': false,
 				'fallback-colors': false,
-				'bulletproof-font-face': false
+				'bulletproof-font-face': false,
+				'regex-selectors': false,
+				'unqualified-attributes': false
 			},
 			src: ['css/main.css']
 		},
