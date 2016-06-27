@@ -383,7 +383,7 @@ module.exports = function (grunt) {
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
 		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
 		grunt.registerTask('css',     ['bundle', 'less', 'purifycss', 'csso']);
-		grunt.registerTask('build',   ['buildnum', 'svninfo', 'js', 'css']);
+		grunt.registerTask('build',   ['svninfo', 'buildnum', 'js', 'css']);
 		grunt.registerTask('default', ['dev', 'build']);
 		
 		// visit grunt
