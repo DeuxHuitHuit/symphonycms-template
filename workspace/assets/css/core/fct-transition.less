@@ -20,6 +20,14 @@
 			transition: @arguments;
 }
 
+#transition-property (...) {
+	-webkit-transition-property: @arguments;
+	   -moz-transition-property: @arguments;
+		-ms-transition-property: @arguments;
+		 -o-transition-property: @arguments;
+			transition-property: @arguments;
+}
+
 #transition-duration (@duration) {
 	-webkit-transition-duration: @duration;
 	   -moz-transition-duration: @duration;
