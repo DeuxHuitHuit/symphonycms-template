@@ -1,0 +1,128 @@
+
+#generate-padding-all-classes() ;
+#generate-margin-all-classes() ;
+
+// FROM
+#mq-min-width(@screen-ip, {
+	#generate-padding-all-classes(~'-from-ip');
+	#generate-margin-all-classes(~'-from-ip');
+});
+
+#mq-min-width(@screen-ph, {
+	#generate-padding-all-classes(~'-from-ph');
+	#generate-margin-all-classes(~'-from-ph');
+});
+
+#mq-min-width(@screen-xs, {
+	#generate-padding-all-classes(~'-from-xs');
+	#generate-margin-all-classes(~'-from-xs');
+});
+
+#mq-desktop-design({
+	#generate-padding-all-classes(~'-from-desktop');
+	#generate-margin-all-classes(~'-from-desktop');
+});
+
+#mq-min-width(@screen-sm, {
+	#generate-padding-all-classes(~'-from-sm');
+	#generate-margin-all-classes(~'-from-sm');
+});
+
+#mq-min-width(@screen-md, {
+	#generate-padding-all-classes(~'-from-md');
+	#generate-margin-all-classes(~'-from-md');
+});
+
+#mq-min-width(@screen-lg, {
+	#generate-padding-all-classes(~'-from-lg');
+	#generate-margin-all-classes(~'-from-lg');
+});
+
+#mq-min-width(@screen-xl, {
+	#generate-padding-all-classes(~'-from-xl');
+	#generate-margin-all-classes(~'-from-xl');
+});
+
+#mq-min-width(@screen-hd, {
+	#generate-padding-all-classes(~'-from-hd');
+	#generate-margin-all-classes(~'-from-hd');
+});
+
+/*
+#mq-min-width(@screen-2k, {
+	#generate-padding-all-classes(~'-from-2k');
+	#generate-margin-all-classes(~'-from-2k');
+});
+
+#mq-min-width(@screen-4k, {
+	#generate-padding-all-classes(~'-from-4k');
+	#generate-margin-all-classes(~'-from-4k');
+});
+*/
+
+// TO
+/*
+#mq-max-width(@screen-4k - 1, {
+	#generate-padding-all-classes(~'-to-4k');
+	#generate-margin-all-classes(~'-to-4k');
+});
+
+#mq-max-width(@screen-2k - 1, {
+	#generate-padding-all-classes(~'-to-2k');
+	#generate-margin-all-classes(~'-to-2k');
+});
+*/
+
+#mq-max-width(@screen-hd - 1, {
+	#generate-padding-all-classes(~'-to-hd');
+	#generate-margin-all-classes(~'-to-hd');
+});
+
+#mq-max-width(@screen-xl - 1, {
+	#generate-padding-all-classes(~'-to-xl');
+	#generate-margin-all-classes(~'-to-xl');
+});
+
+#mq-max-width(@screen-lg - 1, {
+	#generate-padding-all-classes(~'-to-lg');
+	#generate-margin-all-classes(~'-to-lg');
+});
+
+#mq-max-width(@screen-md - 1, {
+	#generate-padding-all-classes(~'-to-md');
+	#generate-margin-all-classes(~'-to-md');
+});
+
+#mq-max-width(@screen-sm - 1, {
+	#generate-padding-all-classes(~'-to-sm');
+	#generate-margin-all-classes(~'-to-sm');
+});
+
+#mq-mobile-design({
+	#generate-padding-all-classes(~'-to-desktop');
+	#generate-margin-all-classes(~'-to-desktop');
+});
+
+#mq-max-width(@screen-xs - 1, {
+	#generate-padding-all-classes(~'-to-xs');
+	#generate-margin-all-classes(~'-to-xs');
+});
+
+#mq-max-width(@screen-ph - 1, {
+	#generate-padding-all-classes(~'-to-ph');
+	#generate-margin-all-classes(~'-to-ph');
+});
+
+/*
+#mq-max-width(@screen-ip - 1, {
+	#generate-padding-all-classes(~'-to-ip');
+	#generate-margin-all-classes(~'-to-ip');
+});
+*/
+
+// FROM PH TO SM
+.padding-large-from-ph-to-sm {
+	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
+		padding: @spacing-large;
+	});
+}

@@ -1,354 +1,196 @@
 //=====================================
 // = PADDING CLASS
 //=====================================
-//ZERO VALUE
-.padding-0, .padding-none {
-	padding: 0;
+#generate-padding-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'padding', ~'padding', @value-name, @value, @direction, @suffix,);
 }
 
-//Spacing Value All direction
-.padding-pico {
-	padding: @spacing-pico;
+#generate-padding-classes (@direction: ~'', @suffix: ~'') {
+	
+	//-------------------------------------------
+	// USEFULL PADDING 
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'0', 0);
+	#generate-padding-classes-value(@direction, @suffix, ~'none', 0);
+	#generate-padding-classes-value(@direction, @suffix, ~'none-important', ~'0 !important');
+	
+	//-------------------------------------------
+	// SPACING PADDING 
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'atto', 			@spacing-atto);
+	#generate-padding-classes-value(@direction, @suffix, ~'femto', 			@spacing-femto);
+	#generate-padding-classes-value(@direction, @suffix, ~'pico', 			@spacing-pico);
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-nano', 		@spacing-nano * 0.5);
+	#generate-padding-classes-value(@direction, @suffix, ~'nano', 			@spacing-nano);
+	#generate-padding-classes-value(@direction, @suffix, ~'micro', 			@spacing-micro);
+	#generate-padding-classes-value(@direction, @suffix, ~'xsmall', 		@spacing-xsmall);
+	#generate-padding-classes-value(@direction, @suffix, ~'smallest', 		@spacing-smallest);
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-smaller', 	@spacing-smaller * 0.5);
+	#generate-padding-classes-value(@direction, @suffix, ~'smaller', 		@spacing-smaller);
+	//#generate-padding-classes-value(@direction, @suffix, ~'smaller-double', @spacing-smaller * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'small', 			@spacing-small);
+	#generate-padding-classes-value(@direction, @suffix, ~'mid', 			@spacing-mid);
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-large', 	@spacing-large * 0.5);
+	#generate-padding-classes-value(@direction, @suffix, ~'large', 			@spacing-large);
+	#generate-padding-classes-value(@direction, @suffix, ~'larger', 		@spacing-larger);
+	#generate-padding-classes-value(@direction, @suffix, ~'largest', 		@spacing-largest);
+	#generate-padding-classes-value(@direction, @suffix, ~'xlarge', 		@spacing-xlarge);
+	#generate-padding-classes-value(@direction, @suffix, ~'huge', 			@spacing-huge);
+	#generate-padding-classes-value(@direction, @suffix, ~'mega', 			@spacing-mega);
+	#generate-padding-classes-value(@direction, @suffix, ~'giga', 			@spacing-giga);
+	#generate-padding-classes-value(@direction, @suffix, ~'tera', 			@spacing-tera);
+	#generate-padding-classes-value(@direction, @suffix, ~'peta', 			@spacing-peta);
+	#generate-padding-classes-value(@direction, @suffix, ~'zetta', 			@spacing-zetta);
+	#generate-padding-classes-value(@direction, @suffix, ~'yotta', 			@spacing-yotta);
+	
+	//-------------------------------------------
+	// RATIONNAL PADDING
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'1_2', 50%);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_3', 100% / 3 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_3', 100% / 3 * 4);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_4', 100% / 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_4', 100% / 4 * 3);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_5', 100% / 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_5', 100% / 5 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_5', 100% / 5 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_5', 100% / 5 * 4);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_6', 100% / 6);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_6', 100% / 6 * 5);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_7', 100% / 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_7', 100% / 7 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_7', 100% / 7 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_7', 100% / 7 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_7', 100% / 7 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'6_7', 100% / 7 * 6);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_8', 100% / 8);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_8', 100% / 8 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_8', 100% / 8 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_8', 100% / 8 * 7);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_9', 100% / 9);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_9', 100% / 9 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_9', 100% / 9 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_9', 100% / 9 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_9', 100% / 9 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'8_9', 100% / 9 * 8);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_10', 100% / 10);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'9_16', 100% / 16 * 9);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'full', 100%);
 }
 
-.padding-nano {
-	padding: @spacing-nano;
+#generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);
 }
 
-.padding-micro {
-	padding: @spacing-micro;
+#generate-padding-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
+	
+	//-------------------------------------------
+	// USEFULL TWO AXES PADDING 
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', 0);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', 0);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none-important', ~'0 !important');
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', auto);
+
+	//-------------------------------------------
+	// SPACING TWO AXES PADDING 
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 				@spacing-atto);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			@spacing-femto);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 				@spacing-pico);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 				@spacing-nano);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 			@spacing-micro);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xsmall', 			@spacing-xsmall);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 			@spacing-smallest);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 		@spacing-smaller * 0.5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 			@spacing-smaller);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller-double', 	@spacing-smaller * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 			@spacing-small);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mid', 				@spacing-mid);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-large', 		@spacing-large * 0.5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 			@spacing-large);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 			@spacing-larger);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 			@spacing-largest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xlarge', 			@spacing-xlarge);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'huge', 				@spacing-huge);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 				@spacing-mega);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 				@spacing-giga);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 				@spacing-tera);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 				@spacing-peta);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 			@spacing-zetta);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 			@spacing-yotta);
+	
+	//-------------------------------------------
+	// RATIONNAL TWO AXES PADDING
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half', 50%);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3', 100% / 3 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_3', 100% / 3 * 4);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4', 100% / 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4', 100% / 4 * 3);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5', 100% / 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5', 100% / 5 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5', 100% / 5 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5', 100% / 5 * 4);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6', 100% / 6);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6', 100% / 6 * 5);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7', 100% / 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7', 100% / 7 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7', 100% / 7 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7', 100% / 7 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7', 100% / 7 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7', 100% / 7 * 6);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8', 100% / 8);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8', 100% / 8 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8', 100% / 8 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8', 100% / 8 * 7);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9', 100% / 9);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9', 100% / 9 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9', 100% / 9 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9', 100% / 9 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9', 100% / 9 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9', 100% / 9 * 8);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_10', 100% / 10);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'full', 100%);
 }
 
-.padding-smallest {
-	padding: @spacing-smallest;
-}
-
-.padding-smaller {
-	padding: @spacing-smaller;
-}
-
-.padding-small {
-	padding: @spacing-small;
-}
-
-.padding-mid {
-	padding: @spacing-mid;
-}
-
-.padding-large {
-	padding: @spacing-large;
-}
-
-.padding-larger {
-	padding: @spacing-larger;
-}
-
-.padding-largest {
-	padding: @spacing-largest;
-}
-
-.padding-very-large {
-	padding: @spacing-very-large;
-}
-
-.padding-xlarge {
-	padding: @spacing-xlarge;
-}
-
-.padding-huge {
-	padding: @spacing-huge;
-}
-
-
-
-// Responsive Spacing Value All direction
-// FROM PH
-.padding-small-from-ph {
-	#mq-min-width(@screen-ph, {
-		.padding-small;
-	});
-}
-
-// FROM XS
-.padding-smallest-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-smallest;
-	});
-}
-
-.padding-small-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-small;
-	});
-}
-
-.padding-large-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-large;
-	});
-}
-
-.padding-xlarge-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-xlarge;
-	});
-}
-
-
-// FROM SM
-.padding-none-from-sm {
-	#mq-min-width(@screen-sm, {
-		.padding-none;
-	});
-}
-
-.padding-mid-from-sm {
-	#mq-min-width(@screen-sm, {
-		.padding-mid;
-	});
-}
-
-.padding-smallest-from-sm {
-	#mq-min-width(@screen-sm, {
-		padding: @spacing-smallest;
-	});
-}
-
-.padding-largest-from-sm {
-	#mq-min-width(@screen-sm, {
-		padding: @spacing-largest;
-	});
-}
-
-.padding-xlarge-from-sm {
-	#mq-min-width(@screen-sm, {
-		.padding-xlarge;
-	});
-}
-
-// FROM MD
-.padding-mid-from-md {
-	#mq-min-width(@screen-md, {
-		padding: @spacing-mid;
-	});
-}
-
-.padding-xlarge-from-md {
-	#mq-min-width(@screen-md, {
-		.padding-xlarge;
-	});
-}
-
-// TO XS
-.padding-micro-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		.padding-micro;
-	});
-}
-
-
-
-// FROM PH TO SM
-.padding-large-from-ph-to-sm {
-	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
-		.padding-large;
-	});
-}
-
-//=====================================
-// = PADDING HORIZONTAL CLASS
-//=====================================
-.padding-horizontal-none {
-	padding-right: 0;
-	padding-left: 0;
-}
-
-.padding-horizontal-pico {
-	padding-right: @spacing-pico;
-	padding-left: @spacing-pico;
-}
-
-.padding-horizontal-nano {
-	padding-right: @spacing-nano;
-	padding-left: @spacing-nano;
-}
-
-.padding-horizontal-smallest {
-	padding-right: @spacing-smallest;
-	padding-left: @spacing-smallest;
-}
-
-.padding-horizontal-smaller {
-	padding-right: @spacing-smaller;
-	padding-left: @spacing-smaller;
-}
-
-.padding-horizontal-small {
-	padding-right: @spacing-small;
-	padding-left: @spacing-small;
-}
-
-.padding-horizontal-mid {
-	padding-right: @spacing-mid;
-	padding-left: @spacing-mid;
-}
-
-.padding-horizontal-large {
-	padding-right: @spacing-large;
-	padding-left: @spacing-large;
-}
-
-.padding-horizontal-larger {
-	padding-left: @spacing-larger;
-	padding-right: @spacing-larger;
-}
-
-.padding-horizontal-largest {
-	padding-left: @spacing-largest;
-	padding-right: @spacing-largest;
-}
-
-.padding-horizontal-xlarge {
-	padding-right: @spacing-xlarge;
-	padding-left: @spacing-xlarge;
-}
-
-.padding-horizontal-huge {
-	padding-right: @spacing-huge;
-	padding-left: @spacing-huge;
-}
-
-
-
-// FROM XS
-
-.padding-horizontal-none-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-horizontal-none;
-	});
-}
-
-.padding-horizontal-smaller-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-horizontal-smaller;
-	});
-}
-
-.padding-horizontal-large-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-horizontal-large;
-	});
-}
-
-
-.padding-horizontal-xlarge-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-horizontal-xlarge;
-	});
-}
-
-.padding-horizontal-huge-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-horizontal-huge;
-	});
-}
-
-// FROM SM
-.padding-horizontal-smaller-from-sm {
-	#mq-min-width(@screen-sm, {
-		.padding-horizontal-smaller;
-	});
-}
-
-.padding-horizontal-large-from-sm {
-	#mq-min-width(@screen-sm, {
-		.padding-horizontal-large;
-	});
-}
-
-
-//=====================================
-// = PADDING VERTICAL CLASS
-//=====================================
-.padding-vertical-smallest {
-	padding-top: @spacing-smallest;
-	padding-bottom: @spacing-smallest;
-}
-
-.padding-vertical-smaller {
-	padding-top: @spacing-smaller;
-	padding-bottom: @spacing-smaller;
-}
-
-.padding-vertical-small {
-	padding-top: @spacing-small;
-	padding-bottom: @spacing-small;
-}
-
-.padding-vertical-mid {
-	padding-top: @spacing-mid;
-	padding-bottom: @spacing-mid;
-}
-
-.padding-vertical-large {
-	padding-top: @spacing-large;
-	padding-bottom: @spacing-large;
-}
-
-.padding-vertical-larger {
-	padding-top: @spacing-larger;
-	padding-bottom: @spacing-larger;
-}
-
-.padding-vertical-largest {
-	padding-top: @spacing-largest;
-	padding-bottom: @spacing-largest;
-}
-
-.padding-vertical-xlarge {
-	padding-top: @spacing-xlarge;
-	padding-bottom: @spacing-xlarge;
-}
-
-.padding-vertical-huge {
-	padding-top: @spacing-huge;
-	padding-bottom: @spacing-huge;
-}
-
-.padding-vertical-mega {
-	padding-top: @spacing-mega;
-	padding-bottom: @spacing-mega;
-}
-
-// FROM XS
-.padding-vertical-xlarge-from-xs {
-	#mq-min-width(@screen-xs, {
-		.padding-vertical-xlarge;
-	});
-}
-
-.padding-vertical-large-to-sm {
-	#mq-max-width((@screen-sm - 1), {
-		.padding-vertical-large;
-	});
-}
-
-.padding-vertical-xlarge-to-sm {
-	#mq-max-width((@screen-sm - 1), {
-		.padding-vertical-xlarge;
-	});
-}
-
-.padding-vertical-huge-to-sm {
-	#mq-max-width((@screen-sm - 1), {
-		.padding-vertical-huge;
-	});
-}
-
-
-// TO XS
-.padding-vertical-small-to-xs {
-	#mq-max-width((@screen-xs - 1), {
-		.padding-vertical-small;
-	});
+#generate-padding-all-classes(@suffix: ~'') {
+	#generate-padding-classes(~'', @suffix);
+	
+	#generate-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-padding-classes(~'-bottom', @suffix);
+	#generate-padding-classes(~'-left', @suffix);
+	#generate-padding-classes(~'-right', @suffix);
+	#generate-padding-classes(~'-top', @suffix);
 }

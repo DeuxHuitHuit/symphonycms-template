@@ -4,15 +4,18 @@
 //=========================
 
 #add-grayscale (){
-	/* Firefox 4+ */
+	//Firefox 4+
 	filter: url(~"@{svg-path}grayscale.svg#grayscale");
-	filter: gray; /* IE 6-9 */
+	//IE 6-9
+	filter: gray; 
+	
 	-webkit-filter: grayscale(100%);
 }
 
 #remove-grayscale (){
 	-webkit-filter: grayscale(0%);
 
-	/* Firefox 4+ */
-	filter: none; /* IE 6-9 */
+	//Firefox 4+
+	//IE 6-9
+	filter: none;
 }

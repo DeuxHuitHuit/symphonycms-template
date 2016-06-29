@@ -4,47 +4,48 @@
 //===========================
 
 .square-micro {
-	#sq(@spacing-micro);
+	width: @spacing-micro;
+	height: @spacing-micro;
 }
 
 .square-smallest {
-	#sq(@spacing-smallest);
-}
-
-.square-smallest-and-half {
-	#sq(@spacing-smallest * 1.5);
-}
-
-.square-smallest-and-quarter {
-	#sq(@spacing-smallest * 1.25);
+	width: @spacing-smallest;
+	height: @spacing-smallest;
 }
 
 .square-smaller {
-	#sq(@spacing-smaller);
+	width: @spacing-smaller;
+	height: @spacing-smaller;
 }
 
 .square-small {
-	#sq(@spacing-small);
+	width: @spacing-small;
+	height: @spacing-small;
 }
 
 .square-mid {
-	#sq(@spacing-mid);
+	width: @spacing-mid;
+	height: @spacing-mid;
 }
 
 .square-large {
-	#sq(@spacing-large);
+	width: @spacing-large;
+	height: @spacing-large;
 }
 
 .square-larger {
-	#sq(@spacing-larger);
+	width: @spacing-larger;
+	height: @spacing-larger;
 }
 
 .square-largest {
-	#sq(@spacing-largest);
+	width: @spacing-largest;
+	height: @spacing-largest;
 }
 
 .square-huge {
-	#sq(@spacing-huge);
+	width: @spacing-huge;
+	height: @spacing-huge;
 }
 
 //=== SQUARE ==== RESPONSIVE ==========
@@ -52,6 +53,7 @@
 
 .square-mid-to-sm {
 	#mq-max-width(@screen-sm - 1, {
-		#sq(@spacing-mid);
+		width: @spacing-mid;
+		height: @spacing-mid;
 	});
 }

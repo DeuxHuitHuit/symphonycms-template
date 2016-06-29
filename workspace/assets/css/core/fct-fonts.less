@@ -3,25 +3,6 @@
 // = FONTS FUNCTIONS
 //=========================
 
-#font-size () {
-	font-size: inherit;
-	line-height: inherit;
-}
-
-#font-size (@size) {
-	#font-size-ratio(@size);
-}
-
-#font-size (@size, @line-height) {
-	font-size: @size;
-	line-height: @line-height;
-}
-
-#font-size-ratio (@size, @ratio: @golden-ratio) {
-	font-size: @size;
-	line-height: @size * @ratio;
-}
-
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
 #font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
 	font-family: @font-family;

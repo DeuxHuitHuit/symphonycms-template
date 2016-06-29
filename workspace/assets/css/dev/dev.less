@@ -4,17 +4,29 @@
 	outline-offset: 10px;
 }
 
-.DEPRECATED {
-	outline: rgba(255,200,0,36%) 1px solid;
+.DEPRECATED(@name: ~'') {
+	outline: rgba(255,0,0,36%) 5px solid;
 	outline-offset: 10px;
-}
-
-.desaturate-dummy-images when (@debug = true) {
-	img[alt=""], .jit-image-bg {
-		#filter(~'grayscale(100%) brightness(250%) contrast(50%)');
-		mix-blend-mode: multiply;
+	position: relative;
+	
+	&:before {
+		content: 'DEPRECATED @{name}';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(255,0,0,40%);
+		font-size: 14px;
 	}
 }
+
+//.desaturate-dummy-images when (@debug = true) {
+//	img[alt=""], .jit-image-bg {
+//		#filter(~'grayscale(100%) brightness(250%) contrast(50%)');
+//		mix-blend-mode: multiply;
+//	}
+//}
 
 .show-classes-on-hover {
 	 *[class]:hover:before {
