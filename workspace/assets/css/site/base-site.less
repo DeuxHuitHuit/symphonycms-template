@@ -5,24 +5,19 @@
 html {
 	min-height: 100%;
 	overflow: visible;
-	
+
 	body {
 		-webkit-font-feature-settings: "hist";
 		min-height: 100%;
-		.overflow-y-scroll;
-		.overflow-x-hidden;
-		
-		#selection-color({
-			background-color: @dark;
-			color: @light;
-		});
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 	
 	&.no-scroll {
 		overflow: hidden;
 		
 		body {
-			.overflow-y-hidden;
+			overflow-y: hidden;
 		}
 	}
 	
@@ -44,11 +39,6 @@ html {
 	position: relative;
 }
 
-#site-pages .page {
+#site-pages {
 	
-}
-
-// @TODO : Add to reset?
-#site address {
-	font-style: normal;
 }
