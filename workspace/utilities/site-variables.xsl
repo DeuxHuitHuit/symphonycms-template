@@ -22,7 +22,7 @@
 	</xsl:choose>
 </xsl:variable>
 
-<xsl:variable name="default-share-page-title" >
+<xsl:variable name="default-share-page-title">
 	<xsl:variable name="cur-page-title">
 		<xsl:call-template name="page-title" />
 	</xsl:variable>
