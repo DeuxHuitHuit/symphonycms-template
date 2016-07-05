@@ -2,6 +2,10 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="page-title">
+	<xsl:call-template name="default-page-title" />
+</xsl:template>
+
+<xsl:template name="default-page-title">
 	<xsl:variable name="plh-page-title" select="/data/plh-page//page [@handle=$current-page]/item [@lang=$url-language]" />
 	
 	<xsl:choose>
@@ -12,7 +16,6 @@
 			<xsl:value-of select="$page-title" />
 		</xsl:otherwise>
 	</xsl:choose>
-	
 </xsl:template>
 
 </xsl:stylesheet>
