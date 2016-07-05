@@ -23,7 +23,21 @@
 </xsl:variable>
 
 <xsl:variable name="default-share-page-title" >
-	<xsl:call-template name="default-master-title" />
+	<xsl:variable name="cur-page-title">
+		<xsl:call-template name="page-title" />
+	</xsl:variable>
+	
+	<xsl:choose>
+		<xsl:when test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
+			<xsl:value-of select="$cur-page-title"/>
+		</xsl:when>
+		<xsl:when test="string-length($site-name) != 0">
+			<xsl:value-of select="$site-name" />
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$website-name" />
+		</xsl:otherwise>
+	</xsl:choose>
 </xsl:variable>
 
 <!-- Site URLs -->
