@@ -1,410 +1,637 @@
-/**
- * Anim classes
+/*
+ * HTML
  */
+html {
+	line-height: normal;
+	font-family: serif;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+*:focus {
+	#no-outline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	img {
+		border: none;
+		display: block;
+	}
+}
+
+/*
+ * HTML5
+ */
+section, nav, article, footer, header, menu, aside, figure, figcaption {
+	display: block;
+	margin: 0;
+	padding: 0;
+	position: static;
+}
+
+input, textarea, keygen, select, button {
+	font-family: serif;
+}
+
+figure {
+	margin: 0;
+}
+
+blockquote {
+	margin: 0;
+	padding: 0;
+}
+
+address {
+	font-style: normal;
+}
+
+/*
+ * FORMS
+ */
+button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+/* 
+ * CSS 3
+ */
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+}
+
+/*
+ * SVG
+ */
+svg {
+	text, textpath {
+		alignment-baseline: central;
+		text-rendering: geometricPrecision;
+	}
+}
+
+
+
+//=========================
+// = RESPONSIVE FONT SIZE FOR REM
+//=========================
+
+html {
+	font-size: 37.5%;
+	
+	#mq-min-px-ratio(1.5, {
+		font-size: 31.25%;
+		
+		#mq-min-width(@screen-xs, {
+			font-size: 37.5%;
+		});
+	});
+	
+	#mq-min-width(@screen-xs, {
+		font-size: 50%;
+	});
+
+	#mq-min-width(@screen-md, {
+		font-size: 62.5%;
+	});
+}
  
-.noanim {
-	&, & * {
-		#transition(none) !important;
-	}
+//=========================
+// = BACKFACE-VISIBILITY CLASS
+//=========================
+
+.backface-visibility-hidden {
+	.DEPRECATED(~' Use .backface-hidden');
+	#backface();
+}
+
+.backface-hidden {
+	#backface();
 }
 
 //=========================
-// = MULTILE COLUMNS VENDOR PREFIXES MIXINS
+// = BACKGROUND-COLOR CLASS
 //=========================
-
-#content-columns(@column-count: 1, @column-gap: 20px) {
-	#column-count(@column-count);
-	#column-gap(@column-gap);
+.bg-color-transparent {
+	background-color: transparent;
 }
 
-#column-count (@column-count) {
-	-webkit-column-count: @column-count;
-	   -moz-column-count: @column-count;
-	        column-count: @column-count;
+.bg-color-white {
+	background-color: @white;
 }
 
-#column-gap (@column-gap) {
-	-webkit-column-gap: @column-gap;
-	   -moz-column-gap: @column-gap;
-	        column-gap: @column-gap;
+.bg-color-black {
+	background-color: @black;
 }
 
-#column-span (@column-span) {
-	-webkit-column-span: @column-span;
-	-moz-column-span: @column-span;
-	column-span: @column-span;
+.background-color-transparent {
+	.DEPRECATED(~' Use .bg-color-transparent');
+	background-color: transparent;
 }
 
-//=========================
-// = VENDOR PREFIXES
-//=========================
-
-/* BORDER RADIUS */
-#border-radius (@br) {
-	-webkit-border-radius: @br;
-	   -moz-border-radius: @br;
-			border-radius: @br;
+.background-color-white {
+	.DEPRECATED(~' Use .bg-color-white');
+	background-color: @white;
 }
 
-/* TRANSITION */
-#transition (...) {
-	-webkit-transition: @arguments;
-	   -moz-transition: @arguments;
-		-ms-transition: @arguments;
-		 -o-transition: @arguments;
-			transition: @arguments;
+.background-color-black {
+	.DEPRECATED(~' Use .bg-color-black');
+	background-color: @black;
 }
-
-#transition-delay (@delay) {
-	-webkit-transition-delay: @delay;
-	   -moz-transition-delay: @delay;
-		-ms-transition-delay: @delay;
-		 -o-transition-delay: @delay;
-			transition-delay: @delay;
-}
-
-#transition-duration (@duration) {
-	-webkit-transition-duration: @duration;
-	   -moz-transition-duration: @duration;
-		-ms-transition-duration: @duration;
-		 -o-transition-duration: @duration;
-			transition-duration: @duration;
-}
-
-#cb-transition (...) {
-	-webkit-transition: ~"-webkit-@{arguments}";
-	   -moz-transition: ~"-moz-@{arguments}";
-		-ms-transition: ~"-ms-@{arguments}";
-		 -o-transition: ~"-o-@{arguments}";
-			transition: @arguments;
-}
-
-/* TRANSFORM */
-#transform (...) {
-	-webkit-transform: @arguments;
-	   -moz-transform: @arguments;
-		-ms-transform: @arguments;
-		 -o-transform: @arguments;
-			transform: @arguments;
-}
-
-#transform-origin (@origin) {
-	-webkit-transform-origin: @origin;
-	   -moz-transform-origin: @origin;
-		-ms-transform-origin: @origin;
-		 -o-transform-origin: @origin;
-			transform-origin: @origin;
-}
-
-/* TRANSLATE */
-#translate2d (@x, @y) {
-	-webkit-transform:translate(@x, @y);
-	   -moz-transform:translate(@x, @y);
-		-ms-transform:translate(@x, @y);
-		 -o-transform:translate(@x, @y);
-			transform:translate(@x, @y);
-}
-
-#translate (@x, @y, @z:0px) {
-	#translate2d(@x, @y);
-
-	-webkit-transform:translate3d(@x, @y, @z);
-	   -moz-transform:translate3d(@x, @y, @z);
-		-ms-transform:translate3d(@x, @y, @z);
-		 -o-transform:translate3d(@x, @y, @z);
-			transform:translate3d(@x, @y, @z);
-}
-
-/* SCALE */
-#scale3d (@scaleX, @scaleY: @scaleX, @scaleZ: 1) {
-	#scale2d(@scaleX, @scaleY);
-	
-	-webkit-transform:scale3d(@scaleX, @scaleY, @scaleZ);
-	   -moz-transform:scale3d(@scaleX, @scaleY, @scaleZ);
-		-ms-transform:scale3d(@scaleX, @scaleY, @scaleZ);
-		 -o-transform:scale3d(@scaleX, @scaleY, @scaleZ);
-			transform:scale3d(@scaleX, @scaleY, @scaleZ);
-}
-
-#scale2d (@scaleX, @scaleY: @scaleX) {
-	-webkit-transform:scale(@scaleX,@scaleY);
-	   -moz-transform:scale(@scaleX,@scaleY);
-		-ms-transform:scale(@scaleX,@scaleY);
-		 -o-transform:scale(@scaleX,@scaleY);
-			transform:scale(@scaleX,@scaleY);
-}
-
-#scale (@scale) {
-	#scale2d(@scale, @scale);
-}
-
-/* ROTATE */
-#rotateZ (@a) {
-	-webkit-transform: rotateZ(@a);
-	   -moz-transform: rotateZ(@a);
-		-ms-transform: rotateZ(@a);
-		 -o-transform: rotateZ(@a);
-			transform: rotateZ(@a);
-}
-
-/* SKEW */
-#skew (@skew) {
-	-webkit-transform: skew(@skew);
-	   -moz-transform: skew(@skew);
-		-ms-transform:scale(@skew); // ms does not support skew
-		 -o-transform: skew(@skew);
-			transform: skew(@skew);
-}
-
-/* FLIP */
-#flipX () {
-	-webkit-transform: scaleX(-1);
-	   -moz-transform: scaleX(-1);
-	     -o-transform: scaleX(-1);
-			transform: scaleX(-1);
-	filter: FlipH;
-	-ms-filter: "FlipH";
-}
-
-#flipY {
-	-webkit-transform: scaleY(-1);
-	   -moz-transform: scaleY(-1);
-	     -o-transform: scaleY(-1);
-			transform: scaleY(-1);
-	filter: FlipV;
-	-ms-filter: "FlipV";
-}
-
-/* PERSPECTIVE */
-#perspective (@perspective) {
-	-webkit-perspective: @perspective;
-	   -moz-perspective: @perspective;
-		-ms-perspective: @perspective;
-		 -o-perspective: @perspective;
-			perspective: @perspective;
-}
-
-#perspective-origin (@origin) {
-	-webkit-perspective-origin: @origin;
-	   -moz-perspective-origin: @origin;
-		-ms-perspective-origin: @origin;
-		 -o-perspective-origin: @origin;
-			perspective-origin: @origin;
-}
-
-/* PRESERVE 3D */
-#preserve-3d () {
-	-webkit-transform-style: preserve-3d;
-	   -moz-transform-style: preserve-3d;
-		-ms-transform-style: preserve-3d;
-		 -o-transform-style: preserve-3d;
-			transform-style: preserve-3d;
-}
-
-/* FILTER */
-#filter (@filter) {
-	-webkit-filter: @filter;
-	   -moz-filter: @filter;
-		-ms-filter: @filter;
-		 -o-filter: @filter;
-			filter: @filter;
-}
-
-
-
-/* BOX SIZING */
-#box-sizing (@box-sizing: border-box) {
-	-webkit-box-sizing: @box-sizing;
-	   -moz-box-sizing: @box-sizing;
-		-ms-box-sizing: @box-sizing;
-		 -o-box-sizing: @box-sizing;
-			box-sizing: @box-sizing;
-}
-
-/* BACKGROUND-SIZE */
-#background-size (@bs: cover) {
-	-webkit-background-size: @bs;
-	   -moz-background-size: @bs;
-		-ms-background-size: @bs;
-		 -o-background-size: @bs;
-			background-size: @bs;
-}
-
-/* USER-SELECT */
-#user-select (@select: none) {
-	-webkit-touch-callout: @select;
-	-webkit-user-select: @select;
-	 -khtml-user-select: @select;
-	   -moz-user-select: @select;
-		-ms-user-select: @select;
-			user-select: @select;
-}
-
-/* BACKFACE-VISIBILITY */
-#backface (@visibility: hidden) {
-	-webkit-backface-visibility: @visibility;
-	   -moz-backface-visibility: @visibility;
-	    -ms-backface-visibility: @visibility;
-		 -o-backface-visibility: @visibility;
-			backface-visibility: @visibility;
-}
-
-/* GRAYSCALE */
-#add-grayscale (){
-	/* Firefox 4+ */
-	filter: url(~"@{svg-path}grayscale.svg#grayscale");
-	filter: gray; /* IE 6-9 */
-	-webkit-filter: grayscale(100%);
-}
-
-#remove-grayscale (){
-	-webkit-filter: grayscale(0%);
-
-	/* Firefox 4+ */
-	filter: none; /* IE 6-9 */
-}
-
-#hyphens(@val: auto) {
-  word-wrap: break-word;
-  -webkit-hyphens: @val;
-     -moz-hyphens: @val;
-      -ms-hyphens: @val; 
-       -o-hyphens: @val;
-          hyphens: @val;
-}
-
-//Documentation http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element
-#placeholder (@color) when (iscolor(@color)) {
-	&:-moz-placeholder            { color: @color; } // Firefox 4-18
-	&::-moz-placeholder           { color: @color; } // Firefox 19+
-	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
-	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
-}
-
-#placeholder (@rules) when (false = iscolor(@rules)) {
-	&:-moz-placeholder            { @rules(); } // Firefox 4-18
-	&::-moz-placeholder           { @rules(); } // Firefox 19+
-	&:-ms-input-placeholder       { @rules(); } // Internet Explorer 10+
-	&::-webkit-input-placeholder  { @rules(); } // Safari and Chrome
-}
-
-#animation (...) {
-	-webkit-animation: @arguments;
-	   -moz-animation: @arguments;
-	    -ms-animation: @arguments;
-		 -o-animation: @arguments;
-			animation: @arguments;
-}
-
-#animation-key (@name, @rules) {
-	@-webkit-keyframes @name {
-		@rules();
-	}
-	
-	@-moz-keyframes @name {
-		@rules();
-	}
-	
-	@-ms-keyframes @name {
-		@rules();
-	}
-	
-	@-o-keyframes @name {
-		@rules();
-	}
-
-	/* Standard syntax */
-	@keyframes @name {
-		@rules();
-	}
-}
-
-// GRADIENTS
-// --------------------------------------------------
-
-#gradient {
-
-	// Horizontal gradient, from left to right
-	//
-	// Creates two color stops, start and end, by specifying a color and position for each color stop.
-	// Color stops are not available in IE9 and below.
-	.horizontal (@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
-		background-image: -webkit-gradient(linear, @start-percent top, @end-percent top, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
-		background-image: -webkit-linear-gradient(left, color-stop(@start-color @start-percent), color-stop(@end-color @end-percent)); // Safari 5.1+, Chrome 10+
-		background-image: -moz-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
-		background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
-		background-repeat: repeat-x;
-		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
-	}
-
-	// Vertical gradient, from top to bottom
-	//
-	// Creates two color stops, start and end, by specifying a color and position for each color stop.
-	// Color stops are not available in IE9 and below.
-	.vertical (@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
-		background-image: -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)); // Safari 4+, Chrome 2+
-		background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // Safari 5.1+, Chrome 10+
-		background-image:  -moz-linear-gradient(top, @start-color @start-percent, @end-color @end-percent); // FF 3.6+
-		background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
-		background-repeat: repeat-x;
-		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
-	}
-
-	.directional (@start-color: #555; @end-color: #333; @deg: 45deg) {
-		background-repeat: repeat-x;
-		background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1+, Chrome 10+
-		background-image: -moz-linear-gradient(@deg, @start-color, @end-color); // FF 3.6+
-		background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10
-	}
-
-	.horizontal-three-colors (@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
-		background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
-		background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
-		background-image: -moz-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
-		background-image: linear-gradient(to right, @start-color, @mid-color @color-stop, @end-color);
-		background-repeat: no-repeat;
-		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
-	}
-
-	.vertical-three-colors (@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
-		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
-		background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
-		background-image: -moz-linear-gradient(top, @start-color, @mid-color @color-stop, @end-color);
-		background-image: linear-gradient(@start-color, @mid-color @color-stop, @end-color);
-		background-repeat: no-repeat;
-		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
-	}
-
-	.radial (@inner-color: #555; @outer-color: #333; @x-origin: center; @y-origin: center) {
-		background-image: -webkit-gradient(radial, @x-origin @y-origin, 0, @x-origin @y-origin, 1011, from(@inner-color), to(@outer-color));
-		background-image: -webkit-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
-		background-image: -moz-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
-		background-image: radial-gradient(ellipse farthest-corner at @x-origin @y-origin, @inner-color 0%, @outer-color 100%);
-		background-repeat: no-repeat;
-	}
  
-	.striped (@color: rgba(255,255,255,.15); @angle: 45deg) {
-		background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, @color), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, @color), color-stop(.75, @color), color-stop(.75, transparent), to(transparent));
-		background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
-		background-image: -moz-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
-		background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+//=========================
+// = BACKGROUND-POSITION CLASS
+//=========================
+
+.background-position-center {
+	.DEPRECATED(~' Use: .bg-position-center');
+	background-position: center center;
+}
+
+
+.bg-position-top-left {
+	background-position: top left;
+}
+
+.bg-position-top-center {
+	background-position: top center;
+}
+
+.bg-position-top-right {
+	background-position: top right;
+}
+
+.bg-position-center-left {
+	background-positon: center left;
+}
+
+.bg-position-center {
+	background-position: center;
+}
+
+.bg-position-center-right {
+	background-position: center right;
+}
+
+.bg-position-bottom-left {
+	background-position: bottom left;
+}
+
+.bg-position-bottom-center {
+	background-position: bottom-center;
+}
+
+.bg-position-bottom-right {
+	background-position: bottom right;
+}
+ 
+//=========================
+// = BACKGROUND-REPEAT CLASS
+//=========================
+
+.background-repeat-no-repeat, .background-no-repeat {
+	.DEPRECATED(~' USE: .bg-no-repeat');
+	background-repeat: no-repeat;
+}
+
+.bg-no-repeat {
+	background-repeat: no-repeat;
+}
+
+.bg-repeat {
+	background-repeat: repeat;
+}
+
+.bg-repeat-x {
+	background-repeat: repeat-x;
+}
+
+.bg-repeat-y {
+	background-repeat: repeat-y;
+}
+ 
+//=========================
+// = BACKGROUND-SIZE CLASS
+//=========================
+
+.background-size-cover {
+	.DEPRECATED(~' USER: .bg-size-cover');
+	background-size: cover;
+}
+
+.bg-size-cover {
+	background-size: cover;
+}
+
+.bg-size-contain {
+	background-size: contain;
+}
+ 
+//=========================
+// = BORDER-BOTTOM CLASS
+//=========================
+
+/*
+.border-bottom, .border-bottom-base, .bordered-bottom {
+	border-bottom: @border-base;
+}
+
+.border-bottom-small, .bordered-bottom-small {
+	border-bottom: @border-width-small solid;
+}
+
+.border-bottom-mid, .bordered-bottom-mid {
+	border-bottom: @border-width-mid solid;
+}
+
+.border-bottom-large, .bordered-bottom-large {
+	border-bottom: @border-width-large solid;
+}
+
+.border-bottom-on-hover, .border-bottom-base-on-hover, .bordered-bottom-on-hover {
+	#hover-only({
+		.border-bottom;
+	});
+}
+*/
+
+ 
+//=========================
+// = BORDER-COLOR CLASS
+//=========================
+
+// transparent
+.border-color-transparent {
+	border-color: transparent;
+}
+
+// Current-color
+.border-color-current-color {
+	border-color: currentColor;
+}
+
+// True white
+.border-color-true-white {
+	border-color: @true-white;
+}
+
+// White
+.border-color-white {
+	border-color: @white;
+}
+
+.border-color-white-half-transparent, .border-color-white-translucent {
+	border-color: fade(@white, 50%);
+}
+
+// True black
+.border-color-true-black {
+	border-color: @true-black;
+}
+
+// Black
+.border-color-black {
+	border-color: @black;
+}
+
+// LIGHT
+.border-color-light-half-transparent, .border-color-light-translucent {
+	border-color: fade(@light, 50%);
+}
+
+// DARK
+.border-color-dark {
+	border-color: @dark;
+}
+
+.border-color-dark-half-transparent, .border-color-dark-translucent {
+	border-color: fade(@dark, 50%);
+}
+
+ 
+//=========================
+// = BORDER-LEFT CLASS
+//=========================
+
+/*
+.border-left, .border-left-base, .bordered-left {
+	border-left: @border-base;
+}
+
+.border-left-small, .bordered-left-small {
+	border-left: @border-width-small solid;
+}
+
+.border-left-mid, .bordered-left-mid {
+	border-left: @border-width-mid solid;
+}
+
+.border-left-large, .bordered-left-large {
+	border-left: @border-width-large solid;
+}
+
+.border-left-on-hover, .border-left-base-on-hover, .bordered-left-on-hover {
+	#hover-only({
+		.border-left;
+	});
+}
+
+
+// DASHED
+.border-left-small-dashed , .bordered-left-small-dashed  {
+	border-left: @border-width-small dashed;
+}
+
+.border-left-mid-dashed, .bordered-left-mid-dashed {
+	border-left: @border-width-mid dashed;
+}
+
+.border-left-large-dashed , .bordered-left-large-dashed  {
+	border-left: @border-width-large dashed;
+}
+*/
+ 
+//=========================
+// = BORDER-RADIUS CLASS
+//=========================
+.border-radius-small, 
+.radius-small {
+	border-radius: @border-radius-small;
+}
+
+.border-radius-mid,
+.radius-mid {
+	border-radius: @border-radius-mid;
+}
+
+.border-radius-large,
+.radius-large {
+	border-radius: @border-radius-large;
+}
+
+.border-radius-larger,
+.radius-larger {
+	border-radius: @border-radius-larger;
+}
+
+.border-radius-full,
+.radius-full {
+	border-radius: @border-radius-full;
+}
+
+.border-radius-left-small,
+.radius-left-small {
+	border-bottom-left-radius: @border-radius-small;
+	border-top-left-radius: @border-radius-small;
+}
+
+// BORDER-RADIUS RESPONSIVE
+// FROM XS
+.border-radius-mid-from-xs {
+	#mq-min-width(@screen-xs, {
+		.border-radius-mid;
+	});
+}
+ 
+//=========================
+// = BORDER-SPACING CLASS
+//=========================
+
+.border-spacing-mid-smallest { 
+	border-spacing: @spacing-mid @spacing-smallest;
+}
+
+.border-spacing-mid-pico {
+	border-spacing: @spacing-mid @spacing-pico;
+}
+
+.border-spacing-smallest { 
+	border-spacing: @spacing-smallest;
+}
+
+.border-spacing-smaller { 
+	border-spacing: @spacing-smaller;
+}
+
+.border-spacing-small {
+	border-spacing: @spacing-small;
+}
+
+.border-spacing-mid {
+	border-spacing: @spacing-mid;
+}
+
+.border-spacing-large {
+	border-spacing: @spacing-large;
+}
+
+.border-spacing-larger {
+	border-spacing: @spacing-larger;
+}
+
+.border-spacing-largest {
+	border-spacing: @spacing-largest;
+}
+
+ 
+//=========================
+// = BORDER STYLE CLASS
+//=========================
+
+.border-style-solid {
+	border-style: solid;
+}
+
+.border-style-dotted {
+	border-style: dotted;
+}
+
+.border-style-dashed {
+	border-style: dashed;
+}
+ 
+//=========================
+// = BORDER-TOP CLASS
+//=========================
+
+/*
+.border-top, .border-top-base, .bordered-top {
+	border-top: @border-base;
+}
+
+.border-top-small, .bordered-top-small {
+	border-top: @border-width-small solid;
+}
+
+.border-top-mid, .bordered-top-mid {
+	border-top: @border-width-mid solid;
+}
+
+.border-top-large, .bordered-top-large {
+	border-top: @border-width-large solid;
+}
+
+.border-top-on-hover, .border-top-base-on-hover, .bordered-top-on-hover {
+	#hover-only({
+		.border-top;
+	});
+}
+*/
+ 
+//=========================
+// = BORDER CLASS
+//=========================
+
+.border-none {
+	border: 0;
+}
+
+/*
+.border, .border-base, .bordered {
+	border: @border-base;
+}
+
+.border-small, .bordered-small {
+	border: @border-width-small solid;
+}
+
+.border-mid, .bordered-mid {
+	border: @border-width-mid solid;
+}
+
+.border-large, .bordered-large {
+	border: @border-width-large solid;
+}*/
+ 
+//=========================
+// = BOX-SIZING CLASS
+//=========================
+
+.box-sizing-border-box, .border-box {
+	#box-sizing();
+}
+
+.box-sizing-content-box, .content-box {
+	#box-sizing(content-box);
+}
+
+//TO XS
+.border-box-to-xs {
+	#mq-max-width((@screen-xs - 1), {
+		.box-sizing-border-box;
+	});
+}
+ 
+//=========================
+// = CLEAR CLASS
+//=========================
+
+.clear {
+	clear: both;
+}
+
+.clear-left {
+	clear: left;
+}
+
+.clear-right {
+	clear: right;
+}
+
+ 
+//=========================
+// = COLOR CLASS
+//=========================
+
+.color-transparent {
+	color: transparent;
+}
+
+// White
+.color-white {
+	color: @white;
+}
+
+// Black
+.color-black {
+	color: @black;
+}
+
+// ON HOVER
+// WHITE
+.color-white-on-hover{
+	#hover-only({
+		.color-white();
+	});
+}
+
+// BLACK
+.color-black-on-hover{
+	#hover-only({
+		.color-black();
+	});
+}
+
+
+// ON HOVER AND IS SELECTED
+// WHITE
+.color-white-on-hover-and-is-selected {
+	
+	#hover-only({
+		.color-white();
+	});
+	
+	&.is-selected {
+		.color-white();
 	}
 }
 
-/*******************************
- * @author DeuxHuitHuit
- *****************************/
+// BLACK
+.color-black-on-hover-and-is-selected {
+	
+	#hover-only({
+		.color-black();
+	});
+	
+	&.is-selected {
+		.color-black();
+	}
+}
 
 //=========================
-// = CURSOR CLASSES
+// = CURSOR CLASS
 //=========================
+
+.cursor-pointer {
+	cursor: pointer;
+}
 
 .cursor-hand {
-	#cursor-hand();
+	cursor: pointer;
 }
 
 .cursor-drag {
-	#cursor-drag();
+	cursor: move;
 }
 
 .cursor-normal {
@@ -414,164 +641,268 @@
 .cursor-loading {
 	cursor: wait;
 }
-/*******************************
- * @author DeuxHuitHuit
- *****************************/
+
+.cursor-text {
+	cursor: text;
+}
 
 //=========================
-// = MIXINS
+// = DIRECTION CLASS
 //=========================
 
-#marpad (@width: 0) {
-	padding: @width;
-	margin: @width;
+.direction-rtl {
+	direction: rtl;
 }
 
-/* *************************** SIZE FCT ****** */
-#wh (@width: 100%, @height: @width) {
-	width: @width;
-	height: @height;
+.direction-ltr {
+	direction: ltr;
 }
 
-#sq (@side) {
-	#wh(@side, @side);
+//=========================
+// = DISPLAY CLASS
+//=========================
+
+.hidden() {
+	display: none;
 }
 
-#fill (@top: 0, @right: @top, @bottom: @top, @left: @top) {
-	top: @top;
-	left: @left;
-	right: @right;
-	bottom: @bottom;
+.inline() {
+	display: inline;
 }
 
-/* *************************** DISPLAY FCT ****** */
-#block () {
+.inline-block() {
+	display: inline-block;
+}
+
+.block() {
 	display: block;
 }
 
-#ib (@valign: top) {
-	display: inline-block;
-	vertical-align: @valign;
+.table() {
+	display: table;
 }
 
-/* *************************** POSITION FCT ****** */
-
-// ***** Absolute *****
-#absolute () {
-	position: absolute;
+.table-cell() {
+	display: table-cell;
 }
 
-#absolute (@zindex) {
-	position: absolute;
-	z-index: @zindex;
+.list-item() {
+	display: list-item;
 }
 
-// ***** Relative *****
-#relative () {
-	position: relative;
-}
-
-#relative (@zindex) {
-	#relative();
-	z-index: @zindex;
-}
-
-// ***** Fixed *****
-#fixed () {
-	position: fixed;
-}
-
-#fixed (@zindex: 10) {
-	.fixed;
-	z-index: @zindex;
-}
-
-
-/* *************************** CENTER FCT ****** */
-#vh-center (@top-offset: 0px, @left-offset: @top-offset) {
-	#absolute();
-	top: 50%;
-	left: 50%;
-	margin-left: -@top-offset;
-	margin-top: -@left-offset;
-}
-
-/* *************************** CURSOR FCT ****** */
-#cursor-normal () {
-	cursor: auto;
-}
-
-#cursor-drag () {
-	cursor: move;
-}
-
-#cursor-hand () {
-	cursor: pointer;
-	cursor: hand;
-}
-
-#cursor-loading () {
-	cursor: wait;
-}
-
-/* *************************** TEXT FCT (wrap, ellipsis)****** */
-#text-wrap (@val: break-word) {
-	overflow-wrap: @val;
-	word-wrap: @val;
-}
-
-#ellipsis (@mw: 100%) {
-	max-width: @mw;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-/* *************************** BOX SHADOW FCT ****** */
-#box-shadow (@shadow) {
-	-webkit-box-shadow: @shadow;
-	        box-shadow: @shadow;
-}
-
-/* *************************** OUTLINE FCT ****** */
-#no-outline () {
-	outline:none;
-	-moz-outline:none;
-	-webkit-outline:none;
-}
-
-/* *************************** SELECTION COLOR FCT ****** */
-#selection-color (@color) when (iscolor(@color)) {
-	::selection {
-		background-color: @color;
+#generate-display-classes (@suffix: ~'') {
+	
+	.hidden@{suffix} {
+		.hidden();
 	}
 	
-	::-moz-selection {
-		background-color: @color;
+	.table@{suffix} {
+		.table();
+	}
+
+	.table-cell@{suffix} {
+		.table-cell();
+	}
+	
+	.list-item@{suffix} {
+		.list-item();
+	}
+	
+	.inline@{suffix} {
+		.inline();
+	}
+	
+	.inline-block@{suffix} {
+		.inline-block();
+	}
+	
+	.block@{suffix} {
+		.block();
 	}
 }
 
-#selection-color (@rules) when (false = iscolor(@rules)) {
-	::selection {
-		@rules();
-	}
-	
-	::-moz-selection {
-		@rules();
+.hidden-when-selected {
+	&.is-selected {
+		.hidden();
 	}
 }
-/* ### Flex class ### */
+
+#generate-display-classes();
+
+// FROM
+#mq-min-width(@screen-ip, {
+	#generate-display-classes(~'-from-ip');
+});
+
+#mq-min-width(@screen-ph, {
+	#generate-display-classes(~'-from-ph');
+});
+
+#mq-min-width(@screen-xs, {
+	#generate-display-classes(~'-from-xs');
+});
+
+#mq-min-width(@screen-sm, {
+	#generate-display-classes(~'-from-sm');
+});
+
+#mq-desktop-design({
+	#generate-display-classes(~'-from-desktop');
+});
+
+#mq-min-width(@screen-md, {
+	#generate-display-classes(~'-from-md');
+});
+
+#mq-min-width(@screen-lg, {
+	#generate-display-classes(~'-from-lg');
+});
+
+#mq-min-width(@screen-xl, {
+	#generate-display-classes(~'-from-xl');
+});
+
+#mq-min-width(@screen-hd, {
+	#generate-display-classes(~'-from-hd');
+});
+
+#mq-min-width(@screen-2k, {
+	#generate-display-classes(~'-from-2k');
+});
+
+#mq-min-width(@screen-4k, {
+	#generate-display-classes(~'-from-4k');
+});
+
+
+// TO
+#mq-max-width(@screen-4k - 1, {
+	#generate-display-classes(~'-to-4k');
+});
+
+#mq-max-width(@screen-2k - 1, {
+	#generate-display-classes(~'-to-2k');
+});
+
+#mq-max-width(@screen-hd - 1, {
+	#generate-display-classes(~'-to-hd');
+});
+
+#mq-max-width(@screen-xl - 1, {
+	#generate-display-classes(~'-to-xl');
+});
+
+#mq-max-width(@screen-lg - 1, {
+	#generate-display-classes(~'-to-lg');
+});
+
+#mq-max-width(@screen-md - 1, {
+	#generate-display-classes(~'-to-md');
+});
+
+#mq-mobile-design({
+	#generate-display-classes(~'-to-desktop');
+});
+
+#mq-max-width(@screen-sm - 1, {
+	#generate-display-classes(~'-to-sm');
+});
+
+#mq-max-width(@screen-xs - 1, {
+	#generate-display-classes(~'-to-xs');
+});
+
+#mq-max-width(@screen-ph - 1, {
+	#generate-display-classes(~'-to-ph');
+});
+
+#mq-max-width(@screen-ip - 1, {
+	#generate-display-classes(~'-to-ip');
+});
+ 
+//=========================
+// = FILL CLASS
+//=========================
+
+.fill-transparent {
+	fill: transparent;
+}
+
+.fill-white {
+	fill: @white;
+}
+
+.fill-black {
+	fill: @black;
+}
+
+//=========================
+// = FILTER CLASS
+//=========================
+
+.filter-grayscale, .grayscale {
+	#add-grayscale();
+}
+
+/*
+.blur-intense {
+	#filter(~'blur(20px)');
+}
+
+.blur-intense-on-hover {
+	&:hover {
+		.blur-intense;
+	}
+}
+
+.blur-soft {
+	#filter(~'blur(2px)');
+}
+
+.blur-soft-on-hover {
+	&:hover {
+		.blur-soft;
+	}
+}
+*/
+
+
+//=========================
+// = FIRST LETTER CLASS
+//=========================
+
+.first-letter-upper {
+	&::first-letter {
+		.text-transform-upper;
+	}
+}
+
+// ================================
+// FLEXBOX CLASS
+// ================================
 
 .flexbox {
 	display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
+	
+	> * {
+		#flex-basis(auto);
+		min-height: 0;
+		min-width: 0;
+	}
 }
 
 .flexbox-inline {
 	display: -ms-inline-flexbox;
 	display: -webkit-inline-flex;
 	display: inline-flex;
+	
+	> * {
+		#flex-basis(auto);
+		min-height: 0;
+		min-width: 0;
+	}
 }
 
 .flex-center {
@@ -619,8 +950,68 @@
 	#flex-justify-content(space-around);
 }
 
+.flex-grow-0 {
+	#flex-grow(0);
+}
+
+.flex-grow-1 {
+	#flex-grow(1);
+}
+
 .flex-grow-2 {
 	#flex-grow(2);
+}
+
+.flex-grow-3 {
+	#flex-grow(3);
+}
+
+.flex-grow-4 {
+	#flex-grow(4);
+}
+
+.flex-shrink-0 {
+	#flex-shrink(0);
+}
+
+.flex-shrink-1 {
+	#flex-shrink(1);
+}
+
+.flex-grow-1-from-ph {
+	#mq-min-width(@screen-ph, {
+		#flex-grow(1);
+	});
+}
+
+.flex-grow-2-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		#flex-grow(2);
+	});
+}
+
+.flex-basis-auto {
+	#flex-basis(auto);
+}
+
+.flex-basis-0 {
+	#flex-basis(0);
+}
+
+.flex-basis-large {
+	#flex-basis(@spacing-large)
+}
+
+.flex-basis-initial-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		#flex-basis(initial);
+	});
+}
+
+.flex-basis-initial-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		#flex-basis(initial);
+	});
 }
 
 .flex-order-1 {
@@ -629,6 +1020,28 @@
 
 .flex-order-2 {
 	#flex-order(2);
+}
+
+.flex-order-3 {
+	#flex-order(3);
+}
+
+.flex-order-to-ph-2 {
+	#mq-max-width(@screen-ph - 1, {
+		#flex-order(2);
+	});
+}
+
+.flex-order-2-from-ph {
+	#mq-min-width(@screen-ph, {
+		#flex-order(2);
+	});
+}
+
+.flex-order-to-xs-2 {
+	#mq-max-width(@screen-xs - 1, {
+		#flex-order(2);
+	});
 }
 
 .flex-row {
@@ -682,147 +1095,93 @@
 		.flex-flow-row-nowrap;
 	});
 }
-//Source : https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
-//Source : http://css-tricks.com/snippets/css/a-guide-to-flexbox/
-//Source : https://msdn.microsoft.com/en-us/library/ie/dn265027(v=vs.85).aspx
 
-/* ### Flex Fct ### */
+//=========================
+// = FLOAT CLASS
+//=========================
 
-#flex-flow (@value: row wrap) {
-	-webkit-flex-flow: @value;
-			flex-flow: @value;
+.float-left {
+	float: left;
 }
 
-#flex-align-content (@value: center) {
-	-webkit-align-content: @value;
-			align-content: @value;
+.float-right {
+	float: right;
 }
 
-#flex-align-items (@value: center) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-	-webkit-align-items: @value;
-		-ms-flex-align: @value;
-			align-items: @value;
+//=========================
+// = FONT-FAMILY CLASS
+//=========================
+
+.font-family-base, .font-base {
+	font-family: @font-base;
 }
 
-#flex-align-items (@value: center) when (@value = flex-start) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-	-ms-flex-align: start;
+.font-family-alt, .font-alt {
+	font-family: @font-alt;
 }
 
-#flex-align-items (@value: center) when (@value = flex-end) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-	-ms-flex-align: end;
+//=========================
+// = FONT-FEATURE-SETTINGS CLASS
+//=========================
+
+.font-feature-settings-onum, .oldstyle-nums {
+	font-variant-numeric: oldstyle-nums;
+	-moz-font-feature-settings: "onum";
+	-webkit-font-feature-settings: "onum";
+	font-feature-settings: "onum";
 }
 
-#flex-justify-content (@value: center) {
-	-webkit-justify-content: @value;
-		-ms-flex-pack: @value;
-			justify-content: @value;
+//=========================
+// = FONT STYLE CLASS
+//=========================
+
+.font-style-italic, .text-italic, .italic {
+	font-style: italic;
 }
 
-#flex-justify-content (@value: center) when (@value = flex-start) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-	-ms-flex-pack: start;
+// ================================
+// = FONT WEIGHT CLASS
+// ================================
+
+.font-weight-light, .text-light {
+	font-weight: 300;
 }
 
-#flex-justify-content (@value: center) when (@value = flex-end) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-	-ms-flex-pack: end;
+.font-weight-regular, .text-regular, .font-weight-normal {
+	font-weight: 400;
 }
 
-#flex-wrap (@value: wrap) {
-	//For IE10- : "nowrap" = "none"
-	-webkit-flex-wrap: @value;
-		-ms-flex-wrap: @value;
-			flex-wrap: @value;
+.font-weight-medium, .text-medium {
+	font-weight: 500;
 }
 
-#flex-wrap (@value: wrap) when (@value = nowrap) {
-	//For IE10- : "nowrap" = "none"
-	-ms-flex-wrap: none;
+.font-weight-semibold, .text-semibold {
+	font-weight: 600;
 }
 
-#flex-direction (@value: row) {
-	-webkit-flex-direction: @value;
-			flex-direction: @value;
+.font-weight-bold, .text-bold, .bold {
+	font-weight: 700;
 }
 
-
-/* ### Flex item ### */
-#flex-order (@nb: 1) {
-	-ms-flex-order: @nb;
-	 -webkit-order: @nb;
-			 order: @nb;
+.font-weight-black, .text-black {
+	font-weight: 900;
 }
 
-#flex-align-self (@value: stretch) {
-	-webkit-align-self: @value;
-		-ms-flex-item-align: @value;
-			align-self: @value;
+// ================================
+// = GRID CLASS
+// ================================
+
+// general
+.ctn, [class^=ctn-] {
+	position: relative;
 }
 
-#flex-align-self (@value: stretch) when (@value = flex-start) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-		-ms-flex-item-align: start;
+.col, [class^=col-] {
+	display: inline-block;
+	width: 100%;
 }
 
-#flex-align-self (@value: stretch) when (@value = flex-end) {
-	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
-		-ms-flex-item-align: end;
-}
-
-#flex-basis (@value: auto) {
-	-webkit-flex-basis: @value;
-			flex-basis: @value;
-}
-
-
-#flex-grow (@value: 2) {
-	-webkit-flex-grow: @value;
-			flex-grow: @value;
-}
-
-#flex-shrink (@value: 1) {
-	-webkit-flex-shrink: @value;
-			flex-shrink: @value;
-}
-//====== MIXINS ============
-#font-size () {
-	font-size: inherit;
-	line-height: inherit;
-}
-
-#font-size (@size) {
-	#font-size-ratio(@size);
-}
-
-#font-size (@size, @line-height) {
-	font-size: @size;
-	line-height: @line-height;
-}
-
-#font-size-ratio (@size, @ratio: @golden-ratio) {
-	font-size: @size;
-	line-height: @size * @ratio;
-}
-
-// ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
-#font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
-	font-family: @font-family;
-	src: url("@{font-path}@{font-filename}.eot");
-	src: local('?'),
-		url("@{font-path}@{font-filename}.woff") format('woff'),
-		url("@{font-path}@{font-filename}.ttf") format('truetype'),
-		url("@{font-path}@{font-filename}.svg#@{font-family}") format('svg');
-	font-weight: @font-weight;
-	font-style: @font-style;
-}
-
-/**
- * Grid Base class
- */
-
+/*
 // spacing
 .gutter-left {
 	padding-left: @gutter-width;
@@ -840,251 +1199,1367 @@
 	margin-bottom: @gutter-width;
 	#box-sizing();
 }
-
-/**
- * Grid System
- */
-
-@nb-cols: 12;
-@gutter-width: 1.6rem;
-
-// general
-.ctn, [class^=ctn-] {
-	position: relative;
-	display: block;
-}
-
-.col, [class^=col-] {
-	#ib;
-	width: 100%;
-}
-
-// generator
-#generate-grid (@cols) when (@cols > 0) {
-
-	// recursive definitions
-	#generate-ctn (@n) {
-		.ctn-@{n} {
-			// cols
-			#generate-cols-in(@n);
-			#generate-cols-ex(@nb-cols, @n);
-		}
-		
-		#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n) {
-			// col definition
-			> .col-@{i} {
-				width: percentage(@i / @n);
-			}
-			> .col-offset-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			
-			// recursion
-			#generate-cols-in(@n, (@i + 1));
-		}
-		#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n) {
-			// col definition
-			> .col-@{i} {
-				width: 100%;
-			}
-			// recursion
-			#generate-cols-ex(@n, (@i + 1));
-		}
-	}
-
-
-	// recursive definitions
-	#generate-resp-ctn(@prefix, @n) {
-		.ctn-@{prefix}-@{n} {
-			// cols
-			#generate-cols-in(@n);
-			
-			// cols, resp
-			#generate-resp-cols-in(@prefix, @n);
-			#generate-resp-cols-ex(@prefix, @nb-cols, @n);
-		}
-		
-		// standard
-		#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n)  {
-			// col definition
-			> .col-@{i} {
-				width: percentage(@i / @n);
-			}
-			// recursion
-			#generate-cols-in(@n, (@i + 1));
-		}
-		#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
-			// col definition
-			> .col-@{i} {
-				width: 100%;
-			}
-			// recursion
-			#generate-cols-ex(@n, (@i + 1));
-		}
-		
-		// included col
-		#generate-resp-cols-in(@prefix, @n, @i: 0) when (@i >= 0) and (@i < @n) {
-			// col definition
-			> .col-@{prefix}-@{i} when (@i > 0) {
-				width: percentage(@i / @n);
-			}
-			> .col-offset-@{prefix}-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			
-			// recursion
-			#generate-resp-cols-in(@prefix, @n, (@i + 1));
-		}
-		// excluded cols
-		#generate-resp-cols-ex(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
-			// col definition
-			> .col-@{prefix}-@{i} {
-				width: 100%;
-			}
-			
-			// recursion
-			#generate-resp-cols-ex(@prefix, @n, (@i + 1));
-		}
-	}
-
-	// not responsive
-	#generate-ctn(@cols);
-	
-	// fully responsive
-	#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
-	#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols); });
-	#mq-min-width(@screen-sm, { #generate-resp-ctn(sm, @cols); });
-	#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols); });
-	#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols); });
-	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
-}
-
-
+*/
 
 //=========================
-// = LAYOUT CLASS
+// = HEIGHT CLASS
 //=========================
-
-
-
-/****************** POSITION *********/
-.absolute {
-	position: absolute;
+.height-auto {
+	height: auto;
 }
 
-.fixed {
-	position: fixed;
+.height-0 {
+	height: 0;
 }
 
-.relative {
-	position: relative;
+.height-micro {
+	heigth: @spacing-micro;
 }
 
-
-/****************** DISPLAY *********/
-.block {
-	display: block;
+.height-smallest {
+	height: @spacing-smallest;
 }
 
-.inline-block {
-	display: inline-block;
+.height-smaller {
+	height: @spacing-smaller;
 }
 
-/****************** SIZE *********/
-.fill {
-	#fill();
+.height-small {
+	height: @spacing-small;
 }
 
-.top {
-	top: 0;
+.height-mid {
+	height: @spacing-mid;
 }
 
-.left {
-	left: 0;
+.height-large {
+	height: @spacing-large;
 }
 
-.right {
-	right: 0;
+.height-larger {
+	height: @spacing-larger;
 }
 
-.bottom {
-	bottom: 0;
+.height-largest {
+	height: @spacing-largest;
 }
 
-.full-width {
-	width: 100%;
+.height-xlarge {
+	height: @spacing-xlarge;
 }
 
-.half-width {
-	width: 100%;
-	
-	#mq-min-width(@screen-ph, {
-		width: 50%;
-	});
+.height-huge {
+	height: @spacing-huge;
 }
 
-.half-min-width {
-	min-width: 50%;
+.height-micro {
+	height: @spacing-micro;
 }
 
-.full-height {
-	height: 100%;
+.height-quarter {
+	height: 25%;
 }
 
-.half-height {
+.height-half, .half-height {
 	height: 50%;
 }
 
-.float-left {
-	float: left;
+.height-full, .full-height {
+	height: 100%;
 }
 
-.float-right {
-	float: right;
+.height-full-viewport, .full-viewport-height {
+	height: 100vh;
 }
 
-.clear {
-	clear: both;
+.height-three-quarter-viewport, .height-3_4-viewport {
+	height: 75vh;
 }
 
-.clear-left {
-	clear: left;
+.height-1em, .height-em-full, .height-perfect {
+	height: 1em;
 }
 
-.clear-right {
-	clear: right;
+// HEIGHT RESPONSIVE
+// FROM XS
+.height-smallest-from-xs {
+	#mq-min-width(@screen-xs, {
+		.height-smallest();
+	});
 }
 
-/* ********************* MARGIN *******/
-
-.margin-auto {
-	margin: auto;
+.height-half-from-xs {
+	#mq-min-width(@screen-xs, {
+		.height-half();
+	});
 }
 
-.margin-auto-h {
-	margin-left: auto;
-	margin-right: auto;
+// FROM SM
+.full-height-from-sm {
+	#mq-min-width(@screen-sm, {
+		.full-height;
+	});
 }
 
-/* ********************* VERTICAL ALIGN *******/
-.valign-top {
-	vertical-align: top;
+.height-full-viewport-from-sm {
+	#mq-min-width(@screen-sm, {
+		height: 100vh;
+	});
 }
 
-.valign-bottom {
-	vertical-align: bottom;
+// TO PH
+.height-mid-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.height-mid();
+	});
 }
 
-.valign-middle {
-	vertical-align: middle;
+.height-large-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.height-large();
+	});
+}
+
+//=========================
+// = LETTER-SPACING CLASS
+//=========================
+
+
+.letter-spacing, .letter-spaced {
+	letter-spacing: .125em;
+}
+
+.letter-spacing-wide, .letter-spaced-wide {
+	letter-spacing: .25em;
+}
+
+.letter-spacing-1px {
+	letter-spacing: 1px;
+}
+
+.letter-spacing-2px {
+	letter-spacing: 2px;
 }
 
 
-.border-box {
-	#box-sizing();
+
+//=========================
+// = LINE-HEIGHT CLASS
+//=========================
+
+.line-height-0-important {
+	line-height: 0 !important;
 }
 
-/* ********************* VERTICAL ALIGN *******/
+.line-height-0 {
+	line-height: 0;
+}
+
+.line-height-double {
+	line-height: 2em;
+}
+
+.line-height-mid {
+	line-height: @spacing-mid;
+}
+
+//=========================
+// = LIST-STYLE-TYPE CLASS
+//=========================
+
+.list-style-type-none {
+	list-style-type: none;
+}
+//=====================================
+//= MARGIN CLASS
+//=====================================
+
+#generate-directional-class-value(@name, @property, @value-name, @value, @direction: ~'', @suffix: ~'') {
+	.@{name}@{direction}-@{value-name}@{suffix} {
+		@{property}@{direction}: @value;
+	}
+}
+
+#generate-two-axes-class-value(@name, @property, @value-name, @value, @axe1, @axe2, @direction: ~'', @suffix: ~'') {
+	.@{name}-@{direction}-@{value-name}@{suffix} {
+		@{property}-@{axe1}: @value;
+		@{property}-@{axe2}: @value;
+	}
+}
+
+#generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
+}
+
+#generate-margin-classes (@direction: ~'', @suffix: ~'') {
+	
+	//-------------------------------------------
+	// USEFULL MARGIN 
+	//-------------------------------------------
+	#generate-margin-classes-value(@direction, @suffix, ~'0', 0);
+	#generate-margin-classes-value(@direction, @suffix, ~'none', 0);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'auto', auto);
+	
+	//-------------------------------------------
+	// SPACING MARGIN 
+	//-------------------------------------------
+	#generate-margin-classes-value(@direction, @suffix, ~'atto', 			@spacing-atto);
+	#generate-margin-classes-value(@direction, @suffix, ~'femto', 			@spacing-femto);
+	#generate-margin-classes-value(@direction, @suffix, ~'pico', 			@spacing-pico);
+	//#generate-margin-classes-value(@direction, @suffix, ~'half-nano', 		@spacing-nano * 0.5);
+	#generate-margin-classes-value(@direction, @suffix, ~'nano', 			@spacing-nano);
+	#generate-margin-classes-value(@direction, @suffix, ~'micro', 			@spacing-micro);
+	#generate-margin-classes-value(@direction, @suffix, ~'xsmall', 			@spacing-xsmall);
+	#generate-margin-classes-value(@direction, @suffix, ~'smallest', 		@spacing-smallest);
+	//#generate-margin-classes-value(@direction, @suffix, ~'half-smaller', 	@spacing-smaller * 0.5);
+	#generate-margin-classes-value(@direction, @suffix, ~'smaller', 		@spacing-smaller);
+	#generate-margin-classes-value(@direction, @suffix, ~'small', 			@spacing-small);
+	#generate-margin-classes-value(@direction, @suffix, ~'mid', 			@spacing-mid);
+	//#generate-margin-classes-value(@direction, @suffix, ~'half-large', 		@spacing-large * 0.5);
+	#generate-margin-classes-value(@direction, @suffix, ~'large', 			@spacing-large);
+	#generate-margin-classes-value(@direction, @suffix, ~'larger', 			@spacing-larger);
+	#generate-margin-classes-value(@direction, @suffix, ~'largest', 		@spacing-largest);
+	#generate-margin-classes-value(@direction, @suffix, ~'xlarge', 			@spacing-xlarge);
+	#generate-margin-classes-value(@direction, @suffix, ~'huge', 			@spacing-huge);
+	#generate-margin-classes-value(@direction, @suffix, ~'mega', 			@spacing-mega);
+	#generate-margin-classes-value(@direction, @suffix, ~'giga', 			@spacing-giga);
+	#generate-margin-classes-value(@direction, @suffix, ~'tera', 			@spacing-tera);
+	#generate-margin-classes-value(@direction, @suffix, ~'peta', 			@spacing-peta);
+	#generate-margin-classes-value(@direction, @suffix, ~'zetta', 			@spacing-zetta);
+	#generate-margin-classes-value(@direction, @suffix, ~'yotta', 			@spacing-yotta);
+	
+	//-------------------------------------------
+	// RATIONNAL MARGIN
+	//-------------------------------------------
+	#generate-margin-classes-value(@direction, @suffix, ~'1_2', 50%);
+	#generate-margin-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'2_3', 100% / 3 * 2);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_4', 100% / 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'3_4', 100% / 4 * 3);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_5', 100% / 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'2_5', 100% / 5 * 2);
+	#generate-margin-classes-value(@direction, @suffix, ~'3_5', 100% / 5 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'4_5', 100% / 5 * 4);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_6', 100% / 6);
+	#generate-margin-classes-value(@direction, @suffix, ~'5_6', 100% / 6 * 5);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_7', 100% / 7);
+	#generate-margin-classes-value(@direction, @suffix, ~'2_7', 100% / 7 * 2);
+	#generate-margin-classes-value(@direction, @suffix, ~'3_7', 100% / 7 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'4_7', 100% / 7 * 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'5_7', 100% / 7 * 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'6_7', 100% / 7 * 6);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_8', 100% / 8);
+	#generate-margin-classes-value(@direction, @suffix, ~'3_8', 100% / 8 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'5_8', 100% / 8 * 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'7_8', 100% / 8 * 7);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_9', 100% / 9);
+	#generate-margin-classes-value(@direction, @suffix, ~'2_9', 100% / 9 * 2);
+	#generate-margin-classes-value(@direction, @suffix, ~'4_9', 100% / 9 * 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'5_9', 100% / 9 * 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'7_9', 100% / 9 * 7);
+	#generate-margin-classes-value(@direction, @suffix, ~'8_9', 100% / 9 * 8);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_10', 100% / 10);
+	#generate-margin-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
+	#generate-margin-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
+	
+	//-------------------------------------------
+	// RATIONNAL VIEWPORT MARGIN
+	//-------------------------------------------
+	#generate-margin-classes-value(@direction, @suffix, ~'1_2-viewport', 50vh);
+	#generate-margin-classes-value(@direction, @suffix, ~'1_3-viewport', 100vh / 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'2_3-viewport', 100vh / 3 * 2);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'1_4-viewport', 100vh / 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'3_4-viewport', 100vh / 4 * 3);
+	
+	//-------------------------------------------
+	// MINUS SPACING MARGIN
+	//-------------------------------------------
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-atto', 			-@spacing-atto);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-femto', 		-@spacing-femto);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-pico', 			-@spacing-pico);
+	//#generate-margin-classes-value(@direction, @suffix, ~'minus-half-nano', 	-@spacing-nano * 0.5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-nano', 			-@spacing-nano);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-micro', 		-@spacing-micro);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-xsmall', 		-@spacing-xsmall);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-smallest', 		-@spacing-smallest);
+	//#generate-margin-classes-value(@direction, @suffix, ~'minus-half-smaller', 	-@spacing-smaller * 0.5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-smaller', 		-@spacing-smaller);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-small', 		-@spacing-small);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-mid', 			-@spacing-mid);
+	//#generate-margin-classes-value(@direction, @suffix, ~'minus-half-large', 	-@spacing-large * 0.5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-large', 		-@spacing-large);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-larger', 		-@spacing-larger);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-largest', 		-@spacing-largest);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-xlarge', 		-@spacing-xlarge);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-huge', 			-@spacing-huge);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-mega', 			-@spacing-mega);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-giga', 			-@spacing-giga);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-tera', 			-@spacing-tera);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-peta', 			-@spacing-peta);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-zetta', 		-@spacing-zetta);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-yotta', 		-@spacing-yotta);
+	
+	//-------------------------------------------
+	// MINUS RATIONNAL MARGIN
+	//-------------------------------------------
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_2', -50%);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_3', -100% / 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_3', -100% / 3 * 2);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_4', -100% / 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_4', -100% / 4 * 3);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_5', -100% / 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_5', -100% / 5 * 2);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_5', -100% / 5 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_5', -100% / 5 * 4);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_6', -100% / 6);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_6', -100% / 6 * 5);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_7', -100% / 7);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_7', -100% / 7 * 2);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_7', -100% / 7 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_7', -100% / 7 * 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_7', -100% / 7 * 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-6_7', -100% / 7 * 6);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_8', -100% / 8);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_8', -100% / 8 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_8', -100% / 8 * 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_8', -100% / 8 * 7);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_9', -100% / 9);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_9', -100% / 9 * 2);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_9', -100% / 9 * 4);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_9', -100% / 9 * 5);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_9', -100% / 9 * 7);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-8_9', -100% / 9 * 8);
+	
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_10', -100% / 10);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_10', -100% / 10 * 3);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_10', -100% / 10 * 7);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-9_10', -100% / 10 * 9);
+}
+
+#generate-margin-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'margin', ~'margin', @value-name, @value, @axe1, @axe2, @direction, @suffix);
+}
+
+#generate-margin-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
+	
+	//-------------------------------------------
+	// USEFULL MARGIN 
+	//-------------------------------------------
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', 0);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', 0);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', auto);
+
+	//-------------------------------------------
+	// SPACING MARGIN 
+	//-------------------------------------------
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 			@spacing-atto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			@spacing-femto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 			@spacing-pico);
+	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 			@spacing-nano);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 			@spacing-micro);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xsmall', 		@spacing-xsmall);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 		@spacing-smallest);
+	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 	@spacing-smaller * 0.5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 		@spacing-smaller);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 			@spacing-small);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mid', 			@spacing-mid);
+	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-large', 	@spacing-large * 0.5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 			@spacing-large);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 		@spacing-larger);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 		@spacing-largest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xlarge', 		@spacing-xlarge);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'huge', 			@spacing-huge);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 			@spacing-mega);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 			@spacing-giga);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 			@spacing-tera);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 			@spacing-peta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 			@spacing-zetta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 			@spacing-yotta);
+	
+	//-------------------------------------------
+	// RATIONNAL MARGIN
+	//-------------------------------------------
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3', 100% / 3 * 2);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4', 100% / 4);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4', 100% / 4 * 3);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5', 100% / 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5', 100% / 5 * 2);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5', 100% / 5 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5', 100% / 5 * 4);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6', 100% / 6);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6', 100% / 6 * 5);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7', 100% / 7);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7', 100% / 7 * 2);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7', 100% / 7 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7', 100% / 7 * 4);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7', 100% / 7 * 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7', 100% / 7 * 6);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8', 100% / 8);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8', 100% / 8 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8', 100% / 8 * 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8', 100% / 8 * 7);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9', 100% / 9);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9', 100% / 9 * 2);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9', 100% / 9 * 4);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9', 100% / 9 * 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9', 100% / 9 * 7);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9', 100% / 9 * 8);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_10', 100% / 10);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
+	
+	//-------------------------------------------
+	// MINUS SPACING MARGIN
+	//-------------------------------------------
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-atto', 		-@spacing-atto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-femto', 		-@spacing-femto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-pico', 		-@spacing-pico);
+	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-half-nano', 	-@spacing-nano * 0.5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-nano', 		-@spacing-nano);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-micro', 		-@spacing-micro);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-xsmall', 		-@spacing-xsmall);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-smallest', 	-@spacing-smallest);
+	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-half-smaller', -@spacing-smaller * 0.5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-smaller', 		-@spacing-smaller);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-small', 		-@spacing-small);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-mid', 			-@spacing-mid);
+	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-half-large', 	-@spacing-large * 0.5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-large', 		-@spacing-large);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-larger', 		-@spacing-larger);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-largest', 		-@spacing-largest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-xlarge', 		-@spacing-xlarge);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-huge', 		-@spacing-huge);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-mega', 		-@spacing-mega);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-giga', 		-@spacing-giga);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-tera', 		-@spacing-tera);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-peta', 		-@spacing-peta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-zetta', 		-@spacing-zetta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-yotta', 		-@spacing-yotta);
+	
+	//-------------------------------------------
+	// MINUS RATIONNAL MARGIN
+	//-------------------------------------------
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_2', -50%);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_3', -100% / 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_3', -100% / 3 * 2);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_4', -100% / 4);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_4', -100% / 4 * 3);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_5', -100% / 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_5', -100% / 5 * 2);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_5', -100% / 5 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-4_5', -100% / 5 * 4);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_6', -100% / 6);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_6', -100% / 6 * 5);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_7', -100% / 7);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_7', -100% / 7 * 2);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_7', -100% / 7 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-4_7', -100% / 7 * 4);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_7', -100% / 7 * 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-6_7', -100% / 7 * 6);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_8', -100% / 8);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_8', -100% / 8 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_8', -100% / 8 * 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-7_8', -100% / 8 * 7);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_9', -100% / 9);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_9', -100% / 9 * 2);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-4_9', -100% / 9 * 4);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_9', -100% / 9 * 5);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-7_9', -100% / 9 * 7);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-8_9', -100% / 9 * 8);
+	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_10', -100% / 10);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_10', -100% / 10 * 3);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-7_10', -100% / 10 * 7);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-9_10', -100% / 10 * 9);
+}
+
+#generate-margin-all-classes(@suffix: ~'') {
+	#generate-margin-classes(~'', @suffix);
+	
+	#generate-margin-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-margin-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-margin-classes(~'-bottom', @suffix);
+	#generate-margin-classes(~'-left', @suffix);
+	#generate-margin-classes(~'-right', @suffix);
+	#generate-margin-classes(~'-top', @suffix);
+}
+
+//=========================
+// = MAX-HEIGHT CLASS
+//=========================
+
+//Spacing Value
+.max-height-0 {
+	max-height: 0;
+}
+
+.max-height-micro {
+	max-height: @spacing-micro;
+}
+
+.max-height-micro-double {
+	max-height: @spacing-micro * 2;
+}
+
+.max-height-micro-triple {
+	max-height: @spacing-micro * 3;
+}
+
+.max-height-smallest {
+	max-height: @spacing-smallest ;
+}
+
+.max-height-smallest-double {
+	max-height: @spacing-smallest  * 2;
+}
+
+.max-height-smallest-triple {
+	max-height: @spacing-smallest  * 3;
+}
+
+.max-height-smaller {
+	max-height: @spacing-smaller;
+}
+
+.max-height-smaller-double {
+	max-height: @spacing-smaller * 2;
+}
+
+.max-height-smaller-triple {
+	max-height: @spacing-smaller * 3;
+}
+
+.max-height-small {
+	max-height: @spacing-small;
+}
+
+.max-height-small-double {
+	max-height: @spacing-small * 2;
+}
+
+.max-height-small-triple {
+	max-height: @spacing-small * 3;
+}
+
+.max-height-mid {
+	max-height: @spacing-mid;
+}
+
+.max-height-mid-double {
+	max-height: @spacing-mid * 2;
+}
+
+.max-height-mid-triple {
+	max-height: @spacing-mid * 3;
+}
+
+.max-height-large {
+	max-height: @spacing-large;
+}
+
+.max-height-large-double {
+	max-height: @spacing-large * 2;
+}
+
+.max-height-large-triple {
+	max-height: @spacing-large * 3;
+}
+
+.max-height-larger {
+	max-height: @spacing-larger;
+}
+
+.max-height-larger-double {
+	max-height: @spacing-larger * 2;
+}
+
+.max-height-larger-triple {
+	max-height: @spacing-larger * 3;
+}
+
+.max-height-largest {
+	max-height: @spacing-largest;
+}
+
+.max-height-largest-double {
+	max-height: @spacing-largest * 2;
+}
+
+.max-height-largest-triple {
+	max-height: @spacing-largest * 3;
+}
+
+.max-height-huge {
+	max-height: @spacing-huge;
+}
+
+.max-height-huge-double {
+	max-height: @spacing-huge * 2;
+}
+
+.max-height-huge-triple {
+	max-height: @spacing-huge * 3;
+}
+
+.max-height-mega {
+	max-height: @spacing-mega;
+}
+
+// Proportional Value
+.max-height-quarter {
+	max-height: 25%;
+}
+
+.max-height-half {
+	max-height: 50%;
+}
+
+.max-height-three-quarter { 
+	max-height: 75%; 
+}
+
+.max-height-full {
+	max-height: 100%;
+}
+
+// Proportional ViewPort Value
+.max-height-quarter-viewport {
+	max-height: 25vh;
+}
+
+.max-height-half-viewport {
+	max-height: 50vh;
+}
+
+.max-height-three-quarter-viewport { 
+	max-height: 75vh;
+}
+
+.max-height-full-viewport {
+	max-height: 100vh;
+}
+
+//=========================
+// = MAX-WIDTH CLASS
+//=========================
+//Spacing Value
+.max-width-micro {
+	max-width: @spacing-micro;
+}
+
+.max-width-micro-double {
+	max-width: @spacing-micro * 2;
+}
+
+.max-width-micro-triple {
+	max-width: @spacing-micro * 3;
+}
+
+.max-width-smallest {
+	max-width: @spacing-smallest ;
+}
+
+.max-width-smallest-double {
+	max-width: @spacing-smallest  * 2;
+}
+
+.max-width-smallest-triple {
+	max-width: @spacing-smallest  * 3;
+}
+
+.max-width-smaller {
+	max-width: @spacing-smaller;
+}
+
+.max-width-smaller-double {
+	max-width: @spacing-smaller * 2;
+}
+
+.max-width-smaller-triple {
+	max-width: @spacing-smaller * 3;
+}
+
+.max-width-small {
+	max-width: @spacing-small;
+}
+
+.max-width-small-double {
+	max-width: @spacing-small * 2;
+}
+
+.max-width-small-triple {
+	max-width: @spacing-small * 3;
+}
+
+.max-width-mid {
+	max-width: @spacing-mid;
+}
+
+.max-width-mid-double {
+	max-width: @spacing-mid * 2;
+}
+
+.max-width-mid-triple {
+	max-width: @spacing-mid * 3;
+}
+
+.max-width-large {
+	max-width: @spacing-large;
+}
+
+.max-width-large-double {
+	max-width: @spacing-large * 2;
+}
+
+.max-width-large-triple {
+	max-width: @spacing-large * 3;
+}
+
+.max-width-larger {
+	max-width: @spacing-larger;
+}
+
+.max-width-larger-double {
+	max-width: @spacing-larger * 2;
+}
+
+.max-width-larger-triple {
+	max-width: @spacing-larger * 3;
+}
+
+.max-width-largest {
+	max-width: @spacing-largest;
+}
+
+.max-width-largest-double {
+	max-width: @spacing-largest * 2;
+}
+
+.max-width-largest-triple {
+	max-width: @spacing-largest * 3;
+}
+
+.max-width-huge {
+	max-width: @spacing-huge;
+}
+
+.max-width-huge-double {
+	max-width: @spacing-huge * 2;
+}
+
+.max-width-huge-triple {
+	max-width: @spacing-huge * 3;
+}
+
+// PROPORTIONAL VALUE
+.max-width-quarter {
+	max-width: 25%;
+}
+
+.max-width-half {
+	max-width: 50%;
+}
+
+.max-width-three-quarter {
+	max-width: 75%;
+}
+
+.max-width-full {
+	max-width: 100%;
+}
+
+.max-width-screen-max {
+	max-width: @screen-max;
+}
+
+// PROPORTIONAL VIEWPORT VALUE
+.max-width-quarter-viewport {
+	max-width: 25vh;
+}
+
+.max-width-half-viewport {
+	max-width: 50vh;
+}
+
+.max-width-three-quarter-viewport {
+	max-width: 75vw;
+}
+
+.max-width-full-viewport {
+	max-width: 100vh;
+}
+
+// MAX-WIDTH RESPONSIVE
+// FROM PH
+.max-width-smallest-from-ph {
+	#mq-min-width(@screen-ph, {
+		.max-width-smallest
+	});
+}
+
+.max-width-small-from-ph {
+	#mq-min-width(@screen-ph, {
+		.max-width-small;
+	});
+}
+
+// FROM XS
+.max-width-smallest-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-smallest
+	});
+}
+
+.max-width-huge-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-huge;
+	});
+}
+
+.max-width-small-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-small;
+	});
+}
+
+.max-width-larger-from-xs {
+	#mq-min-width(@screen-xs, {
+		.max-width-larger;
+	});	
+}
+
+// TO XS
+.max-width-micro-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.max-width-micro;
+	});
+}
+
+.max-width-large-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.max-width-large;
+	});
+}
+
+.max-width-mid-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.max-width-mid;
+	});
+}
+
+// TO PH
+.max-width-mid-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.max-width-mid;
+	});
+}
+
+.max-width-large-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.max-width-large;
+	});
+}
+
+// FROM PH TO SM
+.max-width-larger-from-ph-to-sm {
+	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
+		.max-width-larger;
+	});
+}
+
+// FROM PH TO XS
+.max-width-large-from-ph-to-xs {
+	#mq-min-max-width(@screen-ph, @screen-xs - 1, {
+		.max-width-large;
+	});
+}
+
+
+
+//=========================
+// = MIN-HEIGHT CLASS
+//=========================
+
+.min-height-auto {
+	min-height: auto;
+}
+
+.min-height-0 {
+	min-height: 0;
+}
+
+//Spacing Value
+.min-height-micro {
+	min-height: @spacing-micro;
+}
+
+.min-height-micro-double {
+	min-height: @spacing-micro * 2;
+}
+
+.min-height-micro-triple {
+	min-height: @spacing-micro * 3;
+}
+
+.min-height-smallest {
+	min-height: @spacing-smallest ;
+}
+
+.min-height-smallest-double {
+	min-height: @spacing-smallest  * 2;
+}
+
+.min-height-smallest-triple {
+	min-height: @spacing-smallest  * 3;
+}
+
+.min-height-smaller {
+	min-height: @spacing-smaller;
+}
+
+.min-height-smaller-double {
+	min-height: @spacing-smaller * 2;
+}
+
+.min-height-smaller-triple {
+	min-height: @spacing-smaller * 3;
+}
+
+.min-height-small {
+	min-height: @spacing-small;
+}
+
+.min-height-small-double {
+	min-height: @spacing-small * 2;
+}
+
+.min-height-small-triple {
+	min-height: @spacing-small * 3;
+}
+
+.min-height-mid {
+	min-height: @spacing-mid;
+}
+
+.min-height-mid-double {
+	min-height: @spacing-mid * 2;
+}
+
+.min-height-mid-triple {
+	min-height: @spacing-mid * 3;
+}
+
+.min-height-large {
+	min-height: @spacing-large;
+}
+
+.min-height-large-double {
+	min-height: @spacing-large * 2;
+}
+
+.min-height-large-triple {
+	min-height: @spacing-large * 3;
+}
+
+.min-height-larger {
+	min-height: @spacing-larger;
+}
+
+.min-height-larger-double {
+	min-height: @spacing-larger * 2;
+}
+
+.min-height-larger-triple {
+	min-height: @spacing-larger * 3;
+}
+
+.min-height-largest {
+	min-height: @spacing-largest;
+}
+
+.min-height-largest-double {
+	min-height: @spacing-largest * 2;
+}
+
+.min-height-largest-triple {
+	min-height: @spacing-largest * 3;
+}
+
+.min-height-huge {
+	min-height: @spacing-huge;
+}
+
+.min-height-huge-double {
+	min-height: @spacing-huge * 2;
+}
+
+.min-height-huge-triple {
+	min-height: @spacing-huge * 3;
+}
+
+//Proportional Value
+.min-height-quarter {
+	min-height: 25%;
+}
+
+.min-height-half {
+	min-height: 50%;
+}
+
+.min-height-three-quarter { 
+	min-height: 75%;
+}
+
+.min-height-full {
+	min-height: 100%;
+}
+
+//Proportional Viewport value
+.min-height-quarter-viewport {
+	min-height: 25vh;
+}
+
+.min-height-half-viewport {
+	min-height: 50vh;
+}
+
+.min-height-three-quarter-viewport {
+	min-height: 75vh;
+}
+
+.min-height-full-viewport {
+	min-height: 100vh;
+}
+
+//=========================
+// = MIN-WIDTH CLASS
+//=========================
+.min-width-0 {
+	min-width: 0;
+}
+
+.min-width-auto {
+	min-width: auto;
+}
+
+.min-width-auto-important {
+	min-width: auto !important;
+}
+
+//Spacing Value
+.min-width-micro {
+	min-width: @spacing-micro;
+}
+
+.min-width-micro-double {
+	min-width: @spacing-micro * 2;
+}
+
+.min-width-micro-triple {
+	min-width: @spacing-micro * 3;
+}
+
+.min-width-smallest {
+	min-width: @spacing-smallest ;
+}
+
+.min-width-smallest-double {
+	min-width: @spacing-smallest  * 2;
+}
+
+.min-width-smallest-triple {
+	min-width: @spacing-smallest  * 3;
+}
+
+.min-width-smaller {
+	min-width: @spacing-smaller;
+}
+
+.min-width-smaller-double {
+	min-width: @spacing-smaller * 2;
+}
+
+.min-width-smaller-triple {
+	min-width: @spacing-smaller * 3;
+}
+
+.min-width-small {
+	min-width: @spacing-small;
+}
+
+.min-width-small-double {
+	min-width: @spacing-small * 2;
+}
+
+.min-width-small-triple {
+	min-width: @spacing-small * 3;
+}
+
+.min-width-mid {
+	min-width: @spacing-mid;
+}
+
+.min-width-mid-double {
+	min-width: @spacing-mid * 2;
+}
+
+.min-width-mid-triple {
+	min-width: @spacing-mid * 3;
+}
+
+.min-width-large {
+	min-width: @spacing-large;
+}
+
+.min-width-large-double {
+	min-width: @spacing-large * 2;
+}
+
+.min-width-large-triple {
+	min-width: @spacing-large * 3;
+}
+
+.min-width-larger {
+	min-width: @spacing-larger;
+}
+
+.min-width-larger-double {
+	min-width: @spacing-larger * 2;
+}
+
+.min-width-larger-triple {
+	min-width: @spacing-larger * 3;
+}
+
+.min-width-largest {
+	min-width: @spacing-largest;
+}
+
+.min-width-largest-double {
+	min-width: @spacing-largest * 2;
+}
+
+.min-width-largest-triple {
+	min-width: @spacing-largest * 3;
+}
+
+.min-width-huge {
+	min-width: @spacing-huge;
+}
+
+.min-width-huge-double {
+	min-width: @spacing-huge * 2;
+}
+
+.min-width-huge-triple {
+	min-width: @spacing-huge * 3;
+}
+
+// MIN-WIDTH PROPORTIONAL
+.min-width-quarter {
+	min-width: 25%;
+}
+
+.min-width-half, .half-min-width {
+	min-width: 50%;
+}
+
+.min-width-three-quarter {
+	min-width: 75%;
+}
+
+.min-width-full {
+	min-width: 100%;
+}
+
+// MIN-WIDTH VIEWPORT PROPORTIONAL
+.min-width-quarter-viewport {
+	min-width: 25vh;
+}
+
+.min-width-half-viewport {
+	min-width: 50vh;
+}
+
+.min-width-full-viewport, 
+.full-viewport-min-width {
+	min-width: 100vh;
+}
+
+// MIN-WIDTH RESPONSIVE
+// FROM SM
+
+.min-width-large-from-sm {
+	#mq-min-width(@screen-sm, {
+		.min-width-large;
+	});
+} 
+/**
+ * 
+ */
+ 
+ /*
+.off-screen {
+	position: fixed;
+	left: -100000px;
+	right: -100000px;
+	width: 0;
+	height: 0;
+}*/
+ 
+//=========================
+// = OPACITY ON HOVER CLASS
+//=========================
+
+.opacity-quasi-transparent-on-hover, .quasi-trans-on-hover{
+	#hover-only({
+		.quasi-trans
+	});
+}
+
+.opacity-half-on-hover, .opacity-half-transparent-on-hover, .opacity-translucent-on-hover, .translucent-on-hover {
+	#hover-only({
+		.opacity-half;
+	});
+}
+
+.opacity-semi-opaque-on-hover, .semi-opaque-on-hover{
+	#hover-only({
+		.opacity-semi-opaque;
+	});
+}
+
+.opacity-quasi-opaque-on-hover, .quasi-opaque-on-hover {
+	#hover-only({
+		.opacity-quasi-opaque;
+	});
+}
+
+.opacity-full-on-hover, .opaque-on-hover {
+	#hover-only({
+		.opaque();
+	});
+}
+
+.opacity-full-when-is-selected, .opaque-when-is-selected {
+	&.is-selected {
+		.opaque();
+	}
+}
+ 
+//=========================
+// = OPACITY CLASS
+//=========================
+
+.opacity-full, .opacity-opaque, .opaque {
+	opacity: 1;
+}
+
+.opacity-very-opaque, .very-opaque {
+	opacity: 0.9;
+}
+
+.opacity-quasi-opaque, .quasi-opaque {
+	opacity: 0.8;
+}
+
+.opacity-semi-opaque, .semi-opaque {
+	opacity: 0.7;
+}
+
+.opacity-partialy-opaque {
+	opacity: 0.6;
+}
+
+.opacity-half, .opacity-half-transparent, .opacity-translucent, .translucent {
+	opacity: 0.5;
+}
+
+.opacity-partialy-transparent, .opacity-partialy-translucent {
+	opacity: 0.4;
+}
+
+.opacity-semi-transparent, .opacity-semi-translucent, .semi-translucent {
+	opacity: 0.3;
+}
+
+.opacity-quasi-transparent, .opacity-quasi-translucent, .quasi-translucent, .quasi-trans {
+	opacity: 0.2;
+}
+
+.opacity-quasi-transparent, .opacity-very-translucent, .very-translucent, .very-trans {
+	opacity: 0.1;
+}
+
+.opacity-0, .opacity-transparent, .transparent {
+	opacity: 0;
+}
+
+// FROM SM
+.opacity-0-from-sm, .opacity-transparent-from-sm, .transparent-from-sm {
+	#mq-min-width(@screen-sm, {
+		.opacity-0;
+	});
+}
+
+.opacity-half-from-sm, .opacity-half-transparent-from-sm, .opacity-translucent-from-sm, .translucent-from-sm {
+	#mq-min-width(@screen-sm, {
+		.opacity-half;
+	});
+}
+
+// FROM MD
+.opacity-0-from-md, .opacity-transparent-from-md, .transparent-from-md {
+	#mq-min-width(@screen-md, {
+		.opacity-0;
+	});
+}
+
+.opacity-half-from-md, .opacity-half-transparent-from-md, .opacity-translucent-from-md, .translucent-from-md {
+	#mq-min-width(@screen-md, {
+		.opacity-half;
+	});
+}
+
+//=========================
+// = OVERFLOW CLASS
+//=========================
+
 .overflow-hidden {
 	overflow: hidden;
 }
@@ -1093,275 +2568,1352 @@
 	overflow: visible;
 }
 
+.overflow-scroll {
+	overflow: scroll;
+}
+
+.overflow-auto {
+	overflow: auto;
+}
+
+
+//Y AXIS
+.overflow-y-hidden {
+	overflow-y: hidden;
+}
+
+overflow-y-visible {
+	overflow-y: visible;
+}
+
 .overflow-y-scroll {
 	overflow-y: scroll;
 }
 
-//====== Medias Queries ============
-
-#mq-min-width (@width, @rules) {
-	@media screen and (min-width: @width) {
-		@rules();
-	}
+.overflow-y-auto {
+	overflow-y: auto;
 }
 
-#mq-max-width (@width, @rules) {
-	@media screen and (max-width: @width) {
-		@rules();
-	}
+//X AXIS
+.overflow-x-hidden {
+	overflow-x: hidden;
 }
 
-#mq-min-max-width (@min-width, @max-width, @rules) {
-	@media screen and (min-width: @min-width) and (max-width: @max-width) {
-		@rules();
-	}
+.overflow-x-visible {
+	overflow-x: visible;
 }
 
-#mq-min-height (@height, @rules) {
-	@media screen and (min-height: @height) {
-		@rules();
-	}
+.overflow-x-scroll {
+	overflow-x: scroll;
 }
 
-#mq-max-height (@height, @rules) {
-	@media screen and (max-height: @height) {
-		@rules();
-	}
+.overflow-x-auto {
+	overflow-x: auto;
 }
 
-#mq-max-dpi (@dpi, @rules) {
-	@media screen and (max-resolution: @dpi) {
-		@rules();
-	}
+//FROM SM
+.overflow-y-scroll-from-sm {
+	#mq-min-width(@screen-sm, {
+		.overflow-y-scroll;
+	});
+}
+//=====================================
+// = PADDING CLASS
+//=====================================
+#generate-padding-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'padding', ~'padding', @value-name, @value, @direction, @suffix,);
 }
 
-#mq-min-dpi (@dpi, @rules) {
-	@media screen and (min-resolution: @dpi) {
-		@rules();
-	}
-}
-
-#mq-px-ratio (@px-ratio, @rules) {
-	@media screen and (-webkit-device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
+#generate-padding-classes (@direction: ~'', @suffix: ~'') {
 	
-	@media screen and (device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
-}
-
-#mq-min-px-ratio (@px-ratio, @rules) {
-	@media screen and (-webkit-min-device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
+	//-------------------------------------------
+	// USEFULL PADDING 
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'0', 0);
+	#generate-padding-classes-value(@direction, @suffix, ~'none', 0);
+	#generate-padding-classes-value(@direction, @suffix, ~'none-important', ~'0 !important');
 	
-	@media screen and (min-device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
+	//-------------------------------------------
+	// SPACING PADDING 
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'atto', 			@spacing-atto);
+	#generate-padding-classes-value(@direction, @suffix, ~'femto', 			@spacing-femto);
+	#generate-padding-classes-value(@direction, @suffix, ~'pico', 			@spacing-pico);
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-nano', 		@spacing-nano * 0.5);
+	#generate-padding-classes-value(@direction, @suffix, ~'nano', 			@spacing-nano);
+	#generate-padding-classes-value(@direction, @suffix, ~'micro', 			@spacing-micro);
+	#generate-padding-classes-value(@direction, @suffix, ~'xsmall', 		@spacing-xsmall);
+	#generate-padding-classes-value(@direction, @suffix, ~'smallest', 		@spacing-smallest);
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-smaller', 	@spacing-smaller * 0.5);
+	#generate-padding-classes-value(@direction, @suffix, ~'smaller', 		@spacing-smaller);
+	//#generate-padding-classes-value(@direction, @suffix, ~'smaller-double', @spacing-smaller * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'small', 			@spacing-small);
+	#generate-padding-classes-value(@direction, @suffix, ~'mid', 			@spacing-mid);
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-large', 	@spacing-large * 0.5);
+	#generate-padding-classes-value(@direction, @suffix, ~'large', 			@spacing-large);
+	#generate-padding-classes-value(@direction, @suffix, ~'larger', 		@spacing-larger);
+	#generate-padding-classes-value(@direction, @suffix, ~'largest', 		@spacing-largest);
+	#generate-padding-classes-value(@direction, @suffix, ~'xlarge', 		@spacing-xlarge);
+	#generate-padding-classes-value(@direction, @suffix, ~'huge', 			@spacing-huge);
+	#generate-padding-classes-value(@direction, @suffix, ~'mega', 			@spacing-mega);
+	#generate-padding-classes-value(@direction, @suffix, ~'giga', 			@spacing-giga);
+	#generate-padding-classes-value(@direction, @suffix, ~'tera', 			@spacing-tera);
+	#generate-padding-classes-value(@direction, @suffix, ~'peta', 			@spacing-peta);
+	#generate-padding-classes-value(@direction, @suffix, ~'zetta', 			@spacing-zetta);
+	#generate-padding-classes-value(@direction, @suffix, ~'yotta', 			@spacing-yotta);
+	
+	//-------------------------------------------
+	// RATIONNAL PADDING
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'1_2', 50%);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_3', 100% / 3 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_3', 100% / 3 * 4);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_4', 100% / 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_4', 100% / 4 * 3);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_5', 100% / 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_5', 100% / 5 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_5', 100% / 5 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_5', 100% / 5 * 4);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_6', 100% / 6);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_6', 100% / 6 * 5);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_7', 100% / 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_7', 100% / 7 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_7', 100% / 7 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_7', 100% / 7 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_7', 100% / 7 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'6_7', 100% / 7 * 6);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_8', 100% / 8);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_8', 100% / 8 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_8', 100% / 8 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_8', 100% / 8 * 7);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_9', 100% / 9);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_9', 100% / 9 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_9', 100% / 9 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_9', 100% / 9 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_9', 100% / 9 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'8_9', 100% / 9 * 8);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_10', 100% / 10);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'9_16', 100% / 16 * 9);
+	
+	#generate-padding-classes-value(@direction, @suffix, ~'full', 100%);
 }
 
-#mq-orientation (@orientation, @rules) {
-	@media screen and (orientation: @orientation) {
-		@rules();
-	}
+#generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);
 }
 
-//====== "Only" Queries ============
+#generate-padding-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
+	
+	//-------------------------------------------
+	// USEFULL TWO AXES PADDING 
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', 0);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', 0);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none-important', ~'0 !important');
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', auto);
 
-#only-mobile (@rules) {
-	html.mobile &, &.mobile {
-		@rules();
-	}
+	//-------------------------------------------
+	// SPACING TWO AXES PADDING 
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 				@spacing-atto);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			@spacing-femto);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 				@spacing-pico);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 				@spacing-nano);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 			@spacing-micro);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xsmall', 			@spacing-xsmall);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 			@spacing-smallest);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 		@spacing-smaller * 0.5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 			@spacing-smaller);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller-double', 	@spacing-smaller * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 			@spacing-small);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mid', 				@spacing-mid);
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-large', 		@spacing-large * 0.5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 			@spacing-large);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 			@spacing-larger);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 			@spacing-largest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xlarge', 			@spacing-xlarge);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'huge', 				@spacing-huge);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 				@spacing-mega);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 				@spacing-giga);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 				@spacing-tera);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 				@spacing-peta);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 			@spacing-zetta);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 			@spacing-yotta);
+	
+	//-------------------------------------------
+	// RATIONNAL TWO AXES PADDING
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half', 50%);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3', 100% / 3 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_3', 100% / 3 * 4);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4', 100% / 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4', 100% / 4 * 3);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5', 100% / 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5', 100% / 5 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5', 100% / 5 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5', 100% / 5 * 4);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6', 100% / 6);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6', 100% / 6 * 5);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7', 100% / 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7', 100% / 7 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7', 100% / 7 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7', 100% / 7 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7', 100% / 7 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7', 100% / 7 * 6);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8', 100% / 8);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8', 100% / 8 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8', 100% / 8 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8', 100% / 8 * 7);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9', 100% / 9);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9', 100% / 9 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9', 100% / 9 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9', 100% / 9 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9', 100% / 9 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9', 100% / 9 * 8);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_10', 100% / 10);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
+	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'full', 100%);
 }
 
-#only-not-mobile (@rules) {
-	html:not(.mobile) & {
-		@rules();
-	}
+#generate-padding-all-classes(@suffix: ~'') {
+	#generate-padding-classes(~'', @suffix);
+	
+	#generate-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-padding-classes(~'-bottom', @suffix);
+	#generate-padding-classes(~'-left', @suffix);
+	#generate-padding-classes(~'-right', @suffix);
+	#generate-padding-classes(~'-top', @suffix);
 }
 
-#only-phone (@rules) {
-	html.mobile.phone &, &.mobile.phone {
-		@rules();
-	}
+//=====================================
+// = POINTER-EVENTS CLASS
+//=====================================
+
+.pointer-events-none {
+	pointer-events: none;
 }
 
-#only-not-phone (@rules) {
-	html:not(.phone) & {
-		@rules();
-	}
+.pointer-events-all {
+	pointer-events: all;
 }
 
-/*******************************
- * @author DeuxHuitHuit
- *****************************/
+//=====================================
+// = POSITION CLASS
+//=====================================
+.position-absolute, .absolute {
+	position: absolute;
+}
 
+.position-fixed, .fixed {
+	position: fixed;
+}
+
+.position-relative, .relative {
+	position: relative;
+}
+
+//=== POSITION === RESPONSIVE =========
+// FROM PH
+.absolute-from-ph {
+	#mq-min-width(@screen-ph, {
+		.absolute;
+	});
+}
+
+// FROM XS
+.position-absolute-from-xs, .absolute-from-xs {
+	#mq-min-width(@screen-xs, {
+		.absolute;
+	});
+}
+
+// FROM SM
+.position-absolute-from-sm, .absolute-from-sm {
+	#mq-min-width(@screen-sm, {
+		.absolute;
+	});
+}
+
+.position-fixed-from-sm, .fixed-from-sm {
+	#mq-min-width(@screen-sm, {
+		.fixed;
+	});
+}
+
+// FROM MD
+.position-absolute-from-md, .absolute-from-md {
+	#mq-min-width(@screen-md, {
+		.absolute;
+	});
+}
+
+// TO XS
+.absolute-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.absolute;
+	});
+}
+
+//===========================
+// = SQUARE CLASS
+//===========================
+
+.square-micro {
+	width: @spacing-micro;
+	height: @spacing-micro;
+}
+
+.square-smallest {
+	width: @spacing-smallest;
+	height: @spacing-smallest;
+}
+
+.square-smaller {
+	width: @spacing-smaller;
+	height: @spacing-smaller;
+}
+
+.square-small {
+	width: @spacing-small;
+	height: @spacing-small;
+}
+
+.square-mid {
+	width: @spacing-mid;
+	height: @spacing-mid;
+}
+
+.square-large {
+	width: @spacing-large;
+	height: @spacing-large;
+}
+
+.square-larger {
+	width: @spacing-larger;
+	height: @spacing-larger;
+}
+
+.square-largest {
+	width: @spacing-largest;
+	height: @spacing-largest;
+}
+
+.square-huge {
+	width: @spacing-huge;
+	height: @spacing-huge;
+}
+
+//=== SQUARE ==== RESPONSIVE ==========
+//=== TO SM ======
+
+.square-mid-to-sm {
+	#mq-max-width(@screen-sm - 1, {
+		width: @spacing-mid;
+		height: @spacing-mid;
+	});
+}
+ 
 //=========================
-// = STATES PSEUDO CLASSES HELPERS
+// = BORDER-COLOR CLASS
 //=========================
 
-#hover (@rules) {
-	html:not(.mobile) &:hover, &:focus, &:active {
-		@rules();
-	}
+.stroke-current-color {
+	stroke: currentColor;
 }
 
-#hover (@selected, @rules) {
-	html:not(.mobile) &:hover, &:focus, &:active, &@{selected} {
-		@rules();
-	}
+.stroke-transparent {
+	stroke: transparent;
 }
 
-#hover-no-focus (@rules) {
-	html:not(.mobile) &:hover, &:active {
-		@rules();
-	}
+.stroke-white {
+	stroke: @white;
 }
 
-#hover-no-focus (@selected, @rules) {
-	html:not(.mobile) &:hover, &:active, &@{selected} {
-		@rules();
-	}
+.stroke-black {
+	stroke: @black;
 }
 
-#hover-only (@rules) {
-	html:not(.mobile) &:hover {
-		@rules();
-	}
-}
+//=====================================
+//=== TEXT-ALIGN CLASS
+//=====================================
 
-#hover-only (@selected, @rules) {
-	html:not(.mobile) &:hover, &@{selected} {
-		@rules();
-	}
-}
-/*******************************
- * @author DeuxHuitHuit
- *****************************/
-
-//=========================
-// = REUSABLE TEXT CLASSES
-//=========================
-
-.text-bold, .bold {
-	font-weight: bold;
-}
-
-.text-capital {
-	text-transform: capitalize;
-}
-
-.text-upper, .upper {
-	text-transform: uppercase;
-}
-
-.text-no-upper {
-	text-transform: none;
-}
-
-.text-lower {
-	text-transform: lower;
-}
-
-.text-center {
+.text-align-center, .text-center {
 	text-align: center;
 }
 
-.text-left {
+.text-align-left, .text-left {
 	text-align: left;
 }
 
-.text-right {
+.text-align-right, .text-right {
 	text-align: right;
 }
 
-//::first-letter needs to be put on a block-like element
-.first-letter-upper {
-	&::first-letter {
-		.upper;
-	}
+//=====================================
+//=== TEXT-ALIGN     RESPONSIVE 
+//=========== FROM PH =================
+
+.text-right-from-ph {
+	#mq-min-width(@screen-ph, {
+		.text-right;
+	});
 }
-/**
- * Visibility classes
- */
+
+//=========== FROM XS ===================
+.text-left-from-xs {
+	#mq-min-width(@screen-xs, {
+		.text-left;
+	});
+}
+
+.text-right-from-xs {
+	#mq-min-width(@screen-xs, {
+		.text-right;
+	});
+}
+
+//=========== TO XS ===================
+
+.text-center-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.text-center;
+	});
+}
+
+.text-right-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.text-right;
+	});
+}
+
+//=========== TO PH ===================
+
+.text-center-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.text-center;
+	});
+}
+
+.text-right-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.text-right;
+	});
+}
+
+//=========== FROM PH TO XS ===========
+
+.text-right-from-ph-to-xs {
+	#mq-min-max-width(@screen-ph, @screen-xs - 1, {
+		.text-right;
+	});
+}
  
-.not-visible {
-	visibility: hidden !important;
+//=========================
+// = TEXT-DECORATION CLASS
+//=========================
+
+.text-decoration-overline, .overline {
+	text-decoration: overline;
 }
 
-.collapse {
-	visibility: collapse;
+.text-decoration-overline-on-hover, .overline-on-hover {
+	#hover-only({
+		.text-decoration-overline;
+	});
 }
 
-.visible {
-	visibility: visible !important;
+.text-decoration-underline, .underline {
+	text-decoration: underline;
 }
 
-.hidden {
-	display: none;
+.text-decoration-none, .no-decoration {
+	text-decoration: none;
 }
 
-.off-screen {
-	position: fixed;
-	left: -100000px;
-	right: -100000px;
-	width: 0;
-	height: 0;
+// HOVER
+.text-decoration-underline-on-hover, .underline-on-hover {
+	#hover-only({
+		.text-decoration-underline();
+	});
 }
 
-#generate-visibility-classes (@suffix) {
+.text-decoration-none-on-hover, .no-decoration-on-hover {
+	#hover-only({
+		.text-decoration-none();
+	});
+}
+ 
+//=========================
+// = TEXT-OVERFLOW CLASS
+//=========================
 
-	.not-visible-@{suffix} {
-		visibility: hidden !important;
+.text-ellipsis {
+	#ellipsis();
+}
+
+//=========================
+// = TEXT-TRANSFORM CLASS
+//=========================
+
+.text-transform-capitalize, .text-capital, .text-capitalize {
+	text-transform: capitalize;
+}
+
+.text-transform-upper, .text-upper, .upper, .text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-transform-none, .text-no-upper {
+	text-transform: none;
+}
+
+.text-transform-lower, .text-lower, .text-lowercase {
+	text-transform: lowercase;
+}
+
+//===========================
+// = TOP, LEFT, RIGHT, BOTTOM AND BUNDLE CLASS
+//===========================
+
+.fill {
+	#fill();
+}
+
+.fill-minus-1px {
+	#fill(-1px);
+}
+
+.fill-minus-5 {
+	#fill(-0.5rem);
+}
+
+//========= TOP =============
+
+.top {
+	top: 0;
+}
+
+.top-pico {
+	top: @spacing-pico;
+}
+
+.top-nano {
+	top: @spacing-nano;
+}
+
+.top-half-micro {
+	top: @spacing-micro * 0.5;
+}
+
+.top-micro {
+	top: @spacing-micro;
+}
+
+.top-smallest {
+	top: @spacing-smallest;
+}
+
+.top-smaller {
+	top: @spacing-smaller;
+}
+
+.top-small {
+	top: @spacing-small;
+}
+
+.top-mid {
+	top: @spacing-mid;
+}
+
+.top-large {
+	top: @spacing-large;
+}
+
+.top-xlarge {
+	top: @spacing-xlarge;
+}
+
+.top-50, .top-half, .top-50p {
+	top: 50%;
+}
+
+//========= TOP MINUS =======
+
+.top-minus-nano {
+	top: -@spacing-nano;
+}
+
+.top-minus-pico {
+	top: -@spacing-pico;
+}
+
+.top-minus-micro {
+	top: -@spacing-micro;
+}
+
+// FROM SM
+.top-minus-pico-from-sm {
+	#mq-min-width(@screen-sm, {
+		.top-minus-pico;
+	});
+}
+
+//========= LEFT ============
+
+.left {
+	left: 0;
+}
+
+.left-half-nano {
+ 	left: @spacing-nano * .5;
+}
+
+.left-nano {
+ 	left: @spacing-nano;
+}
+
+.left-smallest{
+	left: @spacing-smallest;
+}
+
+.left-smaller {
+	left: @spacing-smaller;
+}
+
+.left-small {
+	left: @spacing-small;
+}
+
+.left-mid {
+	left: @spacing-mid;
+}
+
+.left-large {
+	left: @spacing-large;
+}
+
+.left-larger {
+	left: @spacing-larger;
+}
+
+.left-largest {
+	left: @spacing-largest;
+}
+
+.left-quarter {
+	left: 25%;
+}
+
+.left-half-width, .left-half, .left-50p {
+ 	left: 50%;
+}
+
+.left-full,
+.left-100p,
+.left-full-width {
+ 	left: 100%;
+}
+
+.left-minus-quarter {
+	left: -25%;
+}
+
+// FROM SM
+.left-minus-micro-from-sm {
+	#mq-min-width(@screen-sm, {
+		.left-minus-micro;
+	});
+}
+
+.left-minus-smallest-from-sm {
+	#mq-min-width(@screen-sm, {
+		.left-minus-smallest;
+	});
+}
+
+// FROM MD
+.left-full-from-md,
+.left-100p-from-md,
+.left-full-width-from-md {
+	#mq-min-width(@screen-md, {
+		.left-full-width;
+	});
+}
+
+//========= LEFT MINUS ======
+
+.left-minus-micro {
+ 	left: -@spacing-micro;
+}
+
+.left-minus-micro-plus-nano {
+ 	left: -(@spacing-micro + @spacing-nano);
+}
+
+.left-minus-smallest {
+	left: -@spacing-smallest;
+}
+
+.left-minus-smaller {
+ 	left: -@spacing-smaller;
+}
+
+.left-minus-small {
+ 	left: -@spacing-small;
+}
+
+.left-minus-largest {
+	left: -@spacing-largest;
+}
+
+//========= RIGHT ===========
+
+.right {
+	right: 0;
+}
+
+.right-quarter {
+	right: 25%;
+}
+
+.right-half,
+.right-50p,
+.right-half-width {
+	right: 50%;
+}
+
+.right-half-from-sm,
+.right-50p-from-sm,
+.right-half-width-from-sm {
+	#mq-min-width(@screen-sm, {
+		.right-half;
+	});
+}
+
+.right-full {
+	right: 100%;
+}
+
+.right-minus-quarter {
+	right: -25%;
+}
+
+//========= BOTTOM ==========
+
+.bottom {
+	bottom: 0;
+}
+
+.bottom-xlarge {
+	bottom: @spacing-xlarge;
+}
+
+.bottom-full, .bottom-100p, .bottom-full-width {
+	bottom: 100%;
+}
+
+
+
+//========= BOTTOM MINUS ====
+
+.bottom-minus-smaller {
+	bottom: -@spacing-smaller;
+}
+
+.bottom-minus-quarter {
+	bottom: -25%;
+}
+
+
+//=====================================
+//=== TRANSFORM ON HOVER CLASS
+//=====================================
+
+.translate-left-none-on-hover {
+	#hover-only({
+		.translate-x-0();
+	});
+}
+
+.translate-left-smallest-on-hover {
+	#hover-only({
+		.translate-x-smallest();
+	});
+}
+
+
+.translate-y-none-on-hover {
+	#hover-only({
+		.translate-y-none;
+	});
+}
+
+.translate-y-minus-full-on-hover {
+	#hover-only({
+		.translate-y-minus-full;
+	});
+}
+
+//=====================================
+//=== TRANSFORM-ORIGIN CLASS
+//=====================================
+
+.transform-origin-left-center {
+	#transform-origin(left center);
+}
+
+.transform-origin-center-bottom {
+	#transform-origin(center bottom);
+}
+
+.transform-origin-center-top {
+	#transform-origin(center top);
+}
+
+//=====================================
+//=== TRANSFORM CLASS
+//=====================================
+/**************************************
+* REFLECTION
+***************************************/
+.reflect-horizontal {
+	#transform(~'scaleX(-1)');
+	#transform-origin(center center);
+}
+
+/**************************************
+* ROTATION
+***************************************/
+.rotate-90deg, .rotate-vertical {
+	#transform(~'rotateZ(90deg)');
+}
+
+.rotate-minus-90deg, .rotate-counter-vertical {
+	#transform(~'rotateZ(-90deg)');
+}
+
+.rotate-180deg, .rotation-180deg {
+	#transform(~'rotate(180deg)');
+}
+
+/**************************************
+* TRANSLATE X-Y
+***************************************/
+//Proportional Value Left Top
+.translate-x-minus-half-y-minus-half, .translate-minus-half, .translate-xy-minus-half, .translate-top-left-minus-half {
+	#transform(~'translate(-50%, -50%)');
+}
+
+//Proportional Value Right Top
+.translate-x-full-y-minus-quarter, .translate-right-full-top-minus-quarter {
+	#transform(~'translateY(-25%) translateX(100%)');
+}
+
+// FROM SM
+.translate-xy-minus-half-from-sm {
+	#mq-min-width(@screen-sm, {
+		.translate-xy-minus-half;
+	});
+}
+
+/**************************************
+* TRANSLATE X
+***************************************/
+//Zero Value
+.translate-x-0, .translate-x-none, .translate-left-none, .translate-right-none {
+	#transform(~'translateX(0)');
+}
+
+//Spacing Value
+.translate-x-smallest, .translate-right-smallest {
+	#transform(~'translateX(@{spacing-smallest})');
+}
+
+//Proportional Value
+.translate-x-minus-full, .translate-left-full {
+	#transform(~'translateX(-100%)');
+}
+
+.translate-x-full, .translate-right-full {
+	#transform(~'translateX(100%)');
+}
+
+/**************************************
+* TRANSLATE Y
+***************************************/
+//Proportional Value  Top
+.translate-y-none {
+	#transform(~'translateY(0)');
+}
+
+.translate-y-nano, .translate-top-nano {
+	#transform(~'translateY(@{spacing-nano})');
+}
+
+.translate-y-40p, .translate-top-40-percent {
+	#transform(~'translateY(40%)');
+}
+
+.translate-y-half {
+	#transform(~'translateY(50%)');
+}
+
+.translate-y-full {
+	#transform(~'translateY(100%)');
+}
+
+.translate-y-viewport-fourth, .translate-viewport-bottom-fourth {
+	#transform(~'translateY(75vh)');
+}
+
+.translate-y-minus-quarter, .translate-y-minus-quart, .translate-top-minus-quarter, .translate-top-minus-quart {
+	#transform(~'translateY(-25%)');
+}
+
+.translate-y-minus-half, .translate-top-minus-half {
+	#transform(~'translateY(-50%)');
+}
+
+.translate-y-minus-full {
+	#transform(~'translateY(-100%)');
+}
+
+
+// FROM XS
+.translate-y-minus-quarter-from-xs, .translate-y-minus-quart-from-xs, .translate-top-minus-quarter-from-xs, .translate-top-minus-quarter-from-xs {
+	#mq-min-width(@screen-xs, {
+		.translate-top-minus-quart;
+	});
+}
+
+
+
+
+// FROM SM
+.translate-y-minus-half-from-sm, .translate-top-minus-half-from-sm {
+	#mq-min-width(@screen-sm, {
+		.translate-top-minus-half;
+	});
+}
+
+.translate-y-minus-full-from-sm {
+	#mq-min-width(@screen-sm, {
+		.translate-y-minus-full;
+	});
+}
+
+/**************************************
+* TRANSLATE Z
+***************************************/
+.translate-z-0 {
+	#transform(translateZ(0));
+}
+
+.translate-z-1px {
+	#transform(translateZ(1px));
+}
+
+/**************************************
+* SCALE
+***************************************/
+
+.scale-y-half {
+	#transform(~'scaleY(0.5)');
+}
+
+.scale-x-half {
+	#transform(~'scaleX(0.5)');
+}
+
+.scale-x-double {
+	#transform(~'scaleX(2)');
+}
+
+//=====================================
+//=== TRANSITION CLASS
+//=====================================
+
+.noanim {
+	&, & * {
+		#transition(none) !important;
 	}
+}
+
+.transition-none {
+	#transition(none);
+}
+
+.transition-none-important {
+	#transition(none) !important;
+}
+
+.transition-color-short-ease {
+	#transition(~'color @{duration-short} @{ease}');
+}
+
+.transition-opacity-short-ease {
+	#transition(opacity @duration-short @ease);
+}
+
+//=========================
+// = VERTICAL-ALIGN CLASS
+//=========================
+
+.vertical-align-top, .valign-top {
+	vertical-align: top;
+}
+
+.vertical-align-bottom, .valign-bottom {
+	vertical-align: bottom;
+}
+
+.vertical-align-middle, .valign-middle {
+	vertical-align: middle;
+}
+
+
+//=========================
+// = VISIBILITY CLASS
+//=========================
+ 
+#generate-visibility-classes (@suffix: ~'') {
 	
-	.collapse-@{suffix} {
+	.visibility-collapse@{suffix},
+	.collapse@{suffix} {
 		visibility: collapse;
 	}
-	
-	.visible-@{suffix} {
-		visibility: visible !important;
+
+	.visibility-hidden@{suffix},
+	.not-visible@{suffix} {
+		visibility: hidden;
 	}
 	
-	.hidden-@{suffix} {
-		display: none;
-	}
-	
-	.block-@{suffix} {
-		display: block;
-	}
-	
-	.inline-block-@{suffix} {
-		display: inline-block;
+	.visibility-visible@{suffix},
+	.visible@{suffix} {
+		visibility: visible;
 	}
 }
 
+#generate-visibility-classes();
+
 #mq-min-width(@screen-ip, {
-	#generate-visibility-classes(ip);
+	//#generate-visibility-classes(~'-ip');
+	#generate-visibility-classes(~'-from-ip');
 });
+
 #mq-min-width(@screen-ph, {
-	#generate-visibility-classes(ph);
+	//#generate-visibility-classes(~'-ph');
+	#generate-visibility-classes(~'-from-ph');
 });
+
 #mq-min-width(@screen-xs, {
-	#generate-visibility-classes(xs);
+	//#generate-visibility-classes(~'-xs');
+	#generate-visibility-classes(~'-from-xs');
 });
+
 #mq-min-width(@screen-sm, {
-	#generate-visibility-classes(sm);
+	//#generate-visibility-classes(~'-sm');
+	#generate-visibility-classes(~'-from-sm');
 });
+
 #mq-min-width(@screen-md, {
-	#generate-visibility-classes(md);
+	//#generate-visibility-classes(~'-md');
+	#generate-visibility-classes(~'-from-md');
 });
+
 #mq-min-width(@screen-lg, {
-	#generate-visibility-classes(lg);
+	//#generate-visibility-classes(~'-lg');
+	#generate-visibility-classes(~'-from-lg');
 });
+
 #mq-min-width(@screen-xl, {
-	#generate-visibility-classes(xl);
+	//#generate-visibility-classes(~'-xl');
+	#generate-visibility-classes(~'-from-xl');
 });
+
+//=========================
+// = WHITE-SPACE CLASS
+//=========================
+
+.white-space-nowrap, .text-nowrap {
+	white-space: nowrap;
+}
+
+.white-space-normal {
+	white-space: normal;
+}
+
+//=========================
+// = WIDTH CLASS
+//=========================
+.width-auto {
+	width: auto;
+}
+
+.width-0 {
+	width: 0;
+}
+
+.width-0-important {
+	width: 0 !important;
+}
+
+.width-micro {
+	width: @spacing-micro;
+}
+
+.width-smallest {
+	width: @spacing-smallest;
+}
+
+.width-smaller {
+	width: @spacing-smaller;
+}
+
+.width-small {
+	width: @spacing-small;
+}
+
+.width-mid {
+	width: @spacing-mid;
+}
+
+.width-large {
+	width: @spacing-large;
+}
+
+.width-larger {
+	width: @spacing-larger;
+}
+
+.width-largest {
+	width: @spacing-largest;
+}
+
+.width-largest-double {
+	width: (@spacing-largest * 2);
+}
+
+.width-xlarge {
+	width: @spacing-xlarge;
+}
+
+.width-huge {
+	width: @spacing-huge;
+}
+
+.width-giga {
+	width: @spacing-giga;
+}
+
+.width-quarter {
+	width: 25%;
+}
+
+.width-30-percent {
+	width: 30%;
+}
+
+.width-third {
+	width: 33.333%;
+}
+
+.width-40-percent {
+	width: 40%;
+}
+
+.width-half, .half-width {
+	width: 50%;
+}
+
+.width-60-percent {
+	width: 60%;
+}
+
+.width-70-percent {
+	width: 70%;
+}
+
+.width-three-quarter {
+	width: 75%;
+}
+
+.width-full, .full-width {
+	width: 100%;
+}
+
+.width-full-viewport, .full-viewport-width {
+	width: 100vw;
+}
+
+// WIDTH RESPONSIVE
+
+// FROM IP
+.width-auto-from-ip {
+	#mq-min-width(@screen-ip, {
+		.width-auto;
+	});
+}
+
+// FROM PH
+.width-quarter-from-ph {
+	#mq-min-width(@screen-ph, {
+		.width-quarter;
+	});
+}
+
+.width-half-from-ph, .half-width-ph {
+	#mq-max-width((@screen-xs - 1), {
+		.width-half();
+	});
+}
+
+// FROM XS
+.width-auto-from-xs {
+	#mq-min-width(@screen-xs, {
+		.width-auto;
+	});
+}
+
+.width-30-percent-from-xs {
+	#mq-min-width(@screen-xs, {
+		.width-30-percent;
+	});
+}
+
+.width-quarter-from-xs {
+	#mq-min-width(@screen-xs, {
+		.width-quarter;
+	});
+}
+
+.width-half-from-xs {
+	#mq-min-width(@screen-xs, {
+		.width-half;
+	});
+}
+
+.width-full-from-xs {
+	#mq-min-width(@screen-xs, {
+		.width-full;
+	});
+}
+
+// FROM SM
+.width-large-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-large;
+	});
+}
+
+.width-larger-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-larger;
+	});
+}
+
+.width-largest-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-largest;
+	});
+}
+
+// FROM SM
+.width-auto-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-auto;
+	});
+}
+
+.width-quarter-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-quarter;
+	});
+}
+
+.width-30-percent-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-30-percent;
+	});
+}
+
+.width-full-from-sm {
+	#mq-min-width(@screen-sm, {
+		.width-full;
+	});
+}
+
+
+
+// FROM MD
+.width-largest-from-md {
+	#mq-min-width(@screen-md, {
+		.width-largest;
+	});
+} 
+
+// TO XS
+.width-40-percent-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.width-40-percent;
+	});
+}
+
+.full-width-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		.full-width;
+	});
+}
+
+// TO PH
+.width-large-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.width-large;
+	});
+}
+
+.full-width-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		.full-width;
+	});
+}
 
 //=========================
 // = ZINDEX CLASS
 //=========================
+
+.z-index-minus-1 {
+	z-index: -1;
+}
 
 .z-index-1 {
 	z-index: 1;
@@ -1415,6 +3967,166 @@
 	z-index: 1000;
 }
 
+.z-index-2000 {
+	z-index: 2000;
+}
+
+.z-index-3000 {
+	z-index: 3000;
+}
+
+.z-index-4000 {
+	z-index: 4000;
+}
+
+.z-index-5000 {
+	z-index: 5000;
+}
+
 .z-index-10000 {
 	z-index: 10000;
+}
+
+.z-index-100000 {
+	z-index: 100000;
+}
+
+.z-index-500000 {
+	z-index: 500000;
+}
+
+.z-index-1000000 {
+	z-index: 1000000;
+}
+
+.z-index-max {
+	z-index: 9999999;
+}
+
+#generate-padding-all-classes() ;
+#generate-margin-all-classes() ;
+
+// FROM
+#mq-min-width(@screen-ip, {
+	#generate-padding-all-classes(~'-from-ip');
+	#generate-margin-all-classes(~'-from-ip');
+});
+
+#mq-min-width(@screen-ph, {
+	#generate-padding-all-classes(~'-from-ph');
+	#generate-margin-all-classes(~'-from-ph');
+});
+
+#mq-min-width(@screen-xs, {
+	#generate-padding-all-classes(~'-from-xs');
+	#generate-margin-all-classes(~'-from-xs');
+});
+
+#mq-desktop-design({
+	#generate-padding-all-classes(~'-from-desktop');
+	#generate-margin-all-classes(~'-from-desktop');
+});
+
+#mq-min-width(@screen-sm, {
+	#generate-padding-all-classes(~'-from-sm');
+	#generate-margin-all-classes(~'-from-sm');
+});
+
+#mq-min-width(@screen-md, {
+	#generate-padding-all-classes(~'-from-md');
+	#generate-margin-all-classes(~'-from-md');
+});
+
+#mq-min-width(@screen-lg, {
+	#generate-padding-all-classes(~'-from-lg');
+	#generate-margin-all-classes(~'-from-lg');
+});
+
+#mq-min-width(@screen-xl, {
+	#generate-padding-all-classes(~'-from-xl');
+	#generate-margin-all-classes(~'-from-xl');
+});
+
+#mq-min-width(@screen-hd, {
+	#generate-padding-all-classes(~'-from-hd');
+	#generate-margin-all-classes(~'-from-hd');
+});
+
+/*
+#mq-min-width(@screen-2k, {
+	#generate-padding-all-classes(~'-from-2k');
+	#generate-margin-all-classes(~'-from-2k');
+});
+
+#mq-min-width(@screen-4k, {
+	#generate-padding-all-classes(~'-from-4k');
+	#generate-margin-all-classes(~'-from-4k');
+});
+*/
+
+// TO
+/*
+#mq-max-width(@screen-4k - 1, {
+	#generate-padding-all-classes(~'-to-4k');
+	#generate-margin-all-classes(~'-to-4k');
+});
+
+#mq-max-width(@screen-2k - 1, {
+	#generate-padding-all-classes(~'-to-2k');
+	#generate-margin-all-classes(~'-to-2k');
+});
+*/
+
+#mq-max-width(@screen-hd - 1, {
+	#generate-padding-all-classes(~'-to-hd');
+	#generate-margin-all-classes(~'-to-hd');
+});
+
+#mq-max-width(@screen-xl - 1, {
+	#generate-padding-all-classes(~'-to-xl');
+	#generate-margin-all-classes(~'-to-xl');
+});
+
+#mq-max-width(@screen-lg - 1, {
+	#generate-padding-all-classes(~'-to-lg');
+	#generate-margin-all-classes(~'-to-lg');
+});
+
+#mq-max-width(@screen-md - 1, {
+	#generate-padding-all-classes(~'-to-md');
+	#generate-margin-all-classes(~'-to-md');
+});
+
+#mq-max-width(@screen-sm - 1, {
+	#generate-padding-all-classes(~'-to-sm');
+	#generate-margin-all-classes(~'-to-sm');
+});
+
+#mq-mobile-design({
+	#generate-padding-all-classes(~'-to-desktop');
+	#generate-margin-all-classes(~'-to-desktop');
+});
+
+#mq-max-width(@screen-xs - 1, {
+	#generate-padding-all-classes(~'-to-xs');
+	#generate-margin-all-classes(~'-to-xs');
+});
+
+#mq-max-width(@screen-ph - 1, {
+	#generate-padding-all-classes(~'-to-ph');
+	#generate-margin-all-classes(~'-to-ph');
+});
+
+/*
+#mq-max-width(@screen-ip - 1, {
+	#generate-padding-all-classes(~'-to-ip');
+	#generate-margin-all-classes(~'-to-ip');
+});
+*/
+
+// FROM PH TO SM
+.padding-large-from-ph-to-sm {
+	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
+		padding: @spacing-large;
+	});
 }
