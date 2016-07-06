@@ -1,5 +1,8 @@
 /*******************************
  * @author DeuxHuitHuit
+ * 
+ * This file is the file used by grunt to create the build
+ *
  *****************************/
 
 //=========================
@@ -8,7 +11,7 @@
 .DEPRECATED(@name: ~'') {}
 
 @import "core/bundle";
-@import "../lib/bundle.css";
+@import (less) "lib/bundle.css";
 
 @import "vars/vars-spacing";
 @import "vars/vars-type";
@@ -16,17 +19,8 @@
 @import "site/base-site";
 @import "site/base-style";
 
-@import "site/util-flex";
-
-@import "site/util-transform";
-@import "site/util-transition";
-
 @import "site/util-colors";
-@import "site/util-border";
 @import "site/util-type";
-
-@import "site/util-height";
-@import "site/util-width";
 
 @import "site/util-custom";
 
