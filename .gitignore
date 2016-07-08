@@ -5,22 +5,13 @@
 
 node_modules
 
-project-name.min.js.map
-project-name.min.js
-project-name.js
-
-main.css
-main.css.map
-main.pure.css
-main.min.css
-main.min.css.map
+project-name.*
 
 workspace/assets/js/libs
 
 npm-debug.log
 
 build.json
-dist
 
 .htaccess
 manifest

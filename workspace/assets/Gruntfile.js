@@ -198,11 +198,11 @@ module.exports = function (grunt) {
 			production: {
 				options: {
 					sourceMap: true,
-					sourceMapFilename: 'css/main.css.map',
-					sourceMappingURL: 'main.css.map',
+					sourceMapFilename: 'css/<%= pkg.name %>.css.map',
+					sourceMappingURL: '<%= pkg.name %>.css.map',
 				},
 				files: {
-					'css/main.css': LESS_FILE
+					'css/<%= pkg.name %>.css': LESS_FILE
 				}
 			},
 			bundle: {
@@ -226,8 +226,8 @@ module.exports = function (grunt) {
 					'../utilities/**/*.xsl',
 					'js/**/*.js'
 				],
-				css: ['css/main.css'],
-				dest: 'css/main.pure.css'
+				css: ['css/<%= pkg.name %>.css'],
+				dest: 'css/<%= pkg.name %>.pure.css'
 			}
 		},
 		
@@ -238,7 +238,7 @@ module.exports = function (grunt) {
 					banner: '<%= meta.banner %>\n',
 				},
 				files: {
-					'css/main.min.css': ['css/main.pure.css']
+					'css/<%= pkg.name %>.min.css': ['css/<%= pkg.name %>.pure.css']
 				}
 			}
 		},
@@ -280,7 +280,7 @@ module.exports = function (grunt) {
 				'regex-selectors': false,
 				'unqualified-attributes': false
 			},
-			src: ['css/main.css']
+			src: ['css/<%= pkg.name %>.css']
 		},
 		
 		clean: {
@@ -312,7 +312,7 @@ module.exports = function (grunt) {
 					cwd: '.',
 					src: [
 						'js/<%= pkg.name %>.min.js',
-						'css/main.min.css',
+						'css/<%= pkg.name %>.min.css',
 						BUILD_FILE
 					],
 					dest: FTP_FILE.default.path + 'workspace/assets/',
