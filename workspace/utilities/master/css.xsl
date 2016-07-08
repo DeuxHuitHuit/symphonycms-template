@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template name="master-css">
-	<xsl:param name="less-file" select="'main'" />
+	<xsl:param name="less-file" select="'browser'" />
 	
 	<xsl:choose>
 		<xsl:when test="$debug = true()">

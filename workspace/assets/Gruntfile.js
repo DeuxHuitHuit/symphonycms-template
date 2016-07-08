@@ -13,7 +13,8 @@ module.exports = function (grunt) {
 	var FTP_FILE = JSON.parse(stripJsonComments(grunt.file.read('../../ftpsync.settings')));
 	var FTP_PASS = '.ftppass';
 	
-	var LESS_FILE = 'css/main.less';
+	var LESS_FILE = 'css/dev/grunt.less';
+	var DEV_BUNDLE_LESS_FILE = 'css/dev/bundle.less';
 	
 	var JSON_JS_FILE = grunt.file.readJSON('./js.json');
 	
@@ -189,17 +190,24 @@ module.exports = function (grunt) {
 		},
 		
 		less: {
+			options: {
+				ieCompat: false,
+				strictUnits: true,
+				report: 'gzip',
+			},
 			production: {
 				options: {
-					ieCompat: false,
-					strictUnits: true,
-					report: 'gzip',
 					sourceMap: true,
 					sourceMapFilename: 'css/main.css.map',
 					sourceMappingURL: 'main.css.map',
 				},
 				files: {
 					'css/main.css': LESS_FILE
+				}
+			},
+			bundle: {
+				files: {
+					'css/lib/bundle.css': DEV_BUNDLE_LESS_FILE
 				}
 			}
 		},
@@ -291,21 +299,32 @@ module.exports = function (grunt) {
 		},
 
 		ftps_deploy: {
+			options: {
+				auth:{
+					host: FTP_FILE.default.host,
+					port: FTP_FILE.default.port || 21,
+					authKey: 'default',
+					secure: true
+				}
+			},
 			build: {
-				options: {
-					auth:{
-						host: FTP_FILE.default.host,
-						port: FTP_FILE.default.port || 21,
-						authKey: 'default',
-						secure: true
-					}
-				},
 				files: [{
 					cwd: '.',
 					src: [
 						'js/<%= pkg.name %>.min.js',
 						'css/main.min.css',
 						BUILD_FILE
+					],
+					dest: FTP_FILE.default.path + 'workspace/assets/',
+				}]
+			},
+			bundle: {
+				files: [{
+					cwd: '.',
+					src: [
+						'css/lib/bundle.css',
+						'css/lib/bundle.less',
+						'css/core/bundle.less'
 					],
 					dest: FTP_FILE.default.path + 'workspace/assets/',
 				}]
@@ -378,11 +397,19 @@ module.exports = function (grunt) {
 		});
 
 		// Default tasks.
-		grunt.registerTask('push',    ['ftps_boot', 'ftps_deploy', 'ftps_cleanup']);
+		grunt.registerTask('push',    ['ftps_boot', 'ftps_deploy:build', 'ftps_cleanup']);
 		grunt.registerTask('dev',     ['jscs', 'jshint', 'complexity']);
 		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
-		grunt.registerTask('bundle',  ['clean:bundle', 'concat:lessLibs', 'concat:lessCore']);
-		grunt.registerTask('css',     ['bundle', 'less', 'purifycss', 'csso']);
+		grunt.registerTask('bundle',  [
+			'clean:bundle',
+			'concat:lessLibs',
+			'concat:lessCore',
+			'less:bundle',
+			'ftps_boot',
+			'ftps_deploy:bundle',
+			'ftps_cleanup'
+		]);
+		grunt.registerTask('css',     ['less:production', 'purifycss', 'csso']);
 		grunt.registerTask('build',   ['svninfo', 'buildnum', 'js', 'css']);
 		grunt.registerTask('default', ['dev', 'build']);
 		
