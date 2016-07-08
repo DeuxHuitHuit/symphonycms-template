@@ -1,7 +1,7 @@
 /**
  * @author Deux Huit Huit
  */
- 
+
 (function ($, global, undefined) {
 
 	'use strict';
@@ -22,13 +22,15 @@
 		}
 	};
 	
-	global.raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||  
+	global.raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 		window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
-		window.oRequestAnimationFrame || function (fx) { window.setTimeout(fx, 16); };
-		
+		window.oRequestAnimationFrame || function (fx) {
+		window.setTimeout(fx, 16);
+	};
+	
 	global.craf = window.cancelAnimationFrame || window.webkitCancelRequestAnimationFrame ||
-				window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame ||
-				window.msCancelRequestAnimationFrame  || window.clearTimeout;
+		window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame ||
+		window.msCancelRequestAnimationFrame || window.clearTimeout;
 	
 	// polyfill jQuery animation engine
 	if (!!$.fn.velocity) {
@@ -94,7 +96,7 @@
 	};
 	
 	global.remToPx = function (value) {
-		return value * parseInt($('html').css('fontSize'),10);
+		return value * parseInt($('html').css('fontSize'), 10);
 	};
 	
 })(jQuery, window);

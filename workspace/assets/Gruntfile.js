@@ -123,7 +123,7 @@ module.exports = function (grunt) {
 				newcap: true, // capitalize ctos
 				noempty: true,
 				nonew: true, // no new ..()
-				noarg: true, 
+				noarg: true,
 				plusplus: false,
 				quotmark: 'single',
 				undef: true,
@@ -156,17 +156,18 @@ module.exports = function (grunt) {
 		jscs: {
 			src: SRC_FILES.concat(GRUNT_FILE),
 			options: {
-				config: JSCS_FILE
+				config: JSCS_FILE,
+				fix: true
 			}
 		},
 		uglify: {
 			prod: {
 				files: {
-					'js/<%= pkg.name %>.min.js': '<%= concat.sources.dest %>' 
+					'js/<%= pkg.name %>.min.js': '<%= concat.sources.dest %>'
 				}
 			},
 			options: {
-				banner: '<%= meta.banner %>',
+				banner: "<%= meta.banner %>",
 				report: 'gzip',
 				sourceMap: true,
 				sourceMapName: 'js/<%= pkg.name %>.min.js.map',
@@ -189,13 +190,13 @@ module.exports = function (grunt) {
 			options: {
 				ieCompat: false,
 				strictUnits: true,
-				report: 'gzip',
+				report: 'gzip'
 			},
 			production: {
 				options: {
 					sourceMap: true,
 					sourceMapFilename: 'css/<%= pkg.name %>.css.map',
-					sourceMappingURL: '<%= pkg.name %>.css.map',
+					sourceMappingURL: '<%= pkg.name %>.css.map'
 				},
 				files: {
 					'css/<%= pkg.name %>.css': LESS_FILE
@@ -231,7 +232,7 @@ module.exports = function (grunt) {
 			compress: {
 				options: {
 					report: 'gzip',
-					banner: '<%= meta.banner %>\n',
+					banner: '<%= meta.banner %>\n'
 				},
 				files: {
 					'css/<%= pkg.name %>.min.css': ['css/<%= pkg.name %>.pure.css']
@@ -296,7 +297,7 @@ module.exports = function (grunt) {
 
 		ftps_deploy: {
 			options: {
-				auth:{
+				auth: {
 					host: FTP_FILE.default.host,
 					port: FTP_FILE.default.port || 21,
 					authKey: 'default',
@@ -311,7 +312,7 @@ module.exports = function (grunt) {
 						'css/<%= pkg.name %>.min.css',
 						BUILD_FILE
 					],
-					dest: FTP_FILE.default.path + 'workspace/assets/',
+					dest: FTP_FILE.default.path + 'workspace/assets/'
 				}]
 			},
 			bundle: {
@@ -322,7 +323,7 @@ module.exports = function (grunt) {
 						'css/lib/bundle.less',
 						'css/core/bundle.less'
 					],
-					dest: FTP_FILE.default.path + 'workspace/assets/',
+					dest: FTP_FILE.default.path + 'workspace/assets/'
 				}]
 			}
 		}
@@ -393,10 +394,10 @@ module.exports = function (grunt) {
 		});
 
 		// Default tasks.
-		grunt.registerTask('push',    ['ftps_boot', 'ftps_deploy:build', 'ftps_cleanup']);
-		grunt.registerTask('dev',     ['jscs', 'jshint', 'complexity']);
-		grunt.registerTask('js',      ['concat:sources', 'uglify', 'curl', 'concat:libs']);
-		grunt.registerTask('bundle',  [
+		grunt.registerTask('push', ['ftps_boot', 'ftps_deploy:build', 'ftps_cleanup']);
+		grunt.registerTask('dev', ['jscs', 'jshint', 'complexity']);
+		grunt.registerTask('js', ['concat:sources', 'uglify', 'curl', 'concat:libs']);
+		grunt.registerTask('bundle', [
 			'clean:bundle',
 			'concat:lessLibs',
 			'concat:lessCore',
@@ -405,8 +406,8 @@ module.exports = function (grunt) {
 			'ftps_deploy:bundle',
 			'ftps_cleanup'
 		]);
-		grunt.registerTask('css',     ['less:production', 'purifycss', 'csso']);
-		grunt.registerTask('build',   ['svninfo', 'buildnum', 'js', 'css']);
+		grunt.registerTask('css', ['less:production', 'purifycss', 'csso']);
+		grunt.registerTask('build', ['svninfo', 'buildnum', 'js', 'css']);
 		grunt.registerTask('default', ['dev', 'build']);
 		
 		// visit grunt
