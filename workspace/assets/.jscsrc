@@ -1,0 +1,16 @@
+{
+	"preset": "crockford",
+	"disallowKeywordsOnNewLine": [
+	],
+	"validateIndentation": "	",
+	"disallowMultipleSpaces": true,
+	"disallowTrailingWhitespace": "ignoreEmptyLines",
+	"requireNewlineBeforeSingleStatementsInIf": true,
+	"disallowMixedSpacesAndTabs": true,
+	"requireSpacesInFunctionExpression": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireMultipleVarDecl": false,
+	"requireVarDeclFirst": false
+}

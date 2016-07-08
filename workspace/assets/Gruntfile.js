@@ -7,6 +7,7 @@ module.exports = function (grunt) {
 	'use strict';
 	
 	var GRUNT_FILE = 'Gruntfile.js';
+	var JSCS_FILE = ".jscsrc";
 	
 	var BUILD_FILE = './build.json';
 	
@@ -130,19 +131,15 @@ module.exports = function (grunt) {
 				maxdepth: 5,
 				maxstatements: 30,
 				maxlen: 100,
-				//maxcomplexity: 10,
+				nonbsp: true,
 				
 				// relax options
-				//boss: true,
-				//eqnull: true, 
-				esnext: true,
 				regexp: true,
 				strict: true,
 				trailing: false,
 				sub: true, // [] notation
 				smarttabs: true,
 				lastsemic: false, // enforce semicolons
-				white: true,
 				
 				// env
 				browser: true,
@@ -159,8 +156,7 @@ module.exports = function (grunt) {
 		jscs: {
 			src: SRC_FILES.concat(GRUNT_FILE),
 			options: {
-				config: '.jscsrc',
-				fix: true
+				config: JSCS_FILE
 			}
 		},
 		uglify: {
