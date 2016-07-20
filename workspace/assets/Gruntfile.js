@@ -221,7 +221,11 @@ module.exports = function (grunt) {
 					'../pages/*.xsl',
 					'../utilities/*.xsl',
 					'../utilities/**/*.xsl',
-					'js/**/*.js'
+					'js/com/*.js',
+					'js/modules/*.js',
+					'js/pages/*.js',
+					'js/transitions/*.js',
+					'js/utils/*.js'
 				],
 				css: ['css/<%= pkg.name %>.css'],
 				dest: 'css/<%= pkg.name %>.pure.css'
