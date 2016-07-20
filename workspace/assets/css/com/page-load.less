@@ -1,4 +1,4 @@
-@page-load-color: @black;
+@page-load-color: @white;
 
 #load-progress {
 	position: fixed;
@@ -8,7 +8,6 @@
 	width: 0%;
 	height: 3px;
 	background-color: @page-load-color;
-	
 	visibility: collapse;
 	opacity: 0;
 	
@@ -19,11 +18,11 @@
 	#transition(none);
 	
 	&.start {
-		#transition(~'@{transition}, @{visanim} @{load-duration}');
+		#transition(~'@{transition}, visibility 0ms linear @{load-duration}');
 	}
 	
 	&.show {
-		#transition(~'@{transition}, @{visanim} 0ms');
+		#transition(~'@{transition}, visibility 0ms linear 0ms');
 		visibility: visible;
 		opacity: 1;
 	}
@@ -31,5 +30,4 @@
 	&.end {
 		#transition-duration(@load-duration-fast);
 	}
-	
 }
