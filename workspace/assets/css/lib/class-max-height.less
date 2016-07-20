@@ -2,10 +2,19 @@
 //=========================
 // = MAX-HEIGHT CLASS
 //=========================
+// DEPRECATED
+.max-height-half 					{ max-height:  50%; .DEPRECATED(~''); }
+.max-height-quarter 				{ max-height:  25%; .DEPRECATED(~''); }
+.max-height-three-quarter 			{ max-height:  75%; .DEPRECATED(~''); }
+.max-height-quarter-viewport 		{ max-height:  25vh; .DEPRECATED(~'');}
+.max-height-half-viewport 			{ max-height:  50vh; .DEPRECATED(~'');}
+.max-height-three-quarter-viewport 	{ max-height:  75vh; .DEPRECATED(~'');}
+
+// USEFULL
+.max-height-auto 			{ max-height: auto; }
+.max-height-0 				{ max-height: 0; }
 
 //Spacing Value
-.max-height-0 { max-height: 0; }
-
 .max-height-micro 			{ max-height: @spacing-micro;        }
 .max-height-micro-double 	{ max-height: @spacing-micro * 2;    }
 .max-height-micro-triple 	{ max-height: @spacing-micro * 3;    }
@@ -58,18 +67,11 @@
 
 // Proportional Value
 .max-height-1_2 			{ max-height:  50%; }
-.max-height-half 			{ max-height:  50%; .DEPRECATED(~'');}
 
-.max-height-quarter 		{ max-height:  25%; .DEPRECATED(~''); }
 .max-height-1_4 			{ max-height:  25%; }
-
-.max-height-three-quarter 	{ max-height:  75%; .DEPRECATED(~'');}
 .max-height-3_4 			{ max-height:  75%; }
 
 .max-height-full 			{ max-height: 100%; }
 
 // Proportional ViewPort Value
-.max-height-quarter-viewport 		{ max-height:  25vh; .DEPRECATED(~'');}
-.max-height-half-viewport 			{ max-height:  50vh; .DEPRECATED(~'');}
-.max-height-three-quarter-viewport 	{ max-height:  75vh; .DEPRECATED(~'');}
-.max-height-full-viewport 			{ max-height: 100vh; }
+.max-height-full-viewport 	{ max-height: 100vh; }

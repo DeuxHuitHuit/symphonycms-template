@@ -2,35 +2,16 @@
 //=========================
 // = DISPLAY CLASS
 //=========================
+
 #generate-display-classes (@suffix: ~'') {
 	
-	.hidden@{suffix} {
-		display: none;
-	}
-
-	.table@{suffix} {
-		display: table;
-	}
-
-	.table-cell@{suffix} {
-		display: table-cell;
-	}
-	
-	.list-item@{suffix} {
-		display: list-item;
-	}
-	
-	.inline@{suffix} {
-		display: inline;
-	}
-	
-	.inline-block@{suffix} {
-		display: inline-block;
-	}
-	
-	.block@{suffix} {
-		display: block;
-	}
+	.hidden@{suffix} 		{ display: none;         }
+	.table@{suffix} 		{ display: table;        }
+	.table-cell@{suffix} 	{ display: table-cell;   }
+	.list-item@{suffix} 	{ display: list-item;    }
+	.inline@{suffix} 		{ display: inline;       }
+	.inline-block@{suffix} 	{ display: inline-block; }
+	.block@{suffix} 		{ display: block;        }
 
 	.flexbox@{suffix} {
 		display: -ms-flexbox;
