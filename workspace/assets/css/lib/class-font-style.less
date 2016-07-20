@@ -2,7 +2,31 @@
 //=========================
 // = FONT STYLE CLASS
 //=========================
+// DEPRECATED
+.text-normal {
+	.DEPRECATED(~'Use font-style-normal');
+	font-style: normal;
+}
 
-.font-style-italic, .text-italic, .italic {
+.text-italic,  {
+	.DEPRECATED(~'Use font-style-italic or italic');
 	font-style: italic;
+}
+
+.font-style-oblique, .text-oblique, oblique {
+	.DEPRECATED(~'Use font-style-oblique or oblique');
+	font-style: normal;
+}
+
+// GOOD CLASSES
+.font-style-normal {
+	font-style: normal;
+}
+
+.font-style-italic, .italic {
+	font-style: italic;
+}
+
+.font-style-oblique, .oblique {
+	font-style: oblique;
 }

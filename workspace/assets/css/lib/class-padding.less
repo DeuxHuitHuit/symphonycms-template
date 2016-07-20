@@ -1,9 +1,6 @@
 //=====================================
 // = PADDING CLASS
 //=====================================
-#generate-padding-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
-	#generate-directional-class-value(~'padding', ~'padding', @value-name, @value, @direction, @suffix,);
-}
 
 #generate-padding-classes (@direction: ~'', @suffix: ~'') {
 	
@@ -17,31 +14,39 @@
 	//-------------------------------------------
 	// SPACING PADDING 
 	//-------------------------------------------
-	#generate-padding-classes-value(@direction, @suffix, ~'atto', 			@spacing-atto);
-	#generate-padding-classes-value(@direction, @suffix, ~'femto', 			@spacing-femto);
-	#generate-padding-classes-value(@direction, @suffix, ~'pico', 			@spacing-pico);
+	#generate-padding-classes-value(@direction, @suffix, ~'atto', 				@spacing-atto);
+	#generate-padding-classes-value(@direction, @suffix, ~'femto', 				@spacing-femto);
+	#generate-padding-classes-value(@direction, @suffix, ~'pico', 				@spacing-pico);
+
 	//#generate-padding-classes-value(@direction, @suffix, ~'half-nano', 		@spacing-nano * 0.5);
-	#generate-padding-classes-value(@direction, @suffix, ~'nano', 			@spacing-nano);
-	#generate-padding-classes-value(@direction, @suffix, ~'micro', 			@spacing-micro);
-	#generate-padding-classes-value(@direction, @suffix, ~'xsmall', 		@spacing-xsmall);
-	#generate-padding-classes-value(@direction, @suffix, ~'smallest', 		@spacing-smallest);
+
+	#generate-padding-classes-value(@direction, @suffix, ~'nano', 				@spacing-nano);
+	#generate-padding-classes-value(@direction, @suffix, ~'micro', 				@spacing-micro);
+	#generate-padding-classes-value(@direction, @suffix, ~'xsmall', 			@spacing-xsmall);
+	#generate-padding-classes-value(@direction, @suffix, ~'smallest', 			@spacing-smallest);
+
 	//#generate-padding-classes-value(@direction, @suffix, ~'half-smaller', 	@spacing-smaller * 0.5);
-	#generate-padding-classes-value(@direction, @suffix, ~'smaller', 		@spacing-smaller);
-	//#generate-padding-classes-value(@direction, @suffix, ~'smaller-double', @spacing-smaller * 2);
-	#generate-padding-classes-value(@direction, @suffix, ~'small', 			@spacing-small);
-	#generate-padding-classes-value(@direction, @suffix, ~'mid', 			@spacing-mid);
-	//#generate-padding-classes-value(@direction, @suffix, ~'half-large', 	@spacing-large * 0.5);
-	#generate-padding-classes-value(@direction, @suffix, ~'large', 			@spacing-large);
-	#generate-padding-classes-value(@direction, @suffix, ~'larger', 		@spacing-larger);
-	#generate-padding-classes-value(@direction, @suffix, ~'largest', 		@spacing-largest);
-	#generate-padding-classes-value(@direction, @suffix, ~'xlarge', 		@spacing-xlarge);
-	#generate-padding-classes-value(@direction, @suffix, ~'huge', 			@spacing-huge);
-	#generate-padding-classes-value(@direction, @suffix, ~'mega', 			@spacing-mega);
-	#generate-padding-classes-value(@direction, @suffix, ~'giga', 			@spacing-giga);
-	#generate-padding-classes-value(@direction, @suffix, ~'tera', 			@spacing-tera);
-	#generate-padding-classes-value(@direction, @suffix, ~'peta', 			@spacing-peta);
-	#generate-padding-classes-value(@direction, @suffix, ~'zetta', 			@spacing-zetta);
-	#generate-padding-classes-value(@direction, @suffix, ~'yotta', 			@spacing-yotta);
+
+	#generate-padding-classes-value(@direction, @suffix, ~'smaller', 			@spacing-smaller);
+
+	//#generate-padding-classes-value(@direction, @suffix, ~'smaller-double', 	@spacing-smaller * 2);
+
+	#generate-padding-classes-value(@direction, @suffix, ~'small', 				@spacing-small);
+	#generate-padding-classes-value(@direction, @suffix, ~'mid', 				@spacing-mid);
+
+	//#generate-padding-classes-value(@direction, @suffix, ~'half-large', 		@spacing-large * 0.5);
+
+	#generate-padding-classes-value(@direction, @suffix, ~'large', 				@spacing-large);
+	#generate-padding-classes-value(@direction, @suffix, ~'larger', 			@spacing-larger);
+	#generate-padding-classes-value(@direction, @suffix, ~'largest', 			@spacing-largest);
+	#generate-padding-classes-value(@direction, @suffix, ~'xlarge', 			@spacing-xlarge);
+	#generate-padding-classes-value(@direction, @suffix, ~'huge', 				@spacing-huge);
+	#generate-padding-classes-value(@direction, @suffix, ~'mega', 				@spacing-mega);
+	#generate-padding-classes-value(@direction, @suffix, ~'giga', 				@spacing-giga);
+	#generate-padding-classes-value(@direction, @suffix, ~'tera', 				@spacing-tera);
+	#generate-padding-classes-value(@direction, @suffix, ~'peta', 				@spacing-peta);
+	#generate-padding-classes-value(@direction, @suffix, ~'zetta', 				@spacing-zetta);
+	#generate-padding-classes-value(@direction, @suffix, ~'yotta', 				@spacing-yotta);
 	
 	//-------------------------------------------
 	// RATIONNAL PADDING
@@ -91,10 +96,6 @@
 	#generate-padding-classes-value(@direction, @suffix, ~'full', 100%);
 }
 
-#generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
-	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);
-}
-
 #generate-padding-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
 	
 	//-------------------------------------------
@@ -112,17 +113,25 @@
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 				@spacing-atto);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			@spacing-femto);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 				@spacing-pico);
+
 	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
+
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 				@spacing-nano);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 			@spacing-micro);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xsmall', 			@spacing-xsmall);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 			@spacing-smallest);
-	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 		@spacing-smaller * 0.5);
+
+	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 	@spacing-smaller * 0.5);
+
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 			@spacing-smaller);
+
 	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller-double', 	@spacing-smaller * 2);
+
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 			@spacing-small);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mid', 				@spacing-mid);
+
 	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-large', 		@spacing-large * 0.5);
+
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 			@spacing-large);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 			@spacing-larger);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 			@spacing-largest);
@@ -181,16 +190,4 @@
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
 	
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'full', 100%);
-}
-
-#generate-padding-all-classes(@suffix: ~'') {
-	#generate-padding-classes(~'', @suffix);
-	
-	#generate-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
-	#generate-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
-	
-	#generate-padding-classes(~'-bottom', @suffix);
-	#generate-padding-classes(~'-left', @suffix);
-	#generate-padding-classes(~'-right', @suffix);
-	#generate-padding-classes(~'-top', @suffix);
 }

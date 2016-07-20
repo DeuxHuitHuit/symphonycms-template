@@ -113,35 +113,6 @@
 
 
 //=========================
-// = DEVICE FUNCTIONS
-//=========================
-/*
-#device-mobile (@rules) {
-	html.mobile &, &.mobile {
-		@rules();
-	}
-}
-
-#device-not-mobile (@rules) {
-	html:not(.mobile) & {
-		@rules();
-	}
-}
-
-#device-phone (@rules) {
-	html.mobile.phone &, &.mobile.phone {
-		@rules();
-	}
-}
-
-#device-not-phone (@rules) {
-	html:not(.phone) & {
-		@rules();
-	}
-}
-*/
-
-//=========================
 // = ADD/REMOVE GRAYSCALE FILTER FUNCTIONS
 //=========================
 
@@ -188,10 +159,12 @@
 			flex-flow: @value;
 }
 
+
 #flex-align-content (@value: center) {
 	-webkit-align-content: @value;
 			align-content: @value;
 }
+
 
 #flex-align-items (@value: center) {
 	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
@@ -210,6 +183,7 @@
 	-ms-flex-align: end;
 }
 
+
 #flex-justify-content (@value: center) {
 	-webkit-justify-content: @value;
 		-ms-flex-pack: @value;
@@ -225,6 +199,7 @@
 	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
 	-ms-flex-pack: end;
 }
+
 
 #flex-wrap (@value: wrap) {
 	//For IE10- : "nowrap" = "none"
@@ -267,11 +242,11 @@
 		-ms-flex-item-align: end;
 }
 
+
 #flex-basis (@value: auto) {
 	-webkit-flex-basis: @value;
 			flex-basis: @value;
 }
-
 
 #flex-grow (@value: 2) {
 	-webkit-flex-grow: @value;
@@ -371,700 +346,6 @@
 		background-image: -moz-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
 		background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
 	}
-}
-
-/************************************************************************
- * Grilles :
- *
- * Contrôle de la génération
- * @cols : {number}
- * @responsive : true/false | [ph, xs, sm, md, lg, xl]
- * @spacing : true/false | [micro, smallest, smaller, small, mid, large...]
- * @manual-spacing : true/false
-
- * .guttered-{spacing} — calcule les largeurs en incluant les marges
- * .spacing-{number} | spacing-{screen}-{number} — permet d'espacer manuellement les colonnes (ex: .col-4 dans .ctn-12 -> .spacing-3)
- * .auto-spacing — espace automatiquement les élements .col-1 dans le conteneur, selon son nombre de colonnes
- * .show-grid — affiche la grille à l'écran
-
- * # techniques
- * - ajouter un margin-bottom manuellement pour agrandir l'espace sous les rangées.
-
- * TODO
- * contrôle de la génération de l'affichage la grille
- * ajout des offsets marginaux
-**************************************************************************************/
-
-// mixin for displaying grid
-#generate-grid-visualizer(
-	@gutter-spacing: spacing-smaller,
-	@grid: 12,
-	@bodywidth: 100%,
-	@gutter-color: @grid-visualizer-gutter-color,
-	@baseline-color: @grid-visualizer-baseline-color,
-	@column-color: @grid-visualizer-column-color) {
-	@gutter-number: @grid - 1;
-	@gutter-width: @@gutter-spacing;
-	@gutters-total-width: @gutter-width * @gutter-number;
-	@background-size: calc(~'(100% - @{gutters-total-width}) / @{grid} + @{gutter-width}');
-	
-	&:before {
-		content: "";
-		display: inline-block;
-		z-index: 1000;
-		
-		pointer-events: none;
-		position: absolute;
-		width: @bodywidth;
-		height: 100%;
-		background-color: @column-color;
-		top: auto;
-		left: auto;
-		right: 0;
-		bottom: 0;
-		background-image:
-		 linear-gradient(to right, @column-color 0, @column-color calc(~'100% - @{gutter-width}'), @gutter-color calc(~'100% - @{gutter-width}'), @gutter-color 100%),
-		 linear-gradient(to bottom, @baseline-color 1px, transparent 1px);
-		background-size: @background-size 100%, 100% @spacing-small;
-		background-origin: content-box;
-	}
-}
-
-// recursive definitions
-#generate-ctn (@n, @spacing, @manual-spacing: false, @offset: false) {
-	.ctn-@{n} {
-		// cols
-		#generate-cols-in(@n);
-		#generate-cols-offset(@n, @offset);
-		#generate-cols-ex(@grid-nb-cols-max, @n);
-		#generate-spaced-grid();
-
-		&.show-grid when(@debug = true) {
-			&.guttered-smaller {
-				#generate-grid-visualizer(spacing-smaller, @n);
-			}
-			&.guttered-small {
-				#generate-grid-visualizer(spacing-small, @n);
-			}
-			&.guttered-mid {
-				#generate-grid-visualizer(spacing-mid, @n);
-			}
-			&.guttered-large {
-				#generate-grid-visualizer(spacing-large, @n);
-			}
-		}
-	}
-	
-	#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n) {
-		// col definition
-		> .col-@{i} {
-			width: percentage(@i / @n);
-		}
-		// recursion
-		#generate-cols-in(@n, (@i + 1));
-	}
-
-	#generate-cols-offset(@n, @offset, @i: 1) when (@i > 0) and (@i < @n) and (@offset = true) {
-		> .col-offset-@{i} {
-			margin-left: percentage(@i / @n);
-		}
-		// recursion
-		#generate-cols-offset(@n, @offset, (@i + 1));
-	}
-	
-	
-	#generate-spaced-cols(@grid-spacing, @n, @i: 1) when (@i > 0) and (@i <= @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@gutter-width: @@grid-spacing;
-		@gutter-total-number: @n - 1;
-		@gutters-total-width: @gutter-width * @gutter-total-number;
-		@gutter-span-number: @i - 1;
-		@gutters-span-width: @gutter-width * @gutter-span-number;
-		@total-span-width: calc(~'(100% - @{gutters-total-width}) / @{n} * @{i} + @{gutters-span-width} - 0.5px');
-		&.guttered-@{spacing-suffix} {
-			> .col-@{i}	{
-				width: @total-span-width;
-			}
-		}
-		#generate-spaced-cols(@grid-spacing, @n, (@i + 1));
-
-	}
-	
-	#generate-auto-spacing(@grid-spacing, @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@spacing-value: @@grid-spacing;
-		@second-row: @n + 1;
-		&.guttered-@{spacing-suffix}.auto-spacing {
-			> .col-1	{
-				margin-left: 0;
-				margin-right: 0;
-				&:nth-of-type(n) {
-					margin-top: 0;
-				}
-				&:nth-of-type(n + 1) {
-					margin-left: @spacing-value;
-				}
-				&:nth-of-type(@{n}n + 1) {
-					margin-left: 0;
-				}
-				&:nth-of-type(n + @{second-row}) {
-					margin-top: @spacing-value;
-				}
-			}
-		}
-	}
-
-	#generate-manual-spacing(@grid-spacing, @n, @i:1) when (@i > 0) and (@i <= @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@spacing-value: @@grid-spacing;
-		@second-row: @i + 1;
-		&.guttered-@{spacing-suffix}.spacing-@{i} {
-			> [class*="col-"]	{
-				margin-left: 0;
-				margin-right: 0;
-				&:nth-of-type(n) {
-					margin-top: 0;
-				}
-				&:nth-of-type(n + 1) {
-					margin-left: @spacing-value;
-				}
-			}
-			> [class*="col-"]:nth-of-type(@{i}n + 1) {
-				margin-left: 0;
-			}
-			> [class*="col-"]:nth-of-type(n + @{second-row}) {
-				margin-top: @spacing-value;
-			}
-		}
-		#generate-manual-spacing(@grid-spacing, @n, (@i + 1));
-	}
-
-
-	#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n) {
-		// col definition
-		> .col-@{i} {
-			width: 100%;
-		}
-		// recursion
-		#generate-cols-ex(@n, (@i + 1));
-	}
-
-	#generate-spaced-grid() when (@spacing = true) {
-		#generate-auto-spacing(spacing-smaller, @n);
-		#generate-auto-spacing(spacing-small, @n);
-		#generate-auto-spacing(spacing-mid, @n);
-		#generate-auto-spacing(spacing-large, @n);
-		#generate-auto-spacing(spacing-larger, @n);
-		#generate-auto-spacing(spacing-largest, @n);
-		#generate-spaced-cols(spacing-smaller, @n);
-		#generate-spaced-cols(spacing-small, @n);
-		#generate-spaced-cols(spacing-mid, @n);
-		#generate-spaced-cols(spacing-large, @n);
-		#generate-spaced-cols(spacing-larger, @n);
-		#generate-spaced-cols(spacing-largest, @n);
-	}
-	#generate-spaced-grid() when (@manual-spacing = true) {
-		#generate-manual-spacing(spacing-smaller, @n);
-		#generate-manual-spacing(spacing-small, @n);
-		#generate-manual-spacing(spacing-mid, @n);
-		#generate-manual-spacing(spacing-large, @n);
-	}
-	#generate-spaced-grid() when (@spacing = smaller) {
-		#generate-auto-spacing(spacing-smaller, @n);
-		#generate-spaced-cols(spacing-smaller, @n);
-		#generate-manual-spacing(spacing-smaller, @n);
-	}
-	#generate-spaced-grid() when (@spacing = small) {
-		#generate-auto-spacing(spacing-small, @n);
-		#generate-spaced-cols(spacing-small, @n);
-		#generate-manual-spacing(spacing-small, @n);
-	}
-	#generate-spaced-grid() when (@spacing = mid) {
-		#generate-auto-spacing(spacing-mid, @n);
-		#generate-spaced-cols(spacing-mid, @n);
-		#generate-manual-spacing(spacing-mid, @n);
-	}
-	#generate-spaced-grid() when (@spacing = large) {
-		#generate-auto-spacing(spacing-large, @n);
-		#generate-spaced-cols(spacing-large, @n);
-		#generate-manual-spacing(spacing-large, @n);
-	}
-}
-// recursive definitions
-#generate-resp-ctn(@prefix, @n, @spacing, @manual-spacing: false, @offset) {
-	.ctn-@{prefix}-@{n} {
-		// cols
-		#generate-cols-in(@n);
-		// #generate-cols-ex(@n);
-		
-		// cols, resp
-		#generate-resp-cols-in(@prefix, @n);
-		
-		#generate-resp-cols-offset(@prefix, @n, @offset);
-		
-		#generate-spaced-grid();
-		// #generate-resp-cols-ex(@prefix, @n);
-
-		&.show-grid when(@debug = true) {
-			&.guttered-smaller {
-				#generate-grid-visualizer(spacing-smaller, @n);
-			}
-			&.guttered-small {
-				#generate-grid-visualizer(spacing-small, @n);
-			}
-			&.guttered-mid {
-				#generate-grid-visualizer(spacing-mid, @n);
-			}
-			&.guttered-large {
-				#generate-grid-visualizer(spacing-large, @n);
-			}
-		}
-
-	}
-	
-	// standard
-	#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
-		// col definition
-		> .col-@{i} {
-			width: percentage(@i / @n);
-		}
-		// recursion
-		#generate-cols-in(@n, (@i + 1));
-	}
-	#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
-		// col definition
-		> .col-@{i} {
-			width: 100%;
-		}
-		// recursion
-		#generate-cols-ex(@n, (@i + 1));
-	}
-
-	
-	// included col
-	#generate-resp-cols-in(@prefix, @n, @i: 0) when (@i >= 0) and (@i <= @n) {
-		// col definition
-		> .col-@{prefix}-@{i} when (@i > 0) {
-			width: percentage(@i / @n);
-		}
-		
-		// recursion
-		#generate-resp-cols-in(@prefix, @n, (@i + 1));
-	}
-	#generate-resp-cols-offset(@prefix, @n, @offset, @i: 0) when (@i >= 0) and (@i < @n) and (@offset = true) {
-		// col definition
-		> .col-offset-@{prefix}-@{i} {
-			margin-left: percentage(@i / @n);
-		}
-		
-		// recursion
-		#generate-resp-cols-offset(@prefix, @n, @offset, (@i + 1));
-	}
-	// excluded cols
-	#generate-resp-cols-ex(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
-		// col definition
-		> .col-@{prefix}-@{i} {
-			width: 100%;
-		}
-		
-		// recursion
-		#generate-resp-cols-ex(@prefix, @n, (@i + 1));
-	}
-
-	#generate-spaced-cols(@grid-spacing, @n, @i: 1) when (@i > 0) and (@i <= @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@gutter-width: @@grid-spacing;
-		@gutter-total-number: @n - 1;
-		@gutters-total-width: @gutter-width * @gutter-total-number;
-		@gutter-span-number: @i - 1;
-		@gutters-span-width: @gutter-width * @gutter-span-number;
-		@total-span-width: calc(~'(100% - @{gutters-total-width}) / @{n} * @{i} + @{gutters-span-width} - 0.5px');
-		&.guttered-@{spacing-suffix} {
-			> .col-@{i}	{
-				width: @total-span-width;
-			}
-		}
-		#generate-spaced-cols(@grid-spacing, @n, (@i + 1));
-	}
-	
-	#generate-auto-spacing(@grid-spacing, @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@spacing-value: @@grid-spacing;
-		@second-row: @n + 1;
-		&.guttered-@{spacing-suffix}.auto-spacing {
-			> .col-1	{
-				margin-left: 0;
-				margin-right: 0;
-				&:nth-of-type(n) {
-					margin-top: 0;
-				}
-				&:nth-of-type(n + 1) {
-					margin-left: @spacing-value;
-				}
-				&:nth-of-type(@{n}n + 1) {
-					margin-left: 0;
-				}
-				&:nth-of-type(n + @{second-row}) {
-					margin-top: @spacing-value;
-				}
-			}
-		}
-	}
-
-	#generate-manual-spacing(@grid-spacing, @n, @i:1) when (@i > 0) and (@i <= @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@spacing-value: @@grid-spacing;
-		@second-row: @i + 1;
-		&.guttered-@{spacing-suffix}.spacing-@{i} {
-			> [class*="col-"]	{
-				margin-left: 0;
-				margin-right: 0;
-				&:nth-of-type(n) {
-					margin-top: 0;
-				}
-				&:nth-of-type(n + 1) {
-					margin-left: @spacing-value;
-				}
-			}
-			> [class*="col-"]:nth-of-type(@{i}n + 1) {
-				margin-left: 0;
-			}
-			> [class*="col-"]:nth-of-type(n + @{second-row}) {
-				margin-top: @spacing-value;
-			}
-		}
-		#generate-manual-spacing(@grid-spacing, @n, (@i + 1));
-	}
-
-	#generate-resp-spaced-cols(@prefix, @grid-spacing, @n, @i:1) when (@i > 0) and (@i <= @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@gutter-width: @@grid-spacing;
-		@gutter-total-number: @n - 1;
-		@gutters-total-width: @gutter-width * @gutter-total-number;
-		@gutter-span-number: @i - 1;
-		@gutters-span-width: @gutter-width * @gutter-span-number;
-		@total-span-width: calc(~'(100% - @{gutters-total-width}) / @{n} * @{i} + @{gutters-span-width} - 0.5px');
-		&.guttered-@{spacing-suffix} {
-			> .col-@{prefix}-@{i} when (@i > 0)	{
-				width: @total-span-width;
-			}
-		}
-		#generate-resp-spaced-cols(@prefix, @grid-spacing, @n, (@i + 1))
-	}
-	
-	#generate-resp-auto-spacing(@prefix, @grid-spacing, @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@spacing-value: @@grid-spacing;
-		@second-row: @n + 1;
-		&.guttered-@{spacing-suffix}.auto-spacing {
-			> [class*="col-@{prefix}-1"]	{
-				margin-left: 0;
-				margin-right: 0;
-				&:nth-of-type(n) {
-					margin-top: 0;
-				}
-				+ [class*="col-@{prefix}-1"] {
-					margin-left: @spacing-value;
-				}
-			}
-			> [class*="col-@{prefix}-1"]:nth-of-type(@{n}n + 1) {
-				margin-left: 0;
-			}
-			> .col-1:nth-of-type(n + @{second-row}) {
-				margin-top: @spacing-value;
-			}
-		}
-	}
-	#generate-resp-manual-spacing(@prefix, @grid-spacing, @n, @i:1) when (@i > 0) and (@i <= @n) {
-		@spacing-suffix: replace(@grid-spacing, "spacing-", "");
-		@spacing-value: @@grid-spacing;
-		@second-row: @i + 1;
-		&.guttered-@{spacing-suffix}.spacing-@{prefix}-@{i} {
-			> [class*="col-"]	{
-				margin-left: 0;
-				margin-right: 0;
-				&:nth-of-type(n) {
-					margin-top: 0;
-				}
-				&:nth-of-type(n + 1) {
-					margin-left: @spacing-value;
-				}
-			}
-			> [class*="col-"]:nth-of-type(@{i}n + 1) {
-				margin-left: 0;
-			}
-			> [class*="col-"]:nth-of-type(n + @{second-row}) {
-				margin-top: @spacing-value;
-			}
-		}
-		#generate-resp-manual-spacing(@prefix, @grid-spacing, @n, (@i + 1));
-	}
-	#generate-spaced-grid() when (@spacing = true) {
-		#generate-auto-spacing(spacing-smaller, @n);
-		#generate-auto-spacing(spacing-small, @n);
-		#generate-auto-spacing(spacing-mid, @n);
-		#generate-auto-spacing(spacing-large, @n);
-		#generate-auto-spacing(spacing-larger, @n);
-		#generate-auto-spacing(spacing-largest, @n);
-		#generate-spaced-cols(spacing-smaller, @n);
-		#generate-spaced-cols(spacing-small, @n);
-		#generate-spaced-cols(spacing-mid, @n);
-		#generate-spaced-cols(spacing-large, @n);
-		#generate-spaced-cols(spacing-larger, @n);
-		#generate-spaced-cols(spacing-largest, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-smaller, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-small, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-mid, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-large, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-larger, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-largest, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-smaller, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-small, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-mid, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-large, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-larger, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-largest, @n);
-	}
-	// #generate-spaced-grid() when (@manual-spacing = true) {
-	// 	#generate-manual-spacing(spacing-smaller, @n);
-	// 	#generate-manual-spacing(spacing-small, @n);
-	// 	#generate-manual-spacing(spacing-mid, @n);
-	// 	#generate-manual-spacing(spacing-large, @n);
-	// 	#generate-resp-manual-spacing(@prefix, spacing-smaller, @n);
-	// 	#generate-resp-manual-spacing(@prefix, spacing-small, @n);
-	// 	#generate-resp-manual-spacing(@prefix, spacing-mid, @n);
-	// 	#generate-resp-manual-spacing(@prefix, spacing-large, @n);
-	// }
-	#generate-spaced-grid() when (@spacing = smaller) {
-		#generate-auto-spacing(spacing-smaller, @n);
-		#generate-spaced-cols(spacing-smaller, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-smaller, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-smaller, @n);
-	}
-	#generate-spaced-grid() when (@spacing = small) {
-		#generate-auto-spacing(spacing-small, @n);
-		#generate-spaced-cols(spacing-small, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-small, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-small, @n);
-	}
-	#generate-spaced-grid() when (@spacing = mid) {
-		#generate-auto-spacing(spacing-mid, @n);
-		#generate-spaced-cols(spacing-mid, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-mid, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-mid, @n);
-	}
-	#generate-spaced-grid() when (@spacing = large) {
-		#generate-auto-spacing(spacing-large, @n);
-		#generate-spaced-cols(spacing-large, @n);
-		#generate-resp-auto-spacing(@prefix, spacing-large, @n);
-		#generate-resp-spaced-cols(@prefix, spacing-large, @n);
-	}
-}
-
-// not responsive
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = false) {
-		#generate-ctn(@cols, @spacing, @manual-spacing, @offset);
-}
-
-// fully responsive
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = true) {
-		#generate-ctn(@cols, @spacing, @manual-spacing, @offset);
-		#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols, @spacing, @manual-spacing, @offset); });		
-		#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols, @spacing, @manual-spacing, @offset); });
-		#mq-min-width(@screen-sm, { #generate-resp-ctn(sm, @cols, @spacing, @manual-spacing, @offset); });
-		#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols, @spacing, @manual-spacing, @offset); });
-		#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols, @spacing, @manual-spacing, @offset); });
-		// #mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols, @spacing, @manual-spacing, @offset); });
-		#mq-desktop-design({ #generate-resp-ctn(desktop, @cols, @spacing, @manual-spacing, @offset); });		
-}
-
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = ph) {
-		#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols, @spacing, @manual-spacing); });
-}
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = xs) {
-		#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols, @spacing, @manual-spacing); });
-}
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = sm) {
-		#mq-min-width(@screen-sm, { #generate-resp-ctn(sm, @cols, @spacing, @manual-spacing); });
-}
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = md) {
-		#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols, @spacing, @manual-spacing); });
-}
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = lg) {
-		#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols, @spacing, @manual-spacing); });
-}
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = xl) {
-		#mq-min-width(@screen-xl, { 
-			#generate-resp-ctn(xl, @cols, @spacing, @manual-spacing); 
-		});
-}
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false) when (@responsive = desktop) {
-		#mq-desktop-design({ #generate-resp-ctn(desktop, @cols, @spacing, @manual-spacing); });
-}
-
-/*
-#generate-grid(
-	@cols:1, 
-	@responsive: false, 
-	@spacing: false, 
-	@offset: false,
-	@manual-spacing: false);*/
-
-//=========================
-// = GRID FUNCTIONS
-//=========================
-
-@grid-nb-cols-max: 12;
-
-// generator
-#generate-grid (@cols) when (@cols > 0) {
-
-	// recursive definitions
-	#generate-ctn (@n) {
-		.ctn-@{n} {
-			// cols
-			#generate-cols-in(@n);
-			#generate-cols-ex(@grid-nb-cols-max, @n);
-		}
-		
-		#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n) {
-			// col definition
-			> .col-@{i} {
-				width: percentage(@i / @n);
-			}
-			
-			> .col-offset-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			
-			// recursion
-			#generate-cols-in(@n, (@i + 1));
-		}
-		#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n) {
-			// col definition
-			> .col-@{i} {
-				width: 100%;
-			}
-			// recursion
-			#generate-cols-ex(@n, (@i + 1));
-		}
-	}
-
-
-	// recursive definitions
-	#generate-resp-ctn(@prefix, @n) {
-		.ctn-@{prefix}-@{n} {
-			// cols
-			#generate-cols-in(@n);
-			
-			// cols, resp
-			#generate-resp-cols-in(@prefix, @n);
-			#generate-resp-cols-ex(@prefix, @grid-nb-cols-max, @n);
-		}
-		
-		// standard
-		#generate-cols-in(@n, @i: 1) when (@i > 0) and (@i < @n)  {
-			// col definition
-			> .col-@{i} {
-				width: percentage(@i / @n);
-			}
-			> .col-offset-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			// recursion
-			#generate-cols-in(@n, (@i + 1));
-		}
-		#generate-cols-ex(@n, @i: 1) when (@i > 0) and (@i <= @n)  {
-			// col definition
-			> .col-@{i} {
-				width: 100%;
-			}
-			// recursion
-			#generate-cols-ex(@n, (@i + 1));
-		}
-		
-		// included col
-		#generate-resp-cols-in(@prefix, @n, @i: 0) when (@i >= 0) and (@i < @n) {
-			// col definition
-			> .col-@{prefix}-@{i} when (@i > 0) {
-				width: percentage(@i / @n);
-			}
-			
-			> .col-offset-@{prefix}-@{i} {
-				margin-left: percentage(@i / @n);
-			}
-			
-			// recursion
-			#generate-resp-cols-in(@prefix, @n, (@i + 1));
-		}
-		// excluded cols
-		#generate-resp-cols-ex(@prefix, @n, @i: 1) when (@i > 0) and (@i <= @n) {
-			// col definition
-			> .col-@{prefix}-@{i} {
-				width: 100%;
-			}
-			
-			// recursion
-			#generate-resp-cols-ex(@prefix, @n, (@i + 1));
-		}
-	}
-
-	// not responsive
-	#generate-ctn(@cols);
-	
-	// fully responsive
-	#mq-min-width(@screen-ph, { #generate-resp-ctn(ph, @cols); });
-	#mq-min-width(@screen-xs, { #generate-resp-ctn(xs, @cols); });
-	#mq-min-width(@screen-sm, { #generate-resp-ctn(sm, @cols); });
-	#mq-min-width(@screen-md, { #generate-resp-ctn(md, @cols); });
-	#mq-min-width(@screen-lg, { #generate-resp-ctn(lg, @cols); });
-	#mq-min-width(@screen-xl, { #generate-resp-ctn(xl, @cols); });
-	#mq-desktop-design({ #generate-resp-ctn(desktop, @cols); });
 }
 
 //=========================
@@ -1211,27 +492,6 @@
 		@rules();
 	}
 }
-
-#mq-mobile-design(@rules) {
-	#mq-max-width(@screen-xs - 1, @rules);
-}
-
-#mq-desktop-design(@rules) {
-	#mq-min-width(@screen-xs, @rules);
-}
-
-#mq-semi-desktop-design(@rules) {
-	#mq-min-max-width(@screen-xs, @screen-sm - 1, @rules);
-};
-
-#mq-semi-desktop-and-mobile-design(@rules) {
-	#mq-max-width(@screen-sm - 1, @rules);
-}
-
-#mq-upper-desktop-design(@rules) {
-	#mq-min-width(@screen-sm, @rules);
-}
-
 
 //=========================
 // = OUTLINE FUNCTIONS
@@ -1441,14 +701,6 @@
 			transition: @arguments;
 }
 
-#cb-transition (...) {
-	-webkit-transition: ~"-webkit-@{arguments}";
-	   -moz-transition: ~"-moz-@{arguments}";
-		-ms-transition: ~"-ms-@{arguments}";
-		 -o-transition: ~"-o-@{arguments}";
-			transition: @arguments;
-}
-
 #transition-property (...) {
 	-webkit-transition-property: @arguments;
 	   -moz-transition-property: @arguments;
@@ -1473,6 +725,22 @@
 			transition-delay: @delay;
 }
 
+#cb-transition (...) {
+	-webkit-transition: ~"-webkit-@{arguments}";
+	   -moz-transition: ~"-moz-@{arguments}";
+		-ms-transition: ~"-ms-@{arguments}";
+		 -o-transition: ~"-o-@{arguments}";
+			transition: @arguments;
+}
+
+#cb-transition-property (...) {
+	-webkit-transition-property: @arguments;
+	   -moz-transition-property: @arguments;
+		-ms-transition-property: @arguments;
+		 -o-transition-property: @arguments;
+			transition-property: @arguments;
+}
+
 //=========================
 // = USER-SELECT FUNCTIONS
 //=========================
@@ -1486,28 +754,111 @@
 		-ms-user-select: @select;
 			user-select: @select;
 }
-//====== Animation ============
-@duration-shortest: 150ms;
-@duration-shorter: 200ms;
-@duration-short: 300ms;
-@duration: 500ms;
-@duration-long: 750ms;
-@duration-longer: 1000ms;
-@duration-longest: 1500ms;
+#generate-color-class(@suffix, @color-name, @color) {
+	#generate-color-class(@suffix, @color-name, @color, ~'color', 			~'color');
+	#generate-color-class(@suffix, @color-name, @color, ~'fill', 			~'fill');
+	#generate-color-class(@suffix, @color-name, @color, ~'stroke', 			~'stroke');
+	#generate-color-class(@suffix, @color-name, @color, ~'bg-color', 		~'background-color');
+	#generate-color-class(@suffix, @color-name, @color, ~'border-color', 	~'border-color');
+}
 
-@visanim: visibility 0ms linear;
+#generate-color-class(@suffix, @color-name, @color, @name, @property) {
+	.@{name}-@{color-name}@{suffix} {
+		@{property}: @color;
+	}
+	
+	.@{name}-@{color-name}-on-hover@{suffix} {
+		#hover-only({
+			@{property}: @color;
+		});
+	}
+	
+	.@{name}-@{color-name}-when-selected@{suffix} {
+		&.is-selected {
+			@{property}: @color;
+		}
+	}
+}
 
-/*
-@ease: ease-in-out;
-@ease-in: ease-in;
-@ease-out: ease-out;
-@ease-in-out: ease-in-out;
-*/
+#generate-directional-class-value(@name, @property, @value-name, @value, @direction: ~'', @suffix: ~'') {
+	.@{name}@{direction}-@{value-name}@{suffix} {
+		@{property}@{direction}: @value;
+	}
+}
+
+#generate-two-axes-class-value(@name, @property, @value-name, @value, @axe1, @axe2, @direction: ~'', @suffix: ~'') {
+	.@{name}-@{direction}-@{value-name}@{suffix} {
+		@{property}-@{axe1}: @value;
+		@{property}-@{axe2}: @value;
+	}
+}
+#generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
+}
+
+#generate-margin-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'margin', ~'margin', @value-name, @value, @axe1, @axe2, @direction, @suffix);
+}
+
+#generate-margin-all-classes(@suffix: ~'') {
+	#generate-margin-classes(~'', @suffix);
+	
+	#generate-margin-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-margin-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-margin-classes(~'-bottom', @suffix);
+	#generate-margin-classes(~'-left', @suffix);
+	#generate-margin-classes(~'-right', @suffix);
+	#generate-margin-classes(~'-top', @suffix);
+}
+
+#generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);
+}
+
+#generate-padding-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'padding', ~'padding', @value-name, @value, @direction, @suffix,);
+}
+
+#generate-padding-all-classes(@suffix: ~'') {
+	#generate-padding-classes(~'', @suffix);
+	
+	#generate-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-padding-classes(~'-bottom', @suffix);
+	#generate-padding-classes(~'-left', @suffix);
+	#generate-padding-classes(~'-right', @suffix);
+	#generate-padding-classes(~'-top', @suffix);
+}
+
+#generate-width-class(@suffix, @property-name, @property, @name,  @value) {
+
+	.@{property-name}-@{name}@{suffix} {
+		@{property}: @value;
+	}
+}
+
+#generate-all-width-class(@suffix, @name, @value) {
+	#generate-width-class(@suffix, ~'width', 	 width, 	@name, @value);
+	#generate-width-class(@suffix, ~'min-width', min-width, @name, @value);
+	#generate-width-class(@suffix, ~'max-width', max-width, @name, @value);
+}
 //=========================
-// = VARIABLES FOR GRAPHICS
+// = VARIABLES FOR BORDER-WIDTH
 //=========================
 
+@border-slimest: 1px;
+@border-slimer: 2px;
+@border-slim: 3px;
+@border-average: 5px;
+@border-thick: 8px;
+@border-thicker: 10px;
+@border-thickest: 20px;
 
+//=========================
+// = VARIABLES FOR BORDER-RADIUS
+//=========================
 @border-radius-smallest: 2px;
 @border-radius-smaller: 3px;
 @border-radius-small: 4px;
@@ -1515,31 +866,6 @@
 @border-radius-large: 4rem;
 @border-radius-larger: 5rem;
 @border-radius-largest: 10rem;
-
-@border-radius-half: 50%;
-@border-radius-full: 100%;
-//=========================
-// = VARIABLES FOR GRAPHICS
-//=========================
-
-/*
-@border-width-smallest: 1px;
-@border-width-smaller: 2px;
-@border-width-small: 3px;
-@border-width-mid: 4px;
-@border-width-large: .6rem;
-@border-width-larger: 0.8rem;
-@border-width-largest: 1rem;
-*/
-//=========================
-// = VARIABLES FOR GRAPHICS
-//=========================
-
-/*
-@border-base: @border-width-mid solid;
-@border-alt: @border-width-large solid;
-@border-accent: @border-width-large dashed;
-*/
 
 //====== COLORS ================
 @true-white: #ffffff;
@@ -1551,6 +877,13 @@
 
 @light: @true-white;
 @dark: @true-black;
+
+//====== SOCIAL ================
+@twitter: #55acee;
+@facebook: #3B5998;
+@instagram: #c6359b;
+@linkedin: #0077B5;
+@snapchat: #e5e200;
 
 //====== DURATION ============
 
@@ -1587,27 +920,42 @@
 
 @ease-back-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
+@ease-bounce-light: cubic-bezier(0, 1.1, 1, 1.1);
+
 //====== FONTS ==== 
 
 @font-base: 'sans-serif';
 @font-alt: 'serif';
 @font-accent: 'serif';
 
-@grid-visualizer-gutter-color: rgba(255,0,0,.1);
-@grid-visualizer-baseline-color: rgba(0,0,0,.2);
-@grid-visualizer-column-color: transparent;
-//====== SCREEN WIDTHS ============
 
-@screen-ip: 320px;
-@screen-ph: 600px;
-@screen-xs: 768px;
-@screen-sm: 1024px;
-@screen-md: 1280px;
-@screen-lg: 1440px;
-@screen-xl: 1600px;
-@screen-max: 1920px;
+@type-astronomic: 200px;
+@type-giant: 145px;
+
+@type-tallest: 100px;
+@type-taller: 80px;
+@type-tall: 60px;
+
+@type-average: 42px;
+
+@type-short: 30px;
+@type-shorter: 24px;
+@type-very-short: 21px;
+@type-shortest: 18px;
+
+@type-miniature: 14px;
+@type-dwarf: 11px;
 
 
+@line-height-suffocate: 0.9em;
+@line-height-perfect: 1em;
+@line-height-tightest: 1.1em;
+@line-height-tighter: 1.25em;
+@line-height-tight: 1.4em;
+@line-height-loose: 1.5em;
+@line-height-looser: 1.65em;
+@line-height-loosest: 1.8em;
+@line-height-double: 2em;
 
 //=========================
 // = VARIABLES PATH
@@ -1668,14 +1016,6 @@
 @spacing-peta: 80rem;
 @spacing-zetta: 100rem;
 @spacing-yotta: 120rem;
-//====== FONTS ==== 
-
-/* Text */
-@text-font: 'sans-serif';
-
-/* Heading */
-@heading-font: 'serif';
-
 //=========================
 // = VARIABLES GLOBALES
 //=========================

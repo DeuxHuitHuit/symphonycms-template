@@ -7,12 +7,6 @@
 	text-decoration: overline;
 }
 
-.text-decoration-overline-on-hover, .overline-on-hover {
-	#hover-only({
-		.text-decoration-overline;
-	});
-}
-
 .text-decoration-underline, .underline {
 	text-decoration: underline;
 }
@@ -22,6 +16,12 @@
 }
 
 // HOVER
+.text-decoration-overline-on-hover, .overline-on-hover {
+	#hover-only({
+		.text-decoration-overline;
+	});
+}
+
 .text-decoration-underline-on-hover, .underline-on-hover {
 	#hover-only({
 		.text-decoration-underline();

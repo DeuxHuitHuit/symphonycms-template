@@ -12,14 +12,6 @@
 			transition: @arguments;
 }
 
-#cb-transition (...) {
-	-webkit-transition: ~"-webkit-@{arguments}";
-	   -moz-transition: ~"-moz-@{arguments}";
-		-ms-transition: ~"-ms-@{arguments}";
-		 -o-transition: ~"-o-@{arguments}";
-			transition: @arguments;
-}
-
 #transition-property (...) {
 	-webkit-transition-property: @arguments;
 	   -moz-transition-property: @arguments;
@@ -42,4 +34,20 @@
 		-ms-transition-delay: @delay;
 		 -o-transition-delay: @delay;
 			transition-delay: @delay;
+}
+
+#cb-transition (...) {
+	-webkit-transition: ~"-webkit-@{arguments}";
+	   -moz-transition: ~"-moz-@{arguments}";
+		-ms-transition: ~"-ms-@{arguments}";
+		 -o-transition: ~"-o-@{arguments}";
+			transition: @arguments;
+}
+
+#cb-transition-property (...) {
+	-webkit-transition-property: @arguments;
+	   -moz-transition-property: @arguments;
+		-ms-transition-property: @arguments;
+		 -o-transition-property: @arguments;
+			transition-property: @arguments;
 }

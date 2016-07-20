@@ -2,234 +2,238 @@
 //=========================
 // = WIDTH CLASS
 //=========================
-.width-auto {
-	width: auto;
+
+#generate-width-classes (@suffix: ~'') {
+	//-------------------------------------------
+	// USEFULL WIDTH 
+	//-------------------------------------------
+	#generate-all-width-class(@suffix, ~'auto',			 ~'auto');
+	#generate-all-width-class(@suffix, ~'0', 			 ~'0');
+	#generate-all-width-class(@suffix, ~'0-important',	 ~'0 !important');
+
+	//-------------------------------------------
+	// SPACING WIDTH 
+	//-------------------------------------------
+	#generate-all-width-class(@suffix, ~'micro', 		 @spacing-micro    );
+	#generate-all-width-class(@suffix, ~'smallest', 	 @spacing-smallest );
+	#generate-all-width-class(@suffix, ~'smaller', 		 @spacing-smaller  );
+	#generate-all-width-class(@suffix, ~'small', 		 @spacing-small    );
+	#generate-all-width-class(@suffix, ~'mid', 			 @spacing-mid      );
+	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large    );
+	#generate-all-width-class(@suffix, ~'larger', 		 @spacing-larger   );
+	#generate-all-width-class(@suffix, ~'largest', 		 @spacing-largest  );
+	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large    );
+	#generate-all-width-class(@suffix, ~'xlarge', 		 @spacing-xlarge   );
+	#generate-all-width-class(@suffix, ~'huge', 		 @spacing-huge     );
+	#generate-all-width-class(@suffix, ~'giga', 		 @spacing-giga     );
+
+	//-------------------------------------------
+	// DIMENSION WIDTH 
+	//-------------------------------------------
+	#generate-all-width-class(@suffix, ~'skelettic', 	 @dimension-skelettic );
+
+	#generate-all-width-class(@suffix, ~'tiniest', 		 @dimension-tiniest   );
+	#generate-all-width-class(@suffix, ~'very-tiny', 	 @dimension-very-tiny );
+	#generate-all-width-class(@suffix, ~'tinier', 		 @dimension-tinier    );
+	#generate-all-width-class(@suffix, ~'tiny', 		 @dimension-tiny      );
+
+	#generate-all-width-class(@suffix, ~'thinnest', 	 @dimension-thinnest  );
+	#generate-all-width-class(@suffix, ~'very-thin', 	 @dimension-very-thin );
+	#generate-all-width-class(@suffix, ~'thinner', 		 @dimension-thinner   );
+	#generate-all-width-class(@suffix, ~'thin', 		 @dimension-thin      );
+
+	#generate-all-width-class(@suffix, ~'standard', 	 @dimension-standard  );
+
+	#generate-all-width-class(@suffix, ~'wide', 		 @dimension-wide      );
+	#generate-all-width-class(@suffix, ~'wider', 		 @dimension-wider     );
+	#generate-all-width-class(@suffix, ~'very-wide', 	 @dimension-very-wide );
+	#generate-all-width-class(@suffix, ~'widest', 		 @dimension-widest    );
+
+	#generate-all-width-class(@suffix, ~'fat', 			 @dimension-fat       );
+	#generate-all-width-class(@suffix, ~'fatter', 		 @dimension-fatter    );
+	#generate-all-width-class(@suffix, ~'very-fat', 	 @dimension-very-fat  );
+	#generate-all-width-class(@suffix, ~'fattest', 		 @dimension-fattest   );
+
+	#generate-all-width-class(@suffix, ~'obese', 		 @dimension-obese     );
+	#generate-all-width-class(@suffix, ~'morbid', 		 @dimension-morbid    );
+
+	//-------------------------------------------
+	// SCREEN WIDTH
+	//-------------------------------------------
+	#generate-all-width-class(@suffix, ~'ip', @dimension-ip );
+	#generate-all-width-class(@suffix, ~'ph', @dimension-ph );
+	#generate-all-width-class(@suffix, ~'xs', @dimension-xs );
+	#generate-all-width-class(@suffix, ~'sm', @dimension-sm );
+	#generate-all-width-class(@suffix, ~'md', @dimension-md );
+	#generate-all-width-class(@suffix, ~'lg', @dimension-lg );
+	#generate-all-width-class(@suffix, ~'xl', @dimension-xl );
+	#generate-all-width-class(@suffix, ~'hd', @dimension-hd );
+	#generate-all-width-class(@suffix, ~'2k', @dimension-2k );
+	#generate-all-width-class(@suffix, ~'4k', @dimension-4k );
+
+	//------------------------------
+	//	WIDTHS COLS
+	//-------------------------------
+
+	#generate-all-width-class(@suffix, ~'1_2', 	50% );
+	#generate-all-width-class(@suffix, ~'half', 50% );				//DEPRECATED
+
+	#generate-all-width-class(@suffix, ~'1_3', 100% / 3     );
+	#generate-all-width-class(@suffix, ~'third', 100% / 3   );		//DEPRECATED
+	#generate-all-width-class(@suffix, ~'2_3', 100% / 3 * 2 );
+
+	#generate-all-width-class(@suffix, ~'1_4', 100% / 4     );
+	#generate-all-width-class(@suffix, ~'2_4', 100% / 4 * 2 );		//DEPRECATED
+	#generate-all-width-class(@suffix, ~'3_4', 100% / 4 * 3 );
+
+	#generate-all-width-class(@suffix, ~'1_5', 100% / 5     );
+	#generate-all-width-class(@suffix, ~'2_5', 100% / 5 * 2 );
+	#generate-all-width-class(@suffix, ~'3_5', 100% / 5 * 3 );
+	#generate-all-width-class(@suffix, ~'4_5', 100% / 5 * 4 );
+
+	#generate-all-width-class(@suffix, ~'1_6', 100% / 6     );
+	#generate-all-width-class(@suffix, ~'5_6', 100% / 6 * 5 );
+
+	#generate-all-width-class(@suffix, ~'1_12', 100% / 12    );
+	#generate-all-width-class(@suffix, ~'2_12', 100% / 12 * 2 ); 	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'3_12', 100% / 12 * 3 ); 	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'4_12', 100% / 12 * 4 ); 	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'5_12', 100% / 12 * 5 );
+	#generate-all-width-class(@suffix, ~'6_12', 100% / 12 * 6 ); 	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'7_12', 100% / 12 * 7 );
+	#generate-all-width-class(@suffix, ~'8_12', 100% / 12 * 8 ); 	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'9_12', 100% / 12 * 9 ); 	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'10_12', 100% / 12 * 10 );	//DEPRECATED
+	#generate-all-width-class(@suffix, ~'11_12', 100% / 12 * 11 );
+
+	#generate-all-width-class(@suffix, ~'1', 	100% );				//DEPRECATED
+	#generate-all-width-class(@suffix, ~'full', 100% );
+
+	#generate-all-width-class(@suffix, ~'full-viewport', 100vw );
 }
 
-.width-0 {
-	width: 0;
+.width-2_4 {
+	.DEPRECATED(~'Use width-1_2');
 }
 
-.width-0-important {
-	width: 0 !important;
-}
-
-.width-micro {
-	width: @spacing-micro;
-}
-
-.width-smallest {
-	width: @spacing-smallest;
-}
-
-.width-smaller {
-	width: @spacing-smaller;
-}
-
-.width-small {
-	width: @spacing-small;
-}
-
-.width-mid {
-	width: @spacing-mid;
-}
-
-.width-large {
-	width: @spacing-large;
-}
-
-.width-larger {
-	width: @spacing-larger;
-}
-
-.width-largest {
-	width: @spacing-largest;
-}
-
-.width-largest-double {
-	width: (@spacing-largest * 2);
-}
-
-.width-xlarge {
-	width: @spacing-xlarge;
-}
-
-.width-huge {
-	width: @spacing-huge;
-}
-
-.width-giga {
-	width: @spacing-giga;
+.with-third {
+	.DEPRECATED(~'Use width-1_3');
 }
 
 .width-quarter {
+	.DEPRECATED(~'');
 	width: 25%;
 }
 
 .width-30-percent {
+	.DEPRECATED(~'');
 	width: 30%;
 }
 
-.width-third {
-	width: 33.333%;
-}
-
 .width-40-percent {
+	.DEPRECATED(~'');
 	width: 40%;
 }
 
-.width-half, .half-width {
+.half-width {
+	.DEPRECATED(~'Use width-half');
 	width: 50%;
 }
 
 .width-60-percent {
+	.DEPRECATED(~'Use width-3_5');
 	width: 60%;
 }
 
 .width-70-percent {
+	.DEPRECATED(~'');
 	width: 70%;
 }
 
 .width-three-quarter {
+	.DEPRECATED(~'Use width-3_4');
 	width: 75%;
 }
 
-.width-full, .full-width {
+.full-width {
+	.DEPRECATED(~'Use width-full');
 	width: 100%;
 }
 
-.width-full-viewport, .full-viewport-width {
+.full-viewport-width {
+	.DEPRECATED(~'Use width-full-viewport');
 	width: 100vw;
 }
 
 // WIDTH RESPONSIVE
 
 // FROM IP
-.width-auto-from-ip {
-	#mq-min-width(@screen-ip, {
-		.width-auto;
-	});
-}
 
 // FROM PH
 .width-quarter-from-ph {
 	#mq-min-width(@screen-ph, {
+		//DEPRECATED
 		.width-quarter;
 	});
 }
 
-.width-half-from-ph, .half-width-ph {
+.half-width-ph {
 	#mq-max-width((@screen-xs - 1), {
-		.width-half();
+		//DEPRECATED
+		.half-width();
 	});
 }
 
 // FROM XS
-.width-auto-from-xs {
-	#mq-min-width(@screen-xs, {
-		.width-auto;
-	});
-}
-
 .width-30-percent-from-xs {
 	#mq-min-width(@screen-xs, {
+		//DEPRECATED
 		.width-30-percent;
 	});
 }
 
 .width-quarter-from-xs {
 	#mq-min-width(@screen-xs, {
+		//DEPRECATED
 		.width-quarter;
 	});
 }
 
-.width-half-from-xs {
-	#mq-min-width(@screen-xs, {
-		.width-half;
-	});
-}
-
-.width-full-from-xs {
-	#mq-min-width(@screen-xs, {
-		.width-full;
-	});
-}
-
 // FROM SM
-.width-large-from-sm {
-	#mq-min-width(@screen-sm, {
-		.width-large;
-	});
-}
-
-.width-larger-from-sm {
-	#mq-min-width(@screen-sm, {
-		.width-larger;
-	});
-}
-
-.width-largest-from-sm {
-	#mq-min-width(@screen-sm, {
-		.width-largest;
-	});
-}
-
-// FROM SM
-.width-auto-from-sm {
-	#mq-min-width(@screen-sm, {
-		.width-auto;
-	});
-}
-
 .width-quarter-from-sm {
 	#mq-min-width(@screen-sm, {
+		//DEPRECATED
 		.width-quarter;
 	});
 }
 
 .width-30-percent-from-sm {
 	#mq-min-width(@screen-sm, {
+		//DEPRECATED
 		.width-30-percent;
 	});
 }
 
-.width-full-from-sm {
-	#mq-min-width(@screen-sm, {
-		.width-full;
-	});
-}
-
-
-
-// FROM MD
-.width-largest-from-md {
-	#mq-min-width(@screen-md, {
-		.width-largest;
-	});
-} 
-
 // TO XS
 .width-40-percent-to-xs {
 	#mq-max-width(@screen-xs - 1, {
+		//DEPRECATED
 		.width-40-percent;
 	});
 }
 
 .full-width-to-xs {
 	#mq-max-width(@screen-xs - 1, {
+		//DEPRECATED
 		.full-width;
 	});
 }
 
 // TO PH
-.width-large-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.width-large;
-	});
-}
 
 .full-width-to-ph {
 	#mq-max-width(@screen-ph - 1, {
+		//DEPRECATED
 		.full-width;
 	});
 }

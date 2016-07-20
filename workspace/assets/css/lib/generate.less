@@ -1,124 +1,130 @@
-
+#generate-display-classes();
 #generate-padding-all-classes() ;
 #generate-margin-all-classes() ;
+#generate-base-color-class();
+#generate-width-classes ();
 
 // FROM
 #mq-min-width(@screen-ip, {
+	#generate-display-classes(~'-from-ip');
 	#generate-padding-all-classes(~'-from-ip');
 	#generate-margin-all-classes(~'-from-ip');
+	#generate-base-color-class(~'-from-ip');
+	#generate-width-classes(~'-from-ip');
 });
 
 #mq-min-width(@screen-ph, {
+	#generate-display-classes(~'-from-ph');
 	#generate-padding-all-classes(~'-from-ph');
 	#generate-margin-all-classes(~'-from-ph');
+	#generate-base-color-class(~'-from-ph');
+	#generate-width-classes(~'-from-ph');
 });
 
 #mq-min-width(@screen-xs, {
+	#generate-display-classes(~'-from-xs');
 	#generate-padding-all-classes(~'-from-xs');
 	#generate-margin-all-classes(~'-from-xs');
-});
-
-#mq-desktop-design({
-	#generate-padding-all-classes(~'-from-desktop');
-	#generate-margin-all-classes(~'-from-desktop');
+	#generate-base-color-class(~'-from-xs');
+	#generate-width-classes(~'-from-xs');
 });
 
 #mq-min-width(@screen-sm, {
+	#generate-display-classes(~'-from-sm');
 	#generate-padding-all-classes(~'-from-sm');
 	#generate-margin-all-classes(~'-from-sm');
+	#generate-base-color-class(~'-from-sm');
+	#generate-width-classes(~'-from-sm');
 });
 
 #mq-min-width(@screen-md, {
+	#generate-display-classes(~'-from-md');
 	#generate-padding-all-classes(~'-from-md');
 	#generate-margin-all-classes(~'-from-md');
+	#generate-base-color-class(~'-from-md');
+	#generate-width-classes(~'-from-md');
 });
 
 #mq-min-width(@screen-lg, {
+	#generate-display-classes(~'-from-lg');
 	#generate-padding-all-classes(~'-from-lg');
 	#generate-margin-all-classes(~'-from-lg');
+	#generate-base-color-class(~'-from-lg');
+	#generate-width-classes(~'-from-lg');
 });
 
 #mq-min-width(@screen-xl, {
+	#generate-display-classes(~'-from-xl');
 	#generate-padding-all-classes(~'-from-xl');
 	#generate-margin-all-classes(~'-from-xl');
+	#generate-base-color-class(~'-from-xl');
+	#generate-width-classes(~'-from-xl');
 });
 
 #mq-min-width(@screen-hd, {
+	#generate-display-classes(~'-from-hd');
 	#generate-padding-all-classes(~'-from-hd');
 	#generate-margin-all-classes(~'-from-hd');
+	#generate-base-color-class(~'-from-hd');
+	#generate-width-classes(~'-from-hd');
 });
-
-/*
-#mq-min-width(@screen-2k, {
-	#generate-padding-all-classes(~'-from-2k');
-	#generate-margin-all-classes(~'-from-2k');
-});
-
-#mq-min-width(@screen-4k, {
-	#generate-padding-all-classes(~'-from-4k');
-	#generate-margin-all-classes(~'-from-4k');
-});
-*/
 
 // TO
-/*
-#mq-max-width(@screen-4k - 1, {
-	#generate-padding-all-classes(~'-to-4k');
-	#generate-margin-all-classes(~'-to-4k');
-});
-
-#mq-max-width(@screen-2k - 1, {
-	#generate-padding-all-classes(~'-to-2k');
-	#generate-margin-all-classes(~'-to-2k');
-});
-*/
-
 #mq-max-width(@screen-hd - 1, {
+	#generate-display-classes(~'-to-hd');
 	#generate-padding-all-classes(~'-to-hd');
 	#generate-margin-all-classes(~'-to-hd');
+	#generate-base-color-class(~'-to-hd');
+	#generate-width-classes(~'-to-hd');
 });
 
 #mq-max-width(@screen-xl - 1, {
+	#generate-display-classes(~'-to-xl');
 	#generate-padding-all-classes(~'-to-xl');
 	#generate-margin-all-classes(~'-to-xl');
+	#generate-base-color-class(~'-to-xl');
+	#generate-width-classes(~'-to-xl');
 });
 
 #mq-max-width(@screen-lg - 1, {
+	#generate-display-classes(~'-to-lg');
 	#generate-padding-all-classes(~'-to-lg');
 	#generate-margin-all-classes(~'-to-lg');
+	#generate-base-color-class(~'-to-lg');
+	#generate-width-classes(~'-to-lg');
 });
 
 #mq-max-width(@screen-md - 1, {
+	#generate-display-classes(~'-to-md');
 	#generate-padding-all-classes(~'-to-md');
 	#generate-margin-all-classes(~'-to-md');
+	#generate-base-color-class(~'-to-md');
+	#generate-width-classes(~'-to-md');
 });
 
 #mq-max-width(@screen-sm - 1, {
+	#generate-display-classes(~'-to-sm');
 	#generate-padding-all-classes(~'-to-sm');
 	#generate-margin-all-classes(~'-to-sm');
-});
-
-#mq-mobile-design({
-	#generate-padding-all-classes(~'-to-desktop');
-	#generate-margin-all-classes(~'-to-desktop');
+	#generate-base-color-class(~'-to-sm');
+	#generate-width-classes(~'-to-sm');
 });
 
 #mq-max-width(@screen-xs - 1, {
+	#generate-display-classes(~'-to-xs');
 	#generate-padding-all-classes(~'-to-xs');
 	#generate-margin-all-classes(~'-to-xs');
+	#generate-base-color-class(~'-to-xs');
+	#generate-width-classes(~'-to-xs');
 });
 
 #mq-max-width(@screen-ph - 1, {
+	#generate-display-classes(~'-to-ph');
 	#generate-padding-all-classes(~'-to-ph');
 	#generate-margin-all-classes(~'-to-ph');
+	#generate-base-color-class(~'-to-ph');
+	#generate-width-classes(~'-to-ph');
 });
-
-/*
-#mq-max-width(@screen-ip - 1, {
-	#generate-padding-all-classes(~'-to-ip');
-	#generate-margin-all-classes(~'-to-ip');
-});
-*/
 
 // FROM PH TO SM
 .padding-large-from-ph-to-sm {

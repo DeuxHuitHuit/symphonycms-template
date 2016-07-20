@@ -70,23 +70,3 @@
 		@rules();
 	}
 }
-
-#mq-mobile-design(@rules) {
-	#mq-max-width(@screen-xs - 1, @rules);
-}
-
-#mq-desktop-design(@rules) {
-	#mq-min-width(@screen-xs, @rules);
-}
-
-#mq-semi-desktop-design(@rules) {
-	#mq-min-max-width(@screen-xs, @screen-sm - 1, @rules);
-};
-
-#mq-semi-desktop-and-mobile-design(@rules) {
-	#mq-max-width(@screen-sm - 1, @rules);
-}
-
-#mq-upper-desktop-design(@rules) {
-	#mq-min-width(@screen-sm, @rules);
-}
