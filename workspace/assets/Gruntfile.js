@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 	'use strict';
 	
 	var GRUNT_FILE = 'Gruntfile.js';
-	var JSCS_FILE = ".jscsrc";
+	var JSCS_FILE = '.jscsrc';
 	
 	var BUILD_FILE = './build.json';
 	
@@ -167,7 +167,7 @@ module.exports = function (grunt) {
 				}
 			},
 			options: {
-				banner: "<%= meta.banner %>",
+				banner: '<%= meta.banner %>',
 				report: 'gzip',
 				sourceMap: true,
 				sourceMapName: 'js/<%= pkg.name %>.min.js.map',
