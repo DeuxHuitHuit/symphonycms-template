@@ -7,7 +7,7 @@
 }
 
 #generate-all-width-class(@suffix, @name, @value) {
-	#generate-width-class(@suffix, ~'width', 	 width, 	@name, @value);
-	#generate-width-class(@suffix, ~'min-width', min-width, @name, @value);
-	#generate-width-class(@suffix, ~'max-width', max-width, @name, @value);
+	#generate-width-class(@suffix, ~'width', 	 ~'width', 		@name, @value);
+	#generate-width-class(@suffix, ~'min-width', ~'min-width', 	@name, @value);
+	#generate-width-class(@suffix, ~'max-width', ~'max-width', 	@name, @value);
 }
