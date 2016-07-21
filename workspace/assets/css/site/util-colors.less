@@ -2,57 +2,9 @@
 // = UTILITIES FOR COLORS
 //=========================
 
-//@light: @white;
-//@dark: @black;
-
-// Social medias
-//@twitter: #55acee;
-//@facebook: #3B5998;
-//@instagram: #c6359b;
-//@linkedin: #0077B5;
-//@snapchat: #e5e200;
-
 #generate-color-class(@suffix: ~'') {
-	#generate-color-class(@suffix, ~'white', 		@white);
-	#generate-color-class(@suffix, ~'black', 		@black);
-	
-	#generate-color-class(@suffix, ~'dark', 		@dark);
-	#generate-color-class(@suffix, ~'light', 		@light);
-
-//	#generate-color-class(@suffix, ~'twitter', 		@twitter);
-//	#generate-color-class(@suffix, ~'facebook', 	@facebook);
-//	#generate-color-class(@suffix, ~'instagram', 	@instagram);
-//	#generate-color-class(@suffix, ~'linkedin', 	@linkedin);
-//	#generate-color-class(@suffix, ~'snapchat', 	@snapchat);
+	//#generate-color-class(@suffix, ~'white', @white);
 }
-
-#generate-color-class(@suffix, @color-name, @color) {
-	#generate-color-class(@suffix, @color-name, @color, ~'color', 			~'color');
-	#generate-color-class(@suffix, @color-name, @color, ~'fill', 			~'fill');
-	#generate-color-class(@suffix, @color-name, @color, ~'stroke', 			~'stroke');
-	#generate-color-class(@suffix, @color-name, @color, ~'bg-color', 		~'background-color');
-	#generate-color-class(@suffix, @color-name, @color, ~'border-color', 	~'border-color');
-}
-
-#generate-color-class(@suffix, @color-name, @color, @name, @property) {
-	.@{name}-@{color-name}@{suffix} {
-		@{property}: @color;
-	}
-	
-	.@{name}-@{color-name}-on-hover@{suffix} {
-		#hover-only({
-			@{property}: @color;
-		});
-	}
-	
-	.@{name}-@{color-name}-when-selected@{suffix} {
-		&.is-selected {
-			@{property}: @color;
-		}
-	}
-}
-
-#generate-color-class();
 
 .color-white-from-xs {
 	#mq-min-width(@screen-xs, {
