@@ -1,7 +1,5 @@
 # Symphony 2 Template [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-#### Version 1.5.x
-
 This is the template we use internally for creating new websites with [Symphony CMS](http://www.getsymphony.com/).
 
 <https://deuxhuithuit.com>
