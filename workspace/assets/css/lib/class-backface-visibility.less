@@ -2,11 +2,8 @@
 //=========================
 // = BACKFACE-VISIBILITY CLASS
 //=========================
-
-.backface-visibility-hidden {
-	.DEPRECATED(~' Use .backface-hidden');
-	#backface();
-}
+//DEPRECATED
+.backface-visibility-hidden { #backface(); .DEPRECATED(~' Use .backface-hidden'); }
 
 .backface-visible 	{ #backface(visible); }
 .backface-hidden 	{ #backface(); }

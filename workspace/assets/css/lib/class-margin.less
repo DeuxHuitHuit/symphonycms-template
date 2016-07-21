@@ -3,14 +3,12 @@
 //=====================================
 
 #generate-margin-classes (@direction: ~'', @suffix: ~'') {
-	
 	//-------------------------------------------
 	// USEFULL MARGIN 
 	//-------------------------------------------
-	#generate-margin-classes-value(@direction, @suffix, ~'0', 0);
-	#generate-margin-classes-value(@direction, @suffix, ~'none', 0);
-	
-	#generate-margin-classes-value(@direction, @suffix, ~'auto', auto);
+	#generate-margin-classes-value(@direction, @suffix, ~'0', 		~'0'   );
+	#generate-margin-classes-value(@direction, @suffix, ~'none', 	~'0'   );
+	#generate-margin-classes-value(@direction, @suffix, ~'auto', 	~'auto');
 	
 	//-------------------------------------------
 	// SPACING MARGIN 
@@ -180,17 +178,17 @@
 	//-------------------------------------------
 	// USEFULL MARGIN 
 	//-------------------------------------------
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', 0);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', 0);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', ~'0');
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', ~'0');
 	
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', auto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', ~'auto');
 
 	//-------------------------------------------
 	// SPACING MARGIN 
 	//-------------------------------------------
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 			@spacing-atto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			@spacing-femto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 			@spacing-pico);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 			 @spacing-atto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			 @spacing-femto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 			 @spacing-pico);
 
 	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
 

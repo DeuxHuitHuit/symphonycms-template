@@ -1,149 +1,33 @@
-#generate-display-classes();
-#generate-visibility-classes();
 
-#generate-padding-all-classes() ;
-#generate-margin-all-classes() ;
+#generate(@suffix: ~'') {
+	#generate-display-classes(@suffix);
+	#generate-visibility-classes(@suffix);
+	#generate-padding-all-classes(@suffix);
+	#generate-margin-all-classes(@suffix);
+	#generate-base-color-class(@suffix);
+	#generate-width-classes (@suffix);
+}
 
-#generate-base-color-class();
-#generate-width-classes ();
+#generate();
 
 // FROM
-#mq-min-width(@screen-ip, {
-	#generate-display-classes(~'-from-ip');
-	#generate-visibility-classes(~'-from-ip');
-	#generate-padding-all-classes(~'-from-ip');
-	#generate-margin-all-classes(~'-from-ip');
-	#generate-base-color-class(~'-from-ip');
-	#generate-width-classes(~'-from-ip');
-	
-});
-
-#mq-min-width(@screen-ph, {
-	#generate-display-classes(~'-from-ph');
-	#generate-visibility-classes(~'-from-ph');
-	#generate-padding-all-classes(~'-from-ph');
-	#generate-margin-all-classes(~'-from-ph');
-	#generate-base-color-class(~'-from-ph');
-	#generate-width-classes(~'-from-ph');
-});
-
-#mq-min-width(@screen-xs, {
-	#generate-display-classes(~'-from-xs');
-	#generate-visibility-classes(~'-from-xs');
-	#generate-padding-all-classes(~'-from-xs');
-	#generate-margin-all-classes(~'-from-xs');
-	#generate-base-color-class(~'-from-xs');
-	#generate-width-classes(~'-from-xs');
-});
-
-#mq-min-width(@screen-sm, {
-	#generate-display-classes(~'-from-sm');
-	#generate-visibility-classes(~'-from-sm');
-	#generate-padding-all-classes(~'-from-sm');
-	#generate-margin-all-classes(~'-from-sm');
-	#generate-base-color-class(~'-from-sm');
-	#generate-width-classes(~'-from-sm');
-});
-
-#mq-min-width(@screen-md, {
-	#generate-display-classes(~'-from-md');
-	#generate-visibility-classes(~'-from-md');
-	#generate-padding-all-classes(~'-from-md');
-	#generate-margin-all-classes(~'-from-md');
-	#generate-base-color-class(~'-from-md');
-	#generate-width-classes(~'-from-md');
-});
-
-#mq-min-width(@screen-lg, {
-	#generate-display-classes(~'-from-lg');
-	#generate-visibility-classes(~'-from-lg');
-	#generate-padding-all-classes(~'-from-lg');
-	#generate-margin-all-classes(~'-from-lg');
-	#generate-base-color-class(~'-from-lg');
-	#generate-width-classes(~'-from-lg');
-});
-
-#mq-min-width(@screen-xl, {
-	#generate-display-classes(~'-from-xl');
-	#generate-visibility-classes(~'-from-xl');
-	#generate-padding-all-classes(~'-from-xl');
-	#generate-margin-all-classes(~'-from-xl');
-	#generate-base-color-class(~'-from-xl');
-	#generate-width-classes(~'-from-xl');
-});
-
-#mq-min-width(@screen-hd, {
-	#generate-display-classes(~'-from-hd');
-	#generate-visibility-classes(~'-from-hd');
-	#generate-padding-all-classes(~'-from-hd');
-	#generate-margin-all-classes(~'-from-hd');
-	#generate-base-color-class(~'-from-hd');
-	#generate-width-classes(~'-from-hd');
-});
+#mq-min-width(@screen-ip, { #generate(~'-from-ip'); });
+#mq-min-width(@screen-ph, { #generate(~'-from-ph'); });
+#mq-min-width(@screen-xs, { #generate(~'-from-xs'); });
+#mq-min-width(@screen-sm, { #generate(~'-from-sm'); });
+#mq-min-width(@screen-md, { #generate(~'-from-md'); });
+#mq-min-width(@screen-lg, { #generate(~'-from-lg'); });
+#mq-min-width(@screen-xl, { #generate(~'-from-xl'); });
+#mq-min-width(@screen-hd, { #generate(~'-from-hd'); });
 
 // TO
-#mq-max-width(@screen-hd - 1, {
-	#generate-display-classes(~'-to-hd');
-	#generate-visibility-classes(~'-to-hd');
-	#generate-padding-all-classes(~'-to-hd');
-	#generate-margin-all-classes(~'-to-hd');
-	#generate-base-color-class(~'-to-hd');
-	#generate-width-classes(~'-to-hd');
-});
-
-#mq-max-width(@screen-xl - 1, {
-	#generate-display-classes(~'-to-xl');
-	#generate-visibility-classes(~'-to-xl');
-	#generate-padding-all-classes(~'-to-xl');
-	#generate-margin-all-classes(~'-to-xl');
-	#generate-base-color-class(~'-to-xl');
-	#generate-width-classes(~'-to-xl');
-});
-
-#mq-max-width(@screen-lg - 1, {
-	#generate-display-classes(~'-to-lg');
-	#generate-visibility-classes(~'-to-lg');
-	#generate-padding-all-classes(~'-to-lg');
-	#generate-margin-all-classes(~'-to-lg');
-	#generate-base-color-class(~'-to-lg');
-	#generate-width-classes(~'-to-lg');
-});
-
-#mq-max-width(@screen-md - 1, {
-	#generate-display-classes(~'-to-md');
-	#generate-visibility-classes(~'-to-md');
-	#generate-padding-all-classes(~'-to-md');
-	#generate-margin-all-classes(~'-to-md');
-	#generate-base-color-class(~'-to-md');
-	#generate-width-classes(~'-to-md');
-});
-
-#mq-max-width(@screen-sm - 1, {
-	#generate-display-classes(~'-to-sm');
-	#generate-visibility-classes(~'-to-sm');
-	#generate-padding-all-classes(~'-to-sm');
-	#generate-margin-all-classes(~'-to-sm');
-	#generate-base-color-class(~'-to-sm');
-	#generate-width-classes(~'-to-sm');
-});
-
-#mq-max-width(@screen-xs - 1, {
-	#generate-display-classes(~'-to-xs');
-	#generate-visibility-classes(~'-to-xs');
-	#generate-padding-all-classes(~'-to-xs');
-	#generate-margin-all-classes(~'-to-xs');
-	#generate-base-color-class(~'-to-xs');
-	#generate-width-classes(~'-to-xs');
-});
-
-#mq-max-width(@screen-ph - 1, {
-	#generate-display-classes(~'-to-ph');
-	#generate-visibility-classes(~'-to-ph');
-	#generate-padding-all-classes(~'-to-ph');
-	#generate-margin-all-classes(~'-to-ph');
-	#generate-base-color-class(~'-to-ph');
-	#generate-width-classes(~'-to-ph');
-});
+#mq-max-width(@screen-hd - 1, { #generate(~'-to-hd'); });
+#mq-max-width(@screen-xl - 1, { #generate(~'-to-xl'); });
+#mq-max-width(@screen-lg - 1, { #generate(~'-to-lg'); });
+#mq-max-width(@screen-md - 1, { #generate(~'-to-md'); });
+#mq-max-width(@screen-sm - 1, { #generate(~'-to-sm'); });
+#mq-max-width(@screen-xs - 1, { #generate(~'-to-xs'); });
+#mq-max-width(@screen-ph - 1, { #generate(~'-to-ph'); });
 
 // FROM PH TO SM
 .padding-large-from-ph-to-sm {

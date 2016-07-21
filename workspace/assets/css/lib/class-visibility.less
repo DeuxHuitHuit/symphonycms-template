@@ -4,19 +4,7 @@
 //=========================
 
 #generate-visibility-classes (@suffix: ~'') {
-	
-	.visibility-collapse@{suffix},
-	.collapse@{suffix} {
-		visibility: collapse;
-	}
-
-	.visibility-hidden@{suffix},
-	.not-visible@{suffix} {
-		visibility: hidden;
-	}
-	
-	.visibility-visible@{suffix},
-	.visible@{suffix} {
-		visibility: visible;
-	}
+	.visibility-collapse@{suffix}, 	.collapse@{suffix} 		{ visibility: collapse; }
+	.visibility-hidden@{suffix}, 	.not-visible@{suffix} 	{ visibility: hidden;   }
+	.visibility-visible@{suffix}, 	.visible@{suffix} 		{ visibility: visible;  }
 }
