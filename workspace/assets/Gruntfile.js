@@ -12,6 +12,9 @@ module.exports = function (grunt) {
 	var BUILD_FILE = './build.json';
 	
 	var FTP_FILE = JSON.parse(stripJsonComments(grunt.file.read('../../ftpsync.settings')));
+	if (!/\/$/.test(FTP_FILE.default.path)) {
+		FTP_FILE.default.path += '/';
+	}
 	var FTP_PASS = '.ftppass';
 	
 	var LESS_FILE = 'css/dev/grunt.less';
