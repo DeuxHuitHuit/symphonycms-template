@@ -46,10 +46,17 @@
 	<xsl:param name="tel" />
 	<xsl:param name="failover-element" select="'a'" />
 	<xsl:param name="attr" />
+
+	<xsl:variable name="phone-number">
+		<xsl:if test="starts-with($tel, '+1') = false()">
+			<xsl:text>+1-</xsl:text>
+		</xsl:if>
+		<xsl:value-of select="translate($tel, ' ()', '-')" />
+	</xsl:variable>
 	
 	<xsl:call-template name="button">
 		<xsl:with-param name="content" select="$tel" />
-		<xsl:with-param name="url" select="concat('tel:+1-', translate($tel, ' ()', '-'))" />
+		<xsl:with-param name="url" select="concat('tel:', $phone-number)" />
 		<xsl:with-param name="failover-element" select="$failover-element" />
 		<xsl:with-param name="attr" select="$attr" />
 	</xsl:call-template>
