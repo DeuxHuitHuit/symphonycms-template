@@ -30,6 +30,7 @@
 <xsl:import href="../lib/render-image.xsl" />
 <xsl:import href="../lib/prefetch.xsl" />
 <xsl:import href="../lib/content.xsl" />
+<xsl:import href="../lib/attr.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
