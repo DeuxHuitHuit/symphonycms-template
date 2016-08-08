@@ -13,15 +13,27 @@
 		<xsl:when test="exslt:object-type($content) = 'RTF'">
 			<xsl:copy-of select="$content"/>
 		</xsl:when>
-		<xsl:when test="exslt:object-type($content) = 'node-set' and count($content/*) = 0">
-			<xsl:value-of select="$content" />
+		<xsl:when test="exslt:object-type($content) = 'node-set'">
+			<xsl:choose>
+				<xsl:when test="count($content/item) != 0 and string-length($content/item[@lang=$url-language]) != 0">
+					<xsl:value-of select="$content/item[@lang=$url-language]" />
+				</xsl:when>
+				<xsl:when test="count($content/item) != 0">
+					<xsl:value-of select="$content/item[1]" />
+				</xsl:when>
+				<xsl:when test="count($content/*) != 0">
+					<xsl:copy-of select="$content/*" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$content" />
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:copy-of select="$content/*" />
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
-
 <xsl:template name="default-value">
 	<xsl:param name="a" select="''" />
 	<xsl:param name="b" select="''" />
