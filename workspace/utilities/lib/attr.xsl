@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE stylesheet [
-	<!ENTITY nbsp "&#160;">
-	<!ENTITY dot "&#8901;">
-	<!ENTITY left "&#9668;">
-	<!ENTITY right "&#9658;">
-	<!ENTITY dquote "&#34;">
-	<!ENTITY copy "&#169;">
-	<!ENTITY apos "&#8217;">
-]>
-
 <xsl:stylesheet version="1.0"
 	xmlns:exsl="http://exslt.org/common"
 	xmlns:str="http://exslt.org/strings"
