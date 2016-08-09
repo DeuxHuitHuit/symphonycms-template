@@ -34,9 +34,8 @@
 	$dev = true() and
 	count(/data/params/url-no-debug) = 0 and
 	count(/data/params/url-nodebug) = 0 and
-	count(/data/params/url-ndbg) = 0 
-	and (count(/data/params/use-build) = 0 or 
-	/data/params/use-build != 'yes')" />
+	count(/data/params/url-ndbg) = 0 and
+	(count(/data/params/use-build) = 0 or /data/params/use-build != 'yes')" />
 
 <!-- Lang flag For multi langue -->
 <xsl:variable name="multi-langues" >

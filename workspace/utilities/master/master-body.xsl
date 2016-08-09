@@ -5,6 +5,7 @@
 <xsl:import href="js.xsl" />
 <xsl:import href="../lib/menu-admin.xsl" />
 <xsl:import href="../lib/button.xsl" />
+
 <xsl:import href="../com/site-footer.xsl" />
 <xsl:import href="../com/site-header.xsl" />
 <xsl:import href="../com/site-nav.xsl" />
@@ -15,11 +16,20 @@
 <xsl:import href="../../../extensions/datetime/utilities/datetime.xsl" />
 
 <xsl:template name="master-body">
+	
+	<xsl:variable name="computed-attr" >
+		<add class="{$url-langauge}" />
+		<add class="page-{$full-page-handle}" />
+		<add data-version="{$version}" />
+		<xsl:call-template name="body-attr" />
+	</xsl:variable>
+
 	<!-- Body -->
-	<body 
-		class="{$url-language} page-{$full-page-handle}" 
-		data-version="{$version}">
-		
+	<body>
+		<xsl:call-template name="attr" >
+			<xsl:with-param name="attr" select="$computed-attr" />
+		</xsl:call-template>
+
 		<!-- Site -->
 		<div id="site">
 			
@@ -30,7 +40,15 @@
 			<div id="site-pages">
 				
 				<!-- Page -->
-				<div id="page-{$full-page-handle}" class="page">
+				<div>
+					<xsl:call-template name="attr">
+						<xsl:with-param name="attr" >
+							<add id="page-{$full-page-handle}" />
+							<add class="page" />
+							<xsl:call-template name="page-attr" />
+						</xsl:with-param>
+					</xsl:call-template>
+
 					<xsl:apply-templates select="data" />
 				</div>
 				
@@ -59,6 +77,9 @@
 		</xsl:call-template>
 	</body>
 </xsl:template>
+
+<xsl:template name="body-attr" ></xsl:template>
+<xsl:template name="page-attr" ></xsl:template>
 
 
 </xsl:stylesheet>
