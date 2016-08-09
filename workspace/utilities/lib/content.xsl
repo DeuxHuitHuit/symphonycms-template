@@ -5,6 +5,7 @@
 
 <xsl:template name="content">
 	<xsl:param name="content" />
+	<xsl:param name="lg" select="$url-language"/>
 	
 	<xsl:choose>
 		<xsl:when test="exslt:object-type($content) = 'string'">
@@ -15,8 +16,8 @@
 		</xsl:when>
 		<xsl:when test="exslt:object-type($content) = 'node-set'">
 			<xsl:choose>
-				<xsl:when test="count($content/item) != 0 and string-length($content/item[@lang=$url-language]) != 0">
-					<xsl:value-of select="$content/item[@lang=$url-language]" />
+				<xsl:when test="count($content/item) != 0 and string-length($content/item[@lang=$lg]) != 0">
+					<xsl:value-of select="$content/item[@lang=$lg]" />
 				</xsl:when>
 				<xsl:when test="count($content/item) != 0">
 					<xsl:value-of select="$content/item[1]" />
@@ -34,6 +35,7 @@
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
+
 <xsl:template name="default-value">
 	<xsl:param name="a" select="''" />
 	<xsl:param name="b" select="''" />
