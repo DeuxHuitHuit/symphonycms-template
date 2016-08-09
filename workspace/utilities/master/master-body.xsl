@@ -19,7 +19,7 @@
 <xsl:template name="master-body">
 	
 	<xsl:variable name="computed-attr" >
-		<add class="{$url-langauge}" />
+		<add class="{$url-language}" />
 		<add class="page-{$full-page-handle}" />
 		<add data-version="{$version}" />
 		<xsl:call-template name="body-attr" />
