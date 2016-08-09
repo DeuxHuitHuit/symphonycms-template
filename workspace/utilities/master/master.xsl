@@ -7,6 +7,7 @@
 	<!ENTITY right "&#9658;">
 	<!ENTITY dquote "&#34;">
 	<!ENTITY copy "&#169;">
+	<!ENTITY apos "&#8217;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
@@ -18,6 +19,7 @@
 
 <!-- LIB -->
 <xsl:import href="../lib/page-title.xsl" />
+<xsl:import href="../lib/attr.xsl" />
 <xsl:import href="../lib/create-page-url.xsl" />
 <xsl:import href="../lib/fx-url-creator.xsl" />
 <xsl:import href="../lib/ga.xsl" />
@@ -30,7 +32,6 @@
 <xsl:import href="../lib/render-image.xsl" />
 <xsl:import href="../lib/prefetch.xsl" />
 <xsl:import href="../lib/content.xsl" />
-<xsl:import href="../lib/attr.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
@@ -42,8 +43,15 @@
 	<!-- Doctype -->
 	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!doctype html<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 	
+	<xsl:variable name="computed-attr" >
+		<add lang="{$url-language}" />
+		<xsl:call-template name="html-attr" />
+	</xsl:variable>
 	<!-- Html -->
 	<html lang="{$url-language}">
+		<xsl:call-template name="attr">
+			<xsl:with-param name="attr" select="$computed-attr" />
+		</xsl:call-template>
 
 		<!-- html head -->
 		<xsl:call-template name="master-head" />
@@ -59,5 +67,7 @@
 	</xsl:comment>
 	
 </xsl:template>
+
+<xsl:template name="html-attr"></xsl:template>
 
 </xsl:stylesheet>
