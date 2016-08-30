@@ -50,7 +50,6 @@
 			</compiled>
 		</script>
 	</xsl:if>
-
 </xsl:template>
 
 <xsl:template name="attr-string-transform">
@@ -61,7 +60,6 @@
 			<xsl:value-of select="." />
 		</xsl:if>
 	</xsl:for-each>
-
 </xsl:template>
 
 <xsl:template match="add | set" mode="node-attributes-rec">
@@ -73,7 +71,6 @@
 	<xsl:variable name="temp">
 
 		<xsl:for-each select="@*">
-
 			<xsl:variable name="attr-name" select="name()" />
 			
 			<xsl:element name="{$attr-name}">
@@ -106,7 +103,6 @@
 										<value><xsl:value-of select="$curValue" /></value>
 									</xsl:when>
 								</xsl:choose>
-
 							</xsl:when>
 							<xsl:otherwise>
 
@@ -125,7 +121,6 @@
 								</xsl:for-each>
 							</xsl:otherwise>
 						</xsl:choose>
-						
 					</xsl:when>
 					<xsl:otherwise>
 
@@ -142,21 +137,17 @@
 								</xsl:variable>
 
 								<value><xsl:value-of select="$curValue" /></value>
-
 							</xsl:when>
 							<xsl:otherwise>
 
 								<xsl:for-each select="str:tokenize(., ' ')" >
 									<value><xsl:value-of select="." /></value>
 								</xsl:for-each>
-
 							</xsl:otherwise>
 						</xsl:choose>
-							
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:element>
-
 		</xsl:for-each>
 	</xsl:variable>
 
@@ -192,8 +183,6 @@
 			<xsl:copy-of select="$newAttrResult" />
 		</xsl:otherwise>
 	</xsl:choose>
-
-	
 </xsl:template>
 
 <xsl:template match="rem" mode="node-attributes-rec">
@@ -244,18 +233,14 @@
 
 									<!-- Pass Existing value and output if not present in the token of the remove node -->
 									<xsl:for-each select="value" >
-
 										<xsl:variable name="curValue" select="./text()"/>
-
 										<xsl:if test="count($tokenRemove[text() = $curValue]) = 0">
 											<value><xsl:value-of select="$curValue" /></value>
 										</xsl:if>
 									</xsl:for-each>
 								</xsl:element>
-
 							</xsl:otherwise>
 						</xsl:choose>
-						
 					</xsl:when>
 					<xsl:otherwise>
 						<xsl:copy-of select="." />
