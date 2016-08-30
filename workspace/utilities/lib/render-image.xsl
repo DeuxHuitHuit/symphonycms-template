@@ -40,7 +40,7 @@
 
 				<xsl:if test="$use-format = true() and string-length($format) != 0 and exslt:object-type($image) = 'node-set'">
 
-					<add data-src-format="{$format}{$image/@path}/{$image-filename}" />
+					<add data-src-format="{$format}{$image/@path}/{$image/filename}" />
 					<add>
 						<xsl:attribute name="data-src-original" >
 							<xsl:call-template name="render-image-src">
@@ -56,7 +56,6 @@
 
 		<add alt="~'{$alt}'" />
 		<xsl:copy-of select="$attr" />
-
 	</xsl:variable>
 
 	<img>
