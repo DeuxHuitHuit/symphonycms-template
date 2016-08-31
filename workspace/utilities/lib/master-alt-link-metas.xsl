@@ -54,6 +54,7 @@
 	<xsl:value-of select="$config/site-titre/item[@lang=$lg]" />
 </xsl:template>
 
+
 <xsl:template name="page-alt-link-rss">
 	<xsl:param name="page-id" />
 	

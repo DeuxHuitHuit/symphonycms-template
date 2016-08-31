@@ -16,17 +16,24 @@
 ****************************************************************************/-->
 
 <!-- CORE : nav-link ========================================================-->
-<xsl:template name="nav-link">
-	<xsl:param name="content" select="titre" />
-	<xsl:param name="page" select="page/page" />
-	<xsl:param name="page-extra-url" select="''" />
-	<xsl:param name="selected-on-sub-page" select="true()" />
-	<xsl:param name="failover-element" select="'button'" />
-	<xsl:param name="url" select="url" />
-	<xsl:param name="attr" />
-	<xsl:param name="selected-attr" />
+	<xsl:template name="nav-link">
+		<xsl:param name="page" select="page/page" />
+		<xsl:param name="page-extra-url" select="''" />
+		<xsl:param name="selected-on-sub-page" select="true()" />
+		<xsl:param name="selected-attr" />
+		<!-- button params -->
+		<xsl:param name="url" select="url" /> 		<!-- override default -->
+		<xsl:param name="failover-element" select="'button'" />
+		<!-- element params -->
+		<xsl:param name="is-optional" select="false()" />
+		<!-- attr params -->
+		<xsl:param name="attr" />
+		<xsl:param name="attr-mode" select="''" />
+		<!-- content params -->
+		<xsl:param name="lg" select="$url-language" />
+		<xsl:param name="content" select="titre" /> <!-- override default -->
 
-	<!-- COMPUTED VALUE 													 -->
+	<!-- COMPUTED VALUES 													 -->
 		<xsl:variable name="has-page" select="string-length($page) != 0" />
 		<xsl:variable name="has-url" select="string-length($url) != 0" />
 		
@@ -113,34 +120,36 @@
 
 	<!-- COMPUTED ATTRIBUTES 												 -->
 		<xsl:variable name="computed-attr">
-			<!-- Computed class attribute -->
+			<!-- add computed class attribute -->
 			<xsl:if test="string-length($computed-class)" >
 				<add class="{$computed-class}" />
+			</xsl:if>
+			
+			<!-- add selected attribute only if we are selected -->
+			<xsl:if test="string-length($generated-selected-class) != 0">
+				<xsl:copy-of select="$selected-attr" />
 			</xsl:if>
 
 			<!-- Merge attributes -->
 			<xsl:copy-of select="$minimal-attr" />
 			<xsl:copy-of select="$attr" />
 
-			<!-- Output selected attribute only if we are selected -->
-			<xsl:if test="string-length($generated-selected-class) != 0">
-				<xsl:copy-of select="$selected-attr" />
-			</xsl:if>
-
-			<add dev-base-component="nav-link" />
+			<!-- name -->
+			<add dev-core="nav-link" />
 		</xsl:variable>
 	<!--																	/-->
 
 	<!-- STRUCTURE 															 -->
-		<xsl:if test="string-length($content) != 0">
-			<xsl:call-template name="button">
-				<xsl:with-param name="url" select="$computed-url" />
-				<xsl:with-param name="attr" select="$computed-attr" />
-				<xsl:with-param name="failover-element" select="$failover-element" />
-				<xsl:with-param name="content" select="$content" />
-			</xsl:call-template>
-		</xsl:if>
+		<xsl:call-template name="button">
+			<xsl:with-param name="url" select="$computed-url" />
+			<xsl:with-param name="failover-element" select="$failover-element" />
+			<xsl:with-param name="is-optional" select="$is-optional" />
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="attr-mode" select="$attr-mode" />
+			<xsl:with-param name="lg" select="$lg" />
+			<xsl:with-param name="content" select="$content" />
+		</xsl:call-template>
 	<!--																	/-->
-</xsl:template>
+	</xsl:template>
 	
 </xsl:stylesheet>
