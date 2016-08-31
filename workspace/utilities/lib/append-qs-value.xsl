@@ -5,22 +5,25 @@
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	exclude-result-prefixes="exsl str">
 
-<xsl:template name="append-qs-value">
-	<xsl:param name="url" />
-	<xsl:param name="value" />
+<!-- CORE-FUNCTION: append-qs-value =============================================================-->
+	<xsl:template name="append-qs-value">
+		<xsl:param name="url" />
+		<xsl:param name="value" />
 
-	<xsl:value-of select="$url" />
-	<xsl:if test="string-length($value) != 0">
-		<xsl:choose>
-			<xsl:when test="contains($url, '?')">
-				<xsl:text>&amp;</xsl:text>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:text>?</xsl:text>
-			</xsl:otherwise>
-		</xsl:choose>
-		<xsl:value-of select="$value" />
-	</xsl:if>
-</xsl:template>
+	<!-- STRUCTURE															 -->
+		<xsl:value-of select="$url" />
+		<xsl:if test="string-length($value) != 0">
+			<xsl:choose>
+				<xsl:when test="contains($url, '?')">
+					<xsl:text>&amp;</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>?</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+			<xsl:value-of select="$value" />
+		</xsl:if>
+	<!--																	/-->
+	</xsl:template>
 
 </xsl:stylesheet>
