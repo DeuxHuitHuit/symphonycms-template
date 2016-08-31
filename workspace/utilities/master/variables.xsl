@@ -5,7 +5,7 @@
 <xsl:variable name="site-ref" select="/data/package/name" />
 
 <!-- Dev env -->
-<xsl:variable name="dev" select="contains($root, '.288dev.com')" />
+<xsl:variable name="dev" select="contains($root, '.288dev.com') or contains($root, '.288dev.local')" />
 
 <!-- Numero de build, si disponible et valide -->
 <xsl:variable name="build">
