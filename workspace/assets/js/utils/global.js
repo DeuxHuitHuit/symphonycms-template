@@ -99,4 +99,47 @@
 		return value * parseInt($('html').css('fontSize'), 10);
 	};
 	
+	global.mediaQueryMinWidth = function (width) {
+		return window.matchMedia('(min-width: ' + width + 'px)').matches;
+	};
+
+	global.deviceMinMoveValue = 3;
+
+	global._scrollbarWidth = function() {
+		var ctn = $('<div>').css({
+			position: 'absolute',
+			bottom: '100%',
+			right: '100%',
+			width: '50px',
+			height: '50px'
+		});
+		var div = $('<div>').css({
+			width: '100%'
+		});
+		
+		$('body').append(ctn.append(div));
+		
+		var w1 = div.width();
+		ctn.css({
+			overflowY: 'scroll'
+		});
+		div.css({
+			width: ''
+		}).height();
+		div.css({
+			width: '100%'
+		}).height();
+		var w2 = div.width();
+		ctn.remove();
+		return Math.round(w1 - w2);
+	};
+	global.scrollbarWidth = function() {
+		var sbw = global._scrollbarWidth();
+		var memoizedScrollBarWidth = function () {
+			return sbw;
+		};
+		global.scrollbarWidth = memoizedScrollBarWidth;
+		return memoizedScrollBarWidth();
+	};
+	
 })(jQuery, window);
