@@ -108,6 +108,7 @@
 	global._scrollbarWidth = function() {
 		var ctn = $('<div>').css({
 			position: 'absolute',
+			display: 'block',
 			bottom: '100%',
 			right: '100%',
 			width: '50px',
@@ -124,22 +125,29 @@
 			overflowY: 'scroll'
 		});
 		div.css({
-			width: ''
+			width: '0%'
 		}).height();
 		div.css({
 			width: '100%'
 		}).height();
 		var w2 = div.width();
 		ctn.remove();
+		if (w2 === 100 && w1 === 100) {
+			return undefined;
+		}
 		return Math.round(w1 - w2);
 	};
 	global.scrollbarWidth = function() {
 		var sbw = global._scrollbarWidth();
+		if (sbw === undefined) {
+			return 0;
+		}
 		var memoizedScrollBarWidth = function () {
 			return sbw;
 		};
 		global.scrollbarWidth = memoizedScrollBarWidth;
 		return memoizedScrollBarWidth();
 	};
+	
 	
 })(jQuery, window);
