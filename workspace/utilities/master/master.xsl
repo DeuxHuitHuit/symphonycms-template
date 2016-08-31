@@ -38,6 +38,7 @@
 	<!-- LIB CORE UI WITH LOGIQUE -->
 	<xsl:import href="../lib/button.xsl" />
 	<xsl:import href="../lib/button-tel.xsl" />
+	<xsl:import href="../lib/edit-buttons.xsl" />
 	<xsl:import href="../lib/nav-link.xsl" />
 	<xsl:import href="../lib/heading.xsl" />
 	<xsl:import href="../lib/text.xsl" />
