@@ -13,12 +13,16 @@
 	<xsl:variable name="attr-string-end-delimiter">
 		<xsl:text>'</xsl:text>
 	</xsl:variable>
+
+	<xsl:variable name="default-attr-mode" >
+		<xsl:text></xsl:text>
+	</xsl:variable>
 <!-- 																		/-->
 
 <!-- CORE-FUNCTION: attr ========================================================================-->
 	<xsl:template name="attr">
 		<xsl:param name="attr" />
-		<xsl:param name="mode" select="''" />
+		<xsl:param name="attr-mode" select="$default-attr-mode" />
 
 	<!-- INTERNAL VARIABLES 												 -->
 		<xsl:variable name="initialNodeResult" ><root></root></xsl:variable>
@@ -55,7 +59,7 @@
 		</xsl:for-each>
 
 		<!-- Debug info if enabled -->
-		<xsl:if test="$mode = 'debug' and $debug = true()">
+		<xsl:if test="$attr-mode = 'debug' and $debug = true()">
 			<script type="text/debug">
 				<src>
 					<xsl:copy-of select="$attr" />

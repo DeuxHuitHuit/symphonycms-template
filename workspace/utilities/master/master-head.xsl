@@ -2,14 +2,16 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:import href="favicon.xsl" />
-<xsl:import href="css.xsl" />
-
+<xsl:import href="../lib/page-title.xsl" />
+<xsl:import href="../lib/prefetch.xsl" />
 <xsl:import href="../lib/master-title.xsl" />
 <xsl:import href="../lib/master-share-metas.xsl" />
 <xsl:import href="../lib/master-canonical-url-meta.xsl" />
 <xsl:import href="../lib/master-alt-link-metas.xsl" />
 <xsl:import href="../lib/master-author-metas.xsl" />
+
+<xsl:import href="favicon.xsl" />
+<xsl:import href="css.xsl" />
 
 <xsl:template name="master-head">
 	<head>
