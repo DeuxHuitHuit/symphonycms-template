@@ -16,43 +16,42 @@
 	<xsl:import href="../site-variables.xsl" />
 
 <!-- IMPORT LIB -->
-	<!-- LIB CORE ATTRIBUTES SYSTEM -->
-	<xsl:import href="../lib/attr.xsl" />
-
-	<!-- LIB CORE URL CREATOR -->
+	<!-- LIB URL CREATOR -->
 	<xsl:import href="../lib/create-page-url.xsl" />
 	<xsl:import href="../lib/fx-url-creator.xsl" />
+	<xsl:import href="../lib/append-qs-value.xsl" />
 
 	<!-- LIB SPECIAL KIND (GOOGLE ANALYTICS) -->
 	<xsl:import href="../lib/ga.xsl" />
 
-	<!-- LIB TRANSFORMATION TOOLS -->
-	<xsl:import href="../lib/ninja.xsl" />
+	<!-- LIB UI FUNCTIONS -->
+	<xsl:import href="../lib/attr.xsl" />
 	<xsl:import href="../lib/content.xsl" />
-	<xsl:import href="../lib/append-qs-value.xsl" />
+	<xsl:import href="../lib/ninja.xsl" />
+	<xsl:import href="../lib/svg-icons.xsl" />
 
-	<!-- LIB CORE UI-->
+	<!-- LIB CORE UI -->
+	<!-- elements -->
 	<xsl:import href="../lib/element.xsl" />
-	<xsl:import href="../lib/render-image.xsl" />
-
-	<!-- LIB CORE UI WITH LOGIQUE -->
+	<!-- Buttons -->
 	<xsl:import href="../lib/button.xsl" />
 	<xsl:import href="../lib/button-tel.xsl" />
 	<xsl:import href="../lib/nav-link.xsl" />
+	<xsl:import href="../lib/revert-language-link.xsl" />
+
+	<!-- titles and texts -->
 	<xsl:import href="../lib/heading.xsl" />
 	<xsl:import href="../lib/text.xsl" />
+
+	<!-- images -->
+	<xsl:import href="../lib/render-image.xsl" />
 	
 	<!-- LIB SVG -->
-	<xsl:import href="../lib/svg-icons.xsl" />
 	<xsl:import href="../lib/svg-socials-icons.xsl" />
 
-	<!-- LIB PACKAGED COMPOSITION -->
+	<!-- LIB COMPOSITION -->
 	<xsl:import href="../lib/menu-admin.xsl" />
 	<xsl:import href="../lib/iframe-copyright-288.xsl" />
-
-	<!-- LIB HTML-HEAD -->
-	<xsl:import href="../lib/page-title.xsl" />
-	<xsl:import href="../lib/prefetch.xsl" />
 
 <!-- IMPORT SUB TEMPLATES -->
 	<xsl:import href="master-head.xsl" />

@@ -1,50 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:template name="site-header-logo-link">
-	<xsl:param name="url" select="$page-index-url"/>
-	<xsl:param name="attr" />
-	<xsl:param name="heading-attr" />
-	<xsl:param name="span-attr" >
-		<add class="hidden" />
-	</xsl:param>
-	<xsl:param name="content" />
-	
-	<xsl:variable name="computed-attr" >
-		<add role="menuitem" />
-		<xsl:copy-of select="$attr" />
-	</xsl:variable>
+<!-- COMPONENT: site-header-logo-link ===========================================================-->
+	<xsl:template name="site-header-logo-link">
+		<xsl:param name="url" select="$page-index-url"/>
+		<xsl:param name="attr" />
+		<xsl:param name="heading-attr" />
+		<xsl:param name="site-name" select="$config/site-titre" />
+		<xsl:param name="site-name-attr" />
+		<xsl:param name="content" />
+		
+	<!-- DEFAULT STYLES ____________________________________________________ -->
+		<!-- self -->
+		<xsl:variable name="site-header-logo-link-style">
+			
+		</xsl:variable>
 
-	<xsl:call-template name="button">
-		<xsl:with-param name="attr" select="$computed-attr" />
-		<xsl:with-param name="url" select="$url" />
-		<xsl:with-param name="content">
+		<!-- heading -->
+		<xsl:variable name="heading-style">
+			
+		</xsl:variable>
 
-			<h1>
-				<xsl:call-template name="attr" >
-					<xsl:with-param name="attr" select="$heading-attr"/>
-				</xsl:call-template>
+		<xsl:variable name="site-name-style">
+			<add class="hidden" />
+		</xsl:variable>
+	<!-- ___________________________________________________________________/-->
 
-				<!-- Logo -->
-				<xsl:call-template name="content" >
-					<xsl:with-param name="content" select="$content"/>
-				</xsl:call-template>
+	<!-- COMPUTED ATTRIBUTES 												 -->
+		<xsl:variable name="computed-attr" >
+			<add role="menuitem" />
 
-				<!-- Nom du site -->
-				<span>
-					<xsl:call-template name="attr" >
-						<xsl:with-param name="attr" select="$span-attr" />
-					</xsl:call-template>
+			<xsl:copy-of select="$site-header-logo-link-style" />
+			<xsl:copy-of select="$attr" />
 
-					<xsl:call-template name="content" >
-						<xsl:with-param name="content"  select="$config/site-titre"/>
-					</xsl:call-template>
-				</span>
-			</h1>
+			<add dev-component="site-header-logo-link" />
+		</xsl:variable>
 
-		</xsl:with-param>
-	</xsl:call-template>
+		<xsl:variable name="computed-heading-attr">
+			<xsl:copy-of select="$heading-style" />
+			<xsl:copy-of select="$heading-attr" />
+			<add dev-element="heading" />
+		</xsl:variable>
 
-</xsl:template>
+		<xsl:variable name="computed-site-name-attr">
+			<xsl:copy-of select="$site-name-style" />
+			<xsl:copy-of select="$site-name-attr" />
+			<add dev-element="site-name" />
+		</xsl:variable>
+	<!--																	/-->
+
+	<!-- STRUCTURE 															 -->
+		<!-- Self -->
+		<xsl:call-template name="button">
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="url" select="$url" />
+			<xsl:with-param name="content">
+
+				<!-- Heading -->
+				<xsl:call-template name="heading">
+					<xsl:with-param name="attr" select="$computed-heading-attr"/>
+					<xsl:with-param name="content">
+
+						<!-- Content -->
+						<xsl:call-template name="content" >
+							<xsl:with-param name="content" select="$content"/>
+						</xsl:call-template>
+
+						<!-- site name span -->
+						<xsl:call-template name="element">
+							<xsl:with-param name="element" select="'span'" />
+							<xsl:with-param name="attr" select="$computed-site-name-attr" />
+							<xsl:with-param name="content" select="$site-name"/>
+						</xsl:call-template>
+					</xsl:with-param>
+				</xsl:call-template><!-- End heading -->
+			</xsl:with-param>
+		</xsl:call-template>
+	<!--																	/-->
+	</xsl:template>
 
 </xsl:stylesheet>

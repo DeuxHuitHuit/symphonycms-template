@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-
 <!-- COMPONENT: site-header =====================================================================-->
 	<xsl:template name="site-header">
 		<xsl:param name="attr" />
 
 	<!-- STYLES ____________________________________________________________ -->
 		<!-- site-header-->
-		<xsl:variable name="site-header-default-style">
+		<xsl:variable name="site-header-style">
 			
 		</xsl:variable>
 
@@ -28,11 +27,22 @@
 		</xsl:variable>
 	<!-- ___________________________________________________________________/-->
 
+	<!-- STRUCTURE DIAGRAMS 												   >
+		|- SELF : <header> site-header
+		|		|- COMP : site-header-logo-link
+		|		|		: _CONTENT_
+		|>>>>>>>|>>>>>>>:- TPLT : site-header-logo
+		|		|		:		:...
+		|
+		|		|- COMP : site-nav
+		|		|- COMP : site-lang-links
+																			/-->
+
 	<!-- COMPUTED ATTRIBUTES 												 -->
 		<xsl:variable name="computed-attr">
 			<add role="menubar" />
 
-			<xsl:copy-of select="$site-header-default-style"/>
+			<xsl:copy-of select="$site-header-style"/>
 			<xsl:copy-of select="$attr"/>
 			<add dev-component="site-header" />
 		</xsl:variable>
@@ -63,7 +73,7 @@
 				<xsl:call-template name="site-header-logo-link" >
 					<xsl:with-param name="attr" select="$computed-site-header-logo-link-attr"/>
 					<xsl:with-param name="content" >
-						
+
 						<!-- TPLT: site-header-logo -->
 						<xsl:call-template name="site-header-logo" />
 					</xsl:with-param>
@@ -75,7 +85,7 @@
 				</xsl:call-template>
 
 				<!-- COMP: Alt languages buttons-->
-				<xsl:call-template name="site-lang-links" >
+				<xsl:call-template name="site-languages-links" >
 					<xsl:with-param name="attr" select="$computed-site-lang-links-attr"/>
 				</xsl:call-template>
 			</xsl:with-param> <!-- End header -->
@@ -87,5 +97,4 @@
 	<xsl:template name="site-header-logo" >
 		
 	</xsl:template>
-
 </xsl:stylesheet>
