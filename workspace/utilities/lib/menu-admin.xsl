@@ -41,9 +41,9 @@
 										<xsl:text>Build </xsl:text>
 										<xsl:value-of select="/data/build/last" />
 									</xsl:when>
-									<xsl:otherwise>
+									<xsl:when test="$dev = true()">
 										<xsl:text>No build infos found.</xsl:text>
-									</xsl:otherwise>
+									</xsl:when>
 								</xsl:choose>
 							</strong>
 						</span>
