@@ -1,32 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:template name="site-header">
-	<header class="site-header" role="menubar">
-		<xsl:call-template name="menu-admin" />
-		<a role="menuitem">
-			<xsl:attribute name="href">
-				<xsl:call-template name="create-page-url-by-id">
-					<xsl:with-param name="id" select="$page-index-id" />
-				</xsl:call-template>
-			</xsl:attribute>
-			
-			<h1>
-				<!-- Logo -->
-				
-				<!-- Nom du site -->
-				<span><xsl:value-of select="$config/site-titre/item[@lang=$url-language]" /></span>
-			</h1>
-		</a>
-		
-		<!-- Nav -->
-		<xsl:call-template name="site-nav" />
-		
-		<!-- Alt langs -->
-		<xsl:apply-templates select="/data/fl-languages/supported-languages/item[@handle != $url-language]" mode="revert-language">
-			<xsl:with-param name="class" select="'js-nav-link-button'" />
-		</xsl:apply-templates>
-	</header>
-</xsl:template>
+<!-- COMPONENT: site-header =====================================================================-->
+	<xsl:template name="site-header">
+		<xsl:param name="attr" />
 
+	<!-- STYLES ____________________________________________________________ -->
+		<!-- site-header-->
+		<xsl:variable name="site-header-style">
+			
+		</xsl:variable>
+
+		<!-- site-header-logo-link -->
+		<xsl:variable name="site-header-logo-link-extend-style">
+			<!--add dev-extended-by="site-header" /-->
+		</xsl:variable>
+
+		<!-- site-nav -->
+		<xsl:variable name="site-nav-extend-style">
+			<!--add dev-extended-by="site-header" /-->
+		</xsl:variable>
+
+		<!-- site-lang-links -->
+		<xsl:variable name="site-lang-links-extend-style">
+			<!--add dev-extended-by="site-header" /-->
+		</xsl:variable>
+	<!-- ___________________________________________________________________/-->
+
+	<!-- STRUCTURE DIAGRAMS 												   >
+		|- SELF : <header> site-header
+		|		|- COMP : site-header-logo-link
+		|		|		: _CONTENT_
+		|>>>>>>>|>>>>>>>:- TPLT : site-header-logo
+		|		|		:		:...
+		|
+		|		|- COMP : site-nav
+		|		|- COMP : site-lang-links
+																			/-->
+
+	<!-- COMPUTED ATTRIBUTES 												 -->
+		<xsl:variable name="computed-attr">
+			<add role="menubar" />
+
+			<xsl:copy-of select="$site-header-style"/>
+			<xsl:copy-of select="$attr"/>
+			<add dev-component="site-header" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-site-header-logo-link-attr">
+			<xsl:copy-of select="$site-header-logo-link-extend-style" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-site-nav-attr">
+			<xsl:copy-of select="$site-nav-extend-style"/>
+		</xsl:variable>
+
+		<xsl:variable name="computed-site-lang-links-attr">
+			<xsl:copy-of select="$site-lang-links-extend-style" />
+		</xsl:variable>
+	<!--																	/-->
+
+	<!-- STRUCTURE 															 -->
+		<xsl:call-template name="element">
+			<xsl:with-param name="element" select="'header'" />
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="content">
+
+				<!-- COMP: Menu admin -->
+				<xsl:call-template name="menu-admin" />
+
+				<!-- COMP: Site header logo and link to home page -->
+				<xsl:call-template name="site-header-logo-link" >
+					<xsl:with-param name="attr" select="$computed-site-header-logo-link-attr"/>
+					<xsl:with-param name="content" >
+
+						<!-- TPLT: site-header-logo -->
+						<xsl:call-template name="site-header-logo" />
+					</xsl:with-param>
+				</xsl:call-template>
+
+				<!-- COMP: site-nav -->
+				<xsl:call-template name="site-nav" >
+					<xsl:with-param name="attr" select="$computed-site-nav-attr"/>
+				</xsl:call-template>
+
+				<!-- COMP: Alt languages buttons-->
+				<xsl:call-template name="site-languages-links" >
+					<xsl:with-param name="attr" select="$computed-site-lang-links-attr"/>
+				</xsl:call-template>
+			</xsl:with-param> <!-- End header -->
+		</xsl:call-template>
+	<!--																	/-->
+	</xsl:template>
+
+<!-- TPLT: site-header-logo =====================================================================-->
+	<xsl:template name="site-header-logo" >
+		
+	</xsl:template>
 </xsl:stylesheet>

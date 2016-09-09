@@ -10,54 +10,102 @@
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- MASTER -->
-<xsl:import href="variables.xsl" />
-<xsl:import href="../site-variables.xsl" />
-<xsl:import href="master-head.xsl" />
-<xsl:import href="master-body.xsl" />
+<!-- IMPORT VARIABLES -->
+	<!-- Variables -->
+	<xsl:import href="variables.xsl" />
+	<xsl:import href="../site-variables.xsl" />
 
-<!-- LIB -->
-<xsl:import href="../lib/page-title.xsl" />
-<xsl:import href="../lib/create-page-url.xsl" />
-<xsl:import href="../lib/fx-url-creator.xsl" />
-<xsl:import href="../lib/ga.xsl" />
-<xsl:import href="../lib/ninja.xsl" />
-<xsl:import href="../lib/ie.xsl" />
-<xsl:import href="../lib/nav-link.xsl" />
-<xsl:import href="../lib/svg-icons.xsl" />
-<xsl:import href="../lib/svg-socials-icons.xsl" />
-<xsl:import href="../lib/iframe-copyright-288.xsl" />
-<xsl:import href="../lib/render-image.xsl" />
-<xsl:import href="../lib/prefetch.xsl" />
-<xsl:import href="../lib/content.xsl" />
-<xsl:import href="../lib/attr.xsl" />
+<!-- IMPORT LIB -->
+	<!-- LIB URL CREATOR -->
+	<xsl:import href="../lib/create-page-url.xsl" />
+	<xsl:import href="../lib/fx-url-creator.xsl" />
+	<xsl:import href="../lib/append-qs-value.xsl" />
 
-<xsl:output method="html" 
-	omit-xml-declaration="yes"
-	encoding="UTF-8"
-	indent="no" />
+	<!-- LIB SPECIAL KIND (GOOGLE ANALYTICS) -->
+	<xsl:import href="../lib/ga.xsl" />
 
-<xsl:template match="/">
+	<!-- LIB UI FUNCTIONS -->
+	<xsl:import href="../lib/attr.xsl" />
+	<xsl:import href="../lib/content.xsl" />
+	<xsl:import href="../lib/ninja.xsl" />
+	<xsl:import href="../lib/svg-icons.xsl" />
 
-	<!-- Doctype -->
-	<xsl:text disable-output-escaping="yes">&lt;</xsl:text>!doctype html<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
+	<!-- LIB CORE UI -->
+	<!-- elements -->
+	<xsl:import href="../lib/element.xsl" />
+	<!-- Buttons -->
+	<xsl:import href="../lib/button.xsl" />
+	<xsl:import href="../lib/button-tel.xsl" />
+	<xsl:import href="../lib/nav-link.xsl" />
+	<xsl:import href="../lib/revert-language-link.xsl" />
+
+	<!-- titles and texts -->
+	<xsl:import href="../lib/heading.xsl" />
+	<xsl:import href="../lib/text.xsl" />
+
+	<!-- images -->
+	<xsl:import href="../lib/render-image.xsl" />
 	
-	<!-- Html -->
-	<html lang="{$url-language}">
+	<!-- LIB SVG -->
+	<xsl:import href="../lib/svg-socials-icons.xsl" />
 
-		<!-- html head -->
-		<xsl:call-template name="master-head" />
+	<!-- LIB COMPOSITION -->
+	<xsl:import href="../lib/menu-admin.xsl" />
+	<xsl:import href="../lib/iframe-copyright-288.xsl" />
 
-		<!-- html body -->
-		<xsl:call-template name="master-body" />
+<!-- IMPORT SUB TEMPLATES -->
+	<xsl:import href="master-head.xsl" />
+	<xsl:import href="master-body.xsl" />
+	<xsl:import href="js.xsl" />
+
+	<!-- IE TEMPLATES -->
+	<!--xsl:import href="../lib/ie.xsl" /-->
+
+<!-- XSLT CONFIG 															/-->
+	<xsl:output method="html" 
+		omit-xml-declaration="yes"
+		encoding="UTF-8"
+		indent="no" />
+
+<!-- CORE : MASTER MATCH ========================================================================-->
+	<xsl:template match="/">
+
+	<!-- COMPUTED ATTRIBUTES 												 -->
+		<xsl:variable name="computed-attr" >
+			<add lang="{$url-language}" />
+			<xsl:call-template name="html-attr" />
+		</xsl:variable>
+	<!--																	/-->
+
+	<!-- STRUCTURE															 -->
+		<!-- Doctype HTML -->
+		<xsl:text disable-output-escaping="yes">&lt;</xsl:text>
+		<xsl:text>!doctype html</xsl:text>
+		<xsl:text disable-output-escaping="yes">&gt;</xsl:text>
 		
-	</html>
+		<!-- html element -->
+		<xsl:call-template name="element">
+			<xsl:with-param name="element" select="'html'" />
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="content">
 
-	<!-- Comment for debug -->
-	<xsl:comment>
-		<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
-	</xsl:comment>
-	
-</xsl:template>
+				<!-- html head -->
+				<xsl:call-template name="master-head" />
+
+				<!-- html body -->
+				<xsl:call-template name="master-body" />
+
+				<!-- Comment for debug -->
+				<xsl:comment>
+					<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
+				</xsl:comment>
+
+			</xsl:with-param> <!-- End html element content-->
+		</xsl:call-template>
+	</xsl:template>
+
+<!-- HTML ATTRIBUTES CUSTOM BY PAGE =========================================-->
+	<xsl:template name="html-attr">
+	</xsl:template>
 
 </xsl:stylesheet>

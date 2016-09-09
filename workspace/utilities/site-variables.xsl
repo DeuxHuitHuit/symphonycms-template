@@ -40,13 +40,6 @@
 	</xsl:choose>
 </xsl:variable>
 
-<!-- Site URLs -->
-<xsl:variable name="page-index-url">
-	<xsl:call-template name="create-page-url-by-id">
-		<xsl:with-param name="id" select="$page-index-id" />
-	</xsl:call-template>
-</xsl:variable>
-
 <!-- Google Analytics -->
 <xsl:variable name="ga-ua" select="''" />
 <xsl:variable name="ga-domain" select="'auto'" />
@@ -65,7 +58,6 @@
 </xsl:variable>
 <xsl:variable name="twitter-card-domain" select="$config/twitter-site-domain" />
 
-
 <!-- Default langue if fl-languages not found -->
 <xsl:variable name="default-langue" select="'fr'" />
 
@@ -73,7 +65,14 @@
 <xsl:variable name="css-path" select="'/workspace/assets/css/'" />
 <xsl:variable name="js-path" select="'/workspace/assets/js/'" />
 
-<!-- Default Path -->
+<!-- Site Page ID -->
 <xsl:variable name="page-index-id" select="'1'" />
+
+<!-- Site URLs -->
+<xsl:variable name="page-index-url">
+	<xsl:call-template name="create-page-url-by-id">
+		<xsl:with-param name="id" select="$page-index-id" />
+	</xsl:call-template>
+</xsl:variable>
 
 </xsl:stylesheet>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+
+<xsl:import href="js-templates.xsl" />
+
 <xsl:template name="master-js">
 	<xsl:param name="extra-js" />
 	
@@ -39,18 +42,6 @@
 	<!-- Libs -->
 	<xsl:apply-templates select="/data/javascript/cdn-after/file" mode="cdn-async" />
 	
-</xsl:template>
-
-<xsl:template match="javascript/*/file" mode="local">
-	<script src="{$js-path}{.}"></script>
-</xsl:template>
-
-<xsl:template match="javascript/*/file" mode="cdn">
-	<script src="{.}"></script>
-</xsl:template>
-
-<xsl:template match="javascript/*/file" mode="cdn-async">
-	<script src="{.}" async="" defer=""></script>
 </xsl:template>
 
 </xsl:stylesheet>

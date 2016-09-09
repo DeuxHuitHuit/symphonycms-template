@@ -1,65 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:exslt="http://exslt.org/common"
-	exclude-result-prefixes="exslt" >
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- Main template -->
-<xsl:template name="button">
-	<xsl:param name="content" />
-	<xsl:param name="url" select="''" />
-	<xsl:param name="failover-element" select="'button'" />
-	<xsl:param name="attr" />
+<xsl:variable name="default-button-failover-element">button</xsl:variable>
 
-	<xsl:variable name="node-type">
-		<xsl:choose>
-			<xsl:when test="string-length($url) != 0">
-				<xsl:text>a</xsl:text>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="$failover-element" />
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	
-	<xsl:variable name="dynamic-attr">
-		<xsl:if test="string-length($url) != 0">
-			<set href="{$url}" />
-		</xsl:if>
-	</xsl:variable>
-
-	<xsl:element name="{$node-type}">
-		<xsl:call-template name="attr">
-			<xsl:with-param name="attr">
-				<xsl:copy-of select="$dynamic-attr" />
-				<xsl:copy-of select="$attr" />
-			</xsl:with-param>
-		</xsl:call-template>
+<!-- CORE-ELEMENT: button =======================================================================-->
+	<xsl:template name="button">
+		<xsl:param name="url" 				/>
+		<xsl:param name="failover-element" 	select="$default-button-failover-element" />
+		<!-- element -->
+		<xsl:param name="is-optional" 		select="false()" />
+		<!-- attr -->
+		<xsl:param name="attr" 				/>
+		<xsl:param name="attr-mode" 		select="$default-attr-mode" />
+		<!-- content -->
+		<xsl:param name="lg" 				select="$url-language" />
+		<xsl:param name="content" 			/>
 		
-		<xsl:call-template name="content">
-			<xsl:with-param name="content" select="$content" />
+	<!-- COMPUTED VALUES 													 -->
+		<xsl:variable name="computed-element">
+			<xsl:choose>
+				<xsl:when test="string-length($url) != 0">
+					<xsl:text>a</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$failover-element" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+	<!--																	/-->
+
+	<!-- COMPUTED ATTRIBUTES 												 -->
+		<xsl:variable name="computed-attr">
+			<xsl:if test="string-length($url) != 0">
+				<set href="{$url}" />
+			</xsl:if>
+			<xsl:copy-of select="$attr" />
+			<add dev-core="button" />
+		</xsl:variable>
+	<!--																	/-->
+
+	<!-- STRUCTURE															 -->
+		<xsl:call-template name="element">
+			<xsl:with-param name="element" 		select="$computed-element"/>
+			<xsl:with-param name="is-optional" 	select="$is-optional" />
+			<xsl:with-param name="attr" 		select="$computed-attr"/>
+			<xsl:with-param name="attr-mode" 	select="$attr-mode" />
+			<xsl:with-param name="lg" 			select="$lg" />
+			<xsl:with-param name="content" 		select="$content" />
 		</xsl:call-template>
-		
-	</xsl:element>
-</xsl:template>
+	<!--																	/-->
+	</xsl:template>
 
-<xsl:template name="button-tel">
-	<xsl:param name="tel" />
-	<xsl:param name="failover-element" select="'a'" />
-	<xsl:param name="attr" />
+<!-- CORE-ELEMENT: optional-button ==============================================================-->
+	<xsl:template name="optional-button">
+		<xsl:param name="url" 				/>
+		<xsl:param name="failover-element" 	select="$default-button-failover-element" />
+		<!-- attr -->
+		<xsl:param name="attr" 				/>
+		<xsl:param name="attr-mode" 		select="$default-attr-mode" />
+		<!-- content -->
+		<xsl:param name="lg" 				select="$url-language" />
+		<xsl:param name="content" 			/>
 
-	<xsl:variable name="phone-number">
-		<xsl:if test="starts-with($tel, '+1') = false()">
-			<xsl:text>+1-</xsl:text>
-		</xsl:if>
-		<xsl:value-of select="translate($tel, ' ()', '-')" />
-	</xsl:variable>
-	
-	<xsl:call-template name="button">
-		<xsl:with-param name="content" select="$tel" />
-		<xsl:with-param name="url" select="concat('tel:', $phone-number)" />
-		<xsl:with-param name="failover-element" select="$failover-element" />
-		<xsl:with-param name="attr" select="$attr" />
-	</xsl:call-template>
-</xsl:template>
+	<!-- STRUCTURE															 -->
+		<xsl:call-template name="button">
+			<xsl:with-param name="url" 				select="$url" />
+			<xsl:with-param name="failover-element"	select="$failover-element" />
+			<xsl:with-param name="is-optional" 		select="true()" />
+			<xsl:with-param name="attr" 			select="$attr"/>
+			<xsl:with-param name="attr-mode" 		select="$attr-mode" />
+			<xsl:with-param name="lg" 				select="$lg" />
+			<xsl:with-param name="content" 			select="$content" />
+		</xsl:call-template>
+	<!--																	/-->
+	</xsl:template>
 
 </xsl:stylesheet>
