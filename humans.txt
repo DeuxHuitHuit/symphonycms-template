@@ -28,6 +28,9 @@ Art director / Directeur artistique
 Louis-Pierre Chouinard
 Art director / Directeur artistique
 
+René-Charles Arsenau
+Art director / Directeur artistique
+
 Charles Fortier
 Designer
 
@@ -50,6 +53,9 @@ Marc-André Charpentier
 Frontend Designer / Intégrateur
 
 Dominic Blain
+Frontend Designer / Intégrateur
+
+Sébastien Mockle
 Frontend Designer / Intégrateur
 
 Vincent Rouleau
