@@ -5,6 +5,7 @@
 <xsl:import href="js.xsl" />
 <xsl:import href="../lib/menu-admin.xsl" />
 <xsl:import href="../lib/button.xsl" />
+<xsl:import href="../lib/edit-buttons.xsl" />
 <xsl:import href="../com/site-footer.xsl" />
 <xsl:import href="../com/site-header.xsl" />
 <xsl:import href="../com/site-nav.xsl" />
