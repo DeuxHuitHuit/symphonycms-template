@@ -16,9 +16,18 @@
 	<xsl:param name="l-height" select="'0'" />
 	<xsl:param name="logo-align" select="'left'" />
 	<xsl:param name="logo-always-animated" select="'false'" />
+	<xsl:param name="no-logo" select="'false'" />
 
 	<xsl:variable name="url">
-		<xsl:text>https://watermark.deuxhuithuit.com/v2/?</xsl:text>
+		<xsl:choose>
+			<xsl:when test="$dev = true()">
+				<xsl:text>http://watermark.288dev.com</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>https://watermark.deuxhuithuit.com</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+		<xsl:text>/v2/?</xsl:text>
 		<xsl:text>lang=</xsl:text><xsl:value-of select="$url-language" />
 		<xsl:text>&amp;bg=</xsl:text><xsl:value-of select="$bg-color" />
 		<xsl:text>&amp;text=</xsl:text><xsl:value-of select="$text-color" />
@@ -35,15 +44,16 @@
 		<xsl:text>&amp;l-height=</xsl:text><xsl:value-of select="$l-height" />
 		<xsl:text>&amp;logo-align=</xsl:text><xsl:value-of select="$logo-align" />
 		<xsl:text>&amp;logo-always-animated=</xsl:text><xsl:value-of select="$logo-always-animated" />
+		<xsl:text>&amp;no-logo=</xsl:text><xsl:value-of select="$no-logo" />
 	</xsl:variable>
 	
-	<iframe class="copy-288" 
-			src="{$url}" 
-			margin="0" 
-			border="0" 
-			scrolling="no" 
-			frameborder="no" 
-			width="{$w}" 
+	<iframe class="copy-288"
+			src="{$url}"
+			margin="0"
+			border="0"
+			scrolling="no"
+			frameborder="no"
+			width="{$w}"
 			height="{number($h)}"></iframe>
 
 </xsl:template>
