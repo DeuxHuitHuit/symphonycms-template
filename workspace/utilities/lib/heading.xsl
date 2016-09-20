@@ -12,6 +12,14 @@
 		<!-- content params -->
 		<xsl:param name="lg" select="$url-language" />
 		<xsl:param name="content" />
+		
+	<!-- VALIDATION 														 -->
+		<xsl:if test="number($level) &lt; 1 or number($level) &gt; 6">
+			<xsl:message>
+				<xsl:text>$level must be a integer between 1 and 6</xsl:text>
+			</xsl:message>
+		</xsl:if>
+	<!--																	/-->
 
 	<!-- COMPUTED VALUES 													 -->
 		<xsl:variable name="computed-element">
