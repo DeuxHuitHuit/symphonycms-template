@@ -8,6 +8,6 @@
 	<xsl:import href="com/site-footer.xsl" />
 
 	<xsl:import href="com/site-nav.xsl" />
-	
+	<xsl:import href="com/site-languages-links.xsl" />
 
 </xsl:stylesheet>
