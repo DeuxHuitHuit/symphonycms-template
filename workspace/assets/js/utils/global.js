@@ -105,7 +105,7 @@
 
 	global.deviceMinMoveValue = 3;
 
-	global._scrollbarWidth = function() {
+	global._scrollbarWidth = function () {
 		var ctn = $('<div>').css({
 			position: 'absolute',
 			display: 'block',
@@ -137,7 +137,7 @@
 		}
 		return Math.round(w1 - w2);
 	};
-	global.scrollbarWidth = function() {
+	global.scrollbarWidth = function () {
 		var sbw = global._scrollbarWidth();
 		if (sbw === undefined) {
 			return 0;
