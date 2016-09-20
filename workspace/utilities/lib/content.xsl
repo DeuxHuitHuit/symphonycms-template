@@ -50,31 +50,37 @@
 			<xsl:when test="string-length($a) != 0">
 				<xsl:call-template name="content">
 					<xsl:with-param name="content" select="$a" />
+					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="string-length($b) != 0">
 				<xsl:call-template name="content">
 					<xsl:with-param name="content" select="$b" />
+					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="string-length($c) != 0">
 				<xsl:call-template name="content">
 					<xsl:with-param name="content" select="$c" />
+					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="string-length($d) != 0">
 				<xsl:call-template name="content">
 					<xsl:with-param name="content" select="$d" />
+					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="string-length($e) != 0">
 				<xsl:call-template name="content">
 					<xsl:with-param name="content" select="$e" />
+					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
 			</xsl:when>
 			<xsl:when test="string-length($f) != 0">
 				<xsl:call-template name="content">
 					<xsl:with-param name="content" select="$f" />
+					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
 			</xsl:when>
 		</xsl:choose>
