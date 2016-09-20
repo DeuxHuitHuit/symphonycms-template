@@ -275,6 +275,13 @@
 		</xsl:choose>
 	</xsl:template>
 
+	<xsl:template match="*" mode="node-attributes-rec" priority="0">
+		<xsl:message>
+			<xsl:value-of select="name(.)" />
+			<xsl:text> is not a valid node for the attr template</xsl:text>
+		</xsl:message>
+	</xsl:template>
+
 <!-- HELPER-TEMPLATES: attr-string-transform ====================================================-->
 	<xsl:template name="attr-string-transform">
 		<xsl:param name="value" />
