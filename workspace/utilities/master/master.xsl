@@ -72,7 +72,7 @@
 	<xsl:template match="/">
 
 	<!-- COMPUTED ATTRIBUTES 												 -->
-		<xsl:variable name="computed-attr" >
+		<xsl:variable name="computed-attr">
 			<add lang="{$url-language}" />
 			<xsl:call-template name="html-attr" />
 		</xsl:variable>

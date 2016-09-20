@@ -25,7 +25,7 @@
 
 	<!-- COMPUTED ATTRIBUTES 												 -->
 		<!-- body -->
-		<xsl:variable name="computed-attr" >
+		<xsl:variable name="computed-attr">
 			<add class="{$url-language}" />
 			<add class="page-{$full-page-handle}" />
 			<add data-version="{$version}" />
@@ -72,9 +72,9 @@
 							<xsl:with-param name="content">
 
 								<!-- Page -->
-								<xsl:call-template name="element" >
+								<xsl:call-template name="element">
 									<xsl:with-param name="attr" select="$computed-page-attr" />
-									<xsl:with-param name="content" >
+									<xsl:with-param name="content">
 										
 										<!-- page-content -->
 										<xsl:apply-templates select="data" />
@@ -112,7 +112,7 @@
 
 
 <!-- BODY ATTR HOLE =========================================================-->
-	<xsl:template name="body-attr" ></xsl:template>
+	<xsl:template name="body-attr"></xsl:template>
 <!-- PAGE ATTR HOLE =========================================================-->
-	<xsl:template name="page-attr" ></xsl:template>
+	<xsl:template name="page-attr"></xsl:template>
 </xsl:stylesheet>

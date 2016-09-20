@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns:exsl="http://exslt.org/common"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	>
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- Ninja nodes -->
 <xsl:template match="//*" mode="ninja">

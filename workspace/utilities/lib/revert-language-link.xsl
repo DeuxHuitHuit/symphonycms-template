@@ -3,18 +3,18 @@
 
 <!-- CORE-ELEMENT: revert-language-link =========================================================-->
 	<xsl:template name="revert-language-link">
-		<xsl:param name="revert-lg-handle" 	select="@handle"/>
+		<xsl:param name="revert-lg-handle" select="@handle"/>
 		<!-- button -->
-		<xsl:param name="url" 				/>
-		<xsl:param name="failover-element" 	select="'button'"/>
+		<xsl:param name="url" />
+		<xsl:param name="failover-element" select="'button'"/>
 		<!-- element -->
-		<xsl:param name="is-optional" 		select="false()" />
+		<xsl:param name="is-optional" select="false()" />
 		<!-- attr -->
-		<xsl:param name="attr" 				/>
-		<xsl:param name="attr-mode" 		select="$default-attr-mode" />
+		<xsl:param name="attr" />
+		<xsl:param name="attr-mode" select="$default-attr-mode" />
 		<!-- content -->
-		<xsl:param name="content-lg" 		select="$url-language" />
-		<xsl:param name="content" 			/>
+		<xsl:param name="content-lg" select="$url-language" />
+		<xsl:param name="content" />
 
 	<!-- MINIMAL ATTRIBUTES 												 -->
 		<xsl:variable name="js-alt-lg-link-attr">
@@ -34,13 +34,13 @@
 
 	<!-- STRUCTURE															 -->
 		<xsl:call-template name="button">
-			<xsl:with-param name="url" 				select="$url" />
+			<xsl:with-param name="url" select="$url" />
 			<xsl:with-param name="failover-element"	select="$failover-element" />
-			<xsl:with-param name="is-optional" 		select="$is-optional" />
-			<xsl:with-param name="attr" 			select="$computed-attr" />
-			<xsl:with-param name="attr-mode" 		select="$attr-mode" />
-			<xsl:with-param name="lg" 				select="$content-lg" />
-			<xsl:with-param name="content" 			select="$content" />
+			<xsl:with-param name="is-optional" select="$is-optional" />
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="attr-mode" select="$attr-mode" />
+			<xsl:with-param name="lg" select="$content-lg" />
+			<xsl:with-param name="content" select="$content" />
 		</xsl:call-template>
 	<!--																	/-->
 	</xsl:template>

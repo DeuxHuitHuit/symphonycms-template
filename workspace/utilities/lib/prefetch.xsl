@@ -1,8 +1,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:exsl="http://exslt.org/common"
-	extension-element-prefixes="exsl"
-	>
+	extension-element-prefixes="exsl">
 
 <xsl:template name="dns-prefetch">
 	<xsl:variable name="domains">

@@ -17,21 +17,21 @@
 
 <!-- CORE : nav-link ========================================================-->
 	<xsl:template name="nav-link">
-		<xsl:param name="page" 					select="page/page" />
-		<xsl:param name="page-extra-url" 		/>
-		<xsl:param name="selected-on-sub-page" 	select="true()" />
-		<xsl:param name="selected-attr" 		/>
+		<xsl:param name="page" select="page/page" />
+		<xsl:param name="page-extra-url" />
+		<xsl:param name="selected-on-sub-page" select="true()" />
+		<xsl:param name="selected-attr" />
 		<!-- button -->
-		<xsl:param name="url" 					select="url" /> <!-- override default -->
-		<xsl:param name="failover-element" 		select="$default-button-failover-element" />
+		<xsl:param name="url" select="url" /> <!-- override default -->
+		<xsl:param name="failover-element" select="$default-button-failover-element" />
 		<!-- element -->
-		<xsl:param name="is-optional" 			select="false()" />
+		<xsl:param name="is-optional" select="false()" />
 		<!-- attr -->
-		<xsl:param name="attr" 					/>
-		<xsl:param name="attr-mode" 			select="$default-attr-mode" />
+		<xsl:param name="attr" />
+		<xsl:param name="attr-mode" select="$default-attr-mode" />
 		<!-- content -->
-		<xsl:param name="lg" 					select="$url-language" />
-		<xsl:param name="content" 				select="titre" /> <!-- override default -->
+		<xsl:param name="lg" select="$url-language" />
+		<xsl:param name="content" select="titre" /> <!-- override default -->
 
 	<!-- COMPUTED VALUES 													 -->
 		<xsl:variable name="has-page" select="string-length($page) != 0" />
@@ -65,7 +65,7 @@
 		
 		<!-- Generate btn sub page handle class if we have a page and we are selected on sub page -->
 		<xsl:variable name="generated-sub-pages-handle-class">
-			<xsl:if test="$has-page and $selected-on-sub-page = true()" >
+			<xsl:if test="$has-page and $selected-on-sub-page = true()">
 				<xsl:for-each select="/data/pages//page [@id = $page/@id]//page">
 					<xsl:text> btn-page-</xsl:text>
 					<xsl:call-template name="create-page-handle-by-id">
@@ -77,7 +77,7 @@
 
 		<!-- Generate btn is-selected class if we have a page -->
 		<xsl:variable name="generated-selected-class"> 
-			<xsl:if test="$has-page" >
+			<xsl:if test="$has-page">
 				<!-- Add is-selected if we are a child page and selected on sub page = 'yes' -->
 				<xsl:if test="$selected-on-sub-page = true()">
 					<xsl:if test="count(/data/pages//page [@id = $page/@id]//page[@id = $current-page-id]) != 0">
@@ -119,7 +119,7 @@
 	<!-- COMPUTED ATTRIBUTES 												 -->
 		<xsl:variable name="computed-attr">
 			<!-- add computed class attribute -->
-			<xsl:if test="string-length($computed-class)" >
+			<xsl:if test="string-length($computed-class)">
 				<add class="{$computed-class}" />
 			</xsl:if>
 			
@@ -139,13 +139,13 @@
 
 	<!-- STRUCTURE 															 -->
 		<xsl:call-template name="button">
-			<xsl:with-param name="url" 				select="$computed-url" />
+			<xsl:with-param name="url" select="$computed-url" />
 			<xsl:with-param name="failover-element"	select="$failover-element" />
-			<xsl:with-param name="is-optional" 		select="$is-optional" />
-			<xsl:with-param name="attr" 			select="$computed-attr" />
-			<xsl:with-param name="attr-mode" 		select="$attr-mode" />
-			<xsl:with-param name="lg" 				select="$lg" />
-			<xsl:with-param name="content" 			select="$content" />
+			<xsl:with-param name="is-optional" select="$is-optional" />
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="attr-mode" select="$attr-mode" />
+			<xsl:with-param name="lg" select="$lg" />
+			<xsl:with-param name="content" select="$content" />
 		</xsl:call-template>
 	<!--																	/-->
 	</xsl:template>

@@ -70,9 +70,9 @@
 				<xsl:call-template name="menu-admin" />
 
 				<!-- COMP: Site header logo and link to home page -->
-				<xsl:call-template name="site-header-logo-link" >
+				<xsl:call-template name="site-header-logo-link">
 					<xsl:with-param name="attr" select="$computed-site-header-logo-link-attr"/>
-					<xsl:with-param name="content" >
+					<xsl:with-param name="content">
 
 						<!-- TPLT: site-header-logo -->
 						<xsl:call-template name="site-header-logo" />
@@ -80,12 +80,12 @@
 				</xsl:call-template>
 
 				<!-- COMP: site-nav -->
-				<xsl:call-template name="site-nav" >
+				<xsl:call-template name="site-nav">
 					<xsl:with-param name="attr" select="$computed-site-nav-attr"/>
 				</xsl:call-template>
 
 				<!-- COMP: Alt languages buttons-->
-				<xsl:call-template name="site-languages-links" >
+				<xsl:call-template name="site-languages-links">
 					<xsl:with-param name="attr" select="$computed-site-lang-links-attr"/>
 				</xsl:call-template>
 			</xsl:with-param> <!-- End header -->
@@ -94,7 +94,7 @@
 	</xsl:template>
 
 <!-- TPLT: site-header-logo =====================================================================-->
-	<xsl:template name="site-header-logo" >
+	<xsl:template name="site-header-logo">
 		
 	</xsl:template>
 </xsl:stylesheet>

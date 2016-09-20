@@ -35,7 +35,7 @@
 		<xsl:param name="page-id" select="$current-page-id" />
 		<xsl:param name="lg" />
 		
-		<xsl:call-template name="create-page-url-by-id" >
+		<xsl:call-template name="create-page-url-by-id">
 			<xsl:with-param name="id" select="$page-id" />
 			<xsl:with-param name="lg" select="$lg" />
 		</xsl:call-template>

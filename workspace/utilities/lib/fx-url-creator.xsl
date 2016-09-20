@@ -2,8 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:exsl="http://exslt.org/common"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	exclude-result-prefixes="exsl"
-	>
+	exclude-result-prefixes="exsl">
 
 <xsl:variable name="allowArgsName" select="'f288-allowArgs'" />
 
@@ -50,7 +49,7 @@
 </xsl:template>
 
 <xsl:template match="page" mode="framework-288-url-creator">
-	<xsl:if test="count(page) &gt; 0" >
+	<xsl:if test="count(page) &gt; 0">
 		<xsl:apply-templates select="page" mode="framework-288-url-creator" />
 	</xsl:if>
 	
@@ -66,7 +65,7 @@
 				<xsl:when test="$multi-langues = 'yes'">
 					<!-- main language -->
 					<xsl:for-each select="/data/fl-languages/supported-languages/item [@main = 'yes']">
-						<xsl:call-template name="framework-288-url-creator-page-route" >
+						<xsl:call-template name="framework-288-url-creator-page-route">
 							<xsl:with-param name="item" select="$item" />
 						</xsl:call-template>
 					</xsl:for-each>
@@ -75,7 +74,7 @@
 					<xsl:for-each select="/data/fl-languages/supported-languages/item [string-length(./@main) = 0]">
 						<xsl:text>,</xsl:text>
 						
-						<xsl:call-template name="framework-288-url-creator-page-route" >
+						<xsl:call-template name="framework-288-url-creator-page-route">
 							<xsl:with-param name="item" select="$item" />
 						</xsl:call-template>
 					</xsl:for-each>
@@ -86,7 +85,7 @@
 					</xsl:if>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:call-template name="framework-288-url-creator-page-route" >
+					<xsl:call-template name="framework-288-url-creator-page-route">
 						<xsl:with-param name="item" select="$item" />
 					</xsl:call-template>
 				</xsl:otherwise>
@@ -94,7 +93,7 @@
 		<xsl:text>]</xsl:text>
 	</xsl:variable>
 	
-	<xsl:variable name="model" >
+	<xsl:variable name="model">
 		<xsl:call-template name="framework-288-page-model">
 			<xsl:with-param name="types" select="types/type" />
 		</xsl:call-template>
@@ -114,7 +113,7 @@
 	
 	<xsl:variable name="allowArgs">
 		<xsl:choose>
-			<xsl:when test="count($item/types/type [. = $allowArgsName]) &gt; 0" >
+			<xsl:when test="count($item/types/type [. = $allowArgsName]) &gt; 0">
 				<xsl:text>yes</xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
@@ -123,9 +122,9 @@
 		</xsl:choose>
 	</xsl:variable>
 	
-	<xsl:variable name="isIndex" >
+	<xsl:variable name="isIndex">
 		<xsl:choose>
-			<xsl:when test="count($item/types/type [. = 'index']) &gt; 0" >
+			<xsl:when test="count($item/types/type [. = 'index']) &gt; 0">
 				<xsl:text>yes</xsl:text>
 			</xsl:when>
 			<xsl:otherwise>

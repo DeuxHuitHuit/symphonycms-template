@@ -38,7 +38,7 @@
 	(count(/data/params/use-build) = 0 or /data/params/use-build != 'yes')" />
 
 <!-- Lang flag For multi langue -->
-<xsl:variable name="multi-langues" >
+<xsl:variable name="multi-langues">
 	<xsl:choose>
 		<xsl:when test="count(/data/fl-languages/supported-languages/item) &gt; 1">
 			<xsl:text>yes</xsl:text>
@@ -60,7 +60,7 @@
 <xsl:variable name="is-loggued-in" select="/data/events/login-info/@logged-in = 'true'" />
 
 <!-- Url language -->
-<xsl:variable name="url-language" >
+<xsl:variable name="url-language">
 	<xsl:choose>
 		<xsl:when test="$multi-langues = 'yes' and count(/data/fl-languages/current-language) = 1">
 			<xsl:value-of select="/data/fl-languages/current-language/@handle" />

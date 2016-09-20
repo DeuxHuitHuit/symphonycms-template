@@ -42,7 +42,7 @@
 
 					<add data-src-format="{$format}{$image/@path}/{$image/filename}" />
 					<add>
-						<xsl:attribute name="data-src-original" >
+						<xsl:attribute name="data-src-original">
 							<xsl:call-template name="render-image-src">
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="use-format" select="false()" />
@@ -77,7 +77,7 @@
 		<xsl:call-template name="default-image-alt-selector" />
 	</xsl:param>
 
-	<xsl:variable name="computed-format" >
+	<xsl:variable name="computed-format">
 		<xsl:text>/image/2/</xsl:text>
 		<xsl:value-of select="concat($width, '/')" />
 		<xsl:value-of select="concat($height, '/')" />

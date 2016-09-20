@@ -2,8 +2,7 @@
 <xsl:stylesheet version="1.0"
 	xmlns:exsl="http://exslt.org/common"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	exclude-result-prefixes="exsl"
-	>
+	exclude-result-prefixes="exsl">
 
 <xsl:template name="ie-cc">
 	<xsl:param name="content" />

@@ -43,7 +43,7 @@
 		<xsl:param name="content" />
 
 	<!-- STRUCTURE															 -->
-		<xsl:call-template name="heading" >
+		<xsl:call-template name="heading">
 			<xsl:with-param name="level" select="$level" />
 			<xsl:with-param name="is-optional" select="true()" />
 			<xsl:with-param name="attr" select="$attr" />

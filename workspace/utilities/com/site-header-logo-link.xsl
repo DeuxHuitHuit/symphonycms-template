@@ -27,7 +27,7 @@
 	<!-- ___________________________________________________________________/-->
 
 	<!-- COMPUTED ATTRIBUTES 												 -->
-		<xsl:variable name="computed-attr" >
+		<xsl:variable name="computed-attr">
 			<add role="menuitem" />
 
 			<xsl:copy-of select="$site-header-logo-link-style" />
@@ -62,7 +62,7 @@
 					<xsl:with-param name="content">
 
 						<!-- Content -->
-						<xsl:call-template name="content" >
+						<xsl:call-template name="content">
 							<xsl:with-param name="content" select="$content"/>
 						</xsl:call-template>
 

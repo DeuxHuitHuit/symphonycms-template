@@ -14,7 +14,7 @@
 		<xsl:text>'</xsl:text>
 	</xsl:variable>
 
-	<xsl:variable name="default-attr-mode" >
+	<xsl:variable name="default-attr-mode">
 		<xsl:text></xsl:text>
 	</xsl:variable>
 <!-- 																		/-->
@@ -25,11 +25,11 @@
 		<xsl:param name="attr-mode" select="$default-attr-mode" />
 
 	<!-- INTERNAL VARIABLES 												 -->
-		<xsl:variable name="initialNodeResult" ><root></root></xsl:variable>
+		<xsl:variable name="initialNodeResult"><root></root></xsl:variable>
 
 		<xsl:variable name="compiledAttrXml">
 			<!-- Compute compiled attributes -->
-			<xsl:apply-templates select="exsl:node-set($attr)//*[1]" mode="node-attributes-rec" >
+			<xsl:apply-templates select="exsl:node-set($attr)//*[1]" mode="node-attributes-rec">
 				<xsl:with-param name="attrResult" select="$initialNodeResult"/>
 			</xsl:apply-templates>
 		</xsl:variable>
@@ -118,7 +118,7 @@
 								<xsl:otherwise>
 
 									<!-- Loop throught add or set node values to create new value -->
-									<xsl:for-each select="str:tokenize(., ' ')" >
+									<xsl:for-each select="str:tokenize(., ' ')">
 										<!-- Check if already there -->
 										<xsl:variable name="curValue" select="." />
 
@@ -151,7 +151,7 @@
 								</xsl:when>
 								<xsl:otherwise>
 
-									<xsl:for-each select="str:tokenize(., ' ')" >
+									<xsl:for-each select="str:tokenize(., ' ')">
 										<value><xsl:value-of select="." /></value>
 									</xsl:for-each>
 								</xsl:otherwise>
@@ -166,7 +166,7 @@
 		<xsl:variable name="temp2">
 			<xsl:copy-of select="$temp" />
 
-			<xsl:for-each select="exsl:node-set($attrResult)/root/*" >
+			<xsl:for-each select="exsl:node-set($attrResult)/root/*">
 				<xsl:variable name="attr-name" select="name()" />
 
 				<!-- Check if not present -->
@@ -203,7 +203,7 @@
 
 		<xsl:variable name="newAttrResult">
 			<root>
-				<xsl:for-each select="exsl:node-set($attrResult)/root/*" >
+				<xsl:for-each select="exsl:node-set($attrResult)/root/*">
 					<xsl:variable name="attr-name" select="name()" />
 
 					<!-- Check if this attribute exist in the rem node -->
@@ -217,7 +217,7 @@
 								<xsl:when test="starts-with($curAttr, $attr-string-start-delimiter) and 
 									substring($curAttr, string-length($curAttr)) = $attr-string-end-delimiter">
 
-									<xsl:variable name="stringRemove" >
+									<xsl:variable name="stringRemove">
 										<xsl:call-template name="attr-string-transform">
 											<xsl:with-param name="value" select="$curAttr"/>
 										</xsl:call-template>
@@ -227,7 +227,7 @@
 									<xsl:element name="{$attr-name}">
 
 										<!-- Pass Existing value and output if not present in the token of the remove node -->
-										<xsl:for-each select="value" >
+										<xsl:for-each select="value">
 											<xsl:variable name="curValue" select="."/>
 
 											<xsl:if test="$stringRemove != $curValue">
@@ -243,7 +243,7 @@
 									<xsl:element name="{$attr-name}">
 
 										<!-- Pass Existing value and output if not present in the token of the remove node -->
-										<xsl:for-each select="value" >
+										<xsl:for-each select="value">
 											<xsl:variable name="curValue" select="./text()"/>
 											<xsl:if test="count($tokenRemove[text() = $curValue]) = 0">
 												<value><xsl:value-of select="$curValue" /></value>
@@ -279,8 +279,8 @@
 	<xsl:template name="attr-string-transform">
 		<xsl:param name="value" />
 
-		<xsl:for-each select="str:tokenize($value, '')" >
-			<xsl:if test="position() &gt; 2 and position() &lt; string-length($value)" >
+		<xsl:for-each select="str:tokenize($value, '')">
+			<xsl:if test="position() &gt; 2 and position() &lt; string-length($value)">
 				<xsl:value-of select="." />
 			</xsl:if>
 		</xsl:for-each>

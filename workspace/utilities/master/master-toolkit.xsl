@@ -74,7 +74,7 @@
 			<xsl:call-template name="favicon" />
 			
 			<!-- Master css -->
-			<xsl:call-template name="master-css" >
+			<xsl:call-template name="master-css">
 				<xsl:with-param name="less-file" select="'toolkit'" />
 			</xsl:call-template>
 			

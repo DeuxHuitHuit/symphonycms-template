@@ -13,7 +13,7 @@
 <xsl:template name="create-page-url-by-id">
 	<xsl:param name="id" select="$current-page-id" />
 	<xsl:param name="lg" select="$url-language" />
-	<xsl:apply-templates select="/data/pages//page [@id = $id]" mode="url" >
+	<xsl:apply-templates select="/data/pages//page [@id = $id]" mode="url">
 		<xsl:with-param name="lg" select="$lg" />
 	</xsl:apply-templates>
 </xsl:template>
@@ -23,7 +23,7 @@
 	<xsl:param name="lg" select="$url-language" />
 	<xsl:choose>
 		<xsl:when test="count(./parent::page) &gt; 0">
-			<xsl:apply-templates select="./parent::page" mode="url" >
+			<xsl:apply-templates select="./parent::page" mode="url">
 				<xsl:with-param name="lg" select="$lg" />
 				<xsl:with-param name="url">
 					<xsl:choose>
