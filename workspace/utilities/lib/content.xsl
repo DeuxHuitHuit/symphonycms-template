@@ -37,6 +37,14 @@
 	</xsl:template>
 
 <!-- CORE-FUNCTION: default-value ===============================================================-->
+	<!-- TODO: Refactor to be used like this
+		<xsl:call-template name="default-value">
+			<xsl:with-param name="values">
+				<value><xsl:value-of select="nothing" /></value>
+				<value>Default value</value>
+			</xsl:with-param>
+		</xsl:call-template>
+	-->
 	<xsl:template name="default-value">
 		<xsl:param name="lg" select="$url-language"/>
 		<xsl:param name="a" select="''" />
