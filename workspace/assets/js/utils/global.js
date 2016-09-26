@@ -90,7 +90,7 @@
 			return false;
 		}
 		if (!!href) {
-			return !/^(https?|mailto|skype|tel|ftps?)/im.test(href);
+			return !/^(https?|mailto|skype|tel|ftps?|#)/im.test(href);
 		}
 		return true;
 	};
