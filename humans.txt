@@ -1,11 +1,11 @@
-﻿######                          #     #                   #     #                
-#     # ###### #    # #    #    #     # #    # # #####    #     # #    # # ##### 
-#     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
-#     # #####  #    #   ##      ####### #    # #   #      ####### #    # #   #   
-#     # #      #    #   ##      #     # #    # #   #      #     # #    # #   #   
-#     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #   
-######  ######  ####  #    #    #     #  ####  #   #      #     #  ####  #   #   
-                                                                               
+﻿######                          #     #                   #     #               
+#     # ###### #    # #    #    #     # #    # # #####    #     # #    # # #####
+#     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #  
+#     # #####  #    #   ##      ####### #    # #   #      ####### #    # #   #  
+#     # #      #    #   ##      #     # #    # #   #      #     # #    # #   #  
+#     # #      #    #  #  #     #     # #    # #   #      #     # #    # #   #  
+######  ######  ####  #    #    #     #  ####  #   #      #     #  ####  #   #  
+
 
 # The humans behind this site
 # Les humains derrière ce site
@@ -22,7 +22,7 @@ https://deuxhuithuit.com/
 Gabrielle Normand Viau
 Managing Director / Directrice générale
 
-Alex Leduc 
+Alex Leduc
 Art director / Directeur artistique
 
 Louis-Pierre Chouinard
@@ -32,7 +32,7 @@ René-Charles Arsenau
 Art director / Directeur artistique
 
 Charles Fortier
-Designer
+Art director / Directeur artistique
 
 Frédéric Lord
 Interface designer / Designer d'interface
@@ -72,6 +72,9 @@ Project manager / Chargé de compte
 
 Jésabel St-Jean
 Coordinator / Coordonatrice
+
+Stéphanie Forget
+Content manager - Infographist / Édimestre - Infographiste
 
 Twitter: https://twitter.com/DeuxHuitHuit
 Facebook: https://www.facebook.com/DeuxHuitHuit
