@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<xsl:template match="/">
+	
+
+	<html>
+
+		<body>
+			<xsl:apply-templates select="model/group-sections" />
+		</body>
+
+	</html>
+
+</xsl:template>
+
+
+<xsl:template match="model/group-sections">
+	<div>
+		<h1>
+			<xsl:choose>
+				<xsl:when test="string-length(@label) != 0">
+					<xsl:value-of select="@label" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="name()" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</h1>
+
+		<div>
+			<xsl:for-each select="*">
+				<div>
+					<h2>
+						<xsl:choose>
+							<xsl:when test="string-length(@label) != 0">
+								<xsl:value-of select="@label" />
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="name()" />
+							</xsl:otherwise>
+						</xsl:choose>
+					</h2>
+
+					<ul>
+						<xsl:for-each select="*">
+							<li>
+								<xsl:choose>
+									<xsl:when test="string-length(@label) != 0">
+										<xsl:value-of select="@label" />
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="name()" />
+									</xsl:otherwise>
+								</xsl:choose>
+								<xsl:if test="string-length(@type) != 0">
+									<xsl:text> (</xsl:text>
+									<xsl:value-of select="@type" />
+									<xsl:text>)</xsl:text>
+								</xsl:if>
+							</li>
+						</xsl:for-each>
+					</ul>
+
+				</div>
+			</xsl:for-each>
+		</div>
+
+	</div>
+</xsl:template>
+</xsl:stylesheet>

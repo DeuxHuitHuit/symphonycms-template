@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="model.ui" ?>
+
+<!-- 
+	Type name list :
+		|- (default) (single ligne text (no markdown))
+		|		params:
+		|			- options=(handle)
+		|- relation
+		|		Params: 
+		|			- sections=(section1,section2,...)
+		|- markdown (need fake content)
+		|- image	(need fake content)
+		|- checkbox
+		|- date
+		|- page
+-->
+
+<!--
+	Default behavior:
+		if no type are specified the default type name will be used.
+		if no label are specified. the handle will be used.
+
+
+	Group, section and field definition
+
+		|<{group handle} [status=""]>
+		|	<{section handle} [status=""]>
+		|		<{field handle} 
+		|			[label="{field label}"] 
+		|			[type="{type name}]" 
+		|			[status=""]
+		|			...
+		|		/>
+		|		...
+		|	</{section handle}>
+		|	...
+		|</{group handle}>
+		|...
+		|
+
+	Ds definition
+
+		|<{datasource name} section="{section handle}" [status=""]/>
+-->
+
+<model>
+
+<!-- Section general -->
+<group-sections 					label="Pages et General" 					status="">
+	<!-- Menu -->
+	<menu 							label="Menu items" 							status="">
+		<titre />
+		<page 																	type="page"/>
+		<page-extra-url />
+		<publie 																type="checkbox"/>
+	</menu>
+
+	<!-- site-header -->
+	<site-header 					label="Entête du site" 						status="">
+		<menu 																	type="relation" sections="menu" />
+	</site-header>
+
+	<!-- site-footer -->
+	<site-footer 					label="Pied du site" 						status="created">
+		
+	</site-footer>
+
+	<!-- site social network pages -->
+	<social-network-pages 			label="Réseaux sociaux Url" 				status="created">
+		<internal-name 				label="" />
+		<name 						label="" />
+		<url 						label="" />
+	</social-network-pages>
+</group-sections>
+
+<!-- MODEL OUVERT -->
+<group-sections 					label="Model ouvert"						status="complete">
+
+	<!-- titre et texte -->
+	<mo-title-text 					label="Model ouvert: Titre et texte"		status="created">
+		<internal-name 				label="Nom interne" />
+		<title 						label="Titre" />
+		<text 						label="Texte" 									type="markdown" />
+	</mo-title-text>
+</group-sections>
+
+<ds>
+	<!-- Generique -->
+	<site-header section="site-header" 						status=""/>
+	<site-footer section="site-footer" 						status=""/>
+	<social-network-pages section="social-network-pages" 	status=""/>
+</ds>
+
+</model>
