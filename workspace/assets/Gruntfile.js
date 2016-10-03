@@ -135,7 +135,7 @@ module.exports = function (grunt) {
 				maxstatements: 30,
 				maxlen: 100,
 				nonbsp: true,
-				
+
 				// relax options
 				regexp: true,
 				strict: true,
@@ -160,7 +160,8 @@ module.exports = function (grunt) {
 			src: SRC_FILES.concat(GRUNT_FILE),
 			options: {
 				config: JSCS_FILE,
-				fix: true
+				fix: true,
+				disallowDanglingUnderscores: { 'allExcept': ['_currentPage'] }
 			}
 		},
 		uglify: {
