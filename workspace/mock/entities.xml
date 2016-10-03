@@ -1,0 +1,85 @@
+
+<!-- 
+
+Structure d'une entitee 
+
+	<{section name}>
+		<{entity name (id)}
+			{field name}="{field value}"
+			{field name}="{field value}"
+			...
+			{field name}="{field value}"
+		/>
+	</{section name}>
+
+===========================
+Structure d'un contenu
+===========================
+	With content
+		<{field type} name="{field value}" {params}>
+			{content}
+		</{field type}>
+
+	____________________________________________________________________________
+	Without content
+		<{field type} name="{field value}" {params} />
+
+	____________________________________________________________________________
+	Available type:
+		- Image :
+			Put image in folder: workspace/mock/assets/
+			Height and width must be expressed in px and only with the number
+
+			<image name="{field-value}" height="{img-height}" width="{img-width}" />
+
+			<image name="" height="" width="" />
+
+		- Markdown: 
+			<markdown name="{field value}">
+				{content}
+			</mardown>
+-->
+
+<root>
+	<entities>
+		<!-- Page index -->
+		<page-index>
+			<page-index
+				/>
+		</page-index>
+	</entities>
+
+	<fake-content>
+
+		<!-- Markdown example -->
+		<markdown name="markdown-1p-very-short">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, seiqua. Ut enim ad minim veniam, quis</p>
+		</markdown>
+
+		<markdown name="markdown-1p-short">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, seiqua. Ut enim ad minim veniam, quis Lorem ipsum dolor sit amet, consectetur adipisicing elit, seiqua.</p>
+		</markdown>
+
+		<markdown name="markdown-1p-mid">
+			<p>We’ve always been a fan of owning less. The idea of buying one good kitchen knife as opposed to five ehh ones. I think our time on the sailboat inspired that. Having less stuff means be able to up andhat. Having less stuff means be able to up and go when the opportunity arises.</p>
+		</markdown>
+
+		<markdown name="markdown-2p-mid">
+			<p>We’ve always been a fan of owning less. The idea of buying one good kitchen knife as opposed to five ehh ones. I think our time on the sailboat inspired that. Having less stuff means be able to up and go when the opportunity arises.</p>
+			<p>Nico and I thought for a while about what kind of products we wanted to carry, ultimately landing on selling things we would want in our home. Products that are not only functional, but designed thoughtfully with the user in mind. We’ve just hired our talented brother Robin to run the warehouse and we cé</p>
+		</markdown>
+
+		<markdown name="markdown-simple">
+			<p>Ceci est un exemple de texte dans un p. Ceci est un exemple de texte dans un p <strong>avec du bold</strong>. Ceci est un exemple de texte dans un p <em>avec du italic</em>. Ceci est un exemple de texte dans un p <a href="#">avec un lien</a>.</p>
+		</markdown>
+
+		<markdown name="markdown-pave-simple">
+			<p>Ceci est un exemple de texte dans un p. Ceci est un exemple de texte dans un p <strong>avec du bold</strong>. Ceci est un exemple de texte dans un p <em>avec du italic</em>. Ceci est un exemple de texte dans un p <a href="#">avec un lien</a>.</p>
+			<p>Ceci est un exemple de texte dans un p. Ceci est un exemple de texte dans un p <strong>avec du bold</strong>. Ceci est un exemple de texte dans un p <em>avec du italic</em>. Ceci est un exemple de texte dans un p <a href="#">avec un lien</a>.</p>
+			<p>Ceci est un exemple de texte dans un p. Ceci est un exemple de texte dans un p <strong>avec du bold</strong>. Ceci est un exemple de texte dans un p <em>avec du italic</em>. Ceci est un exemple de texte dans un p <a href="#">avec un lien</a>.</p>
+		</markdown>
+	</fake-content>
+</root>
+
+
+
