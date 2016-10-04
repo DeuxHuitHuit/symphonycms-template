@@ -87,7 +87,10 @@
 						<xsl:call-template name="site-footer" />
 					</xsl:with-param> <!-- End site -->
 				</xsl:call-template>
-
+				
+				<!-- BG TRANSITION -->
+				<div id="bg-transition" class="bg-color-white fixed fill z-index-max hidden"></div>
+				
 				<!-- load progress -->
 				<div id="load-progress"></div>
 				
