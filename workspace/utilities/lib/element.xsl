@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:exslt="http://exslt.org/common"
+	exclude-result-prefixes="exslt">
 
 <!-- CORE-ELEMENT: element ======================================================================-->
 	<xsl:template name="element">
 		<xsl:param name="element" select="'div'" />
 		<xsl:param name="is-optional" select="false()" />
-		<!-- attr -->
+		<!-- function attr params -->
 		<xsl:param name="attr" />
-		<xsl:param name="attr-mode" select="$default-attr-mode"/>
-		<!-- content -->
+		<xsl:param name="attr-mode" />
+		<!-- function content params -->
 		<xsl:param name="lg" select="$url-language" />
 		<xsl:param name="content" />
 
@@ -17,11 +19,14 @@
 			<xsl:if test="string-length($content) != 0">
 				<xsl:text>yes</xsl:text>
 			</xsl:if>
-			<!-- 
-				TODO: @Paco
-				Continue to check for case were we have only img or
-				other case without direct text 
-			-->
+			<xsl:if test="exslt:object-type($content) = 'node-set'">
+				<xsl:if test="count($content/*) != 0">
+					<xsl:text>yes</xsl:text>
+				</xsl:if>
+			</xsl:if>
+			<xsl:if test="count(exslt:node-set($content)/*) != 0">
+				<xsl:text>yes</xsl:text>
+			</xsl:if>
 		</xsl:variable>
 	<!--																	/-->
 
@@ -29,12 +34,14 @@
 		<xsl:if test="$is-optional = false() or string-length($has-content) != 0">
 			<!-- element -->
 			<xsl:element name="{$element}">
+				<!-- element attr -->
 				<xsl:call-template name="attr">
 					<xsl:with-param name="attr" select="$attr"/>
-					<xsl:with-param name="attr-mode" select="$attr-mode" />
+					<xsl:with-param name="mode" select="$attr-mode" />
 				</xsl:call-template>
 
-				<xsl:call-template name="content">
+				<!-- element content -->
+				<xsl:call-template name="content" >
 					<xsl:with-param name="content" select="$content" />
 					<xsl:with-param name="lg" select="$lg" />
 				</xsl:call-template>
@@ -46,10 +53,10 @@
 <!-- CORE-ELEMENT: optional-element =============================================================-->
 	<xsl:template name="optional-element">
 		<xsl:param name="element" select="'div'" />
-		<!-- attr -->
+		<!-- function attr params -->
 		<xsl:param name="attr" />
-		<xsl:param name="attr-mode" select="$default-attr-mode"/>
-		<!-- content -->
+		<xsl:param name="attr-mode" />
+		<!-- function content params -->
 		<xsl:param name="lg" select="$url-language" />
 		<xsl:param name="content" />
 
