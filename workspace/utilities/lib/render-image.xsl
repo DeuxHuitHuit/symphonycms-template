@@ -10,7 +10,6 @@
 	<xsl:param name="factor" select="'3'" />
 	<xsl:param name="ratio" select="''" />
 	<xsl:param name="format" select="''" />
-	<xsl:param name="use-format" select="true()" />
 	<xsl:param name="attr" />
 	<xsl:param name="alt">
 		<xsl:call-template name="default-image-alt-selector" />
@@ -22,34 +21,31 @@
 			<xsl:when test="exslt:object-type($image) = 'node-set' and contains($image/@type, 'svg')">
 
 				<add src="/workspace{$image/@path}/{$image/filename}" />
-
 			</xsl:when>
+
 			<!-- Img File -->
 			<xsl:otherwise>
-
 				<add>
 					<xsl:attribute name="src">
 						<xsl:call-template name="render-image-src">
 							<xsl:with-param name="image" select="$image" />
 							<xsl:with-param name="factor" select="$factor" />
 							<xsl:with-param name="ratio" select="$ratio" />
-							<xsl:with-param name="use-format" select="$use-format" />
+							<xsl:with-param name="use-format" select="string-length($format) != 0" />
 						</xsl:call-template>
 					</xsl:attribute>
 				</add>
 
-				<xsl:if test="$use-format = true() and string-length($format) != 0 and exslt:object-type($image) = 'node-set'">
-
+				<xsl:if test="string-length($format) != 0 and exslt:object-type($image) = 'node-set'">
 					<add data-src-format="{$format}{$image/@path}/{$image/filename}" />
 					<add>
-						<xsl:attribute name="data-src-original">
+						<xsl:attribute name="data-src-original" >
 							<xsl:call-template name="render-image-src">
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="use-format" select="false()" />
 							</xsl:call-template>
 						</xsl:attribute>
 					</add>
-
 				</xsl:if>
 			</xsl:otherwise>
 		</xsl:choose>
@@ -67,7 +63,6 @@
 
 <xsl:template name="render-image-crop">
 	<xsl:param name="image" select="image" />
-
 	<xsl:param name="factor" select="'3'" />
 	<xsl:param name="width" select="'$w'" />
 	<xsl:param name="height" select="'$h'" />
@@ -77,7 +72,7 @@
 		<xsl:call-template name="default-image-alt-selector" />
 	</xsl:param>
 
-	<xsl:variable name="computed-format">
+	<xsl:variable name="computed-format" >
 		<xsl:text>/image/2/</xsl:text>
 		<xsl:value-of select="concat($width, '/')" />
 		<xsl:value-of select="concat($height, '/')" />
@@ -207,6 +202,158 @@
 		<xsl:with-param name="alt" select="$alt" />
 	</xsl:call-template>
 </xsl:template>
+
+<!-- background-image -->
+<xsl:template name="render-image-bg">
+	<xsl:param name="position" />
+	<xsl:param name="size" />
+	<xsl:param name="width" select="'$w'" />
+	<xsl:param name="height" select="'0'" />
+
+	<xsl:param name="image" select="image" />
+	<xsl:param name="factor" select="'1'" />
+
+	<xsl:param name="attr" />
+	<xsl:param name="alt">
+		<xsl:call-template name="default-image-alt-selector" />
+	</xsl:param>
+	
+	<xsl:variable name="img-path">
+		<xsl:text>/image/1/</xsl:text>
+		<xsl:value-of select="round($image/meta/@width div $factor)" />
+		<xsl:text>/</xsl:text>
+		<xsl:value-of select="round($image/meta/@height div $factor)" />
+		<xsl:value-of select="$image/@path" />
+		<xsl:text>/</xsl:text>
+		<xsl:value-of select="$image/filename" />
+	</xsl:variable>
+
+	<xsl:variable name="pos">
+		<xsl:choose>
+			<xsl:when test="string-length($position) != 0">
+				<xsl:value-of select="$position" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>50% 50%</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+
+	<xsl:variable name="computed-format">
+		<xsl:text>/image/1/</xsl:text>
+		<xsl:value-of select="concat($width, '/')" />
+		<xsl:value-of select="$height" />
+	</xsl:variable>
+
+	<xsl:variable name="style-attr">
+		<add>
+			<xsl:attribute name="style">
+				
+				<!--add background-url -->
+				<xsl:text>background-image:url('</xsl:text>
+				<xsl:value-of select="$img-path" />
+				<xsl:text>');</xsl:text>
+
+				<!-- Force no repeat -->
+				<xsl:text>background-repeat:no-repeat;</xsl:text>
+
+				<!-- Add position -->
+				<xsl:value-of select="concat('background-position:', $pos, ';')" />
+
+				<!-- Add site -->
+				<xsl:if test="string-length($size) != 0">
+					<xsl:value-of select="concat('background-size:', $size, ';')" />
+				</xsl:if>
+			</xsl:attribute>
+		</add>
+	</xsl:variable>
+
+	<xsl:variable name="computed-attr">
+		<xsl:copy-of select="$style-attr" />
+		<xsl:copy-of select="$attr"/>
+		<add class="jit-image-bg" />
+	</xsl:variable>
+
+	<xsl:variable name="computed-image-bg-attr">
+		<add class="jit-image-bg-src visibility-hidden" />
+	</xsl:variable>
+
+	<xsl:call-template name="element">
+		<xsl:with-param name="element" select="'figure'"/>
+		<xsl:with-param name="attr" select="$computed-attr"/>
+		<xsl:with-param name="content">
+			<xsl:call-template name="render-image">
+				<xsl:with-param name="attr" select="$computed-image-bg-attr" />
+				<xsl:with-param name="image" select="$image" />
+				<xsl:with-param name="alt" select="$alt" />
+				<xsl:with-param name="factor" select="$factor" />
+				<xsl:with-param name="format" select="$computed-format" />
+			</xsl:call-template>
+		</xsl:with-param>
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="render-image-bg-cover">
+	<xsl:param name="position" select="'50% 50%'" />
+	<xsl:param name="width" select="'$w'" />
+	<xsl:param name="height" select="'0'" />
+	
+	<xsl:param name="image" select="image" />
+	<xsl:param name="factor" select="'3'" />
+
+	<xsl:param name="alt">
+		<xsl:call-template name="default-image-alt-selector" />
+	</xsl:param>
+	<xsl:param name="attr" />
+
+	<xsl:variable name="computed-attr">
+		<xsl:copy-of select="$attr" />
+	</xsl:variable>
+
+	<xsl:call-template name="render-image-bg">
+		<xsl:with-param name="position" select="$position" />
+		<xsl:with-param name="size" select="'cover'" />
+
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="attr" select="$computed-attr" />
+		
+		<xsl:with-param name="factor" select="$factor" />
+		
+		<xsl:with-param name="width" select="$width" />
+		<xsl:with-param name="height" select="$height" />
+	</xsl:call-template>
+</xsl:template>
+	
+<xsl:template name="render-image-bg-contain">
+	<xsl:param name="position" select="'50% 50%'" />
+	<xsl:param name="width" select="'$w'" />
+	<xsl:param name="height" select="'0'" />
+	<xsl:param name="image" select="image" />
+	<xsl:param name="factor" select="'3'" />
+	<xsl:param name="attr" />
+	<xsl:param name="alt">
+		<xsl:call-template name="default-image-alt-selector" />
+	</xsl:param>
+
+	<xsl:variable name="computed-attr">
+		<xsl:copy-of select="$attr" />
+	</xsl:variable>
+	
+	<xsl:call-template name="render-image-bg">
+		<xsl:with-param name="position" select="$position" />
+		<xsl:with-param name="size" select="'contain'" />
+
+		<xsl:with-param name="image" select="$image" />
+		<xsl:with-param name="alt" select="$alt" />
+		<xsl:with-param name="attr" select="$computed-attr" />
+		
+		<xsl:with-param name="factor" select="$factor" />
+		<xsl:with-param name="width" select="$width" />
+		<xsl:with-param name="height" select="$height" />
+	</xsl:call-template>
+</xsl:template>
+
 
 <xsl:template name="render-image-src">
 	<xsl:param name="image" select="image" />
