@@ -9,7 +9,7 @@
 		<xsl:param name="is-optional" select="false()" />
 		<!-- function attr params -->
 		<xsl:param name="attr" />
-		<xsl:param name="attr-mode" />
+		<xsl:param name="attr-mode" select="$default-attr"/>
 		<!-- function content params -->
 		<xsl:param name="lg" select="$url-language" />
 		<xsl:param name="content" />
