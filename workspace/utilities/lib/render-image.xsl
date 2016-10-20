@@ -227,13 +227,20 @@
 		
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
-			<xsl:text>/image/1/</xsl:text>
-			<xsl:value-of select="round($image/meta/@width div $factor)" />
-			<xsl:text>/</xsl:text>
-			<xsl:value-of select="round($image/meta/@height div $factor)" />
-			<xsl:value-of select="$image/@path" />
-			<xsl:text>/</xsl:text>
-			<xsl:value-of select="$image/filename" />
+			<xsl:choose>
+				<xsl:when test="exslt:object-type($image) = 'node-set' and contains($image/@type, 'svg')">
+					<xsl:value-of select="concat('/workspace', $image/@path, '/', $image/filename)" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>/image/1/</xsl:text>
+					<xsl:value-of select="round($image/meta/@width div $factor)" />
+					<xsl:text>/</xsl:text>
+					<xsl:value-of select="round($image/meta/@height div $factor)" />
+					<xsl:value-of select="$image/@path" />
+					<xsl:text>/</xsl:text>
+					<xsl:value-of select="$image/filename" />
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:variable>
 
 		<xsl:variable name="pos">
