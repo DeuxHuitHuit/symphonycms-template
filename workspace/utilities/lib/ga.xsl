@@ -22,15 +22,19 @@ ga('require', 'linkid');
 
 <xsl:template name="gtm">
 	<xsl:param name="ua" />
+	<xsl:param name="env" select="''" />
 <script>
 var dataLayer = dataLayer || [];
 dataLayer.push({'page':{'language':'<xsl:value-of select="$url-language" />'}});
 </script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'<xsl:value-of select="$env" />';
+f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','<xsl:value-of select="$ua" />');</script>
 <noscript>
-	<iframe src="https://www.googletagmanager.com/ns.html?id={$ua}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	<iframe src="https://www.googletagmanager.com/ns.html?id={$ua}{$env}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 </xsl:template>
 
