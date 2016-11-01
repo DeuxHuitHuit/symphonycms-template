@@ -1,7 +1,7 @@
 //=========================
 // = VARIABLES FOR COLORS
 //=========================
-//====== SYMBOLIC ==============
+//========================= SYMBOLIC 
 //@white: 	@true-white;
 //@black: 	@true-black;
 //@red:		@true-red;
@@ -9,160 +9,197 @@
 //@light: 	@true-white;
 //@dark: 	@true-black;
 
-//====== SOCIAL ================
+//====== HIERARCHIC ==============
+// @primary: @black;
+// @secondary: @black;
+// @tertiary: @black;
+// @accent: @black;
+// @special: @black;
+// @veil: @black;
+
+//========================= SOCIAL 
 //@twitter: 	#55acee;
 //@facebook: 	#3B5998;
 //@instagram: 	#c6359b;
 //@linkedin: 	#0077B5;
 //@snapchat: 	#e5e200;
 
-//=========================
-// = VARIABLES FOR SPACING
-//=========================
-//@spacing-atto: 		  1px;
-//@spacing-femto: 		  0.2rem;
-//@spacing-pico: 		  0.4rem;
-//@spacing-nano: 		  0.5rem;
-//@spacing-micro: 		  0.7rem;
-//@spacing-xsmall: 		  1 rem;
-//@spacing-smallest: 	  1.5rem;
-//@spacing-smaller: 	  2rem;
-//@spacing-small: 		  2.5rem;
-//@spacing-mid: 		  3rem;
-//@spacing-large: 		  4rem;
-//@spacing-larger: 		  5rem;
-//@spacing-largest: 	  6rem;
-//@spacing-xlarge: 		 10rem;
-//@spacing-huge: 		 20rem;
-//@spacing-mega: 		 30rem;
-//@spacing-giga: 		 40rem;
-//@spacing-tera: 		 60rem;
-//@spacing-peta: 		 80rem;
-//@spacing-zetta: 		100rem;
-//@spacing-yotta: 		120rem;
+//============================
+// = SPACING
+//============================
+// @spacing-pico:      0.1rem;
+// @spacing-nano:      0.3rem;
+// @spacing-micro:     0.5rem;
+//---
+// @spacing-thinnest:  1rem;
+// @spacing-thinner:   1.5rem;
+// @spacing-thin:      2rem;
+// @spacing-broad:     4rem;
+// @spacing-broader:   6rem;
+// @spacing-broadest:  8rem;
+// @spacing-large:     10rem;
+// @spacing-larger:    12rem;
+// @spacing-largest:   16rem;
+//---
+// @spacing-mega:      24rem;
+// @spacing-giga:      54rem;
+// @spacing-tera:      78rem;
 
 //============================
-// = VARIABLES FOR DIMENSIONS
+// = DIMENSIONS
 //============================
-//@dimension-skelettic: 	  1rem;
-//@dimension-tiniest: 		  2rem;
-//@dimension-very-tiny: 	  3.2rem;
-//@dimension-tinier: 		  4rem;
-//@dimension-tiny: 			  5rem;
-//@dimension-thinnest: 		  6rem;
-//@dimension-very-thin: 	  8rem;
-//@dimension-thinner: 		 14rem;
-//@dimension-thin: 			 20rem;
-//@dimension-standard: 		 24rem;
-//@dimension-wide: 			 30rem;
-//@dimension-wider: 		 36rem;
-//@dimension-very-wide: 	 48rem;
-//@dimension-widest: 		 56rem;
-//@dimension-fat: 			 64rem;
-//@dimension-fatter: 		 70rem;
-//@dimension-very-fat: 		 82rem;
-//@dimension-fattest: 		 96rem;
-//@dimension-obese: 		120rem;
-//@dimension-morbid: 		160rem;
+//@dimension-tiniest:   @spacing-thinnest * 18;
+//@dimension-tinier:    @spacing-thinner * 18;
+//@dimension-tiny:      @spacing-thin * 17;
+//@dimension-smallest:  @spacing-broad * 10;
+//@dimension-smaller:   @spacing-broader * 9;
+//@dimension-small:     @spacing-broadest * 7;
+//@dimension-big:       @spacing-large * 8;
+//@dimension-bigger:    @spacing-larger * 8;
+//@dimension-biggest:   @spacing-largest * 9;
 
-// Screen sizes
-//@dimension-ip: @screen-ip;
-//@dimension-ph: @screen-ph;
-//@dimension-xs: @screen-xs;
-//@dimension-sm: @screen-sm;
-//@dimension-md: @screen-md;
-//@dimension-lg: @screen-lg;
-//@dimension-xl: @screen-xl;
-//@dimension-hd: @screen-hd;
-//@dimension-2k: @screen-2k;
-//@dimension-4k: @screen-4k;
+//=========================
+// = FONT-FAMILY
+//=========================
+//@font-base: 'Gt Walsheim', 'Helvetica', sans-serif;
+//@font-alt: sans-serif;
+//@font-accent: sans-serif;
 
+//=========================
+// = FONT-SIZE
+//=========================
+//@font-miniature:  0.6rem;
+//---
+//@font-shortest:   0.8rem;
+//@font-shorter:    1.0rem;
+//@font-short:      1.2rem;
+//@font-current:    1.4rem;
+//@font-tall:       1.6rem;
+//@font-taller:     2.0rem;
+//@font-tallest:    2.4rem;
+//@font-huge:       2.8rem;
+//@font-huger:      4.0rem;
+//@font-hugest:     5.0rem;
+//---
+// @font-giant:      10.0rem;
+
+//=========================
+// = LINE-HEIGHT
+//=========================
+// @line-height-compressed:   1.0em;
+// @line-height-tightest:     1.26875em;
+// @line-height-tighter:      1.42875em;
+// @line-height-tight:        1.61285em;
+// @line-height-normal:       1.8em;
+// @line-height-loose:        3.6em;
+// @line-height-looser:       4.2em;
+// @line-height-loosest:      5.0em;
 
 //============================
-// = VARIABLES FOR BORDER SIZE
+// = LETTER-SPACING
 //============================
-//@border-slimest: 	 1px;
-//@border-slimer: 	 2px;
-//@border-slim: 	 3px;
-//@border-average: 	 5px;
-//@border-thick: 	 8px;
-//@border-thicker: 	10px;
-//@border-thickest: 20px;
+// @letter-spacing-narrowest:  -0.14em;
+// @letter-spacing-narrower:   -0.10em;
+// @letter-spacing-narrow:     -0.06em;
+// @letter-spacing-wide:        0.06em;
+// @letter-spacing-wider:       0.10em;
+// @letter-spacing-widest:      0.16em;
+
+//============================
+// = OPACITY
+//============================
+// @transparent:           0;
+// @almost-transparent:    0.1;
+// @quasi-transparent:     0.2;
+// @semi-transparent:      0.3;
+// @partially-transparent: 0.4;
+// @translucent:           0.5;
+// @partially-opaque:      0.6;
+// @semi-opaque:           0.7;
+// @quasi-opaque:          0.8;
+// @almost-opaque:         0.9;
+// @opaque:                1;
+
+//============================
+// = BORDER SIZE
+//============================
+// @border-slimmest:  1px;
+// @border-slimmer:   2px;
+// @border-slim:      3px;
+// @border-thick:     8px;
+// @border-thicker:  10px;
+// @border-thickest: 20px;
 
 //=========================
-// = VARIABLES FOR BORDER-RADIUS
+// = RADIUS
 //=========================
-//@border-radius-smallest: 		 2px;
-//@border-radius-smaller: 		 3px;
-//@border-radius-small: 		 4px;
-//@border-radius-mid: 			10px;
-//@border-radius-large: 		 4rem;
-//@border-radius-larger: 		 5rem;
-//@border-radius-largest: 		10rem;
+// @radius-sharpest:     2px;
+// @radius-sharper:      3px;
+// @radius-sharp:        5px;
+// @radius-dull:        10px;
+// @radius-duller:       4rem;
+// @radius-dullest:      5rem;
 
 //=========================
-// = VARIABLES FOR FONT-FAMILY
+// = DURATION
 //=========================
-//@font-base: sans-serif;
-//@font-alt: serif;
-//@font-accent: serif;
+// @duration-fastest:  	  150ms;
+// @duration-faster: 	  200ms;
+// @duration-fast: 	 	  300ms;
+// @duration-medium: 	  500ms;
+// @duration-slow: 		  750ms;
+// @duration-slower:     1000ms;
+// @duration-slowest: 	10000ms;
 
 //=========================
-// = VARIABLES FOR FONT-SIZE
+// = ROOT FONT SCALE
 //=========================
-//@type-astronomic: 200px;
-//@type-giant: 		145px;
-//@type-tallest: 	100px;
-//@type-taller: 	 80px;
-//@type-tall: 		 60px;
-//@type-average: 	 42px;
-//@type-short: 		 30px;
-//@type-shorter: 	 24px;
-//@type-very-short:  21px;
-//@type-shortest: 	 18px;
-//@type-miniature: 	 14px;
-//@type-dwarf: 		 11px;
+// @font-size:    0.4375;
+// @font-size-xs: 0.5;
+// @font-size-md: 0.5625;
+// @font-size-lg: 0.625;
 
 //=========================
-// = VARIABLES FOR LINE-HEIGHT
+// = CONTENT BREAKPOINTS
 //=========================
-//@line-height-suffocate: 	0.9em;
-//@line-height-perfect: 	1em;
-//@line-height-tightest: 	1.1em;
-//@line-height-tighter: 	1.25em;
-//@line-height-tight: 		1.4em;
-//@line-height-loose: 		1.5em;
-//@line-height-looser: 		1.65em;
-//@line-height-loosest: 	1.8em;
-//@line-height-double: 		2em;
+// @tiny-at-xs: 	unit(@dimension-tiny * 16 * @font-size-xs, px);
+// @smallest-at-xs: unit(@dimension-smallest * 16 * @font-size-xs, px);
+// @largest-at-ph: 	unit(@spacing-largest * 16 * @font-size, px);
 
 //=========================
-// = VARIABLES FOR DURATION
+// = EASINGS
 //=========================
-//@duration-shortest: 	 150ms;
-//@duration-shorter: 	 200ms;
-//@duration-short: 		 300ms;
-//@duration: 			 500ms;
-//@duration-long: 		 750ms;
-//@duration-longer: 	1000ms;
-//@duration-longest: 	1500ms;
-//@duration-mega: 		2500ms;
-//@duration-huge: 		5000ms;
+@ease-standard-in:     @ease-in-quad;
+@ease-standard:        @ease-in-out-cubic;
+// @ease-alternate:    @ease-in-out-back;
+// @ease-standard-out: @ease-out-quad;
 
-//=========================
-// = VARIABLES FOR EASE
-//=========================
-//@ease: 				@ease-in-out;
-//@ease-in: 			ease-in;
-//@ease-out: 			ease-out;
-//@ease-in-out: 		ease-in-out;
-//@ease-quart-in-out: 	cubic-bezier(0.77, 0, 0.175, 1);
-//@ease-quad-in-out: 	cubic-bezier(0.455, 0.03, 0.515, 0.955);
-//@ease-quad-out: 		cubic-bezier(0.25, 0.46, 0.45, 0.94);
-//@ease-quint-out: 		cubic-bezier(0.23, 1, 0.32, 1);
-//@ease-circ-in-out: 	cubic-bezier(0.785, 0.135, 0.15, 0.86);
-//@ease-circ-out: 		cubic-bezier(0.075, 0.82, 0.165, 1);
-//@ease-circ-in: 		cubic-bezier(0.6, 0.04, 0.98, 0.335);
-//@ease-expo-in: 		cubic-bezier(0.95, 0.05, 0.795, 0.035);
-//@ease-back-in: 		cubic-bezier(0.6, -0.28, 0.735, 0.045);
-//@ease-bounce-light: 	cubic-bezier(0, 1.1, 1, 1.1);
+// @ease-linear:       cubic-bezier(0, 0, 1, 1);
+// @ease-in:           cubic-bezier(0.42, 0, 1, 1);
+// @ease-out:          cubic-bezier(0, 0, 0.58, 1);
+// @ease-in-out:       cubic-bezier(0.42, 0, 0.58, 1);
+// @ease-in-sine:      cubic-bezier(0.47, 0, 0.745, 0.715);
+// @ease-out-sine:     cubic-bezier(0.39, 0.575, 0.565, 1);
+// @ease-in-out-sine:  cubic-bezier(0.445, 0.05, 0.55, 0.95);
+// @ease-in-quad:      cubic-bezier(0.55, 0.085, 0.68, 0.53);
+// @ease-out-quad:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+// @ease-in-out-quad:  cubic-bezier(0.455, 0.03, 0.515, 0.955);
+// @ease-in-cubic:     cubic-bezier(0.55, 0.055, 0.675, 0.19);
+// @ease-out-cubic:    cubic-bezier(0.215, 0.61, 0.355, 1);
+// @ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+// @ease-in-quart:     cubic-bezier(0.895, 0.03, 0.685, 0.22);
+// @ease-out-quart:    cubic-bezier(0.165, 0.84, 0.44, 1);
+// @ease-in-out-quart:  cubic-bezier(0.77, 0, 0.175, 1);
+// @ease-in-quint:     cubic-bezier(0.755, 0.05, 0.855, 0.06);
+// @ease-out-quint:    cubic-bezier(0.23, 1, 0.32, 1);
+// @ease-in-expo:      cubic-bezier(0.95, 0.05, 0.795, 0.035);
+// @ease-out-expo:     cubic-bezier(0.19, 1, 0.22, 1);
+// @ease-in-out-expo:  cubic-bezier(1, 0, 0, 1);
+// @ease-in-circ:      cubic-bezier(0.6, 0.04, 0.98, 0.335);
+// @ease-out-circ:     cubic-bezier(0.075, 0.82, 0.165, 1);
+// @ease-in-out-circ:  cubic-bezier(0.785, 0.135, 0.15, 0.86);
+// @ease-in-back:      cubic-bezier(0.6, -0.28, 0.735, 0.045);
+// @ease-out-back:     cubic-bezier(0.175, 0.885, 0.32, 1.275);
+// @ease-in-out-back:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
+// @ease-back-in:      cubic-bezier(0.6, -0.28, 0.735, 0.045);
+// @ease-bounce-light: cubic-bezier(0, 1.1, 1, 1.1);

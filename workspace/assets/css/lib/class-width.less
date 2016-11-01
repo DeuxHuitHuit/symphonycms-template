@@ -1,201 +1,131 @@
-
 //=========================
 // = WIDTH CLASS
 //=========================
-// DEPRECATED
-.width-2_4 				{ .DEPRECATED(~'Use width-1_2'); }
-.with-third 			{ .DEPRECATED(~'Use width-1_3'); }
-.width-quarter 			{ width: 25%; .DEPRECATED(~''); }
-.width-30-percent 		{ width: 30%; .DEPRECATED(~''); }
-.width-40-percent 		{ width: 40%; .DEPRECATED(~''); }
-.half-width 			{ width: 50%; .DEPRECATED(~'Use width-half'); }
-.width-60-percent 		{ width: 60%; .DEPRECATED(~'Use width-3_5'); }
-.width-70-percent 		{ width: 70%; .DEPRECATED(~''); }
-.width-three-quarter 	{ width: 75%; .DEPRECATED(~'Use width-3_4'); }
-.full-width 			{ width: 100%; .DEPRECATED(~'Use width-full'); }
-.full-viewport-width 	{ width: 100vw; .DEPRECATED(~'Use width-full-viewport'); }
-
 #generate-width-classes (@suffix: ~'') {
 	//-------------------------------------------
-	// USEFULL WIDTH 
+	// USEFULL
 	//-------------------------------------------
 	#generate-all-width-class(@suffix, ~'auto',				 ~'auto');
 	#generate-all-width-class(@suffix, ~'auto-important',	 ~'auto !important');
+	#generate-all-width-class(@suffix, ~'initial',			 ~'initial');
 	#generate-all-width-class(@suffix, ~'0', 				 ~'0');
 	#generate-all-width-class(@suffix, ~'0-important',		 ~'0 !important');
 
 	//-------------------------------------------
-	// SPACING WIDTH 
+	// SPACING
 	//-------------------------------------------
-	#generate-all-width-class(@suffix, ~'micro', 		 @spacing-micro    );
-	#generate-all-width-class(@suffix, ~'smallest', 	 @spacing-smallest );
-	#generate-all-width-class(@suffix, ~'smaller', 		 @spacing-smaller  );
-	#generate-all-width-class(@suffix, ~'small', 		 @spacing-small    );
-	#generate-all-width-class(@suffix, ~'mid', 			 @spacing-mid      );
-	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large    );
-	#generate-all-width-class(@suffix, ~'larger', 		 @spacing-larger   );
-	#generate-all-width-class(@suffix, ~'largest', 		 @spacing-largest  );
-	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large    );
-	#generate-all-width-class(@suffix, ~'xlarge', 		 @spacing-xlarge   );
-	#generate-all-width-class(@suffix, ~'huge', 		 @spacing-huge     );
-	#generate-all-width-class(@suffix, ~'giga', 		 @spacing-giga     );
-
+	#generate-all-width-class(@suffix, ~'atto', 		 @spacing-atto);
+	#generate-all-width-class(@suffix, ~'femto', 		 @spacing-femto);
+	#generate-all-width-class(@suffix, ~'pico', 		 @spacing-pico);
+	#generate-all-width-class(@suffix, ~'nano', 		 @spacing-nano);
+	#generate-all-width-class(@suffix, ~'micro', 		 @spacing-micro);
+	#generate-all-width-class(@suffix, ~'thinnest', 	 @spacing-thinnest);
+	#generate-all-width-class(@suffix, ~'thinner', 		 @spacing-thinner);
+	#generate-all-width-class(@suffix, ~'thin', 		 @spacing-thin);
+	#generate-all-width-class(@suffix, ~'broad', 		 @spacing-broad);
+	#generate-all-width-class(@suffix, ~'broader', 		 @spacing-broader);
+	#generate-all-width-class(@suffix, ~'broadest', 	 @spacing-broadest);
+	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large);
+	#generate-all-width-class(@suffix, ~'larger', 		 @spacing-larger);
+	#generate-all-width-class(@suffix, ~'largest', 		 @spacing-largest);
+	#generate-all-width-class(@suffix, ~'mega', 		 @spacing-mega);
+	#generate-all-width-class(@suffix, ~'giga', 		 @spacing-giga);
+	#generate-all-width-class(@suffix, ~'tera', 		 @spacing-tera);
+	#generate-all-width-class(@suffix, ~'peta', 		 @spacing-peta);
+	#generate-all-width-class(@suffix, ~'zetta', 		 @spacing-zetta);
+	#generate-all-width-class(@suffix, ~'yotta', 		 @spacing-yotta);
+	//Double
+	#generate-all-width-class(@suffix, ~'atto-double', 		 @spacing-atto * 2);
+	#generate-all-width-class(@suffix, ~'femto-double', 	 @spacing-femto * 2);
+	#generate-all-width-class(@suffix, ~'pico-double', 		 @spacing-pico * 2);
+	#generate-all-width-class(@suffix, ~'nano-double', 		 @spacing-nano * 2);
+	#generate-all-width-class(@suffix, ~'micro-double', 	 @spacing-micro * 2);
+	#generate-all-width-class(@suffix, ~'thinnest-double', 	 @spacing-thinnest * 2);
+	#generate-all-width-class(@suffix, ~'thinner-double', 	 @spacing-thinner * 2);
+	#generate-all-width-class(@suffix, ~'thin-double', 		 @spacing-thin * 2);
+	#generate-all-width-class(@suffix, ~'broad-double', 	 @spacing-broad * 2);
+	#generate-all-width-class(@suffix, ~'broader-double', 	 @spacing-broader * 2);
+	#generate-all-width-class(@suffix, ~'broadest-double', 	 @spacing-broadest * 2);
+	#generate-all-width-class(@suffix, ~'large-double', 	 @spacing-large * 2);
+	#generate-all-width-class(@suffix, ~'larger-double', 	 @spacing-larger * 2);
+	#generate-all-width-class(@suffix, ~'largest-double', 	 @spacing-largest * 2);
+	#generate-all-width-class(@suffix, ~'mega-double', 		 @spacing-mega * 2);
+	#generate-all-width-class(@suffix, ~'giga-double', 		 @spacing-giga * 2);
+	#generate-all-width-class(@suffix, ~'tera-double', 		 @spacing-tera * 2);
+	#generate-all-width-class(@suffix, ~'peta-double', 		 @spacing-peta * 2);
+	#generate-all-width-class(@suffix, ~'zetta-double', 	 @spacing-zetta * 2);
+	#generate-all-width-class(@suffix, ~'yotta-double', 	 @spacing-yotta * 2);
+	//Triple
+	#generate-all-width-class(@suffix, ~'atto-triple', 		 @spacing-atto * 3);
+	#generate-all-width-class(@suffix, ~'femto-triple', 	 @spacing-femto * 3);
+	#generate-all-width-class(@suffix, ~'pico-triple', 		 @spacing-pico * 3);
+	#generate-all-width-class(@suffix, ~'nano-triple', 		 @spacing-nano * 3);
+	#generate-all-width-class(@suffix, ~'micro-triple', 	 @spacing-micro * 3);
+	#generate-all-width-class(@suffix, ~'thinnest-triple', 	 @spacing-thinnest * 3);
+	#generate-all-width-class(@suffix, ~'thinner-triple', 	 @spacing-thinner * 3);
+	#generate-all-width-class(@suffix, ~'thin-triple', 		 @spacing-thin * 3);
+	#generate-all-width-class(@suffix, ~'broad-triple', 	 @spacing-broad * 3);
+	#generate-all-width-class(@suffix, ~'broader-triple', 	 @spacing-broader * 3);
+	#generate-all-width-class(@suffix, ~'broadest-triple', 	 @spacing-broadest * 3);
+	#generate-all-width-class(@suffix, ~'large-triple', 	 @spacing-large * 3);
+	#generate-all-width-class(@suffix, ~'larger-triple', 	 @spacing-larger * 3);
+	#generate-all-width-class(@suffix, ~'largest-triple', 	 @spacing-largest * 3);
+	#generate-all-width-class(@suffix, ~'mega-triple', 		 @spacing-mega * 3);
+	#generate-all-width-class(@suffix, ~'giga-triple', 		 @spacing-giga * 3);
+	#generate-all-width-class(@suffix, ~'tera-triple', 		 @spacing-tera * 3);
+	#generate-all-width-class(@suffix, ~'peta-triple', 		 @spacing-peta * 3);
+	#generate-all-width-class(@suffix, ~'zetta-triple', 	 @spacing-zetta * 3);
+	#generate-all-width-class(@suffix, ~'yotta-triple', 	 @spacing-yotta * 3);
 	//-------------------------------------------
-	// DIMENSION WIDTH 
+	// DIMENSION 
 	//-------------------------------------------
-	#generate-all-width-class(@suffix, ~'skelettic', 	 @dimension-skelettic );
-
-	#generate-all-width-class(@suffix, ~'tiniest', 		 @dimension-tiniest   );
-	#generate-all-width-class(@suffix, ~'very-tiny', 	 @dimension-very-tiny );
-	#generate-all-width-class(@suffix, ~'tinier', 		 @dimension-tinier    );
-	#generate-all-width-class(@suffix, ~'tiny', 		 @dimension-tiny      );
-
-	#generate-all-width-class(@suffix, ~'thinnest', 	 @dimension-thinnest  );
-	#generate-all-width-class(@suffix, ~'very-thin', 	 @dimension-very-thin );
-	#generate-all-width-class(@suffix, ~'thinner', 		 @dimension-thinner   );
-	#generate-all-width-class(@suffix, ~'thin', 		 @dimension-thin      );
-
-	#generate-all-width-class(@suffix, ~'standard', 	 @dimension-standard  );
-
-	#generate-all-width-class(@suffix, ~'wide', 		 @dimension-wide      );
-	#generate-all-width-class(@suffix, ~'wider', 		 @dimension-wider     );
-	#generate-all-width-class(@suffix, ~'very-wide', 	 @dimension-very-wide );
-	#generate-all-width-class(@suffix, ~'widest', 		 @dimension-widest    );
-
-	#generate-all-width-class(@suffix, ~'fat', 			 @dimension-fat       );
-	#generate-all-width-class(@suffix, ~'fatter', 		 @dimension-fatter    );
-	#generate-all-width-class(@suffix, ~'very-fat', 	 @dimension-very-fat  );
-	#generate-all-width-class(@suffix, ~'fattest', 		 @dimension-fattest   );
-
-	#generate-all-width-class(@suffix, ~'obese', 		 @dimension-obese     );
-	#generate-all-width-class(@suffix, ~'morbid', 		 @dimension-morbid    );
-
+	#generate-all-width-class(@suffix, ~'tiniest', 	 @dimension-tiniest);
+	#generate-all-width-class(@suffix, ~'tinier', 	 @dimension-tinier);
+	#generate-all-width-class(@suffix, ~'tiny', 	 @dimension-tiny);
+	#generate-all-width-class(@suffix, ~'smallest',  @dimension-smallest);
+	#generate-all-width-class(@suffix, ~'smaller', 	 @dimension-smaller);
+	#generate-all-width-class(@suffix, ~'small', 	 @dimension-small);
+	#generate-all-width-class(@suffix, ~'big', 		 @dimension-big);
+	#generate-all-width-class(@suffix, ~'bigger', 	 @dimension-bigger);
+	#generate-all-width-class(@suffix, ~'biggest', 	 @dimension-biggest);
 	//-------------------------------------------
-	// SCREEN WIDTH
+	// SCREEN
 	//-------------------------------------------
-	#generate-all-width-class(@suffix, ~'ip', @dimension-ip );
-	#generate-all-width-class(@suffix, ~'ph', @dimension-ph );
-	#generate-all-width-class(@suffix, ~'xs', @dimension-xs );
-	#generate-all-width-class(@suffix, ~'sm', @dimension-sm );
-	#generate-all-width-class(@suffix, ~'md', @dimension-md );
-	#generate-all-width-class(@suffix, ~'lg', @dimension-lg );
-	#generate-all-width-class(@suffix, ~'xl', @dimension-xl );
-	#generate-all-width-class(@suffix, ~'hd', @dimension-hd );
-	#generate-all-width-class(@suffix, ~'2k', @dimension-2k );
-	#generate-all-width-class(@suffix, ~'4k', @dimension-4k );
-
+	#generate-all-width-class(@suffix, ~'ip', @screen-ip);
+	#generate-all-width-class(@suffix, ~'ph', @screen-ph);
+	#generate-all-width-class(@suffix, ~'xs', @screen-xs);
+	#generate-all-width-class(@suffix, ~'sm', @screen-sm);
+	#generate-all-width-class(@suffix, ~'md', @screen-md);
+	#generate-all-width-class(@suffix, ~'lg', @screen-lg);
+	#generate-all-width-class(@suffix, ~'xl', @screen-xl);
+	#generate-all-width-class(@suffix, ~'hd', @screen-hd);
+	#generate-all-width-class(@suffix, ~'2k', @screen-2k);
+	#generate-all-width-class(@suffix, ~'4k', @screen-4k);
 	//------------------------------
-	//	WIDTHS COLS
+	//	PROPORTIONAL
 	//-------------------------------
+	#generate-all-width-class(@suffix, ~'1_2', 	 50%);
+	#generate-all-width-class(@suffix, ~'1_3',  100% / 3);
+	#generate-all-width-class(@suffix, ~'2_3',  100% / 3 * 2);
+	#generate-all-width-class(@suffix, ~'1_4',  100% / 4);
+	#generate-all-width-class(@suffix, ~'3_4',  100% / 4 * 3);
+	#generate-all-width-class(@suffix, ~'1_5',  100% / 5);
+	#generate-all-width-class(@suffix, ~'2_5',  100% / 5 * 2);
+	#generate-all-width-class(@suffix, ~'3_5',  100% / 5 * 3);
+	#generate-all-width-class(@suffix, ~'4_5',  100% / 5 * 4);
+	#generate-all-width-class(@suffix, ~'1_6',  100% / 6);
+	#generate-all-width-class(@suffix, ~'5_6',  100% / 6 * 5);
+	#generate-all-width-class(@suffix, ~'1_12', 100% / 12);
+	#generate-all-width-class(@suffix, ~'5_12', 100% / 12 *  5);
+	#generate-all-width-class(@suffix, ~'7_12', 100% / 12 *  7);
+	#generate-all-width-class(@suffix, ~'11_12',100% / 12 * 11);
+	#generate-all-width-class(@suffix, ~'full', 100%);
 
-	#generate-all-width-class(@suffix, ~'1_2', 	50% );
-	#generate-all-width-class(@suffix, ~'half', 50% );				//DEPRECATED
-
-	#generate-all-width-class(@suffix, ~'1_3', 100% / 3     );
-	#generate-all-width-class(@suffix, ~'third', 100% / 3   );		//DEPRECATED
-	#generate-all-width-class(@suffix, ~'2_3', 100% / 3 * 2 );
-
-	#generate-all-width-class(@suffix, ~'1_4', 100% / 4     );
-	#generate-all-width-class(@suffix, ~'2_4', 100% / 4 * 2 );		//DEPRECATED
-	#generate-all-width-class(@suffix, ~'3_4', 100% / 4 * 3 );
-
-	#generate-all-width-class(@suffix, ~'1_5', 100% / 5     );
-	#generate-all-width-class(@suffix, ~'2_5', 100% / 5 * 2 );
-	#generate-all-width-class(@suffix, ~'3_5', 100% / 5 * 3 );
-	#generate-all-width-class(@suffix, ~'4_5', 100% / 5 * 4 );
-
-	#generate-all-width-class(@suffix, ~'1_6', 100% / 6     );
-	#generate-all-width-class(@suffix, ~'5_6', 100% / 6 * 5 );
-
-	#generate-all-width-class(@suffix, ~'1_12',  100% / 12      );
-	#generate-all-width-class(@suffix, ~'2_12',  100% / 12 *  2 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'3_12',  100% / 12 *  3 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'4_12',  100% / 12 *  4 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'5_12',  100% / 12 *  5 );
-	#generate-all-width-class(@suffix, ~'6_12',  100% / 12 *  6 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'7_12',  100% / 12 *  7 );
-	#generate-all-width-class(@suffix, ~'8_12',  100% / 12 *  8 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'9_12',  100% / 12 *  9 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'10_12', 100% / 12 * 10 );	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'11_12', 100% / 12 * 11 );
-
-	#generate-all-width-class(@suffix, ~'1', 	100% );				//DEPRECATED
-	#generate-all-width-class(@suffix, ~'full', 100% );
-
-	#generate-all-width-class(@suffix, ~'full-viewport', 100vw );
-	#generate-all-width-class(@suffix, ~'screen-max', @screen-max );
-}
-
-
-// WIDTH RESPONSIVE
-
-// FROM IP
-
-// FROM PH
-.width-quarter-from-ph {
-	#mq-min-width(@screen-ph, {
-		//DEPRECATED
-		.width-quarter;
-	});
-}
-
-.half-width-ph {
-	#mq-max-width((@screen-xs - 1), {
-		//DEPRECATED
-		.half-width();
-	});
-}
-
-// FROM XS
-.width-30-percent-from-xs {
-	#mq-min-width(@screen-xs, {
-		//DEPRECATED
-		.width-30-percent;
-	});
-}
-
-.width-quarter-from-xs {
-	#mq-min-width(@screen-xs, {
-		//DEPRECATED
-		.width-quarter;
-	});
-}
-
-// FROM SM
-.width-quarter-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.width-quarter;
-	});
-}
-
-.width-30-percent-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.width-30-percent;
-	});
-}
-
-// TO XS
-.width-40-percent-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		//DEPRECATED
-		.width-40-percent;
-	});
-}
-
-.full-width-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		//DEPRECATED
-		.full-width;
-	});
-}
-
-// TO PH
-
-.full-width-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		//DEPRECATED
-		.full-width;
-	});
+	#generate-all-width-class(@suffix, ~'1_2-viewport',   50vw);
+	#generate-all-width-class(@suffix, ~'1_3-viewport',  100vw / 3);
+	#generate-all-width-class(@suffix, ~'2_3-viewport',  100vw / 3 * 2);
+	#generate-all-width-class(@suffix, ~'1_4-viewport',  100vw / 4);
+	#generate-all-width-class(@suffix, ~'3_4-viewport',  100vw / 4 * 3);
+	#generate-all-width-class(@suffix, ~'full-viewport', 100vw);
+	#generate-all-width-class(@suffix, ~'screen-max', @screen-max);
 }

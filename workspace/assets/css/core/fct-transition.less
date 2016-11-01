@@ -36,6 +36,14 @@
 			transition-delay: @delay;
 }
 
+#transition-ease (@ease) {
+	-webkit-transition-timing-function: @ease;
+	   -moz-transition-timing-function: @ease;
+		-ms-transition-timing-function: @ease;
+		 -o-transition-timing-function: @ease;
+			transition-timing-function: @ease;
+}
+
 #cb-transition (...) {
 	-webkit-transition: ~"-webkit-@{arguments}";
 	   -moz-transition: ~"-moz-@{arguments}";
