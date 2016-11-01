@@ -1,0 +1,16 @@
+
+//=========================
+// = MOBILE AND DESKTOP FUNCTIONS
+//=========================
+
+#mobile-only (@rules) {
+	html.mobile {
+		@rules();
+	}
+}
+
+#desktop-only (@rules) {
+	html:not(.mobile) {
+		@rules();
+	}
+}

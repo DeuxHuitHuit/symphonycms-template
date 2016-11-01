@@ -1,72 +1,18 @@
-
 //=========================
-// = BACKGROUND-COLOR CLASS
+// = COLOR CLASS
 //=========================
-.border-color-white-half-transparent, .border-color-white-translucent {
-	.DEPRECATED(~' Dont mix opacity and color in one property, use composition instead');
-	border-color: fade(@white, 50%);
-}
-
-.border-color-light-half-transparent, .border-color-light-translucent {
-	.DEPRECATED(~' Dont mix opacity and color in one property, use composition instead');
-	border-color: fade(@light, 50%);
-}
-
-.border-color-dark-half-transparent, .border-color-dark-translucent {
-	.DEPRECATED(~' Dont mix opacity and color in one property, use composition instead');
-	border-color: fade(@dark, 50%);
-}
-
 #generate-base-color-class(@suffix: ~'') {
 	#generate-color-class(@suffix, ~'transparent', 		~'transparent');
 	#generate-color-class(@suffix, ~'current-color', 	~'currentColor');
 
 	#generate-color-class(@suffix, ~'true-white', 		@true-white);
 	#generate-color-class(@suffix, ~'true-black', 		@true-black);
+	#generate-color-class(@suffix, ~'true-red', 		@true-red);
 
 	#generate-color-class(@suffix, ~'white', 			@white);
 	#generate-color-class(@suffix, ~'black', 			@black);
+	#generate-color-class(@suffix, ~'red', 				@red);
 
 	#generate-color-class(@suffix, ~'dark', 			@dark);
 	#generate-color-class(@suffix, ~'light', 			@light);
-}
-
-// ON HOVER
-// WHITE
-.color-white-on-hover{
-	#hover-only({
-		color: @white;
-	});
-}
-
-// BLACK
-.color-black-on-hover{
-	#hover-only({
-		color: @black;
-	});
-}
-
-// ON HOVER AND IS SELECTED
-// WHITE
-.color-white-on-hover-and-is-selected {
-	
-	#hover-only({
-		color: @white;
-	});
-	
-	&.is-selected {
-		color: @white;
-	}
-}
-
-// BLACK
-.color-black-on-hover-and-is-selected {
-	
-	#hover-only({
-		color: @black;
-	});
-	
-	&.is-selected {
-		color: @black;
-	}
 }

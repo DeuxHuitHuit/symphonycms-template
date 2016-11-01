@@ -1,3 +1,34 @@
+//  GENERATOR
+#generate-lib(@suffix: ~'') {
+	#generate-box-sizing-classes(@suffix);
+	#generate-display-classes(@suffix);
+	#generate-visibility-classes(@suffix);
+	#generate-padding-all-classes(@suffix);
+	#generate-margin-all-classes(@suffix);
+	#generate-base-color-class(@suffix);
+	#generate-width-classes(@suffix);
+	#generate-height-classes(@suffix);
+}
+//  GENERAL
+#generate-lib();
+
+//  FROM
+#mq-min-width(@screen-ip,{#generate-lib(~'-from-ip');});
+#mq-min-width(@screen-ph,{#generate-lib(~'-from-ph');});
+#mq-min-width(@screen-xs,{#generate-lib(~'-from-xs');});
+#mq-min-width(@screen-sm,{#generate-lib(~'-from-sm');});
+#mq-min-width(@screen-md,{#generate-lib(~'-from-md');});
+#mq-min-width(@screen-lg,{#generate-lib(~'-from-lg');});
+#mq-min-width(@screen-xl,{#generate-lib(~'-from-xl');});
+#mq-min-width(@screen-hd,{#generate-lib(~'-from-hd');});
+//  TO
+#mq-max-width(@screen-hd - 1,{#generate-lib(~'-to-hd');});
+#mq-max-width(@screen-xl - 1,{#generate-lib(~'-to-xl');});
+#mq-max-width(@screen-lg - 1,{#generate-lib(~'-to-lg');});
+#mq-max-width(@screen-md - 1,{#generate-lib(~'-to-md');});
+#mq-max-width(@screen-sm - 1,{#generate-lib(~'-to-sm');});
+#mq-max-width(@screen-xs - 1,{#generate-lib(~'-to-xs');});
+#mq-max-width(@screen-ph - 1,{#generate-lib(~'-to-ph');});
 /*
  * HTML
  */
@@ -19,11 +50,7 @@ body {
 	#no-outline;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-}
-
-p {
+h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 }
 
@@ -46,6 +73,7 @@ section, nav, article, footer, header, menu, aside, figure, figcaption {
 
 input, textarea, keygen, select, button {
 	font-family: serif;
+	border-radius: 0px;
 }
 
 figure {
@@ -90,12 +118,24 @@ svg {
 	}
 }
 
+// better defaults for flexbox cross compatibility
+// use < .min-*-initial > if this default causes problems
+// plus low specificity vertical rhythm sanity
+* {
+	#flex-basis(auto);
+	min-height: 0;
+	min-width: 0;
 
-
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&:first-child {
+		margin-top: 0;
+	}
+}
 //=========================
 // = RESPONSIVE FONT SIZE FOR REM
 //=========================
-
 html {
 	font-size: 37.5%;
 	
@@ -115,258 +155,306 @@ html {
 		font-size: 62.5%;
 	});
 }
- 
-//=========================
+ //=========================
 // = BACKFACE-VISIBILITY CLASS
 //=========================
-//DEPRECATED
-.backface-visibility-hidden { #backface(); .DEPRECATED(~' Use .backface-hidden'); }
-
-.backface-visible 	{ #backface(visible); }
-.backface-hidden 	{ #backface(); }
- 
+.backface-visible {#backface(visible);}
+.backface-hidden  {#backface(hidden);}
 //=========================
 // = BACKGROUND-POSITION CLASS
 //=========================
-//DEPRECATED
-.background-position-center { background-position: center center; .DEPRECATED(~' Use: .bg-position-center'); }
-
-.bg-position-top-left 		{ background-position: top left; }
-.bg-position-top-center 	{ background-position: top center; }
-.bg-position-top-right 		{ background-position: top right; }
-.bg-position-center-left 	{ background-position: center left; }
-.bg-position-center 		{ background-position: center; }
-.bg-position-center-right 	{ background-position: center right; }
-.bg-position-bottom-left 	{ background-position: bottom left; }
-.bg-position-bottom-center 	{ background-position: bottom center; }
-.bg-position-bottom-right 	{ background-position: bottom right; }
- 
+.bg-position-top-left 		{background-position: top left;}
+.bg-position-top-center 	{background-position: top center;}
+.bg-position-top-right 		{background-position: top right;}
+.bg-position-center-left 	{background-position: center left;}
+.bg-position-center 		{background-position: center;}
+.bg-position-center-right 	{background-position: center right;}
+.bg-position-bottom-left 	{background-position: bottom left;}
+.bg-position-bottom-center 	{background-position: bottom center;}
+.bg-position-bottom-right 	{background-position: bottom right;}
 //=========================
 // = BACKGROUND-REPEAT CLASS
 //=========================
-//DEPRECATED
-.background-repeat-no-repeat, .background-no-repeat { background-repeat: no-repeat; .DEPRECATED(~' USE: .bg-no-repeat'); }
-
-.bg-no-repeat 	{ background-repeat: no-repeat; }
-.bg-repeat 		{ background-repeat: repeat; }
-.bg-repeat-x 	{ background-repeat: repeat-x; }
-.bg-repeat-y 	{ background-repeat: repeat-y; }
- 
+.bg-no-repeat 	{background-repeat: no-repeat;}
+.bg-repeat 		{background-repeat: repeat;}
+.bg-repeat-x 	{background-repeat: repeat-x;}
+.bg-repeat-y 	{background-repeat: repeat-y;}
 //=========================
 // = BACKGROUND-SIZE CLASS
 //=========================
-//DEPRECATED
-.background-size-cover { background-size: cover; .DEPRECATED(~' USER: .bg-size-cover'); }
-
-.bg-size-cover 		{ background-size: cover; }
-.bg-size-contain 	{ background-size: contain; }
- 
-//=========================
+.bg-size-cover 		{background-size: cover;}
+.bg-size-contain 	{background-size: contain;}
+ //=========================
 // = BORDER-RADIUS CLASS
 //=========================
-.border-radius-none 					{ border-radius: 0; }
-
-.border-radius-small, 	.radius-small 	{ border-radius: @border-radius-small;  }
-.border-radius-mid, 	.radius-mid 	{ border-radius: @border-radius-mid;    }
-.border-radius-large, 	.radius-large 	{ border-radius: @border-radius-large;  }
-.border-radius-larger, 	.radius-larger 	{ border-radius: @border-radius-larger; }
-.border-radius-full, 	.radius-full 	{ border-radius: 100%; }
-
-.border-radius-left-small, .radius-left-small {
-	border-bottom-left-radius: @border-radius-small;
-	border-top-left-radius: @border-radius-small;
+//Utils
+.border-radius-0, 			.radius-0,
+.border-radius-none, 		.radius-none 		{border-radius: 0;}
+//All
+.border-radius-sharpest, 	.radius-sharpest 	{border-radius: @radius-sharpest;}
+.border-radius-sharper, 	.radius-sharper 	{border-radius: @radius-sharper;}
+.border-radius-sharp, 		.radius-sharp 		{border-radius: @radius-sharp;}
+.border-radius-dull, 		.radius-dull 		{border-radius: @radius-dull;}
+.border-radius-duller, 		.radius-duller 		{border-radius: @radius-duller;}
+.border-radius-dullest, 	.radius-dullest 	{border-radius: @radius-dullest;}
+.border-radius-full, 		.radius-full 		{border-radius: 100%;}
+//Left
+.border-radius-left-sharpest, .radius-left-sharpest {
+	border-bottom-left-radius: @radius-sharpest;
+	border-top-left-radius: @radius-sharpest;
 }
-
-// BORDER-RADIUS RESPONSIVE
-// FROM XS
-.border-radius-mid-from-xs {
-	#mq-min-width(@screen-xs, {
-		.border-radius-mid;
-	});
+.border-radius-left-sharper, .radius-left-sharper {
+	border-bottom-left-radius: @radius-sharper;
+	border-top-left-radius: @radius-sharper;
 }
- 
+.border-radius-left-sharp, .radius-left-sharp {
+	border-bottom-left-radius: @radius-sharp;
+	border-top-left-radius: @radius-sharp;
+}
+.border-radius-left-dull, .radius-left-dull {
+	border-bottom-left-radius: @radius-dull;
+	border-top-left-radius: @radius-dull;
+}
+.border-radius-left-duller, .radius-left-duller {
+	border-bottom-left-radius: @radius-duller;
+	border-top-left-radius: @radius-duller;
+}
+.border-radius-left-dullest, .radius-left-dullest {
+	border-bottom-left-radius: @radius-dullest;
+	border-top-left-radius: @radius-dullest;
+}
+//Right
+.border-radius-right-sharpest, .radius-right-sharpest {
+	border-bottom-right-radius: @radius-sharpest;
+	border-top-right-radius: @radius-sharpest;
+}
+.border-radius-right-sharper, .radius-right-sharper {
+	border-bottom-right-radius: @radius-sharper;
+	border-top-right-radius: @radius-sharper;
+}
+.border-radius-right-sharp, .radius-right-sharp {
+	border-bottom-right-radius: @radius-sharp;
+	border-top-right-radius: @radius-sharp;
+}
+.border-radius-right-dull, .radius-right-dull {
+	border-bottom-right-radius: @radius-dull;
+	border-top-right-radius: @radius-dull;
+}
+.border-radius-right-duller, .radius-right-duller {
+	border-bottom-right-radius: @radius-duller;
+	border-top-right-radius: @radius-duller;
+}
+.border-radius-right-dullest, .radius-right-dullest {
+	border-bottom-right-radius: @radius-dullest;
+	border-top-right-radius: @radius-dullest;
+}
+//Bottom
+.border-radius-bottom-sharpest, .radius-bottom-sharpest {
+	border-bottom-right-radius: @radius-sharpest;
+	border-bottom-left-radius: @radius-sharpest;
+}
+.border-radius-bottom-sharper, .radius-bottom-sharper {
+	border-bottom-right-radius: @radius-sharper;
+	border-bottom-left-radius: @radius-sharper;
+}
+.border-radius-bottom-sharp, .radius-bottom-sharp {
+	border-bottom-right-radius: @radius-sharp;
+	border-bottom-left-radius: @radius-sharp;
+}
+.border-radius-bottom-dull, .radius-bottom-dull {
+	border-bottom-right-radius: @radius-dull;
+	border-bottom-left-radius: @radius-dull;
+}
+.border-radius-bottom-duller, .radius-bottom-duller {
+	border-bottom-right-radius: @radius-duller;
+	border-bottom-left-radius: @radius-duller;
+}
+.border-radius-bottom-dullest, .radius-bottom-dullest {
+	border-bottom-right-radius: @radius-dullest;
+	border-bottom-left-radius: @radius-dullest;
+}
+//Top
+.border-radius-top-sharpest, .radius-top-sharpest {
+	border-top-right-radius: @radius-sharpest;
+	border-top-left-radius: @radius-sharpest;
+}
+.border-radius-top-sharper, .radius-top-sharper {
+	border-top-right-radius: @radius-sharper;
+	border-top-left-radius: @radius-sharper;
+}
+.border-radius-top-sharp, .radius-top-sharp {
+	border-top-right-radius: @radius-sharp;
+	border-top-left-radius: @radius-sharp;
+}
+.border-radius-top-dull, .radius-top-dull {
+	border-top-right-radius: @radius-dull;
+	border-top-left-radius: @radius-dull;
+}
+.border-radius-top-duller, .radius-top-duller {
+	border-top-right-radius: @radius-duller;
+	border-top-left-radius: @radius-duller;
+}
+.border-radius-top-dullest, .radius-top-dullest {
+	border-top-right-radius: @radius-dullest;
+	border-top-left-radius: @radius-dullest;
+}
 //=========================
 // = BORDER-SPACING CLASS
 //=========================
-.border-spacing-smallest 	{ border-spacing: @spacing-smallest; }
-.border-spacing-smaller 	{ border-spacing: @spacing-smaller;  }
-.border-spacing-small 		{ border-spacing: @spacing-small;    }
-.border-spacing-mid 		{ border-spacing: @spacing-mid;      }
-.border-spacing-large 		{ border-spacing: @spacing-large;    }
-.border-spacing-larger 		{ border-spacing: @spacing-larger;   }
-.border-spacing-largest 	{ border-spacing: @spacing-largest;  }
- 
+.border-spacing-atto 		{ border-spacing: @spacing-atto;}
+.border-spacing-femto 		{ border-spacing: @spacing-femto;}
+.border-spacing-pico 		{ border-spacing: @spacing-pico;}
+.border-spacing-nano 		{ border-spacing: @spacing-nano;}
+.border-spacing-micro 		{ border-spacing: @spacing-micro;}
+.border-spacing-thinnest 	{ border-spacing: @spacing-thinnest;}
+.border-spacing-thinner 	{ border-spacing: @spacing-thinner;}
+.border-spacing-thin 		{ border-spacing: @spacing-thin;}
+.border-spacing-broad 		{ border-spacing: @spacing-broad;}
+.border-spacing-broader 	{ border-spacing: @spacing-broader;}
+.border-spacing-broadest 	{ border-spacing: @spacing-broadest;}
+.border-spacing-large 		{ border-spacing: @spacing-large;}
+.border-spacing-larger 		{ border-spacing: @spacing-larger;}
+.border-spacing-largest 	{ border-spacing: @spacing-largest;}
+.border-spacing-mega 		{ border-spacing: @spacing-mega;}
+.border-spacing-giga 		{ border-spacing: @spacing-giga;}
+.border-spacing-tera 		{ border-spacing: @spacing-tera;}
+.border-spacing-peta 		{ border-spacing: @spacing-peta;}
+.border-spacing-zetta 		{ border-spacing: @spacing-zetta;}
+.border-spacing-yotta 		{ border-spacing: @spacing-yotta;}
 //=========================
 // = BORDER STYLE CLASS
 //=========================
-.border-solid, 	.border-style-solid 	{ border-style: solid;  }
-.border-dotted, .border-style-dotted 	{ border-style: dotted; }
-.border-dashed, .border-style-dashed 	{ border-style: dashed; }
- 
+.border-solid, 	.border-style-solid 	{border-style: solid;}
+.border-dotted, .border-style-dotted 	{border-style: dotted;}
+.border-dashed, .border-style-dashed 	{border-style: dashed;}
+.border-top-solid 						{border-top-style: solid;}
+.border-right-solid 					{border-right-style: solid;}
+.border-left-solid 						{border-left-style: solid;}
+.border-bottom-solid 					{border-bottom-style: solid;}
+.border-top-dotted 						{border-top-style: dotted;}
+.border-right-dotted 					{border-right-style: dotted;}
+.border-left-dotted 					{border-left-style: dotted;}
+.border-bottom-dotted 					{border-bottom-style: dotted;}
+.border-top-dashed 						{border-top-style: dashed;}
+.border-right-dashed 					{border-right-style: dashed;}
+.border-left-dashed 					{border-left-style: dashed;}
+.border-bottom-dashed 					{border-bottom-style: dashed;}
 //=========================
 // = BORDER WIDTH
 //=========================
+//Utils
+.border-none 		{ border: none;}
+.border-0 			{ border-width: 0;}
+//All
+.border-slimmest 	{ border-width: @border-slimmest;}
+.border-slimmer 	{ border-width: @border-slimmer;}
+.border-slim 		{ border-width: @border-slim;}
+.border-thick 		{ border-width: @border-thick;}
+.border-thicker 	{ border-width: @border-thicker;}
+.border-thickest 	{ border-width: @border-thickest;}
+//Top
+.border-top-none		{ border-top-width: none;}
+.border-top-0			{ border-top-width: 0;}
+.border-top-slimmest	{ border-top-width: @border-slimmest;}
+.border-top-slimmer 	{ border-top-width: @border-slimmer;}
+.border-top-slim 		{ border-top-width: @border-slim;}
+.border-top-thick 		{ border-top-width: @border-thick;}
+.border-top-thicker 	{ border-top-width: @border-thicker;}
+.border-top-thickest 	{ border-top-width: @border-thickest;}
+//Bottom
+.border-bottom-0		{ border-bottom-width: 0;}
+.border-bottom-slimmest	{ border-bottom-width: @border-slimmest;}
+.border-bottom-slimmer 	{ border-bottom-width: @border-slimmer;}
+.border-bottom-slim 	{ border-bottom-width: @border-slim;}
+.border-bottom-thick 	{ border-bottom-width: @border-thick;}
+.border-bottom-thicker 	{ border-bottom-width: @border-thicker;}
+.border-bottom-thickest { border-bottom-width: @border-thickest;}
+//Left
+.border-left-0			{ border-left-width: 0;}
+.border-left-slimmest	{ border-left-width: @border-slimmest;}
+.border-left-slimmer 	{ border-left-width: @border-slimmer;}
+.border-left-slim 		{ border-left-width: @border-slim;}
+.border-left-thick 		{ border-left-width: @border-thick;}
+.border-left-thicker 	{ border-left-width: @border-thicker;}
+.border-left-thickest 	{ border-left-width: @border-thickest;}
+//Right
+.border-right-0			{ border-right-width: 0;}
+.border-right-slimmest	{ border-right-width: @border-slimmest;}
+.border-right-slimmer 	{ border-right-width: @border-slimmer;}
+.border-right-slim 		{ border-right-width: @border-slim;}
+.border-right-thick 	{ border-right-width: @border-thick;}
+.border-right-thicker 	{ border-right-width: @border-thicker;}
+.border-right-thickest 	{ border-right-width: @border-thickest;}
 
-.border-none 		{ border: none; }
-.border-0 			{ border-width: 0; }
-
-.border-slimest 	{ border-width: @border-slimest;  }
-.border-slimer 		{ border-width: @border-slimer;   }
-.border-slim 		{ border-width: @border-slim;     }
-.border-average 	{ border-width: @border-average;  }
-.border-thick 		{ border-width: @border-thick;    }
-.border-thicker 	{ border-width: @border-thicker;  }
-.border-thickest 	{ border-width: @border-thickest; }
- 
 //=========================
 // = BOX-SIZING CLASS
 //=========================
-
-.box-sizing-border-box, 	.border-box 	{ #box-sizing(); }
-.box-sizing-content-box, 	.content-box 	{ #box-sizing(content-box); }
-
-//TO XS
-.border-box-to-xs {
-	#mq-max-width((@screen-xs - 1), {
-		.box-sizing-border-box;
-	});
+#generate-box-sizing-classes (@suffix: ~'') {
+	.box-sizing-border-box@{suffix},  .border-box@{suffix} 	{#box-sizing();}
+	.box-sizing-content-box@{suffix}, .content-box@{suffix} {#box-sizing(content-box);}
 }
- 
 //=========================
 // = CLEAR CLASS
 //=========================
-
-.clear-none 			{ clear: none;  }
-.clear-both, .clear 	{ clear: both;  }
-.clear-left 			{ clear: left;  }
-.clear-right 			{ clear: right; }
-
+.clear-none 			{clear: none;}
+.clear-both, .clear 	{clear: both;}
+.clear-left 			{clear: left;}
+.clear-right 			{clear: right;}
 //=========================
-// = BACKGROUND-COLOR CLASS
+// = COLOR CLASS
 //=========================
-.border-color-white-half-transparent, .border-color-white-translucent {
-	.DEPRECATED(~' Dont mix opacity and color in one property, use composition instead');
-	border-color: fade(@white, 50%);
-}
-
-.border-color-light-half-transparent, .border-color-light-translucent {
-	.DEPRECATED(~' Dont mix opacity and color in one property, use composition instead');
-	border-color: fade(@light, 50%);
-}
-
-.border-color-dark-half-transparent, .border-color-dark-translucent {
-	.DEPRECATED(~' Dont mix opacity and color in one property, use composition instead');
-	border-color: fade(@dark, 50%);
-}
-
 #generate-base-color-class(@suffix: ~'') {
 	#generate-color-class(@suffix, ~'transparent', 		~'transparent');
 	#generate-color-class(@suffix, ~'current-color', 	~'currentColor');
 
 	#generate-color-class(@suffix, ~'true-white', 		@true-white);
 	#generate-color-class(@suffix, ~'true-black', 		@true-black);
+	#generate-color-class(@suffix, ~'true-red', 		@true-red);
 
 	#generate-color-class(@suffix, ~'white', 			@white);
 	#generate-color-class(@suffix, ~'black', 			@black);
+	#generate-color-class(@suffix, ~'red', 				@red);
 
 	#generate-color-class(@suffix, ~'dark', 			@dark);
 	#generate-color-class(@suffix, ~'light', 			@light);
 }
-
-// ON HOVER
-// WHITE
-.color-white-on-hover{
-	#hover-only({
-		color: @white;
-	});
-}
-
-// BLACK
-.color-black-on-hover{
-	#hover-only({
-		color: @black;
-	});
-}
-
-// ON HOVER AND IS SELECTED
-// WHITE
-.color-white-on-hover-and-is-selected {
-	
-	#hover-only({
-		color: @white;
-	});
-	
-	&.is-selected {
-		color: @white;
-	}
-}
-
-// BLACK
-.color-black-on-hover-and-is-selected {
-	
-	#hover-only({
-		color: @black;
-	});
-	
-	&.is-selected {
-		color: @black;
-	}
-}
-
 //=========================
 // = CURSOR CLASS
 //=========================
-
-.cursor-pointer 	{ cursor: pointer; }
-.cursor-hand 		{ cursor: pointer; }
-.cursor-drag 		{ cursor: move;    }
-.cursor-normal 		{ cursor: auto;    }
-.cursor-loading 	{ cursor: wait;    }
-.cursor-text 		{ cursor: text;    }
-
+.cursor-pointer 	{cursor: pointer;}
+.cursor-hand 		{cursor: pointer;}
+.cursor-drag 		{cursor: move; cursor: -webkit-grab;}
+.cursor-normal 		{cursor: auto;}
+.cursor-loading 	{cursor: wait;}
+.cursor-text 		{cursor: text;}
+.cursor-ew 			{cursor: ew-resize;}
 //=========================
 // = DIRECTION CLASS
 //=========================
-
-.direction-rtl { direction: rtl; }
-.direction-ltr { direction: ltr; }
-
+.direction-rtl {direction: rtl;}
+.direction-ltr {direction: ltr;}
 //=========================
 // = DISPLAY CLASS
 //=========================
-
 #generate-display-classes (@suffix: ~'') {
-	
-	.hidden@{suffix} 		{ display: none;         }
-	.table@{suffix} 		{ display: table;        }
-	.table-cell@{suffix} 	{ display: table-cell;   }
-	.list-item@{suffix} 	{ display: list-item;    }
-	.inline@{suffix} 		{ display: inline;       }
-	.inline-block@{suffix} 	{ display: inline-block; }
-	.block@{suffix} 		{ display: block;        }
+	.hidden@{suffix} 		{ display: none;}
+	.table@{suffix} 		{ display: table;}
+	.table-cell@{suffix} 	{ display: table-cell;}
+	.list-item@{suffix} 	{ display: list-item;}
+	.inline@{suffix} 		{ display: inline;}
+	.inline-block@{suffix} 	{ display: inline-block;}
+	.block@{suffix} 		{ display: block;}
 
 	.flexbox@{suffix} {
 		display: -ms-flexbox;
 		display: -webkit-flex;
 		display: flex;
-		
-		> * {
-			#flex-basis(auto);
-			min-height: 0;
-			min-width: 0;
-		}
 	}
 
 	.flexbox-inline@{suffix} {
 		display: -ms-inline-flexbox;
 		display: -webkit-inline-flex;
 		display: inline-flex;
-		
-		> * {
-			#flex-basis(auto);
-			min-height: 0;
-			min-width: 0;
-		}
 	}
 }
 
@@ -376,76 +464,174 @@ html {
 	}
 }
 
+.inline-when-selected {
+	&.is-selected {
+		display: inline;
+	}
+}
+
+.inline-block-when-selected {
+	&.is-selected {
+		display: inline-block;
+	}
+}
+
+.block-when-selected {
+	&.is-selected {
+		display: block;
+	}
+}
+
 //=========================
 // = FILTER CLASS
 //=========================
-
-.filter-grayscale, .grayscale { #add-grayscale(); }
-
+.filter-grayscale, .grayscale {#add-grayscale();}
 //=========================
 // = FIRST LETTER CLASS
 //=========================
-
-.first-letter-upper::first-letter { .text-transform-upper; }
-
+.first-letter-upper::first-letter {.text-transform-upper;}
 // ================================
-// FLEXBOX CLASS
+// FLEX-BASIS
 // ================================
+.flex-basis-atto 		{#flex-basis(@spacing-atto);}
+.flex-basis-femto 		{#flex-basis(@spacing-femto);}
+.flex-basis-pico 		{#flex-basis(@spacing-pico);}
+.flex-basis-nano 		{#flex-basis(@spacing-nano);}
+.flex-basis-micro 		{#flex-basis(@spacing-micro);}
+.flex-basis-thinnest 	{#flex-basis(@spacing-thinnest);}
+.flex-basis-thinner 	{#flex-basis(@spacing-thinner);}
+.flex-basis-thin 		{#flex-basis(@spacing-thin);}
+.flex-basis-broad 		{#flex-basis(@spacing-broad);}
+.flex-basis-broader 	{#flex-basis(@spacing-broader);}
+.flex-basis-broadest 	{#flex-basis(@spacing-broadest);}
+.flex-basis-large 		{#flex-basis(@spacing-large);}
+.flex-basis-larger 		{#flex-basis(@spacing-larger);}
+.flex-basis-largest 	{#flex-basis(@spacing-largest);}
+.flex-basis-mega 		{#flex-basis(@spacing-mega);}
+.flex-basis-giga 		{#flex-basis(@spacing-giga);}
+.flex-basis-tera 		{#flex-basis(@spacing-tera);}
+.flex-basis-peta 		{#flex-basis(@spacing-peta);}
+.flex-basis-zetta 		{#flex-basis(@spacing-zetta);}
+.flex-basis-yotta 		{#flex-basis(@spacing-yotta);}
+//Double
+.flex-basis-atto-double 	{#flex-basis(@spacing-atto * 2);}
+.flex-basis-femto-double 	{#flex-basis(@spacing-femto * 2);}
+.flex-basis-pico-double 	{#flex-basis(@spacing-pico * 2);}
+.flex-basis-nano-double 	{#flex-basis(@spacing-nano * 2);}
+.flex-basis-micro-double 	{#flex-basis(@spacing-micro * 2);}
+.flex-basis-thinnest-double {#flex-basis(@spacing-thinnest * 2);}
+.flex-basis-thinner-double 	{#flex-basis(@spacing-thinner * 2);}
+.flex-basis-thin-double 	{#flex-basis(@spacing-thin * 2);}
+.flex-basis-broad-double 	{#flex-basis(@spacing-broad * 2);}
+.flex-basis-broader-double 	{#flex-basis(@spacing-broader * 2);}
+.flex-basis-broadest-double {#flex-basis(@spacing-broadest * 2);}
+.flex-basis-large-double 	{#flex-basis(@spacing-large * 2);}
+.flex-basis-larger-double 	{#flex-basis(@spacing-larger * 2);}
+.flex-basis-largest-double 	{#flex-basis(@spacing-largest * 2);}
+.flex-basis-mega-double 	{#flex-basis(@spacing-mega * 2);}
+.flex-basis-giga-double 	{#flex-basis(@spacing-giga * 2);}
+.flex-basis-tera-double 	{#flex-basis(@spacing-tera * 2);}
+.flex-basis-peta-double 	{#flex-basis(@spacing-peta * 2);}
+.flex-basis-zetta-double 	{#flex-basis(@spacing-zetta * 2);}
+.flex-basis-yotta-double 	{#flex-basis(@spacing-yotta * 2);}
+//Triple
+.flex-basis-atto-triple 		{#flex-basis(@spacing-atto * 3);}
+.flex-basis-femto-triple 		{#flex-basis(@spacing-femto * 3);}
+.flex-basis-pico-triple 		{#flex-basis(@spacing-pico * 3);}
+.flex-basis-nano-triple 		{#flex-basis(@spacing-nano * 3);}
+.flex-basis-micro-triple 		{#flex-basis(@spacing-micro * 3);}
+.flex-basis-thinnest-triple 	{#flex-basis(@spacing-thinnest * 3);}
+.flex-basis-thinner-triple 		{#flex-basis(@spacing-thinner * 3);}
+.flex-basis-thin-triple 		{#flex-basis(@spacing-thin * 3);}
+.flex-basis-broad-triple 		{#flex-basis(@spacing-broad * 3);}
+.flex-basis-broader-triple 		{#flex-basis(@spacing-broader * 3);}
+.flex-basis-broadest-triple 	{#flex-basis(@spacing-broadest * 3);}
+.flex-basis-large-triple 		{#flex-basis(@spacing-large * 3);}
+.flex-basis-larger-triple 		{#flex-basis(@spacing-larger * 3);}
+.flex-basis-largest-triple 		{#flex-basis(@spacing-largest * 3);}
+.flex-basis-mega-triple 		{#flex-basis(@spacing-mega * 3);}
+.flex-basis-giga-triple 		{#flex-basis(@spacing-giga * 3);}
+.flex-basis-tera-triple 		{#flex-basis(@spacing-tera * 3);}
+.flex-basis-peta-triple 		{#flex-basis(@spacing-peta * 3);}
+.flex-basis-zetta-triple 		{#flex-basis(@spacing-zetta * 3);}
+.flex-basis-yotta-triple 		{#flex-basis(@spacing-yotta * 3);}
+//Dimensions
+.flex-basis-tiniest 		{#flex-basis(@dimension-tiniest);}
+.flex-basis-tinier 			{#flex-basis(@dimension-tinier);}
+.flex-basis-tiny			{#flex-basis(@dimension-tiny);}
+.flex-basis-smallest 		{#flex-basis(@dimension-smallest);}
+.flex-basis-smaller 		{#flex-basis(@dimension-smaller);}
+.flex-basis-small 			{#flex-basis(@dimension-small);}
+.flex-basis-big 			{#flex-basis(@dimension-big);}
+.flex-basis-bigger 			{#flex-basis(@dimension-bigger);}
+.flex-basis-biggest 		{#flex-basis(@dimension-biggest);}
+//1_2
+.flex-basis-1_2 			{#flex-basis(50%);}
+//1_3
+.flex-basis-1_3 			{#flex-basis(100% / 3);}
+.flex-basis-2_3 			{#flex-basis(100% / 3 * 2);}
+//1_4
+.flex-basis-1_4 			{#flex-basis(25%);}
+.flex-basis-3_4 			{#flex-basis(75%);}
+//1_5
+.flex-basis-1_5 			{#flex-basis(20%);}
+.flex-basis-2_5 			{#flex-basis(40%);}
+.flex-basis-3_5 			{#flex-basis(60%);}
+.flex-basis-4_5 			{#flex-basis(80%);}
+//1_6
+.flex-basis-1_6 			{#flex-basis(100% / 6 * 1);}
+.flex-basis-5_6 			{#flex-basis(100% / 6 * 5);}
+//1_7
+.flex-basis-1_7 			{#flex-basis(100% / 7 * 1);}
+.flex-basis-2_7 			{#flex-basis(100% / 7 * 2);}
+.flex-basis-3_7 			{#flex-basis(100% / 7 * 3);}
+.flex-basis-4_7 			{#flex-basis(100% / 7 * 4);}
+.flex-basis-5_7 			{#flex-basis(100% / 7 * 5);}
+.flex-basis-6_7 			{#flex-basis(100% / 7 * 6);}
+//Utils
+.flex-basis-full 			{#flex-basis(100%); }
+.flex-basis-auto 			{#flex-basis(auto);}
+.flex-basis-0 				{#flex-basis(0);}
 
-//flex-center
-.flex-center {
-	#flex-justify-content(center);
-	#flex-align-items(center);
+// FROM MD
+.flex-basis-0-from-md {
+	#mq-min-width((@screen-md), {
+		#flex-basis(0);
+	});
 }
 
-//flex-flow
-.flex-flow-row-wrap {
-	#flex-direction(row);
-	#flex-wrap(wrap);
+// TO MD
+.flex-basis-auto-to-md {
+	#mq-max-width((@screen-md - 1), {
+		#flex-basis(auto);
+	});
 }
 
-.flex-flow-row-nowrap {
-	#flex-direction(row);
-	#flex-wrap(nowrap);
+// TO XS
+.flex-basis-initial-to-xs {
+	#mq-max-width(@screen-xs - 1, {
+		#flex-basis(initial);
+	});
 }
 
-.flex-flow-column-wrap {
-	#flex-direction(column);
-	#flex-wrap(wrap);
+// TO PH
+.flex-basis-initial-to-ph {
+	#mq-max-width(@screen-ph - 1, {
+		#flex-basis(initial);
+	});
 }
-
-.flex-flow-column-nowrap {
-	#flex-direction(column);
-	#flex-wrap(nowrap);
-}
-
-
-// ================================
-// FLEX-ALIGN-ITEMS
-// ================================
-.flex-stretch 				{ #flex-align-items(stretch);    }
-.flex-align-items-start 	{ #flex-align-items(flex-start); }
-.flex-align-items-center 	{ #flex-align-items(center);     }
-.flex-align-items-end 		{ #flex-align-items(flex-end);   }
-.flex-align-items-baseline 	{ #flex-align-items(baseline);   }
-
-// ================================
-// FLEX-JUSTIFY-CONTENT
-// ================================
-.flex-justify-start 			{ #flex-justify-content(flex-start);    }
-.flex-justify-center 			{ #flex-justify-content(center);        }
-.flex-justify-end 				{ #flex-justify-content(flex-end);      }
-.flex-justify-space-between 	{ #flex-justify-content(space-between); }
-.flex-justify-space-around 		{ #flex-justify-content(space-around);  }
-
 // ================================
 // FLEX-GROW
 // ================================
-.flex-grow-0 	{ #flex-grow(0); }
-.flex-grow-1 	{ #flex-grow(1); }
-.flex-grow-2 	{ #flex-grow(2); }
-.flex-grow-3 	{ #flex-grow(3); }
-.flex-grow-4 	{ #flex-grow(4); }
+.flex-grow-0 	{#flex-grow(0);}
+.flex-grow-1 	{#flex-grow(1);}
+.flex-grow-2 	{#flex-grow(2);}
+.flex-grow-3 	{#flex-grow(3);}
+.flex-grow-4 	{#flex-grow(4);}
+.flex-grow-5 	{#flex-grow(5);}
+.flex-grow-10 	{#flex-grow(10);}
+.flex-grow-100 	{#flex-grow(100);}
+.flex-grow-1000 {#flex-grow(1000);}
 
 // FROM PH
 .flex-grow-1-from-ph {
@@ -480,55 +666,95 @@ html {
 		#flex-grow(2);
 	});
 }
+// ================================
+// FLEX-SHRINK
+// ================================
+.flex-shrink-0 		{#flex-shrink(0);}
+.flex-shrink-1 		{#flex-shrink(1);}
+.flex-shrink-2 		{#flex-shrink(2);}
+.flex-shrink-3 		{#flex-shrink(3);}
+.flex-shrink-4 		{#flex-shrink(4);}
+.flex-shrink-5 		{#flex-shrink(5);}
+.flex-shrink-10 	{#flex-shrink(10);}
+.flex-shrink-15 	{#flex-shrink(15);}
+.flex-shrink-20 	{#flex-shrink(20);}
+.flex-shrink-25 	{#flex-shrink(25);}
+.flex-shrink-30 	{#flex-shrink(30);}
+.flex-shrink-40 	{#flex-shrink(40);}
+.flex-shrink-50 	{#flex-shrink(50);}
+.flex-shrink-100 	{#flex-shrink(100);}
+.flex-shrink-500 	{#flex-shrink(500);}
+.flex-shrink-1000 	{#flex-shrink(1000);}
+// ================================
+// FLEXBOX CLASS
+// ================================
+//flex-center
+.flex-center {
+	#flex-justify-content(center);
+	#flex-align-items(center);
+}
+
+//flex-flow
+.flex-flow-row-wrap {
+	#flex-direction(row);
+	#flex-wrap(wrap);
+}
+.flex-flow-row-nowrap {
+	#flex-direction(row);
+	#flex-wrap(nowrap);
+}
+.flex-flow-column-wrap {
+	#flex-direction(column);
+	#flex-wrap(wrap);
+}
+.flex-flow-column-nowrap {
+	#flex-direction(column);
+	#flex-wrap(nowrap);
+}
+
+// ================================
+// FLEX-ALIGN-ITEMS
+// ================================
+.flex-stretch, .align-items-stretch 				{#flex-align-items(stretch);}
+.flex-align-items-start, .align-items-start 		{#flex-align-items(flex-start);}
+.flex-align-items-center, .align-items-center 		{#flex-align-items(center);}
+.flex-align-items-end, .align-items-end 			{#flex-align-items(flex-end);}
+.flex-align-items-baseline, .align-items-baseline 	{#flex-align-items(baseline);}
+
+.align-self-stretch 								{#flex-align-self(stretch);}
+.flex-align-self-start, .align-self-start 			{#flex-align-self(flex-start);}
+.flex-align-self-center, .align-self-center 		{#flex-align-self(center);}
+.flex-align-self-end, .align-self-end 				{#flex-align-self(flex-end);}
+.flex-align-self-baseline, .align-self-baseline 	{#flex-align-self(baseline);}
+
+// ================================
+// FLEX-JUSTIFY-CONTENT
+// ================================
+.flex-justify-start, .justify-content-start 				{#flex-justify-content(flex-start);}
+.flex-justify-center, .justify-content-center 				{#flex-justify-content(center);}
+.flex-justify-end, .justify-content-end 					{#flex-justify-content(flex-end);}
+.flex-justify-space-between, .justify-content-space-between {#flex-justify-content(space-between); }
+.flex-justify-space-around, .justify-content-space-around 	{#flex-justify-content(space-around);  }
 
 // ================================
 // FLEX-SHRINK
 // ================================
-.flex-shrink-0 	{ #flex-shrink(0); }
-.flex-shrink-1 	{ #flex-shrink(1); }
-
-// ================================
-// FLEX-SHRINK
-// ================================
-.flex-basis-auto 	{ #flex-basis(auto); }
-.flex-basis-0 		{ #flex-basis(0);    }
-
-.flex-basis-large 	{ #flex-basis(@spacing-large) }
-
-// FROM MD
-.flex-basis-0-from-md {
-	#mq-min-width((@screen-md), {
-		#flex-basis(0);
-	});
-}
-
-// TO MD
-.flex-basis-auto-to-md {
-	#mq-max-width((@screen-md - 1), {
-		#flex-basis(auto);
-	});
-}
-
-// TO XS
-.flex-basis-initial-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		#flex-basis(initial);
-	});
-}
-
-// TO PH
-.flex-basis-initial-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		#flex-basis(initial);
-	});
-}
+.flex-shrink-0 		{#flex-shrink(0);}
+.flex-shrink-1 		{#flex-shrink(1);}
+.flex-shrink-2 		{#flex-shrink(2);}
+.flex-shrink-3 		{#flex-shrink(3);}
+.flex-shrink-4 		{#flex-shrink(4);}
+.flex-shrink-5 		{#flex-shrink(5);}
+.flex-shrink-10 	{#flex-shrink(10);}
+.flex-shrink-100 	{#flex-shrink(100);}
+.flex-shrink-1000 	{#flex-shrink(1000);}
 
 // ================================
 // FLEX-ORDER
 // ================================
-.flex-order-1 { #flex-order(1); }
-.flex-order-2 { #flex-order(2); }
-.flex-order-3 { #flex-order(3); }
+.flex-order-1 {#flex-order(1);}
+.flex-order-2 {#flex-order(2);}
+.flex-order-3 {#flex-order(3);}
 
 // FROM PH
 .flex-order-2-from-ph {
@@ -622,8 +848,17 @@ html {
 // ================================
 // FLEX-DIRECTION
 // ================================
-.flex-row 		{ #flex-direction(row);    }
-.flex-column 	{ #flex-direction(column); }
+.flex-row 				{#flex-direction(row);}
+.flex-column 			{#flex-direction(column);}
+.flex-row-reverse 		{#flex-direction(row-reverse);}
+.flex-column-reverse 	{#flex-direction(column-reverse);}
+
+// FROM SM
+.flex-row-reverse-from-sm {
+	#mq-min-width(@screen-sm, {
+		#flex-direction(row-reverse);
+	});
+}
 
 // TO MD
 .flex-column-to-md {
@@ -649,72 +884,66 @@ html {
 // ================================
 // FLEX-WRAP
 // ================================
-.flex-wrap 		{ #flex-wrap(wrap);   }
-.flex-nowrap 	{ #flex-wrap(nowrap); }
+.flex-wrap 		{#flex-wrap(wrap);}
+.flex-nowrap 	{#flex-wrap(nowrap);}
 
 //=========================
 // = FLOAT CLASS
 //=========================
-
-.float-none 	{ float: none;  }
-.float-left 	{ float: left;  }
-.float-right 	{ float: right; }
-
+.float-none 	{float: none;}
+.float-left 	{float: left;}
+.float-right 	{float: right;}
 //=========================
 // = FONT-FAMILY CLASS
 //=========================
-
-.font-family-base, 		.font-base 		{ font-family: @font-base;   }
-.font-family-alt, 		.font-alt 		{ font-family: @font-alt;    }
-.font-family-accent, 	.font-accent 	{ font-family: @font-accent; }
-
-/*
-// PLANNED
-.font-family-alt2, .font-alt2 {
-	font-family: @font-alt2;
-}
-*/
-
-/*
-// PLANNED
-.font-family-accent2, .font-accent2 {
-	font-family: @font-accent;
-}
-*/
-
+.font-family-base, 		.font-base 		{font-family: @font-base;}
+.font-family-alt, 		.font-alt 		{font-family: @font-alt;}
+.font-family-alt2, 		.font-alt2 		{font-family: @font-alt2;}
+.font-family-accent, 	.font-accent 	{font-family: @font-accent;}
+.font-family-accent2, 	.font-accent2 	{font-family: @font-accent;}
 //=========================
 // = FONT-FEATURE-SETTINGS CLASS
 //=========================
-
 .font-feature-settings-onum, .oldstyle-nums {
 	font-variant-numeric: oldstyle-nums;
 	-moz-font-feature-settings: "onum";
 	-webkit-font-feature-settings: "onum";
 	font-feature-settings: "onum";
 }
+//=========================
+// = FONT-SIZE
+//=========================
+.text-initial 		{font-size: initial;}
 
-.text-initial { font-size: initial; }
-
-.text-astronomic 	{ font-size: @type-astronomic; }
-.text-giant 		{ font-size: @type-giant; }
-.text-tallest 		{ font-size: @type-tallest; }
-.text-taller 		{ font-size: @type-taller; }
-.text-tall 			{ font-size: @type-tall; }
-.text-average 		{ font-size: @type-average; }
-.text-short 		{ font-size: @type-short; }
-.text-shorter 		{ font-size: @type-shorter; }
-
-.text-very-short 	{ font-size: @type-very-short; }
-
-.text-shortest 		{ font-size: @type-shortest; }
-.text-miniature 	{ font-size: @type-miniature; }
-.text-dwarf 		{ font-size: @type-dwarf; }
-
+.text-miniature 	{font-size: @font-miniature;}
+.text-shortest 		{font-size: @font-shortest;}
+.text-shorter 		{font-size: @font-shorter;}
+.text-short 		{font-size: @font-short;}
+.text-current 		{font-size: @font-current;}
+.text-tall 			{font-size: @font-tall;}
+.text-taller 		{font-size: @font-taller;}
+.text-tallest 		{font-size: @font-tallest;}
+.text-huge 			{font-size: @font-huge;}
+.text-huger 		{font-size: @font-huger;}
+.text-hugest 		{font-size: @font-hugest;}
+.text-giant 		{font-size: @font-giant;}
 
 // FROM-XS
-.text-astronomic-from-xs { 
+.text-hugest-from-xs { 
 	#mq-min-width(@screen-xs, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huger-from-xs { 
+	#mq-min-width(@screen-xs, {
+		.text-huger;
+	});
+}
+
+.text-huge-from-xs { 
+	#mq-min-width(@screen-xs, {
+		.text-huge;
 	});
 }
 
@@ -742,9 +971,9 @@ html {
 	});
 }
 
-.text-average-from-xs { 
+.text-current-from-xs { 
 	#mq-min-width(@screen-xs, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -772,16 +1001,22 @@ html {
 	});
 }
 
-.text-dwarf-from-xs { 
-	#mq-min-width(@screen-xs, {
-		.text-dwarf;
+// FROM-SM
+.text-huger-from-sm { 
+	#mq-min-width(@screen-sm, {
+		.text-huger;
 	});
 }
 
-// FROM-SM
-.text-astronomic-from-sm { 
+.text-hugest-from-sm { 
 	#mq-min-width(@screen-sm, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-sm { 
+	#mq-min-width(@screen-sm, {
+		.text-huge;
 	});
 }
 
@@ -809,9 +1044,9 @@ html {
 	});
 }
 
-.text-average-from-sm { 
+.text-current-from-sm { 
 	#mq-min-width(@screen-sm, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -839,16 +1074,22 @@ html {
 	});
 }
 
-.text-dwarf-from-sm { 
-	#mq-min-width(@screen-sm, {
-		.text-dwarf;
+// FROM-MD
+.text-huger-from-md { 
+	#mq-min-width(@screen-md, {
+		.text-huger;
 	});
 }
 
-// FROM-MD
-.text-astronomic-from-md { 
+.text-hugest-from-md { 
 	#mq-min-width(@screen-md, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-md { 
+	#mq-min-width(@screen-md, {
+		.text-huge;
 	});
 }
 
@@ -876,9 +1117,9 @@ html {
 	});
 }
 
-.text-average-from-md { 
+.text-current-from-md { 
 	#mq-min-width(@screen-md, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -906,17 +1147,23 @@ html {
 	});
 }
 
-.text-dwarf-from-md { 
-	#mq-min-width(@screen-md, {
-		.text-dwarf;
+
+// FROM-LG
+.text-huger-from-lg { 
+	#mq-min-width(@screen-lg, {
+		.text-huger;
 	});
 }
 
-
-// FROM-LG
-.text-astronomic-from-lg { 
+.text-hugest-from-lg { 
 	#mq-min-width(@screen-lg, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-lg { 
+	#mq-min-width(@screen-lg, {
+		.text-huge;
 	});
 }
 
@@ -944,9 +1191,9 @@ html {
 	});
 }
 
-.text-average-from-lg { 
+.text-current-from-lg { 
 	#mq-min-width(@screen-lg, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -974,16 +1221,22 @@ html {
 	});
 }
 
-.text-dwarf-from-lg { 
-	#mq-min-width(@screen-lg, {
-		.text-dwarf;
+// FROM XL
+.text-huger-from-xl { 
+	#mq-min-width(@screen-xl, {
+		.text-huger;
 	});
 }
 
-// FROM XL
-.text-astronomic-from-xl { 
+.text-hugest-from-xl { 
 	#mq-min-width(@screen-xl, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-xl { 
+	#mq-min-width(@screen-xl, {
+		.text-huge;
 	});
 }
 
@@ -1011,9 +1264,9 @@ html {
 	});
 }
 
-.text-average-from-xl { 
+.text-current-from-xl { 
 	#mq-min-width(@screen-xl, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -1041,24 +1294,18 @@ html {
 	});
 }
 
-.text-dwarf-from-xl { 
-	#mq-min-width(@screen-xl, {
-		.text-dwarf;
-	});
-}
-
 //=========================
 // = FONT STYLE CLASS
 //=========================
 // DEPRECATED
-.text-normal 						{ font-style: normal; .DEPRECATED(~'Use font-style-normal'); }
-.text-italic 						{ font-style: italic; .DEPRECATED(~'Use font-style-italic or italic'); }
-.text-oblique 						{ font-style: oblique; .DEPRECATED(~'Use font-style-oblique or oblique'); }
+.text-normal 						{font-style: normal; .DEPRECATED(~'Use font-style-normal'); }
+.text-italic 						{font-style: italic; .DEPRECATED(~'Use font-style-italic or italic'); }
+.text-oblique 						{font-style: oblique; .DEPRECATED(~'Use font-style-oblique or oblique'); }
 
 // GOOD CLASSES
-.font-style-normal 					{ font-style: normal;  }
-.font-style-italic, 	.italic 	{ font-style: italic;  }
-.font-style-oblique, 	.oblique 	{ font-style: oblique; }
+.font-style-normal 					{font-style: normal;}
+.font-style-italic, 	.italic 	{font-style: italic;}
+.font-style-oblique, 	.oblique 	{font-style: oblique;}
 
 // ================================
 // = FONT WEIGHT CLASS
@@ -1082,755 +1329,479 @@ html {
 //=========================
 // = HEIGHT CLASS
 //=========================
-// DEPRECATED
-.height-quarter 				{ height: 25%; .DEPRECATED(~''); }
-.half-height 					{ height: 50%; .DEPRECATED(~''); }
-.full-height 					{ height: 100%; .DEPRECATED(~''); }
-.height-three-quarter-viewport 	{ height: 75vh; .DEPRECATED(~''); }
-.full-viewport-height 			{ height: 100vh; .DEPRECATED(~''); }
+#generate-height-classes (@suffix: ~'') {
+	//-------------------------------------------
+	// USEFULL
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'auto',			 ~'auto');
+	#generate-all-height-class(@suffix, ~'auto-important',	 ~'auto !important');
+	#generate-all-height-class(@suffix, ~'initial',			 ~'initial');
+	#generate-all-height-class(@suffix, ~'0', 				 ~'0');
+	#generate-all-height-class(@suffix, ~'0-important',		 ~'0 !important');
+	#generate-all-height-class(@suffix, ~'1em',				 ~'1em');
+	#generate-all-height-class(@suffix, ~'perfect',			 ~'1em');
 
-// USEFULL
-.height-auto 									{ height: auto; }
-.height-0 										{ height: 0;    }
-.height-1em, .height-em-full, .height-perfect 	{ height: 1em;  }
+	//-------------------------------------------
+	// SPACING
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'atto', 		 @spacing-atto);
+	#generate-all-height-class(@suffix, ~'femto', 		 @spacing-femto);
+	#generate-all-height-class(@suffix, ~'pico', 		 @spacing-pico);
+	#generate-all-height-class(@suffix, ~'nano', 		 @spacing-nano);
+	#generate-all-height-class(@suffix, ~'micro', 		 @spacing-micro);
+	#generate-all-height-class(@suffix, ~'thinnest', 	 @spacing-thinnest);
+	#generate-all-height-class(@suffix, ~'thinner', 	 @spacing-thinner);
+	#generate-all-height-class(@suffix, ~'thin', 		 @spacing-thin);
+	#generate-all-height-class(@suffix, ~'broad', 		 @spacing-broad);
+	#generate-all-height-class(@suffix, ~'broader', 	 @spacing-broader);
+	#generate-all-height-class(@suffix, ~'broadest', 	 @spacing-broadest);
+	#generate-all-height-class(@suffix, ~'large', 		 @spacing-large);
+	#generate-all-height-class(@suffix, ~'larger', 		 @spacing-larger);
+	#generate-all-height-class(@suffix, ~'largest', 	 @spacing-largest);
+	#generate-all-height-class(@suffix, ~'mega', 		 @spacing-mega);
+	#generate-all-height-class(@suffix, ~'giga', 		 @spacing-giga);
+	#generate-all-height-class(@suffix, ~'tera', 		 @spacing-tera);
+	#generate-all-height-class(@suffix, ~'peta', 		 @spacing-peta);
+	#generate-all-height-class(@suffix, ~'zetta', 		 @spacing-zetta);
+	#generate-all-height-class(@suffix, ~'yotta', 		 @spacing-yotta);
 
-// Spacing
-.height-micro 		{ heigth: @spacing-micro;    }
-.height-smallest 	{ height: @spacing-smallest; }
-.height-smaller 	{ height: @spacing-smaller;  }
-.height-small 		{ height: @spacing-small;    }
-.height-mid 		{ height: @spacing-mid;      }
-.height-large 		{ height: @spacing-large;    }
-.height-larger 		{ height: @spacing-larger;   }
-.height-largest 	{ height: @spacing-largest;  }
-.height-xlarge 		{ height: @spacing-xlarge;   }
-.height-huge 		{ height: @spacing-huge;     }
+	//Double
+	#generate-all-height-class(@suffix, ~'atto-double', 	 @spacing-atto * 2);
+	#generate-all-height-class(@suffix, ~'femto-double', 	 @spacing-femto * 2);
+	#generate-all-height-class(@suffix, ~'pico-double', 	 @spacing-pico * 2);
+	#generate-all-height-class(@suffix, ~'nano-double', 	 @spacing-nano * 2);
+	#generate-all-height-class(@suffix, ~'micro-double', 	 @spacing-micro * 2);
+	#generate-all-height-class(@suffix, ~'thinnest-double',  @spacing-thinnest * 2);
+	#generate-all-height-class(@suffix, ~'thinner-double', 	 @spacing-thinner * 2);
+	#generate-all-height-class(@suffix, ~'thin-double', 	 @spacing-thin * 2);
+	#generate-all-height-class(@suffix, ~'broad-double', 	 @spacing-broad * 2);
+	#generate-all-height-class(@suffix, ~'broader-double', 	 @spacing-broader * 2);
+	#generate-all-height-class(@suffix, ~'broadest-double',  @spacing-broadest * 2);
+	#generate-all-height-class(@suffix, ~'large-double', 	 @spacing-large * 2);
+	#generate-all-height-class(@suffix, ~'larger-double', 	 @spacing-larger * 2);
+	#generate-all-height-class(@suffix, ~'largest-double', 	 @spacing-largest * 2);
+	#generate-all-height-class(@suffix, ~'mega-double', 	 @spacing-mega * 2);
+	#generate-all-height-class(@suffix, ~'giga-double', 	 @spacing-giga * 2);
+	#generate-all-height-class(@suffix, ~'tera-double', 	 @spacing-tera * 2);
+	#generate-all-height-class(@suffix, ~'peta-double', 	 @spacing-peta * 2);
+	#generate-all-height-class(@suffix, ~'zetta-double', 	 @spacing-zetta * 2);
+	#generate-all-height-class(@suffix, ~'yotta-double', 	 @spacing-yotta * 2);
 
-// Line height
-.height-loose 		{ height: @line-height-loose;    }
-.height-tight 		{ height: @line-height-tight;    }
-.height-tightest 	{ height: @line-height-tightest; }
+	//Triple
+	#generate-all-height-class(@suffix, ~'atto-triple', 	 @spacing-atto * 3);
+	#generate-all-height-class(@suffix, ~'femto-triple', 	 @spacing-femto * 3);
+	#generate-all-height-class(@suffix, ~'pico-triple', 	 @spacing-pico * 3);
+	#generate-all-height-class(@suffix, ~'nano-triple', 	 @spacing-nano * 3);
+	#generate-all-height-class(@suffix, ~'micro-triple', 	 @spacing-micro * 3);
+	#generate-all-height-class(@suffix, ~'thinnest-triple',  @spacing-thinnest * 3);
+	#generate-all-height-class(@suffix, ~'thinner-triple', 	 @spacing-thinner * 3);
+	#generate-all-height-class(@suffix, ~'thin-triple', 	 @spacing-thin * 3);
+	#generate-all-height-class(@suffix, ~'broad-triple', 	 @spacing-broad * 3);
+	#generate-all-height-class(@suffix, ~'broader-triple', 	 @spacing-broader * 3);
+	#generate-all-height-class(@suffix, ~'broadest-triple',  @spacing-broadest * 3);
+	#generate-all-height-class(@suffix, ~'large-triple', 	 @spacing-large * 3);
+	#generate-all-height-class(@suffix, ~'larger-triple', 	 @spacing-larger * 3);
+	#generate-all-height-class(@suffix, ~'largest-triple', 	 @spacing-largest * 3);
+	#generate-all-height-class(@suffix, ~'mega-triple', 	 @spacing-mega * 3);
+	#generate-all-height-class(@suffix, ~'giga-triple', 	 @spacing-giga * 3);
+	#generate-all-height-class(@suffix, ~'tera-triple', 	 @spacing-tera * 3);
+	#generate-all-height-class(@suffix, ~'peta-triple', 	 @spacing-peta * 3);
+	#generate-all-height-class(@suffix, ~'zetta-triple', 	 @spacing-zetta * 3);
+	#generate-all-height-class(@suffix, ~'yotta-triple', 	 @spacing-yotta * 3);
 
-// Dimensions
-.height-skelettic 	{ height: @dimension-skelettic; }
-.height-tiniest 	{ height: @dimension-tiniest;   }
-.height-very-tiny 	{ height: @dimension-very-tiny; }
-.height-tinier 		{ height: @dimension-tinier;    }
-.height-tiny 		{ height: @dimension-tiny;      }
-.height-thinnest 	{ height: @dimension-thinnest;  }
-.height-very-thin 	{ height: @dimension-very-thin; }
-.height-thinner 	{ height: @dimension-thinner;   }
-.height-thin 		{ height: @dimension-thin;      }
-.height-standard 	{ height: @dimension-standard;  }
-.height-wide 		{ height: @dimension-wide;      }
-.height-wider 		{ height: @dimension-wider;     }
-.height-very-wide 	{ height: @dimension-very-wide; }
-.height-widest 		{ height: @dimension-widest;    }
-.height-fat 		{ height: @dimension-fat;       }
-.height-fatter 		{ height: @dimension-fatter;    }
-.height-very-fat 	{ height: @dimension-very-fat;  }
-.height-fattest 	{ height: @dimension-fattest;   }
-.height-obese 		{ height: @dimension-obese;     }
-.height-morbid 		{ height: @dimension-morbid;    }
+	//-------------------------------------------
+	// DIMENSION
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'tiniest', 	 @dimension-tiniest);
+	#generate-all-height-class(@suffix, ~'tinier', 		 @dimension-tinier);
+	#generate-all-height-class(@suffix, ~'tiny', 		 @dimension-tiny);
+	#generate-all-height-class(@suffix, ~'smallest', 	 @dimension-smallest);
+	#generate-all-height-class(@suffix, ~'smaller', 	 @dimension-smaller);
+	#generate-all-height-class(@suffix, ~'small', 		 @dimension-small);
+	#generate-all-height-class(@suffix, ~'big', 		 @dimension-big);
+	#generate-all-height-class(@suffix, ~'bigger', 		 @dimension-bigger);
+	#generate-all-height-class(@suffix, ~'biggest', 	 @dimension-biggest);
 
-// Proportional
-.height-half 		{ height: 50%;  }
-.height-1_2  		{ height: 50%;  }
+	//-------------------------------------------
+	// SCREEN
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'ip', @screen-ip );
+	#generate-all-height-class(@suffix, ~'ph', @screen-ph );
+	#generate-all-height-class(@suffix, ~'xs', @screen-xs );
+	#generate-all-height-class(@suffix, ~'sm', @screen-sm );
+	#generate-all-height-class(@suffix, ~'md', @screen-md );
+	#generate-all-height-class(@suffix, ~'lg', @screen-lg );
+	#generate-all-height-class(@suffix, ~'xl', @screen-xl );
+	#generate-all-height-class(@suffix, ~'hd', @screen-hd );
+	#generate-all-height-class(@suffix, ~'2k', @screen-2k );
+	#generate-all-height-class(@suffix, ~'4k', @screen-4k );
 
-.height-1_4 		{ height: 25%;  }
-.height-3_4 		{ height: 75%;  }
-
-.height-full 		{ height: 100%; }
-
-// Proportional ViewPort Value
-.height-1_2-viewport 	{ height: 50vh;  }
-
-.height-1_4-viewport 	{ height: 25vh;  }
-.height-3_4-viewport 	{ height: 75vh;  }
-
-.height-full-viewport 	{ height: 100vh; }
-
-// HEIGHT RESPONSIVE
-// FROM XS
-.height-smallest-from-xs {
-	#mq-min-width(@screen-xs, {
-		.height-smallest();
-	});
+	//------------------------------
+	//	PROPORTIONAL
+	//-------------------------------
+	#generate-all-height-class(@suffix, ~'1_2',   50%);
+	#generate-all-height-class(@suffix, ~'1_3',  100% / 3);
+	#generate-all-height-class(@suffix, ~'2_3',  100% / 3 * 2);
+	#generate-all-height-class(@suffix, ~'1_4',  100% / 4);
+	#generate-all-height-class(@suffix, ~'3_4',  100% / 4 * 3);
+	#generate-all-height-class(@suffix, ~'1_5',  100% / 5);
+	#generate-all-height-class(@suffix, ~'2_5',  100% / 5 * 2);
+	#generate-all-height-class(@suffix, ~'3_5',  100% / 5 * 3);
+	#generate-all-height-class(@suffix, ~'4_5',  100% / 5 * 4);
+	#generate-all-height-class(@suffix, ~'1_6',  100% / 6);
+	#generate-all-height-class(@suffix, ~'5_6',  100% / 6 * 5);
+	#generate-all-height-class(@suffix, ~'1_12', 100% / 12);
+	#generate-all-height-class(@suffix, ~'5_12', 100% / 12 *  5);
+	#generate-all-height-class(@suffix, ~'7_12', 100% / 12 *  7);
+	#generate-all-height-class(@suffix, ~'11_12',100% / 12 * 11);
+	#generate-all-height-class(@suffix, ~'full', 100%);
+	#generate-all-height-class(@suffix, ~'1_2-viewport',  50vh);
+	#generate-all-height-class(@suffix, ~'1_3-viewport', 100vh / 3);
+	#generate-all-height-class(@suffix, ~'2_3-viewport', 100vh / 3 * 2);
+	#generate-all-height-class(@suffix, ~'1_4-viewport', 100vh / 4);
+	#generate-all-height-class(@suffix, ~'3_4-viewport', 100vh / 4 * 3);
+	#generate-all-height-class(@suffix, ~'full-viewport',100vh);
 }
-
-.height-half-from-xs {
-	#mq-min-width(@screen-xs, {
-		.height-half();
-	});
-}
-
-// FROM SM
-.full-height-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.full-height;
-	});
-}
-
-.height-full-viewport-from-sm {
-	#mq-min-width(@screen-sm, {
-		height: 100vh;
-	});
-}
-
-// TO PH
-.height-mid-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.height-mid();
-	});
-}
-
-.height-large-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.height-large();
-	});
-}
-
 //=========================
 // = LETTER-SPACING CLASS
 //=========================
-
-.letter-spacing, 		.letter-spaced 		{ letter-spacing: .125em; }
-.letter-spacing-wide, 	.letter-spaced-wide { letter-spacing: .25em;  }
-
-.letter-spacing-single 						{ letter-spacing: 0.1em;  }
-.letter-spacing-double 						{ letter-spacing: 0.17em; }
-
-.letter-spacing-1px 						{ letter-spacing: 1px;    }
-.letter-spacing-2px 						{ letter-spacing: 2px;    }
-
+.letter-spacing-narrowest 	{letter-spacing: @letter-spacing-narrowest;}
+.letter-spacing-narrower 	{letter-spacing: @letter-spacing-narrower;}
+.letter-spacing-narrow 		{letter-spacing: @letter-spacing-narrow;}
+.letter-spacing-wide 		{letter-spacing: @letter-spacing-wide;}
+.letter-spacing-wider 		{letter-spacing: @letter-spacing-wider;}
+.letter-spacing-widest 		{letter-spacing: @letter-spacing-widest;}
+.letter-spacing-1px 		{letter-spacing: 1px;}
+.letter-spacing-2px 		{letter-spacing: 2px;}
 //=========================
 // = LINE-HEIGHT CLASS
 //=========================
 //Usefull
-.line-height-initial 		{ line-height: initial;      }
-.line-height-0 				{ line-height: 0;            }
-.line-height-0-important 	{ line-height: 0 !important; }
-.line-height-perfect 		{ line-height: 1em;          }
-.line-height-double 		{ line-height: 2em;          }
-
+.line-height-initial 		{line-height: initial;}
+.line-height-0 				{line-height: 0;}
+.line-height-0-important 	{line-height: 0 !important;}
+.line-height-perfect 		{line-height: 1em;}
+.line-height-double 		{line-height: 2em;}
 //Scales
-.line-height-suffocate 		{ line-height: @line-height-suffocate; }
-.line-height-tightest 		{ line-height: @line-height-tightest;  }
-.line-height-tighter 		{ line-height: @line-height-tighter;   }
-.line-height-tight 			{ line-height: @line-height-tight;     }
-.line-height-loose 			{ line-height: @line-height-loose;     }
-.line-height-looser 		{ line-height: @line-height-looser;    }
-.line-height-loosest 		{ line-height: @line-height-loosest;   }
-
-//Spacing
-.line-height-mid 			{ line-height: @spacing-mid; }
-
+.line-height-compressed 	{line-height: @line-height-compressed;}
+.line-height-tightest 		{line-height: @line-height-tightest;}
+.line-height-tighter 		{line-height: @line-height-tighter;}
+.line-height-tight 			{line-height: @line-height-tight;}
+.line-height-loose 			{line-height: @line-height-loose;}
+.line-height-looser 		{line-height: @line-height-looser;}
+.line-height-loosest 		{line-height: @line-height-loosest;}
 //=========================
 // = LIST-STYLE-TYPE CLASS
 //=========================
-
-.list-style-type-none { list-style-type: none; }
+.list-style-type-none 					{list-style-type: none;}
+.list-style-type-disc 					{list-style-type: disc;}
+.list-style-type-armenian 				{list-style-type: armenian;}
+.list-style-type-circle 				{ist-style-type: circle;}
+.list-style-type-cjk-ideographic		{list-style-type: cjk-ideographic;}
+.list-style-type-decimal 				{list-style-type: decimal;}
+.list-style-type-decimal-leading-zero 	{list-style-type: decimal-leading-zero;}
+.list-style-type-georgian 				{list-style-type: georgian;}
+.list-style-type-hebrew 				{list-style-type: hebrew;}
+.list-style-type-lower-alpha 			{list-style-type: lower-alpha;}
+.list-style-type-lower-greek 			{list-style-type: lower-greek;}
+.list-style-type-lower-latin 			{list-style-type: lower-latin;}
+.list-style-type-lower-roman 			{list-style-type: lower-roman;}
+.list-style-type-square 				{list-style-type: square;}
+.list-style-type-upper-alpha 			{list-style-type: upper-alpha;}
+.list-style-type-upper-latin 			{list-style-type: upper-latin;}
+.list-style-type-upper-roman 			{list-style-type: upper-roman;}
+.list-style-type-initial 				{list-style-type: initial;}
 //=====================================
 //= MARGIN CLASS
 //=====================================
-
 #generate-margin-classes (@direction: ~'', @suffix: ~'') {
 	//-------------------------------------------
 	// USEFULL MARGIN 
 	//-------------------------------------------
-	#generate-margin-classes-value(@direction, @suffix, ~'0', 		~'0'   );
-	#generate-margin-classes-value(@direction, @suffix, ~'none', 	~'0'   );
+	#generate-margin-classes-value(@direction, @suffix, ~'0', 		~'0');
+	#generate-margin-classes-value(@direction, @suffix, ~'none', 	~'0');
 	#generate-margin-classes-value(@direction, @suffix, ~'auto', 	~'auto');
-	
 	//-------------------------------------------
 	// SPACING MARGIN 
 	//-------------------------------------------
-	#generate-margin-classes-value(@direction, @suffix, ~'atto', 			@spacing-atto);
-	#generate-margin-classes-value(@direction, @suffix, ~'femto', 			@spacing-femto);
-	#generate-margin-classes-value(@direction, @suffix, ~'pico', 			@spacing-pico);
-
-	//#generate-margin-classes-value(@direction, @suffix, ~'half-nano', 	@spacing-nano * 0.5);
-
-	#generate-margin-classes-value(@direction, @suffix, ~'nano', 			@spacing-nano);
-	#generate-margin-classes-value(@direction, @suffix, ~'micro', 			@spacing-micro);
-	#generate-margin-classes-value(@direction, @suffix, ~'xsmall', 			@spacing-xsmall);
-	#generate-margin-classes-value(@direction, @suffix, ~'smallest', 		@spacing-smallest);
-
-	//#generate-margin-classes-value(@direction, @suffix, ~'half-smaller', 	@spacing-smaller * 0.5);
-
-	#generate-margin-classes-value(@direction, @suffix, ~'smaller', 		@spacing-smaller);
-	#generate-margin-classes-value(@direction, @suffix, ~'small', 			@spacing-small);
-	#generate-margin-classes-value(@direction, @suffix, ~'mid', 			@spacing-mid);
-
-	//#generate-margin-classes-value(@direction, @suffix, ~'half-large', 	@spacing-large * 0.5);
-
-	#generate-margin-classes-value(@direction, @suffix, ~'large', 			@spacing-large);
-	#generate-margin-classes-value(@direction, @suffix, ~'larger', 			@spacing-larger);
-	#generate-margin-classes-value(@direction, @suffix, ~'largest', 		@spacing-largest);
-	#generate-margin-classes-value(@direction, @suffix, ~'xlarge', 			@spacing-xlarge);
-	#generate-margin-classes-value(@direction, @suffix, ~'huge', 			@spacing-huge);
-	#generate-margin-classes-value(@direction, @suffix, ~'mega', 			@spacing-mega);
-	#generate-margin-classes-value(@direction, @suffix, ~'giga', 			@spacing-giga);
-	#generate-margin-classes-value(@direction, @suffix, ~'tera', 			@spacing-tera);
-	#generate-margin-classes-value(@direction, @suffix, ~'peta', 			@spacing-peta);
-	#generate-margin-classes-value(@direction, @suffix, ~'zetta', 			@spacing-zetta);
-	#generate-margin-classes-value(@direction, @suffix, ~'yotta', 			@spacing-yotta);
-	
+	#generate-margin-classes-value(@direction, @suffix, ~'atto', 		@spacing-atto);
+	#generate-margin-classes-value(@direction, @suffix, ~'femto', 		@spacing-femto);
+	#generate-margin-classes-value(@direction, @suffix, ~'pico', 		@spacing-pico);
+	#generate-margin-classes-value(@direction, @suffix, ~'nano', 		@spacing-nano);
+	#generate-margin-classes-value(@direction, @suffix, ~'micro', 		@spacing-micro);
+	#generate-margin-classes-value(@direction, @suffix, ~'thinnest', 	@spacing-thinnest);
+	#generate-margin-classes-value(@direction, @suffix, ~'thinner', 	@spacing-thinner);
+	#generate-margin-classes-value(@direction, @suffix, ~'thin', 		@spacing-thin);
+	#generate-margin-classes-value(@direction, @suffix, ~'broad', 		@spacing-broad);
+	#generate-margin-classes-value(@direction, @suffix, ~'broader', 	@spacing-broader);
+	#generate-margin-classes-value(@direction, @suffix, ~'broadest', 	@spacing-broadest);
+	#generate-margin-classes-value(@direction, @suffix, ~'large', 		@spacing-large);
+	#generate-margin-classes-value(@direction, @suffix, ~'larger', 		@spacing-larger);
+	#generate-margin-classes-value(@direction, @suffix, ~'largest', 	@spacing-largest);
+	#generate-margin-classes-value(@direction, @suffix, ~'mega', 		@spacing-mega);
+	#generate-margin-classes-value(@direction, @suffix, ~'giga', 		@spacing-giga);
+	#generate-margin-classes-value(@direction, @suffix, ~'tera', 		@spacing-tera);
+	#generate-margin-classes-value(@direction, @suffix, ~'peta', 		@spacing-peta);
+	#generate-margin-classes-value(@direction, @suffix, ~'zetta', 		@spacing-zetta);
+	#generate-margin-classes-value(@direction, @suffix, ~'yotta', 		@spacing-yotta);
 	//-------------------------------------------
 	// RATIONNAL MARGIN
 	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'1_2', 50%);
 	#generate-margin-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_3', 100% / 3 * 2);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_4', 100% / 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_4', 100% / 4 * 3);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_5', 100% / 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_5', 100% / 5 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_5', 100% / 5 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'4_5', 100% / 5 * 4);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_6', 100% / 6);
 	#generate-margin-classes-value(@direction, @suffix, ~'5_6', 100% / 6 * 5);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_7', 100% / 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_7', 100% / 7 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_7', 100% / 7 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'4_7', 100% / 7 * 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'5_7', 100% / 7 * 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'6_7', 100% / 7 * 6);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_8', 100% / 8);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_8', 100% / 8 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'5_8', 100% / 8 * 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'7_8', 100% / 8 * 7);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_9', 100% / 9);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_9', 100% / 9 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'4_9', 100% / 9 * 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'5_9', 100% / 9 * 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'7_9', 100% / 9 * 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'8_9', 100% / 9 * 8);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_10', 100% / 10);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
-	
 	//-------------------------------------------
 	// RATIONNAL VIEWPORT MARGIN
 	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'1_2-viewport', 50vh);
 	#generate-margin-classes-value(@direction, @suffix, ~'1_3-viewport', 100vh / 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_3-viewport', 100vh / 3 * 2);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'1_4-viewport', 100vh / 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_4-viewport', 100vh / 4 * 3);
-	
 	//-------------------------------------------
 	// MINUS SPACING MARGIN
 	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-atto', 			-@spacing-atto);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-femto', 		-@spacing-femto);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-pico', 			-@spacing-pico);
-
-	//#generate-margin-classes-value(@direction, @suffix, ~'minus-half-nano', 	-@spacing-nano * 0.5);
-
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-nano', 			-@spacing-nano);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-micro', 		-@spacing-micro);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-xsmall', 		-@spacing-xsmall);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-smallest', 		-@spacing-smallest);
-
-	//#generate-margin-classes-value(@direction, @suffix, ~'minus-half-smaller', 	-@spacing-smaller * 0.5);
-
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-smaller', 		-@spacing-smaller);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-small', 		-@spacing-small);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-mid', 			-@spacing-mid);
-
-	//#generate-margin-classes-value(@direction, @suffix, ~'minus-half-large', 	-@spacing-large * 0.5);
-
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-thinnest', 		-@spacing-thinnest);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-thinner', 		-@spacing-thinner);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-thin', 			-@spacing-thin);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-broad', 		-@spacing-broad);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-broader', 		-@spacing-broader);
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-broadest', 		-@spacing-broadest);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-large', 		-@spacing-large);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-larger', 		-@spacing-larger);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-largest', 		-@spacing-largest);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-xlarge', 		-@spacing-xlarge);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-huge', 			-@spacing-huge);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-mega', 			-@spacing-mega);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-giga', 			-@spacing-giga);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-tera', 			-@spacing-tera);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-peta', 			-@spacing-peta);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-zetta', 		-@spacing-zetta);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-yotta', 		-@spacing-yotta);
-	
 	//-------------------------------------------
 	// MINUS RATIONNAL MARGIN
 	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_2', -50%);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_3', -100% / 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_3', -100% / 3 * 2);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_4', -100% / 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_4', -100% / 4 * 3);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_5', -100% / 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_5', -100% / 5 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_5', -100% / 5 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_5', -100% / 5 * 4);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_6', -100% / 6);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_6', -100% / 6 * 5);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_7', -100% / 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_7', -100% / 7 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_7', -100% / 7 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_7', -100% / 7 * 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_7', -100% / 7 * 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-6_7', -100% / 7 * 6);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_8', -100% / 8);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_8', -100% / 8 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_8', -100% / 8 * 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_8', -100% / 8 * 7);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_9', -100% / 9);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_9', -100% / 9 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_9', -100% / 9 * 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_9', -100% / 9 * 5);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_9', -100% / 9 * 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-8_9', -100% / 9 * 8);
-	
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_10', -100% / 10);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_10', -100% / 10 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_10', -100% / 10 * 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'minus-9_10', -100% / 10 * 9);
 }
-
 #generate-margin-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
-	
 	//-------------------------------------------
 	// USEFULL MARGIN 
 	//-------------------------------------------
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', ~'0');
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', ~'0');
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', ~'auto');
-
 	//-------------------------------------------
 	// SPACING MARGIN 
 	//-------------------------------------------
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 			 @spacing-atto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			 @spacing-femto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 			 @spacing-pico);
-
-	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
-
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 			@spacing-nano);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 			@spacing-micro);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xsmall', 		@spacing-xsmall);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 		@spacing-smallest);
-
-	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 	@spacing-smaller * 0.5);
-
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 		@spacing-smaller);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 			@spacing-small);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mid', 			@spacing-mid);
-
-	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-large', 	@spacing-large * 0.5);
-
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 			@spacing-large);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 		@spacing-larger);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 		@spacing-largest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xlarge', 		@spacing-xlarge);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'huge', 			@spacing-huge);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 			@spacing-mega);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 			@spacing-giga);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 			@spacing-tera);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 			@spacing-peta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 			@spacing-zetta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 			@spacing-yotta);
-	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 		@spacing-atto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 		@spacing-femto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 		@spacing-pico);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 		@spacing-nano);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 		@spacing-micro);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thinnest', 	@spacing-thinnest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thinner', 	@spacing-thinner);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thin', 		@spacing-thin);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broad', 		@spacing-broad);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broader', 	@spacing-broader);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broadest', 	@spacing-broadest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 		@spacing-large);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 	@spacing-larger);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 	@spacing-largest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 		@spacing-mega);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 		@spacing-giga);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 		@spacing-tera);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 		@spacing-peta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 		@spacing-zetta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 		@spacing-yotta);
 	//-------------------------------------------
 	// RATIONNAL MARGIN
 	//-------------------------------------------
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3', 100% / 3 * 2);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4', 100% / 4);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4', 100% / 4 * 3);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5', 100% / 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5', 100% / 5 * 2);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5', 100% / 5 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5', 100% / 5 * 4);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6', 100% / 6);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6', 100% / 6 * 5);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7', 100% / 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7', 100% / 7 * 2);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7', 100% / 7 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7', 100% / 7 * 4);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7', 100% / 7 * 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7', 100% / 7 * 6);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8', 100% / 8);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8', 100% / 8 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8', 100% / 8 * 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8', 100% / 8 * 7);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9', 100% / 9);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9', 100% / 9 * 2);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9', 100% / 9 * 4);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9', 100% / 9 * 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9', 100% / 9 * 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9', 100% / 9 * 8);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_10', 100% / 10);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
-	
 	//-------------------------------------------
 	// MINUS SPACING MARGIN
 	//-------------------------------------------
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-atto', 		-@spacing-atto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-femto', 		-@spacing-femto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-pico', 		-@spacing-pico);
-
-	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-half-nano', 	-@spacing-nano * 0.5);
-
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-nano', 		-@spacing-nano);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-micro', 		-@spacing-micro);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-xsmall', 		-@spacing-xsmall);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-smallest', 	-@spacing-smallest);
-
-	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-half-smaller', -@spacing-smaller * 0.5);
-
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-smaller', 		-@spacing-smaller);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-small', 		-@spacing-small);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-mid', 			-@spacing-mid);
-
-	//#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-half-large', 	-@spacing-large * 0.5);
-
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-large', 		-@spacing-large);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-larger', 		-@spacing-larger);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-largest', 		-@spacing-largest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-xlarge', 		-@spacing-xlarge);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-huge', 		-@spacing-huge);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-mega', 		-@spacing-mega);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-giga', 		-@spacing-giga);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-tera', 		-@spacing-tera);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-peta', 		-@spacing-peta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-zetta', 		-@spacing-zetta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-yotta', 		-@spacing-yotta);
-	
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-atto', 	-@spacing-atto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-femto', 	-@spacing-femto);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-pico', 	-@spacing-pico);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-nano', 	-@spacing-nano);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-micro', 	-@spacing-micro);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-thinnest', -@spacing-thinnest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-thinner', 	-@spacing-thinner);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-thin', 	-@spacing-thin);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-broad', 	-@spacing-broad);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-broader', 	-@spacing-broader);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-broadest', -@spacing-broadest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-large', 	-@spacing-large);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-larger', 	-@spacing-larger);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-largest', 	-@spacing-largest);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-mega', 	-@spacing-mega);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-giga', 	-@spacing-giga);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-tera', 	-@spacing-tera);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-peta', 	-@spacing-peta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-zetta', 	-@spacing-zetta);
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-yotta', 	-@spacing-yotta);
 	//-------------------------------------------
 	// MINUS RATIONNAL MARGIN
 	//-------------------------------------------
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_2', -50%);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_3', -100% / 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_3', -100% / 3 * 2);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_4', -100% / 4);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_4', -100% / 4 * 3);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_5', -100% / 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_5', -100% / 5 * 2);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_5', -100% / 5 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-4_5', -100% / 5 * 4);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_6', -100% / 6);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_6', -100% / 6 * 5);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_7', -100% / 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_7', -100% / 7 * 2);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_7', -100% / 7 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-4_7', -100% / 7 * 4);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_7', -100% / 7 * 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-6_7', -100% / 7 * 6);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_8', -100% / 8);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_8', -100% / 8 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_8', -100% / 8 * 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-7_8', -100% / 8 * 7);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_9', -100% / 9);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_9', -100% / 9 * 2);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-4_9', -100% / 9 * 4);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-5_9', -100% / 9 * 5);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-7_9', -100% / 9 * 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-8_9', -100% / 9 * 8);
-	
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_10', -100% / 10);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-3_10', -100% / 10 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-7_10', -100% / 10 * 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-9_10', -100% / 10 * 9);
 }
-
-//=========================
-// = MAX-HEIGHT CLASS
-//=========================
-// DEPRECATED
-.max-height-half 					{ max-height:  50%; .DEPRECATED(~''); }
-.max-height-quarter 				{ max-height:  25%; .DEPRECATED(~''); }
-.max-height-three-quarter 			{ max-height:  75%; .DEPRECATED(~''); }
-.max-height-quarter-viewport 		{ max-height:  25vh; .DEPRECATED(~'');}
-.max-height-half-viewport 			{ max-height:  50vh; .DEPRECATED(~'');}
-.max-height-three-quarter-viewport 	{ max-height:  75vh; .DEPRECATED(~'');}
-
-// USEFULL
-.max-height-auto 			{ max-height: auto; }
-.max-height-0 				{ max-height: 0; }
-
-//Spacing Value
-.max-height-micro 			{ max-height: @spacing-micro;        }
-.max-height-micro-double 	{ max-height: @spacing-micro * 2;    }
-.max-height-micro-triple 	{ max-height: @spacing-micro * 3;    }
-.max-height-smallest 		{ max-height: @spacing-smallest ;    }
-.max-height-smallest-double { max-height: @spacing-smallest * 2; }
-.max-height-smallest-triple { max-height: @spacing-smallest * 3; }
-.max-height-smaller 		{ max-height: @spacing-smaller;      }
-.max-height-smaller-double 	{ max-height: @spacing-smaller * 2;  }
-.max-height-smaller-triple 	{ max-height: @spacing-smaller * 3;  }
-.max-height-small 			{ max-height: @spacing-small;        }
-.max-height-small-double 	{ max-height: @spacing-small * 2;    }
-.max-height-small-triple 	{ max-height: @spacing-small * 3;    }
-.max-height-mid 			{ max-height: @spacing-mid;          }
-.max-height-mid-double 		{ max-height: @spacing-mid * 2;      }
-.max-height-mid-triple 		{ max-height: @spacing-mid * 3;      }
-.max-height-large 			{ max-height: @spacing-large;        }
-.max-height-large-double 	{ max-height: @spacing-large * 2;    }
-.max-height-large-triple 	{ max-height: @spacing-large * 3;    }
-.max-height-larger 			{ max-height: @spacing-larger;       }
-.max-height-larger-double 	{ max-height: @spacing-larger * 2;   }
-.max-height-larger-triple 	{ max-height: @spacing-larger * 3;   }
-.max-height-largest 		{ max-height: @spacing-largest;      }
-.max-height-largest-double 	{ max-height: @spacing-largest * 2;  }
-.max-height-largest-triple 	{ max-height: @spacing-largest * 3;  }
-.max-height-huge 			{ max-height: @spacing-huge;         }
-.max-height-huge-double 	{ max-height: @spacing-huge * 2;     }
-.max-height-huge-triple 	{ max-height: @spacing-huge * 3;     }
-.max-height-mega 			{ max-height: @spacing-mega;         }
-
-.max-height-skelettic 		{ max-height: @dimension-skelettic; }
-.max-height-tiniest 		{ max-height: @dimension-tiniest;   }
-.max-height-very-tiny 		{ max-height: @dimension-very-tiny; }
-.max-height-tinier 			{ max-height: @dimension-tinier;    }
-.max-height-tiny 			{ max-height: @dimension-tiny;      }
-.max-height-thinnest 		{ max-height: @dimension-thinnest;  }
-.max-height-very-thin 		{ max-height: @dimension-very-thin; }
-.max-height-thinner 		{ max-height: @dimension-thinner;   }
-.max-height-thin 			{ max-height: @dimension-thin;      }
-.max-height-standard 		{ max-height: @dimension-standard;  }
-.max-height-wide 			{ max-height: @dimension-wide;      }
-.max-height-wider 			{ max-height: @dimension-wider;     }
-.max-height-very-wide 		{ max-height: @dimension-very-wide; }
-.max-height-widest 			{ max-height: @dimension-widest;    }
-.max-height-fat 			{ max-height: @dimension-fat;       }
-.max-height-fatter 			{ max-height: @dimension-fatter;    }
-.max-height-very-fat 		{ max-height: @dimension-very-fat;  }
-.max-height-fattest 		{ max-height: @dimension-fattest;   }
-.max-height-obese 			{ max-height: @dimension-obese;     }
-.max-height-morbid 			{ max-height: @dimension-morbid;    }
-
-// Proportional Value
-.max-height-1_2 			{ max-height:  50%; }
-
-.max-height-1_4 			{ max-height:  25%; }
-.max-height-3_4 			{ max-height:  75%; }
-
-.max-height-full 			{ max-height: 100%; }
-
-// Proportional ViewPort Value
-.max-height-full-viewport 	{ max-height: 100vh; }
-
-//=========================
-// = MAX-WIDTH CLASS
-//=========================
-//DEPRECATED
-.max-width-quarter 					{ max-width: 25%;  .DEPRECATED(~''); }
-.max-width-half 					{ max-width: 50%;  .DEPRECATED(~''); }
-.max-width-three-quarter 			{ max-width: 75%;  .DEPRECATED(~''); }
-.max-width-quarter-viewport 		{ max-width: 25vh; .DEPRECATED(~''); }
-.max-width-half-viewport 			{ max-width: 50vh; .DEPRECATED(~''); }
-.max-width-three-quarter-viewport 	{ max-width: 75vw; .DEPRECATED(~''); }
-
-.max-width-micro-double 			{ max-width: @spacing-micro * 2;    }
-.max-width-micro-triple 			{ max-width: @spacing-micro * 3;    }
-.max-width-smallest-double 			{ max-width: @spacing-smallest * 2; }
-.max-width-smallest-triple 			{ max-width: @spacing-smallest * 3; }
-.max-width-smaller-double 			{ max-width: @spacing-smaller * 2;  }
-.max-width-smaller-triple 			{ max-width: @spacing-smaller * 3;  }
-.max-width-small-double 			{ max-width: @spacing-small * 2;    }
-.max-width-small-triple 			{ max-width: @spacing-small * 3;    }
-.max-width-mid-double 				{ max-width: @spacing-mid * 2;      }
-.max-width-mid-triple 				{ max-width: @spacing-mid * 3;      }
-.max-width-large-double 			{ max-width: @spacing-large * 2;    }
-.max-width-large-triple 			{ max-width: @spacing-large * 3;    }
-.max-width-larger-double 			{ max-width: @spacing-larger * 2;   }
-.max-width-larger-triple 			{ max-width: @spacing-larger * 3;   }
-.max-width-largest-double 			{ max-width: @spacing-largest * 2;  }
-.max-width-largest-triple 			{ max-width: @spacing-largest * 3;  }
-.max-width-huge-double 				{ max-width: @spacing-huge * 2;     }
-.max-width-huge-triple 				{ max-width: @spacing-huge * 3;     }
-
-// FROM PH TO SM
-.max-width-larger-from-ph-to-sm {
-	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
-		max-width: @spacing-larger;
-	});
-}
-
-// FROM PH TO XS
-.max-width-large-from-ph-to-xs {
-	#mq-min-max-width(@screen-ph, @screen-xs - 1, {
-		max-width: @spacing-large;
-	});
-}
-
-//=========================
-// = MIN-HEIGHT CLASS
-//=========================
-// DEPRECATED
-.min-height-quarter 				{ min-height: 25%; .DEPRECATED(~''); }
-.min-height-half 					{ min-height: 50%; .DEPRECATED(~''); }
-.min-height-three-quarter 			{ min-height: 75%; .DEPRECATED(~''); }
-.min-height-quarter-viewport 		{ min-height: 25vh; .DEPRECATED(~''); }
-.min-height-half-viewport 			{ min-height: 50vh; .DEPRECATED(~''); }
-.min-height-three-quarter-viewport 	{ min-height: 75vh; .DEPRECATED(~''); }
-
-
-// USEFULL
-.min-height-auto 			{ min-height: auto; }
-.min-height-0 				{ min-height: 0; }
-
-//Spacing Value
-.min-height-micro 			{ min-height: @spacing-micro;        }
-.min-height-micro-double 	{ min-height: @spacing-micro * 2;    }
-.min-height-micro-triple 	{ min-height: @spacing-micro * 3;    }
-.min-height-smallest 		{ min-height: @spacing-smallest ;    }
-.min-height-smallest-double { min-height: @spacing-smallest * 2; }
-.min-height-smallest-triple { min-height: @spacing-smallest * 3; }
-.min-height-smaller 		{ min-height: @spacing-smaller;      }
-.min-height-smaller-double 	{ min-height: @spacing-smaller * 2;  }
-.min-height-smaller-triple 	{ min-height: @spacing-smaller * 3;  }
-.min-height-small 			{ min-height: @spacing-small;        }
-.min-height-small-double 	{ min-height: @spacing-small * 2;    }
-.min-height-small-triple 	{ min-height: @spacing-small * 3;    }
-.min-height-mid 			{ min-height: @spacing-mid;          }
-.min-height-mid-double 		{ min-height: @spacing-mid * 2;      }
-.min-height-mid-triple 		{ min-height: @spacing-mid * 3;      }
-.min-height-large 			{ min-height: @spacing-large;        }
-.min-height-large-double 	{ min-height: @spacing-large * 2;    }
-.min-height-large-triple 	{ min-height: @spacing-large * 3;    }
-.min-height-larger 			{ min-height: @spacing-larger;       }
-.min-height-larger-double 	{ min-height: @spacing-larger * 2;   }
-.min-height-larger-triple 	{ min-height: @spacing-larger * 3;   }
-.min-height-largest 		{ min-height: @spacing-largest;      }
-.min-height-largest-double 	{ min-height: @spacing-largest * 2;  }
-.min-height-largest-triple 	{ min-height: @spacing-largest * 3;  }
-.min-height-huge 			{ min-height: @spacing-huge;         }
-.min-height-huge-double 	{ min-height: @spacing-huge * 2;     }
-.min-height-huge-triple 	{ min-height: @spacing-huge * 3;     }
-
-.min-height-skelettic 		{ min-height: @dimension-skelettic; }
-.min-height-tiniest 		{ min-height: @dimension-tiniest;   }
-.min-height-very-tiny 		{ min-height: @dimension-very-tiny; }
-.min-height-tinier 			{ min-height: @dimension-tinier;    }
-.min-height-tiny 			{ min-height: @dimension-tiny;      }
-.min-height-thinnest 		{ min-height: @dimension-thinnest;  }
-.min-height-very-thin 		{ min-height: @dimension-very-thin; }
-.min-height-thinner 		{ min-height: @dimension-thinner;   }
-.min-height-thin 			{ min-height: @dimension-thin;      }
-.min-height-standard 		{ min-height: @dimension-standard;  }
-.min-height-wide 			{ min-height: @dimension-wide;      }
-.min-height-wider 			{ min-height: @dimension-wider;     }
-.min-height-very-wide 		{ min-height: @dimension-very-wide; }
-.min-height-widest 			{ min-height: @dimension-widest;    }
-.min-height-fat 			{ min-height: @dimension-fat;       }
-.min-height-fatter 			{ min-height: @dimension-fatter;    }
-.min-height-very-fat 		{ min-height: @dimension-very-fat;  }
-.min-height-fattest 		{ min-height: @dimension-fattest;   }
-.min-height-obese 			{ min-height: @dimension-obese;     }
-.min-height-morbid 			{ min-height: @dimension-morbid;    }
-
-//Proportional Value
-.min-height-1_2 			{ min-height:  50%; }
-.min-height-full 			{ min-height: 100%; }
-
-.min-height-1_4 			{ min-height:  25%; }
-.min-height-3_4 			{ min-height:  75%; }
-
-//Proportional Viewport value
-.min-height-full-viewport 	{ min-height: 100vh; }
-
-//=========================
-// = MIN-WIDTH CLASS
-//=========================
-//DEPRECATED
-.min-width-quarter 					{ min-width: 25%;  .DEPRECATED(~''); }
-.min-width-half, .half-min-width 	{ min-width: 50%;  .DEPRECATED(~''); }
-.min-width-three-quarter 			{ min-width: 75%;  .DEPRECATED(~''); }
-.min-width-quarter-viewport 		{ min-width: 25vh; .DEPRECATED(~''); }
-.min-width-half-viewport 			{ min-width: 50vh; .DEPRECATED(~''); }
-
-// DOUBLE AND TRIPPLE SPACING VALUE
-.min-width-micro-double 	{ min-width: @spacing-micro * 2;     }
-.min-width-micro-triple 	{ min-width: @spacing-micro * 3;     }
-.min-width-smallest-double 	{ min-width: @spacing-smallest  * 2; }
-.min-width-smallest-triple 	{ min-width: @spacing-smallest  * 3; }
-.min-width-smaller-double 	{ min-width: @spacing-smaller * 2;   }
-.min-width-smaller-triple 	{ min-width: @spacing-smaller * 3;   }
-.min-width-small-double 	{ min-width: @spacing-small * 2;     }
-.min-width-small-triple 	{ min-width: @spacing-small * 3;     }
-.min-width-mid-double 		{ min-width: @spacing-mid * 2;       }
-.min-width-mid-triple 		{ min-width: @spacing-mid * 3;       }
-.min-width-large-double 	{ min-width: @spacing-large * 2;     }
-.min-width-large-triple 	{ min-width: @spacing-large * 3;     }
-.min-width-larger-double 	{ min-width: @spacing-larger * 2;    }
-.min-width-larger-triple 	{ min-width: @spacing-larger * 3;    }
-.min-width-largest-double 	{ min-width: @spacing-largest * 2;   }
-.min-width-largest-triple 	{ min-width: @spacing-largest * 3;   }
-.min-width-huge-double 		{ min-width: @spacing-huge * 2;      }
-.min-width-huge-triple 		{ min-width: @spacing-huge * 3;      }
  
 //=========================
 // = OPACITY ON HOVER CLASS
 //=========================
 
-.opacity-quasi-transparent-on-hover, .quasi-trans-on-hover{
-	#hover-only({
-		.quasi-trans
+.opacity-quasi-transparent-on-hover, .quasi-transparent-on-hover{
+	#hover({
+		.quasi-transparent;
 	});
 }
 
-.opacity-half-on-hover, .opacity-half-transparent-on-hover, .opacity-translucent-on-hover, .translucent-on-hover {
-	#hover-only({
-		.opacity-half;
+.opacity-translucent-on-hover, .translucent-on-hover {
+	#hover({
+		.opacity-translucent;
 	});
 }
 
 .opacity-semi-opaque-on-hover, .semi-opaque-on-hover{
-	#hover-only({
+	#hover({
 		.opacity-semi-opaque;
 	});
 }
 
 .opacity-quasi-opaque-on-hover, .quasi-opaque-on-hover {
-	#hover-only({
+	#hover({
 		.opacity-quasi-opaque;
 	});
 }
 
-.opacity-full-on-hover, .opaque-on-hover {
-	#hover-only({
+.opacity-opaque-on-hover, .opaque-on-hover {
+	#hover({
 		.opaque();
 	});
 }
 
-.opacity-full-when-is-selected, .opaque-when-is-selected {
+.opacity-opaque-when-selected, .opaque-when-selected {
 	&.is-selected {
 		.opaque();
 	}
@@ -1840,52 +1811,28 @@ html {
 // = OPACITY CLASS
 //=========================
 
-.opacity-full, .opacity-opaque, .opaque {
-	opacity: 1;
-}
+.opacity-opaque, .opaque 								{ opacity: @opaque;}
+.opacity-almost-opaque, .almost-opaque 					{ opacity: @almost-opaque;}
+.opacity-quasi-opaque, .quasi-opaque 					{ opacity: @quasi-opaque;}
+.opacity-semi-opaque, .semi-opaque 						{ opacity:  @semi-opaque;}
+.opacity-partially-opaque, .partially-opaque 			{ opacity: @partially-opaque;}
+.opacity-translucent, .translucent 						{ opacity: @translucent;}
+.opacity-partially-transparent, .partially-transparent 	{ opacity: @partially-transparent;}
+.opacity-semi-transparent, .semi-transparent 			{ opacity: @semi-transparent;}
+.opacity-quasi-transparent, .quasi-transparent 			{ opacity: @quasi-transparent;}
+.opacity-almost-transparent, .almost-transparent 		{ opacity: @almost-transparent;}
+.opacity-transparent, .transparent 						{ opacity: @transparent;}
 
-.opacity-very-opaque, .very-opaque {
-	opacity: 0.9;
-}
+.opacity-none 	{ opacity: 0;}
+.opacity-1_2 	{ opacity: 0.5;}
+.opacity-1_4 	{ opacity: 0.25;}
+.opacity-4_4 	{ opacity: 0.75;}
+.opacity-full 	{ opacity: 1;}
 
-.opacity-quasi-opaque, .quasi-opaque {
-	opacity: 0.8;
-}
 
-.opacity-semi-opaque, .semi-opaque {
-	opacity: 0.7;
-}
-
-.opacity-partialy-opaque {
-	opacity: 0.6;
-}
-
-.opacity-half, .opacity-half-transparent, .opacity-translucent, .translucent {
-	opacity: 0.5;
-}
-
-.opacity-partialy-transparent, .opacity-partialy-translucent {
-	opacity: 0.4;
-}
-
-.opacity-semi-transparent, .opacity-semi-translucent, .semi-translucent {
-	opacity: 0.3;
-}
-
-.opacity-quasi-transparent, .opacity-quasi-translucent, .quasi-translucent, .quasi-trans {
-	opacity: 0.2;
-}
-
-.opacity-quasi-transparent, .opacity-very-translucent, .very-translucent, .very-trans {
-	opacity: 0.1;
-}
-
-.opacity-0, .opacity-transparent, .transparent {
-	opacity: 0;
-}
 
 // FROM SM
-.opacity-0-from-sm, .opacity-transparent-from-sm, .transparent-from-sm {
+/*.opacity-0-from-sm, .opacity-transparent-from-sm, .transparent-from-sm {
 	#mq-min-width(@screen-sm, {
 		.opacity-0;
 	});
@@ -1908,28 +1855,24 @@ html {
 	#mq-min-width(@screen-md, {
 		.opacity-half;
 	});
-}
-
+}*/
 //=========================
 // = OVERFLOW CLASS
 //=========================
-
-.overflow-hidden 	{ overflow: hidden;  }
-.overflow-visible 	{ overflow: visible; }
-.overflow-scroll 	{ overflow: scroll;  }
-.overflow-auto 		{ overflow: auto;    }
-
+.overflow-hidden 	{overflow: hidden;}
+.overflow-visible 	{overflow: visible;}
+.overflow-scroll 	{overflow: scroll;}
+.overflow-auto 		{overflow: auto;}
 //Y AXIS
-.overflow-y-hidden 	{ overflow-y: hidden;  }
-.overflow-y-visible { overflow-y: visible; }
-.overflow-y-scroll 	{ overflow-y: scroll;  }
-.overflow-y-auto 	{ overflow-y: auto;    }
-
+.overflow-y-hidden 	{overflow-y: hidden;}
+.overflow-y-visible {overflow-y: visible;}
+.overflow-y-scroll 	{overflow-y: scroll;}
+.overflow-y-auto 	{overflow-y: auto;}
 //X AXIS
-.overflow-x-hidden 	{ overflow-x: hidden;  }
-.overflow-x-visible { overflow-x: visible; }
-.overflow-x-scroll 	{ overflow-x: scroll;  }
-.overflow-x-auto 	{ overflow-x: auto;    }
+.overflow-x-hidden 	{overflow-x: hidden;}
+.overflow-x-visible {overflow-x: visible;}
+.overflow-x-scroll 	{overflow-x: scroll;}
+.overflow-x-auto 	{overflow-x: auto;}
 
 //FROM SM
 .overflow-y-scroll-from-sm {
@@ -1940,210 +1883,178 @@ html {
 //=====================================
 // = PADDING CLASS
 //=====================================
-
 #generate-padding-classes (@direction: ~'', @suffix: ~'') {
-	
 	//-------------------------------------------
 	// USEFULL PADDING 
 	//-------------------------------------------
 	#generate-padding-classes-value(@direction, @suffix, ~'0', 0);
 	#generate-padding-classes-value(@direction, @suffix, ~'none', 0);
 	#generate-padding-classes-value(@direction, @suffix, ~'none-important', ~'0 !important');
-	
 	//-------------------------------------------
 	// SPACING PADDING 
 	//-------------------------------------------
-	#generate-padding-classes-value(@direction, @suffix, ~'atto', 				@spacing-atto);
-	#generate-padding-classes-value(@direction, @suffix, ~'femto', 				@spacing-femto);
-	#generate-padding-classes-value(@direction, @suffix, ~'pico', 				@spacing-pico);
-
-	//#generate-padding-classes-value(@direction, @suffix, ~'half-nano', 		@spacing-nano * 0.5);
-
-	#generate-padding-classes-value(@direction, @suffix, ~'nano', 				@spacing-nano);
-	#generate-padding-classes-value(@direction, @suffix, ~'micro', 				@spacing-micro);
-	#generate-padding-classes-value(@direction, @suffix, ~'xsmall', 			@spacing-xsmall);
-	#generate-padding-classes-value(@direction, @suffix, ~'smallest', 			@spacing-smallest);
-
-	//#generate-padding-classes-value(@direction, @suffix, ~'half-smaller', 	@spacing-smaller * 0.5);
-
-	#generate-padding-classes-value(@direction, @suffix, ~'smaller', 			@spacing-smaller);
-
-	//#generate-padding-classes-value(@direction, @suffix, ~'smaller-double', 	@spacing-smaller * 2);
-
-	#generate-padding-classes-value(@direction, @suffix, ~'small', 				@spacing-small);
-	#generate-padding-classes-value(@direction, @suffix, ~'mid', 				@spacing-mid);
-
-	//#generate-padding-classes-value(@direction, @suffix, ~'half-large', 		@spacing-large * 0.5);
-
-	#generate-padding-classes-value(@direction, @suffix, ~'large', 				@spacing-large);
-	#generate-padding-classes-value(@direction, @suffix, ~'larger', 			@spacing-larger);
-	#generate-padding-classes-value(@direction, @suffix, ~'largest', 			@spacing-largest);
-	#generate-padding-classes-value(@direction, @suffix, ~'xlarge', 			@spacing-xlarge);
-	#generate-padding-classes-value(@direction, @suffix, ~'huge', 				@spacing-huge);
-	#generate-padding-classes-value(@direction, @suffix, ~'mega', 				@spacing-mega);
-	#generate-padding-classes-value(@direction, @suffix, ~'giga', 				@spacing-giga);
-	#generate-padding-classes-value(@direction, @suffix, ~'tera', 				@spacing-tera);
-	#generate-padding-classes-value(@direction, @suffix, ~'peta', 				@spacing-peta);
-	#generate-padding-classes-value(@direction, @suffix, ~'zetta', 				@spacing-zetta);
-	#generate-padding-classes-value(@direction, @suffix, ~'yotta', 				@spacing-yotta);
-	
+	#generate-padding-classes-value(@direction, @suffix, ~'atto', 		@spacing-atto);
+	#generate-padding-classes-value(@direction, @suffix, ~'femto', 		@spacing-femto);
+	#generate-padding-classes-value(@direction, @suffix, ~'pico', 		@spacing-pico);
+	#generate-padding-classes-value(@direction, @suffix, ~'nano', 		@spacing-nano);
+	#generate-padding-classes-value(@direction, @suffix, ~'micro', 		@spacing-micro);
+	#generate-padding-classes-value(@direction, @suffix, ~'thinnest', 	@spacing-thinnest);
+	#generate-padding-classes-value(@direction, @suffix, ~'thinner', 	@spacing-thinner);
+	#generate-padding-classes-value(@direction, @suffix, ~'thin', 		@spacing-thin);
+	#generate-padding-classes-value(@direction, @suffix, ~'broad', 		@spacing-broad);
+	#generate-padding-classes-value(@direction, @suffix, ~'broader', 	@spacing-broader);
+	#generate-padding-classes-value(@direction, @suffix, ~'broadest', 	@spacing-broadest);
+	#generate-padding-classes-value(@direction, @suffix, ~'large', 		@spacing-large);
+	#generate-padding-classes-value(@direction, @suffix, ~'larger', 	@spacing-larger);
+	#generate-padding-classes-value(@direction, @suffix, ~'largest', 	@spacing-largest);
+	#generate-padding-classes-value(@direction, @suffix, ~'mega', 		@spacing-mega);
+	#generate-padding-classes-value(@direction, @suffix, ~'giga', 		@spacing-giga);
+	#generate-padding-classes-value(@direction, @suffix, ~'tera', 		@spacing-tera);
+	#generate-padding-classes-value(@direction, @suffix, ~'peta', 		@spacing-peta);
+	#generate-padding-classes-value(@direction, @suffix, ~'zetta', 		@spacing-zetta);
+	#generate-padding-classes-value(@direction, @suffix, ~'yotta', 		@spacing-yotta);
+	//-------------------------------------------
+	// DIMMENSIONS PADDING 
+	//-------------------------------------------
+	#generate-padding-classes-value(@direction, @suffix, ~'tiniest', 	@dimension-tiniest);
+	#generate-padding-classes-value(@direction, @suffix, ~'tinier', 	@dimension-tinier);
+	#generate-padding-classes-value(@direction, @suffix, ~'tiny', 		@dimension-tiny);
+	#generate-padding-classes-value(@direction, @suffix, ~'smallest', 	@dimension-smallest);
+	#generate-padding-classes-value(@direction, @suffix, ~'smaller', 	@dimension-smaller);
+	#generate-padding-classes-value(@direction, @suffix, ~'small', 		@dimension-small);
+	#generate-padding-classes-value(@direction, @suffix, ~'big', 		@dimension-big);
+	#generate-padding-classes-value(@direction, @suffix, ~'bigger', 	@dimension-bigger);
+	#generate-padding-classes-value(@direction, @suffix, ~'biggest', 	@dimension-biggest);
 	//-------------------------------------------
 	// RATIONNAL PADDING
 	//-------------------------------------------
-	#generate-padding-classes-value(@direction, @suffix, ~'1_2', 50%);
-	#generate-padding-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
-	#generate-padding-classes-value(@direction, @suffix, ~'2_3', 100% / 3 * 2);
-	#generate-padding-classes-value(@direction, @suffix, ~'4_3', 100% / 3 * 4);
-	
-	#generate-padding-classes-value(@direction, @suffix, ~'1_4', 100% / 4);
-	#generate-padding-classes-value(@direction, @suffix, ~'3_4', 100% / 4 * 3);
-	
-	#generate-padding-classes-value(@direction, @suffix, ~'1_5', 100% / 5);
-	#generate-padding-classes-value(@direction, @suffix, ~'2_5', 100% / 5 * 2);
-	#generate-padding-classes-value(@direction, @suffix, ~'3_5', 100% / 5 * 3);
-	#generate-padding-classes-value(@direction, @suffix, ~'4_5', 100% / 5 * 4);
-	
-	#generate-padding-classes-value(@direction, @suffix, ~'1_6', 100% / 6);
-	#generate-padding-classes-value(@direction, @suffix, ~'5_6', 100% / 6 * 5);
-	
-	#generate-padding-classes-value(@direction, @suffix, ~'1_7', 100% / 7);
-	#generate-padding-classes-value(@direction, @suffix, ~'2_7', 100% / 7 * 2);
-	#generate-padding-classes-value(@direction, @suffix, ~'3_7', 100% / 7 * 3);
-	#generate-padding-classes-value(@direction, @suffix, ~'4_7', 100% / 7 * 4);
-	#generate-padding-classes-value(@direction, @suffix, ~'5_7', 100% / 7 * 5);
-	#generate-padding-classes-value(@direction, @suffix, ~'6_7', 100% / 7 * 6);
-	
-	#generate-padding-classes-value(@direction, @suffix, ~'1_8', 100% / 8);
-	#generate-padding-classes-value(@direction, @suffix, ~'3_8', 100% / 8 * 3);
-	#generate-padding-classes-value(@direction, @suffix, ~'5_8', 100% / 8 * 5);
-	#generate-padding-classes-value(@direction, @suffix, ~'7_8', 100% / 8 * 7);
-	
-	#generate-padding-classes-value(@direction, @suffix, ~'1_9', 100% / 9);
-	#generate-padding-classes-value(@direction, @suffix, ~'2_9', 100% / 9 * 2);
-	#generate-padding-classes-value(@direction, @suffix, ~'4_9', 100% / 9 * 4);
-	#generate-padding-classes-value(@direction, @suffix, ~'5_9', 100% / 9 * 5);
-	#generate-padding-classes-value(@direction, @suffix, ~'7_9', 100% / 9 * 7);
-	#generate-padding-classes-value(@direction, @suffix, ~'8_9', 100% / 9 * 8);
-	
+	#generate-padding-classes-value(@direction, @suffix, ~'1_2',   50%);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_3',  100% / 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_3',  100% / 3 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_3',  100% / 3 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_4',  100% / 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_4',  100% / 4 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_5',  100% / 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_5',  100% / 5 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_5',  100% / 5 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_5',  100% / 5 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_6',  100% / 6);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_6',  100% / 6 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_7',  100% / 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_7',  100% / 7 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_7',  100% / 7 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_7',  100% / 7 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_7',  100% / 7 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'6_7',  100% / 7 * 6);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_8',  100% / 8);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_8',  100% / 8 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_8',  100% / 8 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_8',  100% / 8 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_9',  100% / 9);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_9',  100% / 9 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_9',  100% / 9 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_9',  100% / 9 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_9',  100% / 9 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'8_9',  100% / 9 * 8);
 	#generate-padding-classes-value(@direction, @suffix, ~'1_10', 100% / 10);
 	#generate-padding-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
 	#generate-padding-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
 	#generate-padding-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
-	
 	#generate-padding-classes-value(@direction, @suffix, ~'9_16', 100% / 16 * 9);
-	
 	#generate-padding-classes-value(@direction, @suffix, ~'full', 100%);
 }
 
 #generate-padding-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
-	
 	//-------------------------------------------
 	// USEFULL TWO AXES PADDING 
 	//-------------------------------------------
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', 0);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', 0);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none-important', ~'0 !important');
-	
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', auto);
-
 	//-------------------------------------------
 	// SPACING TWO AXES PADDING 
 	//-------------------------------------------
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 				@spacing-atto);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 			@spacing-femto);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 				@spacing-pico);
-
-	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-nano', 		@spacing-nano * 0.5);
-
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 				@spacing-nano);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 			@spacing-micro);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xsmall', 			@spacing-xsmall);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 			@spacing-smallest);
-
-	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-smaller', 	@spacing-smaller * 0.5);
-
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 			@spacing-smaller);
-
-	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller-double', 	@spacing-smaller * 2);
-
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 			@spacing-small);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mid', 				@spacing-mid);
-
-	//#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half-large', 		@spacing-large * 0.5);
-
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 			@spacing-large);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 			@spacing-larger);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 			@spacing-largest);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'xlarge', 			@spacing-xlarge);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'huge', 				@spacing-huge);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 				@spacing-mega);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 				@spacing-giga);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 				@spacing-tera);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 				@spacing-peta);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 			@spacing-zetta);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 			@spacing-yotta);
-	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 		@spacing-atto);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 	@spacing-femto);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 		@spacing-pico);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 		@spacing-nano);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 	@spacing-micro);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thinnest', 	@spacing-thinnest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thinner', 	@spacing-thinner);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thin', 		@spacing-thin);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broad', 	@spacing-broad);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broader', 	@spacing-broader);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broadest', 	@spacing-broadest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 	@spacing-large);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 	@spacing-larger);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 	@spacing-largest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 		@spacing-mega);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 		@spacing-giga);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 		@spacing-tera);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 		@spacing-peta);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 	@spacing-zetta);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 	@spacing-yotta);
+	//-------------------------------------------
+	// DIMMENSIONS PADDING 
+	//-------------------------------------------
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tiniest', 	@dimension-tiniest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tinier', 	@dimension-tinier);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tiny', 		@dimension-tiny);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smallest', 	@dimension-smallest);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'smaller', 	@dimension-smaller);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'small', 	@dimension-small);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'big', 		@dimension-big);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'bigger', 	@dimension-bigger);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'biggest', 	@dimension-biggest);
 	//-------------------------------------------
 	// RATIONNAL TWO AXES PADDING
 	//-------------------------------------------
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'half', 50%);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3', 100% / 3 * 2);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_3', 100% / 3 * 4);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4', 100% / 4);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4', 100% / 4 * 3);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5', 100% / 5);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5', 100% / 5 * 2);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5', 100% / 5 * 3);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5', 100% / 5 * 4);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6', 100% / 6);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6', 100% / 6 * 5);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7', 100% / 7);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7', 100% / 7 * 2);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7', 100% / 7 * 3);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7', 100% / 7 * 4);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7', 100% / 7 * 5);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7', 100% / 7 * 6);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8', 100% / 8);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8', 100% / 8 * 3);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8', 100% / 8 * 5);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8', 100% / 8 * 7);
-	
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9', 100% / 9);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9', 100% / 9 * 2);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9', 100% / 9 * 4);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9', 100% / 9 * 5);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9', 100% / 9 * 7);
-	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9', 100% / 9 * 8);
-	
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2',   50%);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3',  100% / 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3',  100% / 3 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_3',  100% / 3 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4',  100% / 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4',  100% / 4 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5',  100% / 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5',  100% / 5 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5',  100% / 5 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5',  100% / 5 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6',  100% / 6);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6',  100% / 6 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7',  100% / 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7',  100% / 7 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7',  100% / 7 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7',  100% / 7 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7',  100% / 7 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7',  100% / 7 * 6);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8',  100% / 8);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8',  100% / 8 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8',  100% / 8 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8',  100% / 8 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9',  100% / 9);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9',  100% / 9 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9',  100% / 9 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9',  100% / 9 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9',  100% / 9 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9',  100% / 9 * 8);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_10', 100% / 10);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
-	
 	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'full', 100%);
 }
-
 //=====================================
 // = POINTER-EVENTS CLASS
 //=====================================
-
-.pointer-events-none 	{ pointer-events: none; }
-.pointer-events-all 	{ pointer-events: all;  }
-
+.pointer-events-none 	{pointer-events: none;}
+.pointer-events-all 	{pointer-events: all;}
 //=====================================
 // = POSITION CLASS
 //=====================================
-.position-absolute, .absolute 	{ position: absolute; }
-.position-fixed, 	.fixed 		{ position: fixed; }
-.position-relative, .relative 	{ position: relative; }
+.position-absolute, .absolute 	{position: absolute;}
+.position-fixed, 	.fixed 		{position: fixed;}
+.position-relative, .relative 	{position: relative;}
 
 //=== POSITION === RESPONSIVE =========
 // FROM PH
@@ -2186,64 +2097,41 @@ html {
 		.absolute;
 	});
 }
-
 //===========================
 // = SQUARE CLASS
 //===========================
-
-//SPACING
-.square-micro 		{ width: @spacing-micro; 		height: @spacing-micro;    }
-.square-smallest 	{ width: @spacing-smallest; 	height: @spacing-smallest; }
-.square-smaller 	{ width: @spacing-smaller; 		height: @spacing-smaller;  }
-.square-small 		{ width: @spacing-small; 		height: @spacing-small;    }
-.square-mid 		{ width: @spacing-mid; 			height: @spacing-mid;      }
-.square-large 		{ width: @spacing-large; 		height: @spacing-large;    }
-.square-larger 		{ width: @spacing-larger; 		height: @spacing-larger;   }
-.square-largest 	{ width: @spacing-largest; 		height: @spacing-largest;  }
-.square-huge 		{ width: @spacing-huge; 		height: @spacing-huge;     }
-
+.square-femto 		{ width: @spacing-femto; 	height: @spacing-femto;}
+.square-pico 		{ width: @spacing-pico; 	height: @spacing-pico;}
+.square-nano 		{ width: @spacing-nano; 	height: @spacing-nano;}
+.square-micro 		{ width: @spacing-micro; 	height: @spacing-micro;}
+.square-thinnest 	{ width: @spacing-thinnest; height: @spacing-thinnest;}
+.square-thinner 	{ width: @spacing-thinner; 	height: @spacing-thinner;}
+.square-thin 		{ width: @spacing-thin; 	height: @spacing-thin;}
+.square-broad 		{ width: @spacing-broad; 	height: @spacing-broad;}
+.square-broader 	{ width: @spacing-broader; 	height: @spacing-broader;}
+.square-broadest 	{ width: @spacing-broadest; height: @spacing-broadest;}
+.square-large 		{ width: @spacing-large; 	height: @spacing-large;}
+.square-larger 		{ width: @spacing-larger; 	height: @spacing-larger;}
+.square-largest 	{ width: @spacing-largest; 	height: @spacing-largest;}
+.square-mega 		{ width: @spacing-mega; 	height: @spacing-mega;}
+.square-giga 		{ width: @spacing-giga; 	height: @spacing-giga;}
+.square-tera 		{ width: @spacing-tera; 	height: @spacing-tera;}
+.square-peta 		{ width: @spacing-peta; 	height: @spacing-peta;}
+.square-zetta 		{ width: @spacing-zetta; 	height: @spacing-zetta;}
+.square-yotta 		{ width: @spacing-yotta; 	height: @spacing-yotta;}
 //DIMENSION
-.square-skelettic 	{ width: @dimension-skelettic; 	height: @dimension-skelettic; }
-
-.square-tiniest 	{ width: @dimension-tiniest; 	height: @dimension-tiniest;   }
-.square-very-tiny 	{ width: @dimension-very-tiny; 	height: @dimension-very-tiny; }
-.square-tinier 		{ width: @dimension-tinier; 	height: @dimension-tinier;    }
-.square-tiny 		{ width: @dimension-tiny; 		height: @dimension-tiny;      }
-
-.square-thinnest 	{ width: @dimension-thinnest; 	height: @dimension-thinnest;  }
-.square-very-thin 	{ width: @dimension-very-thin; 	height: @dimension-very-thin; }
-.square-thinner 	{ width: @dimension-thinner; 	height: @dimension-thinner;   }
-.square-thin 		{ width: @dimension-thin; 		height: @dimension-thin;      }
-
-.square-standard 	{ width: @dimension-standard; 	height: @dimension-standard;  }
-
-.square-wide 		{ width: @dimension-wide; 		height: @dimension-wide;      }
-.square-wider 		{ width: @dimension-wider; 		height: @dimension-wider;     }
-.square-very-wide 	{ width: @dimension-very-wide; 	height: @dimension-very-wide; }
-.square-widest 		{ width: @dimension-widest; 	height: @dimension-widest;    }
-
-.square-fat 		{ width: @dimension-fat; 		height: @dimension-fat;       }
-.square-fatter 		{ width: @dimension-fatter; 	height: @dimension-fatter;    }
-.square-very-fat 	{ width: @dimension-very-fat; 	height: @dimension-very-fat;  }
-.square-fattest 	{ width: @dimension-fattest; 	height: @dimension-fattest;   }
-
-.square-obese 		{ width: @dimension-obese; 		height: @dimension-obese;     }
-.square-morbid 		{ width: @dimension-morbid; 	height: @dimension-morbid;    }
-
-//=== SQUARE ==== RESPONSIVE ==========
-//=== TO SM ======
-
-.square-mid-to-sm {
-	#mq-max-width(@screen-sm - 1, {
-		width: @spacing-mid;
-		height: @spacing-mid;
-	});
-}
-
+.square-tiniest 	{ width: @dimension-tiniest; 	height: @dimension-tiniest;}
+.square-tinier 		{ width: @dimension-tinier; 	height: @dimension-tinier;}
+.square-tiny 		{ width: @dimension-tiny; 		height: @dimension-tiny;}
+.square-smallest 	{ width: @dimension-smallest; 	height: @dimension-smallest;}
+.square-smaller 	{ width: @dimension-smaller; 	height: @dimension-smaller;}
+.square-small 		{ width: @dimension-small; 		height: @dimension-small;}
+.square-big 		{ width: @dimension-big; 		height: @dimension-big;}
+.square-bigger 		{ width: @dimension-bigger; 	height: @dimension-bigger;}
+.square-biggest 	{ width: @dimension-biggest; 	height: @dimension-biggest;}
 //=====================================
 //=== TEXT-ALIGN CLASS
 //=====================================
-
 .text-align-center, .text-center, .talign-center {
 	text-align: center;
 }
@@ -2319,41 +2207,37 @@ html {
 // = TEXT-DECORATION CLASS
 //=========================
 
-.text-decoration-overline, 	.overline 		{ text-decoration: overline; }
-.text-decoration-underline, .underline 		{ text-decoration: underline; }
-.text-decoration-none, 		.no-decoration 	{ text-decoration: none; }
+.text-decoration-overline, 	.overline 		{text-decoration: overline;}
+.text-decoration-underline, .underline 		{text-decoration: underline;}
+.text-decoration-none, 		.no-decoration 	{text-decoration: none;}
 
 // HOVER
 .text-decoration-overline-on-hover, .overline-on-hover {
-	#hover-only({
+	#hover({
 		.text-decoration-overline;
 	});
 }
 
 .text-decoration-underline-on-hover, .underline-on-hover {
-	#hover-only({
+	#hover({
 		.text-decoration-underline();
 	});
 }
 
 .text-decoration-none-on-hover, .no-decoration-on-hover {
-	#hover-only({
+	#hover({
 		.text-decoration-none();
 	});
 }
- 
 //=========================
 // = TEXT-OVERFLOW CLASS
 //=========================
-
 .text-ellipsis {
 	#ellipsis();
 }
-
 //=========================
 // = TEXT-TRANSFORM CLASS
 //=========================
-
 .text-transform-capitalize, .text-capital, .text-capitalize {
 	text-transform: capitalize;
 }
@@ -2373,30 +2257,91 @@ html {
 //===========================
 // = TOP, LEFT, RIGHT, BOTTOM AND BUNDLE CLASS
 //===========================
-.fill 				{ #fill(); }
-.fill-minus-1px 	{ #fill(-1px); }
-.fill-minus-5 		{ #fill(-0.5rem); }
+.fill 				{#fill(0);}
+.fill-minus-1px 	{#fill(-1px);}
+.fill-minus-5 		{#fill(-0.5rem);}
 
 //========= TOP =============
-.top-50, .top-half, .top-50p { top: 50%; .DEPRECATED(~''); }
-
-.top 				{ top: 0; }
-.top-pico 			{ top: @spacing-pico; }
-.top-nano 			{ top: @spacing-nano; }
-.top-half-micro 	{ top: @spacing-micro * 0.5; }
-.top-micro 			{ top: @spacing-micro; }
-.top-smallest 		{ top: @spacing-smallest; }
-.top-smaller 		{ top: @spacing-smaller; }
-.top-small 			{ top: @spacing-small; }
-.top-mid 			{ top: @spacing-mid; }
-.top-large 			{ top: @spacing-large; }
-.top-xlarge 		{ top: @spacing-xlarge; }
-.top-1_2 			{ top: 50%; }
+.top 				{top: 0;}
+.top-atto 			{top: @spacing-atto;}
+.top-femto 			{top: @spacing-femto;}
+.top-pico 			{top: @spacing-pico;}
+.top-nano 			{top: @spacing-nano;}
+.top-micro 			{top: @spacing-micro;}
+.top-thinnest 		{top: @spacing-thinnest;}
+.top-thinner 		{top: @spacing-thinner;}
+.top-thin 			{top: @spacing-thin;}
+.top-broad 			{top: @spacing-broad;}
+.top-broader 		{top: @spacing-broader;}
+.top-broadest 		{top: @spacing-broadest;}
+.top-large 			{top: @spacing-large;}
+.top-larger 		{top: @spacing-larger;}
+.top-largest 		{top: @spacing-largest;}
+.top-mega 			{top: @spacing-mega;}
+.top-giga 			{top: @spacing-giga;}
+.top-tera 			{top: @spacing-tera;}
+.top-peta 			{top: @spacing-peta;}
+.top-zetta 			{top: @spacing-zetta;}
+.top-yotta 			{top: @spacing-yotta;}
+//Ratio
+.top-1_2 			{top: 50%;}
+.top-1_3 			{top: 100% / 3;}
+.top-2_3 			{top: 100% / 3 * 2;}
+.top-1_4 			{top: 25%;}
+.top-3_4 			{top: 75%;}
+.top-1_5 			{top: 20%;}
+.top-2_5 			{top: 40%;}
+.top-3_5 			{top: 60%;}
+.top-4_5 			{top: 80%;}
+.top-1_6 			{top: 100% / 6;}
+.top-5_6 			{top: 100% / 6 * 5;}
+.top-1_7 			{top: 100% / 7 * 1;}
+.top-2_7 			{top: 100% / 7 * 2;}
+.top-3_7 			{top: 100% / 7 * 3;}
+.top-4_7 			{top: 100% / 7 * 4;}
+.top-5_7 			{top: 100% / 7 * 5;}
+.top-6_7 			{top: 100% / 7 * 6;}
+.top-full 			{top: 100%;}
 
 //========= TOP MINUS =======
-.top-minus-nano 	{ top: -@spacing-nano; }
-.top-minus-pico 	{ top: -@spacing-pico; }
-.top-minus-micro 	{ top: -@spacing-micro; }
+.top-minus-atto 	{top: -@spacing-atto;}
+.top-minus-femto 	{top: -@spacing-femto;}
+.top-minus-pico 	{top: -@spacing-pico;}
+.top-minus-nano 	{top: -@spacing-nano;}
+.top-minus-micro 	{top: -@spacing-micro;}
+.top-minus-thinnest {top: -@spacing-thinnest;}
+.top-minus-thinner 	{top: -@spacing-thinner;}
+.top-minus-thin 	{top: -@spacing-thin;}
+.top-minus-broad 	{top: -@spacing-broad;}
+.top-minus-broader 	{top: -@spacing-broader;}
+.top-minus-broadest {top: -@spacing-broadest;}
+.top-minus-large 	{top: -@spacing-large;}
+.top-minus-larger 	{top: -@spacing-larger;}
+.top-minus-largest 	{top: -@spacing-largest;}
+.top-minus-mega 	{top: -@spacing-mega;}
+.top-minus-giga 	{top: -@spacing-giga;}
+.top-minus-tera 	{top: -@spacing-tera;}
+.top-minus-peta 	{top: -@spacing-peta;}
+.top-minus-zetta 	{top: -@spacing-zetta;}
+.top-minus-yotta 	{top: -@spacing-yotta;}
+//Ratio
+.top-minus-1_2 		{top: -50%;}
+.top-minus-1_3 		{top: -100% / 3; }
+.top-minus-2_3 		{top: -100% / 3 * 2; }
+.top-minus-1_4 		{top: -25%;}
+.top-minus-3_4 		{top: -75%;}
+.top-minus-1_5 		{top: -20%;}
+.top-minus-2_5 		{top: -40%;}
+.top-minus-3_5 		{top: -60%;}
+.top-minus-4_5 		{top: -80%;}
+.top-minus-1_6 		{top: -100% / 6;}
+.top-minus-5_6 		{top: -100% / 6 * 5;}
+.top-minus-1_7 		{top: -100% / 7;}
+.top-minus-2_7 		{top: -100% / 7 * 2;}
+.top-minus-3_7 		{top: -100% / 7 * 3;}
+.top-minus-4_7 		{top: -100% / 7 * 4;}
+.top-minus-5_7 		{top: -100% / 7 * 5;}
+.top-minus-6_7 		{top: -100% / 7 * 6;}
 
 // FROM SM
 .top-minus-pico-from-sm {
@@ -2406,33 +2351,86 @@ html {
 }
 
 //========= LEFT ============
-.left-quarter 							{ left: 25%; .DEPRECATED(~'');}
-.left-half-width, .left-half, .left-50p { left: 50%; .DEPRECATED(~''); }
-.left-minus-quarter { left: -25%; .DEPRECATED(~''); }
-
-.left 				{ left: 0; }
-.left-half-nano 	{ left: @spacing-nano * .5; }
-.left-nano 			{ left: @spacing-nano; }
-.left-smallest 		{ left: @spacing-smallest; }
-.left-smaller 		{ left: @spacing-smaller; }
-.left-small 		{ left: @spacing-small; }
-.left-mid 			{ left: @spacing-mid; }
-.left-large 		{ left: @spacing-large; }
-.left-larger 		{ left: @spacing-larger; }
-.left-largest 		{ left: @spacing-largest; }
-.left-1_2 			{ left: 50%; }
-.left-1_4 			{ left: 25%; }
-.left-3_4 			{ left: 75%; }
-.left-full 			{ left: 100%; }
+.left 			{left: 0;}
+.left-atto 		{left: @spacing-atto;}
+.left-femto 	{left: @spacing-femto;}
+.left-pico 		{left: @spacing-pico;}
+.left-nano 		{left: @spacing-nano;}
+.left-micro 	{left: @spacing-micro;}
+.left-thinnest 	{left: @spacing-thinnest;}
+.left-thinner 	{left: @spacing-thinner;}
+.left-thin 		{left: @spacing-thin;}
+.left-broad 	{left: @spacing-broad;}
+.left-broader 	{left: @spacing-broader;}
+.left-broadest 	{left: @spacing-broadest;}
+.left-large 	{left: @spacing-large;}
+.left-larger 	{left: @spacing-larger;}
+.left-largest 	{left: @spacing-largest;}
+.left-mega 		{left: @spacing-mega;}
+.left-giga 		{left: @spacing-giga;}
+.left-tera 		{left: @spacing-tera;}
+.left-peta 		{left: @spacing-peta;}
+.left-zetta 	{left: @spacing-zetta;}
+.left-yotta 	{left: @spacing-yotta;}
+//Ratio
+.left-1_2 			{left: 50%;}
+.left-1_3 			{left: 100% / 3;}
+.left-2_3 			{left: 100% / 3 * 2;}
+.left-1_4 			{left: 25%;}
+.left-3_4 			{left: 75%;}
+.left-1_5 			{left: 20%;}
+.left-2_5 			{left: 40%;}
+.left-3_5 			{left: 60%;}
+.left-4_5 			{left: 80%;}
+.left-1_6 			{left: 100% / 6;}
+.left-5_6 			{left: 100% / 6 * 5;}
+.left-1_7 			{left: 100% / 7;}
+.left-2_7 			{left: 100% / 7 * 2;}
+.left-3_7 			{left: 100% / 7 * 3;}
+.left-4_7 			{left: 100% / 7 * 4;}
+.left-5_7 			{left: 100% / 7 * 5;}
+.left-6_7 			{left: 100% / 7 * 6;}
+.left-full 			{left: 100%;}
 
 //========= LEFT MINUS ======
-.left-minus-micro 			{ left: -@spacing-micro;    }
-.left-minus-micro-plus-nano { left: -(@spacing-micro + @spacing-nano); }
-.left-minus-smallest 		{ left: -@spacing-smallest; }
-.left-minus-smaller 		{ left: -@spacing-smaller;  }
-.left-minus-small 			{ left: -@spacing-small;    }
-.left-minus-largest 		{ left: -@spacing-largest;  }
-.left-minus-1_4				{ left: -25%; }
+.left-minus-atto	 	{left: @spacing-atto;}
+.left-minus-femto	 	{left: @spacing-femto;}
+.left-minus-pico	 	{left: @spacing-pico;}
+.left-minus-nano	 	{left: @spacing-nano;}
+.left-minus-micro	 	{left: @spacing-micro;}
+.left-minus-thinnest 	{left: @spacing-thinnest;}
+.left-minus-thinner	 	{left: @spacing-thinner;}
+.left-minus-thin	 	{left: @spacing-thin;}
+.left-minus-broad	 	{left: @spacing-broad;}
+.left-minus-broader	 	{left: @spacing-broader;}
+.left-minus-broadest 	{left: @spacing-broadest;}
+.left-minus-large	 	{left: @spacing-large;}
+.left-minus-larger	 	{left: @spacing-larger;}
+.left-minus-largest	 	{left: @spacing-largest;}
+.left-minus-mega	 	{left: @spacing-mega;}
+.left-minus-giga	 	{left: @spacing-giga;}
+.left-minus-tera	 	{left: @spacing-tera;}
+.left-minus-peta	 	{left: @spacing-peta;}
+.left-minus-zetta	 	{left: @spacing-zetta;}
+.left-minus-yotta	 	{left: @spacing-yotta;}
+//Ratio
+.left-minus-1_2 		{left: -50%;}
+.left-minus-1_3 		{left: -100% / 3;}
+.left-minus-2_3 		{left: -100% / 3 * 2;}
+.left-minus-1_4 		{left: -25%;}
+.left-minus-3_4 		{left: -75%;}
+.left-minus-1_5 		{left: -20%;}
+.left-minus-2_5 		{left: -40%;}
+.left-minus-3_5 		{left: -60%;}
+.left-minus-4_5 		{left: -80%;}
+.left-minus-1_6 		{left: -100% / 6;}
+.left-minus-5_6 		{left: -100% / 6 * 5;}
+.left-minus-1_7 		{left: -100% / 7;}
+.left-minus-2_7 		{left: -100% / 7 * 2;}
+.left-minus-3_7 		{left: -100% / 7 * 3;}
+.left-minus-4_7 		{left: -100% / 7 * 4;}
+.left-minus-5_7 		{left: -100% / 7 * 5;}
+.left-minus-6_7 		{left: -100% / 7 * 6;}
 
 // FROM SM
 .left-minus-micro-from-sm {
@@ -2441,17 +2439,9 @@ html {
 	});
 }
 
-.left-minus-smallest-from-sm {
+.left-minus-thinnest-from-sm {
 	#mq-min-width(@screen-sm, {
-		.left-minus-smallest;
-	});
-}
-
-// FROM MD
-.left-100p-from-md, .left-full-width-from-md {
-	#mq-min-width(@screen-md, {
-		.DEPRECATED(~'');
-		.left-full;
+		.left-minus-thinnest;
 	});
 }
 
@@ -2462,85 +2452,192 @@ html {
 }
 
 //========= RIGHT ===========
-.right-quarter 								{ right:  25%; .DEPRECATED(~''); }
-.right-half, .right-50p, .right-half-width 	{ right:  50%; .DEPRECATED(~''); }
-.right-minus-quarter 						{ right: -25%; .DEPRECATED(~''); }
-
-.right 		{ right: 0;    }
-.right-1_2 	{ right: 50%;  }
-.right-1_4 	{ right: 25%;  }
-.right-3_4 	{ right: 75%;  }
-.right-full { right: 100%; }
+.right 			{right: 0;}
+.right-atto 	{right: @spacing-atto;}
+.right-femto 	{right: @spacing-femto;}
+.right-pico 	{right: @spacing-pico;}
+.right-nano 	{right: @spacing-nano;}
+.right-micro 	{right: @spacing-micro;}
+.right-thinnest {right: @spacing-thinnest;}
+.right-thinner 	{right: @spacing-thinner;}
+.right-thin 	{right: @spacing-thin;}
+.right-broad 	{right: @spacing-broad;}
+.right-broader 	{right: @spacing-broader;}
+.right-broadest {right: @spacing-broadest;}
+.right-large 	{right: @spacing-large;}
+.right-larger 	{right: @spacing-larger;}
+.right-largest 	{right: @spacing-largest;}
+.right-mega 	{right: @spacing-mega;}
+.right-giga 	{right: @spacing-giga;}
+.right-tera 	{right: @spacing-tera;}
+.right-peta 	{right: @spacing-peta;}
+.right-zetta 	{right: @spacing-zetta;}
+.right-yotta 	{right: @spacing-yotta;}
+//Ratio
+.right-1_2 		{right: 50%;}
+.right-1_3 		{right: 100% / 3;}
+.right-2_3 		{right: 100% / 3 * 2;}
+.right-1_4 		{right: 25%;}
+.right-3_4 		{right: 75%;}
+.right-1_5 		{right: 20%;}
+.right-2_5 		{right: 40%;}
+.right-3_5 		{right: 60%;}
+.right-4_5 		{right: 80%;}
+.right-1_6 		{right: 100% / 6;}
+.right-5_6 		{right: 100% / 6 * 5;}
+.right-1_7 		{right: 100% / 7;}
+.right-2_7 		{right: 100% / 7 * 2;}
+.right-3_7 		{right: 100% / 7 * 3;}
+.right-4_7 		{right: 100% / 7 * 4;}
+.right-5_7 		{right: 100% / 7 * 5;}
+.right-6_7 		{right: 100% / 7 * 6;}
+.right-full 	{right: 100%;}
 
 // Right minus
+.right-minus-atto 		{right: -@spacing-atto;}
+.right-minus-femto 		{right: -@spacing-femto;}
+.right-minus-pico 		{right: -@spacing-pico;}
+.right-minus-nano 		{right: -@spacing-nano;}
+.right-minus-micro 		{right: -@spacing-micro;}
+.right-minus-thinnest 	{right: -@spacing-thinnest;}
+.right-minus-thinner 	{right: -@spacing-thinner;}
+.right-minus-thin 		{right: -@spacing-thin;}
+.right-minus-broad 		{right: -@spacing-broad;}
+.right-minus-broader 	{right: -@spacing-broader;}
+.right-minus-broadest 	{right: -@spacing-broadest;}
+.right-minus-large 		{right: -@spacing-large;}
+.right-minus-larger 	{right: -@spacing-larger;}
+.right-minus-largest 	{right: -@spacing-largest;}
+.right-minus-mega 		{right: -@spacing-mega;}
+.right-minus-giga 		{right: -@spacing-giga;}
+.right-minus-tera 		{right: -@spacing-tera;}
+.right-minus-peta 		{right: -@spacing-peta;}
+.right-minus-zetta 		{right: -@spacing-zetta;}
+.right-minus-yotta 		{right: -@spacing-yotta;}
+
 .right-minus-1_2 { right: -50%; }
 .right-minus-1_4 { right: -25%; }
 .right-minus-3_4 { right: -75%; }
 
-
 // FROM SM
-.right-half-from-sm, .right-50p-from-sm, .right-half-width-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.right-half;
-	});
-}
-
 .right-1_2-from-sm {
 	#mq-min-width(@screen-sm, {
 		.right-1_2;
 	});
 }
 
-
 //========= BOTTOM ==========
-.bottom-100p, .bottom-full-width { bottom: 100%; .DEPRECATED(~''); }
-
-.bottom 		{ bottom: 0; }
-.bottom-xlarge 	{ bottom: @spacing-xlarge; }
-.bottom-full 	{ bottom: 100%; }
+.bottom 			{bottom: 0;}
+.bottom-atto 		{bottom: @spacing-atto;}
+.bottom-femto 		{bottom: @spacing-femto;}
+.bottom-pico 		{bottom: @spacing-pico;}
+.bottom-nano 		{bottom: @spacing-nano;}
+.bottom-micro	 	{bottom: @spacing-micro;}
+.bottom-thinnest 	{bottom: @spacing-thinnest;}
+.bottom-thinner 	{bottom: @spacing-thinner;}
+.bottom-thin 		{bottom: @spacing-thin;}
+.bottom-broad 		{bottom: @spacing-broad;}
+.bottom-broader 	{bottom: @spacing-broader;}
+.bottom-broadest 	{bottom: @spacing-broadest;}
+.bottom-large 		{bottom: @spacing-large;}
+.bottom-larger 		{bottom: @spacing-larger;}
+.bottom-largest 	{bottom: @spacing-largest;}
+.bottom-mega 		{bottom: @spacing-mega;}
+.bottom-giga 		{bottom: @spacing-giga;}
+.bottom-tera 		{bottom: @spacing-tera;}
+.bottom-peta 		{bottom: @spacing-peta;}
+.bottom-zetta 		{bottom: @spacing-zetta;}
+.bottom-yotta 		{bottom: @spacing-yotta;}
+.bottom-broadest 	{bottom: @spacing-broadest;}
+///Ratio
+.bottom-1_2 		{bottom:  50%;}
+.bottom-1_3 		{bottom: 100% / 3;}
+.bottom-2_3 		{bottom: 100% / 3 * 2;}
+.bottom-1_4 		{bottom:  25%;}
+.bottom-3_4 		{bottom:  75%;}
+.bottom-1_5 		{bottom:  20%;}
+.bottom-2_5 		{bottom:  40%;}
+.bottom-3_5 		{bottom:  60%;}
+.bottom-4_5 		{bottom:  80%;}
+.bottom-1_6 		{bottom: 100% / 6 * 1;}
+.bottom-5_6 		{bottom: 100% / 6 * 5;}
+.bottom-1_7 		{bottom: 100% / 7 * 1;}
+.bottom-2_7 		{bottom: 100% / 7 * 2;}
+.bottom-3_7 		{bottom: 100% / 7 * 3;}
+.bottom-4_7 		{bottom: 100% / 7 * 4;}
+.bottom-5_7 		{bottom: 100% / 7 * 5;}
+.bottom-6_7 		{bottom: 100% / 7 * 6;}
+.bottom-full 		{bottom: 100%;}
 
 //========= BOTTOM MINUS ====
+.bottom-minus-atto 			{bottom: @spacing-atto;}
+.bottom-minus-femto 		{bottom: @spacing-femto;}
+.bottom-minus-pico 			{bottom: @spacing-pico;}
+.bottom-minus-nano 			{bottom: @spacing-nano;}
+.bottom-minus-micro 		{bottom: @spacing-micro;}
+.bottom-minus-thinnest 		{bottom: @spacing-thinnest;}
+.bottom-minus-thinner 		{bottom: @spacing-thinner;}
+.bottom-minus-thin 			{bottom: @spacing-thin;}
+.bottom-minus-broad 		{bottom: @spacing-broad;}
+.bottom-minus-broader 		{bottom: @spacing-broader;}
+.bottom-minus-broadest 		{bottom: @spacing-broadest;}
+.bottom-minus-large 		{bottom: @spacing-large;}
+.bottom-minus-larger 		{bottom: @spacing-larger;}
+.bottom-minus-largest 		{bottom: @spacing-largest;}
+.bottom-minus-mega 			{bottom: @spacing-mega;}
+.bottom-minus-giga 			{bottom: @spacing-giga;}
+.bottom-minus-tera 			{bottom: @spacing-tera;}
+.bottom-minus-peta 			{bottom: @spacing-peta;}
+.bottom-minus-zetta 		{bottom: @spacing-zetta;}
+.bottom-minus-yotta 		{bottom: @spacing-yotta;}
+//Ratio
+.bottom-minus-1_2 			{bottom:  -50%;}
+.bottom-minus-1_3 			{bottom: -100% / 3;}
+.bottom-minus-2_3 			{bottom: -100% / 3 * 2;}
+.bottom-minus-1_4 			{bottom:  -25%;}
+.bottom-minus-3_4 			{bottom:  -75%;}
+.bottom-minus-1_5 			{bottom:  -20%;}
+.bottom-minus-2_5 			{bottom:  -40%;}
+.bottom-minus-3_5 			{bottom:  -60%;}
+.bottom-minus-4_5 			{bottom:  -80%;}
+.bottom-minus-1_6 			{bottom: -100% / 6;}
+.bottom-minus-5_6 			{bottom: -100% / 6 * 5;}
+.bottom-minus-1_7 			{bottom: -100% / 7;}
+.bottom-minus-2_7 			{bottom: -100% / 7 * 2;}
+.bottom-minus-3_7 			{bottom: -100% / 7 * 3;}
+.bottom-minus-4_7 			{bottom: -100% / 7 * 4;}
+.bottom-minus-5_7 			{bottom: -100% / 7 * 5;}
+.bottom-minus-6_7 			{bottom: -100% / 7 * 6;}
+.bottom-minus-full 			{bottom: -100%;}
 
-.bottom-minus-smaller { bottom: -@spacing-smaller; }
-.bottom-minus-quarter { bottom: -25%; }
 
 //=====================================
 //=== TRANSFORM ON HOVER CLASS
 //=====================================
 
 .translate-left-none-on-hover {
-	#hover-only({
+	#hover({
 		.translate-x-0();
 	});
 }
 
-.translate-left-smallest-on-hover {
-	#hover-only({
-		.translate-x-smallest();
-	});
-}
-
-
 .translate-y-none-on-hover {
-	#hover-only({
+	#hover({
 		.translate-y-none;
 	});
 }
 
 .translate-y-minus-full-on-hover {
-	#hover-only({
+	#hover({
 		.translate-y-minus-full;
 	});
 }
-
 //=====================================
 //=== TRANSFORM-ORIGIN CLASS
 //=====================================
-
-.transform-origin-left-center 	{ #transform-origin(left center); }
-.transform-origin-center-bottom { #transform-origin(center bottom); }
-.transform-origin-center-top 	{ #transform-origin(center top); }
+.transform-origin-left-center 	{#transform-origin(left center);}
+.transform-origin-center-bottom {#transform-origin(center bottom);}
+.transform-origin-center-top 	{#transform-origin(center top);}
 
 //=====================================
 //=== TRANSFORM CLASS
@@ -2556,79 +2653,54 @@ html {
 /**************************************
 * ROTATION
 ***************************************/
-.rotate-90deg, .rotate-vertical {
-	#transform(~'rotateZ(90deg)');
-}
+.rotate-90deg 		{#transform(~'rotate(90deg)');}
+.rotate-180deg 		{#transform(~'rotate(180deg)');}
 
-.rotate-minus-90deg, .rotate-counter-vertical {
-	#transform(~'rotateZ(-90deg)');
-}
+.rotate-minus-15deg {#transform(~'rotate(-15deg)');}
+.rotate-minus-90deg	{#transform(~'rotate(-90deg)');}
 
-.rotate-180deg, .rotation-180deg {
-	#transform(~'rotate(180deg)');
-}
-
-.rotate-minus-15deg {
-	#transform(~'rotate(-15deg)');
-}
 
 /**************************************
 * TRANSLATE X-Y
 ***************************************/
 //Proportional Value Left Top
-.translate-x-minus-half-y-minus-half, .translate-minus-half, .translate-xy-minus-half, .translate-top-left-minus-half {
+.translate-x-minus-1_2-y-minus-1_2, .translate-xy-minus-1_2{
 	#transform(~'translate(-50%, -50%)');
 }
 
 //Proportional Value Right Top
-.translate-x-full-y-minus-quarter, .translate-right-full-top-minus-quarter {
+.translate-x-full-y-minus-1_4 {
 	#transform(~'translateY(-25%) translateX(100%)');
 }
-
 
 /**************************************
 * TRANSLATE X
 ***************************************/
-.translate-left-none, .translate-right-none {
-	.DEPRECATED(~'Use translate-x-none');
-	#transform(~'translateX(0)');
-}
-
-.translate-left-full {
-	.DEPRECATED(~'Use translate-x-minus-full');
-	#transform(~'translateX(-100%)');
-}
-
 //Zero Value
 .translate-x-0, .translate-x-none {
 	#transform(~'translateX(0)');
 }
 
 //Spacing Value
-.translate-x-smallest, .translate-right-smallest {
-	#transform(~'translateX(@{spacing-smallest})');
+.translate-x-thinnest {
+	#transform(~'translateX(@{spacing-thinnest})');
 }
 
-.translate-x-small {
-	#transform(~'translateX(@{spacing-small})');
+.translate-x-thin {
+	#transform(~'translateX(@{spacing-thin})');
 }
 
 //Proportional Value
-.translate-right-full {
-	.DEPRECATED(~'Use translate-x-full');
-	#transform(~'translateX(100%)');
-}
-
-.translate-x-half {
-	#transform(translateX(50%));
+.translate-x-1_2 {
+	#transform(~'translateX(50%)');
 }
 
 .translate-x-full {
 	#transform(~'translateX(100%)');
 }
 
-.translate-x-minus-smallest {
-	#transform(~'translateX(-@{spacing-smallest})');
+.translate-x-minus-thinnest {
+	#transform(~'translateX(-@{spacing-thinnest})');
 }
 
 .translate-x-minus-full {
@@ -2643,16 +2715,16 @@ html {
 	#transform(~'translateY(0)');
 }
 
-.translate-y-nano, .translate-top-nano {
+.translate-y-nano {
 	#transform(~'translateY(@{spacing-nano})');
 }
 
-.translate-y-40p, .translate-top-40-percent {
-	#transform(~'translateY(40%)');
+.translate-y-1_2 {
+	#transform(~'translateY(50%)');
 }
 
-.translate-y-half, .translate-y-1_2 {
-	#transform(~'translateY(50%)');
+.translate-y-1_4 {
+	#transform(~'translateY(25%)');
 }
 
 .translate-y-3_4 {
@@ -2663,22 +2735,12 @@ html {
 	#transform(~'translateY(100%)');
 }
 
-.translate-y-viewport-fourth, .translate-viewport-bottom-fourth {
-	.DEPRECATED(~'Use translate-y-3_4-viewport');
-	#transform(~'translateY(75vh)');
-}
-
 .translate-y-3_4-viewport {
 	#transform(~'translateY(75vh)');
 }
 
 .translate-y-full-viewport {
 	#transform(~'translateY(100vh)');
-}
-
-.translate-y-minus-quarter, .translate-y-minus-quart, .translate-top-minus-quarter, .translate-top-minus-quart {
-	.DEPRECATED(~'Use translate-y-minus-1_4');
-	#transform(~'translateY(-25%)');
 }
 
 .translate-y-minus-1_4 {
@@ -2689,17 +2751,12 @@ html {
 	#transform(~'translateY(-33.33%)');
 }
 
-.translate-y-minus-half, .translate-top-minus-half {
+.translate-y-minus-1_2 {
 	#transform(~'translateY(-50%)');
 }
 
 .translate-y-minus-3_8 {
 	#transform(~'translateY(-100% / 8 * 3)');
-}
-
-.translate-y-minus-90-percent {
-	.DEPRECATED(~'Use translate-y-minus-9_10');
-	#transform(~'translateY(-90%)');
 }
 
 .translate-y-minus-9_10 {
@@ -2721,9 +2778,16 @@ html {
 	#transform(translateZ(1px));
 }
 
+.translate-z-2px {
+	#transform(translateZ(2px));
+}
+
 /**************************************
 * SCALE
 ***************************************/
+.scale-0 {
+	#transform(~'scale(0)');
+}
 
 .scale-50 {
 	#transform(~'scale(0.5)');
@@ -2733,33 +2797,38 @@ html {
 	#transform(~'scale(1)');
 }
 
+.scale-110 {
+	#transform(~'scale(1.1)');
+}
+
 .scale-120 {
 	#transform(~'scale(1.2)');
 }
 
-.scale-y-half{
-	#transform(~'scaleY(0.5)');
+.scale-200 {
+	#transform(~'scale(2)');
 }
 
-.scale-x-half {
+.scale-x-50 {
 	#transform(~'scaleX(0.5)');
 }
 
-.scale-x-double {
+.scale-x-200 {
 	#transform(~'scaleX(2)');
 }
 
+.scale-y-50{
+	#transform(~'scaleY(0.5)');
+}
+
+.scale-y-200{
+	#transform(~'scaleY(2)');
+}
 
 // FROM XS
 .translate-x-half-from-xs {
 	#mq-min-width(@screen-xs, {
 		#transform(translateX(50%));
-	});
-}
-
-.translate-y-minus-quarter-from-xs, .translate-y-minus-quart-from-xs, .translate-top-minus-quarter-from-xs, .translate-top-minus-quarter-from-xs {
-	#mq-min-width(@screen-xs, {
-		.translate-top-minus-quart;
 	});
 }
 
@@ -2773,13 +2842,6 @@ html {
 .translate-x-minus-full-from-sm {
 	#mq-min-width(@screen-sm, {
 		#transform(~'translateX(-100%)');
-	});
-}
-
-
-.translate-y-minus-half-from-sm, .translate-top-minus-half-from-sm {
-	#mq-min-width(@screen-sm, {
-		.translate-top-minus-half;
 	});
 }
 
@@ -2811,89 +2873,151 @@ html {
 //=====================================
 //=== TRANSITION CLASS
 //=====================================
-//DEPRECATED
-.transition-color-short-ease {
-	.DEPRECATED(~'Use multiples classes to recreat the behavior');
-	#transition(~'color @{duration-short} @{ease}');
-}
 
-.transition-opacity-short-ease {
-	.DEPRECATED(~'Use multiples classes to recreat the behavior');
-	#transition(opacity @duration-short @ease);
-}
-
-// GOOD CLASSES
 // PROPERTIES
-.transition-bg-color 				{ #transition-property 		(~'background-color'); }
-.transition-bg-color-opacity 		{ #transition-property 		(~'background-color, opacity'); }
-.transition-bottom 					{ #transition-property 		(~'bottom'); }
-.transition-border-color 			{ #transition-property 		(~'border-color'); }
-.transition-color 					{ #transition-property 		(~'color'); }
-.transition-color-border-color 		{ #transition-property 		(~'border-color'); }
-.transition-color-opacity 			{ #transition-property 		(~'color, opacity'); }
-.transition-color-visibility 		{ #transition-property 		(~'color, visibility'); }
-.transition-height 					{ #transition-property 		(~'height'); }
-.transition-height-visibility 		{ #transition-property 		(~'height, visibility'); }
-.transition-left 					{ #transition-property 		(~'left'); }
-.transition-max-height 				{ #transition-property 		(~'max-height'); }
-.transition-max-height-opacity 		{ #transition-property 		(~'max-height, opacity'); }
-.transition-max-height-visibility 	{ #transition-property 		(~'max-height, visibility'); }
-.transition-max-width 				{ #transition-property 		(~'max-width'); }
-.transition-max-width-opacity 		{ #transition-property 		(~'max-width, opacity'); }
-.transition-max-width-visibility 	{ #transition-property 		(~'max-width, visibility'); }
-.transition-opacity 				{ #transition-property 		(~'opacity'); }
-.transition-opacity-visibility 		{ #transition-property 		(~'opacity, visibility'); }
-.transition-right 					{ #transition-property 		(~'right'); }
-.transition-top 					{ #transition-property 		(~'top'); }
-.transition-transform 				{ #cb-transition-property 	(~'transform'); }
-.transition-transform-font 			{ #cb-transition-property 	(~'transform, font'); }
-.transition-transform-opacity 		{ #cb-transition-property 	(~'transform, opacity'); }
-.transition-width 					{ #transition-property 		(~'width'); }
-.transition-visibility 				{ #transition-property 		(~'visibility'); }
-.transition-visibility-opacity 		{ #transition-property 		(~'visibility'); }
+.transition-bg-color 				{#transition-property 		(~'background-color');}
+.transition-bg-color-color 			{#transition-property 		(~'background-color, color');}
+.transition-bg-color-opacity 		{#transition-property 		(~'background-color, opacity');}
+.transition-bg-color-visibility 	{#transition-property 		(~'background-color, visiblity');}
+.transition-bottom 					{#transition-property 		(~'bottom');}
+.transition-border-color 			{#transition-property 		(~'border-color');}
+.transition-color 					{#transition-property 		(~'color');}
+.transition-color-border-color 		{#transition-property 		(~'color, border-color');}
+.transition-color-opacity 			{#transition-property 		(~'color, opacity');}
+.transition-color-visibility 		{#transition-property 		(~'color, visibility');}
+.transition-height 					{#transition-property 		(~'height');}
+.transition-height-visibility 		{#transition-property 		(~'height, visibility');}
+.transition-left 					{#transition-property 		(~'left');}
+.transition-max-height 				{#transition-property 		(~'max-height');}
+.transition-max-height-opacity 		{#transition-property 		(~'max-height, opacity');}
+.transition-max-height-visibility 	{#transition-property 		(~'max-height, visibility');}
+.transition-max-width 				{#transition-property 		(~'max-width');}
+.transition-max-width-opacity 		{#transition-property 		(~'max-width, opacity');}
+.transition-max-width-visibility 	{#transition-property 		(~'max-width, visibility');}
+.transition-opacity 				{#transition-property 		(~'opacity');}
+.transition-opacity-visibility 		{#transition-property 		(~'opacity, visibility');}
+.transition-right 					{#transition-property 		(~'right');}
+.transition-top 					{#transition-property 		(~'top');}
+.transition-transform 				{#cb-transition-property 	(~'transform');}
+.transition-transform-font 			{#cb-transition-property 	(~'transform, font');}
+.transition-transform-opacity 		{#cb-transition-property 	(~'transform, opacity');}
+.transition-transform-visibility 	{#cb-transition-property 	(~'transform, visibility');}
+.transition-width 					{#transition-property 		(~'width');}
+.transition-visibility 				{#transition-property 		(~'visibility');}
+.transition-flex 					{#transition-property 		(~'flex');}
+.transition-flex-grow 				{#transition-property 		(~'flex-grow');}
+.transition-flex-shrink 			{#transition-property 		(~'flex-shrink');}
+.transition-flex-basis 				{#transition-property 		(~'flex-basis');}
 
 // DURATIONS
-.transition-duration-0 				{ #transition-duration 		(0); }
-.transition-duration-shortest 		{ #transition-duration 		(@duration-shortest); }
-.transition-duration-shorter 		{ #transition-duration 		(@duration-shorter); }
-.transition-duration-short 			{ #transition-duration 		(@duration-short); }
-.transition-duration 				{ #transition-duration 		(@duration); }
-.transition-duration-long 			{ #transition-duration 		(@duration-long); }
-.transition-duration-longer 		{ #transition-duration 		(@duration-longer); }
-.transition-duration-longest 		{ #transition-duration 		(@duration-longest); }
-.transition-duration-mega 			{ #transition-duration 		(@duration-mega); }
-.transition-duration-huge 			{ #transition-duration 		(@duration-huge); }
+.transition-duration-0,
+.transition-duration-none 			{#transition-duration 		(0ms);}
+.transition-duration-fastest 		{#transition-duration 		(@duration-fastest);}
+.transition-duration-faster 		{#transition-duration 		(@duration-faster);}
+.transition-duration-fast 			{#transition-duration 		(@duration-fast);}
+.transition-duration-medium 		{#transition-duration 		(@duration-medium);}
+.transition-duration-slow 			{#transition-duration 		(@duration-slow);}
+.transition-duration-slower 		{#transition-duration 		(@duration-slower);}
+.transition-duration-slowest 		{#transition-duration 		(@duration-slowest);}
+
+// DURATIONS ON HOVER
+.transition-duration-0-on-hover,
+.transition-duration-none-on-hover 		{#hover({#transition-duration 	(0ms)});}
+.transition-duration-fastest-on-hover 	{#hover({#transition-duration 	(@duration-fastest)});}
+.transition-duration-faster-on-hover 	{#hover({#transition-duration 	(@duration-faster)});}
+.transition-duration-fast-on-hover 		{#hover({#transition-duration 	(@duration-fast)});}
+.transition-duration-medium-on-hover 	{#hover({#transition-duration 	(@duration-medium)});}
+.transition-duration-slow-on-hover 		{#hover({#transition-duration 	(@duration-slow)});}
+.transition-duration-slower-on-hover 	{#hover({#transition-duration 	(@duration-slower)});}
+.transition-duration-slowest-on-hover 	{#hover({#transition-duration 	(@duration-slowest)});}
 
 // DELAY
-.transition-delay-shortest 			{ #transition-delay 		(@duration-shortest); }
-.transition-delay-shorter 			{ #transition-delay 		(@duration-shorter); }
-.transition-delay-short 			{ #transition-delay 		(@duration-short); }
-.transition-delay 					{ #transition-delay 		(@duration); }
-.transition-delay-long 				{ #transition-delay 		(@duration-long); }
-.transition-delay-longer 			{ #transition-delay 		(@duration-longer); }
-.transition-delay-longest 			{ #transition-delay 		(@duration-longest); }
-.transition-delay-mega 				{ #transition-delay 		(@duration-mega); }
-.transition-delay-huge 				{ #transition-delay 		(@duration-huge); }
+.transition-delay-0, 
+.transition-delay-none 				{#transition-delay 		(0ms);}
+.transition-delay-fastest 			{#transition-delay 		(@duration-fastest);}
+.transition-delay-faster 			{#transition-delay 		(@duration-faster);}
+.transition-delay-fast 				{#transition-delay 		(@duration-fast);}
+.transition-delay-medium 			{#transition-delay 		(@duration-medium);}
+.transition-delay-slow 				{#transition-delay 		(@duration-slow);}
+.transition-delay-slower 			{#transition-delay 		(@duration-slower);}
+.transition-delay-slowest 			{#transition-delay 		(@duration-slowest);}
+
+// DELAY ON HOVER
+.transition-delay-none-on-hover, 
+.transition-delay-0-on-hover	    {#hover({#transition-delay (0ms)});}
+.transition-delay-fastest-on-hover	{#hover({#transition-delay (@duration-fastest)});}
+.transition-delay-faster-on-hover	{#hover({#transition-delay (@duration-faster)});}
+.transition-delay-fast-on-hover		{#hover({#transition-delay (@duration-fast)});}
+.transition-delay-medium-on-hover	{#hover({#transition-delay (@duration-medium)});}
+.transition-delay-slow-on-hover		{#hover({#transition-delay (@duration-slow)});}
+.transition-delay-slower-on-hover	{#hover({#transition-delay (@duration-slower)});}
+.transition-delay-slowest-on-hover	{#hover({#transition-delay (@duration-slowest)});}
 
 // EASING
-.transition-ease 			{ transition-timing-function: @ease; }
-.transition-ease-linear { 
-	-webkit-transition-timing-function: linear; /* Safari and Chrome */
-	transition-timing-function: linear;
-}
+.transition-ease-standard           {#transition-ease(@ease-standard)};
+.transition-ease-standard-in        {#transition-ease(@ease-standard-in)};
+.transition-ease-standard-out       {#transition-ease(@ease-standard-out)};
+.transition-ease-alternate          {#transition-ease(@ease-alternate)};
 
-.transition-ease-in 			{ transition-timing-function: @ease-in; }
-.transition-ease-out 			{ transition-timing-function: @ease-out; }
-.transition-ease-in-out 		{ transition-timing-function: @ease-in-out; }
-.transition-ease-quart-in-out 	{ transition-timing-function: @ease-quart-in-out; }
-.transition-ease-quad-in-out 	{ transition-timing-function: @ease-quad-in-out; }
-.transition-ease-quad-out 		{ transition-timing-function: @ease-quad-out; }
-.transition-ease-quint-out 		{ transition-timing-function: @ease-quint-out; }
-.transition-ease-circ-in-out 	{ transition-timing-function: @ease-circ-in-out; }
-.transition-ease-circ-out 		{ transition-timing-function: @ease-circ-out; }
-.transition-ease-circ-in 		{ transition-timing-function: @ease-circ-in; }
-.transition-ease-expo-in 		{ transition-timing-function: @ease-expo-in; }
-.transition-ease-back-in 		{ transition-timing-function: @ease-back-in; }
+.transition-ease-linear             {#transition-ease(@ease-linear)};
+.transition-ease-in                 {#transition-ease(@ease-in)};
+.transition-ease-out                {#transition-ease(@ease-out)};
+.transition-ease-in-out             {#transition-ease(@ease-in-out)};
+.transition-ease-in-sine            {#transition-ease(@ease-in-sine)};
+.transition-ease-out-sine           {#transition-ease(@ease-out-sine)};
+.transition-ease-in-out-sine        {#transition-ease(@ease-in-out-sine)};
+.transition-ease-in-quad            {#transition-ease(@ease-in-quad)};
+.transition-ease-out-quad           {#transition-ease(@ease-out-quad)};
+.transition-ease-in-out-quad        {#transition-ease(@ease-in-out-quad)};
+.transition-ease-in-cubic           {#transition-ease(@ease-in-cubic)};
+.transition-ease-out-cubic          {#transition-ease(@ease-out-cubic)};
+.transition-ease-in-out-cubic       {#transition-ease(@ease-in-out-cubic)};
+.transition-ease-in-quart           {#transition-ease(@ease-in-quart)};
+.transition-ease-out-quart          {#transition-ease(@ease-out-quart)};
+.transition-ease-in-out-quart       {#transition-ease(@ease-in-out-quart)};
+.transition-ease-in-quint           {#transition-ease(@ease-in-quint)};
+.transition-ease-out-quint          {#transition-ease(@ease-out-quint)};
+.transition-ease-in-expo            {#transition-ease(@ease-in-expo)};
+.transition-ease-out-expo           {#transition-ease(@ease-out-expo)};
+.transition-ease-in-out-expo        {#transition-ease(@ease-in-out-expo)};
+.transition-ease-in-circ            {#transition-ease(@ease-in-circ)};
+.transition-ease-out-circ           {#transition-ease(@ease-out-circ)};
+.transition-ease-in-out-circ        {#transition-ease(@ease-in-out-circ)};
+.transition-ease-in-back            {#transition-ease(@ease-in-back)};
+.transition-ease-out-back           {#transition-ease(@ease-out-back)};
+.transition-ease-in-out-back        {#transition-ease(@ease-in-out-back)};
+.transition-ease-back-in            {#transition-ease(@ease-back-in)};
+.transition-ease-bounce-light       {#transition-ease(@ease-bounce-light)};
+
+.transition-ease-linear-on-hover             {#hover({#transition-ease(@ease-linear)});}
+.transition-ease-in-on-hover                 {#hover({#transition-ease(@ease-in)});}
+.transition-ease-out-on-hover                {#hover({#transition-ease(@ease-out)});}
+.transition-ease-in-out-on-hover             {#hover({#transition-ease(@ease-in-out)});}
+.transition-ease-in-sine-on-hover            {#hover({#transition-ease(@ease-in-sine)});}
+.transition-ease-out-sine-on-hover           {#hover({#transition-ease(@ease-out-sine)});}
+.transition-ease-in-out-sine-on-hover        {#hover({#transition-ease(@ease-in-out-sine)});}
+.transition-ease-in-quad-on-hover            {#hover({#transition-ease(@ease-in-quad)});}
+.transition-ease-out-quad-on-hover           {#hover({#transition-ease(@ease-out-quad)});}
+.transition-ease-in-out-quad-on-hover        {#hover({#transition-ease(@ease-in-out-quad)});}
+.transition-ease-in-cubic-on-hover           {#hover({#transition-ease(@ease-in-cubic)});}
+.transition-ease-out-cubic-on-hover          {#hover({#transition-ease(@ease-out-cubic)});}
+.transition-ease-in-out-cubic-on-hover       {#hover({#transition-ease(@ease-in-out-cubic)});}
+.transition-ease-in-quart-on-hover           {#hover({#transition-ease(@ease-in-quart)});}
+.transition-ease-out-quart-on-hover          {#hover({#transition-ease(@ease-out-quart)});}
+.transition-ease-in-out-quart-on-hover       {#hover({#transition-ease(@ease-in-out-quart)});}
+.transition-ease-in-quint-on-hover           {#hover({#transition-ease(@ease-in-quint)});}
+.transition-ease-out-quint-on-hover          {#hover({#transition-ease(@ease-out-quint)});}
+.transition-ease-in-expo-on-hover            {#hover({#transition-ease(@ease-in-expo)});}
+.transition-ease-out-expo-on-hover           {#hover({#transition-ease(@ease-out-expo)});}
+.transition-ease-in-out-expo-on-hover        {#hover({#transition-ease(@ease-in-out-expo)});}
+.transition-ease-in-circ-on-hover            {#hover({#transition-ease(@ease-in-circ)});}
+.transition-ease-out-circ-on-hover           {#hover({#transition-ease(@ease-out-circ)});}
+.transition-ease-in-out-circ-on-hover        {#hover({#transition-ease(@ease-in-out-circ)});}
+.transition-ease-in-back-on-hover            {#hover({#transition-ease(@ease-in-back)});}
+.transition-ease-out-back-on-hover           {#hover({#transition-ease(@ease-out-back)});}
+.transition-ease-in-out-back-on-hover        {#hover({#transition-ease(@ease-in-out-back)});}
+.transition-ease-back-in-on-hover            {#hover({#transition-ease(@ease-back-in)});}
+.transition-ease-bounce-light-on-hover       {#hover({#transition-ease(@ease-bounce-light)});}
 
 .noanim {
 	&, & * {
@@ -2901,296 +3025,207 @@ html {
 	}
 }
 
-.transition-none 			{ #transition(none); }
-.transition-none-important 	{ #transition(none) !important; }
-
+.transition-none 			{#transition(none);}
+.transition-none-important 	{#transition(none) !important;}
 //=========================
 // = VERTICAL-ALIGN CLASS
 //=========================
-
-.vertical-align-top, 	.valign-top 	{ vertical-align: top;    }
-.vertical-align-bottom, .valign-bottom 	{ vertical-align: bottom; }
-.vertical-align-middle, .valign-middle 	{ vertical-align: middle; }
-
+.vertical-align-baseline, 	.valign-baseline 	{vertical-align: baseline;}
+.vertical-align-sub, 		.valign-sub 		{vertical-align: sub;}
+.vertical-align-super, 		.valign-super 		{vertical-align: super;}
+.vertical-align-top, 		.valign-top 		{vertical-align: top;}
+.vertical-align-text-top, 	.valign-text-top 	{vertical-align: text-top;}
+.vertical-align-middle, 	.valign-middle 		{vertical-align: middle;}
+.vertical-align-bottom, 	.valign-bottom 		{vertical-align: bottom;}
+.vertical-align-text-bottom,.valign-text-bottom {vertical-align: text-bottom;}
 //=========================
 // = VISIBILITY CLASS
 //=========================
-
 #generate-visibility-classes (@suffix: ~'') {
-	.visibility-collapse@{suffix}, 	.collapse@{suffix} 		{ visibility: collapse; }
-	.visibility-hidden@{suffix}, 	.not-visible@{suffix} 	{ visibility: hidden;   }
-	.visibility-visible@{suffix}, 	.visible@{suffix} 		{ visibility: visible;  }
+	.visibility-collapse@{suffix}, 	.collapse@{suffix} 		{visibility: collapse;}
+	.visibility-hidden@{suffix}, 	.not-visible@{suffix} 	{visibility: hidden;}
+	.visibility-visible@{suffix}, 	.visible@{suffix} 		{visibility: visible;}
 }
-
 //=========================
 // = WHITE-SPACE CLASS
 //=========================
-
-.white-space-nowrap, .text-nowrap 	{ white-space: nowrap; }
-.white-space-normal 				{ white-space: normal; }
-
+.white-space-normal 				{white-space: normal;}
+.white-space-nowrap, .text-nowrap 	{white-space: nowrap;}
+.white-space-pre 					{white-space: pre;}
+.white-space-pre-line 				{white-space: pre-line;}
+.white-space-pre-wrap 				{white-space: pre-wrap;}
 //=========================
 // = WIDTH CLASS
 //=========================
-// DEPRECATED
-.width-2_4 				{ .DEPRECATED(~'Use width-1_2'); }
-.with-third 			{ .DEPRECATED(~'Use width-1_3'); }
-.width-quarter 			{ width: 25%; .DEPRECATED(~''); }
-.width-30-percent 		{ width: 30%; .DEPRECATED(~''); }
-.width-40-percent 		{ width: 40%; .DEPRECATED(~''); }
-.half-width 			{ width: 50%; .DEPRECATED(~'Use width-half'); }
-.width-60-percent 		{ width: 60%; .DEPRECATED(~'Use width-3_5'); }
-.width-70-percent 		{ width: 70%; .DEPRECATED(~''); }
-.width-three-quarter 	{ width: 75%; .DEPRECATED(~'Use width-3_4'); }
-.full-width 			{ width: 100%; .DEPRECATED(~'Use width-full'); }
-.full-viewport-width 	{ width: 100vw; .DEPRECATED(~'Use width-full-viewport'); }
-
 #generate-width-classes (@suffix: ~'') {
 	//-------------------------------------------
-	// USEFULL WIDTH 
+	// USEFULL
 	//-------------------------------------------
 	#generate-all-width-class(@suffix, ~'auto',				 ~'auto');
 	#generate-all-width-class(@suffix, ~'auto-important',	 ~'auto !important');
+	#generate-all-width-class(@suffix, ~'initial',			 ~'initial');
 	#generate-all-width-class(@suffix, ~'0', 				 ~'0');
 	#generate-all-width-class(@suffix, ~'0-important',		 ~'0 !important');
 
 	//-------------------------------------------
-	// SPACING WIDTH 
+	// SPACING
 	//-------------------------------------------
-	#generate-all-width-class(@suffix, ~'micro', 		 @spacing-micro    );
-	#generate-all-width-class(@suffix, ~'smallest', 	 @spacing-smallest );
-	#generate-all-width-class(@suffix, ~'smaller', 		 @spacing-smaller  );
-	#generate-all-width-class(@suffix, ~'small', 		 @spacing-small    );
-	#generate-all-width-class(@suffix, ~'mid', 			 @spacing-mid      );
-	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large    );
-	#generate-all-width-class(@suffix, ~'larger', 		 @spacing-larger   );
-	#generate-all-width-class(@suffix, ~'largest', 		 @spacing-largest  );
-	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large    );
-	#generate-all-width-class(@suffix, ~'xlarge', 		 @spacing-xlarge   );
-	#generate-all-width-class(@suffix, ~'huge', 		 @spacing-huge     );
-	#generate-all-width-class(@suffix, ~'giga', 		 @spacing-giga     );
-
+	#generate-all-width-class(@suffix, ~'atto', 		 @spacing-atto);
+	#generate-all-width-class(@suffix, ~'femto', 		 @spacing-femto);
+	#generate-all-width-class(@suffix, ~'pico', 		 @spacing-pico);
+	#generate-all-width-class(@suffix, ~'nano', 		 @spacing-nano);
+	#generate-all-width-class(@suffix, ~'micro', 		 @spacing-micro);
+	#generate-all-width-class(@suffix, ~'thinnest', 	 @spacing-thinnest);
+	#generate-all-width-class(@suffix, ~'thinner', 		 @spacing-thinner);
+	#generate-all-width-class(@suffix, ~'thin', 		 @spacing-thin);
+	#generate-all-width-class(@suffix, ~'broad', 		 @spacing-broad);
+	#generate-all-width-class(@suffix, ~'broader', 		 @spacing-broader);
+	#generate-all-width-class(@suffix, ~'broadest', 	 @spacing-broadest);
+	#generate-all-width-class(@suffix, ~'large', 		 @spacing-large);
+	#generate-all-width-class(@suffix, ~'larger', 		 @spacing-larger);
+	#generate-all-width-class(@suffix, ~'largest', 		 @spacing-largest);
+	#generate-all-width-class(@suffix, ~'mega', 		 @spacing-mega);
+	#generate-all-width-class(@suffix, ~'giga', 		 @spacing-giga);
+	#generate-all-width-class(@suffix, ~'tera', 		 @spacing-tera);
+	#generate-all-width-class(@suffix, ~'peta', 		 @spacing-peta);
+	#generate-all-width-class(@suffix, ~'zetta', 		 @spacing-zetta);
+	#generate-all-width-class(@suffix, ~'yotta', 		 @spacing-yotta);
+	//Double
+	#generate-all-width-class(@suffix, ~'atto-double', 		 @spacing-atto * 2);
+	#generate-all-width-class(@suffix, ~'femto-double', 	 @spacing-femto * 2);
+	#generate-all-width-class(@suffix, ~'pico-double', 		 @spacing-pico * 2);
+	#generate-all-width-class(@suffix, ~'nano-double', 		 @spacing-nano * 2);
+	#generate-all-width-class(@suffix, ~'micro-double', 	 @spacing-micro * 2);
+	#generate-all-width-class(@suffix, ~'thinnest-double', 	 @spacing-thinnest * 2);
+	#generate-all-width-class(@suffix, ~'thinner-double', 	 @spacing-thinner * 2);
+	#generate-all-width-class(@suffix, ~'thin-double', 		 @spacing-thin * 2);
+	#generate-all-width-class(@suffix, ~'broad-double', 	 @spacing-broad * 2);
+	#generate-all-width-class(@suffix, ~'broader-double', 	 @spacing-broader * 2);
+	#generate-all-width-class(@suffix, ~'broadest-double', 	 @spacing-broadest * 2);
+	#generate-all-width-class(@suffix, ~'large-double', 	 @spacing-large * 2);
+	#generate-all-width-class(@suffix, ~'larger-double', 	 @spacing-larger * 2);
+	#generate-all-width-class(@suffix, ~'largest-double', 	 @spacing-largest * 2);
+	#generate-all-width-class(@suffix, ~'mega-double', 		 @spacing-mega * 2);
+	#generate-all-width-class(@suffix, ~'giga-double', 		 @spacing-giga * 2);
+	#generate-all-width-class(@suffix, ~'tera-double', 		 @spacing-tera * 2);
+	#generate-all-width-class(@suffix, ~'peta-double', 		 @spacing-peta * 2);
+	#generate-all-width-class(@suffix, ~'zetta-double', 	 @spacing-zetta * 2);
+	#generate-all-width-class(@suffix, ~'yotta-double', 	 @spacing-yotta * 2);
+	//Triple
+	#generate-all-width-class(@suffix, ~'atto-triple', 		 @spacing-atto * 3);
+	#generate-all-width-class(@suffix, ~'femto-triple', 	 @spacing-femto * 3);
+	#generate-all-width-class(@suffix, ~'pico-triple', 		 @spacing-pico * 3);
+	#generate-all-width-class(@suffix, ~'nano-triple', 		 @spacing-nano * 3);
+	#generate-all-width-class(@suffix, ~'micro-triple', 	 @spacing-micro * 3);
+	#generate-all-width-class(@suffix, ~'thinnest-triple', 	 @spacing-thinnest * 3);
+	#generate-all-width-class(@suffix, ~'thinner-triple', 	 @spacing-thinner * 3);
+	#generate-all-width-class(@suffix, ~'thin-triple', 		 @spacing-thin * 3);
+	#generate-all-width-class(@suffix, ~'broad-triple', 	 @spacing-broad * 3);
+	#generate-all-width-class(@suffix, ~'broader-triple', 	 @spacing-broader * 3);
+	#generate-all-width-class(@suffix, ~'broadest-triple', 	 @spacing-broadest * 3);
+	#generate-all-width-class(@suffix, ~'large-triple', 	 @spacing-large * 3);
+	#generate-all-width-class(@suffix, ~'larger-triple', 	 @spacing-larger * 3);
+	#generate-all-width-class(@suffix, ~'largest-triple', 	 @spacing-largest * 3);
+	#generate-all-width-class(@suffix, ~'mega-triple', 		 @spacing-mega * 3);
+	#generate-all-width-class(@suffix, ~'giga-triple', 		 @spacing-giga * 3);
+	#generate-all-width-class(@suffix, ~'tera-triple', 		 @spacing-tera * 3);
+	#generate-all-width-class(@suffix, ~'peta-triple', 		 @spacing-peta * 3);
+	#generate-all-width-class(@suffix, ~'zetta-triple', 	 @spacing-zetta * 3);
+	#generate-all-width-class(@suffix, ~'yotta-triple', 	 @spacing-yotta * 3);
 	//-------------------------------------------
-	// DIMENSION WIDTH 
+	// DIMENSION 
 	//-------------------------------------------
-	#generate-all-width-class(@suffix, ~'skelettic', 	 @dimension-skelettic );
-
-	#generate-all-width-class(@suffix, ~'tiniest', 		 @dimension-tiniest   );
-	#generate-all-width-class(@suffix, ~'very-tiny', 	 @dimension-very-tiny );
-	#generate-all-width-class(@suffix, ~'tinier', 		 @dimension-tinier    );
-	#generate-all-width-class(@suffix, ~'tiny', 		 @dimension-tiny      );
-
-	#generate-all-width-class(@suffix, ~'thinnest', 	 @dimension-thinnest  );
-	#generate-all-width-class(@suffix, ~'very-thin', 	 @dimension-very-thin );
-	#generate-all-width-class(@suffix, ~'thinner', 		 @dimension-thinner   );
-	#generate-all-width-class(@suffix, ~'thin', 		 @dimension-thin      );
-
-	#generate-all-width-class(@suffix, ~'standard', 	 @dimension-standard  );
-
-	#generate-all-width-class(@suffix, ~'wide', 		 @dimension-wide      );
-	#generate-all-width-class(@suffix, ~'wider', 		 @dimension-wider     );
-	#generate-all-width-class(@suffix, ~'very-wide', 	 @dimension-very-wide );
-	#generate-all-width-class(@suffix, ~'widest', 		 @dimension-widest    );
-
-	#generate-all-width-class(@suffix, ~'fat', 			 @dimension-fat       );
-	#generate-all-width-class(@suffix, ~'fatter', 		 @dimension-fatter    );
-	#generate-all-width-class(@suffix, ~'very-fat', 	 @dimension-very-fat  );
-	#generate-all-width-class(@suffix, ~'fattest', 		 @dimension-fattest   );
-
-	#generate-all-width-class(@suffix, ~'obese', 		 @dimension-obese     );
-	#generate-all-width-class(@suffix, ~'morbid', 		 @dimension-morbid    );
-
+	#generate-all-width-class(@suffix, ~'tiniest', 	 @dimension-tiniest);
+	#generate-all-width-class(@suffix, ~'tinier', 	 @dimension-tinier);
+	#generate-all-width-class(@suffix, ~'tiny', 	 @dimension-tiny);
+	#generate-all-width-class(@suffix, ~'smallest',  @dimension-smallest);
+	#generate-all-width-class(@suffix, ~'smaller', 	 @dimension-smaller);
+	#generate-all-width-class(@suffix, ~'small', 	 @dimension-small);
+	#generate-all-width-class(@suffix, ~'big', 		 @dimension-big);
+	#generate-all-width-class(@suffix, ~'bigger', 	 @dimension-bigger);
+	#generate-all-width-class(@suffix, ~'biggest', 	 @dimension-biggest);
 	//-------------------------------------------
-	// SCREEN WIDTH
+	// SCREEN
 	//-------------------------------------------
-	#generate-all-width-class(@suffix, ~'ip', @dimension-ip );
-	#generate-all-width-class(@suffix, ~'ph', @dimension-ph );
-	#generate-all-width-class(@suffix, ~'xs', @dimension-xs );
-	#generate-all-width-class(@suffix, ~'sm', @dimension-sm );
-	#generate-all-width-class(@suffix, ~'md', @dimension-md );
-	#generate-all-width-class(@suffix, ~'lg', @dimension-lg );
-	#generate-all-width-class(@suffix, ~'xl', @dimension-xl );
-	#generate-all-width-class(@suffix, ~'hd', @dimension-hd );
-	#generate-all-width-class(@suffix, ~'2k', @dimension-2k );
-	#generate-all-width-class(@suffix, ~'4k', @dimension-4k );
-
+	#generate-all-width-class(@suffix, ~'ip', @screen-ip);
+	#generate-all-width-class(@suffix, ~'ph', @screen-ph);
+	#generate-all-width-class(@suffix, ~'xs', @screen-xs);
+	#generate-all-width-class(@suffix, ~'sm', @screen-sm);
+	#generate-all-width-class(@suffix, ~'md', @screen-md);
+	#generate-all-width-class(@suffix, ~'lg', @screen-lg);
+	#generate-all-width-class(@suffix, ~'xl', @screen-xl);
+	#generate-all-width-class(@suffix, ~'hd', @screen-hd);
+	#generate-all-width-class(@suffix, ~'2k', @screen-2k);
+	#generate-all-width-class(@suffix, ~'4k', @screen-4k);
 	//------------------------------
-	//	WIDTHS COLS
+	//	PROPORTIONAL
 	//-------------------------------
+	#generate-all-width-class(@suffix, ~'1_2', 	 50%);
+	#generate-all-width-class(@suffix, ~'1_3',  100% / 3);
+	#generate-all-width-class(@suffix, ~'2_3',  100% / 3 * 2);
+	#generate-all-width-class(@suffix, ~'1_4',  100% / 4);
+	#generate-all-width-class(@suffix, ~'3_4',  100% / 4 * 3);
+	#generate-all-width-class(@suffix, ~'1_5',  100% / 5);
+	#generate-all-width-class(@suffix, ~'2_5',  100% / 5 * 2);
+	#generate-all-width-class(@suffix, ~'3_5',  100% / 5 * 3);
+	#generate-all-width-class(@suffix, ~'4_5',  100% / 5 * 4);
+	#generate-all-width-class(@suffix, ~'1_6',  100% / 6);
+	#generate-all-width-class(@suffix, ~'5_6',  100% / 6 * 5);
+	#generate-all-width-class(@suffix, ~'1_12', 100% / 12);
+	#generate-all-width-class(@suffix, ~'5_12', 100% / 12 *  5);
+	#generate-all-width-class(@suffix, ~'7_12', 100% / 12 *  7);
+	#generate-all-width-class(@suffix, ~'11_12',100% / 12 * 11);
+	#generate-all-width-class(@suffix, ~'full', 100%);
 
-	#generate-all-width-class(@suffix, ~'1_2', 	50% );
-	#generate-all-width-class(@suffix, ~'half', 50% );				//DEPRECATED
-
-	#generate-all-width-class(@suffix, ~'1_3', 100% / 3     );
-	#generate-all-width-class(@suffix, ~'third', 100% / 3   );		//DEPRECATED
-	#generate-all-width-class(@suffix, ~'2_3', 100% / 3 * 2 );
-
-	#generate-all-width-class(@suffix, ~'1_4', 100% / 4     );
-	#generate-all-width-class(@suffix, ~'2_4', 100% / 4 * 2 );		//DEPRECATED
-	#generate-all-width-class(@suffix, ~'3_4', 100% / 4 * 3 );
-
-	#generate-all-width-class(@suffix, ~'1_5', 100% / 5     );
-	#generate-all-width-class(@suffix, ~'2_5', 100% / 5 * 2 );
-	#generate-all-width-class(@suffix, ~'3_5', 100% / 5 * 3 );
-	#generate-all-width-class(@suffix, ~'4_5', 100% / 5 * 4 );
-
-	#generate-all-width-class(@suffix, ~'1_6', 100% / 6     );
-	#generate-all-width-class(@suffix, ~'5_6', 100% / 6 * 5 );
-
-	#generate-all-width-class(@suffix, ~'1_12',  100% / 12      );
-	#generate-all-width-class(@suffix, ~'2_12',  100% / 12 *  2 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'3_12',  100% / 12 *  3 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'4_12',  100% / 12 *  4 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'5_12',  100% / 12 *  5 );
-	#generate-all-width-class(@suffix, ~'6_12',  100% / 12 *  6 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'7_12',  100% / 12 *  7 );
-	#generate-all-width-class(@suffix, ~'8_12',  100% / 12 *  8 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'9_12',  100% / 12 *  9 ); 	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'10_12', 100% / 12 * 10 );	//DEPRECATED
-	#generate-all-width-class(@suffix, ~'11_12', 100% / 12 * 11 );
-
-	#generate-all-width-class(@suffix, ~'1', 	100% );				//DEPRECATED
-	#generate-all-width-class(@suffix, ~'full', 100% );
-
-	#generate-all-width-class(@suffix, ~'full-viewport', 100vw );
-	#generate-all-width-class(@suffix, ~'screen-max', @screen-max );
+	#generate-all-width-class(@suffix, ~'1_2-viewport',   50vw);
+	#generate-all-width-class(@suffix, ~'1_3-viewport',  100vw / 3);
+	#generate-all-width-class(@suffix, ~'2_3-viewport',  100vw / 3 * 2);
+	#generate-all-width-class(@suffix, ~'1_4-viewport',  100vw / 4);
+	#generate-all-width-class(@suffix, ~'3_4-viewport',  100vw / 4 * 3);
+	#generate-all-width-class(@suffix, ~'full-viewport', 100vw);
+	#generate-all-width-class(@suffix, ~'screen-max', @screen-max);
 }
-
-
-// WIDTH RESPONSIVE
-
-// FROM IP
-
-// FROM PH
-.width-quarter-from-ph {
-	#mq-min-width(@screen-ph, {
-		//DEPRECATED
-		.width-quarter;
-	});
-}
-
-.half-width-ph {
-	#mq-max-width((@screen-xs - 1), {
-		//DEPRECATED
-		.half-width();
-	});
-}
-
-// FROM XS
-.width-30-percent-from-xs {
-	#mq-min-width(@screen-xs, {
-		//DEPRECATED
-		.width-30-percent;
-	});
-}
-
-.width-quarter-from-xs {
-	#mq-min-width(@screen-xs, {
-		//DEPRECATED
-		.width-quarter;
-	});
-}
-
-// FROM SM
-.width-quarter-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.width-quarter;
-	});
-}
-
-.width-30-percent-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.width-30-percent;
-	});
-}
-
-// TO XS
-.width-40-percent-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		//DEPRECATED
-		.width-40-percent;
-	});
-}
-
-.full-width-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		//DEPRECATED
-		.full-width;
-	});
-}
-
-// TO PH
-
-.full-width-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		//DEPRECATED
-		.full-width;
-	});
-}
-
 //=========================
 // = ZINDEX CLASS
 //=========================
-
-.z-index-minus-1 	{ z-index:      -1; }
-.z-index-1 			{ z-index:       1; }
-.z-index-5 			{ z-index:       5; }
-.z-index-10 		{ z-index:      10; }
-.z-index-15 		{ z-index:      15; }
-.z-index-20 		{ z-index:      20; }
-.z-index-25 		{ z-index:      25; }
-.z-index-50 		{ z-index:      50; }
-.z-index-100 		{ z-index:     100; }
-.z-index-200 		{ z-index:     200; }
-.z-index-300 		{ z-index:     300; }
-.z-index-400 		{ z-index:     400; }
-.z-index-500 		{ z-index:     500; }
-.z-index-1000 		{ z-index:    1000; }
-.z-index-2000 		{ z-index:    2000; }
-.z-index-3000 		{ z-index:    3000; }
-.z-index-4000 		{ z-index:    4000; }
-.z-index-5000 		{ z-index:    5000; }
-.z-index-10000 		{ z-index:   10000; }
-.z-index-100000 	{ z-index:  100000; }
-.z-index-500000 	{ z-index:  500000; }
-.z-index-1000000 	{ z-index: 1000000; }
-.z-index-max 		{ z-index: 9999999; }
-
-#generate(@suffix: ~'') {
-	#generate-display-classes(@suffix);
-	#generate-visibility-classes(@suffix);
-	#generate-padding-all-classes(@suffix);
-	#generate-margin-all-classes(@suffix);
-	#generate-base-color-class(@suffix);
-	#generate-width-classes (@suffix);
-}
-
-#generate();
-
-// FROM
-#mq-min-width(@screen-ip, { #generate(~'-from-ip'); });
-#mq-min-width(@screen-ph, { #generate(~'-from-ph'); });
-#mq-min-width(@screen-xs, { #generate(~'-from-xs'); });
-#mq-min-width(@screen-sm, { #generate(~'-from-sm'); });
-#mq-min-width(@screen-md, { #generate(~'-from-md'); });
-#mq-min-width(@screen-lg, { #generate(~'-from-lg'); });
-#mq-min-width(@screen-xl, { #generate(~'-from-xl'); });
-#mq-min-width(@screen-hd, { #generate(~'-from-hd'); });
-
-// TO
-#mq-max-width(@screen-hd - 1, { #generate(~'-to-hd'); });
-#mq-max-width(@screen-xl - 1, { #generate(~'-to-xl'); });
-#mq-max-width(@screen-lg - 1, { #generate(~'-to-lg'); });
-#mq-max-width(@screen-md - 1, { #generate(~'-to-md'); });
-#mq-max-width(@screen-sm - 1, { #generate(~'-to-sm'); });
-#mq-max-width(@screen-xs - 1, { #generate(~'-to-xs'); });
-#mq-max-width(@screen-ph - 1, { #generate(~'-to-ph'); });
-
-// FROM PH TO SM
-.padding-large-from-ph-to-sm {
-	#mq-min-max-width(@screen-ph, @screen-sm - 1, {
-		padding: @spacing-large;
-	});
-}
+.z-index-minus-1 	{z-index:      -1;}
+.z-index-0 			{z-index:       0;}
+.z-index-1 			{z-index:       1;}
+.z-index-2 			{z-index:       2;}
+.z-index-3 			{z-index:       3;}
+.z-index-4 			{z-index:       4;}
+.z-index-5 			{z-index:       5;}
+.z-index-6 			{z-index:       6;}
+.z-index-7 			{z-index:       7;}
+.z-index-8 			{z-index:       8;}
+.z-index-9 			{z-index:       9;}
+.z-index-10 		{z-index:      10;}
+.z-index-11 		{z-index:      11;}
+.z-index-12 		{z-index:      12;}
+.z-index-13 		{z-index:      13;}
+.z-index-14 		{z-index:      14;}
+.z-index-15 		{z-index:      15;}
+.z-index-20 		{z-index:      20;}
+.z-index-25 		{z-index:      25;}
+.z-index-30 		{z-index:      30;}
+.z-index-40 		{z-index:      40;}
+.z-index-50 		{z-index:      50;}
+.z-index-60 		{z-index:      60;}
+.z-index-70 		{z-index:      70;}
+.z-index-80 		{z-index:      80;}
+.z-index-90 		{z-index:      90;}
+.z-index-100 		{z-index:     100;}
+.z-index-200 		{z-index:     200;}
+.z-index-300 		{z-index:     300;}
+.z-index-400 		{z-index:     400;}
+.z-index-500 		{z-index:     500;}
+.z-index-1000 		{z-index:    1000;}
+.z-index-2000 		{z-index:    2000;}
+.z-index-3000 		{z-index:    3000;}
+.z-index-4000 		{z-index:    4000;}
+.z-index-5000 		{z-index:    5000;}
+.z-index-10000 		{z-index:   10000;}
+.z-index-100000 	{z-index:  100000;}
+.z-index-500000 	{z-index:  500000;}
+.z-index-1000000 	{z-index: 1000000;}
+.z-index-max 		{z-index: 9999999;}
