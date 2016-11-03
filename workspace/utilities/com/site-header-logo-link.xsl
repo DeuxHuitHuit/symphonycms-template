@@ -34,6 +34,8 @@
 			<xsl:copy-of select="$attr" />
 
 			<add dev-component="site-header-logo-link" />
+			
+			<add data-ga-cat="menu-nav" data-gat-label="logo" />
 		</xsl:variable>
 
 		<xsl:variable name="computed-heading-attr">

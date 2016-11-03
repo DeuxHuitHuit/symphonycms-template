@@ -105,7 +105,7 @@
 			<add class="js-site-nav-link" />
 
 			<!-- Google analytics attributes -->
-			<add data-ga-cat="menu" />
+			<add data-ga-cat="menu-nav" />
 			<add data-ga-label="{concat($url-language, '/', $content)}" />
 
 			<!-- Html 5 semantic role -->

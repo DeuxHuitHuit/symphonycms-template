@@ -58,6 +58,11 @@
 				<xsl:with-param name="lg" select="@handle" />
 			</xsl:call-template>
 		</xsl:variable>
+		
+		<xsl:variable name="computed-attr">
+			<add data-ga-cat="menu-nav" data-gat-label="{.}" />
+			<xsl:copy-of select="$attr" />
+		</xsl:variable>
 	<!--																	/-->
 
 	<!-- STRUCTURE															 -->
@@ -66,7 +71,7 @@
 			<xsl:with-param name="url" select="$computed-url" />
 			<xsl:with-param name="failover-element" select="$failover-element" />
 			<xsl:with-param name="is-optional" select="false()" />
-			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="content-lg" select="$content-lg" />
 			<xsl:with-param name="content" select="$content" />
 		</xsl:call-template>
