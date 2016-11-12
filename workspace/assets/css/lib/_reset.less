@@ -19,11 +19,7 @@ body {
 	#no-outline;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-}
-
-p {
+h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 }
 
@@ -91,3 +87,18 @@ svg {
 	}
 }
 
+// better defaults for flexbox cross compatibility
+// use < .min-*-initial > if this default causes problems
+// plus low specificity vertical rhythm sanity
+* {
+	#flex-basis(auto);
+	min-height: 0;
+	min-width: 0;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&:first-child {
+		margin-top: 0;
+	}
+}

@@ -8,12 +8,12 @@
 
 .TODO {
 	outline: rgba(255,0,0,36%) 1px solid;
-	outline-offset: 10px;
+	outline-offset: 8px;
 }
 
 .DEPRECATED(@name: ~'') {
 	outline: rgba(255,0,0,36%) 5px solid;
-	outline-offset: 10px;
+	outline-offset: 8px;
 	position: relative;
 	
 	&:before {
@@ -35,23 +35,74 @@
 //	}
 //}
 
+
+.WATCHDOG(@name: ~'') {
+	outline: rgba(50,20,10,50%) 5px solid;
+	outline-offset: 8px;
+	position: relative;
+	display: block !important; // insure visibility
+	overflow: visible !important;
+	
+	&:before {
+		content: '@{name}';
+		position: absolute;
+		outline: rgba(50,20,10,50%) 5px solid;
+		outline-offset: 8px;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		background-color: rgba(30,15,5,80%);
+		font-size: 12px;
+		font-weight: bold;
+		padding: 1.5rem;
+		color: white;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		#translate(-50%, -50%);
+	}
+
+	&:after {
+		content: attr(dev-component) attr(dev-element);
+		white-space: nowrap;
+		padding: .5rem;
+		background-color: red;
+		color: white;
+		line-height: 1em;
+		font-size: 10px;
+		font-weight: 600;
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		margin-top: 2rem;
+		text-transform: uppercase;
+		letter-spacing: .025em;
+		z-index: 1;
+		#translate(-50%, 0);
+	}
+}
 .show-classes-on-hover {
 	 *[class]:hover:before {
 			content: attr(class);
 			white-space: nowrap;
-			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			padding: @spacing-thinner * 0.25 @spacing-thinner * 0.5;
 			background-color: red;
 			color: white;
-			line-height: @spacing-smaller * .5;
-			font-size: 1.4rem;
+			line-height: @spacing-thinner * .5;
+			font-size: 8px;
 			font-weight: 600;
 			font-family: helvetica, arial, sans-serif;
 			display: block;
 			position: absolute;
 			left: auto;
 			top: auto;
-			margin-top: -@spacing-smaller;
-			margin-bottom: @spacing-smaller * .25;
+			margin-top: -@spacing-thinner;
+			margin-bottom: @spacing-thinner * .25;
 			text-transform: uppercase;
 			letter-spacing: .025em;
 			z-index: 1;
@@ -60,17 +111,17 @@
 	 *:not(body)[class] *[class]:hover:before {
 		 //margin-top: 0;
 		 background-color: fuchsia;
-		 padding-left: @spacing-smaller * .5;
+		 padding-left: @spacing-thinner * .5;
 	 }
 
 	 *:not(body)[class] *[class] *[class]:hover:before {
 		 background-color: purple;
-		 padding-left: @spacing-smaller;
+		 padding-left: @spacing-thinner;
 	 }
 	 
 	 *:not(body)[class] *[class] *[class] *[class]:hover:before {
 		 background-color: teal;
-		 padding-left: @spacing-smaller * 1.5;
+		 padding-left: @spacing-thinner * 1.5;
 	 }
 		
 	 *[class]:hover {
@@ -90,97 +141,114 @@
 	 }
 }
 
-.show-names {
-	 *[data-component-name]:hover:before {
-			content: attr(data-component-name);
+
+.show-names-on-hover {
+	 *[dev-component]:hover:before,
+	 *[dev-element]:hover:before {
+			content: attr(dev-component);
 			white-space: nowrap;
-			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			padding: @spacing-thinner * .25 @spacing-thinner * .5;
 			background-color: red;
 			color: white;
-			line-height: @spacing-smaller * .5;
-			font-size: 1.4rem;
+			line-height: @spacing-thinner * .5;
+			font-size: 10px;
 			font-weight: 600;
 			font-family: helvetica, arial, sans-serif;
 			display: block;
 			position: absolute;
 			left: auto;
 			top: auto;
-			margin-top: -@spacing-smaller;
-			margin-bottom: @spacing-smaller * .25;
+			margin-top: -@spacing-thinner;
+			margin-bottom: @spacing-thinner * .25;
 			text-transform: uppercase;
 			letter-spacing: .025em;
 			z-index: 1;
 		}
+	 *[dev-element]:hover:before {
+			margin-top: 0;
+			content: attr(dev-element);
+			background-color: grey !important;
+		}
 		
-	 *:not(body)[data-component-name] *[data-component-name]:hover:before {
+	 *:not(body)[dev-component] *[dev-component]:hover:before,
+	 *:not(body)[dev-component] *[dev-element]:hover:before {
 		 //margin-top: 0;
 		 background-color: fuchsia;
-		 padding-left: @spacing-smaller * .5;
+		 padding-left: @spacing-thinner * .5;
 	 }
 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:hover:before {
+	 *:not(body)[dev-component] *[dev-component] *[dev-component]:hover:before,
+	 *:not(body)[dev-component] *[dev-component] *[dev-element]:hover:before {
 		 background-color: purple;
-		 padding-left: @spacing-smaller;
+		 padding-left: @spacing-thinner;
 	 }
 	 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:hover:before {
+	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover:before,
+	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover:before {
 		 background-color: teal;
-		 padding-left: @spacing-smaller * 1.5;
+		 padding-left: @spacing-thinner * 1.5;
 	 }
 		
-	 *[data-component-name]:hover {
+	 *[dev-component]:hover,
+	 *[dev-element]:hover {
 			outline: 1px dashed red;
 		}
 
-	 *:not(body)[data-component-name] *[data-component-name]:hover {
+	 *:not(body)[dev-component] *[dev-component]:hover,
+	 *:not(body)[dev-component] *[dev-element]:hover {
 		 outline: 1px dashed fuchsia;
 	 }
 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:hover {
+	 *:not(body)[dev-component] *[dev-component] *[dev-component]:hover,
+	 *:not(body)[dev-component] *[dev-component] *[dev-element]:hover {
 		 outline: 1px dashed purple;
 	 }
 	 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:hover {
+	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover,
+	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover {
 		 outline: 1px dashed teal;
 	 }
 }
 
 .show-classes {
-	 *[class]:hover:before {
+	 *[class]:hover:after {
 			content: attr(class);
 			white-space: nowrap;
-			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			padding: @spacing-thinner * .25 @spacing-thinner * .5;
 			background-color: red;
 			color: white;
-			line-height: @spacing-smaller * .5;
-			font-size: 1.4rem;
+			line-height: @spacing-thinner * .5;
+			font-size: 8px;
 			font-weight: 600;
 			font-family: helvetica, arial, sans-serif;
 			display: block;
 			position: absolute;
 			left: auto;
 			top: auto;
-			margin-top: -@spacing-smaller;
-			margin-bottom: @spacing-smaller * .25;
+			margin-top: -@spacing-thinner;
+			margin-bottom: @spacing-thinner * .25;
 			text-transform: uppercase;
 			letter-spacing: .025em;
 			z-index: 1;
+			&:hover {
+				z-index: 2;
+			}
 		}
 		
-	 *:not(body)[class] *[class]:hover:before {
+	 *:not(body)[class] *[class]:hover:after {
 		 //margin-top: 0;
 		 background-color: fuchsia;
-		 padding-left: @spacing-smaller * .5;
+		 padding-left: @spacing-thinner * .5;
 	 }
 
-	 *:not(body)[class] *[class] *[class]:hover:before {
+	 *:not(body)[class] *[class] *[class]:hover:after {
 		 background-color: purple;
-		 padding-left: @spacing-smaller;
+		 padding-left: @spacing-thinner;
 	 }
 	 
-	 *:not(body)[class] *[class] *[class] *[class]:hover:before {
+	 *:not(body)[class] *[class] *[class] *[class]:hover:after {
 		 background-color: teal;
-		 padding-left: @spacing-smaller * 1.5;
+		 padding-left: @spacing-thinner * 1.5;
 	 }
 		
 	 *[class]:hover {
@@ -200,57 +268,120 @@
 	 }
 }
 
-.show-names {
-	 *[data-component-name]:before {
-			content: attr(data-component-name);
+
+.show-classes-on-active {
+	 *[class]:active:after {
+			content: attr(class);
 			white-space: nowrap;
-			padding: @spacing-smaller * .25 @spacing-smaller * .5;
+			padding: @spacing-thinner * .25 @spacing-thinner * .5;
 			background-color: red;
 			color: white;
-			line-height: @spacing-smaller * .5;
-			font-size: 1.4rem;
+			line-height: @spacing-thinner * .5;
+			font-size: 10px;
 			font-weight: 600;
 			font-family: helvetica, arial, sans-serif;
 			display: block;
 			position: absolute;
 			left: auto;
 			top: auto;
-			margin-top: -@spacing-smaller;
-			margin-bottom: @spacing-smaller * .25;
-			text-transform: uppercase;
-			letter-spacing: .025em;
+			margin-top: -@spacing-thinner;
+			margin-bottom: @spacing-thinner * .25;
+			letter-spacing: .0325em;
 			z-index: 1;
 		}
+
+		*[class][dev-element]:active:after {
+			margin-top: 0;
+		}
 		
-	 *:not(body)[data-component-name] *[data-component-name]:before {
+	 *:not(body)[class] *[class]:active:after {
 		 //margin-top: 0;
 		 background-color: fuchsia;
-		 padding-left: @spacing-smaller * .5;
+		 padding-left: @spacing-thinner * .5;
 	 }
 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:before {
+	 *:not(body)[class] *[class] *[class]:active:after {
 		 background-color: purple;
-		 padding-left: @spacing-smaller;
+		 padding-left: @spacing-thinner;
 	 }
 	 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:before {
+	 *:not(body)[class] *[class] *[class] *[class]:active:after {
 		 background-color: teal;
-		 padding-left: @spacing-smaller * 1.5;
+		 padding-left: @spacing-thinner * 1.5;
 	 }
 		
-	 *[data-component-name]:hover {
+	 *[class]:active {
 			outline: 1px dashed red;
 		}
 
-	 *:not(body)[data-component-name] *[data-component-name]:hover {
+	 *:not(body)[class] *[class]:active {
 		 outline: 1px dashed fuchsia;
 	 }
 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name]:hover {
+	 *:not(body)[class] *[class] *[class]:active {
 		 outline: 1px dashed purple;
 	 }
 	 
-	 *:not(body)[data-component-name] *[data-component-name] *[data-component-name] *[data-component-name]:hover {
+	 *:not(body)[class] *[class] *[class] *[class]:active {
+		 outline: 1px dashed teal;
+	 }
+}
+
+.show-names {
+	 *[dev-component]:before {
+			content: attr(dev-component);
+			white-space: nowrap;
+			padding: @spacing-thinner * .25 @spacing-thinner * .5;
+			background-color: red;
+			color: white;
+			line-height: @spacing-thinner * .5;
+			font-size: 8px;
+			font-weight: 600;
+			font-family: helvetica, arial, sans-serif;
+			display: block;
+			position: absolute;
+			left: auto;
+			top: auto;
+			margin-top: -@spacing-thinner;
+			margin-bottom: @spacing-thinner * .25;
+			text-transform: uppercase;
+			letter-spacing: .025em;
+			z-index: 1;
+			&:hover {
+				z-index: 2;
+			}
+		}
+		
+	 *:not(body)[dev-component] *[dev-component]:before {
+		 //margin-top: 0;
+		 background-color: fuchsia;
+		 padding-left: @spacing-thinner * .5;
+	 }
+
+	 *:not(body)[dev-component] *[dev-component] *[dev-component]:before {
+		 background-color: purple;
+		 padding-left: @spacing-thinner;
+	 }
+	 
+	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:before {
+		 background-color: teal;
+		 padding-left: @spacing-thinner * 1.5;
+	 }
+	
+	
+	 *[dev-component]:hover {
+			outline: 1px dashed red;
+		}
+
+	 *:not(body)[dev-component] *[dev-component]:hover {
+		 outline: 1px dashed fuchsia;
+	 }
+
+	 *:not(body)[dev-component] *[dev-component] *[dev-component]:hover {
+		 outline: 1px dashed purple;
+	 }
+	 
+	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover {
 		 outline: 1px dashed teal;
 	 }
 }
@@ -264,4 +395,80 @@
 	* * * * * * { outline: 1px solid green }
 	* * * * * * * { outline: 1px solid orange }
 	* * * * * * * * { outline: 1px solid blue }
+}
+
+
+#site:before {
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	width: 100%;
+	height: 1rem;
+	display: block;
+	z-index: 1100;
+	
+	#mq-min-width(@screen-ip, {
+		background-color: red;
+	});
+	#mq-min-width(@screen-ph, {
+		background-color: purple;
+	});
+	#mq-min-width(@screen-xs, {
+		background-color: green;
+	});
+	#mq-min-width(@screen-sm, {
+		background-color: orange;
+	});
+	#mq-min-width(@screen-md, {
+		background-color: aqua;
+	});
+	#mq-min-width(@screen-lg, {
+		background-color: brown;
+	});
+	#mq-min-width(@screen-xl, {
+		background-color: blue;
+	});
+}
+
+#site:after {
+	bottom: 0;
+	right: 2rem;
+	position: fixed;
+	background-color: white;
+	text-align: center;
+	font-size: 10px;
+	display: inline-block;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	z-index: 1100;
+	color: white;
+
+	#mq-min-width(@screen-ip, {
+		content: 'iPhone portrait : @{screen-ip}';
+		background-color: red;
+	});
+	#mq-min-width(@screen-ph, {
+		content: 'iPhone paysgae : @{screen-ph}';
+		background-color: purple;
+	});
+	#mq-min-width(@screen-xs, {
+		content: 'iPad portrait : @{screen-xs}';
+		background-color: green;
+	});
+	#mq-min-width(@screen-sm, {
+		content: 'iPad paysage : @{screen-sm}';
+		background-color: orange;
+	});
+	#mq-min-width(@screen-md, {
+		content: 'md : @{screen-md}';
+		background-color: aqua;
+	});
+	#mq-min-width(@screen-lg, {
+		content: 'lg : @{screen-lg}';
+		background-color: brown;
+	});
+	#mq-min-width(@screen-xl, {
+		content: 'xl : @{screen-xl}';
+		background-color: blue;
+	});
 }

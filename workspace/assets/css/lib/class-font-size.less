@@ -1,26 +1,37 @@
+//=========================
+// = FONT-SIZE
+//=========================
+.text-initial 		{font-size: initial;}
 
-.text-initial { font-size: initial; }
-
-.text-astronomic 	{ font-size: @type-astronomic; }
-.text-giant 		{ font-size: @type-giant; }
-.text-tallest 		{ font-size: @type-tallest; }
-.text-taller 		{ font-size: @type-taller; }
-.text-tall 			{ font-size: @type-tall; }
-.text-average 		{ font-size: @type-average; }
-.text-short 		{ font-size: @type-short; }
-.text-shorter 		{ font-size: @type-shorter; }
-
-.text-very-short 	{ font-size: @type-very-short; }
-
-.text-shortest 		{ font-size: @type-shortest; }
-.text-miniature 	{ font-size: @type-miniature; }
-.text-dwarf 		{ font-size: @type-dwarf; }
-
+.text-miniature 	{font-size: @font-miniature;}
+.text-shortest 		{font-size: @font-shortest;}
+.text-shorter 		{font-size: @font-shorter;}
+.text-short 		{font-size: @font-short;}
+.text-current 		{font-size: @font-current;}
+.text-tall 			{font-size: @font-tall;}
+.text-taller 		{font-size: @font-taller;}
+.text-tallest 		{font-size: @font-tallest;}
+.text-huge 			{font-size: @font-huge;}
+.text-huger 		{font-size: @font-huger;}
+.text-hugest 		{font-size: @font-hugest;}
+.text-giant 		{font-size: @font-giant;}
 
 // FROM-XS
-.text-astronomic-from-xs { 
+.text-hugest-from-xs { 
 	#mq-min-width(@screen-xs, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huger-from-xs { 
+	#mq-min-width(@screen-xs, {
+		.text-huger;
+	});
+}
+
+.text-huge-from-xs { 
+	#mq-min-width(@screen-xs, {
+		.text-huge;
 	});
 }
 
@@ -48,9 +59,9 @@
 	});
 }
 
-.text-average-from-xs { 
+.text-current-from-xs { 
 	#mq-min-width(@screen-xs, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -78,16 +89,22 @@
 	});
 }
 
-.text-dwarf-from-xs { 
-	#mq-min-width(@screen-xs, {
-		.text-dwarf;
+// FROM-SM
+.text-huger-from-sm { 
+	#mq-min-width(@screen-sm, {
+		.text-huger;
 	});
 }
 
-// FROM-SM
-.text-astronomic-from-sm { 
+.text-hugest-from-sm { 
 	#mq-min-width(@screen-sm, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-sm { 
+	#mq-min-width(@screen-sm, {
+		.text-huge;
 	});
 }
 
@@ -115,9 +132,9 @@
 	});
 }
 
-.text-average-from-sm { 
+.text-current-from-sm { 
 	#mq-min-width(@screen-sm, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -145,16 +162,22 @@
 	});
 }
 
-.text-dwarf-from-sm { 
-	#mq-min-width(@screen-sm, {
-		.text-dwarf;
+// FROM-MD
+.text-huger-from-md { 
+	#mq-min-width(@screen-md, {
+		.text-huger;
 	});
 }
 
-// FROM-MD
-.text-astronomic-from-md { 
+.text-hugest-from-md { 
 	#mq-min-width(@screen-md, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-md { 
+	#mq-min-width(@screen-md, {
+		.text-huge;
 	});
 }
 
@@ -182,9 +205,9 @@
 	});
 }
 
-.text-average-from-md { 
+.text-current-from-md { 
 	#mq-min-width(@screen-md, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -212,17 +235,23 @@
 	});
 }
 
-.text-dwarf-from-md { 
-	#mq-min-width(@screen-md, {
-		.text-dwarf;
+
+// FROM-LG
+.text-huger-from-lg { 
+	#mq-min-width(@screen-lg, {
+		.text-huger;
 	});
 }
 
-
-// FROM-LG
-.text-astronomic-from-lg { 
+.text-hugest-from-lg { 
 	#mq-min-width(@screen-lg, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-lg { 
+	#mq-min-width(@screen-lg, {
+		.text-huge;
 	});
 }
 
@@ -250,9 +279,9 @@
 	});
 }
 
-.text-average-from-lg { 
+.text-current-from-lg { 
 	#mq-min-width(@screen-lg, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -280,16 +309,22 @@
 	});
 }
 
-.text-dwarf-from-lg { 
-	#mq-min-width(@screen-lg, {
-		.text-dwarf;
+// FROM XL
+.text-huger-from-xl { 
+	#mq-min-width(@screen-xl, {
+		.text-huger;
 	});
 }
 
-// FROM XL
-.text-astronomic-from-xl { 
+.text-hugest-from-xl { 
 	#mq-min-width(@screen-xl, {
-		.text-astronomic;
+		.text-hugest;
+	});
+}
+
+.text-huge-from-xl { 
+	#mq-min-width(@screen-xl, {
+		.text-huge;
 	});
 }
 
@@ -317,9 +352,9 @@
 	});
 }
 
-.text-average-from-xl { 
+.text-current-from-xl { 
 	#mq-min-width(@screen-xl, {
-		.text-average;
+		.text-current;
 	});
 }
 
@@ -344,11 +379,5 @@
 .text-miniature-from-xl { 
 	#mq-min-width(@screen-xl, {
 		.text-miniature;
-	});
-}
-
-.text-dwarf-from-xl { 
-	#mq-min-width(@screen-xl, {
-		.text-dwarf;
 	});
 }

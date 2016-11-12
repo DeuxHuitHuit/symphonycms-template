@@ -353,41 +353,22 @@
 //=========================
 
 #hover (@rules) {
-	html:not(.mobile) &:hover, &:focus, &:active {
-		@rules();
-	}
-}
-
-#hover (@selected, @rules) {
-	html:not(.mobile) &:hover, &:focus, &:active, &@{selected} {
-		@rules();
-	}
-}
-
-#hover-no-focus (@rules) {
-	html:not(.mobile) &:hover, &:active {
-		@rules();
-	}
-}
-
-#hover-no-focus (@selected, @rules) {
-	html:not(.mobile) &:hover, &:active, &@{selected} {
-		@rules();
-	}
-}
-
-#hover-only (@rules) {
 	html:not(.mobile) &:hover {
 		@rules();
 	}
 }
 
-#hover-only (@selected, @rules) {
-	html:not(.mobile) &:hover, &@{selected} {
+#focus (@rules) {
+	&:focus {
 		@rules();
 	}
 }
 
+#active (@rules) {
+	&:active {
+		@rules();
+	}
+}
 
 //=========================
 // = HYPHENS FUNCTIONS
@@ -406,13 +387,6 @@
 // = MISC FUNCTIONS
 //=========================
 
-/*
-#text-wrap (@val: break-word) {
-	overflow-wrap: @val;
-	word-wrap: @val;
-}
-*/
-
 #ellipsis (@mw: 100%) {
 	max-width: @mw;
 	white-space: nowrap;
@@ -420,6 +394,22 @@
 	text-overflow: ellipsis;
 }
 
+
+//=========================
+// = MOBILE AND DESKTOP FUNCTIONS
+//=========================
+
+#mobile-only (@rules) {
+	html.mobile {
+		@rules();
+	}
+}
+
+#desktop-only (@rules) {
+	html:not(.mobile) {
+		@rules();
+	}
+}
 
 //=========================
 // = MQ FUNCTIONS
@@ -725,6 +715,14 @@
 			transition-delay: @delay;
 }
 
+#transition-ease (@ease) {
+	-webkit-transition-timing-function: @ease;
+	   -moz-transition-timing-function: @ease;
+		-ms-transition-timing-function: @ease;
+		 -o-transition-timing-function: @ease;
+			transition-timing-function: @ease;
+}
+
 #cb-transition (...) {
 	-webkit-transition: ~"-webkit-@{arguments}";
 	   -moz-transition: ~"-moz-@{arguments}";
@@ -768,7 +766,7 @@
 	}
 	
 	.@{name}-@{color-name}-on-hover@{suffix} {
-		#hover-only({
+		#hover({
 			@{property}: @color;
 		});
 	}
@@ -791,6 +789,19 @@
 		@{property}-@{axe1}: @value;
 		@{property}-@{axe2}: @value;
 	}
+}
+
+#generate-height-class(@suffix, @property-name, @property, @name,  @value) {
+
+	.@{property-name}-@{name}@{suffix} {
+		@{property}: @value;
+	}
+}
+
+#generate-all-height-class(@suffix, @name, @value) {
+	#generate-height-class(@suffix, ~'height', 	 ~'height', 		@name, @value);
+	#generate-height-class(@suffix, ~'min-height', ~'min-height', 	@name, @value);
+	#generate-height-class(@suffix, ~'max-height', ~'max-height', 	@name, @value);
 }
 #generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
 	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
@@ -844,14 +855,14 @@
 	#generate-width-class(@suffix, ~'min-width', ~'min-width', 	@name, @value);
 	#generate-width-class(@suffix, ~'max-width', ~'max-width', 	@name, @value);
 }
+
 //=========================
 // = VARIABLES FOR BORDER-WIDTH
 //=========================
 
-@border-slimest: 	 1px;
-@border-slimer: 	 2px;
+@border-slimmest: 	 1px;
+@border-slimmer: 	 2px;
 @border-slim: 		 3px;
-@border-average: 	 5px;
 @border-thick: 		 8px;
 @border-thicker: 	10px;
 @border-thickest: 	20px;
@@ -859,13 +870,12 @@
 //=========================
 // = VARIABLES FOR BORDER-RADIUS
 //=========================
-@border-radius-smallest: 	 2px;
-@border-radius-smaller: 	 3px;
-@border-radius-small: 		 4px;
-@border-radius-mid: 		10px;
-@border-radius-large: 		 4rem;
-@border-radius-larger: 		 5rem;
-@border-radius-largest: 	10rem;
+@radius-sharpest: 	 2px;
+@radius-sharper: 	 3px;
+@radius-sharp: 		 4px;
+@radius-dull: 		10px;
+@radius-duller: 	 4rem;
+@radius-dullest: 	 5rem;
 
 //====== COLORS ================
 @true-white: 	#ffffff;
@@ -887,81 +897,127 @@
 @linkedin: 	#0077B5;
 @snapchat: 	#e5e200;
 
-//====== DURATION ============
+//============================
+// = VARIABLES FOR DIMENSIONS
+//============================
+@dimension-tiniest:   @spacing-thinnest * 4;
+@dimension-tinier:    @spacing-thinner * 4;
+@dimension-tiny:      @spacing-thin * 4;
+@dimension-smallest:  @spacing-broad * 6;
+@dimension-smaller:   @spacing-broader * 6;
+@dimension-small:     @spacing-broadest * 6;
+@dimension-big:       @spacing-large * 8;
+@dimension-bigger:    @spacing-larger * 8;
+@dimension-biggest:   @spacing-largest * 8;
 
-@duration-shortest:  150ms;
-@duration-shorter: 	 200ms;
-@duration-short: 	 300ms;
-@duration: 			 500ms;
-@duration-long: 	 750ms;
-@duration-longer: 	1000ms;
-@duration-longest: 	1500ms;
-@duration-mega: 	2500ms;
-@duration-huge: 	5000ms;
+//====== DURATION ============
+@duration-fastest: 	150ms;
+@duration-faster: 	200ms;
+@duration-fast: 	300ms;
+@duration-medium: 	500ms;
+@duration-slow: 	750ms;
+@duration-slower: 	1000ms;
+@duration-slowest: 	1500ms;
 
 // ====== ease ============
+@ease-standard-in:  @ease-in-quad;
+@ease-standard:     @ease-in-out-quad;
+@ease-alternate:    @ease-in-out-back;
+@ease-standard-out: @ease-out-quad;
 
-@ease: @ease-in-out;
-
-@ease-in: ease-in;
-@ease-out: ease-out;
-@ease-in-out: ease-in-out;
-
-@ease-quart-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-
-@ease-quad-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-@ease-quad-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-@ease-quint-out: cubic-bezier(0.23, 1, 0.32, 1);
-
-@ease-circ-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
-@ease-circ-out: cubic-bezier(0.075, 0.82, 0.165, 1);
-@ease-circ-in: cubic-bezier(0.6, 0.04, 0.98, 0.335);
-
-@ease-expo-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
-
-@ease-back-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
-
+@ease-linear:       cubic-bezier(0, 0, 1, 1);
+@ease-in:           cubic-bezier(0.42, 0, 1, 1);
+@ease-out:          cubic-bezier(0, 0, 0.58, 1);
+@ease-in-out:       cubic-bezier(0.42, 0, 0.58, 1);
+@ease-in-sine:      cubic-bezier(0.47, 0, 0.745, 0.715);
+@ease-out-sine:     cubic-bezier(0.39, 0.575, 0.565, 1);
+@ease-in-out-sine:  cubic-bezier(0.445, 0.05, 0.55, 0.95);
+@ease-in-quad:      cubic-bezier(0.55, 0.085, 0.68, 0.53);
+@ease-out-quad:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@ease-in-out-quad:  cubic-bezier(0.455, 0.03, 0.515, 0.955);
+@ease-in-cubic:     cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@ease-out-cubic:    cubic-bezier(0.215, 0.61, 0.355, 1);
+@ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+@ease-in-quart:     cubic-bezier(0.895, 0.03, 0.685, 0.22);
+@ease-out-quart:    cubic-bezier(0.165, 0.84, 0.44, 1);
+@ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+@ease-in-quint:     cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@ease-out-quint:    cubic-bezier(0.23, 1, 0.32, 1);
+@ease-in-expo:      cubic-bezier(0.95, 0.05, 0.795, 0.035);
+@ease-out-expo:     cubic-bezier(0.19, 1, 0.22, 1);
+@ease-in-out-expo:  cubic-bezier(1, 0, 0, 1);
+@ease-in-circ:      cubic-bezier(0.6, 0.04, 0.98, 0.335);
+@ease-out-circ:     cubic-bezier(0.075, 0.82, 0.165, 1);
+@ease-in-out-circ:  cubic-bezier(0.785, 0.135, 0.15, 0.86);
+@ease-in-back:      cubic-bezier(0.6, -0.28, 0.735, 0.045);
+@ease-out-back:     cubic-bezier(0.175, 0.885, 0.32, 1.275);
+@ease-in-out-back:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
+@ease-back-in:      cubic-bezier(0.6, -0.28, 0.735, 0.045);
 @ease-bounce-light: cubic-bezier(0, 1.1, 1, 1.1);
 
 //====== FONTS ==== 
 
 @font-base: 'sans-serif';
 @font-alt: 'serif';
+@font-alt2: 'serif';
 @font-accent: 'serif';
+@font-accent2: 'serif';
 
-@type-astronomic: 	200px;
-@type-giant: 		145px;
-@type-tallest: 		100px;
-@type-taller: 		 80px;
-@type-tall: 		 60px;
-@type-average: 		 42px;
-@type-short: 		 30px;
-@type-shorter: 		 24px;
-@type-very-short: 	 21px;
-@type-shortest: 	 18px;
-@type-miniature: 	 14px;
-@type-dwarf: 		 11px;
+@font-miniature:  7px;
+//---
+@font-shortest:   10px;
+@font-shorter:    13px;
+@font-short:      14px;
+@font-current:    16px;
+@font-tall:       20px;
+@font-taller:     28px;
+@font-tallest:    36px;
+@font-huge:       54px;
+@font-huger:      80px;
+@font-hugest:     120px;
+//---
+@font-giant:      180px;
 
-@line-height-suffocate: 0.9em;
-@line-height-perfect: 	1em;
-@line-height-tightest: 	1.1em;
-@line-height-tighter: 	1.25em;
-@line-height-tight: 	1.4em;
-@line-height-loose: 	1.5em;
-@line-height-looser: 	1.65em;
-@line-height-loosest: 	1.8em;
-@line-height-double: 	2em;
+@line-height-compressed:  .8em;
+@line-height-tightest:    1.12625em;
+@line-height-tighter:     1.25em;
+@line-height-tight:       1.4em;
+@line-height-normal:      1.6em;
+@line-height-loose:       1.75em;
+@line-height-looser:      1.9125em;
+@line-height-loosest:     2.125em;
+
+@letter-spacing-narrowest:  -.08em;
+@letter-spacing-narrower:   -.05em;
+@letter-spacing-narrow:     -.025em;
+@letter-spacing-wide:       .025em;
+@letter-spacing-wider:      .05em;
+@letter-spacing-widest:     .1em;
+
+@transparent: 			0.0;
+@almost-transparent: 	0.1;
+@quasi-transparent: 	0.2;
+@semi-transparent: 		0.3;
+@partially-transparent: 0.4;
+@translucent: 			0.5;
+@partially-opaque: 		0.6;
+@semi-opaque: 			0.7;
+@quasi-opaque: 			0.8;
+@almost-opaque: 		0.97;
+@opaque: 				1.0;
 
 //=========================
 // = VARIABLES PATH
 //=========================
 
-@css-path: '/workspace/assets/css/';
-@font-path: '/workspace/assets/fonts/';
-@img-path: '/workspace/assets/img/';
-@cur-path: '/workspace/assets/cur/';
-@svg-path: '@{css-path}svg/';
+@workspace-path: '/workspace/';
+@assets-path: '@{workspace-path}assets/';
+
+@css-path:  '@{assets-path}css/';
+@svg-path:  '@{css-path}svg/';
+@font-path: '@{assets-path}fonts/';
+@img-path:  '@{assets-path}img/';
+@cur-path:  '@{assets-path}cur/';
 
 //====== SCREEN WIDTHS ============
 
@@ -978,68 +1034,29 @@
 
 @screen-min: 200px;
 @screen-max: 1920px;
-
 //=========================
 // = VARIABLES SPACING
 //=========================
-
-@spacing-atto: 		 1px;
-@spacing-femto: 	 0.2rem;
-@spacing-pico: 		 0.4rem;
-@spacing-nano: 		 0.5rem;
-@spacing-micro: 	 0.7rem;
-@spacing-xsmall: 	 1rem;
-@spacing-smallest: 	 1.5rem;
-@spacing-smaller: 	 2rem;
-@spacing-small: 	 2.5rem;
-@spacing-mid: 		 3rem;
-@spacing-large: 	 4rem;
-@spacing-larger: 	 5rem;
-@spacing-largest: 	  6rem;
-@spacing-xlarge: 	 10rem;
-@spacing-huge: 		 20rem;
-@spacing-mega: 		 30rem;
-@spacing-giga: 		 40rem;
-@spacing-tera: 		 60rem;
+@spacing-atto: 		  1px;
+@spacing-femto: 	  0.2rem;
+@spacing-pico: 		  0.4rem;
+@spacing-nano: 		  0.5rem;
+@spacing-micro: 	  0.7rem;
+@spacing-thinnest:    1rem;
+@spacing-thinner:     2rem;
+@spacing-thin:        3rem;
+@spacing-broad:       4rem;
+@spacing-broader:     7rem;
+@spacing-broadest:   10rem;
+@spacing-large:      16rem;
+@spacing-larger:     20rem;
+@spacing-largest:    26rem;
+@spacing-mega:       38rem;
+@spacing-giga:       54rem;
+@spacing-tera:       78rem;
 @spacing-peta: 		 80rem;
 @spacing-zetta: 	100rem;
 @spacing-yotta: 	120rem;
-
-//============================
-// = VARIABLES FOR DIMENSIONS
-//============================
-@dimension-skelettic: 	  1rem;
-@dimension-tiniest: 	  2rem;
-@dimension-very-tiny: 	  3.2rem;
-@dimension-tinier: 		  4rem;
-@dimension-tiny: 		  5rem;
-@dimension-thinnest: 	  6rem;
-@dimension-very-thin: 	  8rem;
-@dimension-thinner: 	 14rem;
-@dimension-thin: 		 20rem;
-@dimension-standard: 	 24rem;
-@dimension-wide: 		 30rem;
-@dimension-wider: 		 36rem;
-@dimension-very-wide: 	 48rem;
-@dimension-widest: 		 56rem;
-@dimension-fat: 		 64rem;
-@dimension-fatter: 		 70rem;
-@dimension-very-fat: 	 82rem;
-@dimension-fattest: 	 96rem;
-@dimension-obese: 		120rem;
-@dimension-morbid: 		160rem;
-
-// Screen sizes
-@dimension-ip: @screen-ip;
-@dimension-ph: @screen-ph;
-@dimension-xs: @screen-xs;
-@dimension-sm: @screen-sm;
-@dimension-md: @screen-md;
-@dimension-lg: @screen-lg;
-@dimension-xl: @screen-xl;
-@dimension-hd: @screen-hd;
-@dimension-2k: @screen-2k;
-@dimension-4k: @screen-4k;
 //=========================
 // = VARIABLES GLOBALES
 //=========================

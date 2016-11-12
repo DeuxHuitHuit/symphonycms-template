@@ -2,111 +2,136 @@
 //=========================
 // = HEIGHT CLASS
 //=========================
-// DEPRECATED
-.height-quarter 				{ height: 25%; .DEPRECATED(~''); }
-.half-height 					{ height: 50%; .DEPRECATED(~''); }
-.full-height 					{ height: 100%; .DEPRECATED(~''); }
-.height-three-quarter-viewport 	{ height: 75vh; .DEPRECATED(~''); }
-.full-viewport-height 			{ height: 100vh; .DEPRECATED(~''); }
+#generate-height-classes (@suffix: ~'') {
+	//-------------------------------------------
+	// USEFULL
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'auto',			 ~'auto');
+	#generate-all-height-class(@suffix, ~'auto-important',	 ~'auto !important');
+	#generate-all-height-class(@suffix, ~'initial',			 ~'initial');
+	#generate-all-height-class(@suffix, ~'0', 				 ~'0');
+	#generate-all-height-class(@suffix, ~'0-important',		 ~'0 !important');
+	#generate-all-height-class(@suffix, ~'1em',				 ~'1em');
+	#generate-all-height-class(@suffix, ~'perfect',			 ~'1em');
 
-// USEFULL
-.height-auto 									{ height: auto; }
-.height-0 										{ height: 0;    }
-.height-1em, .height-em-full, .height-perfect 	{ height: 1em;  }
+	//-------------------------------------------
+	// SPACING
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'atto', 		 @spacing-atto);
+	#generate-all-height-class(@suffix, ~'femto', 		 @spacing-femto);
+	#generate-all-height-class(@suffix, ~'pico', 		 @spacing-pico);
+	#generate-all-height-class(@suffix, ~'nano', 		 @spacing-nano);
+	#generate-all-height-class(@suffix, ~'micro', 		 @spacing-micro);
+	#generate-all-height-class(@suffix, ~'thinnest', 	 @spacing-thinnest);
+	#generate-all-height-class(@suffix, ~'thinner', 	 @spacing-thinner);
+	#generate-all-height-class(@suffix, ~'thin', 		 @spacing-thin);
+	#generate-all-height-class(@suffix, ~'broad', 		 @spacing-broad);
+	#generate-all-height-class(@suffix, ~'broader', 	 @spacing-broader);
+	#generate-all-height-class(@suffix, ~'broadest', 	 @spacing-broadest);
+	#generate-all-height-class(@suffix, ~'large', 		 @spacing-large);
+	#generate-all-height-class(@suffix, ~'larger', 		 @spacing-larger);
+	#generate-all-height-class(@suffix, ~'largest', 	 @spacing-largest);
+	#generate-all-height-class(@suffix, ~'mega', 		 @spacing-mega);
+	#generate-all-height-class(@suffix, ~'giga', 		 @spacing-giga);
+	#generate-all-height-class(@suffix, ~'tera', 		 @spacing-tera);
+	#generate-all-height-class(@suffix, ~'peta', 		 @spacing-peta);
+	#generate-all-height-class(@suffix, ~'zetta', 		 @spacing-zetta);
+	#generate-all-height-class(@suffix, ~'yotta', 		 @spacing-yotta);
 
-// Spacing
-.height-micro 		{ heigth: @spacing-micro;    }
-.height-smallest 	{ height: @spacing-smallest; }
-.height-smaller 	{ height: @spacing-smaller;  }
-.height-small 		{ height: @spacing-small;    }
-.height-mid 		{ height: @spacing-mid;      }
-.height-large 		{ height: @spacing-large;    }
-.height-larger 		{ height: @spacing-larger;   }
-.height-largest 	{ height: @spacing-largest;  }
-.height-xlarge 		{ height: @spacing-xlarge;   }
-.height-huge 		{ height: @spacing-huge;     }
+	//Double
+	#generate-all-height-class(@suffix, ~'atto-double', 	 @spacing-atto * 2);
+	#generate-all-height-class(@suffix, ~'femto-double', 	 @spacing-femto * 2);
+	#generate-all-height-class(@suffix, ~'pico-double', 	 @spacing-pico * 2);
+	#generate-all-height-class(@suffix, ~'nano-double', 	 @spacing-nano * 2);
+	#generate-all-height-class(@suffix, ~'micro-double', 	 @spacing-micro * 2);
+	#generate-all-height-class(@suffix, ~'thinnest-double',  @spacing-thinnest * 2);
+	#generate-all-height-class(@suffix, ~'thinner-double', 	 @spacing-thinner * 2);
+	#generate-all-height-class(@suffix, ~'thin-double', 	 @spacing-thin * 2);
+	#generate-all-height-class(@suffix, ~'broad-double', 	 @spacing-broad * 2);
+	#generate-all-height-class(@suffix, ~'broader-double', 	 @spacing-broader * 2);
+	#generate-all-height-class(@suffix, ~'broadest-double',  @spacing-broadest * 2);
+	#generate-all-height-class(@suffix, ~'large-double', 	 @spacing-large * 2);
+	#generate-all-height-class(@suffix, ~'larger-double', 	 @spacing-larger * 2);
+	#generate-all-height-class(@suffix, ~'largest-double', 	 @spacing-largest * 2);
+	#generate-all-height-class(@suffix, ~'mega-double', 	 @spacing-mega * 2);
+	#generate-all-height-class(@suffix, ~'giga-double', 	 @spacing-giga * 2);
+	#generate-all-height-class(@suffix, ~'tera-double', 	 @spacing-tera * 2);
+	#generate-all-height-class(@suffix, ~'peta-double', 	 @spacing-peta * 2);
+	#generate-all-height-class(@suffix, ~'zetta-double', 	 @spacing-zetta * 2);
+	#generate-all-height-class(@suffix, ~'yotta-double', 	 @spacing-yotta * 2);
 
-// Line height
-.height-loose 		{ height: @line-height-loose;    }
-.height-tight 		{ height: @line-height-tight;    }
-.height-tightest 	{ height: @line-height-tightest; }
+	//Triple
+	#generate-all-height-class(@suffix, ~'atto-triple', 	 @spacing-atto * 3);
+	#generate-all-height-class(@suffix, ~'femto-triple', 	 @spacing-femto * 3);
+	#generate-all-height-class(@suffix, ~'pico-triple', 	 @spacing-pico * 3);
+	#generate-all-height-class(@suffix, ~'nano-triple', 	 @spacing-nano * 3);
+	#generate-all-height-class(@suffix, ~'micro-triple', 	 @spacing-micro * 3);
+	#generate-all-height-class(@suffix, ~'thinnest-triple',  @spacing-thinnest * 3);
+	#generate-all-height-class(@suffix, ~'thinner-triple', 	 @spacing-thinner * 3);
+	#generate-all-height-class(@suffix, ~'thin-triple', 	 @spacing-thin * 3);
+	#generate-all-height-class(@suffix, ~'broad-triple', 	 @spacing-broad * 3);
+	#generate-all-height-class(@suffix, ~'broader-triple', 	 @spacing-broader * 3);
+	#generate-all-height-class(@suffix, ~'broadest-triple',  @spacing-broadest * 3);
+	#generate-all-height-class(@suffix, ~'large-triple', 	 @spacing-large * 3);
+	#generate-all-height-class(@suffix, ~'larger-triple', 	 @spacing-larger * 3);
+	#generate-all-height-class(@suffix, ~'largest-triple', 	 @spacing-largest * 3);
+	#generate-all-height-class(@suffix, ~'mega-triple', 	 @spacing-mega * 3);
+	#generate-all-height-class(@suffix, ~'giga-triple', 	 @spacing-giga * 3);
+	#generate-all-height-class(@suffix, ~'tera-triple', 	 @spacing-tera * 3);
+	#generate-all-height-class(@suffix, ~'peta-triple', 	 @spacing-peta * 3);
+	#generate-all-height-class(@suffix, ~'zetta-triple', 	 @spacing-zetta * 3);
+	#generate-all-height-class(@suffix, ~'yotta-triple', 	 @spacing-yotta * 3);
 
-// Dimensions
-.height-skelettic 	{ height: @dimension-skelettic; }
-.height-tiniest 	{ height: @dimension-tiniest;   }
-.height-very-tiny 	{ height: @dimension-very-tiny; }
-.height-tinier 		{ height: @dimension-tinier;    }
-.height-tiny 		{ height: @dimension-tiny;      }
-.height-thinnest 	{ height: @dimension-thinnest;  }
-.height-very-thin 	{ height: @dimension-very-thin; }
-.height-thinner 	{ height: @dimension-thinner;   }
-.height-thin 		{ height: @dimension-thin;      }
-.height-standard 	{ height: @dimension-standard;  }
-.height-wide 		{ height: @dimension-wide;      }
-.height-wider 		{ height: @dimension-wider;     }
-.height-very-wide 	{ height: @dimension-very-wide; }
-.height-widest 		{ height: @dimension-widest;    }
-.height-fat 		{ height: @dimension-fat;       }
-.height-fatter 		{ height: @dimension-fatter;    }
-.height-very-fat 	{ height: @dimension-very-fat;  }
-.height-fattest 	{ height: @dimension-fattest;   }
-.height-obese 		{ height: @dimension-obese;     }
-.height-morbid 		{ height: @dimension-morbid;    }
+	//-------------------------------------------
+	// DIMENSION
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'tiniest', 	 @dimension-tiniest);
+	#generate-all-height-class(@suffix, ~'tinier', 		 @dimension-tinier);
+	#generate-all-height-class(@suffix, ~'tiny', 		 @dimension-tiny);
+	#generate-all-height-class(@suffix, ~'smallest', 	 @dimension-smallest);
+	#generate-all-height-class(@suffix, ~'smaller', 	 @dimension-smaller);
+	#generate-all-height-class(@suffix, ~'small', 		 @dimension-small);
+	#generate-all-height-class(@suffix, ~'big', 		 @dimension-big);
+	#generate-all-height-class(@suffix, ~'bigger', 		 @dimension-bigger);
+	#generate-all-height-class(@suffix, ~'biggest', 	 @dimension-biggest);
 
-// Proportional
-.height-half 		{ height: 50%;  }
-.height-1_2  		{ height: 50%;  }
+	//-------------------------------------------
+	// SCREEN
+	//-------------------------------------------
+	#generate-all-height-class(@suffix, ~'ip', @screen-ip );
+	#generate-all-height-class(@suffix, ~'ph', @screen-ph );
+	#generate-all-height-class(@suffix, ~'xs', @screen-xs );
+	#generate-all-height-class(@suffix, ~'sm', @screen-sm );
+	#generate-all-height-class(@suffix, ~'md', @screen-md );
+	#generate-all-height-class(@suffix, ~'lg', @screen-lg );
+	#generate-all-height-class(@suffix, ~'xl', @screen-xl );
+	#generate-all-height-class(@suffix, ~'hd', @screen-hd );
+	#generate-all-height-class(@suffix, ~'2k', @screen-2k );
+	#generate-all-height-class(@suffix, ~'4k', @screen-4k );
 
-.height-1_4 		{ height: 25%;  }
-.height-3_4 		{ height: 75%;  }
-
-.height-full 		{ height: 100%; }
-
-// Proportional ViewPort Value
-.height-1_2-viewport 	{ height: 50vh;  }
-
-.height-1_4-viewport 	{ height: 25vh;  }
-.height-3_4-viewport 	{ height: 75vh;  }
-
-.height-full-viewport 	{ height: 100vh; }
-
-// HEIGHT RESPONSIVE
-// FROM XS
-.height-smallest-from-xs {
-	#mq-min-width(@screen-xs, {
-		.height-smallest();
-	});
-}
-
-.height-half-from-xs {
-	#mq-min-width(@screen-xs, {
-		.height-half();
-	});
-}
-
-// FROM SM
-.full-height-from-sm {
-	#mq-min-width(@screen-sm, {
-		//DEPRECATED
-		.full-height;
-	});
-}
-
-.height-full-viewport-from-sm {
-	#mq-min-width(@screen-sm, {
-		height: 100vh;
-	});
-}
-
-// TO PH
-.height-mid-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.height-mid();
-	});
-}
-
-.height-large-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.height-large();
-	});
+	//------------------------------
+	//	PROPORTIONAL
+	//-------------------------------
+	#generate-all-height-class(@suffix, ~'1_2',   50%);
+	#generate-all-height-class(@suffix, ~'1_3',  100% / 3);
+	#generate-all-height-class(@suffix, ~'2_3',  100% / 3 * 2);
+	#generate-all-height-class(@suffix, ~'1_4',  100% / 4);
+	#generate-all-height-class(@suffix, ~'3_4',  100% / 4 * 3);
+	#generate-all-height-class(@suffix, ~'1_5',  100% / 5);
+	#generate-all-height-class(@suffix, ~'2_5',  100% / 5 * 2);
+	#generate-all-height-class(@suffix, ~'3_5',  100% / 5 * 3);
+	#generate-all-height-class(@suffix, ~'4_5',  100% / 5 * 4);
+	#generate-all-height-class(@suffix, ~'1_6',  100% / 6);
+	#generate-all-height-class(@suffix, ~'5_6',  100% / 6 * 5);
+	#generate-all-height-class(@suffix, ~'1_12', 100% / 12);
+	#generate-all-height-class(@suffix, ~'5_12', 100% / 12 *  5);
+	#generate-all-height-class(@suffix, ~'7_12', 100% / 12 *  7);
+	#generate-all-height-class(@suffix, ~'11_12',100% / 12 * 11);
+	#generate-all-height-class(@suffix, ~'full', 100%);
+	#generate-all-height-class(@suffix, ~'1_2-viewport',  50vh);
+	#generate-all-height-class(@suffix, ~'1_3-viewport', 100vh / 3);
+	#generate-all-height-class(@suffix, ~'2_3-viewport', 100vh / 3 * 2);
+	#generate-all-height-class(@suffix, ~'1_4-viewport', 100vh / 4);
+	#generate-all-height-class(@suffix, ~'3_4-viewport', 100vh / 4 * 3);
+	#generate-all-height-class(@suffix, ~'full-viewport',100vh);
 }

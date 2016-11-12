@@ -1,14 +1,7 @@
- 
 //=========================
 // = BOX-SIZING CLASS
 //=========================
-
-.box-sizing-border-box, 	.border-box 	{ #box-sizing(); }
-.box-sizing-content-box, 	.content-box 	{ #box-sizing(content-box); }
-
-//TO XS
-.border-box-to-xs {
-	#mq-max-width((@screen-xs - 1), {
-		.box-sizing-border-box;
-	});
+#generate-box-sizing-classes (@suffix: ~'') {
+	.box-sizing-border-box@{suffix},  .border-box@{suffix} 	{#box-sizing();}
+	.box-sizing-content-box@{suffix}, .content-box@{suffix} {#box-sizing(content-box);}
 }
