@@ -1,11 +1,13 @@
 {
 	"sources": [
+		"com/article-changer-v2.js",
+		"com/checkpoint-event.js",
+		
 		"modules/links.js",
 		"modules/url-changer.js",
 		"modules/site-error.js",
 		"modules/title-updater.js",
 		"modules/alt-language-link-updater.js",
-		"modules/share-this.js",
 		"modules/format-twitter.js",
 		"modules/blank-target-link.js",
 		"modules/oEmbed.js",
@@ -13,6 +15,7 @@
 		"modules/page-load.js",
 		"modules/window-notifier.js",
 		"modules/route-not-found.js",
+		"modules/auto-tracked-scroll.js",
 		
 		"transitions/default-transition.js",
 		
@@ -22,7 +25,8 @@
 		"utils/ga.js",
 		"utils/jquery.transitionend.js",
 		
-		"pages/default-page.js"
+		"pages/default-page.js",
+		"pages/default-detail-page.js"
 	],
 	"libs": [
 		"lib/jquery.sizing.min.js",
