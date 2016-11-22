@@ -7,10 +7,35 @@
 	"disallowTrailingWhitespace": "ignoreEmptyLines",
 	"requireNewlineBeforeSingleStatementsInIf": true,
 	"disallowMixedSpacesAndTabs": true,
+	"disallowSpacesInsideParentheses": true,
+	"disallowSpacesInFunction": null,
+	"disallowSpacesInFunctionExpression": null,
+	"disallowSpacesInFunctionDeclaration": null,
+	"disallowSpacesInNamedFunctionExpression": null,
 	"requireSpacesInFunctionExpression": {
 		"beforeOpeningRoundBrace": true,
 		"beforeOpeningCurlyBrace": true
 	},
+	"requireSpacesInFunctionDeclaration": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInFunction": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInNamedFunctionExpression": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"requireSpacesInAnonymousFunctionExpression": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
 	"requireMultipleVarDecl": false,
-	"requireVarDeclFirst": false
+	"requireVarDeclFirst": false,
+	"requireSemicolons": true,
+	"disallowCapitalizedComments": false,
+	"disallowQuotedKeysInObjects": true,
+	"disallowSpaceAfterObjectKeys": true
 }
