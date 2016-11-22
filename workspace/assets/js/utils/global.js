@@ -95,6 +95,17 @@
 		return true;
 	};
 	
+	global.rgb2hex = function (rgb) {
+		var hex = function (x) {
+			return ('0' + parseInt(x, 10).toString(16)).slice(-2);
+		};
+		var hexa = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+		if (!hexa) {
+			return rgb;
+		}
+		return hex(hexa[1]) + hex(hexa[2]) + hex(hexa[3]);
+	};
+	
 	global.remToPx = function (value) {
 		return value * parseInt($('html').css('fontSize'), 10);
 	};
@@ -102,9 +113,9 @@
 	global.mediaQueryMinWidth = function (width) {
 		return window.matchMedia('(min-width: ' + width + 'px)').matches;
 	};
-
+	
 	global.deviceMinMoveValue = 3;
-
+	
 	global.calculatedScrollbarWidth = function () {
 		var ctn = $('<div>').css({
 			position: 'absolute',
