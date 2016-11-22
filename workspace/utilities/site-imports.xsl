@@ -9,4 +9,6 @@
 
 	<xsl:import href="com/site-nav.xsl" />
 	<xsl:import href="com/site-languages-links.xsl" />
+
+	<xsl:import href="lib/oembed-attr.xsl" />
 </xsl:stylesheet>
