@@ -12,7 +12,7 @@
 		
 		abstract protected function getActionName();
 		abstract protected function getSection();
-		abstract protected function getFieldValue($field);
+		abstract protected function getFieldValue($fieldname, $field);
 		
 		protected function visitEntry(&$entry) {}
 		
@@ -104,7 +104,7 @@
 			}
 			
 			foreach ($fields as $f) {
-				$data = $this->getFieldValue($f->get('element_name'));
+				$data = $this->getFieldValue($f->get('element_name'), $f);
 				if ($data != null) {
 					$entry->setData($f->get('id'), $data);
 				}
@@ -121,7 +121,8 @@
 		const MAX_SIZE = 5242880; // 5 Mo = 1024 o * 1024 k * 5
 		const DIR = '/uploads/';
 		
-		private static $EXT = array();
+		private static $EXT = array('jpeg', 'jpg', 'png');
+		private static $count = 0;
 		
 		protected function processFileUpload($key) {
 			$value = array();
@@ -134,6 +135,8 @@
 			$size = intval($file['size']);
 			$ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 			$filename = $file['name'];
+			$tmpfile = $file['tmp_name'];
+			$mimetype = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $tmpfile);
 			
 			if ($size > self::MAX_SIZE) {
 				throw new Exception(sprintf("File is too big: %d when the max is %d", $size, self::MAX_SIZE));
@@ -144,10 +147,12 @@
 			}
 			
 			// unique file name
-			$filename = time() . '-' . Lang::createFilename($file['name']);
+			$filename = time() . (self::$count++) . '-' . Lang::createFilename($file['name']);
 			
-			$value['file'] = self::DIR . $filename;
+			$value['file'] = $filename;
 			$value['size'] = $size;
+			$value['mimetype'] = $mimetype;
+			$value['meta'] = serialize(fieldUpload::getMetaInfo($tmpfile, $mimetype));
 			
 			// make a copy - to have the good name and ext
 			$ret = General::uploadFile(
