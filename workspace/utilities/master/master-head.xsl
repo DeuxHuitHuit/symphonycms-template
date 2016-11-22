@@ -9,6 +9,7 @@
 <xsl:import href="../lib/master-canonical-url-meta.xsl" />
 <xsl:import href="../lib/master-alt-link-metas.xsl" />
 <xsl:import href="../lib/master-author-metas.xsl" />
+<xsl:import href="../lib/master-theme-metas.xsl" />
 
 <xsl:import href="favicon.xsl" />
 <xsl:import href="css.xsl" />
@@ -30,6 +31,9 @@
 				- twitter cart
 		-->
 		<xsl:call-template name="master-share-metas" />
+		
+		<!-- Theme metas -->
+		<xsl:call-template name="master-theme-metas" />
 		
 		<!-- Dns prefetch -->
 		<xsl:call-template name="dns-prefetch" />

@@ -9,6 +9,9 @@
 	<xsl:variable name="plh-page-title" select="/data/plh-page//page [@handle=$current-page]/item [@lang=$url-language]" />
 	
 	<xsl:choose>
+		<xsl:when test="string-length($page-metas/titre) != 0">
+			<xsl:value-of select="$page-metas/titre" />
+		</xsl:when>
 		<xsl:when test="string-length($plh-page-title) != 0">
 			<xsl:value-of select="$plh-page-title" />
 		</xsl:when>

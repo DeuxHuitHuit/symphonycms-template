@@ -14,12 +14,13 @@
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 
 		public $dsParamFILTERS = array(
-				'18' => '{$current-page-id}',
+			'18' => '{$current-page-id}',
 		);
 
 		public $dsParamINCLUDEDELEMENTS = array(
-				'description: formatted',
-				'image-partage'
+			'description: formatted',
+			'titre: formatted',
+			'image-partage'
 		);
 
 		public function __construct($env=NULL, $process_params=true) {
@@ -32,10 +33,11 @@
 				'name' => 'Site: Page Metas',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
-					'website' => 'http://deuxhuithuit.com',
-					'email' => 'open-source (at) deuxhuithuit.com'),
-				'version' => 'Symphony 2.4',
-				'release-date' => '2014-07-22T18:21:43+00:00'
+					'website' => 'https://deuxhuithuit.com',
+					'email' => 'open-source@deuxhuithuit.com'
+				),
+				'version' => 'Symphony 2.6.x',
+				'release-date' => '2011-11-22T18:21:43+00:00'
 			);
 		}
 

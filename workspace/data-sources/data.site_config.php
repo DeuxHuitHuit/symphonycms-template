@@ -13,18 +13,20 @@
 		public $dsParamSORT = 'system:id';
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 		
-		
 		public $dsParamINCLUDEDELEMENTS = array(
-				'site-titre: formatted: all-languages',
-				'description: formatted',
-				'image-partage',
-				'twitter-url: formatted',
-				'twitter-user: formatted',
-				'twitter-site-domain: formatted',
-				'facebook-url: formatted',
-				'vimeo-url: formatted',
-				'instagram-url: formatted',
-				'navigateurs-non-supportes-titre: formatted',
+			'site-titre: formatted: all-languages',
+			'description: formatted',
+			'image-partage',
+			'theme',
+			'twitter-url: formatted',
+			'twitter-user: formatted',
+			'twitter-site-domain: formatted',
+			'facebook-url: formatted',
+			'facebook-page-id: formatted',
+			'vimeo-url: formatted',
+			'instagram-url: formatted',
+			'youtube-url: formatted',
+			'navigateurs-non-supportes: formatted',
 		);
 		
 
@@ -38,10 +40,11 @@
 				'name' => 'Site: Config',
 				'author' => array(
 					'name' => 'Deux Huit Huit',
-					'website' => 'http://deuxhuithuit.com',
-					'email' => 'open-source@deuxhuithuit.com'),
-				'version' => 'Symphony 2.4.x',
-				'release-date' => '2014-03-04T16:36:22+00:00'
+					'website' => 'https://deuxhuithuit.com',
+					'email' => 'open-source@deuxhuithuit.com'
+				),
+				'version' => 'Symphony 2.6.x',
+				'release-date' => '2016-11-22T16:36:22+00:00'
 			);
 		}
 

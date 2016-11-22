@@ -99,7 +99,7 @@
 				
 				<!-- Block user agent -->
 				<xsl:call-template name="block-user-agent-light">
-					<xsl:with-param name="text" select="$config/navigateurs-non-supportes-titre" />
+					<xsl:with-param name="text" select="$config/navigateurs-non-supportes" />
 					<xsl:with-param name="client-side-detection" select="true()" />
 				</xsl:call-template>
 				

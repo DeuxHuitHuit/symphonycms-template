@@ -14,6 +14,8 @@
 <xsl:variable name="site-description" select="$config/description" />
 <xsl:variable name="site-share-image" select="$config/image-partage" />
 
+<xsl:variable name="page-metas" select="/data/page-metas/entry[1]" />
+
 <!-- Dates -->
 <xsl:variable name="date-format">
 	<xsl:choose>

@@ -7,8 +7,6 @@
 			<xsl:call-template name="default-master-share-metas" />
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:variable name="page-metas" select="/data/page-metas/entry[1]" />
-			
 			<xsl:call-template name="html-metas">
 				<xsl:with-param name="description" select="$page-metas/description" />
 			</xsl:call-template>
