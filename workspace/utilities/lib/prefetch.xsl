@@ -8,7 +8,7 @@
 		<domains>
 			<domain>watermark.deuxhuithuit.com</domain>
 			<domain>www.google-analytics.com</domain>
-			<!--domain>cdnjs.cloudflare.com</domain>
+			<!--domain>www.googletagmanager.com</domain>
 			<domain>maps.googleapis.com</domain>
 			<domain>f.vimeocdn.com</domain>
 			<domain>www.youtube.com</domain-->
