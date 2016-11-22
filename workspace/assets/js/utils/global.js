@@ -151,5 +151,4 @@
 		return memoizedScrollBarWidth();
 	};
 	
-	
 })(jQuery, window);
