@@ -55,6 +55,11 @@
 	#transform(~'translateX(50%)');
 }
 
+.translate-x-half {
+	.DEPRECATED(~'Use .translate-x-1_2 instead');
+	#transform(~'translateX(50%)');
+}
+
 .translate-x-full {
 	#transform(~'translateX(100%)');
 }
@@ -187,6 +192,13 @@
 
 // FROM XS
 .translate-x-half-from-xs {
+	.DEPRECATED(~'Use .translate-x-1_2-from-xs instead');
+	#mq-min-width(@screen-xs, {
+		#transform(translateX(50%));
+	});
+}
+
+.translate-x-1_2-from-xs {
 	#mq-min-width(@screen-xs, {
 		#transform(translateX(50%));
 	});
@@ -194,6 +206,13 @@
 
 // FROM SM
 .translate-xy-minus-half-from-sm {
+	.DEPRECATED(~'Use .translate-xy-minus-1_2-from-sm instead');
+	#mq-min-width(@screen-sm, {
+		#transform(~'translate(-50% -50%)');
+	});
+}
+
+.translate-xy-minus-1_2-from-sm {
 	#mq-min-width(@screen-sm, {
 		#transform(~'translate(-50% -50%)');
 	});
