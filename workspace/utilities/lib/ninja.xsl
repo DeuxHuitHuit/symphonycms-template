@@ -34,4 +34,20 @@
 </xsl:template>
 -->
 
+<xsl:template match="//i | //b | //br" mode="ninja-inline">
+	<xsl:param name="key" />
+
+	<xsl:apply-templates select="." mode="ninja">
+		<xsl:with-param name="key" select="$key" />
+	</xsl:apply-templates>
+</xsl:template>
+
+<xsl:template match="//*" mode="ninja-inline">
+	<xsl:param name="key" />
+
+	<xsl:apply-templates select="* | @* | text()" mode="ninja">
+		<xsl:with-param name="key" select="$key" />
+	</xsl:apply-templates>
+</xsl:template>
+
 </xsl:stylesheet>
