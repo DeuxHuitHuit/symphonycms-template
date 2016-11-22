@@ -98,7 +98,7 @@ module.exports = function (grunt) {
 	var init = function (grunt) {
 		// Overrides some values
 		grunt.util.linefeed = '\n';
-		grunt.file.preserveBOM = true;
+		grunt.file.preserveBOM = false;
 		
 		// visit config
 		visitor.config(grunt, config);
