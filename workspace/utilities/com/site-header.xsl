@@ -13,17 +13,17 @@
 
 		<!-- site-header-logo-link -->
 		<xsl:variable name="site-header-logo-link-extend-style">
-			<!--add dev-extended-by="site-header" /-->
+			<add dev-extended-by="site-header" />
 		</xsl:variable>
 
 		<!-- site-nav -->
 		<xsl:variable name="site-nav-extend-style">
-			<!--add dev-extended-by="site-header" /-->
+			<add dev-extended-by="site-header" />
 		</xsl:variable>
 
 		<!-- site-lang-links -->
 		<xsl:variable name="site-lang-links-extend-style">
-			<!--add dev-extended-by="site-header" /-->
+			<add dev-extended-by="site-header" />
 		</xsl:variable>
 	<!-- ___________________________________________________________________/-->
 
@@ -53,6 +53,7 @@
 
 		<xsl:variable name="computed-site-nav-attr">
 			<xsl:copy-of select="$site-nav-extend-style"/>
+			<add id="site-nav" />
 		</xsl:variable>
 
 		<xsl:variable name="computed-site-lang-links-attr">
