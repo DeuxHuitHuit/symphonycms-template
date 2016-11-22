@@ -84,6 +84,18 @@
 			<add dev-extended-by="form-field-input" />
 		</xsl:variable>
 
+		<xsl:variable name="computed-label-attr">
+			<xsl:copy-of select="$form-field-input-label-default-style" />
+			<xsl:copy-of select="$label-attr" />
+			<add dev-extended-by="form-field-input" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-error-message-attr">
+			<xsl:copy-of select="$form-field-input-error-message-default-style" />
+			<xsl:copy-of select="$error-message-attr" />
+			<add dev-extended-by="form-field-input" />
+		</xsl:variable>
+
 		<xsl:call-template name="form-control">
 			<xsl:with-param name="name" select="$name" />
 			<xsl:with-param name="element" select="'textarea'" />
@@ -109,7 +121,7 @@
 			<xsl:with-param name="ctn-class-not-empty" select="$ctn-class-not-empty" />
 
 			<xsl:with-param name="label" select="$label" />
-			<xsl:with-param name="label-attr" select="$label-attr" />
+			<xsl:with-param name="label-attr" select="$computed-label-attr" />
 			<xsl:with-param name="label-class-error" select="$label-class-error" />
 			<xsl:with-param name="label-class-valid" select="$label-class-valid" />
 			<xsl:with-param name="label-class-empty" select="$label-class-empty" />
@@ -117,7 +129,7 @@
 			<xsl:with-param name="label-after-input" select="$label-after-input" />
 			<xsl:with-param name="label-is-optional" select="$label-is-optional" />
 
-			<xsl:with-param name="error-message-attr" select="$error-message-attr" />
+			<xsl:with-param name="error-message-attr" select="$computed-error-message-attr" />
 			<xsl:with-param name="error-message-class-when-on" select="$error-message-class-when-on"/>
 			<xsl:with-param name="error-message-is-optional" select="$error-message-is-optional" />
 			

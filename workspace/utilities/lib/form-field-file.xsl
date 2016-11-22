@@ -3,31 +3,11 @@
 
 <xsl:import href="form-control.xsl" />
 
-<xsl:variable name="form-field-input-basic-style">
-	<add class="block width-full border-box border-none" />
-	<add dev-style="basic" />
-</xsl:variable>
-
-<xsl:variable name="form-field-input-label-basic-style">
-	<add dev-style="basic" />
-</xsl:variable>
-
-<xsl:variable name="default-flag-class-when-on">
-	<xsl:text>opaque</xsl:text>
-</xsl:variable>
-
-<xsl:variable name="form-field-input-default-style" select="$form-field-input-basic-style" />
-<xsl:variable name="form-field-input-label-default-style" select="$form-field-input-label-basic-style" />
-<xsl:variable name="form-field-input-error-message-default-style"></xsl:variable>
-
-<!--xsl:param name="min-length"/>
-<xsl:param name="max-length"/-->
-
-<!-- CORE COMPONENT : form-field-input ==========================================================-->
-	<xsl:template name="form-field-input">
+<!-- CORE COMPONENT : form-field-file ===========================================================-->
+	<xsl:template name="form-field-file">
 		<!-- Field -->
 		<xsl:param name="name"/>
-		<xsl:param name="type" select="'text'"/>
+		<xsl:param name="type" select="'file'"/>
 		<!-- Optional -->
 		<xsl:param name="attr" />
 		<xsl:param name="placeholder"/>
@@ -78,23 +58,24 @@
 		<!-- Valid flag -->
 		<xsl:param name="valid-flag"><xsl:call-template name="form-control-icon-valid"/></xsl:param>
 		<xsl:param name="valid-flag-attr" />
-		<xsl:param name="valid-flag-class-when-on" select="$default-flag-class-when-on"/>
+		<xsl:param name="valid-flag-class-when-on"/>
 		<xsl:param name="valid-flag-is-optional" select="true()" />
 
 		<!-- Error flag -->
 		<xsl:param name="error-flag"><xsl:call-template name="form-control-icon-error"/></xsl:param>
 		<xsl:param name="error-flag-attr"/>
-		<xsl:param name="error-flag-class-when-on" select="$default-flag-class-when-on"/>
+		<xsl:param name="error-flag-class-when-on"/>
 		<xsl:param name="error-flag-is-optional" select="true()" />
 
 		<!-- Required flag -->
 		<xsl:param name="required-flag" ><xsl:call-template name="form-control-icon-required"/></xsl:param>
 		<xsl:param name="required-flag-attr"/>
-		<xsl:param name="required-flag-class-when-on" select="$default-flag-class-when-on"/>
+		<xsl:param name="required-flag-class-when-on"/>
 		<xsl:param name="required-flag-is-optional" select="true()" />
-	
+
 		<xsl:param name="clear-class"/>
 		<xsl:param name="progress-class" />
+		<xsl:param name="preview-attr" />
 
 		<!-- id (auto-generated from name)-->
 		<xsl:param name="id">
@@ -102,6 +83,8 @@
 				<xsl:with-param name="name" select="$name"/>
 			</xsl:call-template>
 		</xsl:param>
+
+		<xsl:param name="content" />
 
 		<xsl:variable name="computed-attr">
 			<!-- type attr -->
@@ -121,7 +104,7 @@
 		</xsl:variable>
 
 		<xsl:variable name="computed-label-attr">
-			<xsl:copy-of select="$form-field-input-label-default-style" />
+			<add class="absolute cursor-pointer bg-color-light-blue pointer-events-none fill flexbox align-items-center text-shorter color-mid-blue padding-left-thinner border-radius-sharp" />
 			<xsl:copy-of select="$label-attr" />
 			<add dev-extended-by="form-field-input" />
 		</xsl:variable>
@@ -191,8 +174,11 @@
 
 			<xsl:with-param name="clear-class" select="$clear-class"/>
 			<xsl:with-param name="progress-class" select="$progress-class"/>
+			<xsl:with-param name="preview-attr" select="$preview-attr"/>
+			<xsl:with-param name="preview-is-optional" select="false()"/>
 			
 			<xsl:with-param name="id" select="$id" />
+			<xsl:with-param name="content" select="$content" />
 		</xsl:call-template>
 	</xsl:template>
 </xsl:stylesheet>

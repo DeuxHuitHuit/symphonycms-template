@@ -5,7 +5,7 @@
 	xmlns:math="http://exslt.org/math"
 	exclude-result-prefixes="math exsl">
 
-<xsl:import href="form-control-create-field-id.xsl" />
+<xsl:import href="form-control-create-id.xsl" />
 <xsl:import href="form-field-label.xsl" />
 <xsl:import href="form-control-icon-valid.xsl" />
 <xsl:import href="form-control-icon-error.xsl" />
@@ -130,6 +130,8 @@
 
 		<xsl:param name="clear-class"/>
 		<xsl:param name="progress-class"/>
+		<xsl:param name="preview-attr"/>
+		<xsl:param name="preview-is-optional" select="true()" />
 		
 		<!-- id (auto-generated from name)-->
 		<xsl:param name="id">
@@ -151,6 +153,7 @@
 			<!-- Required class -->
 			<xsl:if test="$required = true()">
 				<add class="required" />
+				<add aria-required="true" />
 			</xsl:if>
 
 			<!-- Disabled class -->
@@ -281,6 +284,9 @@
 			<xsl:if test="$disabled = 'Yes' or $disabled = 'disabled' or $disabled = true()">
 				<add class="is-disabled" />
 			</xsl:if>
+			
+			<add data-error-class="{$label-class-error}" />
+			<add data-valid-class="{$label-class-valid}" />
 
 			<!-- For -->
 			<add for="{$id}" />
@@ -355,6 +361,24 @@
 
 			<add dev-core-element="required-flag" />
 		</xsl:variable>
+
+		<!-- Progress -->
+		<xsl:variable name="computed-progress-attr">
+			<add class="{$progress-class}" />
+			<add class="js-form-progress" />
+		</xsl:variable>
+
+		<!-- Clear -->
+		<xsl:variable name="computed-clear-attr">
+			<add class="{$clear-class}" />
+			<add class="js-form-clear" />
+		</xsl:variable>
+
+		<!-- Preview -->
+		<xsl:variable name="computed-preview-attr">
+			<xsl:copy-of select="$preview-attr" />
+			<add class="js-form-preview" />
+		</xsl:variable>
 	<!-- 																	/-->
 
 	<!-- COMPUTED VALUE 													 -->
@@ -379,7 +403,6 @@
 				<xsl:call-template name="element">
 					<xsl:with-param name="attr" select="$computed-inner-ctn-attr"/>
 					<xsl:with-param name="content">
-
 
 						<!-- Label -->
 						<xsl:if test="$label-after-input = false()">
@@ -423,12 +446,11 @@
 						</xsl:call-template>
 
 						<!-- Progress -->
-						<div>
-							<xsl:attribute name="class">
-								<xsl:value-of select="$progress-class"/>
-								<xsl:text> js-form-progress</xsl:text>
-							</xsl:attribute>
-						</div>
+						<xsl:call-template name="element">
+							<xsl:with-param name="attr" select="$computed-progress-attr"/>
+							<xsl:with-param name="is-optional" select="true()" />
+							<xsl:with-param name="content" select="''" />
+						</xsl:call-template>
 
 						<!-- Label -->
 						<xsl:if test="$label-after-input = true()">
@@ -436,14 +458,21 @@
 						</xsl:if>
 
 						<!-- Clear -->
-						<div>
-							<xsl:attribute name="class">
-								<xsl:value-of select="$clear-class"/>
-								<xsl:text> js-form-clear</xsl:text>
-							</xsl:attribute>
-							
-							<xsl:call-template name="form-control-icon-x" />
-						</div>
+						<xsl:call-template name="element">
+							<xsl:with-param name="attr" select="$computed-clear-attr"/>
+							<xsl:with-param name="is-optional" select="true()" />
+							<xsl:with-param name="content">
+								<!-- not needed in our case -->
+								<!-- xsl:call-template name="form-control-icon-x" /-->
+							</xsl:with-param>
+						</xsl:call-template>
+						
+						<!-- Preview -->
+						<xsl:call-template name="element">
+							<xsl:with-param name="attr" select="$computed-preview-attr"/>
+							<xsl:with-param name="is-optional" select="$preview-is-optional" />
+							<xsl:with-param name="content" select="''" />
+						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
 			</xsl:with-param>

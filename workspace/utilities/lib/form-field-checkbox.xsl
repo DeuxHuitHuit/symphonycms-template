@@ -83,6 +83,7 @@
 		<xsl:variable name="computed-attr">
 			<add type="checkbox"/>
 			<xsl:copy-of select="$attr" />
+			<rem class="width-full" />
 			<add dev-core="form-field-checkbox"/>
 		</xsl:variable>
 		

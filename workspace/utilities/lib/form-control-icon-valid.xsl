@@ -3,12 +3,14 @@
 
 <!-- DEFAULT STYLE 																				 -->
 	<xsl:variable name="form-control-icon-valid-default-style">
-		<add class="margin-auto stroke-green" />
+		<add class="valign-middle bold" />
+		<add style="color: green;" />
 	</xsl:variable>
 <!-- END DEFAULT STYLE 																			/-->
 
 <!-- CORE ELEMENT : form-control-icon-valid =====================================================-->
 	<xsl:template name="form-control-icon-valid">
+		<xsl:param name="element" select="'span'" />
 		<xsl:param name="attr" />
 
 	<!-- COMPUTED ATTRIBUTES 												 -->
@@ -21,8 +23,13 @@
 	<!-- 																	/-->
 
 	<!-- STRUCTURE 															 -->
-		<xsl:call-template name="form-control-icon-checked" >
+		<!-- <xsl:call-template name="form-control-icon-checked" >
 			<xsl:with-param name="attr" select="$computed-attr" />
+		</xsl:call-template> -->
+		<xsl:call-template name="element">
+			<xsl:with-param name="element" select="$element"/>
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="content" select="'•'" />
 		</xsl:call-template>
 	<!-- 																	/-->
 	</xsl:template>
@@ -36,7 +43,7 @@
 			<xsl:copy-of select="$attr" />
 
 			<add dev-file="form-control-icon-valid" />
-			<add dev-core-svg="icon-checked" />
+			<!-- <add dev-core-svg="icon-checked" /> -->
 		</xsl:variable>
 	<!-- 																	/-->
 
@@ -52,6 +59,7 @@
 
 			<polyline fill="none" stroke-width="2" stroke-miterlimit="10" points="0.707,11.967 4.927,16.187 20.407,0.707"/>
 		</svg>
+
 	<!-- 																	/-->
 	</xsl:template>
 </xsl:stylesheet>

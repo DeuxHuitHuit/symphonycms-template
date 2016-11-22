@@ -15,7 +15,7 @@
 
 <!-- Label Default Style-->
 	<xsl:variable name="form-field-label-default-style">
-		<add class="pointer-events-none " />
+		<add class="pointer-events-none" />
 	</xsl:variable>
 
 <!-- CORE COMPONENT : form-field-label ==========================================================-->
