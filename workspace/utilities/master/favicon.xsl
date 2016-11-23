@@ -4,14 +4,10 @@
 <xsl:template name="favicon">
 
 	<xsl:variable name="filename">
-		<xsl:choose>
-			<xsl:when test="$debug = true()">
-				<xsl:text>favicon-dev</xsl:text>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:text>favicon</xsl:text>
-			</xsl:otherwise>
-		</xsl:choose>
+		<xsl:text>favicon</xsl:text>
+		<xsl:if test="$dev = true()">
+			<xsl:text>-dev</xsl:text>
+		</xsl:if>
 	</xsl:variable>
 
 	<link rel="shortcut icon"     href="{$root}/{$filename}.ico" type="image/vnd.microsoft.icon" />
