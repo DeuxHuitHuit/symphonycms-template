@@ -114,6 +114,10 @@
 		return window.matchMedia('(min-width: ' + width + 'px)').matches;
 	};
 	
+	global.mediaQueryMaxWidth = function (width) {
+		return window.matchMedia('(max-width: ' + width + 'px)').matches;
+	};
+	
 	global.deviceMinMoveValue = 3;
 	
 	global.calculatedScrollbarWidth = function () {
