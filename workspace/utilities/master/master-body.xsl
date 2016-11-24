@@ -48,6 +48,7 @@
 		<xsl:variable name="computed-page-attr">
 			<add id="page-{$full-page-handle}" />
 			<add class="page" />
+			<add data-response-url="{$current-path}/" />
 			<xsl:call-template name="page-attr" />
 		</xsl:variable>
 	<!--																	/-->
