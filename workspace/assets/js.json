@@ -13,6 +13,8 @@
 		"modules/page-load.js",
 		"modules/window-notifier.js",
 		"modules/route-not-found.js",
+		"modules/page-not-found.js",
+		"modules/page-load-errors.js",
 		"modules/auto-tracked-scroll.js",
 		
 		"transitions/default-transition.js",
