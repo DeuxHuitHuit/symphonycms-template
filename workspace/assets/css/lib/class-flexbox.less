@@ -166,12 +166,47 @@
 .flex-row-reverse 		{#flex-direction(row-reverse);}
 .flex-column-reverse 	{#flex-direction(column-reverse);}
 
+// FROM XS
+.flex-row-from-xs {
+	#mq-min-width(@screen-xs, {
+		#flex-direction(row);
+	});
+}
+
+.flex-row-reverse-from-xs {
+	#mq-min-width(@screen-xs, {
+		#flex-direction(row-reverse);
+	});
+}
+
+
 // FROM SM
+.flex-row-from-sm {
+	#mq-min-width(@screen-sm, {
+		#flex-direction(row);
+	});
+}
+
 .flex-row-reverse-from-sm {
 	#mq-min-width(@screen-sm, {
 		#flex-direction(row-reverse);
 	});
 }
+
+// FROM MD
+.flex-row-from-md {
+	#mq-min-width(@screen-md, {
+		#flex-direction(row);
+	});
+}
+
+.flex-row-reverse-from-md {
+	#mq-min-width(@screen-md, {
+		#flex-direction(row-reverse);
+	});
+}
+
+
 
 // TO MD
 .flex-column-to-md {

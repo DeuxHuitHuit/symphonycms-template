@@ -3,15 +3,20 @@
 //=========================
 #generate-display-classes (@suffix: ~'') {
 
+
 	.display-none@{suffix} 	{display: none;}
-	.hidden@{suffix} 		{display: none;}
+	.display-none-importrant@{suffix} {display: none!important;}
+
+	.hidden@{suffix} 		{#DEPRECATED(~'Use display-none'); display: none;}
 
 	.table@{suffix} 		{display: table;}
 	.table-cell@{suffix} 	{display: table-cell;}
 	.list-item@{suffix} 	{display: list-item;}
 	.inline@{suffix} 		{display: inline;}
 	.inline-block@{suffix} 	{display: inline-block;}
+	.inline-block-important@{suffix} {display: inline-block!important;}
 	.block@{suffix} 		{display: block;}
+	.block-important@{suffix} {display: block!important;}
 
 	.flexbox@{suffix} {
 		display: -ms-flexbox;

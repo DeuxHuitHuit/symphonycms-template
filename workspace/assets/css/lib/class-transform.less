@@ -112,6 +112,10 @@
 	#transform(~'translateY(-25%)');
 }
 
+.translate-y-minus-3_4 {
+	#transform(~'translateY(-75%)');
+}
+
 .translate-y-minus-1_3 {
 	#transform(~'translateY(-33.33%)');
 }
@@ -150,43 +154,95 @@
 /**************************************
 * SCALE
 ***************************************/
-.scale-0 {
-	#transform(~'scale(0)');
-}
-
+//ALL
 .scale-50 {
+	DEPRECATED(~'Use scale-1_2');
 	#transform(~'scale(0.5)');
 }
 
 .scale-100 {
+	DEPRECATED(~'Use scale-1');
 	#transform(~'scale(1)');
 }
 
 .scale-110 {
+	DEPRECATED(~'Use scale-11_10');
 	#transform(~'scale(1.1)');
 }
 
 .scale-120 {
+	DEPRECATED(~'Use scale-12_10');
 	#transform(~'scale(1.2)');
 }
 
 .scale-200 {
+	DEPRECATED(~'Use scale-2');
 	#transform(~'scale(2)');
 }
 
+.scale-0 {
+	#transform(~'scale(0)');
+}
+
+.scale-1_2 {
+	#transform(~'scale(0.5)');
+}
+
+.scale-9_10 {
+	#transform(~'scale(0.9)');
+}
+
+.scale-1 {
+	#transform(~'scale(1)');
+}
+
+.scale-11_10 {
+	#transform(~'scale(1.1)');
+}
+
+.scale-12_10 {
+	#transform(~'scale(1.2)');
+}
+
+.scale-2 {
+	#transform(~'scale(2)');
+}
+
+//X
 .scale-x-50 {
+	DEPRECATED(~'Use scale-x-1_2')
 	#transform(~'scaleX(0.5)');
 }
 
 .scale-x-200 {
+	DEPRECATED(~'Use scale-x-2')
 	#transform(~'scaleX(2)');
 }
 
-.scale-y-50{
+.scale-x-1_2 {
+	#transform(~'scaleX(0.5)');
+}
+
+.scale-x-2 {
+	#transform(~'scaleX(2)');
+}
+
+//Y
+.scale-y-1_2 {
 	#transform(~'scaleY(0.5)');
 }
 
+.scale-y-50{
+	DEPRECATED(~'Use scale-y-1_2');
+	#transform(~'scaleY(0.5)');
+}
+
+.scale-y-2 {
+	#transform(~'scaleY(2)');
+}
+
 .scale-y-200{
+	DEPRECATED(~'Use scale-y-2');
 	#transform(~'scaleY(2)');
 }
 
