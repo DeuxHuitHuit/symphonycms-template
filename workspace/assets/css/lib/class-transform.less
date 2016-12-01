@@ -10,13 +10,21 @@
 	#transform-origin(center center);
 }
 
+.reflect-vertical {
+	#transform(~'scaleY(-1)');
+	#transform-origin(center center);
+}
+
 /**************************************
 * ROTATION
 ***************************************/
+.rotate-15deg 		{#transform(~'rotate(15deg)');}
+.rotate-45deg 		{#transform(~'rotate(45deg)');}
 .rotate-90deg 		{#transform(~'rotate(90deg)');}
 .rotate-180deg 		{#transform(~'rotate(180deg)');}
 
 .rotate-minus-15deg {#transform(~'rotate(-15deg)');}
+.rotate-minus-45deg {#transform(~'rotate(-45deg)');}
 .rotate-minus-90deg	{#transform(~'rotate(-90deg)');}
 
 
@@ -37,7 +45,13 @@
 * TRANSLATE X
 ***************************************/
 //Zero Value
-.translate-x-0, .translate-x-none {
+.translate-x-none {
+	#DEPRECATED(~'Use translate-x-0 instead')
+	#transform(~'translateX(0)');
+}
+
+
+.translate-x-0 {
 	#transform(~'translateX(0)');
 }
 

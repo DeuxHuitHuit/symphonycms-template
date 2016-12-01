@@ -1,8 +1,7 @@
 //=========================
 // = BACKGROUND-SIZE CLASS
 //=========================
-.bg-size-auto 		{background-size: auto;}
-.bg-size-cover 		{background-size: cover;}
-.bg-size-contain 	{background-size: contain;}
-
-//Rationnal
+#generate-bg-size-classes (@suffix: ~'') {
+	.bg-size-cover@{suffix} 	{background-size: cover;}
+	.bg-size-contain@{suffix} 	{background-size: contain;}
+}
