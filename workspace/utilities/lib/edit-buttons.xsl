@@ -9,7 +9,7 @@
 	<xsl:param name="section" select="../section/@handle" />
 	<xsl:param name="entry-id" select="@id" />
 	<xsl:param name="text" select="'EDIT'" />
-	<xsl:param name="wrap" select="'h3'" />
+	<xsl:param name="wrap" select="'div'" />
 	
 	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
 		<xsl:element name="{$wrap}">
