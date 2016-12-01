@@ -1,7 +1,10 @@
 //=========================
 // = CLEAR CLASS
 //=========================
-.clear-none 			{clear: none;}
-.clear-both, .clear 	{clear: both;}
-.clear-left 			{clear: left;}
-.clear-right 			{clear: right;}
+#generate-clear-classes (@suffix: ~'') {
+	.clear-none@{suffix} 	{clear: none;}
+	.clear-both@{suffix}, 
+	.clear@{suffix} 		{clear: both;}
+	.clear-left@{suffix} 	{clear: left;}
+	.clear-right@{suffix} 	{clear: right;}
+}

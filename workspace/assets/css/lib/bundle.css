@@ -105025,8 +105025,7 @@ html {
     order: 2;
   }
 }
-
-@media screen and .flex-order-to-xs-2 {
+.flex-order-to-xs-2 {
   outline: rgba(255, 0, 0, 0.36) 5px solid;
   outline-offset: 8px;
   position: relative;
@@ -105047,7 +105046,8 @@ html {
     -webkit-order: 2;
     order: 2;
   }
-}(max-width: 767px) {
+}
+@media screen and (max-width: 767px) {
   .flex-order-1-to-xs {
     -ms-flex-order: 1;
     -webkit-order: 1;
@@ -106195,9 +106195,7 @@ talign-right {
     text-align: right;
   }
 }
-
-html:not(.mobile) .text-decoration-overline-on-hover:hover,
-html:not(.mobile) .overline-on-hover:hover {.text-decoration-overline,
+.text-decoration-overline,
 .overline {
   text-decoration: overline;
 }
@@ -106209,6 +106207,8 @@ html:not(.mobile) .overline-on-hover:hover {.text-decoration-overline,
 .no-decoration {
   text-decoration: none;
 }
+html:not(.mobile) .text-decoration-overline-on-hover:hover,
+html:not(.mobile) .overline-on-hover:hover {
   text-decoration: overline;
 }
 html:not(.mobile) .text-decoration-underline-on-hover:hover,

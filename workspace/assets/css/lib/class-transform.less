@@ -10,13 +10,21 @@
 	#transform-origin(center center);
 }
 
+.reflect-vertical {
+	#transform(~'scaleY(-1)');
+	#transform-origin(center center);
+}
+
 /**************************************
 * ROTATION
 ***************************************/
+.rotate-15deg 		{#transform(~'rotate(15deg)');}
+.rotate-45deg 		{#transform(~'rotate(45deg)');}
 .rotate-90deg 		{#transform(~'rotate(90deg)');}
 .rotate-180deg 		{#transform(~'rotate(180deg)');}
 
 .rotate-minus-15deg {#transform(~'rotate(-15deg)');}
+.rotate-minus-45deg {#transform(~'rotate(-45deg)');}
 .rotate-minus-90deg	{#transform(~'rotate(-90deg)');}
 
 
@@ -37,7 +45,13 @@
 * TRANSLATE X
 ***************************************/
 //Zero Value
-.translate-x-0, .translate-x-none {
+.translate-x-none {
+	#DEPRECATED(~'Use translate-x-0 instead')
+	#transform(~'translateX(0)');
+}
+
+
+.translate-x-0 {
 	#transform(~'translateX(0)');
 }
 
@@ -112,6 +126,10 @@
 	#transform(~'translateY(-25%)');
 }
 
+.translate-y-minus-3_4 {
+	#transform(~'translateY(-75%)');
+}
+
 .translate-y-minus-1_3 {
 	#transform(~'translateY(-33.33%)');
 }
@@ -150,45 +168,99 @@
 /**************************************
 * SCALE
 ***************************************/
-.scale-0 {
-	#transform(~'scale(0)');
-}
-
+//ALL
 .scale-50 {
+	DEPRECATED(~'Use scale-1_2');
 	#transform(~'scale(0.5)');
 }
 
 .scale-100 {
+	DEPRECATED(~'Use scale-1');
 	#transform(~'scale(1)');
 }
 
 .scale-110 {
+	DEPRECATED(~'Use scale-11_10');
 	#transform(~'scale(1.1)');
 }
 
 .scale-120 {
+	DEPRECATED(~'Use scale-12_10');
 	#transform(~'scale(1.2)');
 }
 
 .scale-200 {
+	DEPRECATED(~'Use scale-2');
 	#transform(~'scale(2)');
 }
 
+.scale-0 {
+	#transform(~'scale(0)');
+}
+
+.scale-1_2 {
+	#transform(~'scale(0.5)');
+}
+
+.scale-9_10 {
+	#transform(~'scale(0.9)');
+}
+
+.scale-1 {
+	#transform(~'scale(1)');
+}
+
+.scale-11_10 {
+	#transform(~'scale(1.1)');
+}
+
+.scale-12_10 {
+	#transform(~'scale(1.2)');
+}
+
+.scale-2 {
+	#transform(~'scale(2)');
+}
+
+//X
 .scale-x-50 {
+	DEPRECATED(~'Use scale-x-1_2')
 	#transform(~'scaleX(0.5)');
 }
 
 .scale-x-200 {
+	DEPRECATED(~'Use scale-x-2')
 	#transform(~'scaleX(2)');
 }
 
+.scale-x-1_2 {
+	#transform(~'scaleX(0.5)');
+}
+
+.scale-x-2 {
+	#transform(~'scaleX(2)');
+}
+
+//Y
 .scale-y-50{
+	DEPRECATED(~'Use scale-y-1_2');
 	#transform(~'scaleY(0.5)');
 }
 
 .scale-y-200{
+	DEPRECATED(~'Use scale-y-2');
 	#transform(~'scaleY(2)');
 }
+
+.scale-y-1_2 {
+	#transform(~'scaleY(0.5)');
+}
+
+
+.scale-y-2 {
+	#transform(~'scaleY(2)');
+}
+
 
 // FROM XS
 .translate-x-half-from-xs {
