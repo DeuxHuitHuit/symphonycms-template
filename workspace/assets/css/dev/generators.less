@@ -1,0 +1,68 @@
+// DIRECTIONAL GENERATOR
+#generate-directional-class-value(@name, @property, @value-name, @value, @direction: ~'', @suffix: ~'') {
+	.@{name}@{direction}-@{value-name}@{suffix} {
+		@{property}@{direction}: @value;
+	}
+}
+#generate-two-axes-class-value(@name, @property, @value-name, @value, @axe1, @axe2, @direction: ~'', @suffix: ~'') {
+	.@{name}-@{direction}-@{value-name}@{suffix} {
+		@{property}-@{axe1}: @value;
+		@{property}-@{axe2}: @value;
+	}
+}
+// HEIGHT GENERATOR
+#generate-height-class(@suffix, @property-name, @property, @name,  @value) {
+	.@{property-name}-@{name}@{suffix} {@{property}: @value;}
+}
+#generate-all-height-class(@suffix, @name, @value) {
+	#generate-height-class(@suffix, ~'height', 	 ~'height', 		@name, @value);
+	#generate-height-class(@suffix, ~'min-height', ~'min-height', 	@name, @value);
+	#generate-height-class(@suffix, ~'max-height', ~'max-height', 	@name, @value);
+}
+// MARGIN GENERATOR
+#generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
+}
+#generate-margin-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'margin', ~'margin', @value-name, @value, @axe1, @axe2, @direction, @suffix);
+}
+#generate-margin-all-classes(@suffix: ~'') {
+	#generate-margin-classes(~'', @suffix);
+	
+	#generate-margin-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-margin-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-margin-classes(~'-bottom', @suffix);
+	#generate-margin-classes(~'-left', @suffix);
+	#generate-margin-classes(~'-right', @suffix);
+	#generate-margin-classes(~'-top', @suffix);
+}
+// PADDING GENERATOR
+#generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);
+}
+#generate-padding-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'padding', ~'padding', @value-name, @value, @direction, @suffix,);
+}
+#generate-padding-all-classes(@suffix: ~'') {
+	#generate-padding-classes(~'', @suffix);
+	
+	#generate-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	
+	#generate-padding-classes(~'-bottom', @suffix);
+	#generate-padding-classes(~'-left', @suffix);
+	#generate-padding-classes(~'-right', @suffix);
+	#generate-padding-classes(~'-top', @suffix);
+}
+// WIDTH GENERATOR
+#generate-width-class(@suffix, @property-name, @property, @name,  @value) {
+	.@{property-name}-@{name}@{suffix} {
+		@{property}: @value;
+	}
+}
+#generate-all-width-class(@suffix, @name, @value) {
+	#generate-width-class(@suffix, ~'width', 	 ~'width', 		@name, @value);
+	#generate-width-class(@suffix, ~'min-width', ~'min-width', 	@name, @value);
+	#generate-width-class(@suffix, ~'max-width', ~'max-width', 	@name, @value);
+}

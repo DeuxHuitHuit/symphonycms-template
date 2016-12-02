@@ -6,10 +6,22 @@
 	#generate-clear-classes(@suffix);
 	#generate-display-classes(@suffix);
 	#generate-flex-basis-classes(@suffix);
+	#generate-flex-direction-classes(@suffix);
+	#generate-flex-grow-classes(@suffix);
+	#generate-flex-order-classes(@suffix);
+	#generate-float-classes(@suffix);
+	#generate-font-size-classes(@suffix);
 	#generate-height-classes(@suffix);
-	#generate-visibility-classes(@suffix);
+	#generate-letter-spacing-classes(@suffix);
+	#generate-line-height-classes(@suffix);
 	#generate-margin-all-classes(@suffix);
+	#generate-opacity-classes(@suffix);
+	#generate-overflow-classes(@suffix);
 	#generate-padding-all-classes(@suffix);
+	#generate-position-classes(@suffix);
+	#generate-text-align-classes(@suffix);
+	#generate-vertical-align-classes(@suffix);
+	#generate-visibility-classes(@suffix);
 	#generate-width-classes(@suffix);
 }
 //  GENERAL
@@ -28,7 +40,7 @@
 
 //  TO
 //#mq-max-width(@screen-2k - 1,{#generate-lib(~'-to-2k');});
-#mq-max-width(@screen-hd - 1,{#generate-lib(~'-to-hd');});
+//#mq-max-width(@screen-hd - 1,{#generate-lib(~'-to-hd');});
 #mq-max-width(@screen-xl - 1,{#generate-lib(~'-to-xl');});
 #mq-max-width(@screen-lg - 1,{#generate-lib(~'-to-lg');});
 #mq-max-width(@screen-md - 1,{#generate-lib(~'-to-md');});

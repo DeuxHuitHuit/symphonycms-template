@@ -1,18 +1,20 @@
 //=========================
 // = LINE-HEIGHT CLASS
 //=========================
-//Usefull
-.line-height-initial 		{line-height: initial;}
-.line-height-normal			{line-height: normal;}
-.line-height-0 				{line-height: 0;}
-.line-height-0-important 	{line-height: 0 !important;}
-.line-height-perfect 		{line-height: 1em;}
-.line-height-double 		{line-height: 2em;}
-//Scales
-.line-height-compressed 	{line-height: @line-height-compressed;}
-.line-height-tightest 		{line-height: @line-height-tightest;}
-.line-height-tighter 		{line-height: @line-height-tighter;}
-.line-height-tight 			{line-height: @line-height-tight;}
-.line-height-loose 			{line-height: @line-height-loose;}
-.line-height-looser 		{line-height: @line-height-looser;}
-.line-height-loosest 		{line-height: @line-height-loosest;}
+#generate-line-height-classes (@suffix: ~'') {
+	//Usefull
+	.line-height-initial@{suffix}     {line-height: initial;}
+	.line-height-normal@{suffix}      {line-height: normal;}
+	.line-height-0@{suffix}           {line-height: 0;}
+	.line-height-0-important@{suffix} {line-height: 0 !important;}
+	.line-height-perfect@{suffix}     {line-height: 1em;}
+	.line-height-double@{suffix}      {line-height: 2em;}
+	//Scales
+	.line-height-compressed@{suffix}  {line-height: @line-height-compressed;}
+	.line-height-tightest@{suffix}    {line-height: @line-height-tightest;}
+	.line-height-tighter@{suffix}     {line-height: @line-height-tighter;}
+	.line-height-tight@{suffix}       {line-height: @line-height-tight;}
+	.line-height-loose@{suffix}       {line-height: @line-height-loose;}
+	.line-height-looser@{suffix}      {line-height: @line-height-looser;}
+	.line-height-loosest@{suffix}     {line-height: @line-height-loosest;}
+}

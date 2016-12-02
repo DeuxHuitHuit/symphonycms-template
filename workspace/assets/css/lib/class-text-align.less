@@ -1,73 +1,8 @@
 //=====================================
 //=== TEXT-ALIGN CLASS
 //=====================================
-.text-align-center, .text-center, .talign-center {
-	text-align: center;
-}
-
-.text-align-left, .text-left, .talign-left {
-	text-align: left;
-}
-
-.text-align-right, .text-right, talign-right {
-	text-align: right;
-}
-
-//=====================================
-//=== TEXT-ALIGN     RESPONSIVE 
-//=========== FROM PH =================
-
-.text-right-from-ph {
-	#mq-min-width(@screen-ph, {
-		.text-right;
-	});
-}
-
-//=========== FROM XS ===================
-.text-left-from-xs {
-	#mq-min-width(@screen-xs, {
-		.text-left;
-	});
-}
-
-.text-right-from-xs {
-	#mq-min-width(@screen-xs, {
-		.text-right;
-	});
-}
-
-//=========== TO XS ===================
-
-.text-center-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		.text-center;
-	});
-}
-
-.text-right-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		.text-right;
-	});
-}
-
-//=========== TO PH ===================
-
-.text-center-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.text-center;
-	});
-}
-
-.text-right-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		.text-right;
-	});
-}
-
-//=========== FROM PH TO XS ===========
-
-.text-right-from-ph-to-xs {
-	#mq-min-max-width(@screen-ph, @screen-xs - 1, {
-		.text-right;
-	});
+#generate-text-align-classes (@suffix: ~'') {
+	.text-align-center@{suffix}, .text-center@{suffix} {text-align: center;}
+	.text-align-left@{suffix},   .text-left@{suffix}   {text-align: left;}
+	.text-align-right@{suffix},  .text-right@{suffix}  {text-align: right;}
 }

@@ -1,11 +1,14 @@
 //=========================
 // = LETTER-SPACING CLASS
 //=========================
-.letter-spacing-narrowest 	{letter-spacing: @letter-spacing-narrowest;}
-.letter-spacing-narrower 	{letter-spacing: @letter-spacing-narrower;}
-.letter-spacing-narrow 		{letter-spacing: @letter-spacing-narrow;}
-.letter-spacing-wide 		{letter-spacing: @letter-spacing-wide;}
-.letter-spacing-wider 		{letter-spacing: @letter-spacing-wider;}
-.letter-spacing-widest 		{letter-spacing: @letter-spacing-widest;}
-.letter-spacing-1px 		{letter-spacing: 1px;}
-.letter-spacing-2px 		{letter-spacing: 2px;}
+#generate-letter-spacing-classes (@suffix: ~'') {
+	.letter-spacing-1px@{suffix}       {letter-spacing: 1px;}
+	.letter-spacing-2px@{suffix}       {letter-spacing: 2px;}
+
+	.letter-spacing-narrowest@{suffix} {letter-spacing: @letter-spacing-narrowest;}
+	.letter-spacing-narrower@{suffix}  {letter-spacing: @letter-spacing-narrower;}
+	.letter-spacing-narrow@{suffix}    {letter-spacing: @letter-spacing-narrow;}
+	.letter-spacing-wide@{suffix}      {letter-spacing: @letter-spacing-wide;}
+	.letter-spacing-wider@{suffix}     {letter-spacing: @letter-spacing-wider;}
+	.letter-spacing-widest@{suffix}    {letter-spacing: @letter-spacing-widest;}
+}

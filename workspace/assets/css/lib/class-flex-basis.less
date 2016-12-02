@@ -1,135 +1,109 @@
 // ================================
 // FLEX-BASIS
 // ================================
-.flex-basis-atto 		{#flex-basis(@spacing-atto);}
-.flex-basis-femto 		{#flex-basis(@spacing-femto);}
-.flex-basis-pico 		{#flex-basis(@spacing-pico);}
-.flex-basis-nano 		{#flex-basis(@spacing-nano);}
-.flex-basis-micro 		{#flex-basis(@spacing-micro);}
-.flex-basis-thinnest 	{#flex-basis(@spacing-thinnest);}
-.flex-basis-thinner 	{#flex-basis(@spacing-thinner);}
-.flex-basis-thin 		{#flex-basis(@spacing-thin);}
-.flex-basis-broad 		{#flex-basis(@spacing-broad);}
-.flex-basis-broader 	{#flex-basis(@spacing-broader);}
-.flex-basis-broadest 	{#flex-basis(@spacing-broadest);}
-.flex-basis-large 		{#flex-basis(@spacing-large);}
-.flex-basis-larger 		{#flex-basis(@spacing-larger);}
-.flex-basis-largest 	{#flex-basis(@spacing-largest);}
-.flex-basis-mega 		{#flex-basis(@spacing-mega);}
-.flex-basis-giga 		{#flex-basis(@spacing-giga);}
-.flex-basis-tera 		{#flex-basis(@spacing-tera);}
-.flex-basis-peta 		{#flex-basis(@spacing-peta);}
-.flex-basis-zetta 		{#flex-basis(@spacing-zetta);}
-.flex-basis-yotta 		{#flex-basis(@spacing-yotta);}
+#generate-flex-basis-classes (@suffix: ~'') {
+	.flex-basis-atto@{suffix} 		{#flex-basis(@spacing-atto);}
+	.flex-basis-femto@{suffix} 		{#flex-basis(@spacing-femto);}
+	.flex-basis-pico@{suffix} 		{#flex-basis(@spacing-pico);}
+	.flex-basis-nano@{suffix} 		{#flex-basis(@spacing-nano);}
+	.flex-basis-micro@{suffix} 		{#flex-basis(@spacing-micro);}
+	.flex-basis-thinnest@{suffix} 	{#flex-basis(@spacing-thinnest);}
+	.flex-basis-thinner@{suffix} 	{#flex-basis(@spacing-thinner);}
+	.flex-basis-thin@{suffix} 		{#flex-basis(@spacing-thin);}
+	.flex-basis-broad@{suffix} 		{#flex-basis(@spacing-broad);}
+	.flex-basis-broader@{suffix} 	{#flex-basis(@spacing-broader);}
+	.flex-basis-broadest@{suffix} 	{#flex-basis(@spacing-broadest);}
+	.flex-basis-large@{suffix} 		{#flex-basis(@spacing-large);}
+	.flex-basis-larger@{suffix} 	{#flex-basis(@spacing-larger);}
+	.flex-basis-largest@{suffix} 	{#flex-basis(@spacing-largest);}
+	.flex-basis-mega@{suffix} 		{#flex-basis(@spacing-mega);}
+	.flex-basis-giga@{suffix} 		{#flex-basis(@spacing-giga);}
+	.flex-basis-tera@{suffix} 		{#flex-basis(@spacing-tera);}
+	.flex-basis-peta@{suffix} 		{#flex-basis(@spacing-peta);}
+	.flex-basis-zetta@{suffix} 		{#flex-basis(@spacing-zetta);}
+	.flex-basis-yotta@{suffix} 		{#flex-basis(@spacing-yotta);}
 
-//Double
-.flex-basis-atto-double 	{#flex-basis(@spacing-atto * 2);}
-.flex-basis-femto-double 	{#flex-basis(@spacing-femto * 2);}
-.flex-basis-pico-double 	{#flex-basis(@spacing-pico * 2);}
-.flex-basis-nano-double 	{#flex-basis(@spacing-nano * 2);}
-.flex-basis-micro-double 	{#flex-basis(@spacing-micro * 2);}
-.flex-basis-thinnest-double {#flex-basis(@spacing-thinnest * 2);}
-.flex-basis-thinner-double 	{#flex-basis(@spacing-thinner * 2);}
-.flex-basis-thin-double 	{#flex-basis(@spacing-thin * 2);}
-.flex-basis-broad-double 	{#flex-basis(@spacing-broad * 2);}
-.flex-basis-broader-double 	{#flex-basis(@spacing-broader * 2);}
-.flex-basis-broadest-double {#flex-basis(@spacing-broadest * 2);}
-.flex-basis-large-double 	{#flex-basis(@spacing-large * 2);}
-.flex-basis-larger-double 	{#flex-basis(@spacing-larger * 2);}
-.flex-basis-largest-double 	{#flex-basis(@spacing-largest * 2);}
-.flex-basis-mega-double 	{#flex-basis(@spacing-mega * 2);}
-.flex-basis-giga-double 	{#flex-basis(@spacing-giga * 2);}
-.flex-basis-tera-double 	{#flex-basis(@spacing-tera * 2);}
-.flex-basis-peta-double 	{#flex-basis(@spacing-peta * 2);}
-.flex-basis-zetta-double 	{#flex-basis(@spacing-zetta * 2);}
-.flex-basis-yotta-double 	{#flex-basis(@spacing-yotta * 2);}
+	//Double
+	.flex-basis-atto-double@{suffix} 	{#flex-basis(@spacing-atto * 2);}
+	.flex-basis-femto-double@{suffix} 	{#flex-basis(@spacing-femto * 2);}
+	.flex-basis-pico-double@{suffix} 	{#flex-basis(@spacing-pico * 2);}
+	.flex-basis-nano-double@{suffix} 	{#flex-basis(@spacing-nano * 2);}
+	.flex-basis-micro-double@{suffix} 	{#flex-basis(@spacing-micro * 2);}
+	.flex-basis-thinnest-double@{suffix}{#flex-basis(@spacing-thinnest * 2);}
+	.flex-basis-thinner-double@{suffix} {#flex-basis(@spacing-thinner * 2);}
+	.flex-basis-thin-double@{suffix} 	{#flex-basis(@spacing-thin * 2);}
+	.flex-basis-broad-double@{suffix} 	{#flex-basis(@spacing-broad * 2);}
+	.flex-basis-broader-double@{suffix} {#flex-basis(@spacing-broader * 2);}
+	.flex-basis-broadest-double@{suffix}{#flex-basis(@spacing-broadest * 2);}
+	.flex-basis-large-double@{suffix} 	{#flex-basis(@spacing-large * 2);}
+	.flex-basis-larger-double@{suffix} 	{#flex-basis(@spacing-larger * 2);}
+	.flex-basis-largest-double@{suffix} {#flex-basis(@spacing-largest * 2);}
+	.flex-basis-mega-double@{suffix} 	{#flex-basis(@spacing-mega * 2);}
+	.flex-basis-giga-double@{suffix} 	{#flex-basis(@spacing-giga * 2);}
+	.flex-basis-tera-double@{suffix} 	{#flex-basis(@spacing-tera * 2);}
+	.flex-basis-peta-double@{suffix} 	{#flex-basis(@spacing-peta * 2);}
+	.flex-basis-zetta-double@{suffix} 	{#flex-basis(@spacing-zetta * 2);}
+	.flex-basis-yotta-double@{suffix} 	{#flex-basis(@spacing-yotta * 2);}
 
-//Triple
-.flex-basis-atto-triple 		{#flex-basis(@spacing-atto * 3);}
-.flex-basis-femto-triple 		{#flex-basis(@spacing-femto * 3);}
-.flex-basis-pico-triple 		{#flex-basis(@spacing-pico * 3);}
-.flex-basis-nano-triple 		{#flex-basis(@spacing-nano * 3);}
-.flex-basis-micro-triple 		{#flex-basis(@spacing-micro * 3);}
-.flex-basis-thinnest-triple 	{#flex-basis(@spacing-thinnest * 3);}
-.flex-basis-thinner-triple 		{#flex-basis(@spacing-thinner * 3);}
-.flex-basis-thin-triple 		{#flex-basis(@spacing-thin * 3);}
-.flex-basis-broad-triple 		{#flex-basis(@spacing-broad * 3);}
-.flex-basis-broader-triple 		{#flex-basis(@spacing-broader * 3);}
-.flex-basis-broadest-triple 	{#flex-basis(@spacing-broadest * 3);}
-.flex-basis-large-triple 		{#flex-basis(@spacing-large * 3);}
-.flex-basis-larger-triple 		{#flex-basis(@spacing-larger * 3);}
-.flex-basis-largest-triple 		{#flex-basis(@spacing-largest * 3);}
-.flex-basis-mega-triple 		{#flex-basis(@spacing-mega * 3);}
-.flex-basis-giga-triple 		{#flex-basis(@spacing-giga * 3);}
-.flex-basis-tera-triple 		{#flex-basis(@spacing-tera * 3);}
-.flex-basis-peta-triple 		{#flex-basis(@spacing-peta * 3);}
-.flex-basis-zetta-triple 		{#flex-basis(@spacing-zetta * 3);}
-.flex-basis-yotta-triple 		{#flex-basis(@spacing-yotta * 3);}
+	//Triple
+	.flex-basis-atto-triple@{suffix} 	{#flex-basis(@spacing-atto * 3);}
+	.flex-basis-femto-triple@{suffix} 	{#flex-basis(@spacing-femto * 3);}
+	.flex-basis-pico-triple@{suffix} 	{#flex-basis(@spacing-pico * 3);}
+	.flex-basis-nano-triple@{suffix} 	{#flex-basis(@spacing-nano * 3);}
+	.flex-basis-micro-triple@{suffix} 	{#flex-basis(@spacing-micro * 3);}
+	.flex-basis-thinnest-triple@{suffix}{#flex-basis(@spacing-thinnest * 3);}
+	.flex-basis-thinner-triple@{suffix} {#flex-basis(@spacing-thinner * 3);}
+	.flex-basis-thin-triple@{suffix} 	{#flex-basis(@spacing-thin * 3);}
+	.flex-basis-broad-triple@{suffix} 	{#flex-basis(@spacing-broad * 3);}
+	.flex-basis-broader-triple@{suffix} {#flex-basis(@spacing-broader * 3);}
+	.flex-basis-broadest-triple@{suffix}{#flex-basis(@spacing-broadest * 3);}
+	.flex-basis-large-triple@{suffix} 	{#flex-basis(@spacing-large * 3);}
+	.flex-basis-larger-triple@{suffix} 	{#flex-basis(@spacing-larger * 3);}
+	.flex-basis-largest-triple@{suffix} {#flex-basis(@spacing-largest * 3);}
+	.flex-basis-mega-triple@{suffix} 	{#flex-basis(@spacing-mega * 3);}
+	.flex-basis-giga-triple@{suffix} 	{#flex-basis(@spacing-giga * 3);}
+	.flex-basis-tera-triple@{suffix} 	{#flex-basis(@spacing-tera * 3);}
+	.flex-basis-peta-triple@{suffix} 	{#flex-basis(@spacing-peta * 3);}
+	.flex-basis-zetta-triple@{suffix} 	{#flex-basis(@spacing-zetta * 3);}
+	.flex-basis-yotta-triple@{suffix} 	{#flex-basis(@spacing-yotta * 3);}
 
-//Dimensions
-.flex-basis-tiniest 		{#flex-basis(@dimension-tiniest);}
-.flex-basis-tinier 			{#flex-basis(@dimension-tinier);}
-.flex-basis-tiny			{#flex-basis(@dimension-tiny);}
-.flex-basis-smallest 		{#flex-basis(@dimension-smallest);}
-.flex-basis-smaller 		{#flex-basis(@dimension-smaller);}
-.flex-basis-small 			{#flex-basis(@dimension-small);}
-.flex-basis-big 			{#flex-basis(@dimension-big);}
-.flex-basis-bigger 			{#flex-basis(@dimension-bigger);}
-.flex-basis-biggest 		{#flex-basis(@dimension-biggest);}
-
-//1_2
-.flex-basis-1_2 			{#flex-basis(50%);}
-//1_3
-.flex-basis-1_3 			{#flex-basis(100% / 3);}
-.flex-basis-2_3 			{#flex-basis(100% / 3 * 2);}
-//1_4
-.flex-basis-1_4 			{#flex-basis(25%);}
-.flex-basis-3_4 			{#flex-basis(75%);}
-//1_5
-.flex-basis-1_5 			{#flex-basis(20%);}
-.flex-basis-2_5 			{#flex-basis(40%);}
-.flex-basis-3_5 			{#flex-basis(60%);}
-.flex-basis-4_5 			{#flex-basis(80%);}
-//1_6
-.flex-basis-1_6 			{#flex-basis(100% / 6 * 1);}
-.flex-basis-5_6 			{#flex-basis(100% / 6 * 5);}
-//1_7
-.flex-basis-1_7 			{#flex-basis(100% / 7 * 1);}
-.flex-basis-2_7 			{#flex-basis(100% / 7 * 2);}
-.flex-basis-3_7 			{#flex-basis(100% / 7 * 3);}
-.flex-basis-4_7 			{#flex-basis(100% / 7 * 4);}
-.flex-basis-5_7 			{#flex-basis(100% / 7 * 5);}
-.flex-basis-6_7 			{#flex-basis(100% / 7 * 6);}
-
-//Utils
-.flex-basis-full 			{#flex-basis(100%); }
-.flex-basis-auto 			{#flex-basis(auto);}
-.flex-basis-0 				{#flex-basis(0);}
-
-// FROM MD
-.flex-basis-0-from-md {
-	#mq-min-width((@screen-md), {
-		#flex-basis(0);
-	});
-}
-
-// TO MD
-.flex-basis-auto-to-md {
-	#mq-max-width((@screen-md - 1), {
-		#flex-basis(auto);
-	});
-}
-
-// TO XS
-.flex-basis-initial-to-xs {
-	#mq-max-width(@screen-xs - 1, {
-		#flex-basis(initial);
-	});
-}
-
-// TO PH
-.flex-basis-initial-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		#flex-basis(initial);
-	});
+	//Dimensions
+	.flex-basis-tiniest@{suffix} 	{#flex-basis(@dimension-tiniest);}
+	.flex-basis-tinier@{suffix} 	{#flex-basis(@dimension-tinier);}
+	.flex-basis-tiny@{suffix}		{#flex-basis(@dimension-tiny);}
+	.flex-basis-smallest@{suffix} 	{#flex-basis(@dimension-smallest);}
+	.flex-basis-smaller@{suffix} 	{#flex-basis(@dimension-smaller);}
+	.flex-basis-small@{suffix} 		{#flex-basis(@dimension-small);}
+	.flex-basis-big@{suffix} 		{#flex-basis(@dimension-big);}
+	.flex-basis-bigger@{suffix} 	{#flex-basis(@dimension-bigger);}
+	.flex-basis-biggest@{suffix} 	{#flex-basis(@dimension-biggest);}
+	
+	//1_2
+	.flex-basis-1_2@{suffix} 	{#flex-basis(50%);}
+	//1_3
+	.flex-basis-1_3@{suffix} 	{#flex-basis(100% / 3);}
+	.flex-basis-2_3@{suffix} 	{#flex-basis(100% / 3 * 2);}
+	//1_4
+	.flex-basis-1_4@{suffix} 	{#flex-basis(25%);}
+	.flex-basis-3_4@{suffix} 	{#flex-basis(75%);}
+	//1_5
+	.flex-basis-1_5@{suffix} 	{#flex-basis(20%);}
+	.flex-basis-2_5@{suffix} 	{#flex-basis(40%);}
+	.flex-basis-3_5@{suffix} 	{#flex-basis(60%);}
+	.flex-basis-4_5@{suffix} 	{#flex-basis(80%);}
+	//1_6
+	.flex-basis-1_6@{suffix} 	{#flex-basis(100% / 6 * 1);}
+	.flex-basis-5_6@{suffix} 	{#flex-basis(100% / 6 * 5);}
+	//1_7
+	.flex-basis-1_7@{suffix} 	{#flex-basis(100% / 7 * 1);}
+	.flex-basis-2_7@{suffix} 	{#flex-basis(100% / 7 * 2);}
+	.flex-basis-3_7@{suffix} 	{#flex-basis(100% / 7 * 3);}
+	.flex-basis-4_7@{suffix} 	{#flex-basis(100% / 7 * 4);}
+	.flex-basis-5_7@{suffix} 	{#flex-basis(100% / 7 * 5);}
+	.flex-basis-6_7@{suffix} 	{#flex-basis(100% / 7 * 6);}
+	
+	//Utils
+	.flex-basis-full@{suffix} 	{#flex-basis(100%); }
+	.flex-basis-auto@{suffix} 	{#flex-basis(auto);}
+	.flex-basis-0@{suffix} 		{#flex-basis(0);}
 }

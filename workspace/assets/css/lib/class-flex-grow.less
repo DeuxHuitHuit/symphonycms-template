@@ -1,46 +1,14 @@
 // ================================
 // FLEX-GROW
 // ================================
-.flex-grow-0 	{#flex-grow(0);}
-.flex-grow-1 	{#flex-grow(1);}
-.flex-grow-2 	{#flex-grow(2);}
-.flex-grow-3 	{#flex-grow(3);}
-.flex-grow-4 	{#flex-grow(4);}
-.flex-grow-5 	{#flex-grow(5);}
-.flex-grow-10 	{#flex-grow(10);}
-.flex-grow-100 	{#flex-grow(100);}
-.flex-grow-1000 {#flex-grow(1000);}
-
-// FROM PH
-.flex-grow-1-from-ph {
-	#mq-min-width(@screen-ph, {
-		#flex-grow(1);
-	});
-}
-
-// FROM MD
-.flex-grow-0-from-md {
-	#mq-min-width((@screen-md), {
-		#flex-grow(0);
-	});
-}
-
-.flex-grow-1-from-md {
-	#mq-min-width((@screen-md), {
-		#flex-grow(1);
-	});
-}
-
-// TO MD
-.flex-grow-1-to-md {
-	#mq-max-width((@screen-md - 1), {
-		#flex-grow(1);
-	});
-}
-
-// TO PH
-.flex-grow-2-to-ph {
-	#mq-max-width(@screen-ph - 1, {
-		#flex-grow(2);
-	});
+#generate-flex-grow-classes (@suffix: ~'') {
+	.flex-grow-0@{suffix}    {#flex-grow(0);}
+	.flex-grow-1@{suffix}    {#flex-grow(1);}
+	.flex-grow-2@{suffix}    {#flex-grow(2);}
+	.flex-grow-3@{suffix}    {#flex-grow(3);}
+	.flex-grow-4@{suffix}    {#flex-grow(4);}
+	.flex-grow-5@{suffix}    {#flex-grow(5);}
+	.flex-grow-10@{suffix}   {#flex-grow(10);}
+	.flex-grow-100@{suffix}  {#flex-grow(100);}
+	.flex-grow-1000@{suffix} {#flex-grow(1000);}
 }

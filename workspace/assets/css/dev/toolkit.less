@@ -7,6 +7,7 @@
 
 @debug: true;
 @import (less) "../core/bundle";
+
 @import (inline) "../lib/bundle.css";
 @import (less) "dev.less";
 
@@ -18,74 +19,8 @@
 @ui-bg-items: fade(@ui-heading-color, 10%);
 @ui-font-family: Arial, helvetica, sans-serif;
 
-#ui-toolkit {
-	background-color: @ui-bg-main;
-	
-	.ui-toolkit-ctn {
-		padding: 50px 100px;
-	}
-	
-	.ui-item {
-		margin: 15px 0;
-		padding: 15px 5px;
-		background-color: @ui-bg-items;
-		
-		.ui-item-title {
-			font-family: @ui-font-family;
-			margin: 0 0 10px 0;
-			font-size: 1.8rem;
-			line-height: 2.4rem;
-			color: @ui-heading-color;
-		}
-		
-		.ui-item-ctn {
-			@import (less) "main";
-		}
-		
-		.ui-font {
-			#font-size(3rem,3rem);
-		}
-	}
-
-	.ui-group {
-		#relative;
-		margin-bottom: 120px;
-		
-		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-	
-	.ui-group-title {
-		font-family: @ui-font-family;
-		margin: 0 0 30px -20px;
-		font-size: 6rem;
-		line-height: 7.4rem;
-		color: @ui-groupe-title-color;
-	}
-	
-	.ui-palette-ctn {
-		.ui-palette-couleurs {
-			display: inline-block;
-			
-			.ui-color-title {
-				text-align: center;
-				font-size: 12px;
-				line-height: 14px;
-				max-width: 165px;
-				color: @ui-heading-color;
-				font-family: @ui-font-family;
-			}
-			
-			.ui-color-ctn {
-				position: relative;
-				margin-bottom: 10px;
-				
-				.ui-color {
-					width: 165px;
-					height: 165px;
-				}
-			}
-		}
-	}
+.ui-ctn {
+	@import (less) "../main";
 }
+
+

@@ -1,11 +1,13 @@
 //=========================
 // = VERTICAL-ALIGN CLASS
 //=========================
-.vertical-align-baseline, 	.valign-baseline 	{vertical-align: baseline;}
-.vertical-align-sub, 		.valign-sub 		{vertical-align: sub;}
-.vertical-align-super, 		.valign-super 		{vertical-align: super;}
-.vertical-align-top, 		.valign-top 		{vertical-align: top;}
-.vertical-align-text-top, 	.valign-text-top 	{vertical-align: text-top;}
-.vertical-align-middle, 	.valign-middle 		{vertical-align: middle;}
-.vertical-align-bottom, 	.valign-bottom 		{vertical-align: bottom;}
-.vertical-align-text-bottom,.valign-text-bottom {vertical-align: text-bottom;}
+#generate-vertical-align-classes (@suffix: ~'') {
+	.vertical-align-baseline@{suffix},    .valign-baseline@{suffix}    {vertical-align: baseline;}
+	.vertical-align-sub@{suffix},         .valign-sub@{suffix}         {vertical-align: sub;}
+	.vertical-align-super@{suffix},       .valign-super@{suffix}       {vertical-align: super;}
+	.vertical-align-top@{suffix},         .valign-top@{suffix}         {vertical-align: top;}
+	.vertical-align-text-top@{suffix},    .valign-text-top@{suffix}    {vertical-align: text-top;}
+	.vertical-align-middle@{suffix},      .valign-middle@{suffix}      {vertical-align: middle;}
+	.vertical-align-bottom@{suffix},      .valign-bottom@{suffix}      {vertical-align: bottom;}
+	.vertical-align-text-bottom@{suffix}, .valign-text-bottom@{suffix} {vertical-align: text-bottom;}
+}
