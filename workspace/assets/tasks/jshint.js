@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function jshint(grunt) {
+module.exports = function jshint (grunt) {
 	grunt.gruntContribLoad(grunt.task.current.name);
 	grunt.config.merge({
 		jshint: {

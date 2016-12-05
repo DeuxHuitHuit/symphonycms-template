@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function concat(grunt) {
+module.exports = function concat (grunt) {
 	grunt.gruntContribLoad(grunt.task.current.name);
 	grunt.config.merge({
 		concat: {

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function clean(grunt) {
+module.exports = function clean (grunt) {
 	grunt.gruntContribLoad(grunt.task.current.name);
 	grunt.config.merge({
 		clean: {

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function cssopruner(grunt) {
+module.exports = function cssopruner (grunt) {
 	grunt.config.merge({
 		cssopruner: {
 			compress: {
@@ -92,8 +92,8 @@ module.exports = function cssopruner(grunt) {
 		var dictionary = new Map();
 
 		var wordIsColorListed = function (colorlist) {
-			return function _wordIsColorlisted (word) {
-				return !!_.filter(colorlist, function (colorword) {
+			return function wordIsColorlistedFor (word) {
+				return !!(_.filter(colorlist, function (colorword) {
 					if (!colorword) {
 						return false;
 					}
@@ -101,7 +101,7 @@ module.exports = function cssopruner(grunt) {
 						return colorword.test(word);
 					}
 					return word === colorword;
-				}).length;
+				}).length);
 			};
 		};
 		var wordIsWhiteListed = wordIsColorListed(options.whitelist);
@@ -110,7 +110,7 @@ module.exports = function cssopruner(grunt) {
 		var quotes = /^["'](.*)["']$/;
 		var unquoteValue = function (value) {
 			if (quotes.test(value)) {
-				value = value.replace(quotes, '$1')
+				value = value.replace(quotes, '$1');
 			}
 			return value;
 		};
@@ -190,7 +190,7 @@ module.exports = function cssopruner(grunt) {
 							processSelectorsResults.DIC : (
 								wordIsWhiteListed(word) ?
 								processSelectorsResults.WL : processSelectorsResults.NA
-						)
+						);
 					}
 					return memo;
 				}, {});
@@ -233,12 +233,11 @@ module.exports = function cssopruner(grunt) {
 								list.remove(item);
 							}
 						}
-					} else {
-						// ignore:
-						// keyframes
-						// import
-						// ...
 					}
+					// ignore:
+					// keyframes
+					// import
+					// ...
 				} else {
 					throw new Error('Walked across something unexpected');
 				}
@@ -299,8 +298,8 @@ module.exports = function cssopruner(grunt) {
 		grunt.config.merge({
 			csso: {
 				options: {
-					beforeCompress: [function (ast, options, csso_) {
-						csso = csso_;
+					beforeCompress: [function (ast, options, cssoInstance) {
+						csso = cssoInstance;
 						ast.filename = ast.filename || options.filename;
 						walkAllRules(ast);
 					}]

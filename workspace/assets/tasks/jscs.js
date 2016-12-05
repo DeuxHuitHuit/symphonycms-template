@@ -2,7 +2,7 @@
 
 var JSCS_FILE = '.jscsrc';
 
-module.exports = function jscs(grunt) {
+module.exports = function jscs (grunt) {
 	grunt.gruntLoad(grunt.task.current.name);
 	grunt.config.merge({
 		jscs: {
@@ -15,7 +15,7 @@ module.exports = function jscs(grunt) {
 				config: JSCS_FILE,
 				fix: true,
 				disallowDanglingUnderscores: {
-					'allExcept': ['_currentPage']
+					allExcept: ['_', '_currentPage']
 				}
 			}
 		}

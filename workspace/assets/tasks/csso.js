@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function csso(grunt) {
+module.exports = function csso (grunt) {
 	grunt.gruntLoad(grunt.task.current.name);
 	grunt.config.merge({
 		csso: {

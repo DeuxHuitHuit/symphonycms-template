@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function csslint(grunt) {
+module.exports = function csslint (grunt) {
 	grunt.gruntContribLoad(grunt.task.current.name);
 	grunt.config.merge({
 		csslint: {
@@ -26,8 +26,8 @@ module.exports = function csslint(grunt) {
 				'bulletproof-font-face': false,
 				'regex-selectors': false,
 				'unqualified-attributes': false,
-				'stroke': false,
-				'fill': false,
+				stroke: false,
+				fill: false,
 				'order-alphabetical': false
 			},
 			src: [

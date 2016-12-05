@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ftps_deploy(grunt) {
+module.exports = function ftps_deploy (grunt) {
 	var stripJsonComments = require('strip-json-comments');
 	
 	var FTP_FILE = JSON.parse(stripJsonComments(grunt.file.read('../../ftpsync.settings')));

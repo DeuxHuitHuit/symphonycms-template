@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function jshint(grunt) {
+module.exports = function jshint (grunt) {
 	grunt.gruntLoad(grunt.task.current.name);
 	grunt.config.merge({
 		complexity: {
@@ -9,8 +9,8 @@ module.exports = function jshint(grunt) {
 				options: {
 					//jsLintXML: 'report.xml', // create XML JSLint-like report
 					errorsOnly: false, // show only maintainability errors
-					cyclomatic: 10, // 3
-					halstead: 19, // 8
+					cyclomatic: 12, // 12
+					halstead: 19, // 19
 					maintainability: 95 //100
 				}
 			}
