@@ -1,23 +1,16 @@
-
-//=========================
-// = FLEX FUNCTIONS
-//=========================
-
+// FLEX FUNCTIONS
 //Source : https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
 //Source : http://css-tricks.com/snippets/css/a-guide-to-flexbox/
 //Source : https://msdn.microsoft.com/en-us/library/ie/dn265027(v=vs.85).aspx
-
 #flex-flow (@value: row wrap) {
 	-webkit-flex-flow: @value;
 			flex-flow: @value;
 }
 
-
 #flex-align-content (@value: center) {
 	-webkit-align-content: @value;
 			align-content: @value;
 }
-
 
 #flex-align-items (@value: center) {
 	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
@@ -71,7 +64,6 @@
 			flex-direction: @value;
 }
 
-
 /* ### Flex item ### */
 #flex-order (@nb: 1) {
 	-ms-flex-order: @nb;
@@ -94,7 +86,6 @@
 	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
 		-ms-flex-item-align: end;
 }
-
 
 #flex-basis (@value: auto) {
 	-webkit-flex-basis: @value;

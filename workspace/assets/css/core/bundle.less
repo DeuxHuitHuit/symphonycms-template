@@ -1,8 +1,4 @@
-
-//=========================
-// = ANIMATION FUNCTIONS
-//=========================
-
+// ANIMATION FUNCTIONS
 #animation (...) {
 	-webkit-animation: @arguments;
 	   -moz-animation: @arguments;
@@ -10,34 +6,14 @@
 		 -o-animation: @arguments;
 			animation: @arguments;
 }
-
 #animation-key (@name, @rules) {
-	@-webkit-keyframes @name {
-		@rules();
-	}
-	
-	@-moz-keyframes @name {
-		@rules();
-	}
-	
-	@-ms-keyframes @name {
-		@rules();
-	}
-	
-	@-o-keyframes @name {
-		@rules();
-	}
-
-	//Standard syntax
-	@keyframes @name {
-		@rules();
-	}
+	@-webkit-keyframes @name {@rules();}
+	@-moz-keyframes    @name {@rules();}
+	@-ms-keyframes     @name {@rules();}
+	@-o-keyframes      @name {@rules();}
+	@keyframes         @name {@rules();}
 }
-
-//=========================
-// = BACKFACE-VISIBILITY FUNCTIONS
-//=========================
-
+// BACKFACE-VISIBILITY FUNCTIONS
 #backface (@visibility: hidden) {
 	-webkit-backface-visibility: @visibility;
 	   -moz-backface-visibility: @visibility;
@@ -45,11 +21,7 @@
 		 -o-backface-visibility: @visibility;
 			backface-visibility: @visibility;
 }
-
-//=========================
-// = BACKGROUND-SIZE FUNCTIONS
-//=========================
-
+// BACKGROUND-SIZE FUNCTIONS
 #background-size (@bs: cover) {
 	-webkit-background-size: @bs;
 	   -moz-background-size: @bs;
@@ -57,30 +29,18 @@
 		 -o-background-size: @bs;
 			background-size: @bs;
 }
-
-//=========================
-// = BORDER-RADIUS FUNCTIONS
-//=========================
-
+// BORDER-RADIUS FUNCTIONS
 #border-radius (@br) {
 	-webkit-border-radius: @br;
 	   -moz-border-radius: @br;
 			border-radius: @br;
 }
-
-//=========================
-// = BOX-SHADOW FUNCTIONS
-//=========================
-
+// BOX-SHADOW FUNCTIONS
 #box-shadow (@shadow) {
 	-webkit-box-shadow: @shadow;
 	        box-shadow: @shadow;
 }
-
-//=========================
-// = BOX-SIZING FUNCTIONS
-//=========================
-
+// BOX-SIZING FUNCTIONS
 #box-sizing (@box-sizing: border-box) {
 	-webkit-box-sizing: @box-sizing;
 	   -moz-box-sizing: @box-sizing;
@@ -88,34 +48,91 @@
 		 -o-box-sizing: @box-sizing;
 			box-sizing: @box-sizing;
 }
-
-//=========================
-// = MULTIPLE COLUMNS FUNCTIONS
-//=========================
-
+// MULTIPLE COLUMNS FUNCTIONS
 #column-count (@column-count) {
 	-webkit-column-count: @column-count;
 	   -moz-column-count: @column-count;
 	        column-count: @column-count;
 }
-
 #column-gap (@column-gap) {
 	-webkit-column-gap: @column-gap;
 	   -moz-column-gap: @column-gap;
 	        column-gap: @column-gap;
 }
-
 #column-span (@column-span) {
 	-webkit-column-span: @column-span;
 	-moz-column-span: @column-span;
 	column-span: @column-span;
 }
+// DEV FUNCTIONS
+.DEPRECATED(@name: ~'') {
+	outline: rgba(255,0,0,36%) 5px solid;
+	outline-offset: 8px;
+	position: relative;
+	
+	&:before {
+		content: 'DEPRECATED @{name}';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(255,0,0,40%);
+		font-size: 14px;
+	}
+}
 
+.WATCHDOG(@name: ~'') {
+	outline: rgba(50,20,10,50%) 5px solid;
+	outline-offset: 8px;
+	position: relative;
+	display: block !important; // insure visibility
+	overflow: visible !important;
+	
+	&:before {
+		content: '@{name}';
+		position: absolute;
+		outline: rgba(50,20,10,50%) 5px solid;
+		outline-offset: 8px;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		background-color: rgba(30,15,5,80%);
+		font-size: 12px;
+		font-weight: bold;
+		padding: 1.5rem;
+		color: white;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		#translate(-50%, -50%);
+	}
 
-//=========================
+	&:after {
+		content: attr(dev-component) attr(dev-element);
+		white-space: nowrap;
+		padding: .5rem;
+		background-color: red;
+		color: white;
+		line-height: 1em;
+		font-size: 10px;
+		font-weight: 600;
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		margin-top: 2rem;
+		text-transform: uppercase;
+		letter-spacing: .025em;
+		z-index: 1;
+		#translate(-50%, 0);
+	}
+}
 // = ADD/REMOVE GRAYSCALE FILTER FUNCTIONS
-//=========================
-
 #add-grayscale (){
 	//Firefox 4+
 	filter: url(~"@{svg-path}grayscale.svg#grayscale");
@@ -124,7 +141,6 @@
 	
 	-webkit-filter: grayscale(100%);
 }
-
 #remove-grayscale (){
 	-webkit-filter: grayscale(0%);
 
@@ -132,12 +148,7 @@
 	//IE 6-9
 	filter: none;
 }
-
-//=========================
-// = FILTER FUNCTION
-//=========================
-
-/* FILTER */
+// FILTER FUNCTION
 #filter (@filter) {
 	-webkit-filter: @filter;
 	   -moz-filter: @filter;
@@ -145,26 +156,19 @@
 		 -o-filter: @filter;
 			filter: @filter;
 }
-
-//=========================
-// = FLEX FUNCTIONS
-//=========================
-
+// FLEX FUNCTIONS
 //Source : https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
 //Source : http://css-tricks.com/snippets/css/a-guide-to-flexbox/
 //Source : https://msdn.microsoft.com/en-us/library/ie/dn265027(v=vs.85).aspx
-
 #flex-flow (@value: row wrap) {
 	-webkit-flex-flow: @value;
 			flex-flow: @value;
 }
 
-
 #flex-align-content (@value: center) {
 	-webkit-align-content: @value;
 			align-content: @value;
 }
-
 
 #flex-align-items (@value: center) {
 	//For IE10- : "flex-start" = "start" and "flex-end" = "end"
@@ -218,7 +222,6 @@
 			flex-direction: @value;
 }
 
-
 /* ### Flex item ### */
 #flex-order (@nb: 1) {
 	-ms-flex-order: @nb;
@@ -242,7 +245,6 @@
 		-ms-flex-item-align: end;
 }
 
-
 #flex-basis (@value: auto) {
 	-webkit-flex-basis: @value;
 			flex-basis: @value;
@@ -257,11 +259,7 @@
 	-webkit-flex-shrink: @value;
 			flex-shrink: @value;
 }
-
-//=========================
-// = FONTS FUNCTIONS
-//=========================
-
+// FONTS FUNCTIONS
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
 #font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal) {
 	font-family: @font-family;
@@ -273,14 +271,8 @@
 	font-weight: @font-weight;
 	font-style: @font-style;
 }
-
-
-//=========================
 // = GRADIENTS FUNCTIONS
-//=========================
-
 #gradient {
-
 	// Horizontal gradient, from left to right
 	//
 	// Creates two color stops, start and end, by specifying a color and position for each color stop.
@@ -293,7 +285,6 @@
 		background-repeat: repeat-x;
 		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down
 	}
-
 	// Vertical gradient, from top to bottom
 	//
 	// Creates two color stops, start and end, by specifying a color and position for each color stop.
@@ -306,14 +297,12 @@
 		background-repeat: repeat-x;
 		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
 	}
-
 	.directional (@start-color: #555; @end-color: #333; @deg: 45deg) {
 		background-repeat: repeat-x;
 		background-image: -webkit-linear-gradient(@deg, @start-color, @end-color); // Safari 5.1+, Chrome 10+
 		background-image: -moz-linear-gradient(@deg, @start-color, @end-color); // FF 3.6+
 		background-image: linear-gradient(@deg, @start-color, @end-color); // Standard, IE10
 	}
-
 	.horizontal-three-colors (@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
 		background-image: -webkit-gradient(left, linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
 		background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
@@ -322,7 +311,6 @@
 		background-repeat: no-repeat;
 		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
 	}
-
 	.vertical-three-colors (@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
 		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@start-color), color-stop(@color-stop, @mid-color), to(@end-color));
 		background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
@@ -331,7 +319,6 @@
 		background-repeat: no-repeat;
 		filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
 	}
-
 	.radial (@inner-color: #555; @outer-color: #333; @x-origin: center; @y-origin: center) {
 		background-image: -webkit-gradient(radial, @x-origin @y-origin, 0, @x-origin @y-origin, 1011, from(@inner-color), to(@outer-color));
 		background-image: -webkit-radial-gradient(@x-origin @y-origin, ellipse farthest-corner, @inner-color 0%, @outer-color 100%);
@@ -339,7 +326,6 @@
 		background-image: radial-gradient(ellipse farthest-corner at @x-origin @y-origin, @inner-color 0%, @outer-color 100%);
 		background-repeat: no-repeat;
 	}
-
 	.striped (@color: rgba(255,255,255,.15); @angle: 45deg) {
 		background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, @color), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, @color), color-stop(.75, @color), color-stop(.75, transparent), to(transparent));
 		background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
@@ -347,33 +333,11 @@
 		background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
 	}
 }
-
-//=========================
 // = HOVER FUNCTIONS
-//=========================
-
-#hover (@rules) {
-	html:not(.mobile) &:hover {
-		@rules();
-	}
-}
-
-#focus (@rules) {
-	&:focus {
-		@rules();
-	}
-}
-
-#active (@rules) {
-	&:active {
-		@rules();
-	}
-}
-
-//=========================
-// = HYPHENS FUNCTIONS
-//=========================
-
+#hover  (@rules) {html:not(.mobile) &:hover {@rules();}}
+#focus  (@rules) {&:focus                   {@rules();}}
+#active (@rules) {&:active                  {@rules();}}
+// HYPHENS FUNCTIONS
 #hyphens(@val: auto) {
   word-wrap: break-word;
   -webkit-hyphens: @val;
@@ -382,122 +346,56 @@
        -o-hyphens: @val;
           hyphens: @val;
 }
-
-//=========================
-// = MISC FUNCTIONS
-//=========================
-
+// MISC FUNCTIONS
 #ellipsis (@mw: 100%) {
 	max-width: @mw;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-
-
-//=========================
-// = MOBILE AND DESKTOP FUNCTIONS
-//=========================
-
-#mobile-only (@rules) {
-	html.mobile {
-		@rules();
-	}
-}
-
-#desktop-only (@rules) {
-	html:not(.mobile) {
-		@rules();
-	}
-}
-
-//=========================
-// = MQ FUNCTIONS
-//=========================
-
+// MOBILE AND DESKTOP FUNCTIONS
+#mobile-only  (@rules) {html.mobile       {@rules();}}
+#desktop-only (@rules) {html:not(.mobile) {@rules();}}
+// MQ FUNCTIONS
 #mq-min-width (@width, @rules) {
-	@media screen and (min-width: @width) {
-		@rules();
-	}
+	@media screen and (min-width: @width) {@rules();}
 }
-
 #mq-max-width (@width, @rules) {
-	@media screen and (max-width: @width) {
-		@rules();
-	}
+	@media screen and (max-width: @width) {@rules();}
 }
-
 #mq-min-max-width (@min-width, @max-width, @rules) {
-	@media screen and (min-width: @min-width) and (max-width: @max-width) {
-		@rules();
-	}
+	@media screen and (min-width: @min-width) and (max-width: @max-width) {@rules();}
 }
-
 #mq-min-height (@height, @rules) {
-	@media screen and (min-height: @height) {
-		@rules();
-	}
+	@media screen and (min-height: @height) {@rules();}
 }
-
 #mq-max-height (@height, @rules) {
-	@media screen and (max-height: @height) {
-		@rules();
-	}
+	@media screen and (max-height: @height) {@rules();}
 }
-
 #mq-min-dpi (@dpi, @rules) {
-	@media screen and (min-resolution: @dpi) {
-		@rules();
-	}
+	@media screen and (min-resolution: @dpi) {@rules();}
 }
-
 #mq-max-dpi (@dpi, @rules) {
-	@media screen and (max-resolution: @dpi) {
-		@rules();
-	}
+	@media screen and (max-resolution: @dpi) {@rules();}
 }
-
 #mq-px-ratio (@px-ratio, @rules) {
-	@media screen and (-webkit-device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
-	
-	@media screen and (device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
+	@media screen and (-webkit-device-pixel-ratio: @px-ratio) {@rules();}
+	@media screen and (device-pixel-ratio: @px-ratio) {@rules();}
 }
-
 #mq-min-px-ratio (@px-ratio, @rules) {
-	@media screen and (-webkit-min-device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
-	
-	@media screen and (min-device-pixel-ratio: @px-ratio) {
-		@rules();
-	}
+	@media screen and (-webkit-min-device-pixel-ratio: @px-ratio) {@rules();}
+	@media screen and (min-device-pixel-ratio: @px-ratio) {@rules();}
 }
-
 #mq-orientation (@orientation, @rules) {
-	@media screen and (orientation: @orientation) {
-		@rules();
-	}
+	@media screen and (orientation: @orientation) {@rules();}
 }
-
-//=========================
-// = OUTLINE FUNCTIONS
-//=========================
-
+// OUTLINE FUNCTIONS
 #no-outline () {
 	outline:none;
 	-moz-outline:none;
 	-webkit-outline:none;
 }
-
-//=========================
-// = PERSPECTIVE FUNCTIONS
-//=========================
-
-/* PERSPECTIVE */
+// PERSPECTIVE FUNCTIONS
 #perspective (@perspective) {
 	-webkit-perspective: @perspective;
 	   -moz-perspective: @perspective;
@@ -505,7 +403,6 @@
 		 -o-perspective: @perspective;
 			perspective: @perspective;
 }
-
 #perspective-origin (@origin) {
 	-webkit-perspective-origin: @origin;
 	   -moz-perspective-origin: @origin;
@@ -513,11 +410,7 @@
 		 -o-perspective-origin: @origin;
 			perspective-origin: @origin;
 }
-
-//=========================
-// = PLACEHOLDER FUNCTIONS
-//=========================
-
+// PLACEHOLDER FUNCTIONS
 //Documentation http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element
 #placeholder (@color) when (iscolor(@color)) {
 	&:-moz-placeholder            { color: @color; } // Firefox 4-18
@@ -525,54 +418,37 @@
 	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
 	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
 }
-
 #placeholder (@rules) when (false = iscolor(@rules)) {
 	&:-moz-placeholder            { @rules(); } // Firefox 4-18
 	&::-moz-placeholder           { @rules(); } // Firefox 19+
 	&:-ms-input-placeholder       { @rules(); } // Internet Explorer 10+
 	&::-webkit-input-placeholder  { @rules(); } // Safari and Chrome
 }
-//=========================
-// = SELECTION FUNCTIONS
-//=========================
-
+// SELECTION FUNCTIONS
 #selection-color (@color) when (iscolor(@color)) {
 	::selection {
 		background-color: @color;
 	}
-	
 	::-moz-selection {
 		background-color: @color;
 	}
 }
-
 #selection-color (@rules) when (false = iscolor(@rules)) {
 	::selection {
 		@rules();
 	}
-	
 	::-moz-selection {
 		@rules();
 	}
 }
-
-//=========================
-// = FILL FUNCTIONS
-//=========================
-
+// FILL FUNCTIONS
 #fill (@top: 0, @right: @top, @bottom: @top, @left: @top) {
 	top: @top;
 	left: @left;
 	right: @right;
 	bottom: @bottom;
 }
-
-
-//=========================
-// = TRANSFORM FUNCTIONS
-//=========================
-
-/* TRANSFORM */
+// TRANSFORM FUNCTIONS
 #transform (...) {
 	-webkit-transform: @arguments;
 	   -moz-transform: @arguments;
@@ -580,7 +456,6 @@
 		 -o-transform: @arguments;
 			transform: @arguments;
 }
-
 #transform-origin (@origin) {
 	-webkit-transform-origin: @origin;
 	   -moz-transform-origin: @origin;
@@ -588,7 +463,6 @@
 		 -o-transform-origin: @origin;
 			transform-origin: @origin;
 }
-
 /* TRANSLATE */
 #translate2d (@x, @y) {
 	-webkit-transform: translate(@x, @y);
@@ -597,7 +471,6 @@
 		 -o-transform: translate(@x, @y);
 			transform: translate(@x, @y);
 }
-
 #translate (@x, @y, @z:0px) {
 	#translate2d(@x, @y);
 
@@ -607,7 +480,6 @@
 		 -o-transform: translate3d(@x, @y, @z);
 			transform: translate3d(@x, @y, @z);
 }
-
 /* SCALE */
 #scale3d (@scaleX, @scaleY: @scaleX, @scaleZ: 1) {
 	#scale2d(@scaleX, @scaleY);
@@ -618,7 +490,6 @@
 		 -o-transform: scale3d(@scaleX, @scaleY, @scaleZ);
 			transform: scale3d(@scaleX, @scaleY, @scaleZ);
 }
-
 #scale2d (@scaleX, @scaleY: @scaleX) {
 	-webkit-transform: scale(@scaleX,@scaleY);
 	   -moz-transform: scale(@scaleX,@scaleY);
@@ -626,11 +497,9 @@
 		 -o-transform: scale(@scaleX,@scaleY);
 			transform: scale(@scaleX,@scaleY);
 }
-
 #scale (@scale) {
 	#scale2d(@scale, @scale);
 }
-
 /* ROTATE */
 #rotateZ (@a) {
 	-webkit-transform: rotateZ(@a);
@@ -639,7 +508,6 @@
 		 -o-transform: rotateZ(@a);
 			transform: rotateZ(@a);
 }
-
 /* SKEW */
 #skew (@skew) {
 	-webkit-transform: skew(@skew);
@@ -648,7 +516,6 @@
 		 -o-transform: skew(@skew);
 			transform: skew(@skew);
 }
-
 /* FLIP */
 #flipX () {
 	-webkit-transform: scaleX(-1);
@@ -658,7 +525,6 @@
 	filter: FlipH;
 	-ms-filter: "FlipH";
 }
-
 #flipY () {
 	-webkit-transform: scaleY(-1);
 	   -moz-transform: scaleY(-1);
@@ -667,8 +533,6 @@
 	filter: FlipV;
 	-ms-filter: "FlipV";
 }
-
-
 /* PRESERVE 3D */
 #preserve-3d () {
 	-webkit-transform-style: preserve-3d;
@@ -677,12 +541,7 @@
 		 -o-transform-style: preserve-3d;
 			transform-style: preserve-3d;
 }
-
-//=========================
-// = TRANSITION FUNCTIONS
-//=========================
-
-/* TRANSITION */
+// TRANSITION FUNCTIONS
 #transition (...) {
 	-webkit-transition: @arguments;
 	   -moz-transition: @arguments;
@@ -690,7 +549,6 @@
 		 -o-transition: @arguments;
 			transition: @arguments;
 }
-
 #transition-property (...) {
 	-webkit-transition-property: @arguments;
 	   -moz-transition-property: @arguments;
@@ -698,7 +556,6 @@
 		 -o-transition-property: @arguments;
 			transition-property: @arguments;
 }
-
 #transition-duration (@duration) {
 	-webkit-transition-duration: @duration;
 	   -moz-transition-duration: @duration;
@@ -706,7 +563,6 @@
 		 -o-transition-duration: @duration;
 			transition-duration: @duration;
 }
-
 #transition-delay (@delay) {
 	-webkit-transition-delay: @delay;
 	   -moz-transition-delay: @delay;
@@ -714,7 +570,6 @@
 		 -o-transition-delay: @delay;
 			transition-delay: @delay;
 }
-
 #transition-ease (@ease) {
 	-webkit-transition-timing-function: @ease;
 	   -moz-transition-timing-function: @ease;
@@ -722,7 +577,6 @@
 		 -o-transition-timing-function: @ease;
 			transition-timing-function: @ease;
 }
-
 #cb-transition (...) {
 	-webkit-transition: ~"-webkit-@{arguments}";
 	   -moz-transition: ~"-moz-@{arguments}";
@@ -730,7 +584,6 @@
 		 -o-transition: ~"-o-@{arguments}";
 			transition: @arguments;
 }
-
 #cb-transition-property (...) {
 	-webkit-transition-property: @arguments;
 	   -moz-transition-property: @arguments;
@@ -738,11 +591,6 @@
 		 -o-transition-property: @arguments;
 			transition-property: @arguments;
 }
-
-//=========================
-// = USER-SELECT FUNCTIONS
-//=========================
-
 /* USER-SELECT */
 #user-select (@select: none) {
 	-webkit-touch-callout: @select;
@@ -752,154 +600,55 @@
 		-ms-user-select: @select;
 			user-select: @select;
 }
-#generate-color-class(@suffix, @color-name, @color) {
-	#generate-color-class(@suffix, @color-name, @color, ~'color', 			~'color');
-	#generate-color-class(@suffix, @color-name, @color, ~'fill', 			~'fill');
-	#generate-color-class(@suffix, @color-name, @color, ~'stroke', 			~'stroke');
-	#generate-color-class(@suffix, @color-name, @color, ~'bg-color', 		~'background-color');
-	#generate-color-class(@suffix, @color-name, @color, ~'border-color', 	~'border-color');
-}
-
 #generate-color-class(@suffix, @color-name, @color, @name, @property) {
-	.@{name}-@{color-name}@{suffix} {
-		@{property}: @color;
-	}
-	
-	.@{name}-@{color-name}-on-hover@{suffix} {
-		#hover({
-			@{property}: @color;
-		});
-	}
-	
-	.@{name}-@{color-name}-when-selected@{suffix} {
-		&.is-selected {
-			@{property}: @color;
-		}
-	}
+	.@{name}-@{color-name}@{suffix}               {@{property}: @color;}
+	.@{name}-@{color-name}-on-hover@{suffix}      {#hover({@{property}: @color;});}
+	.@{name}-@{color-name}-when-selected@{suffix} {&.is-selected {@{property}: @color;}}
 }
-
-#generate-directional-class-value(@name, @property, @value-name, @value, @direction: ~'', @suffix: ~'') {
-	.@{name}@{direction}-@{value-name}@{suffix} {
-		@{property}@{direction}: @value;
-	}
+// COLOR GENERATOR
+#generate-color-class(@suffix, @color-name, @color) {
+	#generate-color-class(@suffix, @color-name, @color, ~'color',        ~'color');
+	#generate-color-class(@suffix, @color-name, @color, ~'fill',         ~'fill');
+	#generate-color-class(@suffix, @color-name, @color, ~'stroke',       ~'stroke');
+	#generate-color-class(@suffix, @color-name, @color, ~'bg-color',     ~'background-color');
+	#generate-color-class(@suffix, @color-name, @color, ~'border-color', ~'border-color');
 }
-
-#generate-two-axes-class-value(@name, @property, @value-name, @value, @axe1, @axe2, @direction: ~'', @suffix: ~'') {
-	.@{name}-@{direction}-@{value-name}@{suffix} {
-		@{property}-@{axe1}: @value;
-		@{property}-@{axe2}: @value;
-	}
-}
-
-#generate-height-class(@suffix, @property-name, @property, @name,  @value) {
-
-	.@{property-name}-@{name}@{suffix} {
-		@{property}: @value;
-	}
-}
-
-#generate-all-height-class(@suffix, @name, @value) {
-	#generate-height-class(@suffix, ~'height', 	 ~'height', 		@name, @value);
-	#generate-height-class(@suffix, ~'min-height', ~'min-height', 	@name, @value);
-	#generate-height-class(@suffix, ~'max-height', ~'max-height', 	@name, @value);
-}
-#generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
-	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
-}
-
-#generate-margin-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
-	#generate-two-axes-class-value(~'margin', ~'margin', @value-name, @value, @axe1, @axe2, @direction, @suffix);
-}
-
-#generate-margin-all-classes(@suffix: ~'') {
-	#generate-margin-classes(~'', @suffix);
-	
-	#generate-margin-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
-	#generate-margin-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
-	
-	#generate-margin-classes(~'-bottom', @suffix);
-	#generate-margin-classes(~'-left', @suffix);
-	#generate-margin-classes(~'-right', @suffix);
-	#generate-margin-classes(~'-top', @suffix);
-}
-
-#generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
-	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);
-}
-
-#generate-padding-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
-	#generate-directional-class-value(~'padding', ~'padding', @value-name, @value, @direction, @suffix,);
-}
-
-#generate-padding-all-classes(@suffix: ~'') {
-	#generate-padding-classes(~'', @suffix);
-	
-	#generate-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
-	#generate-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
-	
-	#generate-padding-classes(~'-bottom', @suffix);
-	#generate-padding-classes(~'-left', @suffix);
-	#generate-padding-classes(~'-right', @suffix);
-	#generate-padding-classes(~'-top', @suffix);
-}
-
-#generate-width-class(@suffix, @property-name, @property, @name,  @value) {
-
-	.@{property-name}-@{name}@{suffix} {
-		@{property}: @value;
-	}
-}
-
-#generate-all-width-class(@suffix, @name, @value) {
-	#generate-width-class(@suffix, ~'width', 	 ~'width', 		@name, @value);
-	#generate-width-class(@suffix, ~'min-width', ~'min-width', 	@name, @value);
-	#generate-width-class(@suffix, ~'max-width', ~'max-width', 	@name, @value);
-}
-
-//=========================
-// = VARIABLES FOR BORDER-WIDTH
-//=========================
-
+// BORDER-WIDTH
 @border-slimmest: 	 1px;
 @border-slimmer: 	 2px;
 @border-slim: 		 3px;
 @border-thick: 		 8px;
 @border-thicker: 	10px;
 @border-thickest: 	20px;
-
-//=========================
-// = VARIABLES FOR BORDER-RADIUS
-//=========================
+// BORDER-RADIUS
 @radius-sharpest: 	 2px;
 @radius-sharper: 	 3px;
 @radius-sharp: 		 4px;
 @radius-dull: 		10px;
 @radius-duller: 	 4rem;
 @radius-dullest: 	 5rem;
-
-//====== COLORS ================
-@true-white: 	#ffffff;
+// THRUE 
+@true-white: 	#FFFFFF;
 @true-black: 	#000000;
-@true-red: 		#ff0000;
-
-//====== SYMBOLIC ================
+@true-red: 		#FF0000;
+@true-green: 	#00FF00;
+@true-blue: 	#0000FF;
+// SYMBOLIC COLORS
 @white: 	@true-white;
 @black: 	@true-black;
 @red:		@true-red;
-
+@green:		@true-red;
+@blue:		@true-red;
+// 
 @light: 	@true-white;
 @dark: 		@true-black;
-
-//====== SOCIAL ================
-@twitter: 	#55acee;
+// SOCIAL COLORS
+@twitter: 	#55ACEE;
 @facebook: 	#3B5998;
-@instagram: #c6359b;
+@instagram: #C6359b;
 @linkedin: 	#0077B5;
-@snapchat: 	#e5e200;
-
-//============================
-// = VARIABLES FOR DIMENSIONS
-//============================
+@snapchat: 	#E5E200;
+// DIMENSIONS
 @dimension-tiniest:   @spacing-thinnest * 4;
 @dimension-tinier:    @spacing-thinner * 4;
 @dimension-tiny:      @spacing-thin * 4;
@@ -909,22 +658,20 @@
 @dimension-big:       @spacing-large * 8;
 @dimension-bigger:    @spacing-larger * 8;
 @dimension-biggest:   @spacing-largest * 8;
-
-//====== DURATION ============
-@duration-fastest: 	150ms;
-@duration-faster: 	200ms;
-@duration-fast: 	300ms;
-@duration-medium: 	500ms;
-@duration-slow: 	750ms;
-@duration-slower: 	1000ms;
-@duration-slowest: 	1500ms;
-
-// ====== ease ============
+// DURATION
+@duration-fastest:   150ms;
+@duration-faster:    200ms;
+@duration-fast:      300ms;
+@duration-medium:    500ms;
+@duration-slow:      750ms;
+@duration-slower:   1000ms;
+@duration-slowest:  1500ms;
+// EASE
 @ease-standard-in:  @ease-in-quad;
 @ease-standard:     @ease-in-out-quad;
 @ease-alternate:    @ease-in-out-back;
 @ease-standard-out: @ease-out-quad;
-
+//
 @ease-linear:       cubic-bezier(0, 0, 1, 1);
 @ease-in:           cubic-bezier(0.42, 0, 1, 1);
 @ease-out:          cubic-bezier(0, 0, 0.58, 1);
@@ -954,17 +701,14 @@
 @ease-in-out-back:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
 @ease-back-in:      cubic-bezier(0.6, -0.28, 0.735, 0.045);
 @ease-bounce-light: cubic-bezier(0, 1.1, 1, 1.1);
-
-//====== FONTS ==== 
-
-@font-base: 'sans-serif';
-@font-alt: 'serif';
-@font-alt2: 'serif';
-@font-accent: 'serif';
+// FONTS FACE
+@font-base:    'sans-serif';
+@font-alt:     'serif';
+@font-alt2:    'serif';
+@font-accent:  'serif';
 @font-accent2: 'serif';
-
+// FONTS SIZE
 @font-miniature:  7px;
-//---
 @font-shortest:   10px;
 @font-shorter:    13px;
 @font-short:      14px;
@@ -975,9 +719,8 @@
 @font-huge:       54px;
 @font-huger:      80px;
 @font-hugest:     120px;
-//---
 @font-giant:      180px;
-
+// LINE-HEIGHT
 @line-height-compressed:  .8em;
 @line-height-tightest:    1.12625em;
 @line-height-tighter:     1.25em;
@@ -986,62 +729,53 @@
 @line-height-loose:       1.75em;
 @line-height-looser:      1.9125em;
 @line-height-loosest:     2.125em;
-
+// LETTER-SPACING
 @letter-spacing-narrowest:  -.08em;
 @letter-spacing-narrower:   -.05em;
 @letter-spacing-narrow:     -.025em;
 @letter-spacing-wide:       .025em;
 @letter-spacing-wider:      .05em;
 @letter-spacing-widest:     .1em;
-
-@transparent: 			0.0;
-@almost-transparent: 	0.1;
-@quasi-transparent: 	0.2;
-@semi-transparent: 		0.3;
+// OPACITY
+@transparent:           0.0;
+@almost-transparent:    0.1;
+@quasi-transparent:     0.2;
+@semi-transparent:      0.3;
 @partially-transparent: 0.4;
-@translucent: 			0.5;
-@partially-opaque: 		0.6;
-@semi-opaque: 			0.7;
-@quasi-opaque: 			0.8;
-@almost-opaque: 		0.97;
-@opaque: 				1.0;
-
-//=========================
-// = VARIABLES PATH
-//=========================
-
+@translucent:           0.5;
+@partially-opaque:      0.6;
+@semi-opaque:           0.7;
+@quasi-opaque:          0.8;
+@almost-opaque:         0.97;
+@opaque:                1.0;
+// PATH
 @workspace-path: '/workspace/';
-@assets-path: '@{workspace-path}assets/';
-
-@css-path:  '@{assets-path}css/';
-@svg-path:  '@{css-path}svg/';
-@font-path: '@{assets-path}fonts/';
-@img-path:  '@{assets-path}img/';
-@cur-path:  '@{assets-path}cur/';
-
-//====== SCREEN WIDTHS ============
-
-@screen-ip: 320px;
-@screen-ph: 600px;
-@screen-xs: 768px;
-@screen-sm: 1024px;
-@screen-md: 1280px;
-@screen-lg: 1440px;
-@screen-xl: 1600px;
-@screen-hd: 1920px;
-@screen-2k: 2048px;
-@screen-4k: 3840px;
-
-@screen-min: 200px;
+@assets-path:    '@{workspace-path}assets/';
+@css-path:       '@{assets-path}css/';
+@svg-path:       '@{css-path}svg/';
+@font-path:      '@{assets-path}fonts/';
+@img-path:       '@{assets-path}img/';
+@cur-path:       '@{assets-path}cur/';
+// SCREEN WIDTHS
+@screen-ip:   320px;
+@screen-ph:   600px;
+@screen-xs:   768px;
+@screen-sm:  1024px;
+@screen-md:  1280px;
+@screen-lg:  1440px;
+@screen-xl:  1600px;
+@screen-hd:  1920px;
+@screen-2k:  2048px;
+@screen-4k:  3840px;
+//
+@screen-min:  200px;
 @screen-max: 1920px;
-//=========================
-// = VARIABLES SPACING
-//=========================
-@spacing-atto: 		  1px;
-@spacing-femto: 	  0.2rem;
-@spacing-pico: 		  0.4rem;
-@spacing-nano: 		  0.5rem;
-@spacing-micro: 	  0.7rem;
+// SPACING
+@spacing-atto:        1px;
+@spacing-femto:       0.2rem;
+@spacing-pico:        0.4rem;
+@spacing-nano:        0.5rem;
+@spacing-micro:       0.7rem;
 @spacing-thinnest:    1rem;
 @spacing-thinner:     2rem;
 @spacing-thin:        3rem;
@@ -1054,11 +788,6 @@
 @spacing-mega:       38rem;
 @spacing-giga:       54rem;
 @spacing-tera:       78rem;
-@spacing-peta: 		 80rem;
-@spacing-zetta: 	100rem;
-@spacing-yotta: 	120rem;
-//=========================
-// = VARIABLES GLOBALES
-//=========================
-
-@golden-ratio: 1.61803398875;
+@spacing-peta:       80rem;
+@spacing-zetta:     100rem;
+@spacing-yotta:     120rem;

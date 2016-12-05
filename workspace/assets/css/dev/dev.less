@@ -5,86 +5,9 @@
  * imported by browser.less
  *
  *****************************/
-
 .TODO {
 	outline: rgba(255,0,0,36%) 1px solid;
 	outline-offset: 8px;
-}
-
-.DEPRECATED(@name: ~'') {
-	outline: rgba(255,0,0,36%) 5px solid;
-	outline-offset: 8px;
-	position: relative;
-	
-	&:before {
-		content: 'DEPRECATED @{name}';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: rgba(255,0,0,40%);
-		font-size: 14px;
-	}
-}
-
-//.desaturate-dummy-images when (@debug = true) {
-//	img[alt=""], .jit-image-bg {
-//		#filter(~'grayscale(100%) brightness(250%) contrast(50%)');
-//		mix-blend-mode: multiply;
-//	}
-//}
-
-
-.WATCHDOG(@name: ~'') {
-	outline: rgba(50,20,10,50%) 5px solid;
-	outline-offset: 8px;
-	position: relative;
-	display: block !important; // insure visibility
-	overflow: visible !important;
-	
-	&:before {
-		content: '@{name}';
-		position: absolute;
-		outline: rgba(50,20,10,50%) 5px solid;
-		outline-offset: 8px;
-		top: 50%;
-		left: 50%;
-		min-width: 100%;
-		min-height: 100%;
-		background-color: rgba(30,15,5,80%);
-		font-size: 12px;
-		font-weight: bold;
-		padding: 1.5rem;
-		color: white;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-		#translate(-50%, -50%);
-	}
-
-	&:after {
-		content: attr(dev-component) attr(dev-element);
-		white-space: nowrap;
-		padding: .5rem;
-		background-color: red;
-		color: white;
-		line-height: 1em;
-		font-size: 10px;
-		font-weight: 600;
-		display: block;
-		position: absolute;
-		left: 50%;
-		top: 100%;
-		margin-top: 2rem;
-		text-transform: uppercase;
-		letter-spacing: .025em;
-		z-index: 1;
-		#translate(-50%, 0);
-	}
 }
 .show-classes-on-hover {
 	 *[class]:hover:before {
@@ -140,8 +63,6 @@
 		 outline: 1px dashed teal;
 	 }
 }
-
-
 .show-names-on-hover {
 	 *[dev-component]:hover:before,
 	 *[dev-element]:hover:before {
@@ -209,7 +130,6 @@
 		 outline: 1px dashed teal;
 	 }
 }
-
 .show-classes {
 	 *[class]:hover:after {
 			content: attr(class);
@@ -267,7 +187,6 @@
 		 outline: 1px dashed teal;
 	 }
 }
-
 
 .show-classes-on-active {
 	 *[class]:active:after {
@@ -396,7 +315,6 @@
 	* * * * * * * { outline: 1px solid orange }
 	* * * * * * * * { outline: 1px solid blue }
 }
-
 
 #site:before {
 	bottom: 0;

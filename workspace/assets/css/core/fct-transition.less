@@ -1,9 +1,4 @@
-
-//=========================
-// = TRANSITION FUNCTIONS
-//=========================
-
-/* TRANSITION */
+// TRANSITION FUNCTIONS
 #transition (...) {
 	-webkit-transition: @arguments;
 	   -moz-transition: @arguments;
@@ -11,7 +6,6 @@
 		 -o-transition: @arguments;
 			transition: @arguments;
 }
-
 #transition-property (...) {
 	-webkit-transition-property: @arguments;
 	   -moz-transition-property: @arguments;
@@ -19,7 +13,6 @@
 		 -o-transition-property: @arguments;
 			transition-property: @arguments;
 }
-
 #transition-duration (@duration) {
 	-webkit-transition-duration: @duration;
 	   -moz-transition-duration: @duration;
@@ -27,7 +20,6 @@
 		 -o-transition-duration: @duration;
 			transition-duration: @duration;
 }
-
 #transition-delay (@delay) {
 	-webkit-transition-delay: @delay;
 	   -moz-transition-delay: @delay;
@@ -35,7 +27,6 @@
 		 -o-transition-delay: @delay;
 			transition-delay: @delay;
 }
-
 #transition-ease (@ease) {
 	-webkit-transition-timing-function: @ease;
 	   -moz-transition-timing-function: @ease;
@@ -43,7 +34,6 @@
 		 -o-transition-timing-function: @ease;
 			transition-timing-function: @ease;
 }
-
 #cb-transition (...) {
 	-webkit-transition: ~"-webkit-@{arguments}";
 	   -moz-transition: ~"-moz-@{arguments}";
@@ -51,7 +41,6 @@
 		 -o-transition: ~"-o-@{arguments}";
 			transition: @arguments;
 }
-
 #cb-transition-property (...) {
 	-webkit-transition-property: @arguments;
 	   -moz-transition-property: @arguments;

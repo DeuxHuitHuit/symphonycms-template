@@ -1,6 +1,8 @@
 //=========================
 // = FLOAT CLASS
 //=========================
-.float-none 	{float: none;}
-.float-left 	{float: left;}
-.float-right 	{float: right;}
+#generate-float-classes (@suffix: ~'') {
+	.float-none@{suffix}  {float: none;}
+	.float-left@{suffix}  {float: left;}
+	.float-right@{suffix} {float: right;}
+}

@@ -1,8 +1,4 @@
-
-//=========================
-// = PLACEHOLDER FUNCTIONS
-//=========================
-
+// PLACEHOLDER FUNCTIONS
 //Documentation http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element
 #placeholder (@color) when (iscolor(@color)) {
 	&:-moz-placeholder            { color: @color; } // Firefox 4-18
@@ -10,7 +6,6 @@
 	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
 	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
 }
-
 #placeholder (@rules) when (false = iscolor(@rules)) {
 	&:-moz-placeholder            { @rules(); } // Firefox 4-18
 	&::-moz-placeholder           { @rules(); } // Firefox 19+

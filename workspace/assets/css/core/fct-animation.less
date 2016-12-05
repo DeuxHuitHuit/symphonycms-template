@@ -1,8 +1,4 @@
-
-//=========================
-// = ANIMATION FUNCTIONS
-//=========================
-
+// ANIMATION FUNCTIONS
 #animation (...) {
 	-webkit-animation: @arguments;
 	   -moz-animation: @arguments;
@@ -10,26 +6,10 @@
 		 -o-animation: @arguments;
 			animation: @arguments;
 }
-
 #animation-key (@name, @rules) {
-	@-webkit-keyframes @name {
-		@rules();
-	}
-	
-	@-moz-keyframes @name {
-		@rules();
-	}
-	
-	@-ms-keyframes @name {
-		@rules();
-	}
-	
-	@-o-keyframes @name {
-		@rules();
-	}
-
-	//Standard syntax
-	@keyframes @name {
-		@rules();
-	}
+	@-webkit-keyframes @name {@rules();}
+	@-moz-keyframes    @name {@rules();}
+	@-ms-keyframes     @name {@rules();}
+	@-o-keyframes      @name {@rules();}
+	@keyframes         @name {@rules();}
 }
