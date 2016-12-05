@@ -59,7 +59,7 @@ Alexandra Nantel
 Frontend Designer / Intégrateur
 
 Vincent Rouleau
-Backend developer / Programmeur backend
+Backend Developer / Programmeur backend
 
 Caroline L.Couture
 Project manager / Chargée de compte
@@ -101,4 +101,3 @@ Standards: HTML5, CSS3, ES5
 Components: jQuery, Velocity.js, TweenMax, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo, framework.js
 
 Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Bash, vi, Grunt, Blood sweat and tears
-
