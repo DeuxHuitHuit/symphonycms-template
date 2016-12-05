@@ -777,9 +777,6 @@ html:not(.mobile) .border-color-light-on-hover:hover {
 .display-none-when-selected.is-selected {
   display: none;
 }
-.hidden-selected.is-selected {
-  display: none;
-}
 .table-when-selected.is-selected {
   display: table;
 }
@@ -8096,9 +8093,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-from-ip.is-selected {
-    display: none;
-  }
-  .hidden-selected-from-ip.is-selected {
     display: none;
   }
   .table-when-selected-from-ip.is-selected {
@@ -15420,9 +15414,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-from-ph.is-selected {
     display: none;
   }
-  .hidden-selected-from-ph.is-selected {
-    display: none;
-  }
   .table-when-selected-from-ph.is-selected {
     display: table;
   }
@@ -22740,9 +22731,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-from-xs.is-selected {
-    display: none;
-  }
-  .hidden-selected-from-xs.is-selected {
     display: none;
   }
   .table-when-selected-from-xs.is-selected {
@@ -30064,9 +30052,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-from-sm.is-selected {
     display: none;
   }
-  .hidden-selected-from-sm.is-selected {
-    display: none;
-  }
   .table-when-selected-from-sm.is-selected {
     display: table;
   }
@@ -37384,9 +37369,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-from-md.is-selected {
-    display: none;
-  }
-  .hidden-selected-from-md.is-selected {
     display: none;
   }
   .table-when-selected-from-md.is-selected {
@@ -44708,9 +44690,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-from-lg.is-selected {
     display: none;
   }
-  .hidden-selected-from-lg.is-selected {
-    display: none;
-  }
   .table-when-selected-from-lg.is-selected {
     display: table;
   }
@@ -52028,9 +52007,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-from-xl.is-selected {
-    display: none;
-  }
-  .hidden-selected-from-xl.is-selected {
     display: none;
   }
   .table-when-selected-from-xl.is-selected {
@@ -59352,9 +59328,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-from-hd.is-selected {
     display: none;
   }
-  .hidden-selected-from-hd.is-selected {
-    display: none;
-  }
   .table-when-selected-from-hd.is-selected {
     display: table;
   }
@@ -66672,9 +66645,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-to-xl.is-selected {
-    display: none;
-  }
-  .hidden-selected-to-xl.is-selected {
     display: none;
   }
   .table-when-selected-to-xl.is-selected {
@@ -73996,9 +73966,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-to-lg.is-selected {
     display: none;
   }
-  .hidden-selected-to-lg.is-selected {
-    display: none;
-  }
   .table-when-selected-to-lg.is-selected {
     display: table;
   }
@@ -81316,9 +81283,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-to-md.is-selected {
-    display: none;
-  }
-  .hidden-selected-to-md.is-selected {
     display: none;
   }
   .table-when-selected-to-md.is-selected {
@@ -88640,9 +88604,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-to-sm.is-selected {
     display: none;
   }
-  .hidden-selected-to-sm.is-selected {
-    display: none;
-  }
   .table-when-selected-to-sm.is-selected {
     display: table;
   }
@@ -95960,9 +95921,6 @@ html:not(.mobile) .transparent-on-hover:hover {
     display: inline-flex;
   }
   .display-none-when-selected-to-xs.is-selected {
-    display: none;
-  }
-  .hidden-selected-to-xs.is-selected {
     display: none;
   }
   .table-when-selected-to-xs.is-selected {
@@ -103284,9 +103242,6 @@ html:not(.mobile) .transparent-on-hover:hover {
   .display-none-when-selected-to-ph.is-selected {
     display: none;
   }
-  .hidden-selected-to-ph.is-selected {
-    display: none;
-  }
   .table-when-selected-to-ph.is-selected {
     display: table;
   }
@@ -110391,6 +110346,66 @@ html {
   border-top-right-radius: 5rem;
   border-top-left-radius: 5rem;
 }
+.border-spacing-atto {
+  border-spacing: 1px;
+}
+.border-spacing-femto {
+  border-spacing: 0.2rem;
+}
+.border-spacing-pico {
+  border-spacing: 0.4rem;
+}
+.border-spacing-nano {
+  border-spacing: 0.5rem;
+}
+.border-spacing-micro {
+  border-spacing: 0.7rem;
+}
+.border-spacing-thinnest {
+  border-spacing: 1rem;
+}
+.border-spacing-thinner {
+  border-spacing: 2rem;
+}
+.border-spacing-thin {
+  border-spacing: 3rem;
+}
+.border-spacing-broad {
+  border-spacing: 4rem;
+}
+.border-spacing-broader {
+  border-spacing: 7rem;
+}
+.border-spacing-broadest {
+  border-spacing: 10rem;
+}
+.border-spacing-large {
+  border-spacing: 16rem;
+}
+.border-spacing-larger {
+  border-spacing: 20rem;
+}
+.border-spacing-largest {
+  border-spacing: 26rem;
+}
+.border-spacing-mega {
+  border-spacing: 38rem;
+}
+.border-spacing-giga {
+  border-spacing: 54rem;
+}
+.border-spacing-tera {
+  border-spacing: 78rem;
+}
+.border-spacing-peta {
+  border-spacing: 80rem;
+}
+.border-spacing-zetta {
+  border-spacing: 100rem;
+}
+.border-spacing-yotta {
+  border-spacing: 120rem;
+}
 .border-style-none,
 .border-none {
   border-style: none;
@@ -111097,6 +111112,118 @@ body:hover .visually-hidden button {
 }
 .pointer-events-all {
   pointer-events: all;
+}
+.square-femto {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+.square-pico {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+.square-nano {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+.square-micro {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+.square-thinnest {
+  width: 1rem;
+  height: 1rem;
+}
+.square-thinner {
+  width: 2rem;
+  height: 2rem;
+}
+.square-thin {
+  width: 3rem;
+  height: 3rem;
+}
+.square-broad {
+  width: 4rem;
+  height: 4rem;
+}
+.square-broader {
+  width: 7rem;
+  height: 7rem;
+}
+.square-broadest {
+  width: 10rem;
+  height: 10rem;
+}
+.square-large {
+  width: 16rem;
+  height: 16rem;
+}
+.square-larger {
+  width: 20rem;
+  height: 20rem;
+}
+.square-largest {
+  width: 26rem;
+  height: 26rem;
+}
+.square-mega {
+  width: 38rem;
+  height: 38rem;
+}
+.square-giga {
+  width: 54rem;
+  height: 54rem;
+}
+.square-tera {
+  width: 78rem;
+  height: 78rem;
+}
+.square-peta {
+  width: 80rem;
+  height: 80rem;
+}
+.square-zetta {
+  width: 100rem;
+  height: 100rem;
+}
+.square-yotta {
+  width: 120rem;
+  height: 120rem;
+}
+.square-tiniest {
+  width: 4rem;
+  height: 4rem;
+}
+.square-tinier {
+  width: 8rem;
+  height: 8rem;
+}
+.square-tiny {
+  width: 12rem;
+  height: 12rem;
+}
+.square-smallest {
+  width: 24rem;
+  height: 24rem;
+}
+.square-smaller {
+  width: 42rem;
+  height: 42rem;
+}
+.square-small {
+  width: 60rem;
+  height: 60rem;
+}
+.square-big {
+  width: 128rem;
+  height: 128rem;
+}
+.square-bigger {
+  width: 160rem;
+  height: 160rem;
+}
+.square-biggest {
+  width: 208rem;
+  height: 208rem;
 }
 .text-decoration-overline,
 .overline {
