@@ -10,299 +10,299 @@
 	outline-offset: 8px;
 }
 .show-classes-on-hover {
-	 *[class]:hover:before {
-			content: attr(class);
-			white-space: nowrap;
-			padding: @spacing-thinner * 0.25 @spacing-thinner * 0.5;
-			background-color: red;
-			color: white;
-			line-height: @spacing-thinner * .5;
-			font-size: 8px;
-			font-weight: 600;
-			font-family: helvetica, arial, sans-serif;
-			display: block;
-			position: absolute;
-			left: auto;
-			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
-			text-transform: uppercase;
-			letter-spacing: .025em;
-			z-index: 1;
-		}
+	*[class]:hover:before {
+		content: attr(class);
+		white-space: nowrap;
+		padding: @spacing-thinner * 0.25 @spacing-thinner * 0.5;
+		background-color: red;
+		color: white;
+		line-height: @spacing-thinner * .5;
+		font-size: 8px;
+		font-weight: 600;
+		font-family: helvetica, arial, sans-serif;
+		display: block;
+		position: absolute;
+		left: auto;
+		top: auto;
+		margin-top: -@spacing-thinner;
+		margin-bottom: @spacing-thinner * .25;
+		text-transform: uppercase;
+		letter-spacing: .025em;
+		z-index: 1;
+	}
 		
-	 *:not(body)[class] *[class]:hover:before {
-		 //margin-top: 0;
-		 background-color: fuchsia;
-		 padding-left: @spacing-thinner * .5;
-	 }
+	*:not(body)[class] *[class]:hover:before {
+		//margin-top: 0;
+		background-color: fuchsia;
+		padding-left: @spacing-thinner * .5;
+	}
 
-	 *:not(body)[class] *[class] *[class]:hover:before {
-		 background-color: purple;
-		 padding-left: @spacing-thinner;
-	 }
-	 
-	 *:not(body)[class] *[class] *[class] *[class]:hover:before {
-		 background-color: teal;
-		 padding-left: @spacing-thinner * 1.5;
-	 }
-		
-	 *[class]:hover {
-			outline: 1px dashed red;
-		}
+	*:not(body)[class] *[class] *[class]:hover:before {
+		background-color: purple;
+		padding-left: @spacing-thinner;
+	}
+	
+	*:not(body)[class] *[class] *[class] *[class]:hover:before {
+		background-color: teal;
+		padding-left: @spacing-thinner * 1.5;
+	}
+	
+	*[class]:hover {
+		outline: 1px dashed red;
+	}
 
-	 *:not(body)[class] *[class]:hover {
-		 outline: 1px dashed fuchsia;
-	 }
+	*:not(body)[class] *[class]:hover {
+		outline: 1px dashed fuchsia;
+	}
 
-	 *:not(body)[class] *[class] *[class]:hover {
-		 outline: 1px dashed purple;
-	 }
-	 
-	 *:not(body)[class] *[class] *[class] *[class]:hover {
-		 outline: 1px dashed teal;
-	 }
+	*:not(body)[class] *[class] *[class]:hover {
+		outline: 1px dashed purple;
+	}
+	
+	*:not(body)[class] *[class] *[class] *[class]:hover {
+		outline: 1px dashed teal;
+	}
 }
 .show-names-on-hover {
-	 *[dev-component]:hover:before,
-	 *[dev-element]:hover:before {
-			content: attr(dev-component);
-			white-space: nowrap;
-			padding: @spacing-thinner * .25 @spacing-thinner * .5;
-			background-color: red;
-			color: white;
-			line-height: @spacing-thinner * .5;
-			font-size: 10px;
-			font-weight: 600;
-			font-family: helvetica, arial, sans-serif;
-			display: block;
-			position: absolute;
-			left: auto;
-			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
-			text-transform: uppercase;
-			letter-spacing: .025em;
-			z-index: 1;
-		}
-	 *[dev-element]:hover:before {
-			margin-top: 0;
-			content: attr(dev-element);
-			background-color: grey !important;
-		}
-		
-	 *:not(body)[dev-component] *[dev-component]:hover:before,
-	 *:not(body)[dev-component] *[dev-element]:hover:before {
-		 //margin-top: 0;
-		 background-color: fuchsia;
-		 padding-left: @spacing-thinner * .5;
-	 }
+	*[dev-component]:hover:before,
+	*[dev-element]:hover:before {
+		content: attr(dev-component);
+		white-space: nowrap;
+		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		background-color: red;
+		color: white;
+		line-height: @spacing-thinner * .5;
+		font-size: 10px;
+		font-weight: 600;
+		font-family: helvetica, arial, sans-serif;
+		display: block;
+		position: absolute;
+		left: auto;
+		top: auto;
+		margin-top: -@spacing-thinner;
+		margin-bottom: @spacing-thinner * .25;
+		text-transform: uppercase;
+		letter-spacing: .025em;
+		z-index: 1;
+	}
+	*[dev-element]:hover:before {
+		margin-top: 0;
+		content: attr(dev-element);
+		background-color: grey !important;
+	}
+	
+	*:not(body)[dev-component] *[dev-component]:hover:before,
+	*:not(body)[dev-component] *[dev-element]:hover:before {
+		//margin-top: 0;
+		background-color: fuchsia;
+		padding-left: @spacing-thinner * .5;
+	}
 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component]:hover:before,
-	 *:not(body)[dev-component] *[dev-component] *[dev-element]:hover:before {
-		 background-color: purple;
-		 padding-left: @spacing-thinner;
-	 }
-	 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover:before,
-	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover:before {
-		 background-color: teal;
-		 padding-left: @spacing-thinner * 1.5;
-	 }
-		
-	 *[dev-component]:hover,
-	 *[dev-element]:hover {
-			outline: 1px dashed red;
-		}
+	*:not(body)[dev-component] *[dev-component] *[dev-component]:hover:before,
+	*:not(body)[dev-component] *[dev-component] *[dev-element]:hover:before {
+		background-color: purple;
+		padding-left: @spacing-thinner;
+	}
+	
+	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover:before,
+	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover:before {
+		background-color: teal;
+		padding-left: @spacing-thinner * 1.5;
+	}
+	
+	*[dev-component]:hover,
+	*[dev-element]:hover {
+		outline: 1px dashed red;
+	}
 
-	 *:not(body)[dev-component] *[dev-component]:hover,
-	 *:not(body)[dev-component] *[dev-element]:hover {
-		 outline: 1px dashed fuchsia;
-	 }
+	*:not(body)[dev-component] *[dev-component]:hover,
+	*:not(body)[dev-component] *[dev-element]:hover {
+		outline: 1px dashed fuchsia;
+	}
 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component]:hover,
-	 *:not(body)[dev-component] *[dev-component] *[dev-element]:hover {
-		 outline: 1px dashed purple;
-	 }
-	 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover,
-	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover {
-		 outline: 1px dashed teal;
-	 }
+	*:not(body)[dev-component] *[dev-component] *[dev-component]:hover,
+	*:not(body)[dev-component] *[dev-component] *[dev-element]:hover {
+		outline: 1px dashed purple;
+	}
+	
+	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover,
+	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover {
+		outline: 1px dashed teal;
+	}
 }
 .show-classes {
-	 *[class]:hover:after {
-			content: attr(class);
-			white-space: nowrap;
-			padding: @spacing-thinner * .25 @spacing-thinner * .5;
-			background-color: red;
-			color: white;
-			line-height: @spacing-thinner * .5;
-			font-size: 8px;
-			font-weight: 600;
-			font-family: helvetica, arial, sans-serif;
-			display: block;
-			position: absolute;
-			left: auto;
-			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
-			text-transform: uppercase;
-			letter-spacing: .025em;
-			z-index: 1;
-			&:hover {
-				z-index: 2;
-			}
+	*[class]:hover:after {
+		content: attr(class);
+		white-space: nowrap;
+		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		background-color: red;
+		color: white;
+		line-height: @spacing-thinner * .5;
+		font-size: 8px;
+		font-weight: 600;
+		font-family: helvetica, arial, sans-serif;
+		display: block;
+		position: absolute;
+		left: auto;
+		top: auto;
+		margin-top: -@spacing-thinner;
+		margin-bottom: @spacing-thinner * .25;
+		text-transform: uppercase;
+		letter-spacing: .025em;
+		z-index: 1;
+		&:hover {
+			z-index: 2;
 		}
-		
-	 *:not(body)[class] *[class]:hover:after {
-		 //margin-top: 0;
-		 background-color: fuchsia;
-		 padding-left: @spacing-thinner * .5;
-	 }
+	}
+	
+	*:not(body)[class] *[class]:hover:after {
+		//margin-top: 0;
+		background-color: fuchsia;
+		padding-left: @spacing-thinner * .5;
+	}
 
-	 *:not(body)[class] *[class] *[class]:hover:after {
-		 background-color: purple;
-		 padding-left: @spacing-thinner;
-	 }
-	 
-	 *:not(body)[class] *[class] *[class] *[class]:hover:after {
-		 background-color: teal;
-		 padding-left: @spacing-thinner * 1.5;
-	 }
+	*:not(body)[class] *[class] *[class]:hover:after {
+		background-color: purple;
+		padding-left: @spacing-thinner;
+	}
+	
+	*:not(body)[class] *[class] *[class] *[class]:hover:after {
+		background-color: teal;
+		padding-left: @spacing-thinner * 1.5;
+	}
 		
-	 *[class]:hover {
+	*[class]:hover {
 			outline: 1px dashed red;
 		}
 
-	 *:not(body)[class] *[class]:hover {
-		 outline: 1px dashed fuchsia;
-	 }
+	*:not(body)[class] *[class]:hover {
+		outline: 1px dashed fuchsia;
+	}
 
-	 *:not(body)[class] *[class] *[class]:hover {
-		 outline: 1px dashed purple;
-	 }
-	 
-	 *:not(body)[class] *[class] *[class] *[class]:hover {
-		 outline: 1px dashed teal;
-	 }
+	*:not(body)[class] *[class] *[class]:hover {
+		outline: 1px dashed purple;
+	}
+	
+	*:not(body)[class] *[class] *[class] *[class]:hover {
+		outline: 1px dashed teal;
+	}
 }
 
 .show-classes-on-active {
-	 *[class]:active:after {
-			content: attr(class);
-			white-space: nowrap;
-			padding: @spacing-thinner * .25 @spacing-thinner * .5;
-			background-color: red;
-			color: white;
-			line-height: @spacing-thinner * .5;
-			font-size: 10px;
-			font-weight: 600;
-			font-family: helvetica, arial, sans-serif;
-			display: block;
-			position: absolute;
-			left: auto;
-			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
-			letter-spacing: .0325em;
-			z-index: 1;
-		}
+	*[class]:active:after {
+		content: attr(class);
+		white-space: nowrap;
+		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		background-color: red;
+		color: white;
+		line-height: @spacing-thinner * .5;
+		font-size: 10px;
+		font-weight: 600;
+		font-family: helvetica, arial, sans-serif;
+		display: block;
+		position: absolute;
+		left: auto;
+		top: auto;
+		margin-top: -@spacing-thinner;
+		margin-bottom: @spacing-thinner * .25;
+		letter-spacing: .0325em;
+		z-index: 1;
+	}
 
-		*[class][dev-element]:active:after {
-			margin-top: 0;
-		}
-		
-	 *:not(body)[class] *[class]:active:after {
-		 //margin-top: 0;
-		 background-color: fuchsia;
-		 padding-left: @spacing-thinner * .5;
-	 }
+	*[class][dev-element]:active:after {
+		margin-top: 0;
+	}
+	
+	*:not(body)[class] *[class]:active:after {
+		//margin-top: 0;
+		background-color: fuchsia;
+		padding-left: @spacing-thinner * .5;
+	}
 
-	 *:not(body)[class] *[class] *[class]:active:after {
-		 background-color: purple;
-		 padding-left: @spacing-thinner;
-	 }
-	 
-	 *:not(body)[class] *[class] *[class] *[class]:active:after {
-		 background-color: teal;
-		 padding-left: @spacing-thinner * 1.5;
-	 }
-		
-	 *[class]:active {
-			outline: 1px dashed red;
-		}
+	*:not(body)[class] *[class] *[class]:active:after {
+		background-color: purple;
+		padding-left: @spacing-thinner;
+	}
+	
+	*:not(body)[class] *[class] *[class] *[class]:active:after {
+		background-color: teal;
+		padding-left: @spacing-thinner * 1.5;
+	}
+	
+	*[class]:active {
+		outline: 1px dashed red;
+	}
 
-	 *:not(body)[class] *[class]:active {
-		 outline: 1px dashed fuchsia;
-	 }
+	*:not(body)[class] *[class]:active {
+		outline: 1px dashed fuchsia;
+	}
 
-	 *:not(body)[class] *[class] *[class]:active {
-		 outline: 1px dashed purple;
-	 }
-	 
-	 *:not(body)[class] *[class] *[class] *[class]:active {
-		 outline: 1px dashed teal;
-	 }
+	*:not(body)[class] *[class] *[class]:active {
+		outline: 1px dashed purple;
+	}
+	
+	*:not(body)[class] *[class] *[class] *[class]:active {
+		outline: 1px dashed teal;
+	}
 }
 
 .show-names {
-	 *[dev-component]:before {
-			content: attr(dev-component);
-			white-space: nowrap;
-			padding: @spacing-thinner * .25 @spacing-thinner * .5;
-			background-color: red;
-			color: white;
-			line-height: @spacing-thinner * .5;
-			font-size: 8px;
-			font-weight: 600;
-			font-family: helvetica, arial, sans-serif;
-			display: block;
-			position: absolute;
-			left: auto;
-			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
-			text-transform: uppercase;
-			letter-spacing: .025em;
-			z-index: 1;
-			&:hover {
-				z-index: 2;
-			}
+	*[dev-component]:before {
+		content: attr(dev-component);
+		white-space: nowrap;
+		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		background-color: red;
+		color: white;
+		line-height: @spacing-thinner * .5;
+		font-size: 8px;
+		font-weight: 600;
+		font-family: helvetica, arial, sans-serif;
+		display: block;
+		position: absolute;
+		left: auto;
+		top: auto;
+		margin-top: -@spacing-thinner;
+		margin-bottom: @spacing-thinner * .25;
+		text-transform: uppercase;
+		letter-spacing: .025em;
+		z-index: 1;
+		&:hover {
+			z-index: 2;
 		}
-		
-	 *:not(body)[dev-component] *[dev-component]:before {
-		 //margin-top: 0;
-		 background-color: fuchsia;
-		 padding-left: @spacing-thinner * .5;
-	 }
+	}
+	
+	*:not(body)[dev-component] *[dev-component]:before {
+		//margin-top: 0;
+		background-color: fuchsia;
+		padding-left: @spacing-thinner * .5;
+	}
 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component]:before {
-		 background-color: purple;
-		 padding-left: @spacing-thinner;
-	 }
-	 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:before {
-		 background-color: teal;
-		 padding-left: @spacing-thinner * 1.5;
-	 }
+	*:not(body)[dev-component] *[dev-component] *[dev-component]:before {
+		background-color: purple;
+		padding-left: @spacing-thinner;
+	}
+	
+	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:before {
+		background-color: teal;
+		padding-left: @spacing-thinner * 1.5;
+	}
 	
 	
-	 *[dev-component]:hover {
-			outline: 1px dashed red;
-		}
+	*[dev-component]:hover {
+		outline: 1px dashed red;
+	}
 
-	 *:not(body)[dev-component] *[dev-component]:hover {
-		 outline: 1px dashed fuchsia;
-	 }
+	*:not(body)[dev-component] *[dev-component]:hover {
+		outline: 1px dashed fuchsia;
+	}
 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component]:hover {
-		 outline: 1px dashed purple;
-	 }
-	 
-	 *:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover {
-		 outline: 1px dashed teal;
-	 }
+	*:not(body)[dev-component] *[dev-component] *[dev-component]:hover {
+		outline: 1px dashed purple;
+	}
+	
+	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover {
+		outline: 1px dashed teal;
+	}
 }
 
 .show-ga {
