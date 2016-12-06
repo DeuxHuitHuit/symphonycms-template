@@ -305,6 +305,25 @@
 	 }
 }
 
+.show-ga {
+	[data-ga-cat] {
+		outline: 3px solid red !important;
+		position: relative;
+		&:after {
+			content: attr(data-ga-cat) attr(data-ga-action);
+			position: absolute;
+			right: -10px;
+			left: -10px;
+			top: -18px;
+			font-size: 10px !important;
+			color: red;
+			z-index: 99999999;
+			background-color: fade(@white, 30%);
+			white-space: nowrap;
+		}
+	}
+}
+
 .debug {
 	* { outline: 2px dotted red }
 	* * { outline: 2px dotted green }
