@@ -308,7 +308,9 @@
 .show-ga {
 	[data-ga-cat] {
 		outline: 3px solid red !important;
-		position: relative;
+		&:not(.absolute):not(.fixed):not(.static) {
+			position: relative;
+		}
 		&:after {
 			content: attr(data-ga-cat) " " attr(data-ga-action);
 			position: absolute;
