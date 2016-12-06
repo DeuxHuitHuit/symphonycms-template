@@ -40,6 +40,10 @@
 			return 'Symphony';
 		}
 		
+		protected function cancel() {
+			return false;
+		}
+		
 		public function load() {
 			if (isset($_POST['action'][$this->getActionKey()])) {
 				return $this->__trigger();
@@ -53,7 +57,9 @@
 		protected function __trigger() {
 			$r = new XMLElement($this->getRootElement());
 			try {
-				
+				if ($this->cancel()) {
+					return;
+				}
 				if ($this->isValid()) {
 					if ($this->__sendEmail()) {
 						$r->setAttribute('success', 'yes');
@@ -104,7 +110,7 @@
 			$infos .= 'Request time: '	. General::sanitize( $_SERVER['REQUEST_TIME'] ) . PHP_EOL;
 			$infos .= 'CF IP: '			. General::sanitize( $_SERVER['HTTP_CF_CONNECTING_IP'] ) . PHP_EOL;
 			$infos .= 'CF Country : '	. General::sanitize( $_SERVER['HTTP_CF_IPCOUNTRY'] ) . PHP_EOL;
-				
+			
 			return $infos;
 		}
 
