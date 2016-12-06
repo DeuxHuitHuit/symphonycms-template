@@ -28,9 +28,10 @@
 		margin-bottom: @spacing-thinner * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
+		pointer-events: none;
 		z-index: 1;
 	}
-		
+	
 	*:not(body)[class] *[class]:hover:before {
 		//margin-top: 0;
 		background-color: fuchsia;
@@ -83,6 +84,7 @@
 		margin-bottom: @spacing-thinner * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
+		pointer-events: none;
 		z-index: 1;
 	}
 	*[dev-element]:hover:before {
@@ -149,6 +151,7 @@
 		margin-bottom: @spacing-thinner * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
+		pointer-events: none;
 		z-index: 1;
 		&:hover {
 			z-index: 2;
@@ -170,10 +173,10 @@
 		background-color: teal;
 		padding-left: @spacing-thinner * 1.5;
 	}
-		
+	
 	*[class]:hover {
-			outline: 1px dashed red;
-		}
+		outline: 1px dashed red;
+	}
 
 	*:not(body)[class] *[class]:hover {
 		outline: 1px dashed fuchsia;
@@ -206,6 +209,7 @@
 		margin-top: -@spacing-thinner;
 		margin-bottom: @spacing-thinner * .25;
 		letter-spacing: .0325em;
+		pointer-events: none;
 		z-index: 1;
 	}
 
@@ -265,6 +269,7 @@
 		margin-bottom: @spacing-thinner * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
+		pointer-events: none;
 		z-index: 1;
 		&:hover {
 			z-index: 2;
@@ -325,6 +330,7 @@
 			background-color: fade(@white, 30%);
 			white-space: nowrap;
 			overflow: visible;
+			pointer-events: none;
 		}
 	}
 }
