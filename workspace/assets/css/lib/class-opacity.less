@@ -1,14 +1,5 @@
- 
-//=========================
-// = OPACITY CLASS
-//=========================
+// OPACITY CLASS
 #generate-opacity-classes (@suffix: ~'') {
-	.opacity-0@{suffix}    {opacity: 0;}
-	.opacity-1_2@{suffix}  {opacity: 0.5;}
-	.opacity-1_4@{suffix}  {opacity: 0.25;}
-	.opacity-3_4@{suffix}  {opacity: 0.75;}
-	.opacity-full@{suffix} {opacity: 1;}
-
 	.opacity-opaque@{suffix}, .opaque@{suffix}                               {opacity: @opaque;}
 	.opacity-almost-opaque@{suffix}, .almost-opaque@{suffix}                 {opacity: @almost-opaque;}
 	.opacity-quasi-opaque@{suffix}, .quasi-opaque@{suffix}                   {opacity: @quasi-opaque;}

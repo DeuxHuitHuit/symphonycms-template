@@ -23,6 +23,11 @@ module.exports = function jshint (grunt) {
 				files: {
 					'<%= src.css.bundle %>': '<%= src.css.dev %>'
 				}
+			},
+			coreBundle: {
+				files: {
+					'<%= src.css.coreLib %>': '<%= src.css.devCore %>'
+				}
 			}
 		}
 	});

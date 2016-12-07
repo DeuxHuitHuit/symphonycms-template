@@ -30,6 +30,10 @@ module.exports = function concat (grunt) {
 			lessCore: {
 				src: 'css/core/*.less',
 				dest: '<%= src.css.core %>'
+			},
+			lessCoreLib: {
+				src: 'css/core-lib/*.less',
+				dest: '<%= src.css.coreLib %>'
 			}
 		}
 	});

@@ -27,6 +27,7 @@ module.exports = function clean (grunt) {
 				src: [
 					'<%= src.css.lib %>',
 					'<%= src.css.core %>',
+					'<%= src.css.coreLib %>',
 					'<%= src.css.bundle %>'
 				]
 			}

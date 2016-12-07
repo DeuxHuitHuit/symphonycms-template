@@ -1,34 +1,21 @@
-//  GENERATOR
+// GENERATOR
 #generate-lib(@suffix: ~'') {
 	#generate-base-color-class(@suffix);
-	#generate-box-sizing-classes(@suffix);
-	#generate-bg-size-classes(@suffix);
-	#generate-clear-classes(@suffix);
-	#generate-display-classes(@suffix);
 	#generate-flex-basis-classes(@suffix);
-	#generate-flex-direction-classes(@suffix);
-	#generate-flex-grow-classes(@suffix);
-	#generate-flex-order-classes(@suffix);
-	#generate-float-classes(@suffix);
 	#generate-font-size-classes(@suffix);
 	#generate-height-classes(@suffix);
 	#generate-letter-spacing-classes(@suffix);
 	#generate-line-height-classes(@suffix);
 	#generate-margin-all-classes(@suffix);
 	#generate-opacity-classes(@suffix);
-	#generate-overflow-classes(@suffix);
 	#generate-padding-all-classes(@suffix);
-	#generate-position-classes(@suffix);
-	#generate-text-align-classes(@suffix);
-	#generate-vertical-align-classes(@suffix);
-	#generate-visibility-classes(@suffix);
 	#generate-width-classes(@suffix);
 }
-//  GENERAL
+// GENERAL
 #generate-lib();
 
-//  FROM
-#mq-min-width(@screen-ip,{#generate-lib(~'-from-ip');});
+// FROM
+//#mq-min-width(@screen-ip,{#generate-lib(~'-from-ip');});
 #mq-min-width(@screen-ph,{#generate-lib(~'-from-ph');});
 #mq-min-width(@screen-xs,{#generate-lib(~'-from-xs');});
 #mq-min-width(@screen-sm,{#generate-lib(~'-from-sm');});
@@ -38,7 +25,7 @@
 #mq-min-width(@screen-hd,{#generate-lib(~'-from-hd');});
 //#mq-min-width(@screen-2k,{#generate-lib(~'-from-2k');});
 
-//  TO
+// TO
 //#mq-max-width(@screen-2k - 1,{#generate-lib(~'-to-2k');});
 //#mq-max-width(@screen-hd - 1,{#generate-lib(~'-to-hd');});
 #mq-max-width(@screen-xl - 1,{#generate-lib(~'-to-xl');});
