@@ -1,20 +1,9 @@
-//=========================
-// = LINE-HEIGHT CLASS
-//=========================
-#generate-line-height-classes (@suffix: ~'') {
-	//Usefull
+// LINE-HEIGHT CLASS
+#generate-core-line-height-classes (@suffix: ~'') {
 	.line-height-initial@{suffix}     {line-height: initial;}
 	.line-height-normal@{suffix}      {line-height: normal;}
 	.line-height-0@{suffix}           {line-height: 0;}
 	.line-height-0-important@{suffix} {line-height: 0 !important;}
 	.line-height-perfect@{suffix}     {line-height: 1em;}
 	.line-height-double@{suffix}      {line-height: 2em;}
-	//Scales
-	.line-height-compressed@{suffix}  {line-height: @line-height-compressed;}
-	.line-height-tightest@{suffix}    {line-height: @line-height-tightest;}
-	.line-height-tighter@{suffix}     {line-height: @line-height-tighter;}
-	.line-height-tight@{suffix}       {line-height: @line-height-tight;}
-	.line-height-loose@{suffix}       {line-height: @line-height-loose;}
-	.line-height-looser@{suffix}      {line-height: @line-height-looser;}
-	.line-height-loosest@{suffix}     {line-height: @line-height-loosest;}
 }

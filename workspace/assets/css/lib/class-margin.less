@@ -1,39 +1,20 @@
-//=====================================
-//= MARGIN CLASS
-//=====================================
-#generate-margin-classes (@direction: ~'', @suffix: ~'') {
-	//-------------------------------------------
+// MARGIN CLASS
+#generate-core-margin-all-classes(@suffix: ~'') {
+	#generate-core-margin-classes(~'', @suffix);
+	#generate-core-margin-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-core-margin-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	#generate-core-margin-classes(~'-bottom', @suffix);
+	#generate-core-margin-classes(~'-left', @suffix);
+	#generate-core-margin-classes(~'-right', @suffix);
+	#generate-core-margin-classes(~'-top', @suffix);
+}
+
+#generate-core-margin-classes (@direction: ~'', @suffix: ~'') {
 	// USEFULL MARGIN 
-	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'0', 		~'0');
 	#generate-margin-classes-value(@direction, @suffix, ~'none', 	~'0');
 	#generate-margin-classes-value(@direction, @suffix, ~'auto', 	~'auto');
-	//-------------------------------------------
-	// SPACING MARGIN 
-	//-------------------------------------------
-	#generate-margin-classes-value(@direction, @suffix, ~'atto', 		@spacing-atto);
-	#generate-margin-classes-value(@direction, @suffix, ~'femto', 		@spacing-femto);
-	#generate-margin-classes-value(@direction, @suffix, ~'pico', 		@spacing-pico);
-	#generate-margin-classes-value(@direction, @suffix, ~'nano', 		@spacing-nano);
-	#generate-margin-classes-value(@direction, @suffix, ~'micro', 		@spacing-micro);
-	#generate-margin-classes-value(@direction, @suffix, ~'thinnest', 	@spacing-thinnest);
-	#generate-margin-classes-value(@direction, @suffix, ~'thinner', 	@spacing-thinner);
-	#generate-margin-classes-value(@direction, @suffix, ~'thin', 		@spacing-thin);
-	#generate-margin-classes-value(@direction, @suffix, ~'broad', 		@spacing-broad);
-	#generate-margin-classes-value(@direction, @suffix, ~'broader', 	@spacing-broader);
-	#generate-margin-classes-value(@direction, @suffix, ~'broadest', 	@spacing-broadest);
-	#generate-margin-classes-value(@direction, @suffix, ~'large', 		@spacing-large);
-	#generate-margin-classes-value(@direction, @suffix, ~'larger', 		@spacing-larger);
-	#generate-margin-classes-value(@direction, @suffix, ~'largest', 	@spacing-largest);
-	#generate-margin-classes-value(@direction, @suffix, ~'mega', 		@spacing-mega);
-	#generate-margin-classes-value(@direction, @suffix, ~'giga', 		@spacing-giga);
-	#generate-margin-classes-value(@direction, @suffix, ~'tera', 		@spacing-tera);
-	#generate-margin-classes-value(@direction, @suffix, ~'peta', 		@spacing-peta);
-	#generate-margin-classes-value(@direction, @suffix, ~'zetta', 		@spacing-zetta);
-	#generate-margin-classes-value(@direction, @suffix, ~'yotta', 		@spacing-yotta);
-	//-------------------------------------------
 	// RATIONNAL MARGIN
-	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'1_2', 50%);
 	#generate-margin-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_3', 100% / 3 * 2);
@@ -65,105 +46,19 @@
 	#generate-margin-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
 	#generate-margin-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
-	//-------------------------------------------
 	// RATIONNAL VIEWPORT MARGIN
-	//-------------------------------------------
 	#generate-margin-classes-value(@direction, @suffix, ~'1_2-viewport', 50vh);
 	#generate-margin-classes-value(@direction, @suffix, ~'1_3-viewport', 100vh / 3);
 	#generate-margin-classes-value(@direction, @suffix, ~'2_3-viewport', 100vh / 3 * 2);
 	#generate-margin-classes-value(@direction, @suffix, ~'1_4-viewport', 100vh / 4);
 	#generate-margin-classes-value(@direction, @suffix, ~'3_4-viewport', 100vh / 4 * 3);
-	//-------------------------------------------
-	// MINUS SPACING MARGIN
-	//-------------------------------------------
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-atto', 			-@spacing-atto);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-femto', 		-@spacing-femto);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-pico', 			-@spacing-pico);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-nano', 			-@spacing-nano);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-micro', 		-@spacing-micro);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-thinnest', 		-@spacing-thinnest);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-thinner', 		-@spacing-thinner);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-thin', 			-@spacing-thin);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-broad', 		-@spacing-broad);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-broader', 		-@spacing-broader);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-broadest', 		-@spacing-broadest);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-large', 		-@spacing-large);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-larger', 		-@spacing-larger);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-largest', 		-@spacing-largest);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-mega', 			-@spacing-mega);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-giga', 			-@spacing-giga);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-tera', 			-@spacing-tera);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-peta', 			-@spacing-peta);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-zetta', 		-@spacing-zetta);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-yotta', 		-@spacing-yotta);
-	//-------------------------------------------
-	// MINUS RATIONNAL MARGIN
-	//-------------------------------------------
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_2', -50%);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_3', -100% / 3);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_3', -100% / 3 * 2);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_4', -100% / 4);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_4', -100% / 4 * 3);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_5', -100% / 5);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_5', -100% / 5 * 2);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_5', -100% / 5 * 3);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_5', -100% / 5 * 4);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_6', -100% / 6);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_6', -100% / 6 * 5);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_7', -100% / 7);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_7', -100% / 7 * 2);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_7', -100% / 7 * 3);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_7', -100% / 7 * 4);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_7', -100% / 7 * 5);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-6_7', -100% / 7 * 6);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_8', -100% / 8);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_8', -100% / 8 * 3);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_8', -100% / 8 * 5);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_8', -100% / 8 * 7);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_9', -100% / 9);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-2_9', -100% / 9 * 2);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-4_9', -100% / 9 * 4);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-5_9', -100% / 9 * 5);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_9', -100% / 9 * 7);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-8_9', -100% / 9 * 8);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-1_10', -100% / 10);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-3_10', -100% / 10 * 3);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-7_10', -100% / 10 * 7);
-	#generate-margin-classes-value(@direction, @suffix, ~'minus-9_10', -100% / 10 * 9);
 }
-#generate-margin-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
-	//-------------------------------------------
+#generate-core-margin-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
 	// USEFULL MARGIN 
-	//-------------------------------------------
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', ~'0');
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', ~'0');
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', ~'auto');
-	//-------------------------------------------
-	// SPACING MARGIN 
-	//-------------------------------------------
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'atto', 		@spacing-atto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'femto', 		@spacing-femto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'pico', 		@spacing-pico);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'nano', 		@spacing-nano);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'micro', 		@spacing-micro);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thinnest', 	@spacing-thinnest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thinner', 	@spacing-thinner);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'thin', 		@spacing-thin);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broad', 		@spacing-broad);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broader', 	@spacing-broader);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'broadest', 	@spacing-broadest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'large', 		@spacing-large);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'larger', 	@spacing-larger);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'largest', 	@spacing-largest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'mega', 		@spacing-mega);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'giga', 		@spacing-giga);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'tera', 		@spacing-tera);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'peta', 		@spacing-peta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'zetta', 		@spacing-zetta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'yotta', 		@spacing-yotta);
-	//-------------------------------------------
 	// RATIONNAL MARGIN
-	//-------------------------------------------
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3', 100% / 3 * 2);
@@ -195,32 +90,7 @@
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
-	//-------------------------------------------
-	// MINUS SPACING MARGIN
-	//-------------------------------------------
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-atto', 	-@spacing-atto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-femto', 	-@spacing-femto);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-pico', 	-@spacing-pico);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-nano', 	-@spacing-nano);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-micro', 	-@spacing-micro);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-thinnest', -@spacing-thinnest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-thinner', 	-@spacing-thinner);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-thin', 	-@spacing-thin);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-broad', 	-@spacing-broad);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-broader', 	-@spacing-broader);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-broadest', -@spacing-broadest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-large', 	-@spacing-large);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-larger', 	-@spacing-larger);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-largest', 	-@spacing-largest);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-mega', 	-@spacing-mega);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-giga', 	-@spacing-giga);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-tera', 	-@spacing-tera);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-peta', 	-@spacing-peta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-zetta', 	-@spacing-zetta);
-	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-yotta', 	-@spacing-yotta);
-	//-------------------------------------------
 	// MINUS RATIONNAL MARGIN
-	//-------------------------------------------
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_2', -50%);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1_3', -100% / 3);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-2_3', -100% / 3 * 2);

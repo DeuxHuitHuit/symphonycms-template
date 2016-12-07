@@ -23,14 +23,19 @@ module.exports = function concat (grunt) {
 					process: false
 				}
 			},
-			lessLibs: {
-				src: 'css/lib/*.less',
-				dest: '<%= src.css.lib %>'
-			},
 			lessCore: {
 				src: 'css/core/*.less',
-				dest: '<%= src.css.core %>'
+				dest: '<%= src.css.coreLess %>'
+			},
+			lessLib: {
+				src: 'css/lib/*.less',
+				dest: '<%= src.css.libLess %>'
+			},
+			lessTheme: {
+				src: 'css/theme/*.less',
+				dest: '<%= src.css.themeLess %>'
 			}
+			
 		}
 	});
 };

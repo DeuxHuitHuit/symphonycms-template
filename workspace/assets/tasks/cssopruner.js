@@ -6,18 +6,13 @@ module.exports = function cssopruner (grunt) {
 			compress: {
 				options: {
 					whitelist: [
-						'hidden',
-						'show',
 						'end',
 						/^js-.+/,
 						/^is-.+/,
-						'bg-transition',
 						/snip-/,
 						/snipcart-/,
-						/nano.*/,
+						/^nano.*/,
 						/^h[1-6]$/,
-						/^ctn-$/,
-						/^col-$/,
 						/^snip/,
 						'td',
 						'dl',
@@ -38,8 +33,7 @@ module.exports = function cssopruner (grunt) {
 						'js/modules/*.js',
 						'js/pages/*.js',
 						'js/transitions/*.js',
-						'js/utils/*.js',
-						'css/com/src.less'
+						'js/utils/*.js'
 					]
 				}
 			}

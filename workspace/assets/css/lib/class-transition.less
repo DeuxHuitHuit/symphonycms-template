@@ -1,94 +1,46 @@
-
-//=====================================
-//=== TRANSITION CLASS
-//=====================================
-
+// TRANSITION CLASS
 // PROPERTIES
-.transition-bg-color 				{#transition-property 		(~'background-color');}
-.transition-bg-color-color 			{#transition-property 		(~'background-color, color');}
-.transition-bg-color-opacity 		{#transition-property 		(~'background-color, opacity');}
-.transition-bg-color-visibility 	{#transition-property 		(~'background-color, visiblity');}
-.transition-bottom 					{#transition-property 		(~'bottom');}
-.transition-border-color 			{#transition-property 		(~'border-color');}
-.transition-color 					{#transition-property 		(~'color');}
-.transition-color-border-color 		{#transition-property 		(~'color, border-color');}
-.transition-color-opacity 			{#transition-property 		(~'color, opacity');}
-.transition-color-visibility 		{#transition-property 		(~'color, visibility');}
-.transition-height 					{#transition-property 		(~'height');}
-.transition-height-visibility 		{#transition-property 		(~'height, visibility');}
-.transition-left 					{#transition-property 		(~'left');}
-.transition-max-height 				{#transition-property 		(~'max-height');}
-.transition-max-height-opacity 		{#transition-property 		(~'max-height, opacity');}
-.transition-max-height-visibility 	{#transition-property 		(~'max-height, visibility');}
-.transition-max-width 				{#transition-property 		(~'max-width');}
-.transition-max-width-opacity 		{#transition-property 		(~'max-width, opacity');}
-.transition-max-width-visibility 	{#transition-property 		(~'max-width, visibility');}
-.transition-opacity 				{#transition-property 		(~'opacity');}
-.transition-opacity-visibility 		{#transition-property 		(~'opacity, visibility');}
-.transition-right 					{#transition-property 		(~'right');}
-.transition-top 					{#transition-property 		(~'top');}
-.transition-transform 				{#cb-transition-property 	(~'transform');}
-.transition-transform-font 			{#cb-transition-property 	(~'transform, font');}
-.transition-transform-opacity 		{#cb-transition-property 	(~'transform, opacity');}
-.transition-transform-visibility 	{#cb-transition-property 	(~'transform, visibility');}
-.transition-width 					{#transition-property 		(~'width');}
-.transition-width-visiblity 		{#transition-property 		(~'width, visibility');}
-.transition-visibility 				{#transition-property 		(~'visibility');}
-.transition-flex 					{#transition-property 		(~'flex');}
-.transition-flex-grow 				{#transition-property 		(~'flex-grow');}
-.transition-flex-shrink 			{#transition-property 		(~'flex-shrink');}
-.transition-flex-basis 				{#transition-property 		(~'flex-basis');}
-
+.transition-bg-color              {#transition-property    (~'background-color');}
+.transition-bg-color-color        {#transition-property    (~'background-color, color');}
+.transition-bg-color-opacity      {#transition-property    (~'background-color, opacity');}
+.transition-bg-color-visibility   {#transition-property    (~'background-color, visiblity');}
+.transition-bottom                {#transition-property    (~'bottom');}
+.transition-border-color          {#transition-property    (~'border-color');}
+.transition-color                 {#transition-property    (~'color');}
+.transition-color-border-color    {#transition-property    (~'color, border-color');}
+.transition-color-opacity         {#transition-property    (~'color, opacity');}
+.transition-color-visibility      {#transition-property    (~'color, visibility');}
+.transition-height                {#transition-property    (~'height');}
+.transition-height-visibility     {#transition-property    (~'height, visibility');}
+.transition-left                  {#transition-property    (~'left');}
+.transition-max-height            {#transition-property    (~'max-height');}
+.transition-max-height-opacity    {#transition-property    (~'max-height, opacity');}
+.transition-max-height-visibility {#transition-property    (~'max-height, visibility');}
+.transition-max-width             {#transition-property    (~'max-width');}
+.transition-max-width-opacity     {#transition-property    (~'max-width, opacity');}
+.transition-max-width-visibility  {#transition-property    (~'max-width, visibility');}
+.transition-opacity               {#transition-property    (~'opacity');}
+.transition-opacity-visibility    {#transition-property    (~'opacity, visibility');}
+.transition-right                 {#transition-property    (~'right');}
+.transition-top                   {#transition-property    (~'top');}
+.transition-transform             {#cb-transition-property (~'transform');}
+.transition-transform-font        {#cb-transition-property (~'transform, font');}
+.transition-transform-opacity     {#cb-transition-property (~'transform, opacity');}
+.transition-transform-visibility  {#cb-transition-property (~'transform, visibility');}
+.transition-width                 {#transition-property    (~'width');}
+.transition-width-visiblity       {#transition-property    (~'width, visibility');}
+.transition-visibility            {#transition-property    (~'visibility');}
+.transition-flex                  {#transition-property    (~'flex');}
+.transition-flex-grow             {#transition-property    (~'flex-grow');}
+.transition-flex-shrink           {#transition-property    (~'flex-shrink');}
+.transition-flex-basis            {#transition-property    (~'flex-basis');}
 // DURATIONS
-.transition-duration-0,
-.transition-duration-none 			{#transition-duration 		(0ms);}
-.transition-duration-fastest 		{#transition-duration 		(@duration-fastest);}
-.transition-duration-faster 		{#transition-duration 		(@duration-faster);}
-.transition-duration-fast 			{#transition-duration 		(@duration-fast);}
-.transition-duration-medium 		{#transition-duration 		(@duration-medium);}
-.transition-duration-slow 			{#transition-duration 		(@duration-slow);}
-.transition-duration-slower 		{#transition-duration 		(@duration-slower);}
-.transition-duration-slowest 		{#transition-duration 		(@duration-slowest);}
-
-// DURATIONS ON HOVER
-.transition-duration-0-on-hover,
-.transition-duration-none-on-hover 		{#hover({#transition-duration 	(0ms)});}
-.transition-duration-fastest-on-hover 	{#hover({#transition-duration 	(@duration-fastest)});}
-.transition-duration-faster-on-hover 	{#hover({#transition-duration 	(@duration-faster)});}
-.transition-duration-fast-on-hover 		{#hover({#transition-duration 	(@duration-fast)});}
-.transition-duration-medium-on-hover 	{#hover({#transition-duration 	(@duration-medium)});}
-.transition-duration-slow-on-hover 		{#hover({#transition-duration 	(@duration-slow)});}
-.transition-duration-slower-on-hover 	{#hover({#transition-duration 	(@duration-slower)});}
-.transition-duration-slowest-on-hover 	{#hover({#transition-duration 	(@duration-slowest)});}
-
+.transition-duration-0, .transition-duration-none {#transition-duration(0ms);}
+.transition-duration-0-on-hover, .transition-duration-none-on-hover {#hover({#transition-duration(0ms)});}
 // DELAY
-.transition-delay-0, 
-.transition-delay-none 				{#transition-delay 		(0ms);}
-.transition-delay-fastest 			{#transition-delay 		(@duration-fastest);}
-.transition-delay-faster 			{#transition-delay 		(@duration-faster);}
-.transition-delay-fast 				{#transition-delay 		(@duration-fast);}
-.transition-delay-medium 			{#transition-delay 		(@duration-medium);}
-.transition-delay-slow 				{#transition-delay 		(@duration-slow);}
-.transition-delay-slower 			{#transition-delay 		(@duration-slower);}
-.transition-delay-slowest 			{#transition-delay 		(@duration-slowest);}
-
-// DELAY ON HOVER
-.transition-delay-none-on-hover, 
-.transition-delay-0-on-hover	    {#hover({#transition-delay (0ms)});}
-.transition-delay-fastest-on-hover	{#hover({#transition-delay (@duration-fastest)});}
-.transition-delay-faster-on-hover	{#hover({#transition-delay (@duration-faster)});}
-.transition-delay-fast-on-hover		{#hover({#transition-delay (@duration-fast)});}
-.transition-delay-medium-on-hover	{#hover({#transition-delay (@duration-medium)});}
-.transition-delay-slow-on-hover		{#hover({#transition-delay (@duration-slow)});}
-.transition-delay-slower-on-hover	{#hover({#transition-delay (@duration-slower)});}
-.transition-delay-slowest-on-hover	{#hover({#transition-delay (@duration-slowest)});}
-
+.transition-delay-0, .transition-delay-none {#transition-delay(0ms);}
+.transition-delay-none-on-hover, .transition-delay-0-on-hover {#hover({#transition-delay (0ms)});}
 // EASING
-.transition-ease-standard           {#transition-ease(@ease-standard)};
-.transition-ease-standard-in        {#transition-ease(@ease-standard-in)};
-.transition-ease-standard-out       {#transition-ease(@ease-standard-out)};
-.transition-ease-alternate          {#transition-ease(@ease-alternate)};
-
 .transition-ease-linear             {#transition-ease(@ease-linear)};
 .transition-ease-in                 {#transition-ease(@ease-in)};
 .transition-ease-out                {#transition-ease(@ease-out)};
@@ -118,42 +70,39 @@
 .transition-ease-in-out-back        {#transition-ease(@ease-in-out-back)};
 .transition-ease-back-in            {#transition-ease(@ease-back-in)};
 .transition-ease-bounce-light       {#transition-ease(@ease-bounce-light)};
-
-.transition-ease-linear-on-hover             {#hover({#transition-ease(@ease-linear)});}
-.transition-ease-in-on-hover                 {#hover({#transition-ease(@ease-in)});}
-.transition-ease-out-on-hover                {#hover({#transition-ease(@ease-out)});}
-.transition-ease-in-out-on-hover             {#hover({#transition-ease(@ease-in-out)});}
-.transition-ease-in-sine-on-hover            {#hover({#transition-ease(@ease-in-sine)});}
-.transition-ease-out-sine-on-hover           {#hover({#transition-ease(@ease-out-sine)});}
-.transition-ease-in-out-sine-on-hover        {#hover({#transition-ease(@ease-in-out-sine)});}
-.transition-ease-in-quad-on-hover            {#hover({#transition-ease(@ease-in-quad)});}
-.transition-ease-out-quad-on-hover           {#hover({#transition-ease(@ease-out-quad)});}
-.transition-ease-in-out-quad-on-hover        {#hover({#transition-ease(@ease-in-out-quad)});}
-.transition-ease-in-cubic-on-hover           {#hover({#transition-ease(@ease-in-cubic)});}
-.transition-ease-out-cubic-on-hover          {#hover({#transition-ease(@ease-out-cubic)});}
-.transition-ease-in-out-cubic-on-hover       {#hover({#transition-ease(@ease-in-out-cubic)});}
-.transition-ease-in-quart-on-hover           {#hover({#transition-ease(@ease-in-quart)});}
-.transition-ease-out-quart-on-hover          {#hover({#transition-ease(@ease-out-quart)});}
-.transition-ease-in-out-quart-on-hover       {#hover({#transition-ease(@ease-in-out-quart)});}
-.transition-ease-in-quint-on-hover           {#hover({#transition-ease(@ease-in-quint)});}
-.transition-ease-out-quint-on-hover          {#hover({#transition-ease(@ease-out-quint)});}
-.transition-ease-in-expo-on-hover            {#hover({#transition-ease(@ease-in-expo)});}
-.transition-ease-out-expo-on-hover           {#hover({#transition-ease(@ease-out-expo)});}
-.transition-ease-in-out-expo-on-hover        {#hover({#transition-ease(@ease-in-out-expo)});}
-.transition-ease-in-circ-on-hover            {#hover({#transition-ease(@ease-in-circ)});}
-.transition-ease-out-circ-on-hover           {#hover({#transition-ease(@ease-out-circ)});}
-.transition-ease-in-out-circ-on-hover        {#hover({#transition-ease(@ease-in-out-circ)});}
-.transition-ease-in-back-on-hover            {#hover({#transition-ease(@ease-in-back)});}
-.transition-ease-out-back-on-hover           {#hover({#transition-ease(@ease-out-back)});}
-.transition-ease-in-out-back-on-hover        {#hover({#transition-ease(@ease-in-out-back)});}
-.transition-ease-back-in-on-hover            {#hover({#transition-ease(@ease-back-in)});}
-.transition-ease-bounce-light-on-hover       {#hover({#transition-ease(@ease-bounce-light)});}
-
+.transition-ease-linear-on-hover       {#hover({#transition-ease(@ease-linear)});}
+.transition-ease-in-on-hover           {#hover({#transition-ease(@ease-in)});}
+.transition-ease-out-on-hover          {#hover({#transition-ease(@ease-out)});}
+.transition-ease-in-out-on-hover       {#hover({#transition-ease(@ease-in-out)});}
+.transition-ease-in-sine-on-hover      {#hover({#transition-ease(@ease-in-sine)});}
+.transition-ease-out-sine-on-hover     {#hover({#transition-ease(@ease-out-sine)});}
+.transition-ease-in-out-sine-on-hover  {#hover({#transition-ease(@ease-in-out-sine)});}
+.transition-ease-in-quad-on-hover      {#hover({#transition-ease(@ease-in-quad)});}
+.transition-ease-out-quad-on-hover     {#hover({#transition-ease(@ease-out-quad)});}
+.transition-ease-in-out-quad-on-hover  {#hover({#transition-ease(@ease-in-out-quad)});}
+.transition-ease-in-cubic-on-hover     {#hover({#transition-ease(@ease-in-cubic)});}
+.transition-ease-out-cubic-on-hover    {#hover({#transition-ease(@ease-out-cubic)});}
+.transition-ease-in-out-cubic-on-hover {#hover({#transition-ease(@ease-in-out-cubic)});}
+.transition-ease-in-quart-on-hover     {#hover({#transition-ease(@ease-in-quart)});}
+.transition-ease-out-quart-on-hover    {#hover({#transition-ease(@ease-out-quart)});}
+.transition-ease-in-out-quart-on-hover {#hover({#transition-ease(@ease-in-out-quart)});}
+.transition-ease-in-quint-on-hover     {#hover({#transition-ease(@ease-in-quint)});}
+.transition-ease-out-quint-on-hover    {#hover({#transition-ease(@ease-out-quint)});}
+.transition-ease-in-expo-on-hover      {#hover({#transition-ease(@ease-in-expo)});}
+.transition-ease-out-expo-on-hover     {#hover({#transition-ease(@ease-out-expo)});}
+.transition-ease-in-out-expo-on-hover  {#hover({#transition-ease(@ease-in-out-expo)});}
+.transition-ease-in-circ-on-hover      {#hover({#transition-ease(@ease-in-circ)});}
+.transition-ease-out-circ-on-hover     {#hover({#transition-ease(@ease-out-circ)});}
+.transition-ease-in-out-circ-on-hover  {#hover({#transition-ease(@ease-in-out-circ)});}
+.transition-ease-in-back-on-hover      {#hover({#transition-ease(@ease-in-back)});}
+.transition-ease-out-back-on-hover     {#hover({#transition-ease(@ease-out-back)});}
+.transition-ease-in-out-back-on-hover  {#hover({#transition-ease(@ease-in-out-back)});}
+.transition-ease-back-in-on-hover      {#hover({#transition-ease(@ease-back-in)});}
+.transition-ease-bounce-light-on-hover {#hover({#transition-ease(@ease-bounce-light)});}
 .noanim {
 	&, & * {
 		#transition(none) !important;
 	}
 }
-
 .transition-none 			{#transition(none);}
 .transition-none-important 	{#transition(none) !important;}

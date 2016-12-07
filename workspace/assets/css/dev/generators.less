@@ -1,3 +1,11 @@
+/*******************************
+ * @author DeuxHuitHuit
+ * 
+ * Target file:
+ * This file will be downloaded in the grunt file, lib file and theme file
+ *
+ *****************************/
+
 // DIRECTIONAL GENERATOR
 #generate-directional-class-value(@name, @property, @value-name, @value, @direction: ~'', @suffix: ~'') {
 	.@{name}@{direction}-@{value-name}@{suffix} {
@@ -19,13 +27,8 @@
 	#generate-height-class(@suffix, ~'min-height', ~'min-height', 	@name, @value);
 	#generate-height-class(@suffix, ~'max-height', ~'max-height', 	@name, @value);
 }
+
 // MARGIN GENERATOR
-#generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
-	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
-}
-#generate-margin-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
-	#generate-two-axes-class-value(~'margin', ~'margin', @value-name, @value, @axe1, @axe2, @direction, @suffix);
-}
 #generate-margin-all-classes(@suffix: ~'') {
 	#generate-margin-classes(~'', @suffix);
 	
@@ -37,6 +40,14 @@
 	#generate-margin-classes(~'-right', @suffix);
 	#generate-margin-classes(~'-top', @suffix);
 }
+
+#generate-margin-classes-value (@direction: ~'', @suffix: ~'', @value-name, @value) {
+	#generate-directional-class-value(~'margin', ~'margin', @value-name, @value, @direction, @suffix);
+}
+#generate-margin-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
+	#generate-two-axes-class-value(~'margin', ~'margin', @value-name, @value, @axe1, @axe2, @direction, @suffix);
+}
+
 // PADDING GENERATOR
 #generate-padding-two-axes-class-value(@direction, @suffix: ~'', @axe1, @axe2, @value-name, @value) {
 	#generate-two-axes-class-value(~'padding', ~'padding', @value-name, @value, @axe1, @axe2, @direction, @suffix);

@@ -2,14 +2,14 @@
  * @author DeuxHuitHuit
  * 
  * Target file:
- * This file will be downloaded in the browser, from main.less
- * But will be excluded from the grunt build
+ * This file will be used by the grunt to generate the final production file
  *
  *****************************/
 
 @debug: false;
 @import (reference) "build";
-@import (reference) "../core/bundle";
+@import (reference) "../core/__core";
 @import (less) "../dev/generators";
-@import (less) "../lib/bundle";
+@import (less) "../lib/__lib";
+@import (less) "../theme/__theme";
 @import (less) "../main";

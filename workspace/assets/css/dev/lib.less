@@ -3,14 +3,11 @@
  * 
  * Target file:
  * This file will be read by grunt in order to generate the 
- * content of lib/bundle.css
+ * content of lib/__lib.css
  *
  *****************************/
 
 @debug: true;
-@import (reference) "../core/bundle";
+@import (reference) "../core/__core";
 @import (reference) "generators";
-@import (less) "../lib/bundle";
-
-@import (less) "../vars/vars-custom";
-@import (less) "../vars/vars-scales";
+@import (less) "../lib/__lib";

@@ -19,9 +19,14 @@ module.exports = function jshint (grunt) {
 					'css/<%= pkg.name %>.css': '<%= src.css.main %>'
 				}
 			},
-			bundle: {
+			lib: {
 				files: {
-					'<%= src.css.bundle %>': '<%= src.css.dev %>'
+					'<%= src.css.libCss %>': '<%= src.css.lib %>'
+				}
+			},
+			theme: {
+				files: {
+					'<%= src.css.themeCss %>': '<%= src.css.theme %>'
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 //=========================
 // = BOX-SIZING CLASS
 //=========================
-#generate-box-sizing-classes (@suffix: ~'') {
+#generate-core-box-sizing-classes (@suffix: ~'') {
 	.box-sizing-border-box@{suffix},  .border-box@{suffix} 	{#box-sizing();}
 	.box-sizing-content-box@{suffix}, .content-box@{suffix} {#box-sizing(content-box);}
 }
