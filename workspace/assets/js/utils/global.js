@@ -32,6 +32,29 @@
 		window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame ||
 		window.msCancelRequestAnimationFrame || window.clearTimeout;
 	
+	/*
+	 * Cheap modrnzr
+	 */
+
+	// add mobile css class to html
+	$.each([
+			'iphone',
+			'ipad',
+			'ios',
+			'mobile',
+			'android',
+			'phone',
+			'tablet',
+			'touch'
+		], function (i, c) {
+		if (!!global.App.device[c]) {
+			$('html').addClass(c);
+		}
+	});
+	
+	// default easing support
+	$.easing.def = ($.mobile ? 'linear' : 'easeOutQuad');
+	
 	// polyfill jQuery animation engine
 	if (!!$.fn.velocity) {
 		$.fn.animate = $.fn.velocity;
