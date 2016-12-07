@@ -1,0 +1,94 @@
+// PADDING CLASS
+#generate-core-padding-all-classes(@suffix: ~'') {
+	#generate-core-padding-classes(~'', @suffix);
+	#generate-core-padding-two-axes-classes(~'vertical', ~'top', ~'bottom', @suffix);
+	#generate-core-padding-two-axes-classes(~'horizontal', ~'left', ~'right', @suffix);
+	#generate-core-padding-classes(~'-bottom', @suffix);
+	#generate-core-padding-classes(~'-left', @suffix);
+	#generate-core-padding-classes(~'-right', @suffix);
+	#generate-core-padding-classes(~'-top', @suffix);
+}
+
+#generate-core-padding-classes (@direction: ~'', @suffix: ~'') {
+	// USEFULL PADDING 
+	#generate-padding-classes-value(@direction, @suffix, ~'0', 0);
+	#generate-padding-classes-value(@direction, @suffix, ~'none', 0);
+	#generate-padding-classes-value(@direction, @suffix, ~'none-important', ~'0 !important');
+	// RATIONNAL PADDING
+	#generate-padding-classes-value(@direction, @suffix, ~'1_2',   50%);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_3',  100% / 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_3',  100% / 3 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_3',  100% / 3 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_4',  100% / 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_4',  100% / 4 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_5',  100% / 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_5',  100% / 5 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_5',  100% / 5 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_5',  100% / 5 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_6',  100% / 6);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_6',  100% / 6 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_7',  100% / 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_7',  100% / 7 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_7',  100% / 7 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_7',  100% / 7 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_7',  100% / 7 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'6_7',  100% / 7 * 6);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_8',  100% / 8);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_8',  100% / 8 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_8',  100% / 8 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_8',  100% / 8 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_9',  100% / 9);
+	#generate-padding-classes-value(@direction, @suffix, ~'2_9',  100% / 9 * 2);
+	#generate-padding-classes-value(@direction, @suffix, ~'4_9',  100% / 9 * 4);
+	#generate-padding-classes-value(@direction, @suffix, ~'5_9',  100% / 9 * 5);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_9',  100% / 9 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'8_9',  100% / 9 * 8);
+	#generate-padding-classes-value(@direction, @suffix, ~'1_10', 100% / 10);
+	#generate-padding-classes-value(@direction, @suffix, ~'3_10', 100% / 10 * 3);
+	#generate-padding-classes-value(@direction, @suffix, ~'7_10', 100% / 10 * 7);
+	#generate-padding-classes-value(@direction, @suffix, ~'9_10', 100% / 10 * 9);
+	#generate-padding-classes-value(@direction, @suffix, ~'9_16', 100% / 16 * 9);
+	#generate-padding-classes-value(@direction, @suffix, ~'full', 100%);
+}
+
+#generate-core-padding-two-axes-classes(@direction, @axe1, @axe2, @suffix: ~'') {
+	// USEFULL TWO AXES PADDING 
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', 0);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', 0);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none-important', ~'0 !important');
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', auto);
+	// RATIONNAL TWO AXES PADDING
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2',   50%);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3',  100% / 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_3',  100% / 3 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_3',  100% / 3 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_4',  100% / 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_4',  100% / 4 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_5',  100% / 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_5',  100% / 5 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_5',  100% / 5 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_5',  100% / 5 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_6',  100% / 6);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_6',  100% / 6 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_7',  100% / 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_7',  100% / 7 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_7',  100% / 7 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_7',  100% / 7 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_7',  100% / 7 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'6_7',  100% / 7 * 6);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_8',  100% / 8);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_8',  100% / 8 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_8',  100% / 8 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_8',  100% / 8 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_9',  100% / 9);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'2_9',  100% / 9 * 2);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'4_9',  100% / 9 * 4);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'5_9',  100% / 9 * 5);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_9',  100% / 9 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'8_9',  100% / 9 * 8);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_10', 100% / 10);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'3_10', 100% / 10 * 3);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'7_10', 100% / 10 * 7);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'9_10', 100% / 10 * 9);
+	#generate-padding-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'full', 100%);
+}

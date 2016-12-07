@@ -1,0 +1,13 @@
+// OVERFLOW CLASS
+#generate-core-overflow-classe(@suffix, @axe: ~'') {
+	.overflow@{axe}-hidden  {overflow@{axe}: hidden;}
+	.overflow@{axe}-visible {overflow@{axe}: visible;}
+	.overflow@{axe}-scroll  {overflow@{axe}: scroll;}
+	.overflow@{axe}-auto    {overflow@{axe}: auto;}
+}
+
+#generate-core-overflow-classes (@suffix: ~'') {
+	#generate-core-overflow-classe(@suffix);
+	#generate-core-overflow-classe(@suffix, ~'-y');
+	#generate-core-overflow-classe(@suffix, ~'-x');
+}

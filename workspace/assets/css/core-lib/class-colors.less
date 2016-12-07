@@ -1,0 +1,10 @@
+//=========================
+// = COLOR CLASS
+//=========================
+#generate-core-color-class(@suffix: ~'') {
+	#generate-color-class(@suffix, ~'transparent', 	~'transparent');
+	#generate-color-class(@suffix, ~'current-color',~'currentColor');
+
+	#generate-color-class(@suffix, ~'true-white', 	@true-white);
+	#generate-color-class(@suffix, ~'true-black', 	@true-black);
+}

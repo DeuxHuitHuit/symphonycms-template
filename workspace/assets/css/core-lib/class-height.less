@@ -1,0 +1,34 @@
+// HEIGHT CLASS
+#generate-core-height-classes (@suffix: ~'') {
+	// USEFULL
+	#generate-all-height-class(@suffix, ~'auto',			 ~'auto');
+	#generate-all-height-class(@suffix, ~'auto-important',	 ~'auto !important');
+	#generate-all-height-class(@suffix, ~'initial',			 ~'initial');
+	#generate-all-height-class(@suffix, ~'0', 				 ~'0');
+	#generate-all-height-class(@suffix, ~'0-important',		 ~'0 !important');
+	#generate-all-height-class(@suffix, ~'1em',				 ~'1em');
+	#generate-all-height-class(@suffix, ~'perfect',			 ~'1em');
+	// PROPORTIONAL
+	#generate-all-height-class(@suffix, ~'1_2',   50%);
+	#generate-all-height-class(@suffix, ~'1_3',  100% / 3);
+	#generate-all-height-class(@suffix, ~'2_3',  100% / 3 * 2);
+	#generate-all-height-class(@suffix, ~'1_4',  100% / 4);
+	#generate-all-height-class(@suffix, ~'3_4',  100% / 4 * 3);
+	#generate-all-height-class(@suffix, ~'1_5',  100% / 5);
+	#generate-all-height-class(@suffix, ~'2_5',  100% / 5 * 2);
+	#generate-all-height-class(@suffix, ~'3_5',  100% / 5 * 3);
+	#generate-all-height-class(@suffix, ~'4_5',  100% / 5 * 4);
+	#generate-all-height-class(@suffix, ~'1_6',  100% / 6);
+	#generate-all-height-class(@suffix, ~'5_6',  100% / 6 * 5);
+	#generate-all-height-class(@suffix, ~'1_12', 100% / 12);
+	#generate-all-height-class(@suffix, ~'5_12', 100% / 12 *  5);
+	#generate-all-height-class(@suffix, ~'7_12', 100% / 12 *  7);
+	#generate-all-height-class(@suffix, ~'11_12',100% / 12 * 11);
+	#generate-all-height-class(@suffix, ~'full', 100%);
+	#generate-all-height-class(@suffix, ~'1_2-viewport',  50vh);
+	#generate-all-height-class(@suffix, ~'1_3-viewport', 100vh / 3);
+	#generate-all-height-class(@suffix, ~'2_3-viewport', 100vh / 3 * 2);
+	#generate-all-height-class(@suffix, ~'1_4-viewport', 100vh / 4);
+	#generate-all-height-class(@suffix, ~'3_4-viewport', 100vh / 4 * 3);
+	#generate-all-height-class(@suffix, ~'full-viewport',100vh);
+}
