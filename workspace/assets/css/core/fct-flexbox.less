@@ -2,6 +2,19 @@
 //Source : https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes
 //Source : http://css-tricks.com/snippets/css/a-guide-to-flexbox/
 //Source : https://msdn.microsoft.com/en-us/library/ie/dn265027(v=vs.85).aspx
+
+#flexbox() {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+#flexbox-inline() {
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+}
+
 #flex-flow (@value: row wrap) {
 	-webkit-flex-flow: @value;
 			flex-flow: @value;

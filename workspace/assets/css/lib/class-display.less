@@ -1,7 +1,7 @@
 // = DISPLAY CLASS
 #generate-core-display-classes (@suffix: ~'') {
 	.display-none@{suffix} 	          {display: none;}
-	.display-none-important@{suffix} {display: none!important;}
+	.display-none-importaant@{suffix} {display: none!important;}
 	.hidden@{suffix}                  {display: none; .DEPRECATED(~'Use display-none'); }
 	.table@{suffix}                   {display: table;}
 	.table-cell@{suffix}              {display: table-cell;}
@@ -11,38 +11,17 @@
 	.inline-block-important@{suffix}  {display: inline-block!important;}
 	.block@{suffix}                   {display: block;}
 	.block-important@{suffix}         {display: block!important;}
-	.flexbox@{suffix} {
-		#flexbox();
-		/*display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;*/
-	}
+	.flexbox@{suffix}                 {#flexbox();}
+	.flexbox-inline@{suffix}          {#flexbox-inline();}
 
-	.flexbox-inline@{suffix} {
-		display: -ms-inline-flexbox;
-		display: -webkit-inline-flex;
-		display: inline-flex;
-	}
-
-	.display-none-when-selected@{suffix}.is-selected 	{display: none;}
-	.table-when-selected@{suffix}.is-selected 			{display: table;}
-
-	.inline-when-selected@{suffix}.is-selected 			{display: inline;}
-	.inline-block-when-selected@{suffix}.is-selected 	{display: inline-block;}
-	.block-when-selected@{suffix}.is-selected 			{display: block;}
-	.flexbox-when-selected@{suffix}.is-selected {
-		display: -ms-flexbox;
-		display: -webkit-flex;
-		display: flex;
-	}
-
-	.flexbox-inline-when-selected@{suffix}.is-selected {
-		display: -ms-inline-flexbox;
-		display: -webkit-inline-flex;
-		display: inline-flex;
-	}
+	.display-none-when-selected@{suffix}.is-selected   {display: none;}
+	.table-when-selected@{suffix}.is-selected          {display: table;}
+	.inline-when-selected@{suffix}.is-selected         {display: inline;}
+	.inline-block-when-selected@{suffix}.is-selected   {display: inline-block;}
+	.block-when-selected@{suffix}.is-selected          {display: block;}
+	.flexbox-when-selected@{suffix}.is-selected        {#flexbox();}
+	.flexbox-inline-when-selected@{suffix}.is-selected {#flexbox-inline();}
 }
-
 
 // From http://a11yproject.com/posts/how-to-hide-content/
 .visually-hidden {
