@@ -364,6 +364,36 @@
 	}
 }
 
+.show-dom {
+	*[data-dom-class] {
+		outline: 1px dashed green;
+		&:after {
+			content: attr(data-dom-class);
+			white-space: nowrap;
+			padding: @spacing-thinner * .25 @spacing-thinner * .5;
+			background-color: green;
+			color: white;
+			line-height: @spacing-thinner * .5;
+			font-size: 8px;
+			font-weight: 600;
+			font-family: helvetica, arial, sans-serif;
+			display: block;
+			position: absolute;
+			left: auto;
+			top: auto;
+			margin-top: -@spacing-thinner;
+			margin-bottom: @spacing-thinner * .25;
+			text-transform: uppercase;
+			letter-spacing: .025em;
+			pointer-events: none;
+			z-index: 1;
+			&:hover {
+				z-index: 2;
+			}
+		}
+	}
+}
+
 .debug {
 	* { outline: 2px dotted red }
 	* * { outline: 2px dotted green }

@@ -19,18 +19,48 @@
 			'show-names',
 			'show-ga',
 			'show-js-classes',
+			'show-dom',
 			'debug'
 		];
-		var specialCases = {
-			'show-js-classes': function (state) {
+		var getClassList = function (t) {
+			var pattern = new RegExp('^' + prefix);
+			var classList = t.attr('class').split(' ');
+			return _.filter(classList, function (clas) {
+				return pattern.test(clas);
+			}).join(' ');
+		};
+		var getNodeName = function (t) {
+			return t[0].nodeName.toLowerCase();
+		};
+		var getImportantNodes = function () {
+			return 'h1, h2, h3, h4, h5, h6, footer, header, section, article';
+		};
+		var getJsNodes = function (prefix) {
+			return '[class^="' + prefix + '"], [class*=" ' + prefix +'"]';
+		};
+		var specialClassesFactory = function (params) {
+			var prefix = params.prefix;
+			var getValue = params.getValue;
+			var getSelector = params.getSelector;
+			return function (state) {
 				var fx = !state ? 'removeAttr' : 'attr';
-				$('[class^="js-"], [class*=" js-"]').each(function () {
+				$(getSelector(prefix)).each(function () {
 					var t = $(this);
-					t[fx]('data-js-class', _.filter(t.attr('class').split(' '), function (clas) {
-						return /^js-/.test(clas);
-					}).join(' '));
+					t[fx]('data-' + prefix + 'class', getValue(t));
 				});
-			}
+			};
+		};
+		var specialCases = {
+			'show-js-classes': specialClassesFactory({
+				prefix: 'js-',
+				getValue: getClassList,
+				getSelector: getJsNodes
+			}),
+			'show-dom': specialClassesFactory({
+				prefix: 'dom-',
+				getValue: getNodeName,
+				getSelector: getImportantNodes
+			})
 		};
 		var checkboxes = _.map(devClasses, function (clas) {
 			var storeKey = '-dev-' + clas;
