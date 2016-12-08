@@ -25,10 +25,11 @@ module.exports = function clean (grunt) {
 			},
 			bundle: {
 				src: [
-					'<%= src.css.lib %>',
-					'<%= src.css.core %>',
-					'<%= src.css.coreLib %>',
-					'<%= src.css.bundle %>'
+					'<%= src.css.coreLess %>',
+					'<%= src.css.libLess %>',
+					'<%= src.css.libCss %>',
+					'<%= src.css.themeLess %>',
+					'<%= src.css.themeCss %>'
 				]
 			}
 		}

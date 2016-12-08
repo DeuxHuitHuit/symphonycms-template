@@ -36,10 +36,9 @@ module.exports = function ftps_deploy (grunt) {
 				files: [{
 					cwd: '.',
 					src: [
-						'css/core-lib/bundle.css',
-						'css/lib/bundle.css',
-						//'css/lib/bundle.less',
-						'css/core/bundle.less'
+						'<%= src.css.coreLess %>',
+						'<%= src.css.libCss %>',
+						'<%= src.css.themeCss %>'
 					],
 					dest: FTP_FILE.default.path + 'workspace/assets/'
 				}]

@@ -23,17 +23,17 @@ module.exports = function concat (grunt) {
 					process: false
 				}
 			},
-			lessLibs: {
+			lessTheme: {
 				src: 'css/lib/*.less',
-				dest: '<%= src.css.lib %>'
+				dest: '<%= src.css.themeLess %>'
 			},
 			lessCore: {
 				src: 'css/core/*.less',
-				dest: '<%= src.css.core %>'
+				dest: '<%= src.css.coreLess %>'
 			},
-			lessCoreLib: {
+			lessLib: {
 				src: 'css/core-lib/*.less',
-				dest: '<%= src.css.coreLib %>'
+				dest: '<%= src.css.libLess %>'
 			}
 		}
 	});

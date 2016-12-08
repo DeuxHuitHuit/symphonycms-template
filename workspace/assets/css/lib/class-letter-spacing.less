@@ -1,9 +1,5 @@
 // LETTER-SPACING CLASS
-#generate-letter-spacing-classes (@suffix: ~'') {
-	.letter-spacing-narrowest@{suffix} {letter-spacing: @letter-spacing-narrowest;}
-	.letter-spacing-narrower@{suffix}  {letter-spacing: @letter-spacing-narrower;}
-	.letter-spacing-narrow@{suffix}    {letter-spacing: @letter-spacing-narrow;}
-	.letter-spacing-wide@{suffix}      {letter-spacing: @letter-spacing-wide;}
-	.letter-spacing-wider@{suffix}     {letter-spacing: @letter-spacing-wider;}
-	.letter-spacing-widest@{suffix}    {letter-spacing: @letter-spacing-widest;}
+#generate-core-letter-spacing-classes (@suffix: ~'') {
+	.letter-spacing-1px@{suffix} {letter-spacing: 1px;}
+	.letter-spacing-2px@{suffix} {letter-spacing: 2px;}
 }

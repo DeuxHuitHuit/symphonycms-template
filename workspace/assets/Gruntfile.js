@@ -9,8 +9,8 @@ module.exports = function (grunt) {
 	var BUILD_FILE = 'build.json';
 	var LESS_FILE = 'css/dev/grunt.less';
 
-	var DEV_CORE_BUNDLE_LESS_FILE = 'css/dev/core-bundle.less';
-	var DEV_BUNDLE_LESS_FILE = 'css/dev/bundle.less';
+	var DEV_LIB_BUNDLE_LESS_FILE = 'css/dev/lib.less';
+	var DEV_THEME_BUNDLE_LESS_FILE = 'css/dev/theme.less';
 
 	
 	var JSON_JS_FILE = grunt.file.readJSON('./js.json');
@@ -67,12 +67,13 @@ module.exports = function (grunt) {
 			},
 			css: {
 				main: LESS_FILE,
-				dev: DEV_BUNDLE_LESS_FILE,
-				devCore: DEV_CORE_BUNDLE_LESS_FILE,
-				lib: 'css/lib/bundle.less',
-				coreLib: 'css/core-lib/bundle.css',
-				core: 'css/core/bundle.less',
-				bundle: 'css/lib/bundle.css'
+				lib: DEV_LIB_BUNDLE_LESS_FILE,
+				theme: DEV_THEME_BUNDLE_LESS_FILE,
+				themeLess: 'css/theme/__theme.less',
+				themeCss: 'css/theme/__theme.css',
+				libLess: 'css/lib/__lib.less',
+				libCss: 'css/lib/__lib.css',
+				coreLess: 'css/core/__core.less'
 			},
 			gruntfile: GRUNT_FILE,
 			buildfile: BUILD_FILE,
@@ -141,11 +142,11 @@ module.exports = function (grunt) {
 		]);
 		grunt.registerTask('bundle', [
 			'clean:bundle',
-			'concat:lessLibs',
 			'concat:lessCore',
-			'concat:lessCoreLib',
-			'less:coreBundle',
-			'less:bundle',
+			'concat:lessLib',
+			'concat:lessTheme',
+			'less:lib',
+			'less:theme',
 			'ftps_boot',
 			'ftps_deploy:bundle',
 			'ftps_cleanup'
