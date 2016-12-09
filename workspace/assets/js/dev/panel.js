@@ -22,14 +22,14 @@
 			'show-dom',
 			'debug'
 		];
-		var getClassList = function (t) {
+		var getClassList = function (prefix, t) {
 			var pattern = new RegExp('^' + prefix);
 			var classList = t.attr('class').split(' ');
 			return _.filter(classList, function (clas) {
 				return pattern.test(clas);
 			}).join(' ');
 		};
-		var getNodeName = function (t) {
+		var getNodeName = function (prefix, t) {
 			return t[0].nodeName.toLowerCase();
 		};
 		var getImportantNodes = function () {
@@ -46,7 +46,7 @@
 				var fx = !state ? 'removeAttr' : 'attr';
 				$(getSelector(prefix)).each(function () {
 					var t = $(this);
-					t[fx]('data-' + prefix + 'class', getValue(t));
+					t[fx]('data-' + prefix + 'class', getValue(prefix, t));
 				});
 			};
 		};
