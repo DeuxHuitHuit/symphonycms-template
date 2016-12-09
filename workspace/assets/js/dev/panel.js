@@ -6,10 +6,17 @@
 
 (function ($, global, undefined) {
 	
+	var cssClasses = [
+		'fixed fill',
+		'z-index-max',
+		'bg-color-true-white',
+		'flexbox flex-center'
+	].join(' ');
+	
 	var initDevPanel = function () {
 		var storage = global.AppStorage.session;
 		var body = $('body');
-		var panel = $('<div />').attr('class', 'fixed fill z-index-max bg-color-white flexbox flex-center');
+		var panel = $('<div />').attr('class', cssClasses);
 		var inner = $('<div />');
 		var devClasses = [
 			'show-classes-on-hover',
