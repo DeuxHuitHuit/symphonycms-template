@@ -3,7 +3,6 @@
  */
 
 (function ($, global, undefined) {
-
 	'use strict';
 	
 	$.jitImage.defaults.forceCssResize = false;
@@ -32,10 +31,15 @@
 		window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame ||
 		window.msCancelRequestAnimationFrame || window.clearTimeout;
 	
-	/*
-	 * Cheap modrnzr
-	 */
+	// default easing support
+	$.easing.def = ($.mobile ? 'linear' : 'easeOutQuad');
+})(jQuery, window);
 
+/**
+ * Cheap modrnzr
+ */
+(function ($, global, undefined) {
+	'use strict';
 	// add mobile css class to html
 	$.each([
 			'iphone',
@@ -51,11 +55,13 @@
 			$('html').addClass(c);
 		}
 	});
-	
-	// default easing support
-	$.easing.def = ($.mobile ? 'linear' : 'easeOutQuad');
-	
-	// polyfill jQuery animation engine
+})(jQuery, window);
+
+/**
+ * polyfill jQuery animation engine
+ */
+(function ($, global, undefined) {
+	'use strict';
 	if (!!$.fn.velocity) {
 		$.fn.animate = $.fn.velocity;
 		$.fn.fadeTo = function (duration, opacity, complete) {
@@ -105,19 +111,13 @@
 			return win;
 		};
 	}
-	
-	global.preventNextClick = function (e) {
-		var t = $(this);
-		var href = t.attr('href');
-		if (t.attr('data-action') === 'full') {
-			return false;
-		}
-		if (!!href) {
-			return !/^(https?|mailto|skype|tel|ftps?|#)/im.test(href);
-		}
-		return true;
-	};
-	
+})(jQuery, window);
+
+/**
+ * Utils
+ */
+(function ($, global, undefined) {
+	'use strict';
 	global.rgb2hex = function (rgb) {
 		var hex = function (x) {
 			return ('0' + parseInt(x, 10).toString(16)).slice(-2);
@@ -140,8 +140,6 @@
 	global.mediaQueryMaxWidth = function (width) {
 		return window.matchMedia('(max-width: ' + width + 'px)').matches;
 	};
-	
-	global.deviceMinMoveValue = 3;
 	
 	global.calculatedScrollbarWidth = function () {
 		var ctn = $('<div>').css({
@@ -188,5 +186,4 @@
 		global.scrollbarWidth = memoizedScrollBarWidth;
 		return memoizedScrollBarWidth();
 	};
-	
 })(jQuery, window);
