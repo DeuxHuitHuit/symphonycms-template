@@ -1,0 +1,23 @@
+/*******************************
+ * @author DeuxHuitHuit
+ * 
+ * DEV watchdog
+ * imported by browser.less
+ *
+ *****************************/
+
+.hidden.block, .display-none.display-block, .display-none.block {
+	.WATCHDOG(~'DISPLAY-NONE & DISPLAY-BLOCK font pas bon ménage!');
+}
+
+.flexbox.inline-block {
+	.WATCHDOG(~'FLEXBOX & INLINE-BLOCK font pas bon ménage! FLEXBOX-INLINE que tu veux ?');
+}
+
+.flexbox.inline {
+	.WATCHDOG(~'FLEXBOX & INLINE font pas bon ménage! FLEXBOX-INLINE que tu veux ?');
+}
+
+button.flexbox {
+	.WATCHDOG(~'BUTTON CAN NOT BE FLEXBOX (Brise dans safari et dans Firefox)');
+}
