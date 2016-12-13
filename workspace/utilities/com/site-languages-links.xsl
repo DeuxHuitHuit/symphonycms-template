@@ -4,7 +4,8 @@
 <!-- COMPONENT: site-languages-links ============================================================-->
 	<xsl:template name="site-languages-links">
 		<xsl:param name="include-current-language" select="false()"/>
-		<xsl:param name="use-abreviation" select="true()" />
+		<!-- Can be normal,abreviation or custom -->
+		<xsl:param name="text-strategy" select="'normal'" />
 		<!-- button params -->
 		<xsl:param name="failover-element" select="$default-button-failover-element" />
 		<!-- attr params -->
@@ -15,14 +16,14 @@
 			<xsl:when test="$include-current-language = false()">
 				<xsl:apply-templates select="/data/fl-languages/supported-languages/item[@handle != $url-language]" mode="site-languages-link">
 					<xsl:with-param name="attr" select="$attr" />
-					<xsl:with-param name="use-abreviation" select="$use-abreviation" />
+					<xsl:with-param name="text-strategy" select="$text-strategy" />
 				</xsl:apply-templates>
 			</xsl:when>
 
 			<xsl:when test="$include-current-language = true()">
 				<xsl:apply-templates select="/data/fl-languages/supported-languages/item" mode="site-languages-link">
 					<xsl:with-param name="attr" select="$attr" />
-					<xsl:with-param name="use-abreviation" select="$use-abreviation" />
+					<xsl:with-param name="text-strategy" select="$text-strategy" />
 				</xsl:apply-templates>
 			</xsl:when>
 			<xsl:otherwise>
@@ -36,7 +37,7 @@
 
 <!-- REPEAT TEMPLATE : site-languages-link (fl-languages/supported-languages/item) ==============-->
 	<xsl:template match="fl-languages/supported-languages/item" mode="site-languages-link">
-		<xsl:param name="use-abreviation" select="true()" />
+		<xsl:param name="text-strategy" select="'normal'" />
 		<!-- button params -->
 		<xsl:param name="failover-element" select="$default-button-failover-element" />
 		<!-- attr params -->
@@ -44,12 +45,19 @@
 		<!-- content params -->
 		<xsl:param name="content-lg" select="$url-language" />
 		<xsl:param name="content">
-			<xsl:if test="$use-abreviation = true()">
-				<xsl:value-of select="substring(.,1,2)" />
-			</xsl:if>
-			<xsl:if test="$use-abreviation = false()">
-				<xsl:value-of select="." />
-			</xsl:if>
+			<xsl:choose>
+				<xsl:when test="string-length($text-strategy) = 0 or $text-strategy = 'normal'">
+					<xsl:value-of select="." />
+				</xsl:when>
+				<xsl:when test="$text-strategy = 'abreviation'">
+					<xsl:value-of select="substring(.,1,2)" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:call-template name="site-languages-link-custom-text-strategy">
+						<xsl:with-param name="entry" select="."/>
+					</xsl:call-template>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:param>
 		
 	<!-- COMPUTED VALUES 													 -->
@@ -60,7 +68,7 @@
 		</xsl:variable>
 		
 		<xsl:variable name="computed-attr">
-			<add data-ga-cat="menu-nav" data-gat-label="{.}" />
+			<add data-ga-cat="menu-nav" data-ga-label="{.}" />
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
 	<!--																	/-->
