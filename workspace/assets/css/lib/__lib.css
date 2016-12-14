@@ -41751,6 +41751,13 @@ blockquote {
 address {
   font-style: normal;
 }
+a,
+button,
+input {
+  -webkit-touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
 /*
  * FORMS
  */
@@ -41759,6 +41766,11 @@ button {
   padding: 0;
   border: none;
   background: none;
+}
+fieldset,
+legend {
+  border: 0;
+  padding: 0;
 }
 /* 
  * CSS 3

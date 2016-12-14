@@ -613,6 +613,13 @@
 		-ms-user-select: @select;
 			user-select: @select;
 }
+/* TOUCH-ACTION */
+#touch-action (@action: auto) {
+	-webkit-touch-action: @action;
+		-ms-touch-action: @action;
+			touch-action: @action;
+}
+
 #generate-color-class(@suffix, @color-name, @color, @name, @property) {
 	.@{name}-@{color-name}@{suffix}               {@{property}: @color;}
 	.@{name}-@{color-name}-on-hover@{suffix}      {#hover({@{property}: @color;});}
