@@ -9,7 +9,7 @@
 	var cssClasses = [
 		'fixed fill',
 		'z-index-max',
-		'bg-color-true-white',
+		'bg-color-true-white color-dark',
 		'flexbox flex-center'
 	].join(' ');
 	
