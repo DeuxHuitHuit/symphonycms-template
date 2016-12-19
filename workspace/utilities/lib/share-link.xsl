@@ -32,7 +32,6 @@
 		<xsl:param name="url" />
 
 		<xsl:variable name="computed-url">
-			<xsl:text>mailto:</xsl:text>
 			<xsl:choose>
 				<xsl:when test="string-length($status) != 0">
 					<xsl:value-of select="str:encode-uri(concat('?subject=', $status, '&amp;body=', $url), false())" />
