@@ -21,6 +21,7 @@
 			<add data-lg="{$revert-lg-handle}" />
 			<add data-action="full" />
 			<add class="js-alt-lg-link" />
+			<add data-ga-cat="menu-nav" data-ga-action="langue" data-ga-label="{$revert-lg-handle}" />
 		</xsl:variable>
 	<!--																	/-->
 
