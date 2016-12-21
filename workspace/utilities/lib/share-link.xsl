@@ -18,7 +18,7 @@
 
 		<xsl:call-template name="optional-button">
 			<xsl:with-param name="attr" select="$computed-attr" />
-			<xsl:with-param name="failover-element" select="'li'"/>
+			<xsl:with-param name="failover-element" select="'a'"/>
 			<xsl:with-param name="url" select="$url"/>
 			<xsl:with-param name="content" select="$content" />
 		</xsl:call-template>
@@ -31,13 +31,7 @@
 		<xsl:param name="separator" select="' - '" />
 		<xsl:param name="url" />
 
-		<xsl:variable name="computed-attr">
-			<xsl:copy-of select="$attr" />
-			<rem target="_blank" />
-		</xsl:variable>
-		
 		<xsl:variable name="computed-url">
-			<xsl:text>mailto:</xsl:text>
 			<xsl:choose>
 				<xsl:when test="string-length($status) != 0">
 					<xsl:value-of select="str:encode-uri(concat('?subject=', $status, '&amp;body=', $url), false())" />
@@ -47,10 +41,15 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
+		
+		<xsl:variable name="computed-attr">
+			<xsl:copy-of select="$attr" />
+			<xsl:add data-mailto="{$computed-url}" />
+			<rem target="_blank" />
+		</xsl:variable>
 
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$computed-attr" />
-			<xsl:with-param name="url" select="$computed-url" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
