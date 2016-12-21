@@ -40,14 +40,16 @@
 	<!--																	/-->
 
 	<!-- STRUCTURE															 -->
-		<xsl:call-template name="element">
-			<xsl:with-param name="element" select="$computed-element"/>
-			<xsl:with-param name="is-optional" select="$is-optional" />
-			<xsl:with-param name="attr" select="$computed-attr"/>
-			<xsl:with-param name="attr-mode" select="$attr-mode" />
-			<xsl:with-param name="lg" select="$lg" />
-			<xsl:with-param name="content" select="$content" />
-		</xsl:call-template>
+		<xsl:if test="string-length($computed-element) != 0">
+			<xsl:call-template name="element">
+				<xsl:with-param name="element" select="$computed-element"/>
+				<xsl:with-param name="is-optional" select="$is-optional" />
+				<xsl:with-param name="attr" select="$computed-attr"/>
+				<xsl:with-param name="attr-mode" select="$attr-mode" />
+				<xsl:with-param name="lg" select="$lg" />
+				<xsl:with-param name="content" select="$content" />
+			</xsl:call-template>
+		</xsl:if>
 	<!--																	/-->
 	</xsl:template>
 
