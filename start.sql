@@ -691,7 +691,7 @@ INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section
 (18, 'Page', 'page', 'pages', 4, 'yes', 0, 'main', 'yes'),
 (24, 'Description', 'description', 'multilingual_textbox', 4, 'yes', 2, 'main', 'yes'),
 (25, 'Image partage', 'image-partage', 'image_upload', 4, 'no', 3, 'sidebar', 'yes'),
-(29, 'Theme', 'theme', 'colorchooser', 1, 'no', 3, 'sidebar', 'yes'),
+(29, 'Thème', 'theme', 'colorchooser', 1, 'no', 3, 'sidebar', 'yes'),
 (30, 'Titre', 'titre', 'multilingual_textbox', 4, 'no', 1, 'main', 'yes');
 
 -- --------------------------------------------------------
