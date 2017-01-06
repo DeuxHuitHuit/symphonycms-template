@@ -5,7 +5,7 @@
 	xmlns:str="http://exslt.org/strings"
 	exclude-result-prefixes="exslt str">
 
-<!-- render-image-resize -->
+<!-- render-image -->
 	<xsl:template name="render-image">
 		<xsl:param name="image" select="image" />
 		<xsl:param name="factor" select="'3'" />
@@ -37,7 +37,7 @@
 						</xsl:attribute>
 					</add>
 
-					<xsl:if test="string-length($format) != 0 and exslt:object-type($image) = 'node-set'">
+					<xsl:if test="string-length($format) != 0 and exslt:object-type($image) = 'node-set' and count($image/filename) = 1">
 						<add data-src-format="{$format}{$image/@path}/{$image/filename}" />
 						<add>
 							<xsl:attribute name="data-src-original" >
@@ -175,11 +175,24 @@
 			<xsl:value-of select="$height" />
 		</xsl:variable>
 
+		<xsl:variable name="computed-attr">
+			<xsl:choose>
+				<xsl:when test="$width = '$w' and $height != '$h'">
+					<add class="block width-full" />
+				</xsl:when>
+				<xsl:when test="$height = '$h' and $width != '$w'">
+					<add class="block height-full" />
+				</xsl:when>
+			</xsl:choose>
+
+			<xsl:copy-of select="$attr" />
+		</xsl:variable>
+
 		<xsl:call-template name="render-image">
 			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
-			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
 	</xsl:template>
