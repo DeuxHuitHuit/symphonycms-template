@@ -93,7 +93,7 @@
 				</xsl:call-template>
 				
 				<!-- BG TRANSITION -->
-				<div id="bg-transition" class="bg-color-white fixed fill z-index-max hidden"></div>
+				<div id="bg-transition" class="bg-color-white fixed fill z-index-max display-none"></div>
 				
 				<!-- load progress -->
 				<div id="load-progress"></div>
