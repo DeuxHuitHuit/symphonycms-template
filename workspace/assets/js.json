@@ -23,6 +23,7 @@
 		"modules/page-load-errors.js",
 		"modules/auto-tracked-scroll.js",
 		"modules/change-state.js",
+		"modules/auto-jit-image.js",
 		
 		"transitions/default-transition.js",
 		
