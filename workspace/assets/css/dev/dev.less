@@ -9,7 +9,27 @@
 	outline: rgba(255,0,0,36%) 1px solid;
 	outline-offset: 8px;
 }
+
 .show-classes-on-hover {
+
+	.js-dev-panel:hover:before {
+		display:none !important;
+	}
+
+	.js-dev-panel {
+		*[class]:hover:before {
+			display:none !important;
+			outline: 0px !important;
+		}
+	}
+
+	.js-dev-panel {
+		*[class]:hover {
+			outline: 0px !important;
+		}
+	}
+
+	
 	*[class]:hover:before {
 		content: attr(class);
 		white-space: nowrap;
@@ -133,6 +153,23 @@
 	}
 }
 .show-classes {
+	
+	.js-dev-panel:after {
+		display:none !important;
+	}
+
+	.js-dev-panel {
+		*[class]:after {
+			display:none !important;
+		}
+	}
+
+	.js-dev-panel {
+		*[class]:hover {
+			outline: 0px !important;
+		}
+	}
+
 	*[class]:after {
 		content: attr(class);
 		white-space: nowrap;
