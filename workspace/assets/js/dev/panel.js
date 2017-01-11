@@ -7,6 +7,7 @@
 (function ($, global, undefined) {
 	
 	var cssClasses = [
+		'js-dev-panel',
 		'fixed fill',
 		'z-index-max',
 		'bg-color-true-white color-dark',
