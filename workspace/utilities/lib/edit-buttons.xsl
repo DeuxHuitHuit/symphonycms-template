@@ -8,7 +8,11 @@
 	</xsl:variable>
 
 	<xsl:variable name="default-edit-button-link-style">
-		<xsl:copy-of select="$recipe-button-main" />
+		<add class="inline-block" />
+		<add class="padding-thinnest" />
+
+		<add class="color-true-black bg-color-true-white" />
+		
 		<add class="border-solid" />
 	</xsl:variable>
 
@@ -24,30 +28,31 @@
 		<xsl:param name="content" select="'EDIT'" />
 
 		<xsl:param name="attr" />
-		<xsl:param name="attr-btn" />
-
-		<xsl:variable name="computed-attr">
-			<add class="edit-btn" />
-			<xsl:copy-of select="$default-edit-button-ctn-style" />
-			<xsl:copy-of select="$attr" />
-			<add dev-core="edit-btn" />
-		</xsl:variable>
-
-		<xsl:variable name="computed-attr-btn">
-			<xsl:copy-of select="$default-edit-button-link-style" />
-			<xsl:copy-of select="$attr-btn" />
-			<add dev-element="button" />
-		</xsl:variable>
-		
-		<xsl:variable name="computed-url">
-			<xsl:text>/symphony/publish/</xsl:text>
-			<xsl:value-of select="$section"/>
-			<xsl:text>/edit/</xsl:text>
-			<xsl:value-of select="$entry-id" />
-			<xsl:text>/</xsl:text>
-		</xsl:variable>
+		<xsl:param name="attr-link" />
 
 		<xsl:if test="$is-loggued-in = true()">
+				
+			<xsl:variable name="computed-attr">
+				<xsl:copy-of select="$default-edit-button-ctn-style" />
+				<xsl:copy-of select="$attr" />
+				<add dev-core="edit-btn" />
+			</xsl:variable>
+
+			<xsl:variable name="computed-attr-link">
+				<xsl:copy-of select="$default-edit-button-link-style" />
+				<xsl:copy-of select="$attr-link" />
+				<add dev-element="link" />
+			</xsl:variable>
+			
+			<xsl:variable name="computed-url">
+				<xsl:text>/symphony/publish/</xsl:text>
+				<xsl:value-of select="$section"/>
+				<xsl:text>/edit/</xsl:text>
+				<xsl:value-of select="$entry-id" />
+				<xsl:text>/</xsl:text>
+			</xsl:variable>
+
+		
 			<xsl:call-template name="element">
 				<xsl:with-param name="element" select="$element"/>
 				<xsl:with-param name="attr" select="$computed-attr"/>
@@ -55,7 +60,7 @@
 					
 					<xsl:call-template name="button">
 						<xsl:with-param name="url" select="$computed-url" />
-						<xsl:with-param name="attr" select="$computed-attr-btn" />
+						<xsl:with-param name="attr" select="$computed-attr-link" />
 						<xsl:with-param name="content" select="$content" />
 					</xsl:call-template>
 				</xsl:with-param>
