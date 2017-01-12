@@ -22,7 +22,7 @@
 		</xsl:variable>
 
 		<xsl:variable name="site-name-style">
-			<add class="hidden" />
+			<add class="display-none" />
 		</xsl:variable>
 	<!-- ___________________________________________________________________/-->
 
