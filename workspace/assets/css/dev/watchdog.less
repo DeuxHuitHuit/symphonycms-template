@@ -22,6 +22,10 @@ button.flexbox {
 	.WATCHDOG(~'BUTTON CAN NOT BE FLEXBOX (Brise dans safari et dans Firefox)');
 }
 
+p p {
+	.WATCHDOG(~'P CAN NOT BE NESTED IN AN OTHER P');
+}
+
 h1,h2,h3,h4,h5,h6 {
 	p {
 		.WATCHDOG(~'P CAN NOT BE NESTED IN H1 TO H6');
