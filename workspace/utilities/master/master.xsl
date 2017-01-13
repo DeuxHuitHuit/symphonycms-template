@@ -85,7 +85,7 @@
 	<!-- COMPUTED ATTRIBUTES 												 -->
 		<xsl:variable name="computed-attr">
 			<add lang="{$url-language}" />
-			<add langs="{$languages-list}" />
+			<add data-all-langs="{$languages-list}" />
 			<xsl:call-template name="html-attr" />
 		</xsl:variable>
 	<!--																	/-->
