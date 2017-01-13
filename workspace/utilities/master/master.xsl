@@ -71,9 +71,21 @@
 <!-- CORE : MASTER MATCH ========================================================================-->
 	<xsl:template match="/">
 
+		<xsl:variable name="languages-list">
+			<xsl:value-of select="/data/fl-languages/supported-languages/item[@main = 'yes']/@handle" />
+
+			<xsl:for-each select="/data/fl-languages/supported-languages/item">
+				<xsl:if test="string-length(@main) = 0">
+					<xsl:text>,</xsl:text>
+					<xsl:value-of select="@handle" />
+				</xsl:if>
+			</xsl:for-each>
+		</xsl:variable>
+
 	<!-- COMPUTED ATTRIBUTES 												 -->
 		<xsl:variable name="computed-attr">
 			<add lang="{$url-language}" />
+			<add data-all-langs="{$languages-list}" />
 			<xsl:call-template name="html-attr" />
 		</xsl:variable>
 	<!--																	/-->
