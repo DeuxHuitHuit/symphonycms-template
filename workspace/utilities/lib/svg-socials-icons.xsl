@@ -34,10 +34,13 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
-	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-tw"
-		x="0px" y="0px"
-		width="{$width}px" height="{$height}px" viewBox="0 0 74 60">
+	<svg version="1.1" 
+		 xmlns="http://www.w3.org/2000/svg" 
+		 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 x="0px" y="0px"
+		 width="{$width}px" 
+		 height="{$height}px" 
+		 viewBox="0 0 74 60">
 		<path fill="{$color}" d="M74,7.1c-2.7,1.2-5.6,2-8.7,2.4c3.1-1.9,5.5-4.8,6.7-8.4c-2.9,1.7-6.2,3-9.6,3.7C59.5,1.8,55.6,0,51.2,0
 		c-8.4,0-15.2,6.8-15.2,15.1c0,1.2,0.1,2.3,0.4,3.5C23.8,18,12.6,11.9,5.2,2.8C3.8,5,3.1,7.6,3.1,10.4c0,5.3,2.7,9.9,6.8,12.6
 		C7.4,22.9,5,22.2,3,21.1c0,0.1,0,0.1,0,0.2c0,7.3,5.2,13.5,12.2,14.9c-1.3,0.3-2.6,0.5-4,0.5c-1,0-1.9-0.1-2.9-0.3
@@ -59,10 +62,13 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
-	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-			class="svg-icon svg-icon-ig line-height-0 valign-top"
-			x="0px" y="0px"
-			width="{$width}px" height="{$height}px" viewBox="0 0 25 25">
+	<svg version="1.1" 
+		 xmlns="http://www.w3.org/2000/svg" 
+		 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 x="0px" y="0px"
+		 width="{$width}px" 
+		 height="{$height}px" 
+		 viewBox="0 0 25 25">
 		<g>
 			<path fill="{$color}" d="M12.5 2.3c3.3 0 3.7 0 5.1.1 1.2.1 1.9.3 2.3.4.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 5.1s0 3.7-.1 5.1c-.1 1.2-.3 1.9-.4 2.3-.2.6-.5 1-.9 1.4-.4.4-.9.7-1.4.9-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-5.1.1s-3.7 0-5.1-.1c-1.2-.1-1.9-.3-2.3-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.9-.9-1.4-.2-.4-.4-1.1-.4-2.3-.1-1.3-.1-1.7-.1-5.1s0-3.7.1-5.1c.1-1.2.3-1.9.4-2.3.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.1-.4 2.3-.4 1.4-.1 1.8-.1 5.1-.1m0-2.3C9.1 0 8.7 0 7.3.1 6 .1 5.1.3 4.3.7c-.8.3-1.5.7-2.2 1.4C1.4 2.8 1 3.5.7 4.3c-.4.8-.6 1.7-.6 3C0 8.7 0 9.1 0 12.5c0 3.4 0 3.8.1 5.2.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.7.5 3 .6 1.4.1 1.8.1 5.2.1s3.8 0 5.2-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.7.6-3 .1-1.3.1-1.8.1-5.2s0-3.8-.1-5.2c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.4-2.2-.7-.7-1.4-1.1-2.2-1.4-.8-.3-1.7-.5-3-.6-1.4-.1-1.8-.1-5.2-.1z"/>
 			<path fill="{$color}" d="M12.5 6.1C9 6.1 6.1 9 6.1 12.5s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4-2.9-6.4-6.4-6.4zm0 10.6c-2.3 0-4.2-1.9-4.2-4.2s1.9-4.2 4.2-4.2 4.2 1.9 4.2 4.2-1.9 4.2-4.2 4.2z"/>
@@ -84,10 +90,13 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
-	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-yt"
-		x="0px" y="0px"
-		width="{$width}px" height="{$height}px" viewBox="0 0 86 60">
+	<svg version="1.1" 
+		 xmlns="http://www.w3.org/2000/svg" 
+		 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 x="0px" y="0px"
+		 width="{$width}px" 
+		 height="{$height}px" 
+		 viewBox="0 0 86 60">
 		<path fill="{$color}" d="M86,12.8C86,5.7,80.2,0,73.1,0H12.9
 			C5.8,0,0,5.7,0,12.8v34.4C0,54.3,5.8,60,12.9,60h60.3C80.2,60,86,54.3,86,47.2V12.8z M34.4,44.5V12.2L59,28.4L34.4,44.5z"/>
 	</svg>
@@ -106,10 +115,13 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
-	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-sc"
-		x="0px" y="0px"
-		width="{$width}px" height="{$height}px" viewBox="0 0 89 60">
+	<svg version="1.1" 
+		 xmlns="http://www.w3.org/2000/svg"
+		 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 x="0px" y="0px"
+		 width="{$width}px"
+		 height="{$height}px"
+		 viewBox="0 0 89 60">
 		<path fill="{$color}" d="M89,42.5C89,52.2,81.2,60,71.5,60H17.5
 			C7.8,60,0,52.2,0,42.5c0-8.7,6.4-16,14.7-17.3c-0.1-0.6-0.2-1.2-0.2-1.9c0-6.1,5-11.1,11.1-11.1c2.7,0,5.2,1,7.2,2.6
 			C36.2,7.1,40.6,0,53,0c15,0,22.1,11.6,22.1,23.8c0,0.5,0,1-0.1,1.5C83,27,89,34,89,42.5z"/>
@@ -129,10 +141,13 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
-	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-tb"
-		x="0px" y="0px"
-		width="{$width}px" height="{$height}px" viewBox="0 0 38 60">
+	<svg version="1.1" 
+		 xmlns="http://www.w3.org/2000/svg" 
+		 xmlns:xlink="http://www.w3.org/1999/xlink"
+		 x="0px" y="0px"
+		 width="{$width}px" 
+		 height="{$height}px" 
+		 viewBox="0 0 38 60">
 		<path fill="{$color}" d="M24.3,49c-1-0.6-1.9-1.6-2.3-2.6c-0.4-1-0.3-3-0.3-6.5V24.6h14V13.9h-14V0H13
 			c-0.4,3.1-1.1,5.6-2.1,7.6c-1,2-2.4,3.7-4.1,5.2c-1.7,1.4-4.4,2.5-6.8,3.3v8.5h8.2v21c0,2.7,0.3,4.8,0.9,6.3
 			c0.6,1.4,1.6,2.8,3.1,4.1c1.5,1.3,3.3,2.3,5.4,3c2.1,0.7,3.8,1,6.5,1c2.4,0,4.7-0.2,6.8-0.7c2.1-0.5,4.4-1.3,7-2.5v-9.5
@@ -153,7 +168,6 @@
 	</xsl:variable>
 	
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-		class="svg-icon svg-icon-bc"
 		x="0px" y="0px"
 		width="{$width}px" height="{$height}px"
 		viewBox="0 0 99 60">
@@ -185,7 +199,6 @@
 	</xsl:variable>
 	
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-	class="svg-icon svg-icon-li"
 	x="0px" y="0px"
 	width="{$width}px" height="{$height}px"
 	viewBox="0 0 62 61">
@@ -212,7 +225,6 @@
 	</xsl:variable>
 	
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-vo"
 		x="0px" y="0px"
 		width="{$width}px" height="{$height}px" viewBox="0 0 74 60">
 		
@@ -239,7 +251,6 @@
 	</xsl:variable>
 	
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-pi"
 		x="0px" y="0px"
 		width="{$width}px" height="{$height}px" viewBox="0 0 144 144">
 		
@@ -268,7 +279,6 @@
 	</xsl:variable>
 	
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-		class="svg-icon svg-icon-go"
 		x="0px" y="0px"
 		width="{$width}px" height="{$height}px" viewBox="0 0 21 21">
 		
