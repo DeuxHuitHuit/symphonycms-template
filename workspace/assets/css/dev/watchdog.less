@@ -21,3 +21,19 @@
 button.flexbox {
 	.WATCHDOG(~'BUTTON CAN NOT BE FLEXBOX (Brise dans safari et dans Firefox)');
 }
+
+h1,h2,h3,h4,h5,h6 {
+	p {
+		.WATCHDOG(~'P CAN NOT BE NESTED IN H1 TO H6');
+	}
+	ul, ol {
+		.WATCHDOG(~'UL OR OL CAN NOT BE NESTED IN H1 TO H6');
+	}
+	table {
+		.WATCHDOG(~'TABLE CAN NOT BE NESTED IN H1 TO H6');
+	}
+
+	h1,h2,h3,h4,h5,h6 {
+		.WATCHDOG(~'H1 TO H6 CAN NOT BE NESTED IN H1 TO H6');
+	}
+}
