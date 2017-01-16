@@ -24,7 +24,7 @@
     "grunt-contrib-less": "~1.4.0",
     "grunt-contrib-uglify": "~2.0.0",
     "grunt-contrib-watch": "~1.0.0",
-    "grunt-csso": "^2.1.0",
+    "grunt-csso": "^2.2.0",
     "grunt-curl": "^2.2.0",
     "grunt-ftps-deploy": "^0.1.16",
     "grunt-jscs": "^3.0.1",
