@@ -3,8 +3,6 @@
 	xmlns:exsl="http://exslt.org/common"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	
-
 	<xsl:template match="svg" mode="ninja-heading">
 		<xsl:copy-of select="." />
 	</xsl:template>

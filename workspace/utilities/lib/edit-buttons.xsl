@@ -52,7 +52,6 @@
 				<xsl:text>/</xsl:text>
 			</xsl:variable>
 
-		
 			<xsl:call-template name="element">
 				<xsl:with-param name="element" select="$element"/>
 				<xsl:with-param name="attr" select="$computed-attr"/>
@@ -67,5 +66,4 @@
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
-
 </xsl:stylesheet>

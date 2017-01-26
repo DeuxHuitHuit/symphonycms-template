@@ -42,7 +42,6 @@
 		<xsl:call-template name="page-alt-link-url-extra">
 			<xsl:with-param name="lg" select="$lg" />
 		</xsl:call-template>
-		
 	</xsl:template>
 
 	<xsl:template name="page-alt-link-url-extra">
@@ -74,5 +73,4 @@
 	</xsl:template>
 
 	<xsl:template name="page-metas-alt-rss"></xsl:template>
-
 </xsl:stylesheet>
