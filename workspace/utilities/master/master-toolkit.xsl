@@ -41,9 +41,6 @@
 <xsl:import href="../lib/text.xsl" />
 <xsl:import href="../lib/append-qs-value.xsl" />
 
-<xsl:import href="../com/generate-url.xsl" />
-<xsl:import href="../com/generate-text.xsl" />
-
 <xsl:import href="../recipes/recipes.xsl" />
 
 <xsl:output method="html" 
