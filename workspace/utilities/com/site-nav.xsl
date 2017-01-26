@@ -10,19 +10,15 @@
 
 	<!-- DEFAULT STYLES _____________________________________________________-->
 		<xsl:variable name="site-nav-style">
-			
 		</xsl:variable>
 
 		<xsl:variable name="nav-link-ctn-style">
-			
 		</xsl:variable>
 
 		<xsl:variable name="nav-link-style">
-			
 		</xsl:variable>
 
 		<xsl:variable name="nav-link-selected-style">
-			
 		</xsl:variable>
 	<!--____________________________________________________________________/-->
 
