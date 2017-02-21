@@ -5,7 +5,6 @@
 	<xsl:template name="site-header-logo-link">
 		<xsl:param name="url" select="$page-index-url"/>
 		<xsl:param name="attr" />
-		<xsl:param name="heading-attr" />
 		<xsl:param name="site-name" select="$config/site-titre" />
 		<xsl:param name="site-name-attr" />
 		<xsl:param name="content" />
@@ -13,11 +12,6 @@
 	<!-- DEFAULT STYLES ____________________________________________________ -->
 		<!-- self -->
 		<xsl:variable name="site-header-logo-link-style">
-			
-		</xsl:variable>
-
-		<!-- heading -->
-		<xsl:variable name="heading-style">
 			
 		</xsl:variable>
 
@@ -38,12 +32,6 @@
 			<add data-ga-cat="menu-nav" data-gat-label="logo" />
 		</xsl:variable>
 
-		<xsl:variable name="computed-heading-attr">
-			<xsl:copy-of select="$heading-style" />
-			<xsl:copy-of select="$heading-attr" />
-			<add dev-element="heading" />
-		</xsl:variable>
-
 		<xsl:variable name="computed-site-name-attr">
 			<xsl:copy-of select="$site-name-style" />
 			<xsl:copy-of select="$site-name-attr" />
@@ -57,25 +45,17 @@
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="url" select="$url" />
 			<xsl:with-param name="content">
+				<!-- Content -->
+				<xsl:call-template name="content">
+					<xsl:with-param name="content" select="$content"/>
+				</xsl:call-template>
 
-				<!-- Heading -->
-				<xsl:call-template name="heading">
-					<xsl:with-param name="attr" select="$computed-heading-attr"/>
-					<xsl:with-param name="content">
-
-						<!-- Content -->
-						<xsl:call-template name="content">
-							<xsl:with-param name="content" select="$content"/>
-						</xsl:call-template>
-
-						<!-- site name span -->
-						<xsl:call-template name="element">
-							<xsl:with-param name="element" select="'span'" />
-							<xsl:with-param name="attr" select="$computed-site-name-attr" />
-							<xsl:with-param name="content" select="$site-name"/>
-						</xsl:call-template>
-					</xsl:with-param>
-				</xsl:call-template><!-- End heading -->
+				<!-- site name span -->
+				<xsl:call-template name="element">
+					<xsl:with-param name="element" select="'span'" />
+					<xsl:with-param name="attr" select="$computed-site-name-attr" />
+					<xsl:with-param name="content" select="$site-name"/>
+				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
 	<!--																	/-->
