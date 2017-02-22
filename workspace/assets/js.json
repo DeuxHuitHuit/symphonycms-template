@@ -36,6 +36,7 @@
 	],
 	"dev": [
 		"dev/dev.js",
+		"dev/duplicate-id-detector.js",
 		"dev/panel.js"
 	],
 	"cdn-before": [
