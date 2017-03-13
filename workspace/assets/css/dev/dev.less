@@ -4,14 +4,13 @@
  * DEV utils
  * imported by browser.less
  *
- *****************************/
+ ****************************/
+@debug-spacing: 1rem;
 .TODO {
 	outline: rgba(255,0,0,36%) 1px solid;
 	outline-offset: 8px;
 }
-
 .show-classes-on-hover {
-
 	.js-dev-panel:hover:before {
 		display:none !important;
 	}
@@ -33,10 +32,10 @@
 	*[class]:hover:before {
 		content: attr(class);
 		white-space: nowrap;
-		padding: @spacing-thinner * 0.25 @spacing-thinner * 0.5;
+		padding: @debug-spacing * 0.25 @debug-spacing * 0.5;
 		background-color: red;
 		color: white;
-		line-height: @spacing-thinner * .5;
+		line-height: @debug-spacing * .5;
 		font-size: 8px;
 		font-weight: 600;
 		font-family: helvetica, arial, sans-serif;
@@ -44,8 +43,8 @@
 		position: absolute;
 		left: auto;
 		top: auto;
-		margin-top: -@spacing-thinner;
-		margin-bottom: @spacing-thinner * .25;
+		margin-top: -@debug-spacing;
+		margin-bottom: @debug-spacing * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
 		pointer-events: none;
@@ -55,17 +54,17 @@
 	*:not(body)[class] *[class]:hover:before {
 		//margin-top: 0;
 		background-color: fuchsia;
-		padding-left: @spacing-thinner * .5;
+		padding-left: @debug-spacing * .5;
 	}
 
 	*:not(body)[class] *[class] *[class]:hover:before {
 		background-color: purple;
-		padding-left: @spacing-thinner;
+		padding-left: @debug-spacing;
 	}
 	
 	*:not(body)[class] *[class] *[class] *[class]:hover:before {
 		background-color: teal;
-		padding-left: @spacing-thinner * 1.5;
+		padding-left: @debug-spacing * 1.5;
 	}
 	
 	*[class]:hover {
@@ -89,10 +88,10 @@
 	*[dev-element]:hover:before {
 		content: attr(dev-component);
 		white-space: nowrap;
-		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		padding: @debug-spacing * .25 @debug-spacing * .5;
 		background-color: red;
 		color: white;
-		line-height: @spacing-thinner * .5;
+		line-height: @debug-spacing * .5;
 		font-size: 10px;
 		font-weight: 600;
 		font-family: helvetica, arial, sans-serif;
@@ -100,8 +99,8 @@
 		position: absolute;
 		left: auto;
 		top: auto;
-		margin-top: -@spacing-thinner;
-		margin-bottom: @spacing-thinner * .25;
+		margin-top: -@debug-spacing;
+		margin-bottom: @debug-spacing * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
 		pointer-events: none;
@@ -117,19 +116,19 @@
 	*:not(body)[dev-component] *[dev-element]:hover:before {
 		//margin-top: 0;
 		background-color: fuchsia;
-		padding-left: @spacing-thinner * .5;
+		padding-left: @debug-spacing * .5;
 	}
 
 	*:not(body)[dev-component] *[dev-component] *[dev-component]:hover:before,
 	*:not(body)[dev-component] *[dev-component] *[dev-element]:hover:before {
 		background-color: purple;
-		padding-left: @spacing-thinner;
+		padding-left: @debug-spacing;
 	}
 	
 	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:hover:before,
 	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-element]:hover:before {
 		background-color: teal;
-		padding-left: @spacing-thinner * 1.5;
+		padding-left: @debug-spacing * 1.5;
 	}
 	
 	*[dev-component]:hover,
@@ -173,10 +172,10 @@
 	*[class]:after {
 		content: attr(class);
 		white-space: nowrap;
-		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		padding: @debug-spacing * .25 @debug-spacing * .5;
 		background-color: red;
 		color: white;
-		line-height: @spacing-thinner * .5;
+		line-height: @debug-spacing * .5;
 		font-size: 8px;
 		font-weight: 600;
 		font-family: helvetica, arial, sans-serif;
@@ -184,8 +183,8 @@
 		position: absolute;
 		left: auto;
 		top: auto;
-		margin-top: -@spacing-thinner;
-		margin-bottom: @spacing-thinner * .25;
+		margin-top: -@debug-spacing;
+		margin-bottom: @debug-spacing * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
 		pointer-events: none;
@@ -198,17 +197,17 @@
 	*:not(body)[class] *[class]:hover:after {
 		//margin-top: 0;
 		background-color: fuchsia;
-		padding-left: @spacing-thinner * .5;
+		padding-left: @debug-spacing * .5;
 	}
 
 	*:not(body)[class] *[class] *[class]:hover:after {
 		background-color: purple;
-		padding-left: @spacing-thinner;
+		padding-left: @debug-spacing;
 	}
 	
 	*:not(body)[class] *[class] *[class] *[class]:hover:after {
 		background-color: teal;
-		padding-left: @spacing-thinner * 1.5;
+		padding-left: @debug-spacing * 1.5;
 	}
 	
 	*[class]:hover {
@@ -232,10 +231,10 @@
 	*[class]:active:after {
 		content: attr(class);
 		white-space: nowrap;
-		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		padding: @debug-spacing * .25 @debug-spacing * .5;
 		background-color: red;
 		color: white;
-		line-height: @spacing-thinner * .5;
+		line-height: @debug-spacing * .5;
 		font-size: 10px;
 		font-weight: 600;
 		font-family: helvetica, arial, sans-serif;
@@ -243,8 +242,8 @@
 		position: absolute;
 		left: auto;
 		top: auto;
-		margin-top: -@spacing-thinner;
-		margin-bottom: @spacing-thinner * .25;
+		margin-top: -@debug-spacing;
+		margin-bottom: @debug-spacing * .25;
 		letter-spacing: .0325em;
 		pointer-events: none;
 		z-index: 1;
@@ -257,17 +256,17 @@
 	*:not(body)[class] *[class]:active:after {
 		//margin-top: 0;
 		background-color: fuchsia;
-		padding-left: @spacing-thinner * .5;
+		padding-left: @debug-spacing * .5;
 	}
 
 	*:not(body)[class] *[class] *[class]:active:after {
 		background-color: purple;
-		padding-left: @spacing-thinner;
+		padding-left: @debug-spacing;
 	}
 	
 	*:not(body)[class] *[class] *[class] *[class]:active:after {
 		background-color: teal;
-		padding-left: @spacing-thinner * 1.5;
+		padding-left: @debug-spacing * 1.5;
 	}
 	
 	*[class]:active {
@@ -291,10 +290,10 @@
 	*[dev-component]:before {
 		content: attr(dev-component);
 		white-space: nowrap;
-		padding: @spacing-thinner * .25 @spacing-thinner * .5;
+		padding: @debug-spacing * .25 @debug-spacing * .5;
 		background-color: red;
 		color: white;
-		line-height: @spacing-thinner * .5;
+		line-height: @debug-spacing * .5;
 		font-size: 8px;
 		font-weight: 600;
 		font-family: helvetica, arial, sans-serif;
@@ -302,8 +301,8 @@
 		position: absolute;
 		left: auto;
 		top: auto;
-		margin-top: -@spacing-thinner;
-		margin-bottom: @spacing-thinner * .25;
+		margin-top: -@debug-spacing;
+		margin-bottom: @debug-spacing * .25;
 		text-transform: uppercase;
 		letter-spacing: .025em;
 		pointer-events: none;
@@ -316,17 +315,17 @@
 	*:not(body)[dev-component] *[dev-component]:before {
 		//margin-top: 0;
 		background-color: fuchsia;
-		padding-left: @spacing-thinner * .5;
+		padding-left: @debug-spacing * .5;
 	}
 
 	*:not(body)[dev-component] *[dev-component] *[dev-component]:before {
 		background-color: purple;
-		padding-left: @spacing-thinner;
+		padding-left: @debug-spacing;
 	}
 	
 	*:not(body)[dev-component] *[dev-component] *[dev-component] *[dev-component]:before {
 		background-color: teal;
-		padding-left: @spacing-thinner * 1.5;
+		padding-left: @debug-spacing * 1.5;
 	}
 	
 	
@@ -377,10 +376,10 @@
 		&:after {
 			content: attr(data-js-class);
 			white-space: nowrap;
-			padding: @spacing-thinner * .25 @spacing-thinner * .5;
+			padding: @debug-spacing * .25 @debug-spacing * .5;
 			background-color: red;
 			color: white;
-			line-height: @spacing-thinner * .5;
+			line-height: @debug-spacing * .5;
 			font-size: 8px;
 			font-weight: 600;
 			font-family: helvetica, arial, sans-serif;
@@ -388,8 +387,8 @@
 			position: absolute;
 			left: auto;
 			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
+			margin-top: -@debug-spacing;
+			margin-bottom: @debug-spacing * .25;
 			text-transform: uppercase;
 			letter-spacing: .025em;
 			pointer-events: none;
@@ -407,10 +406,10 @@
 		&:after {
 			content: attr(data-dom-class);
 			white-space: nowrap;
-			padding: @spacing-thinner * .25 @spacing-thinner * .5;
+			padding: @debug-spacing * .25 @debug-spacing * .5;
 			background-color: green;
 			color: white;
-			line-height: @spacing-thinner * .5;
+			line-height: @debug-spacing * .5;
 			font-size: 8px;
 			font-weight: 600;
 			font-family: helvetica, arial, sans-serif;
@@ -418,8 +417,8 @@
 			position: absolute;
 			left: auto;
 			top: auto;
-			margin-top: -@spacing-thinner;
-			margin-bottom: @spacing-thinner * .25;
+			margin-top: -@debug-spacing;
+			margin-bottom: @debug-spacing * .25;
 			text-transform: uppercase;
 			letter-spacing: .025em;
 			pointer-events: none;

@@ -1,0 +1,180 @@
+
+<themes>
+	<theme type="site">
+
+		<!-- Colors -->
+		<colors>
+			<type name="symbolic">
+				<black value="#181818" />
+				<white value="@true-white" />
+			</type>
+
+			<type name="core-variables">
+				<!-- <page-load-bg-color      value="@true-black" /> -->
+				<!-- <site-selection-bg-color value="@true-black" /> -->
+				<!-- <site-selection-color    value="#FF0000" /> -->
+			</type>
+		</colors>
+
+		<!-- spacing -->
+		<spacing>
+			<!-- <pico     value="0.1rem" /> -->
+			<!-- <nano     value="0.3rem" /> -->
+			<!-- <micro    value="0.5rem" /> -->
+			<thinnest value="1rem" />
+			<thinner  value="1.5rem" />
+			<thin     value="2rem" />
+			<broad    value="4rem" />
+			<broader  value="6rem" />
+			<broadest value="8rem" />
+			<large    value="10rem" />
+			<larger   value="12rem" />
+			<largest  value="16rem" />
+			<!-- <mega     value="24rem" /> -->
+			<!-- <giga     value="54rem" /> -->
+			<!-- <tera     value="78rem" /> -->
+		</spacing>
+
+		<dimensions>
+			<tiniest  value="@spacing-thinnest * 18" />
+			<!-- <tinier   value="@spacing-thinner * 18" /> -->
+			<!-- <tiny     value="@spacing-thin * 17" /> -->
+			<!-- <smallest value="@spacing-broad * 10" /> -->
+			<!-- <smaller  value="@spacing-broader * 9" /> -->
+			<!-- <small    value="@spacing-broadest * 7" /> -->
+			<!-- <big      value="@spacing-large * 8" /> -->
+			<!-- <bigger   value="@spacing-larger * 8" /> -->
+			<!-- <biggest  value="@spacing-largest * 9" /> -->
+		</dimensions>
+
+		<typographie>
+			<fonts>
+				<base   value="'Helvetica', sans-serif" />
+				<!-- <alt    value="" /> -->
+				<!-- <accent value="" /> -->
+			</fonts>
+			<fonts-size>
+				<!-- <miniature value="0.6rem" /> -->
+				<!-- <shortest  value="0.8rem" /> -->
+				<!-- <shorter   value="1.0rem" /> -->
+				<!-- <short     value="1.2rem" /> -->
+				<current   value="1.4rem" />
+				<!-- <tall      value="1.6rem" /> -->
+				<!-- <taller    value="2.0rem" /> -->
+				<!-- <tallest   value="2.4rem" /> -->
+				<!-- <huge      value="2.8rem" /> -->
+				<!-- <huger     value="4.0rem" /> -->
+				<!-- <hugest    value="5.0rem" /> -->
+				<!-- <giant     value="10.0rem" /> -->
+			</fonts-size>
+			<line-height>
+				<!-- <compressed value="1.0em" /> -->
+				<!-- <tightest   value="1.26875em" /> -->
+				<!-- <tighter    value="1.42875em" /> -->
+				<!-- <tight      value="1.61285em" /> -->
+				<normal     value="1.8em" />
+				<!-- <loose      value="3.6em" /> -->
+				<!-- <looser     value="4.2em" /> -->
+				<!-- <loosest    value="5.0em" /> -->
+			</line-height>
+			<letter-spacing>
+				<!-- <narrowest value="-0.14em" /> -->
+				<!-- <narrower  value="-0.10em" /> -->
+				<!-- <narrow    value="-0.06em" /> -->
+				<!-- <wide      value="0.06em" /> -->
+				<!-- <wider     value="0.10em" /> -->
+				<!-- <widest    value="0.16em" /> -->
+			</letter-spacing>
+		</typographie>
+		<opacity>
+			<transparent           value="0" />
+			<!-- <almost-transparent    value="0.1" /> -->
+			<!-- <quasi-transparent     value="0.2" /> -->
+			<!-- <semi-transparent      value="0.3" /> -->
+			<!-- <partially-transparent value="0.4" /> -->
+			<translucent           value="0.5" />
+			<!-- <partially-opaque      value="0.6" /> -->
+			<!-- <semi-opaque           value="0.7" /> -->
+			<!-- <quasi-opaque          value="0.8" /> -->
+			<!-- <almost-opaque         value="0.9" /> -->
+			<opaque                value="1" />
+		</opacity>
+		<border>
+			<size>
+				<slimmest value="1px" />
+				<!-- <slimmer  value="2px" /> -->
+				<!-- <slim     value="3px" /> -->
+				<!-- <thick    value="8px" /> -->
+				<!-- <thicker  value="10px" /> -->
+				<!-- <thickest value="20px" /> -->
+			</size>
+			<radius>
+				<sharpest value="2px" />
+				<!-- <sharper  value="3px" /> -->
+				<!-- <sharp    value="5px" /> -->
+				<!-- <dull     value="10px" /> -->
+				<!-- <duller   value="4rem" /> -->
+				<!-- <dullest  value="5rem" /> -->
+			</radius>
+		</border>
+		<transition>
+			<duration>
+				<fastest value="150ms"/>
+				<!-- <faster  value="200ms"/> -->
+				<!-- <fast    value="300ms"/> -->
+				<medium  value="500ms"/>
+				<slow    value="750ms"/>
+				<!-- <slower  value="1000ms"/> -->
+				<!-- <slowest value="10000ms"/> -->
+			</duration>
+			<ease>
+				<standard     value="@ease-in-out-cubic" />
+				<!-- <standard-in  value="@ease-in-quad" /> -->
+				<!-- <standard-out value="@ease-out-quad" /> -->
+				<!-- <alternate    value="@ease-in-out-back" /> -->
+
+				<!-- <linear       value="cubic-bezier(0, 0, 1, 1)" /> -->
+				<!-- <in           value="cubic-bezier(0.42, 0, 1, 1)" /> -->
+				<!-- <out          value="cubic-bezier(0, 0, 0.58, 1)" /> -->
+				<!-- <in-out       value="cubic-bezier(0.42, 0, 0.58, 1)" /> -->
+				<!-- <in-sine      value="cubic-bezier(0.47, 0, 0.745, 0.715)" /> -->
+				<!-- <out-sine     value="cubic-bezier(0.39, 0.575, 0.565, 1)" /> -->
+				<!-- <in-out-sine  value="cubic-bezier(0.445, 0.05, 0.55, 0.95)" /> -->
+				<!-- <in-quad      value="cubic-bezier(0.55, 0.085, 0.68, 0.53)" /> -->
+				<!-- <out-quad     value="cubic-bezier(0.25, 0.46, 0.45, 0.94)" /> -->
+				<!-- <in-out-quad  value="cubic-bezier(0.455, 0.03, 0.515, 0.955)" /> -->
+				<!-- <in-cubic     value="cubic-bezier(0.55, 0.055, 0.675, 0.19)" /> -->
+				<!-- <out-cubic    value="cubic-bezier(0.215, 0.61, 0.355, 1)" /> -->
+				<in-out-cubic value="cubic-bezier(0.645, 0.045, 0.355, 1)" />
+
+				<!-- <in-quart     value="cubic-bezier(0.895, 0.03, 0.685, 0.22)" /> -->
+				<!-- <out-quart    value="cubic-bezier(0.165, 0.84, 0.44, 1)" /> -->
+				<!-- <in-out-quart value="cubic-bezier(0.77, 0, 0.175, 1)" /> -->
+				<!-- <in-quint     value="cubic-bezier(0.755, 0.05, 0.855, 0.06)" /> -->
+				<!-- <out-quint    value="cubic-bezier(0.23, 1, 0.32, 1)" /> -->
+				<!-- <in-expo      value="cubic-bezier(0.95, 0.05, 0.795, 0.035)" /> -->
+				<!-- <out-expo     value="cubic-bezier(0.19, 1, 0.22, 1)" /> -->
+				<!-- <in-out-expo  value="cubic-bezier(1, 0, 0, 1)" /> -->
+
+				<!-- <in-circ      value="cubic-bezier(0.6, 0.04, 0.98, 0.335)" /> -->
+				<!-- <out-circ     value="cubic-bezier(0.075, 0.82, 0.165, 1)" /> -->
+				<!-- <in-out-circ  value="cubic-bezier(0.785, 0.135, 0.15, 0.86)" /> -->
+				<!-- <in-back      value="cubic-bezier(0.6, -0.28, 0.735, 0.045)" /> -->
+				<!-- <out-back     value="cubic-bezier(0.175, 0.885, 0.32, 1.275)" /> -->
+				<!-- <in-out-back  value="cubic-bezier(0.68, -0.55, 0.265, 1.55)" /> -->
+				<!-- <back-in      value="cubic-bezier(0.6, -0.28, 0.735, 0.045)" /> -->
+				<!-- <bounce-light value="cubic-bezier(0, 1.1, 1, 1.1)" /> -->
+			</ease>
+		</transition>
+	</theme>
+
+	<theme type="toolkit">
+		<colors>
+
+		</colors>
+		<spacing>
+
+		</spacing>
+	</theme>
+</themes>
+

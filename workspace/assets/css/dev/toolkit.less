@@ -1,26 +1,13 @@
 /*******************************
  * @author DeuxHuitHuit
  *****************************/
-//=========================
-// = IMPORTS
-//=========================
 
 @debug: true;
 @import (less) "../core/__core";
 @import (inline) "../lib/__lib.css";
-
 @import (less) "dev.less";
 
-@ui-bg-main: white;
-@ui-heading-color: black;
-
-@ui-groupe-title-color: @ui-heading-color;
-
-@ui-bg-items: fade(@ui-heading-color, 10%);
-@ui-font-family: Arial, helvetica, sans-serif;
-
-.ui-ctn {
+.site-theme {
+	@import (reference) "../theme/__vars";
 	@import (less) "../main";
 }
-
-
