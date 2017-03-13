@@ -11,37 +11,37 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <!-- MASTER -->
-<xsl:import href="variables.xsl" />
-<xsl:import href="../site-variables.xsl" />
+<xsl:import href="../../utilities/master/variables.xsl" />
+<xsl:import href="../../utilities/site-variables.xsl" />
 
-<xsl:import href="favicon.xsl" />
-<xsl:import href="css.xsl" />
-<xsl:import href="js-templates.xsl" />
+<xsl:import href="../../utilities/master/favicon.xsl" />
+<xsl:import href="../../utilities/master/css.xsl" />
+<xsl:import href="../../utilities/master/js-templates.xsl" />
 
 <!-- LIB -->
-<xsl:import href="../lib/element.xsl" />
-<xsl:import href="../lib/attr.xsl" />
-<xsl:import href="../lib/page-title.xsl" />
-<xsl:import href="../lib/master-title.xsl" />
-<xsl:import href="../lib/create-page-url.xsl" />
+<xsl:import href="../../utilities/lib/element.xsl" />
+<xsl:import href="../../utilities/lib/attr.xsl" />
+<xsl:import href="../../utilities/lib/page-title.xsl" />
+<xsl:import href="../../utilities/lib/master-title.xsl" />
+<xsl:import href="../../utilities/lib/create-page-url.xsl" />
 <xsl:import href="../../../extensions/datetime/utilities/datetime.xsl" />
 
-<xsl:import href="../lib/fx-url-creator.xsl" />
-<xsl:import href="../lib/ga.xsl" />
-<xsl:import href="../lib/ninja.xsl" />
-<xsl:import href="../lib/ie.xsl" />
-<xsl:import href="../lib/svg-icons.xsl" />
-<xsl:import href="../lib/svg-socials-icons.xsl" />
-<xsl:import href="../lib/prefetch.xsl" />
-<xsl:import href="../lib/iframe-copyright-288.xsl" />
-<xsl:import href="../lib/render-image.xsl" />
-<xsl:import href="../lib/button.xsl" />
-<xsl:import href="../lib/content.xsl" />
-<xsl:import href="../lib/heading.xsl" />
-<xsl:import href="../lib/text.xsl" />
-<xsl:import href="../lib/append-qs-value.xsl" />
+<xsl:import href="../../utilities/lib/fx-url-creator.xsl" />
+<xsl:import href="../../utilities/lib/ga.xsl" />
+<xsl:import href="../../utilities/lib/ninja.xsl" />
+<xsl:import href="../../utilities/lib/ie.xsl" />
+<xsl:import href="../../utilities/lib/svg-icons.xsl" />
+<xsl:import href="../../utilities/lib/svg-socials-icons.xsl" />
+<xsl:import href="../../utilities/lib/prefetch.xsl" />
+<xsl:import href="../../utilities/lib/iframe-copyright-288.xsl" />
+<xsl:import href="../../utilities/lib/render-image.xsl" />
+<xsl:import href="../../utilities/lib/button.xsl" />
+<xsl:import href="../../utilities/lib/content.xsl" />
+<xsl:import href="../../utilities/lib/heading.xsl" />
+<xsl:import href="../../utilities/lib/text.xsl" />
+<xsl:import href="../../utilities/lib/append-qs-value.xsl" />
 
-<xsl:import href="../recipes/recipes.xsl" />
+<xsl:import href="../../utilities/recipes/recipes.xsl" />
 
 <xsl:output method="html" 
 	omit-xml-declaration="yes"
