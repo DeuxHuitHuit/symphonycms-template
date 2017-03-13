@@ -28,6 +28,7 @@
 		<xsl:variable name="computed-attr">
 			<add class="{$url-language}" />
 			<add class="page-{$full-page-handle}" />
+			<add class="site-base-color" />
 			<add data-version="{$version}" />
 			<xsl:copy-of select="$body-style" />
 			<xsl:call-template name="body-attr" />
@@ -93,10 +94,10 @@
 				</xsl:call-template>
 				
 				<!-- BG TRANSITION -->
-				<div id="bg-transition" class="bg-color-white fixed fill z-index-max display-none"></div>
+				<div id="bg-transition" class="bg-color-white fixed fill z-index-max-minus-5 display-none"></div>
 				
 				<!-- load progress -->
-				<div id="load-progress"></div>
+				<div id="load-progress" class="z-index-max top left width-0 fixed"></div>
 				
 				<!-- Block user agent -->
 				<xsl:call-template name="block-user-agent-light">

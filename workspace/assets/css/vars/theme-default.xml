@@ -1,0 +1,33 @@
+
+<themes>
+	<theme type="default">
+		<colors>
+			<!-- <type name="social">
+				<twitter 		value="#55acee" />
+				<facebook 		value="#3B5998" />
+				<instagram 		value="#c6359b" />
+				<linkedin 		value="#0077B5" />
+				<snapchat 		value="#e5e200" />
+			</type> -->
+
+			<type name="symbolic">
+				<!-- <dark  value="@true-black" />
+				<light value="@true-white" /> -->
+			</type>
+
+			<type name="core-variables">
+				<page-load-bg-color      value="@true-black" />
+				<site-selection-bg-color value="@true-black" />
+				<site-selection-color    value="@true-white" />
+			</type>
+		</colors>
+	</theme>
+
+	<!-- <core-values>
+		<true-white>
+		<true-black/>
+		<true-red/>
+		<true-green/>
+		<true-blue/>
+	</core-values> -->
+</themes>

@@ -157,7 +157,7 @@ module.exports = function (grunt) {
 			'clean:bundle',
 			'concat:lessCore',
 			'concat:lessLib',
-			'concat:lessTheme',
+			'xmlbundle:site',
 			'less:lib',
 			'less:theme',
 			'ftps_boot',
@@ -177,6 +177,10 @@ module.exports = function (grunt) {
 			'css-dev'
 		]);
 		grunt.registerTask('build', [
+			'clean:bundle',
+			'concat:lessCore',
+			'concat:lessLib',
+			'xmlbundle:site',
 			'svninfo',
 			'buildnum',
 			'js',
