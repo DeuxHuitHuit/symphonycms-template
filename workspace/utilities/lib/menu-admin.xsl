@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<xsl:template name="menu-admin">
-		<xsl:if test="/data/events/login-info/@logged-in = 'true'">
-			<div id="menu-admin">
+<xsl:template name="menu-admin">
+	<xsl:param name="attr" />
+
+	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
+
+		<xsl:variable name="computed-attr">
+			<add id="menu-admin" />
+			<add class="fixed" />
+			<add class="z-index-max" />
+			<add class="top left" />
+			<add class="color-true-black" />
+			<xsl:copy-of select="$attr" />
+		</xsl:variable>
+		
+		<xsl:call-template name="element">
+			<xsl:with-param name="attr" select="$computed-attr"/>
+			<xsl:with-param name="content">
 				<span><xsl:value-of select="/data/events/login-info/name" /></span>
 				
 				<span><xsl:text> - </xsl:text></span>
@@ -58,7 +72,10 @@
 				<a data-action="full" href="?flush">Flush page</a>
 				
 				<a data-action="full" href="?flush=site">Flush site</a>
-			</div>
-		</xsl:if>
-	</xsl:template>
+
+			</xsl:with-param>
+		</xsl:call-template>
+	</xsl:if>
+</xsl:template>
+
 </xsl:stylesheet>

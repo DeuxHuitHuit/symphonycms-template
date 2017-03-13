@@ -1,27 +1,20 @@
 #load-progress {
-	position: fixed;
-	z-index: 999999;
-	top: 0;
-	left: 0;
-	width: 0%;
 	height: 3px;
-	background-color: @page-load-color;
-	visibility: collapse;
+	background-color: @page-load-bg-color;
 	opacity: 0;
 	
 	@load-duration: 1200ms;
 	@load-duration-fast: 600ms;
-	@transition: ~'all @{ease-standard} @{load-duration}';
+	@transition: ~'width @{ease-standard} @{load-duration}';
 	
 	#transition(none);
 	
 	&.start {
-		#transition(~'@{transition}, visibility 0ms linear @{load-duration}');
+		#transition(~'@{transition}');
 	}
 	
 	&.show {
-		#transition(~'@{transition}, visibility 0ms linear 0ms');
-		visibility: visible;
+		#transition(~'@{transition}');
 		opacity: 1;
 	}
 	
