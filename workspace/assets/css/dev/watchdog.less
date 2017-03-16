@@ -41,3 +41,7 @@ h1,h2,h3,h4,h5,h6 {
 		.WATCHDOG(~'H1 TO H6 CAN NOT BE NESTED IN H1 TO H6');
 	}
 }
+
+a:not(.block):not(.inline-block) > img[data-src-format] {
+	.WATCHDOG(~'IMG MAY NOT BE JIT CORRECTLY WITH A LINK NOT BLOCK OR INLINE-BLOCK AS CONTAINER');
+}
