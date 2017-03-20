@@ -51,7 +51,7 @@
 				<!-- element attr -->
 				<xsl:call-template name="attr">
 					<xsl:with-param name="attr" select="$computed-attr"/>
-					<xsl:with-param name="mode" select="$attr-mode" />
+					<xsl:with-param name="attr-mode" select="$attr-mode" />
 				</xsl:call-template>
 
 				<xsl:choose>
