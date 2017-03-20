@@ -196,10 +196,11 @@
 		</xsl:choose>
 	</xsl:template>
 
-	<xsl:template match="rem" mode="node-attributes-rec">
+	<xsl:template match="rem | del" mode="node-attributes-rec">
 		<xsl:param name="attrResult" />
 
 		<xsl:variable name="curNode" select="." />
+		<xsl:variable name="curNodeName" select="name()" />
 
 		<xsl:variable name="newAttrResult">
 			<root>
@@ -210,48 +211,50 @@
 					<xsl:choose>
 						<xsl:when test="count($curNode/@*[name() = $attr-name]) != 0">
 
-							<xsl:variable name="curAttr" select="$curNode/@*[name() = $attr-name]"/>
+							<xsl:if test="$curNodeName != 'del'">
+								<xsl:variable name="curAttr" select="$curNode/@*[name() = $attr-name]"/>
 
-							<!-- Detect single value -->
-							<xsl:choose>
-								<xsl:when test="starts-with($curAttr, $attr-string-start-delimiter) and 
-									substring($curAttr, string-length($curAttr)) = $attr-string-end-delimiter">
+								<!-- Detect single value -->
+								<xsl:choose>
+									<xsl:when test="starts-with($curAttr, $attr-string-start-delimiter) and 
+										substring($curAttr, string-length($curAttr)) = $attr-string-end-delimiter">
 
-									<xsl:variable name="stringRemove">
-										<xsl:call-template name="attr-string-transform">
-											<xsl:with-param name="value" select="$curAttr"/>
-										</xsl:call-template>
-									</xsl:variable>
+										<xsl:variable name="stringRemove">
+											<xsl:call-template name="attr-string-transform">
+												<xsl:with-param name="value" select="$curAttr"/>
+											</xsl:call-template>
+										</xsl:variable>
 
-									<!-- Create New Element -->
-									<xsl:element name="{$attr-name}">
+										<!-- Create New Element -->
+										<xsl:element name="{$attr-name}">
 
-										<!-- Pass Existing value and output if not present in the token of the remove node -->
-										<xsl:for-each select="v">
-											<xsl:variable name="curValue" select="."/>
+											<!-- Pass Existing value and output if not present in the token of the remove node -->
+											<xsl:for-each select="v">
+												<xsl:variable name="curValue" select="."/>
 
-											<xsl:if test="$stringRemove != $curValue">
-												<v><xsl:value-of select="$curValue" /></v>
-											</xsl:if>
-										</xsl:for-each>
-									</xsl:element>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:variable name="tokenRemove" select="str:tokenize($curAttr, ' ')"/>
+												<xsl:if test="$stringRemove != $curValue">
+													<v><xsl:value-of select="$curValue" /></v>
+												</xsl:if>
+											</xsl:for-each>
+										</xsl:element>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:variable name="tokenRemove" select="str:tokenize($curAttr, ' ')"/>
 
-									<!-- Create New Element -->
-									<xsl:element name="{$attr-name}">
+										<!-- Create New Element -->
+										<xsl:element name="{$attr-name}">
 
-										<!-- Pass Existing value and output if not present in the token of the remove node -->
-										<xsl:for-each select="v">
-											<xsl:variable name="curValue" select="./text()"/>
-											<xsl:if test="count($tokenRemove[text() = $curValue]) = 0">
-												<v><xsl:value-of select="$curValue" /></v>
-											</xsl:if>
-										</xsl:for-each>
-									</xsl:element>
-								</xsl:otherwise>
-							</xsl:choose>
+											<!-- Pass Existing value and output if not present in the token of the remove node -->
+											<xsl:for-each select="v">
+												<xsl:variable name="curValue" select="./text()"/>
+												<xsl:if test="count($tokenRemove[text() = $curValue]) = 0">
+													<v><xsl:value-of select="$curValue" /></v>
+												</xsl:if>
+											</xsl:for-each>
+										</xsl:element>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:if>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:copy-of select="." />
