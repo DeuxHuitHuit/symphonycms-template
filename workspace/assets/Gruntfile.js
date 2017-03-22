@@ -8,11 +8,10 @@ module.exports = function (grunt) {
 	var GRUNT_FILE = 'Gruntfile.js';
 	var BUILD_FILE = 'build.json';
 	var LESS_FILE = 'css/dev/grunt.less';
-
+	var PAGES_PATH = '../pages/*.xsl';
 	var DEV_LIB_BUNDLE_LESS_FILE = 'css/dev/lib.less';
 	var DEV_THEME_BUNDLE_LESS_FILE = 'css/dev/theme.less';
 
-	
 	var JSON_JS_FILE = grunt.file.readJSON('./js.json');
 	
 	var fixJsFilePath = function (f) {
@@ -56,7 +55,7 @@ module.exports = function (grunt) {
 			'<%= pkg.author.name %> (<%= pkg.author.url %>);\n' +
 			' * <%= pkg.license %> */'
 		},
-		
+
 		src: {
 			js: {
 				src: SRC_FILES,
@@ -96,7 +95,21 @@ module.exports = function (grunt) {
 			files: SRC_FILES.concat(GRUNT_FILE),
 			tasks: ['dev', 'css']
 		},
-		
+
+		xsltimportextractor: {
+			options: {
+				pagesPath: PAGES_PATH
+			}
+		},
+
+		cssopruner: {
+			compress: {
+				options: {
+					src: []
+				}
+			}
+		},
+
 		buildnum: {},
 		svninfo: {}
 	};
@@ -154,6 +167,8 @@ module.exports = function (grunt) {
 		grunt.registerTask('css', [
 			'clean:css',
 			'less:production',
+			'xsltimportextractor',
+			'cssoprunerconcatsrc',
 			'cssopruner',
 			'csso'
 		]);

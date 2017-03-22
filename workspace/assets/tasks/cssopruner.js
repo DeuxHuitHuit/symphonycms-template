@@ -32,17 +32,7 @@ module.exports = function cssopruner (grunt) {
 						'hr',
 						/^ui/
 					],
-					blacklist: ['www', 'version', 'xml'],
-					src: [
-						'../pages/*.xsl',
-						'../utilities/*.xsl',
-						'../utilities/**/*.xsl',
-						'js/com/*.js',
-						'js/modules/*.js',
-						'js/pages/*.js',
-						'js/transitions/*.js',
-						'js/utils/*.js'
-					]
+					blacklist: ['www', 'version', 'xml']
 				}
 			}
 		}
