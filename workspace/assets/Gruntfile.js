@@ -158,7 +158,6 @@ module.exports = function (grunt) {
 			'concat:lessCore',
 			'concat:lessLib',
 			'xmlbundle:site',
-			//'concat:lessTheme',
 			'less:lib',
 			'less:theme',
 			'ftps_boot',
@@ -182,10 +181,6 @@ module.exports = function (grunt) {
 			'concat:lessCore',
 			'concat:lessLib',
 			'xmlbundle:site',
-			//'concat:lessTheme',
-			'less:lib',
-			'less:theme',
-			
 			'svninfo',
 			'buildnum',
 			'js',
