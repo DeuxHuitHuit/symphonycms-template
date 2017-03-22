@@ -86,14 +86,19 @@ module.exports = function xsltimportextractor (grunt) {
 
 					finalFiles.push({src:fixedFilePath, level: level});
 
-					var xml = grunt.file.read(fixedFilePath);
+					if (grunt.file.exists(fixedFilePath)) {
+						var xml = grunt.file.read(fixedFilePath);
 
-					var xmlDoc = libxmljs.parseXmlString(xml);
-					var imports = xmlDoc.find('//xsl:import', {xsl: 'http://www.w3.org/1999/XSL/Transform'})
+						var xmlDoc = libxmljs.parseXmlString(xml);
+						var imports = xmlDoc.find('//xsl:import', {xsl: 'http://www.w3.org/1999/XSL/Transform'})
 
-					if (imports) {
-						imports.forEach(processImports);
+						if (imports) {
+							imports.forEach(processImports);
+						}
+					} else {
+						grunt.log.writeln('xsltimportextractor: File not found: ' + fixedFilePath);
 					}
+					
 					level -= 1;
 				}
 				basePath = oldBasePath;
