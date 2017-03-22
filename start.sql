@@ -730,13 +730,13 @@ INSERT INTO `sym_fields_image_upload` (`id`, `field_id`, `destination`, `validat
 
 INSERT INTO `sym_fields_multilingual_textbox` (`id`, `field_id`, `column_length`, `text_size`, `text_formatter`, `text_validator`, `text_length`, `text_cdata`, `text_handle`, `default_main_lang`, `required_languages`) VALUES
 (41, 2, 50, 'single', 'none', NULL, 70, 'no', 'yes', 'yes', 'all'),
-(42, 4, 75, 'small', 'none', NULL, 150, 'no', 'no', 'yes', 'all'),
+(42, 4, 75, 'small', 'none', NULL, 160, 'no', 'no', 'yes', 'all'),
 (43, 10, 75, 'single', 'none', NULL, 0, 'no', 'no', 'yes', 'all'),
 (46, 30, 50, 'single', 'none', NULL, 70, 'no', 'yes', 'yes', ''),
 (11, 14, 75, 'single', 'none', NULL, 0, 'no', 'yes', 'no', 'all'),
 (14, 17, 75, 'single', 'none', NULL, 0, 'no', 'yes', 'no', 'all'),
 (15, 19, 75, 'medium', 'markdown', NULL, 0, 'no', 'no', 'yes', ''),
-(47, 24, 75, 'small', 'none', NULL, 150, 'no', 'yes', 'no', 'all');
+(47, 24, 75, 'small', 'none', NULL, 160, 'no', 'yes', 'no', 'all');
 
 -- --------------------------------------------------------
 
