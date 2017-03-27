@@ -5,7 +5,7 @@ module.exports = function xsltimportextractor (grunt) {
 	
 	grunt.registerTask('xsltimportextractor', 'DESCRIPTION', function () {
 		var options = this.options();
-		var libxmljs = require("libxmljs");
+		var libxmljs = require('libxmljs');
 		var pages = grunt.file.expand(options.pagesPath);
 		var files = {};
 		var finalFiles = [];
@@ -27,7 +27,7 @@ module.exports = function xsltimportextractor (grunt) {
 				};
 
 				//Append files
-				var lastSlash = f.lastIndexOf("/");
+				var lastSlash = f.lastIndexOf('/');
 				
 				if (lastSlash !== -1) {
 					//Check Truncate
@@ -35,7 +35,7 @@ module.exports = function xsltimportextractor (grunt) {
 					if (basePath.length === 0) {
 						basePath += f.substring(0, lastSlash + 1);
 
-					} else if(f.startsWith("../")) {
+					} else if (f.startsWith('../')) {
 						var countRemove = 0;
 
 						f.split('/').forEach(function (ff) {
@@ -63,9 +63,9 @@ module.exports = function xsltimportextractor (grunt) {
 							});
 
 							//Fix ../ if not enought
-							while(x < countRemove) {
+							while (x < countRemove) {
 								newBasePath += '../';
-								x +=1;
+								x += 1;
 							}
 							basePath = newBasePath + f.substring(countRemove * 3, lastSlash + 1);
 						}
@@ -75,7 +75,7 @@ module.exports = function xsltimportextractor (grunt) {
 					}
 
 				} //else {
-					//Do nothing
+				//Do nothing
 				//}
 
 				var fixedFilePath = basePath + f.substring(lastSlash + 1);
@@ -84,13 +84,13 @@ module.exports = function xsltimportextractor (grunt) {
 					files[fixedFilePath] = fixedFilePath;
 					level += 1;
 
-					finalFiles.push({src:fixedFilePath, level: level});
+					finalFiles.push({src: fixedFilePath, level: level});
 
 					if (grunt.file.exists(fixedFilePath)) {
 						var xml = grunt.file.read(fixedFilePath);
 
 						var xmlDoc = libxmljs.parseXmlString(xml);
-						var imports = xmlDoc.find('//xsl:import', {xsl: 'http://www.w3.org/1999/XSL/Transform'})
+						var imports = xmlDoc.find('//xsl:import', {xsl: 'http://www.w3.org/1999/XSL/Transform'});
 
 						if (imports) {
 							imports.forEach(processImports);
