@@ -26,10 +26,9 @@
 				<xsl:if test="count(/data/params/use-build) != 0">
 					<xsl:choose>
 						<xsl:when test="$debug = true()">
-							<span class="debug">
-								<xsl:text>DEV CODE</xsl:text>
-								<a data-action="full" href="?use-build">
-									I want to test builds
+							<span>
+								<a data-action="full" href="?use-dev">
+									Use build
 								</a>
 							</span>
 						</xsl:when>
@@ -47,6 +46,14 @@
 									</xsl:choose>
 								</strong>
 							</span>
+
+							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+								<span class="debug">
+									<a data-action="full" href="?use-dev">
+										Version dev
+									</a>
+								</span>
+							</xsl:if>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:if>

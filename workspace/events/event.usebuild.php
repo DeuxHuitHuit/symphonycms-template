@@ -7,7 +7,7 @@ class eventUsebuild extends Event
 	public static function about()
 	{
 		return array(
-			'name' => 'Use build cookie',
+			'name' => 'Use dev cookie',
 			'author' => array(
 				'name' => 'Deux Huit Huit',
 				'website' => 'https://deuxhuithuit.com',
@@ -15,7 +15,7 @@ class eventUsebuild extends Event
 			),
 			'version' => '1.0.0',
 			'release-date' => '2016-06-22',
-			'trigger-condition' => '?use-build or an already valid use-build cookie',
+			'trigger-condition' => '?use-dev or an already valid use-dev cookie',
 			'recognised-fields' => array(
 				array('use-build', true),
 			)
@@ -34,7 +34,7 @@ class eventUsebuild extends Event
 
 	public static function documentation()
 	{
-		return new XMLElement('p', 'This is an event that will look for the ?use-build query string or the use-build cookie. If found, it will set the cookie for this request and output proper data into the xml');
+		return new XMLElement('p', 'This is an event that will look for the ?use-dev query string or the use-dev cookie. If found, it will set the cookie for this request and output proper data into the xml');
 	}
 
 	protected function __trigger()
@@ -42,15 +42,22 @@ class eventUsebuild extends Event
 		if (!class_exists('Frontend', false)) {
 			return false;
 		}
-		$isQuery = isset($_GET['use-build']);
-		$cookieName = __SYM_COOKIE_PREFIX__ . 'use-build';
+		$isQuery = isset($_GET['use-dev']);
+		$cookieName = __SYM_COOKIE_PREFIX__ . 'use-dev';
 		$isCookie = isset($_COOKIE[$cookieName]);
+		$cookieTime = 2123798400;
 
 		if ($isQuery) {
+			if ($_GET['use-dev'] === 'no') {
+				$cookieTime = time() - 3600;
+				$isQuery = false;
+				$isCookie = false;
+			}
+
 			setcookie(
 				$cookieName,
 				'1',
-				2123798400,
+				$cookieTime,
 				__SYM_COOKIE_PATH__,
 				Session::getDomain(),
 				defined(__SECURE__) && __SECURE__,
@@ -58,7 +65,7 @@ class eventUsebuild extends Event
 			);
 		}
 
-		Frontend::Page()->_param['use-build'] =  $isQuery || $isCookie ? 'yes' : 'no';
+		Frontend::Page()->_param['use-build'] =  $isQuery || $isCookie ? 'no' : 'yes';
 		return $result;
 
 	}
