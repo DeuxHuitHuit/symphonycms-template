@@ -10,7 +10,7 @@
 <!-- Numero de build, si disponible et valide -->
 <xsl:variable name="build">
 	<xsl:if test="
-		/data/params/use-build = 'yes' and
+		/data/params/use-dev != 'yes' and
 		string-length(/data/build/last) != 0">
 		<xsl:value-of select="/data/build/last" />
 	</xsl:if>
@@ -35,7 +35,7 @@
 	count(/data/params/url-no-debug) = 0 and
 	count(/data/params/url-nodebug) = 0 and
 	count(/data/params/url-ndbg) = 0 and
-	(count(/data/params/use-build) = 0 or /data/params/use-build != 'yes')" />
+	(count(/data/params/use-dev) = 0 or /data/params/use-dev = 'yes')" />
 
 <!-- Lang flag For multi langue -->
 <xsl:variable name="multi-langues">
