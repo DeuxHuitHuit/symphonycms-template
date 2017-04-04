@@ -361,6 +361,7 @@
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'0'" />
 		<xsl:param name="image" select="image" />
+		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="attr" />
