@@ -4,31 +4,39 @@
 	.flex-center@{suffix}             {#flex-justify-content(center); #flex-align-items(center);}
 
 	// FLEX FLOW
-	.flex-flow-row-wrap@{suffix}      {#flex-direction(row); #flex-wrap(wrap);}
-	.flex-flow-row-nowrap@{suffix}    {#flex-direction(row); #flex-wrap(nowrap);}
+	.flex-flow-row-wrap@{suffix}      {#flex-direction(row);    #flex-wrap(wrap);}
+	.flex-flow-row-nowrap@{suffix}    {#flex-direction(row);    #flex-wrap(nowrap);}
 	.flex-flow-column-wrap@{suffix}   {#flex-direction(column); #flex-wrap(wrap);}
 	.flex-flow-column-nowrap@{suffix} {#flex-direction(column); #flex-wrap(nowrap);}
 
-	// FLEX-ALIGN-ITEMS
-	.flex-stretch@{suffix}, .align-items-stretch@{suffix}                         {#flex-align-items(stretch);}
-	.flex-align-items-start@{suffix}, .align-items-start@{suffix}                 {#flex-align-items(flex-start);}
-	.flex-align-items-center@{suffix}, .align-items-center@{suffix}               {#flex-align-items(center);}
-	.flex-align-items-end@{suffix}, .align-items-end@{suffix}                     {#flex-align-items(flex-end);}
-	.flex-align-items-baseline@{suffix}, .align-items-baseline@{suffix}           {#flex-align-items(baseline);}
+	//FLEX-ALIGN CONTENT
+	.flex-align-content-stretch@{suffix}, .align-content-stretch@{suffix}         {#flex-align-content(stretch);}
+	.flex-align-content-start@{suffix},   .align-content-start@{suffix}           {#flex-align-content(flex-start);}
+	.flex-align-content-center@{suffix},  .align-content-center@{suffix}          {#flex-align-content(center);}
+	.flex-align-content-end@{suffix},     .align-content-end@{suffix}             {#flex-align-content(flex-end);}
+	.flex-align-content-baseline@{suffix},.align-content-baseline@{suffix}        {#flex-align-content(baseline);}
 
-	.flex-align-self-stretch@{suffix}, .align-self-stretch@{suffix}               {#flex-align-self(stretch);}
-	.flex-align-self-start@{suffix}, .align-self-start@{suffix}                   {#flex-align-self(flex-start);}
-	.flex-align-self-center@{suffix}, .align-self-center@{suffix}                 {#flex-align-self(center);}
-	.flex-align-self-end@{suffix}, .align-self-end@{suffix}                       {#flex-align-self(flex-end);}
-	.flex-align-self-baseline@{suffix}, .align-self-baseline@{suffix}             {#flex-align-self(baseline);}
+	// FLEX-ALIGN-ITEMS
+	.flex-stretch@{suffix},               .align-items-stretch@{suffix}           {#flex-align-items(stretch);}
+	.flex-align-items-start@{suffix},     .align-items-start@{suffix}             {#flex-align-items(flex-start);}
+	.flex-align-items-center@{suffix},    .align-items-center@{suffix}            {#flex-align-items(center);}
+	.flex-align-items-end@{suffix},       .align-items-end@{suffix}               {#flex-align-items(flex-end);}
+	.flex-align-items-baseline@{suffix},  .align-items-baseline@{suffix}          {#flex-align-items(baseline);}
+
+	// FLEX ALIGN SELF
+	.flex-align-self-stretch@{suffix},    .align-self-stretch@{suffix}            {#flex-align-self(stretch);}
+	.flex-align-self-start@{suffix},      .align-self-start@{suffix}              {#flex-align-self(flex-start);}
+	.flex-align-self-center@{suffix},     .align-self-center@{suffix}             {#flex-align-self(center);}
+	.flex-align-self-end@{suffix},        .align-self-end@{suffix}                {#flex-align-self(flex-end);}
+	.flex-align-self-baseline@{suffix},   .align-self-baseline@{suffix}           {#flex-align-self(baseline);}
 
 	// FLEX-JUSTIFY-CONTENT
-	.flex-justify-start@{suffix}, .justify-content-start@{suffix}                 {#flex-justify-content(flex-start);}
-	.flex-justify-center@{suffix}, .justify-content-center@{suffix}               {#flex-justify-content(center);}
-	.flex-justify-end@{suffix}, .justify-content-end@{suffix}                     {#flex-justify-content(flex-end);}
-	.flex-justify-space-between@{suffix}, .justify-content-space-between@{suffix} {#flex-justify-content(space-between); }
-	.flex-justify-space-around@{suffix}, .justify-content-space-around@{suffix}   {#flex-justify-content(space-around);  }
+	.flex-justify-start@{suffix},         .justify-content-start@{suffix}         {#flex-justify-content(flex-start);}
+	.flex-justify-center@{suffix},        .justify-content-center@{suffix}        {#flex-justify-content(center);}
+	.flex-justify-end@{suffix},           .justify-content-end@{suffix}           {#flex-justify-content(flex-end);}
+	.flex-justify-space-between@{suffix}, .justify-content-space-between@{suffix} {#flex-justify-content(space-between);}
+	.flex-justify-space-around@{suffix},  .justify-content-space-around@{suffix}  {#flex-justify-content(space-around);}
 	// FLEX-WRAP
-	.flex-wrap@{suffix} 		{#flex-wrap(wrap);}
-	.flex-nowrap@{suffix} 	{#flex-wrap(nowrap);}
+	.flex-wrap@{suffix}         {#flex-wrap(wrap);}
+	.flex-nowrap@{suffix}       {#flex-wrap(nowrap);}
 }
