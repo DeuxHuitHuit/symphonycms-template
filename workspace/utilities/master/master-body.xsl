@@ -28,6 +28,7 @@
 		<xsl:variable name="computed-attr">
 			<add class="{$url-language}" />
 			<add class="page-{$full-page-handle}" />
+			<add class="site-base-color" />
 			<add data-version="{$version}" />
 			<xsl:copy-of select="$body-style" />
 			<xsl:call-template name="body-attr" />
