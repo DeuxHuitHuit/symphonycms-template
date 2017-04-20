@@ -1,5 +1,9 @@
 #### CUSTOM 
 <IfModule mod_rewrite.c>
+    ## force TLS
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=307,L]
+    
     ### ASSETS
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
