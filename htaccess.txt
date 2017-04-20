@@ -4,6 +4,19 @@
     RewriteCond %{SERVER_PORT} !^443$
     RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=307,L]
     
+    ### TLS ENV
+    RewriteCond %{SERVER_PORT} ^443$
+    RewriteRule .* - [E=TLS:1]
+    
+    ### no *
+    RewriteRule ^[*]$ https://%{HTTP_HOST}/ [L,R=301]
+    RewriteRule ^(.*)\/[*]\/?$ https://%{HTTP_HOST}/$1/ [L,R=301]
+    
+    ### No direct PHP access
+    RewriteCond %{IS_SUBREQ} false
+    RewriteCond %{THE_REQUEST} .+\.php[?\s].*
+    RewriteRule .+\.php - [F,NS]
+    
     ### ASSETS
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
