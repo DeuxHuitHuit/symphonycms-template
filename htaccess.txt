@@ -7,6 +7,9 @@
     
     ## Block json config
     RewriteRule ^workspace\/assets\/(.+)\.json - [F,L]
+    
+    ## Allow .well-known folder
+    RewriteRule ^.well-known - [S=25,L]
 </IfModule>
 
 ### Security
