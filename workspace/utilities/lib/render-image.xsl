@@ -19,7 +19,7 @@
 		<xsl:variable name="computed-attr">
 			<xsl:choose>
 				<!-- Svg File -->
-				<xsl:when test="exslt:object-type($image) = 'node-set' and contains($image/@type, 'svg')">
+				<xsl:when test="exslt:object-type($image) = 'node-set' and (contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff'))">
 
 					<add src="/workspace{$image/@path}/{$image/filename}" />
 				</xsl:when>
@@ -241,7 +241,7 @@
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
 			<xsl:choose>
-				<xsl:when test="exslt:object-type($image) = 'node-set' and contains($image/@type, 'svg')">
+				<xsl:when test="exslt:object-type($image) = 'node-set' and (contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff'))">
 					<xsl:value-of select="concat('/workspace', $image/@path, '/', $image/filename)" />
 				</xsl:when>
 				<xsl:otherwise>
