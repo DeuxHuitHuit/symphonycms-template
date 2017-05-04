@@ -42,7 +42,16 @@ module.exports = function ftps_deploy (grunt) {
 					],
 					dest: FTP_FILE.default.path + 'workspace/assets/'
 				}]
-			}
+			},
+			file: {
+				files: [{
+					cwd: grunt.option('folder'),
+					src: [
+						grunt.option('file')
+					],
+					dest: FTP_FILE.default.path
+				}]
+			},
 		}
 	});
 
@@ -58,4 +67,7 @@ module.exports = function ftps_deploy (grunt) {
 
 	// push
 	grunt.registerTask('push', ['ftps_boot', 'ftps_deploy:build', 'ftps_cleanup']);
+	
+	// uploadfile
+	grunt.registerTask('uploadfile', ['ftps_boot', 'ftps_deploy:file', 'ftps_cleanup']);
 };

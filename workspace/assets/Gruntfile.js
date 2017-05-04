@@ -194,7 +194,8 @@ module.exports = function (grunt) {
 		require('time-grunt')(grunt);
 		var jitLoader = require('jit-grunt')(grunt, {
 			ftps_boot: 'tasks/ftps_deploy.js',
-			push: 'tasks/ftps_deploy.js'
+			push: 'tasks/ftps_deploy.js',
+			uploadfile: 'tasks/ftps_deploy.js',
 		});
 		jitLoader({
 			customTasksDir: 'tasks'
