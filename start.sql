@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_1` (
   `entry_id` int(11) unsigned NOT NULL,
   `value` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_2` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_4` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_9` (
   `entry_id` int(11) unsigned NOT NULL,
   `value` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
@@ -249,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_10` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_14` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -365,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_17` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -390,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_18` (
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle` (`handle`),
   KEY `page_id` (`page_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
@@ -417,7 +417,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_19` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -529,7 +529,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_24` (
   `value_formatted-fr` text COLLATE utf8_unicode_ci,
   `word_count-fr` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `handle-en` (`handle-en`),
   KEY `handle-fr` (`handle-fr`),
   KEY `handle` (`handle`),
@@ -571,7 +571,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_26` (
   `entry_id` int(11) unsigned NOT NULL,
   `value` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
@@ -606,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_28` (
   `entry_id` int(11) unsigned NOT NULL,
   `value` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`)
+  UNIQUE KEY `entry_id` (`entry_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
@@ -620,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_29` (
   `entry_id` int(11) unsigned NOT NULL,
   `value` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`),
+  UNIQUE KEY `entry_id` (`entry_id`),
   KEY `value` (`value`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
