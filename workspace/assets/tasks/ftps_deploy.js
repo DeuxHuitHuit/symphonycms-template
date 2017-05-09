@@ -2,12 +2,18 @@
 
 module.exports = function ftps_deploy (grunt) {
 	var stripJsonComments = require('strip-json-comments');
+	var path = require('path');
 	
 	var FTP_FILE = JSON.parse(stripJsonComments(grunt.file.read('../../ftpsync.settings')));
 	if (!/\/$/.test(FTP_FILE.default.path)) {
 		FTP_FILE.default.path += '/';
 	}
 	var FTP_PASS = '.ftppass';
+	
+	var relativePath = !!grunt.option('folder') && !!grunt.option('filepath') &&
+		path.relative(grunt.option('folder'), grunt.option('filepath')).replace(/\\/g, '/');
+	var relativeFile = !!relativePath && grunt.option('filename') &&
+		path.join(relativePath, grunt.option('filename')).replace(/\\/g, '/');
 	
 	grunt.gruntLoad('ftps-deploy');
 	grunt.config.merge({
@@ -45,13 +51,13 @@ module.exports = function ftps_deploy (grunt) {
 			},
 			file: {
 				files: [{
-					cwd: grunt.option('folder'),
+					cwd: grunt.option('filepath'),
 					src: [
-						grunt.option('file')
+						grunt.option('filename')
 					],
-					dest: FTP_FILE.default.path
+					dest: FTP_FILE.default.path + relativePath
 				}]
-			},
+			}
 		}
 	});
 
