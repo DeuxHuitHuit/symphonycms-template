@@ -34,6 +34,9 @@ Art director / Directeur artistique
 Frédéric Lord
 Interface designer / Designer d'interface
 
+Julien Baveye
+Graphical designer / Designer graphique
+
 Nicolas Brassard-Ferron
 Web Software Lead / Directeur du développement web
 
@@ -63,6 +66,9 @@ Project manager / Chargée de compte
 
 David Mercier
 Project manager / Chargé de compte
+
+Nada Hatem
+Project manager / Chargé de projet
 
 Jésabel St-Jean
 Coordinator / Coordonatrice
