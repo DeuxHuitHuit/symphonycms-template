@@ -35,7 +35,7 @@ Frédéric Lord
 Interface designer / Designer d'interface
 
 Julien Baveye
-Graphical designer / Designer graphique
+Graphic designer / Designer graphique
 
 Nicolas Brassard-Ferron
 Web Software Lead / Directeur du développement web
