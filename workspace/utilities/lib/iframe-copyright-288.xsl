@@ -21,7 +21,7 @@
 		<xsl:variable name="url">
 			<xsl:choose>
 				<xsl:when test="$dev = true()">
-					<xsl:text>http://watermark.288dev.com</xsl:text>
+					<xsl:text>https://watermark.288dev.com</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text>https://watermark.deuxhuithuit.com</xsl:text>
