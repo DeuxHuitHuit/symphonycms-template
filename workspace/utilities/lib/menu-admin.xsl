@@ -5,11 +5,11 @@
 		<xsl:if test="/data/events/login-info/@logged-in = 'true'">
 			<div id="menu-admin">
 				<span><xsl:value-of select="/data/events/login-info/name" /></span>
-				
+
 				<span><xsl:text> - </xsl:text></span>
-				
+
 				<a data-action="full" href="/symphony/">Symphony</a>
-				
+
 				<xsl:if test="/data/events/login-info/@user-type = 'developer'">
 					<a data-action="full">
 						<xsl:attribute name="href">
@@ -26,11 +26,13 @@
 				<xsl:if test="count(/data/params/use-build) != 0">
 					<xsl:choose>
 						<xsl:when test="$debug = true()">
-							<span>
-								<a data-action="full" href="?use-dev">
-									Use build
-								</a>
-							</span>
+							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+								<span class="debug">
+									<a data-action="full" href="?use-dev=no">
+										<xsl:text>Use build</xsl:text>
+									</a>
+								</span>
+							</xsl:if>
 						</xsl:when>
 						<xsl:otherwise>
 							<span class="build">
@@ -50,20 +52,20 @@
 							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
 								<span class="debug">
 									<a data-action="full" href="?use-dev">
-										Version dev
+										<xsl:text>Version dev</xsl:text>
 									</a>
 								</span>
 							</xsl:if>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:if>
-				
+
 				<a data-action="full" href="/symphony/logout/">Déconnexion</a>
-				
+
 				<span class="cache"><xsl:text> Cache: </xsl:text></span>
-				
+
 				<a data-action="full" href="?flush">Flush page</a>
-				
+
 				<a data-action="full" href="?flush=site">Flush site</a>
 			</div>
 		</xsl:if>

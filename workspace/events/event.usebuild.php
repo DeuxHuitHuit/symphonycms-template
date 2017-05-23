@@ -46,6 +46,13 @@ class eventUsebuild extends Event
 		$cookieName = __SYM_COOKIE_PREFIX__ . 'use-dev';
 		$isCookie = isset($_COOKIE[$cookieName]);
 		$cookieTime = 2123798400;
+		$domain = Session::getDomain();
+		$explodedDomain = explode('.', $domain);
+
+		if (count($explodedDomain) > 2) {
+			$domain = $explodedDomain[count($explodedDomain) - 2];
+			$domain .= '.'.$explodedDomain[count($explodedDomain) - 1];
+		}
 
 		if ($isQuery) {
 			if ($_GET['use-dev'] === 'no') {
@@ -59,7 +66,7 @@ class eventUsebuild extends Event
 				'1',
 				$cookieTime,
 				__SYM_COOKIE_PATH__,
-				Session::getDomain(),
+				$domain,
 				defined(__SECURE__) && __SECURE__,
 				true
 			);
