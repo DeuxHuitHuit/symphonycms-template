@@ -45,3 +45,7 @@ h1,h2,h3,h4,h5,h6 {
 a:not(.block):not(.inline-block) > img[data-src-format] {
 	.WATCHDOG(~'IMG MAY NOT BE JIT CORRECTLY WITH A LINK NOT BLOCK OR INLINE-BLOCK AS CONTAINER');
 }
+
+.flexbox.flex-center.margin-horizontal-auto {
+	.WATCHDOG(~'flexbox + flex-center + margin-horizontal-auto NOT WORKING ON IE 11');
+}
