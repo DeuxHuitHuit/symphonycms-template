@@ -32,7 +32,6 @@
 <xsl:import href="../../utilities/lib/ie.xsl" />
 <xsl:import href="../../utilities/lib/svg-icons.xsl" />
 <xsl:import href="../../utilities/lib/svg-socials-icons.xsl" />
-<xsl:import href="../../utilities/lib/prefetch.xsl" />
 <xsl:import href="../../utilities/lib/iframe-copyright-288.xsl" />
 <xsl:import href="../../utilities/lib/render-image.xsl" />
 <xsl:import href="../../utilities/lib/button.xsl" />

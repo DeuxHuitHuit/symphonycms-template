@@ -3,7 +3,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:import href="../lib/page-title.xsl" />
-	<xsl:import href="../lib/prefetch.xsl" />
 	<xsl:import href="../lib/master-title.xsl" />
 	<xsl:import href="../lib/master-share-metas.xsl" />
 	<xsl:import href="../lib/master-canonical-url-meta.xsl" />
@@ -34,9 +33,6 @@
 			
 			<!-- Theme metas -->
 			<xsl:call-template name="master-theme-metas" />
-			
-			<!-- Dns prefetch -->
-			<xsl:call-template name="dns-prefetch" />
 			
 			<!-- Page Meta Alternate languages Link -->
 			<xsl:call-template name="page-metas-alt-link" />
