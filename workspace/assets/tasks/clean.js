@@ -31,6 +31,12 @@ module.exports = function clean (grunt) {
 					'<%= src.css.themeLess %>',
 					'<%= src.css.themeCss %>'
 				]
+			},
+			theme: {
+				src: [
+					'css/theme/__vars*.less',
+					'css/theme/__theme*.less',
+				]
 			}
 		}
 	});
