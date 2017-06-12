@@ -166,7 +166,8 @@ module.exports = function cssopruner (grunt) {
 		var processSelectorsResults = {
 			DIC: 'dictionary',
 			WL: 'whitelist',
-			NA: 'not found'
+			NA: 'not found',
+			NUM: 'number'
 		};
 
 		var processSelectors = function (ast, selectors) {
@@ -181,7 +182,11 @@ module.exports = function cssopruner (grunt) {
 						memo[word] = dictionary.has(word) ?
 							processSelectorsResults.DIC : (
 								wordIsWhiteListed(word) ?
-								processSelectorsResults.WL : processSelectorsResults.NA
+								processSelectorsResults.WL : (
+									isNaN(Number(word)) ?
+										processSelectorsResults.NA :
+										processSelectorsResults.NUM
+								)
 						);
 					}
 					return memo;
