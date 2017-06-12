@@ -18,7 +18,7 @@ module.exports = function concat (grunt) {
 					'js/core/framework.min.js',
 					'js/<%= pkg.name %>.min.js'
 				],
-				dest: '<%= concat.libs.src[concat.libs.src.length - 1] %>',
+				dest: 'js/<%= pkg.name %>.min.js',
 				options: {
 					process: false
 				}

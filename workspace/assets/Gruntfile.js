@@ -148,7 +148,8 @@ module.exports = function (grunt) {
 			'concat:sources',
 			'uglify',
 			'curl',
-			'concat:libs'
+			'concat:libs',
+			'optimize-js'
 		]);
 		grunt.registerTask('css-dev', [
 			'csslint'

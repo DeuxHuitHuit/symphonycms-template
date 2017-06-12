@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function uflify (grunt) {
+module.exports = function uglify (grunt) {
 	grunt.gruntContribLoad(grunt.task.current.name);
 	grunt.config.merge({
 		uglify: {
@@ -14,7 +14,7 @@ module.exports = function uflify (grunt) {
 			options: {
 				banner: '<%= meta.banner %>',
 				report: 'gzip',
-				sourceMap: true,
+				sourceMap: false,
 				sourceMapName: 'js/<%= pkg.name %>.min.js.map',
 				mangle: true,
 				preserveComments: 'some',
