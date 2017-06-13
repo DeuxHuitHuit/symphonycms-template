@@ -7,13 +7,13 @@ module.exports = function jshint (grunt) {
 			options: {
 				ieCompat: false,
 				strictUnits: true,
-				report: true //'gzip'
+				report: true
 			},
 			production: {
 				options: {
-					/*sourceMap: true,
+					sourceMap: false,
 					sourceMapFilename: 'css/<%= pkg.name %>.css.map',
-					sourceMappingURL: '<%= pkg.name %>.css.map'*/
+					sourceMappingURL: '<%= pkg.name %>.css.map'
 				},
 				files: {
 					'css/<%= pkg.name %>.css': '<%= src.css.main %>'
