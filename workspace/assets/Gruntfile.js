@@ -178,7 +178,7 @@ module.exports = function (grunt) {
 			'css-dev'
 		]);
 		grunt.registerTask('build', [
-			'clean:bundle',
+			'clean:bundleLess',
 			'concat:lessCore',
 			'concat:lessLib',
 			'xmlbundle:site',
