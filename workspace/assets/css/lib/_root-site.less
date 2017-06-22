@@ -1,0 +1,40 @@
+/*******************************
+ * @author DeuxHuitHuit
+ *****************************/
+html {
+	min-height: 100%;
+	height: 100%;
+	overflow: visible;
+
+	&.no-scroll {
+		overflow: hidden;
+		
+		body {
+			overflow-y: hidden;
+		}
+	}
+	
+	&.block-scroll {
+		height: 100%;
+		
+		body {
+			height: 100%;
+		}
+		
+		#site {
+			height: 100%;
+			overflow: hidden;
+		}
+	}
+}
+
+body {
+	-webkit-font-feature-settings: "hist";
+	min-height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#site {
+	position: relative;
+}
