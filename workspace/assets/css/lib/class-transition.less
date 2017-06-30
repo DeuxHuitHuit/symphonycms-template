@@ -4,12 +4,20 @@
 .transition-bg-color-color        {#transition-property    (~'background-color, color');}
 .transition-bg-color-opacity      {#transition-property    (~'background-color, opacity');}
 .transition-bg-color-visibility   {#transition-property    (~'background-color, visiblity');}
+.transition-bg-color-border-color {#transition-property    (~'background-color, border-color');}
+.transition-bg-color-bottom       {#transition-property    (~'background-color, bottom');}
 .transition-bottom                {#transition-property    (~'bottom');}
 .transition-border-color          {#transition-property    (~'border-color');}
+.transition-border-color-opacity  {#transition-property    (~'border-color, opacity');}
+.transition-border-color-color    {#transition-property    (~'border-color, color');}
 .transition-color                 {#transition-property    (~'color');}
 .transition-color-border-color    {#transition-property    (~'color, border-color');}
 .transition-color-opacity         {#transition-property    (~'color, opacity');}
 .transition-color-visibility      {#transition-property    (~'color, visibility');}
+.transition-flex                  {#transition-property    (~'flex');}
+.transition-flex-grow             {#transition-property    (~'flex-grow');}
+.transition-flex-shrink           {#transition-property    (~'flex-shrink');}
+.transition-flex-basis            {#transition-property    (~'flex-basis');}
 .transition-height                {#transition-property    (~'height');}
 .transition-height-visibility     {#transition-property    (~'height, visibility');}
 .transition-left                  {#transition-property    (~'left');}
@@ -24,16 +32,15 @@
 .transition-right                 {#transition-property    (~'right');}
 .transition-top                   {#transition-property    (~'top');}
 .transition-transform             {#cb-transition-property (~'transform');}
-.transition-transform-font        {#cb-transition-property (~'transform, font');}
+
+.transition-transform-font        {#cb-transition-property (~'transform, font');} //?
+
 .transition-transform-opacity     {#cb-transition-property (~'transform, opacity');}
 .transition-transform-visibility  {#cb-transition-property (~'transform, visibility');}
+.transition-visibility            {#transition-property    (~'visibility');}
 .transition-width                 {#transition-property    (~'width');}
 .transition-width-visiblity       {#transition-property    (~'width, visibility');}
-.transition-visibility            {#transition-property    (~'visibility');}
-.transition-flex                  {#transition-property    (~'flex');}
-.transition-flex-grow             {#transition-property    (~'flex-grow');}
-.transition-flex-shrink           {#transition-property    (~'flex-shrink');}
-.transition-flex-basis            {#transition-property    (~'flex-basis');}
+
 // DURATIONS
 .transition-duration-0, .transition-duration-none {#transition-duration(0ms);}
 .transition-duration-0-on-hover, .transition-duration-none-on-hover {#hover({#transition-duration(0ms)});}
