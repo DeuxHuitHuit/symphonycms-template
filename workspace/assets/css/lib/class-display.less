@@ -23,6 +23,12 @@
 	.flexbox-inline-when-selected@{suffix}.is-selected {#flexbox-inline();}
 }
 
+.display-none-when-touch {
+	html.touch & {
+		display: none;
+	}
+}
+
 // From http://a11yproject.com/posts/how-to-hide-content/
 .visually-hidden {
 	position: absolute !important;
