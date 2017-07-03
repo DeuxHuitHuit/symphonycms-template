@@ -84,6 +84,7 @@ Instagram: http://instagram.com/deuxhuithuit
 Medium: https://medium.com/@DeuxHuitHuit
 Linkedin: https://www.linkedin.com/company/deux-huit-huit
 Paypal: https://paypal.me/DeuxHuitHuit
+npm: https://www.npmjs.com/org/deuxhuithuit
 
 Montréal, Québec, Canada.
 
