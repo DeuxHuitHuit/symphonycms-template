@@ -29,7 +29,7 @@
 
 			<add dev-component="site-header-logo-link" />
 			
-			<add data-ga-cat="menu-nav" data-gat-label="logo" />
+			<add data-ga-cat="menu-nav" data-ga-label="logo" />
 		</xsl:variable>
 
 		<xsl:variable name="computed-site-name-attr">
