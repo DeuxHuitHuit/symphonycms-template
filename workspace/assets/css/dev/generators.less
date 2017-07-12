@@ -78,12 +78,14 @@
 	#generate-width-class(@suffix, ~'max-width', ~'max-width', 	@name, @value);
 }
 
+// COLOR GENERATOR
 #generate-color-class(@suffix, @color-name, @color, @name, @property) {
 	.@{name}-@{color-name}@{suffix}               {@{property}: @color;}
 	.@{name}-@{color-name}-on-hover@{suffix}      {#hover({@{property}: @color;});}
+	.@{name}-@{color-name}-on-focus@{suffix}      {#focus({@{property}: @color;});}
 	.@{name}-@{color-name}-when-selected@{suffix} {&.is-selected {@{property}: @color;}}
 }
-// COLOR GENERATOR
+
 #generate-color-class(@suffix, @color-name, @color) {
 	#generate-color-class(@suffix, @color-name, @color, ~'color',        ~'color');
 	#generate-color-class(@suffix, @color-name, @color, ~'fill',         ~'fill');
