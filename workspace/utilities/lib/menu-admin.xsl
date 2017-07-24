@@ -76,12 +76,11 @@
 
 				<a data-action="full" href="/symphony/logout/">Déconnexion</a>
 
-				<span class="cache"><xsl:text> Cache: </xsl:text></span>
-
-				<a data-action="full" href="?flush">Flush page</a>
-
-				<a data-action="full" href="?flush=site">Flush site</a>
-
+				<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+					<span class="cache"><xsl:text> Cache: </xsl:text></span>
+					<a data-action="full" href="?flush">Flush page</a>
+					<a data-action="full" href="?flush=site">Flush site</a>
+				</xsl:if>
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:if>
