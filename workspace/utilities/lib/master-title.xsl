@@ -38,12 +38,10 @@
 			<xsl:call-template name="page-title" />
 		</xsl:variable>
 		
-		<xsl:if test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
-			<xsl:value-of select="$cur-page-title"/>
-			<xsl:text> - </xsl:text>
-		</xsl:if>
-		
 		<xsl:choose>
+			<xsl:when test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
+				<xsl:value-of select="$cur-page-title"/>
+			</xsl:when>
 			<xsl:when test="string-length($site-name) != 0">
 				<xsl:value-of select="$site-name" />
 			</xsl:when>
