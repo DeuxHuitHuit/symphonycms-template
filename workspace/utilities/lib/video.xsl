@@ -65,16 +65,16 @@
 				<add dev-component="video-tag" />
 			</xsl:with-param>
 			<xsl:with-param name="content">
+				<xsl:if test="string-length($webm) != 0">
+					<source src="/workspace{$webm/@path}/{$webm/filename}" type="video/webm" />
+				</xsl:if>
+
 				<xsl:if test="string-length($mp4) != 0">
 					<source src="/workspace{$mp4/@path}/{$mp4/filename}" type="video/mp4" />
 				</xsl:if>
 
 				<xsl:if test="string-length($ogv) != 0">
 					<source src="/workspace{$ogv/@path}/{$ogv/filename}" type="video/ogg" />
-				</xsl:if>
-
-				<xsl:if test="string-length($webm) != 0">
-					<source src="/workspace{$webm/@path}/{$webm/filename}" type="video/webm" />
 				</xsl:if>
 			</xsl:with-param>
 		</xsl:call-template>
