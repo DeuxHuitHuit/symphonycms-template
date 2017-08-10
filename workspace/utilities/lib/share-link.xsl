@@ -11,7 +11,8 @@
 		<xsl:param name="content" />
 
 		<xsl:variable name="computed-attr">
-			<add target="_blank" />
+			<set target="_blank" />
+			<set rel="noopener" />
 			<xsl:copy-of select="$attr" />
 			<add dev-core="share-link" />
 		</xsl:variable>

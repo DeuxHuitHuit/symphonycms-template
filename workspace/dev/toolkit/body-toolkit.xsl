@@ -156,7 +156,7 @@
 			<ol>
 				<li>Free text</li>
 				<li><p>Text in p</p></li>
-				<li><a href="https://www.youtube.com/watch?v=lPELNn_OeOU" target="_blank">Linked text</a></li>
+				<li><a href="https://www.youtube.com/watch?v=lPELNn_OeOU" target="_blank" rel="noopener">Linked text</a></li>
 			</ol>
 		</xsl:with-param>
 		<xsl:with-param name="class" select="$class" />
@@ -173,7 +173,7 @@
 			<ul>
 				<li>Free text</li>
 				<li><p>Text in p</p></li>
-				<li><a href="https://www.youtube.com/watch?v=lPELNn_OeOU" target="_blank">Linked text</a></li>
+				<li><a href="https://www.youtube.com/watch?v=lPELNn_OeOU" target="_blank" rel="noopener">Linked text</a></li>
 			</ul>
 		</xsl:with-param>
 		<xsl:with-param name="class" select="$class" />

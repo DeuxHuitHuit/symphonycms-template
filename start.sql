@@ -765,7 +765,7 @@ INSERT INTO `sym_fields_pages` (`id`, `field_id`, `allow_multiple_selection`, `u
 --
 
 INSERT INTO `sym_fields_publishnotes` (`id`, `field_id`, `note`, `editable`) VALUES
-(4, 28, '<p>Utilisez <a href="https://developers.facebook.com/tools/explorer" target="_blank">ce lien</a> pour obtenir le facebook page id</p>', 0);
+(4, 28, '<p>Utilisez <a href="https://developers.facebook.com/tools/explorer" target="_blank" rel="noopener">ce lien</a> pour obtenir le facebook page id</p>', 0);
 
 -- --------------------------------------------------------
 
