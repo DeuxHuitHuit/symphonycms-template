@@ -108,13 +108,13 @@
 				<!-- html body -->
 				<xsl:call-template name="master-body" />
 
-				<!-- Comment for debug -->
-				<xsl:comment>
-					<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
-				</xsl:comment>
-
 			</xsl:with-param> <!-- End html element content-->
 		</xsl:call-template>
+
+		<!-- Comment for cache debugging -->
+		<xsl:comment>
+			<xsl:value-of select="concat(' cache-stamp: ', $today, 'T', $current-time, ' ')" />
+		</xsl:comment>
 	</xsl:template>
 
 <!-- HTML ATTRIBUTES CUSTOM BY PAGE =========================================-->
