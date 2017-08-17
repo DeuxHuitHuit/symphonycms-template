@@ -40,7 +40,7 @@
 <!-- Lang flag For multi langue -->
 <xsl:variable name="multi-langues">
 	<xsl:choose>
-		<xsl:when test="count(/data/fl-languages/supported-languages/item) &gt; 1">
+		<xsl:when test="count(/data/fl-languages/supported-languages/item) &gt; 0">
 			<xsl:text>yes</xsl:text>
 		</xsl:when>
 		<xsl:otherwise>
