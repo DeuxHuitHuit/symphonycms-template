@@ -39,7 +39,7 @@
 		</xsl:variable>
 		
 		<xsl:choose>
-			<xsl:when test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
+			<xsl:when test="string-length($cur-page-title) != 0">
 				<xsl:value-of select="$cur-page-title"/>
 			</xsl:when>
 			<xsl:when test="string-length($site-name) != 0">
