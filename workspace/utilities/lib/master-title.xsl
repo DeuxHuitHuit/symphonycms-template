@@ -33,23 +33,37 @@
 	</xsl:template>
 
 <!-- Default master title template -->
-	<xsl:template name="default-master-title">
+<xsl:template name="default-master-title">
 		<xsl:variable name="cur-page-title">
 			<xsl:call-template name="page-title" />
 		</xsl:variable>
 		
-		<xsl:if test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
-			<xsl:value-of select="$cur-page-title"/>
-			<xsl:text> - </xsl:text>
-		</xsl:if>
-		
 		<xsl:choose>
-			<xsl:when test="string-length($site-name) != 0">
-				<xsl:value-of select="$site-name" />
+			<xsl:when test="string-length($page-metas/titre) != 0">
+				<xsl:value-of select="$cur-page-title"/>
 			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="$website-name" />
-			</xsl:otherwise>
+			<xsl:when test="count(/data/params/page-types/item[@handle = 'index']) &gt; 0">
+				<xsl:choose>
+					<xsl:when test="string-length($site-name) != 0">
+						<xsl:value-of select="$site-name" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$website-name" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
+			<xsl:when test="string-length($cur-page-title) != 0 and count(/data/params/page-types/item[@handle = 'index']) = 0">
+				<xsl:value-of select="$cur-page-title"/>
+				<xsl:text> - </xsl:text>
+				<xsl:choose>
+					<xsl:when test="string-length($site-name) != 0">
+						<xsl:value-of select="$site-name" />
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$website-name" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:when>
 		</xsl:choose>
 	</xsl:template>
 </xsl:stylesheet>
