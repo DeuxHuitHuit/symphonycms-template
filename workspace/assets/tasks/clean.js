@@ -32,13 +32,6 @@ module.exports = function clean (grunt) {
 					'<%= src.css.themeCss %>'
 				]
 			},
-			bundleLess: {
-				src: [
-					'<%= src.css.coreLess %>',
-					'<%= src.css.libLess %>',
-					'<%= src.css.themeLess %>'
-				]
-			},
 			theme: {
 				src: [
 					'css/theme/__vars*.less',
