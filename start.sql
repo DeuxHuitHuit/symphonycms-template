@@ -677,7 +677,7 @@ INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section
 (10, 'Navigateurs non-supportés', 'navigateurs-non-supportes', 'multilingual_textbox', 1, 'yes', 16, 'main', 'no'),
 (28, 'Facebook notes', 'facebook-notes', 'publishnotes', 1, 'no', 11, 'main', 'no'),
 (26, 'Réseaux sociaux', 'reseaux-sociaux', 'publish_tabs', 1, 'no', 5, 'main', 'no'),
-(27, 'Youtube url', 'youtube-url', 'textbox', 1, 'yes', 14, 'main', 'yes'),
+(27, 'Youtube url', 'youtube-url', 'textbox', 1, 'no', 14, 'main', 'no'),
 (13, 'Page', 'page', 'pages', 2, 'yes', 0, 'main', 'yes'),
 (14, 'Titre', 'titre', 'multilingual_textbox', 2, 'yes', 1, 'main', 'yes'),
 (15, 'Publié', 'publie', 'checkbox', 2, 'no', 2, 'sidebar', 'yes'),
