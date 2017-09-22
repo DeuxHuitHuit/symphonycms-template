@@ -1,7 +1,10 @@
 // FONT WEIGHT CLASS
-.font-weight-light,     .light     {font-weight: 300;}
-.font-weight-normal                {font-weight: 400;}
-.font-weight-medium                {font-weight: 500;}
-.font-weight-semi-bold, .semi-bold {font-weight: 600;}
-.font-weight-bold,      .bold      {font-weight: 700;}
-.font-weight-bolder,    .bolder    {font-weight: 900;}
+
+#generate-core-font-weight-classes (@suffix: ~'') {
+	.font-weight-light@{suffix},     .light@{suffix}     {font-weight: 300;}
+	.font-weight-normal@{suffix}                         {font-weight: 400;}
+	.font-weight-medium@{suffix}                         {font-weight: 500;}
+	.font-weight-semi-bold@{suffix}, .semi-bold@{suffix} {font-weight: 600;}
+	.font-weight-bold@{suffix},      .bold@{suffix}      {font-weight: 700;}
+	.font-weight-bolder@{suffix},    .bolder@{suffix}    {font-weight: 900;}
+}

@@ -4,10 +4,21 @@
 	.overflow@{axe}-visible@{suffix} {overflow@{axe}: visible;}
 	.overflow@{axe}-scroll@{suffix}  {overflow@{axe}: scroll;}
 	.overflow@{axe}-auto@{suffix}    {overflow@{axe}: auto;}
+
+	html.touch {
+		.overflow@{axe}-hidden-when-touch@{suffix}  {overflow@{axe}: hidden;}
+		.overflow@{axe}-visible-when-touch@{suffix} {overflow@{axe}: visible;}
+		.overflow@{axe}-scroll-when-touch@{suffix}  {overflow@{axe}: scroll;}
+		.overflow@{axe}-auto-when-touch@{suffix}    {overflow@{axe}: auto;}
+	}
 }
 
 #generate-core-overflow-classes (@suffix: ~'') {
 	#generate-core-overflow-classe(@suffix);
 	#generate-core-overflow-classe(@suffix, ~'-y');
 	#generate-core-overflow-classe(@suffix, ~'-x');
+}
+
+.overflow-scrolling-touch {
+	-webkit-overflow-scrolling: touch;
 }
