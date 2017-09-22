@@ -1,3 +1,5 @@
 // POINTER-EVENTS CLASS
-.pointer-events-none {pointer-events: none;}
-.pointer-events-all  {pointer-events: all;}
+#generate-core-pointer-events-classes (@suffix: ~'') {
+	.pointer-events-none@{suffix} {pointer-events: none;}
+	.pointer-events-all@{suffix}  {pointer-events: all;}
+}

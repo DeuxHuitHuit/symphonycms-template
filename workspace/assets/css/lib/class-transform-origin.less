@@ -1,6 +1,14 @@
-// TRANSFORM-ORIGIN CLASS
-.transform-origin-top-left      {#transform-origin(top left);}
-.transform-origin-top-right     {#transform-origin(top right);}
-.transform-origin-left-center   {#transform-origin(left center);}
-.transform-origin-center-bottom {#transform-origin(center bottom);}
-.transform-origin-center-top    {#transform-origin(center top);}
+// TRANSFORM-ORIGIN CLASS (X Y)
+#generate-core-transform-origin-classes (@suffix: ~'') {
+	.transform-origin-left-top@{suffix}      {#transform-origin(left top);}
+	.transform-origin-left-center@{suffix}   {#transform-origin(left center);}
+	.transform-origin-left-bottom@{suffix}   {#transform-origin(left bottom);}
+
+	.transform-origin-center-top@{suffix}    {#transform-origin(center top);}
+	.transform-origin-center@{suffix}        {#transform-origin(center center);}
+	.transform-origin-center-bottom@{suffix} {#transform-origin(center bottom);}
+
+	.transform-origin-right-top@{suffix}     {#transform-origin(right top);}
+	.transform-origin-right-center@{suffix}  {#transform-origin(right center);}
+	.transform-origin-right-bottom@{suffix}  {#transform-origin(right bottom);}
+}

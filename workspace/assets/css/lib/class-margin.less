@@ -11,9 +11,12 @@
 
 #generate-core-margin-classes (@direction: ~'', @suffix: ~'') {
 	// USEFULL MARGIN 
-	#generate-margin-classes-value(@direction, @suffix, ~'0', 		~'0');
-	#generate-margin-classes-value(@direction, @suffix, ~'none', 	~'0');
-	#generate-margin-classes-value(@direction, @suffix, ~'auto', 	~'auto');
+	#generate-margin-classes-value(@direction, @suffix, ~'0',         ~'0');
+	#generate-margin-classes-value(@direction, @suffix, ~'none',      ~'0');
+	#generate-margin-classes-value(@direction, @suffix, ~'auto',      ~'auto');
+	// PX MARGIN
+	#generate-margin-classes-value(@direction, @suffix, ~'1px',       ~'1px');
+	#generate-margin-classes-value(@direction, @suffix, ~'minus-1px', ~'-1px');
 	// RATIONNAL MARGIN
 	#generate-margin-classes-value(@direction, @suffix, ~'1_2', 50%);
 	#generate-margin-classes-value(@direction, @suffix, ~'1_3', 100% / 3);
@@ -58,6 +61,9 @@
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'0', ~'0');
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'none', ~'0');
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'auto', ~'auto');
+	// PX MARGIN
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1px', ~'1px');
+	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'minus-1px', ~'-1px');
 	// RATIONNAL MARGIN
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_2', 50%);
 	#generate-margin-two-axes-class-value(@direction, @suffix, @axe1, @axe2, ~'1_3', 100% / 3);
