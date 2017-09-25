@@ -1,30 +1,60 @@
 // TRANSITION CLASS PROPERTIES
 .transition-bg-color                            {#transition-property    (~'background-color');}
 .transition-bg-color-border-color               {#transition-property    (~'background-color, border-color');}
+.transition-bg-color-border-width               {#transition-property    (~'background-color, border-width');}
 .transition-bg-color-border-color-opacity       {#transition-property    (~'background-color, border-color, opacity');}
 .transition-bg-color-border-color-opacity-color {#transition-property    (~'background-color, border-color, opacity, color');}
 .transition-bg-color-bottom                     {#transition-property    (~'background-color, bottom');}
 .transition-bg-color-color                      {#transition-property    (~'background-color, color');}
+.transition-bg-color-filter                     {#transition-property    (~'background-color, filter');}
 .transition-bg-color-font-size                  {#transition-property    (~'background-color, font-size');}
 .transition-bg-color-height                     {#transition-property    (~'background-color, height');}
+.transition-bg-color-left                       {#transition-property    (~'background-color, left');}
+.transition-bg-color-max-height                 {#transition-property    (~'background-color, max-height');}
+.transition-bg-color-max-width                  {#transition-property    (~'background-color, max-width');}
 .transition-bg-color-opacity                    {#transition-property    (~'background-color, opacity');}
+.transition-bg-color-right                      {#transition-property    (~'background-color, right');}
+.transition-bg-color-top                        {#transition-property    (~'background-color, top');}
 .transition-bg-color-visibility                 {#transition-property    (~'background-color, visiblity');}
 .transition-bg-color-width                      {#transition-property    (~'background-color, width');}
 
 .transition-border-color                        {#transition-property    (~'border-color');}
+.transition-border-color-bg-color               {#transition-property    (~'border-color, background-color');}
+.transition-border-color-border-width           {#transition-property    (~'border-color, border-width');}
 .transition-border-color-color                  {#transition-property    (~'border-color, color');}
 .transition-border-color-opacity                {#transition-property    (~'border-color, opacity');}
 
-.transition-border-top-width                    {#transition-property    (~'border-top-width');}
 .transition-border-width                        {#transition-property    (~'border-width');}
+.transition-border-width-bg-color               {#transition-property    (~'border-width, background-color');}
+.transition-border-width-border-color           {#transition-property    (~'border-width, border-color');}
+.transition-border-width-color                  {#transition-property    (~'border-width, color');}
+
+.transition-border-top-width                    {#transition-property    (~'border-top-width');}
+.transition-border-right-width                  {#transition-property    (~'border-right-width');}
+.transition-border-bottom-width                 {#transition-property    (~'border-bottom-width');}
+.transition-border-left-width                   {#transition-property    (~'border-left-width');}
 
 .transition-bottom                              {#transition-property    (~'bottom');}
+.transition-bg-color                            {#transition-property    (~'bottom, background-color');}
 
 .transition-color                               {#transition-property    (~'color');}
+.transition-color-bg-color                      {#transition-property    (~'color, background-color');}
 .transition-color-border-color                  {#transition-property    (~'color, border-color');}
+.transition-color-bottom                        {#transition-property    (~'color, bottom');}
+.transition-color-filter                        {#transition-property    (~'color, filter');}
+.transition-color-height                        {#transition-property    (~'color, height');}
+.transition-color-left                          {#transition-property    (~'color, left');}
+.transition-color-max-height                    {#transition-property    (~'color, max-height');}
+.transition-color-max-width                     {#transition-property    (~'color, max-width');}
 .transition-color-opacity                       {#transition-property    (~'color, opacity');}
 .transition-color-padding                       {#transition-property    (~'color, padding');}
+.transition-color-right                         {#transition-property    (~'color, right');}
+.transition-color-top                           {#transition-property    (~'color, top');}
 .transition-color-visibility                    {#transition-property    (~'color, visibility');}
+.transition-color-width                         {#transition-property    (~'color, width');}
+
+.transition-filter                              {#transition-property    (~'filter');}
+.transition-filter-bg-color                     {#transition-property    (~'filter, background-color');}
 
 .transition-flex                                {#transition-property    (~'flex');}
 
@@ -35,17 +65,26 @@
 .transition-flex-shrink                         {#transition-property    (~'flex-shrink');}
 
 .transition-font                                {#transition-property    (~'font');}
+.transition-font-size                           {#transition-property    (~'font-size');}
 
 .transition-height                              {#transition-property    (~'height');}
+.transition-height-bg-color                     {#transition-property    (~'height, backgroud-color');}
+.transition-height-color                        {#transition-property    (~'height, color');}
 .transition-height-visibility                   {#transition-property    (~'height, visibility');}
 
 .transition-left                                {#transition-property    (~'left');}
+.transition-left-bg-color                       {#transition-property    (~'left, background-color');}
+.transition-left-color                          {#transition-property    (~'left, color');}
 
 .transition-max-height                          {#transition-property    (~'max-height');}
+.transition-max-height-bg-color                 {#transition-property    (~'max-height, background-color');}
+.transition-max-height-color                    {#transition-property    (~'max-height, color');}
 .transition-max-height-opacity                  {#transition-property    (~'max-height, opacity');}
 .transition-max-height-visibility               {#transition-property    (~'max-height, visibility');}
 
 .transition-max-width                           {#transition-property    (~'max-width');}
+.transition-max-width-bg-color                  {#transition-property    (~'max-width, background-color');}
+.transition-max-width-color                     {#transition-property    (~'max-width, color');}
 .transition-max-width-opacity                   {#transition-property    (~'max-width, opacity');}
 .transition-max-width-visibility                {#transition-property    (~'max-width, visibility');}
 
@@ -53,18 +92,36 @@
 .transition-min-width                           {#transition-property    (~'min-width');}
 
 .transition-opacity                             {#transition-property    (~'opacity');}
+.transition-opacity-bg-color                    {#transition-property    (~'opacity, background-color');}
+.transition-opacity-border-color                {#transition-property    (~'opacity, border-color');}
+.transition-opacity-border-width                {#transition-property    (~'opacity, border-width');}
 .transition-opacity-visibility                  {#transition-property    (~'opacity, visibility');}
 .transition-opacity-width                       {#transition-property    (~'opacity, width');}
+
+.transition-padding                             {#transition-property    (~'padding');}
+.transition-padding-bg-color                    {#transition-property    (~'padding, background-color');}
+.transition-padding-border-color                {#transition-property    (~'padding, border-color');}
+.transition-padding-border-width                {#transition-property    (~'padding, border-width');}
 
 .transition-right                               {#transition-property    (~'right');}
 .transition-top                                 {#transition-property    (~'top');}
 
 .transition-transform                           {#cb-transition-property (~'transform');}
+.transition-transform-bg-color                  {#cb-transition-property (~'transform, background-color');}
+.transition-transform-border-color              {#cb-transition-property (~'transform, border-color');}
+.transition-transform-color                     {#cb-transition-property (~'transform, color');}
+.transition-transform-filter                    {#cb-transition-property (~'transform, filter');}
 .transition-transform-font                      {#cb-transition-property (~'transform, font');}
 .transition-transform-opacity                   {#cb-transition-property (~'transform, opacity');}
 .transition-transform-visibility                {#cb-transition-property (~'transform, visibility');}
 
 .transition-visibility                          {#transition-property    (~'visibility');}
+.transition-visibility-bg-color                 {#transition-property    (~'visibility, background-color');}
+.transition-visibility-color                    {#transition-property    (~'visibility, color');}
+.transition-visibility-height                   {#transition-property    (~'visibility, height');}
+.transition-visibility-opacity                  {#transition-property    (~'visibility, opacity');}
+.transition-visibility-padding                  {#transition-property    (~'visibility, padding');}
+.transition-visibility-width                    {#transition-property    (~'visibility, width');}
 
 .transition-width                               {#transition-property    (~'width');}
 .transition-width-opacity                       {#transition-property    (~'width, opacity');}
