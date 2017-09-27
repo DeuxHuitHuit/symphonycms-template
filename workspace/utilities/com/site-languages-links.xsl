@@ -4,7 +4,14 @@
 <!-- COMPONENT: site-languages-links ============================================================-->
 	<xsl:template name="site-languages-links">
 		<xsl:param name="include-current-language" select="false()"/>
-		<!-- Can be normal,abreviation or custom -->
+		<!--
+			 Can be normal, abreviation or any other string 
+			 When a unknown format is requested. 
+				the template site-languages-link-custom-text-strategy is called
+				with the param :
+					 entry:          current language node
+					 text-strategy:  requested text-strategy
+		-->
 		<xsl:param name="text-strategy" select="'normal'" />
 		<!-- button params -->
 		<xsl:param name="failover-element" select="$default-button-failover-element" />
@@ -54,6 +61,7 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:call-template name="site-languages-link-custom-text-strategy">
+						<xsl:with-param name="text-strategy" select="$text-strategy" />
 						<xsl:with-param name="entry" select="."/>
 					</xsl:call-template>
 				</xsl:otherwise>
