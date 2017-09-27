@@ -167,14 +167,4 @@
 			</ease>
 		</transition>
 	</theme>
-
-	<theme type="toolkit">
-		<colors>
-
-		</colors>
-		<spacing>
-
-		</spacing>
-	</theme>
 </themes>
-
