@@ -58,7 +58,7 @@ abstract class FilterableEvent extends Event {
             $can_proceed = true;
 
             foreach ($this->filter_results as $fr) {
-                list($name, $status, $message, $attributes) = $fr;
+                list($name, $status, $message, $attributes) = array_pad($fr, 4, null);
 
                 $result->appendChild(
                     SectionEvent::buildFilterElement($name, ($status ? 'passed' : 'failed'), $message, $attributes)
