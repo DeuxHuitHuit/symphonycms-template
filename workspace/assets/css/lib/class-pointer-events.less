@@ -1,5 +1,7 @@
-// POINTER-EVENTS CLASS
 #generate-core-pointer-events-classes (@suffix: ~'') {
-	.pointer-events-none@{suffix} {pointer-events: none;}
-	.pointer-events-all@{suffix}  {pointer-events: all;}
+	.pointer-events-none@{suffix}                           {pointer-events: none;}
+	.pointer-events-all@{suffix}                            {pointer-events: all;}
+
+	.pointer-events-none@{suffix}-when-selected.is-selected {pointer-events: none;}
+	.pointer-events-alld@{suffix}-when-selecte.is-selected  {pointer-events: all;}
 }
