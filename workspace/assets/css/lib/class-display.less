@@ -1,4 +1,3 @@
-// = DISPLAY CLASS
 #generate-core-display-classes (@suffix: ~'') {
 	.display-none@{suffix} 	          {display: none;}
 	.display-none-important@{suffix}  {display: none!important;}
@@ -25,11 +24,7 @@
 	.flexbox-inline-when-selected@{suffix}.is-selected {#flexbox-inline();}
 }
 
-.display-none-when-touch {
-	html.touch & {
-		display: none;
-	}
-}
+html.touch .display-none-when-touch {display: none;}
 
 // From http://a11yproject.com/posts/how-to-hide-content/
 .visually-hidden {
@@ -44,7 +39,7 @@
 }
 
 body:hover .visually-hidden {
-	a,
-	input,
-	button { display: none !important; }
+	a, input, button {
+	 	display: none !important;
+	}
 }
