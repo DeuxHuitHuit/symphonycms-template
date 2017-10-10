@@ -7,7 +7,6 @@
 		<xsl:param name="alt" select="image-alt" />
 		<xsl:param name="veil-opacity" select="veil-opacity" />
 		<xsl:param name="type" select="'resize'" />
-		<xsl:param name="use-height" select="false()" />
 		<xsl:param name="enable-veil" select="false()" />
 		<xsl:param name="loaded-state-add-class" select="''" />
 		<xsl:param name="loaded-state-rem-class" select="''" />
