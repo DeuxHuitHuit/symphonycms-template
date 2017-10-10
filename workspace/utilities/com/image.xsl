@@ -6,8 +6,7 @@
 		<xsl:param name="image" select="image" />
 		<xsl:param name="alt" select="image-alt" />
 		<xsl:param name="veil-opacity" select="veil-opacity" />
-		<xsl:param name="is-cover" select="false()" />
-		<xsl:param name="is-contain" select="false()" />
+		<xsl:param name="type" select="'resize'" />
 		<xsl:param name="use-height" select="false()" />
 		<xsl:param name="enable-veil" select="false()" />
 		<xsl:param name="loaded-state-add-class" select="''" />
@@ -90,14 +89,14 @@
 			<xsl:with-param name="content">
 				<xsl:if test="$has-image">
 					<xsl:choose>
-						<xsl:when test="$is-cover">
+						<xsl:when test="$type = 'cover'">
 							<xsl:call-template name="render-image-bg-cover">
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
 							</xsl:call-template>
 						</xsl:when>
-						<xsl:when test="$is-contain">
+						<xsl:when test="$type = 'contain'">
 							<xsl:call-template name="render-image-bg-contain">
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
