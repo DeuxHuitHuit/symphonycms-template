@@ -73,7 +73,7 @@
 
 		<xsl:variable name="computed-attr-veil">
 			<!-- Basics classes -->
-			<add class="absolute fill" />
+			<add class="absolute fill z-index-1" />
 			<xsl:if test="$has-veil-opacity">
 				<add style="opacity:{$veil-opacity};" />
 			</xsl:if>
