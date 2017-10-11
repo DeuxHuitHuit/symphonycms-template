@@ -45,13 +45,6 @@
 			<add id="site-pages" />
 		</xsl:variable>
 		
-		<xsl:variable name="response-url">
-			<xsl:value-of select="concat(/data/params/current-path, '/')" />
-			<xsl:if test="string-length(/data/params/current-query-string) != 0">
-				<xsl:text>?</xsl:text>
-				<xsl:value-of select="/data/params/current-query-string" disable-output-escaping="yes" />
-			</xsl:if>
-		</xsl:variable>
 		<!-- page -->
 		<xsl:variable name="computed-page-attr">
 			<add id="page-{$full-page-handle}" />
