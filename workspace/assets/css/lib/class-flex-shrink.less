@@ -1,16 +1,18 @@
-.flex-shrink-0    {#flex-shrink(0);}
-.flex-shrink-1    {#flex-shrink(1);}
-.flex-shrink-2    {#flex-shrink(2);}
-.flex-shrink-3    {#flex-shrink(3);}
-.flex-shrink-4    {#flex-shrink(4);}
-.flex-shrink-5    {#flex-shrink(5);}
-.flex-shrink-10   {#flex-shrink(10);}
-.flex-shrink-15   {#flex-shrink(15);}
-.flex-shrink-20   {#flex-shrink(20);}
-.flex-shrink-25   {#flex-shrink(25);}
-.flex-shrink-30   {#flex-shrink(30);}
-.flex-shrink-40   {#flex-shrink(40);}
-.flex-shrink-50   {#flex-shrink(50);}
-.flex-shrink-100  {#flex-shrink(100);}
-.flex-shrink-500  {#flex-shrink(500);}
-.flex-shrink-1000 {#flex-shrink(1000);}
+#generate-core-flex-shrink-classes (@suffix: ~'') {
+	.flex-shrink-0@{suffix}    {#flex-shrink(0);}
+	.flex-shrink-1@{suffix}    {#flex-shrink(1);}
+	.flex-shrink-2@{suffix}    {#flex-shrink(2);}
+	.flex-shrink-3@{suffix}    {#flex-shrink(3);}
+	.flex-shrink-4@{suffix}    {#flex-shrink(4);}
+	.flex-shrink-5@{suffix}    {#flex-shrink(5);}
+	.flex-shrink-10@{suffix}   {#flex-shrink(10);}
+	.flex-shrink-15@{suffix}   {#flex-shrink(15);}
+	.flex-shrink-20@{suffix}   {#flex-shrink(20);}
+	.flex-shrink-25@{suffix}   {#flex-shrink(25);}
+	.flex-shrink-30@{suffix}   {#flex-shrink(30);}
+	.flex-shrink-40@{suffix}   {#flex-shrink(40);}
+	.flex-shrink-50@{suffix}   {#flex-shrink(50);}
+	.flex-shrink-100@{suffix}  {#flex-shrink(100);}
+	.flex-shrink-500@{suffix}  {#flex-shrink(500);}
+	.flex-shrink-1000@{suffix} {#flex-shrink(1000);}
+}

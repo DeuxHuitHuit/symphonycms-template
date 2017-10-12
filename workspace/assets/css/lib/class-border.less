@@ -1,5 +1,7 @@
-.border-0        {border-width: 0;}
-.border-top-0    {border-top-width: 0;}
-.border-bottom-0 {border-bottom-width: 0;}
-.border-left-0   {border-left-width: 0;}
-.border-right-0  {border-right-width: 0;}
+#generate-core-border-width-classes (@suffix: ~'') {
+	.border-0@{suffix}        {border-width: 0;}
+	.border-top-0@{suffix}    {border-top-width: 0;}
+	.border-bottom-0@{suffix} {border-bottom-width: 0;}
+	.border-left-0@{suffix}   {border-left-width: 0;}
+	.border-right-0@{suffix}  {border-right-width: 0;}
+}

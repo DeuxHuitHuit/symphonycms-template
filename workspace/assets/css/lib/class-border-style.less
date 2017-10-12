@@ -1,54 +1,56 @@
-.border-style-none,   .border-none 		{border-style: none;}
-.border-style-hidden, .border-hidden 	{border-style: hidden;}
-.border-style-dotted, .border-dotted 	{border-style: dotted;}
-.border-style-dashed, .border-dashed 	{border-style: dashed;}
-.border-style-solid,  .border-solid 	{border-style: solid;}
-.border-style-double, .border-double 	{border-style: double;}
-.border-style-groove, .border-groove 	{border-style: groove;}
-.border-style-ridge,  .border-ridge 	{border-style: ridge;}
-.border-style-inset,  .border-inset 	{border-style: inset;}
-.border-style-outset, .border-outset 	{border-style: outset;}
-//Top
-.border-top-none 						{border-top-style: none;}
-.border-top-hidden 						{border-top-style: hidden;}
-.border-top-dotted 						{border-top-style: dotted;}
-.border-top-dashed 						{border-top-style: dashed;}
-.border-top-solid 						{border-top-style: solid;}
-.border-top-double 						{border-top-style: double;}
-.border-top-groove 						{border-top-style: groove;}
-.border-top-ridge 						{border-top-style: ridge;}
-.border-top-inset 						{border-top-style: inset;}
-.border-top-outset 						{border-top-style: outset;}
-//Right
-.border-right-none 						{border-right-style: none;}
-.border-right-hidden 					{border-right-style: hidden;}
-.border-right-dotted 					{border-right-style: dotted;}
-.border-right-dashed 					{border-right-style: dashed;}
-.border-right-solid 					{border-right-style: solid;}
-.border-right-double 					{border-right-style: double;}
-.border-right-groove 					{border-right-style: groove;}
-.border-right-ridge 					{border-right-style: ridge;}
-.border-right-inset 					{border-right-style: inset;}
-.border-right-outset 					{border-right-style: outset;}
-//Left
-.border-left-none 						{border-left-style: none;}
-.border-left-hidden 					{border-left-style: hidden;}
-.border-left-dotted 					{border-left-style: dotted;}
-.border-left-dashed 					{border-left-style: dashed;}
-.border-left-solid 						{border-left-style: solid;}
-.border-left-double 					{border-left-style: double;}
-.border-left-groove 					{border-left-style: groove;}
-.border-left-ridge 						{border-left-style: ridge;}
-.border-left-inset 						{border-left-style: inset;}
-.border-left-outset 					{border-left-style: outset;}
-//Bottom
-.border-bottom-none 					{border-bottom-style: none;}
-.border-bottom-hidden 					{border-bottom-style: hidden;}
-.border-bottom-dotted 					{border-bottom-style: dotted;}
-.border-bottom-dashed 					{border-bottom-style: dashed;}
-.border-bottom-solid 					{border-bottom-style: solid;}
-.border-bottom-double 					{border-bottom-style: double;}
-.border-bottom-groove 					{border-bottom-style: groove;}
-.border-bottom-ridge 					{border-bottom-style: ridge;}
-.border-bottom-inset 					{border-bottom-style: inset;}
-.border-bottom-outset 					{border-bottom-style: outset;}
+#generate-core-border-style-classes (@suffix: ~'') {
+	.border-style-none@{suffix},   .border-none@{suffix}   {border-style: none;}
+	.border-style-hidden@{suffix}, .border-hidden@{suffix} {border-style: hidden;}
+	.border-style-dotted@{suffix}, .border-dotted@{suffix} {border-style: dotted;}
+	.border-style-dashed@{suffix}, .border-dashed@{suffix} {border-style: dashed;}
+	.border-style-solid@{suffix},  .border-solid@{suffix}  {border-style: solid;}
+	.border-style-double@{suffix}, .border-double@{suffix} {border-style: double;}
+	.border-style-groove@{suffix}, .border-groove@{suffix} {border-style: groove;}
+	.border-style-ridge@{suffix},  .border-ridge@{suffix}  {border-style: ridge;}
+	.border-style-inset@{suffix},  .border-inset@{suffix}  {border-style: inset;}
+	.border-style-outset@{suffix}, .border-outset@{suffix} {border-style: outset;}
+	//Top
+	.border-top-none@{suffix}                     {border-top-style: none;}
+	.border-top-hidden@{suffix}                   {border-top-style: hidden;}
+	.border-top-dotted@{suffix}                   {border-top-style: dotted;}
+	.border-top-dashed@{suffix}                   {border-top-style: dashed;}
+	.border-top-solid@{suffix}                    {border-top-style: solid;}
+	.border-top-double@{suffix}                   {border-top-style: double;}
+	.border-top-groove@{suffix}                   {border-top-style: groove;}
+	.border-top-ridge@{suffix}                    {border-top-style: ridge;}
+	.border-top-inset@{suffix}                    {border-top-style: inset;}
+	.border-top-outset@{suffix}                   {border-top-style: outset;}
+	//Right
+	.border-right-none@{suffix}                   {border-right-style: none;}
+	.border-right-hidden@{suffix}                 {border-right-style: hidden;}
+	.border-right-dotted@{suffix}                 {border-right-style: dotted;}
+	.border-right-dashed@{suffix}                 {border-right-style: dashed;}
+	.border-right-solid@{suffix}                  {border-right-style: solid;}
+	.border-right-double@{suffix}                 {border-right-style: double;}
+	.border-right-groove@{suffix}                 {border-right-style: groove;}
+	.border-right-ridge@{suffix}                  {border-right-style: ridge;}
+	.border-right-inset@{suffix}                  {border-right-style: inset;}
+	.border-right-outset@{suffix}                 {border-right-style: outset;}
+	//Left
+	.border-left-none@{suffix}                    {border-left-style: none;}
+	.border-left-hidden@{suffix}                  {border-left-style: hidden;}
+	.border-left-dotted@{suffix}                  {border-left-style: dotted;}
+	.border-left-dashed@{suffix}                  {border-left-style: dashed;}
+	.border-left-solid@{suffix}                   {border-left-style: solid;}
+	.border-left-double@{suffix}                  {border-left-style: double;}
+	.border-left-groove@{suffix}                  {border-left-style: groove;}
+	.border-left-ridge@{suffix} 	                 {border-left-style: ridge;}
+	.border-left-inset@{suffix} 	                 {border-left-style: inset;}
+	.border-left-outset@{suffix}                  {border-left-style: outset;}
+	//Bottom
+	.border-bottom-none@{suffix}                  {border-bottom-style: none;}
+	.border-bottom-hidden@{suffix}                {border-bottom-style: hidden;}
+	.border-bottom-dotted@{suffix}                {border-bottom-style: dotted;}
+	.border-bottom-dashed@{suffix}                {border-bottom-style: dashed;}
+	.border-bottom-solid@{suffix}                 {border-bottom-style: solid;}
+	.border-bottom-double@{suffix}                {border-bottom-style: double;}
+	.border-bottom-groove@{suffix}                {border-bottom-style: groove;}
+	.border-bottom-ridge@{suffix}                 {border-bottom-style: ridge;}
+	.border-bottom-inset@{suffix}                 {border-bottom-style: inset;}
+	.border-bottom-outset@{suffix}                {border-bottom-style: outset;}
+}

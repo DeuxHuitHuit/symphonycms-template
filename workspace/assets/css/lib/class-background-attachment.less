@@ -1,3 +1,5 @@
-.bg-attachment-scroll {background-attachment: scroll;}
-.bg-attachment-fixed  {background-attachment: fixed;}
-.bg-attachment-local  {background-attachment: local;}
+#generate-core-bg-attachment-classes (@suffix: ~'') {
+	.bg-attachment-scroll@{suffix} {background-attachment: scroll;}
+	.bg-attachment-fixed@{suffix}  {background-attachment: fixed;}
+	.bg-attachment-local@{suffix}  {background-attachment: local;}
+}

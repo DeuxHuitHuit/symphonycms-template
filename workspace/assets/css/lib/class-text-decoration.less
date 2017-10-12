@@ -1,6 +1,9 @@
-.text-decoration-overline,           .overline               {text-decoration: overline;}
-.text-decoration-underline,          .underline              {text-decoration: underline;}
-.text-decoration-none,               .no-decoration          {text-decoration: none;}
-.text-decoration-overline-on-hover,  .overline-on-hover      {#hover({text-decoration: overline;});}
-.text-decoration-underline-on-hover, .underline-on-hover     {#hover({text-decoration: underline;});}
-.text-decoration-none-on-hover,      .no-decoration-on-hover {#hover({text-decoration: none;});}
+#generate-core-text-decoration-classes (@suffix: ~'') {
+	.text-decoration-overline@{suffix},           .overline@{suffix}               {text-decoration: overline;}
+	.text-decoration-underline@{suffix},          .underline@{suffix}              {text-decoration: underline;}
+	.text-decoration-none@{suffix},               .no-decoration@{suffix}          {text-decoration: none;}
+	//Hover
+	.text-decoration-overline-on-hover@{suffix},  .overline-on-hover@{suffix}      {#hover({text-decoration: overline;});}
+	.text-decoration-underline-on-hover@{suffix}, .underline-on-hover@{suffix}     {#hover({text-decoration: underline;});}
+	.text-decoration-none-on-hover@{suffix},      .no-decoration-on-hover@{suffix} {#hover({text-decoration: none;});}
+}

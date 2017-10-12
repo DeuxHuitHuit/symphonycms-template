@@ -1,3 +1,5 @@
-.bg-origin-padding-box {background-origin: padding-box;}
-.bg-origin-border-box  {background-origin: border-box;}
-.bg-origin-content-box {background-origin: content-box;}
+#generate-core-bg-origin-classes (@suffix: ~'') {
+	.bg-origin-padding-box@{suffix} {background-origin: padding-box;}
+	.bg-origin-border-box@{suffix}  {background-origin: border-box;}
+	.bg-origin-content-box@{suffix} {background-origin: content-box;}
+}

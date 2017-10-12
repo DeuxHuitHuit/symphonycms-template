@@ -1,9 +1,11 @@
-.bg-position-top-left      {background-position: top left;}
-.bg-position-top-center    {background-position: top center;}
-.bg-position-top-right     {background-position: top right;}
-.bg-position-center-left   {background-position: center left;}
-.bg-position-center        {background-position: center;}
-.bg-position-center-right  {background-position: center right;}
-.bg-position-bottom-left   {background-position: bottom left;}
-.bg-position-bottom-center {background-position: bottom center;}
-.bg-position-bottom-right  {background-position: bottom right;}
+#generate-core-bg-position-classes (@suffix: ~'') {
+	.bg-position-top-left@{suffix}      {background-position: top left;}
+	.bg-position-top-center@{suffix}    {background-position: top center;}
+	.bg-position-top-right@{suffix}     {background-position: top right;}
+	.bg-position-center-left@{suffix}   {background-position: center left;}
+	.bg-position-center@{suffix}        {background-position: center;}
+	.bg-position-center-right@{suffix}  {background-position: center right;}
+	.bg-position-bottom-left@{suffix}   {background-position: bottom left;}
+	.bg-position-bottom-center@{suffix} {background-position: bottom center;}
+	.bg-position-bottom-right@{suffix}  {background-position: bottom right;}
+}

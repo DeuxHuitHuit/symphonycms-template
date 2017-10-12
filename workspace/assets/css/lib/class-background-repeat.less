@@ -1,4 +1,6 @@
-.bg-no-repeat {background-repeat: no-repeat;}
-.bg-repeat    {background-repeat: repeat;}
-.bg-repeat-x  {background-repeat: repeat-x;}
-.bg-repeat-y  {background-repeat: repeat-y;}
+#generate-core-bg-repeat-classes (@suffix: ~'') {
+	.bg-no-repeat@{suffix} {background-repeat: no-repeat;}
+	.bg-repeat@{suffix}    {background-repeat: repeat;}
+	.bg-repeat-x@{suffix}  {background-repeat: repeat-x;}
+	.bg-repeat-y@{suffix}  {background-repeat: repeat-y;}
+}
