@@ -44,12 +44,12 @@
 		<xsl:variable name="computed-site-pages-attr">
 			<add id="site-pages" />
 		</xsl:variable>
-
+		
 		<!-- page -->
 		<xsl:variable name="computed-page-attr">
 			<add id="page-{$full-page-handle}" />
 			<add class="page" />
-			<add data-response-url="{$current-path}/" />
+			<set data-response-url="{$response-url}" />
 			<xsl:call-template name="page-attr" />
 		</xsl:variable>
 	<!--																	/-->

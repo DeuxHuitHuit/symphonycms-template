@@ -37,6 +37,18 @@
 	count(/data/params/url-ndbg) = 0 and
 	(count(/data/params/use-dev) = 0 or /data/params/use-dev = 'yes')" />
 
+<!-- 
+	Response url :
+		Used by the framework to track server redirection
+-->
+<xsl:variable name="response-url">
+	<xsl:value-of select="concat(/data/params/current-path, '/')" />
+	<xsl:if test="string-length(/data/params/current-query-string) != 0">
+		<xsl:text>?</xsl:text>
+		<xsl:value-of select="/data/params/current-query-string" disable-output-escaping="yes" />
+	</xsl:if>
+</xsl:variable>
+
 <!-- Lang flag For multi langue -->
 <xsl:variable name="multi-langues">
 	<xsl:choose>
