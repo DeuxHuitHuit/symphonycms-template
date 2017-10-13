@@ -256,17 +256,6 @@
 			</xsl:choose>
 		</xsl:variable>
 
-		<xsl:variable name="pos">
-			<xsl:choose>
-				<xsl:when test="string-length($position) != 0">
-					<xsl:value-of select="$position" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:text>50% 50%</xsl:text>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-
 		<xsl:variable name="computed-format">
 			<xsl:text>/image/1/</xsl:text>
 			<xsl:value-of select="concat($width, '/')" />
@@ -275,42 +264,45 @@
 	<!-- /-->
 
 	<!-- Computed attributes -->
-		<xsl:variable name="style-attr">
-			<add>
-				<xsl:attribute name="style">
-
-					<!--add background-url -->
-					<xsl:text>background-image:url('</xsl:text>
-					<xsl:value-of select="$img-path" />
-					<xsl:text>');</xsl:text>
-
-					<!-- Force no repeat -->
-					<xsl:text>background-repeat:no-repeat;</xsl:text>
-
-					<!-- Add position -->
-					<xsl:value-of select="concat('background-position:', $pos, ';')" />
-
-					<!-- Add site -->
-					<xsl:if test="string-length($size) != 0">
-						<xsl:value-of select="concat('background-size:', $size, ';')" />
-					</xsl:if>
-				</xsl:attribute>
-			</add>
-		</xsl:variable>
-
+		<!-- Component -->
 		<xsl:variable name="computed-attr">
-			<xsl:copy-of select="$style-attr" />
-			<xsl:copy-of select="$attr"/>
+			<add class="bg-no-repeat" />
+
+			<add style="~'background-image:url('{$img-path}');'" />
+
+			<!-- Style: background-position if specified -->
+			<xsl:if test="string-length($position) != 0">
+				<add style="~'background-position:{$position};'" />
+			</xsl:if>
+
+			<!-- Style: background-size if specified -->
+			<xsl:if test="string-length($size) != 0">
+				<add style="~'background-size:{$size};'" />
+			</xsl:if>
+
+			<!-- Js class for auto-jit-image -->
 			<add class="jit-image-bg" />
+
+			<!-- <add data-image-width="" />
+			<add data-image-height="" />
+			 -->
+			 
+			<!-- External attr -->
+			<xsl:copy-of select="$attr"/>
+
+			<!-- Component name -->
 			<add dev-core="render-image-bg" />
 		</xsl:variable>
 
+		<!-- image -->
 		<xsl:variable name="computed-image-bg-attr">
 			<add class="jit-image-bg-src hidden" />
 			<xsl:copy-of select="$image-attr" />
 			<add dev-core-element="image" />
 		</xsl:variable>
+	<!-- /-->
 
+	<!-- STRUCTURE -->
 		<xsl:call-template name="element">
 			<xsl:with-param name="element" select="$element"/>
 			<xsl:with-param name="attr" select="$computed-attr"/>
