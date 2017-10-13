@@ -55,6 +55,8 @@
 	// SCALE
 	.scale-0@{suffix}                      {#transform(~'scale(0)');}
 	.scale-1_2@{suffix}                    {#transform(~'scale(0.5)');}
+	.scale-1_3@{suffix}                    {#transform(~'scale(0.3333)');}
+	.scale-2_3@{suffix}                    {#transform(~'scale(0.6666)');}
 	.scale-1_4@{suffix}                    {#transform(~'scale(0.25)');}
 	.scale-3_4@{suffix}                    {#transform(~'scale(0.75)');}
 	.scale-9_10@{suffix}                   {#transform(~'scale(0.9)');}
@@ -72,20 +74,11 @@
 	.scale-y-2@{suffix}                    {#transform(~'scaleY(2)');}
 }
 
-.translate-left-none-on-hover {
-	#hover({
-		#transform(~'translateX(0)');
-	});
-}
+//HOVER
+//TODO DEPRECATE
+.translate-left-none-on-hover      {#hover({#transform(~'translateX(0)');});}
+.translate-y-none-on-hover         {#hover({#transform(~'translateY(0)');});}
 
-.translate-y-none-on-hover {
-	#hover({
-		#transform(~'translateY(0)');
-	});
-}
-
-.translate-y-minus-full-on-hover {
-	#hover({
-		#transform(~'translateY(-100%)');
-	});
-}
+.translate-x-0-on-hover            {#hover({#transform(~'translateX(0)');});}
+.translate-y-0-on-hover            {#hover({#transform(~'translateY(0)');});}
+.translate-y-minus-full-on-hover   {#hover({#transform(~'translateY(-100%)');});}
