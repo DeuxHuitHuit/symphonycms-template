@@ -10,7 +10,9 @@
 	.rotate-180deg@{suffix}                {#transform(~'rotate(180deg)');}
 	// ROTATE MINUS
 	.rotate-minus-15deg@{suffix}           {#transform(~'rotate(-15deg)');}
+	.rotate-minus-30deg@{suffix}           {#transform(~'rotate(-30deg)');}
 	.rotate-minus-45deg@{suffix}           {#transform(~'rotate(-45deg)');}
+	.rotate-minus-60deg@{suffix}           {#transform(~'rotate(-60deg)');}
 	.rotate-minus-90deg@{suffix}           {#transform(~'rotate(-90deg)');}
 	.rotate-minus-135deg@{suffix}          {#transform(~'rotate(-135deg)');}
 	// TRANSLATE
@@ -24,7 +26,14 @@
 	.translate-x-1_4@{suffix}              {#transform(~'translateX(25%)');}
 	.translate-x-3_4@{suffix}              {#transform(~'translateX(75%)');}
 	.translate-x-full@{suffix}             {#transform(~'translateX(100%)');}
+	// TRANSLATE X VIEWPORT
+	.translate-x-full-viewport(@suffix)    {#transform(~'translateX(100vw)');}
 	// TRANSLATE X MINUS
+	.translate-x-minus-1_2@{suffix}        {#transform(~'translateX(-50%)');}
+	.translate-x-minus-1_3@{suffix}        {#transform(~'translateX(-33.33%)');}
+	.translate-x-minus-2_3@{suffix}        {#transform(~'translateX(-66.66%)');}
+	.translate-x-minus-1_4@{suffix}        {#transform(~'translateX(-25%)');}
+	.translate-x-minus-3_4@{suffix}        {#transform(~'translateX(-75%)');}
 	.translate-x-minus-full@{suffix}       {#transform(~'translateX(-100%)');}
 	// TRANSLATE Y
 	.translate-y-0@{suffix}                {#transform(~'translateY(0)');}
@@ -35,6 +44,10 @@
 	.translate-y-3_4@{suffix}              {#transform(~'translateY(75%)');}
 	.translate-y-full@{suffix}             {#transform(~'translateY(100%)');}
 	// TRANSLATE Y VIEWPORT
+	.translate-y-1_2-viewport@{suffix}     {#transform(~'translateY(50vh)');}
+	.translate-y-1_3-viewport@{suffix}     {#transform(~'translateY(33.33vh)');}
+	.translate-y-2_3-viewport@{suffix}     {#transform(~'translateY(66.66vh)');}
+	.translate-y-1_4-viewport@{suffix}     {#transform(~'translateY(25vh)');}
 	.translate-y-3_4-viewport@{suffix}     {#transform(~'translateY(75vh)');}
 	.translate-y-full-viewport@{suffix}    {#transform(~'translateY(100vh)');}
 	// TRANSLATE Y MINUS
@@ -43,10 +56,8 @@
 	.translate-y-minus-2_3@{suffix}        {#transform(~'translateY(-66.66%)');}
 	.translate-y-minus-1_4@{suffix}        {#transform(~'translateY(-25%)');}
 	.translate-y-minus-3_4@{suffix}        {#transform(~'translateY(-75%)');}
-
 	.translate-y-minus-3_8@{suffix}        {#transform(~'translateY(-100% / 8 * 3)');}
 	.translate-y-minus-9_10@{suffix}       {#transform(~'translateY(-90%)');}
-
 	.translate-y-minus-full@{suffix}       {#transform(~'translateY(-100%)');}
 	// TRANSLATE Z    
 	.translate-z-0@{suffix}                {#transform(translateZ(0));}
@@ -59,6 +70,8 @@
 	.scale-2_3@{suffix}                    {#transform(~'scale(0.6666)');}
 	.scale-1_4@{suffix}                    {#transform(~'scale(0.25)');}
 	.scale-3_4@{suffix}                    {#transform(~'scale(0.75)');}
+	.scale-1_10@{suffix}                   {#transform(~'scale(0.1)');}
+	.scale-3_10@{suffix}                   {#transform(~'scale(0.3)');}
 	.scale-9_10@{suffix}                   {#transform(~'scale(0.9)');}
 	.scale-1@{suffix}                      {#transform(~'scale(1)');}
 	.scale-11_10@{suffix}                  {#transform(~'scale(1.1)');}
