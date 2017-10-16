@@ -61,7 +61,7 @@
 			</xsl:if>
 			
 			<!-- EXTRA -->
-			<xsl:call-template name="master-head-extra" 
+			<xsl:call-template name="master-head-extra" />
 			
 		</head>
 	</xsl:template>
