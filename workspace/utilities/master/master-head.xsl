@@ -60,6 +60,11 @@
 				</xsl:call-template>
 			</xsl:if>
 			
+			<!-- EXTRA -->
+			<xsl:call-template name="master-head-extra" 
+			
 		</head>
 	</xsl:template>
+		
+	<xsl:template name="master-head-extra"></xsl:template>
 </xsl:stylesheet>
