@@ -76,6 +76,65 @@
 		<xsl:variable name="form-field-input-error-message-default-style">
 		</xsl:variable>
 
+<!-- site-form-field-password ================================================================-->
+	<xsl:template name="site-form-field-password">
+		<xsl:param name="name"/>
+		<xsl:param name="label"/>
+		<xsl:param name="placeholder"/>
+		<xsl:param name="rules" />
+
+		<xsl:param name="attr"/>
+		<xsl:param name="ctn-attr" />
+		<xsl:param name="ctn-class-valid" />
+		<xsl:param name="inner-ctn-attr" />
+		<xsl:param name="label-attr" />
+		<xsl:param name="flag-attr" />
+		<xsl:param name="error-message-attr"/>
+
+		<xsl:variable name="computed-attr-flag">
+			<add class="display-none" />
+			<xsl:copy-of select="$flag-attr" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-ctn">
+			<xsl:copy-of select="$ctn-attr" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-inner-ctn">
+			<xsl:copy-of select="$inner-ctn-attr" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-label">
+			<xsl:copy-of select="$label-attr" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-ctn-class-valid">
+			<xsl:text>is-valid </xsl:text>
+			<xsl:copy-of select="$ctn-class-valid" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-error-message-attr">
+			<!-- <add class="absolute top-full right" /> -->
+			<add class="display-none-important" />
+			<xsl:copy-of select="$error-message-attr" />
+		</xsl:variable>
+
+		<xsl:call-template name="form-field-input">
+			<xsl:with-param name="name" select="$name"/>
+			<xsl:with-param name="type" select="'password'" />
+			<xsl:with-param name="placeholder" select="$placeholder" />
+			<xsl:with-param name="label" select="$label" />
+			<xsl:with-param name="rules" select="$rules" />
+			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="ctn-attr" select="$computed-attr-ctn" />
+			<xsl:with-param name="ctn-class-valid" select="$computed-ctn-class-valid" />
+			<xsl:with-param name="inner-ctn-attr" select="$computed-attr-inner-ctn" />
+			<xsl:with-param name="label-attr" select="$computed-attr-label" />
+			<xsl:with-param name="flag-attr" select="$computed-attr-flag" />
+			<xsl:with-param name="error-message-attr" select="$computed-error-message-attr" />
+		</xsl:call-template>
+	</xsl:template>
+
 <!-- site-form-field-input ================================================================-->
 	<xsl:template name="site-form-field-input">
 		<xsl:param name="name"/>
