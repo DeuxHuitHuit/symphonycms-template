@@ -1,2 +1,4 @@
-.backface-visible {#backface(visible);}
-.backface-hidden  {#backface(hidden);}
+#generate-core-backface-visibility-classes (@suffix: ~'') {
+	.backface-visible@{suffix} {#backface(visible);}
+	.backface-hidden@{suffix}  {#backface(hidden);}
+}
