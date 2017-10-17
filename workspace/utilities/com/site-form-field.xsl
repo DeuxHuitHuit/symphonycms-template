@@ -350,4 +350,28 @@
 		</xsl:call-template>
 	</xsl:template>
 
+<!-- Site form field button =====================================================-->
+	<xsl:template name="site-form-field-button">
+		<xsl:param name="content" />
+
+		<xsl:param name="attr" />
+		<xsl:param name="attr-ctn" />
+
+		<!-- ATTRIBUTES -->
+		<xsl:variable name="computed-attr">
+			<xsl:copy-of select="$attr" />
+
+			<!-- Is active -->
+			<add class="js-form-btn-submit" />
+			<add data-active-state-add-class="bg-color-white color-black color-white-on-hover bg-color-accent-light-on-hover cursor-pointer" />
+			<add data-active-state-rem-class="bg-color-accent-dark color-white" />
+		</xsl:variable>
+
+		<!-- CLASSES -->
+		<xsl:call-template name="form-field-button">
+			<xsl:with-param name="content" select="$content" />
+			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="ctn-attr" select="$attr-ctn" />
+		</xsl:call-template>
+	</xsl:template>
 </xsl:stylesheet>
