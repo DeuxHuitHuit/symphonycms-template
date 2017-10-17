@@ -6,7 +6,7 @@
 		"utils/ga.js",
 		"utils/jquery.transitionend.js",
 		
-		"com/article-changer.js",
+		"com/article-changer-v3.js",
 		"com/checkpoint-event.js",
 		
 		"modules/links.js",
