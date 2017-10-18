@@ -76,6 +76,37 @@
 		<xsl:variable name="form-field-input-error-message-default-style">
 		</xsl:variable>
 
+<!-- site-form-field-input ================================================================-->
+	<xsl:template name="site-form-field-input">
+		<xsl:param name="name"/>
+		<xsl:param name="attr"/>
+		<xsl:param name="value"/>
+		<xsl:param name="label"/>
+		<xsl:param name="placeholder"/>
+		<xsl:param name="rules" />
+		
+		<xsl:variable name="label-class-empty">
+			<xsl:text></xsl:text>
+		</xsl:variable>
+
+		<xsl:variable name="label-class-not-empty">
+			<xsl:text></xsl:text>
+		</xsl:variable>
+
+		<xsl:call-template name="form-field-input">
+			<xsl:with-param name="name" select="$name"/>
+			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="value" select="$value" />
+			<xsl:with-param name="placeholder" select="$placeholder" />
+			<xsl:with-param name="label" select="$label" />
+			<xsl:with-param name="label-class-empty" select="$label-class-empty" />
+			<xsl:with-param name="label-class-not-empty" select="$label-class-not-empty" />
+			<xsl:with-param name="rules" select="$rules" />
+			<!-- <xsl:with-param name="valid-flag" select="''"/> -->
+			<!-- <xsl:with-param name="required-flag" select="''"/> -->
+		</xsl:call-template>
+	</xsl:template>
+
 <!-- site-form-field-password ================================================================-->
 	<xsl:template name="site-form-field-password">
 		<xsl:param name="name"/>
@@ -132,37 +163,6 @@
 			<xsl:with-param name="label-attr" select="$computed-attr-label" />
 			<xsl:with-param name="flag-attr" select="$computed-attr-flag" />
 			<xsl:with-param name="error-message-attr" select="$computed-error-message-attr" />
-		</xsl:call-template>
-	</xsl:template>
-
-<!-- site-form-field-input ================================================================-->
-	<xsl:template name="site-form-field-input">
-		<xsl:param name="name"/>
-		<xsl:param name="attr"/>
-		<xsl:param name="value"/>
-		<xsl:param name="label"/>
-		<xsl:param name="placeholder"/>
-		<xsl:param name="rules" />
-		
-		<xsl:variable name="label-class-empty">
-			<xsl:text></xsl:text>
-		</xsl:variable>
-
-		<xsl:variable name="label-class-not-empty">
-			<xsl:text></xsl:text>
-		</xsl:variable>
-
-		<xsl:call-template name="form-field-input">
-			<xsl:with-param name="name" select="$name"/>
-			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="value" select="$value" />
-			<xsl:with-param name="placeholder" select="$placeholder" />
-			<xsl:with-param name="label" select="$label" />
-			<xsl:with-param name="label-class-empty" select="$label-class-empty" />
-			<xsl:with-param name="label-class-not-empty" select="$label-class-not-empty" />
-			<xsl:with-param name="rules" select="$rules" />
-			<!-- <xsl:with-param name="valid-flag" select="''"/> -->
-			<!-- <xsl:with-param name="required-flag" select="''"/> -->
 		</xsl:call-template>
 	</xsl:template>
 
