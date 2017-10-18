@@ -139,6 +139,7 @@
 	<xsl:template name="site-form-field-input">
 		<xsl:param name="name"/>
 		<xsl:param name="attr"/>
+		<xsl:param name="value"/>
 		<xsl:param name="label"/>
 		<xsl:param name="placeholder"/>
 		<xsl:param name="rules" />
@@ -154,6 +155,7 @@
 		<xsl:call-template name="form-field-input">
 			<xsl:with-param name="name" select="$name"/>
 			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="value" select="$value" />
 			<xsl:with-param name="placeholder" select="$placeholder" />
 			<xsl:with-param name="label" select="$label" />
 			<xsl:with-param name="label-class-empty" select="$label-class-empty" />
