@@ -18,6 +18,8 @@
 	// TRANSLATE
 	.translate-1_2@{suffix}                {#transform(~'translate(50%, 50%)');}
 	.translate-minus-1_2@{suffix}          {#transform(~'translate(-50%, -50%)');}
+	.translate-minus-1_4@{suffix}          {#transform(~'translate(-25%, -25%)');}
+	.translate-minus-3_4@{suffix}          {#transform(~'translate(-75%, -75%)');}
 	// TRANSLATE X
 	.translate-x-0@{suffix}                {#transform(~'translateX(0)');}
 	.translate-x-1_2@{suffix}              {#transform(~'translateX(50%)');}
@@ -88,10 +90,9 @@
 }
 
 //HOVER
-//TODO DEPRECATE
-.translate-left-none-on-hover      {#hover({#transform(~'translateX(0)');});}
-.translate-y-none-on-hover         {#hover({#transform(~'translateY(0)');});}
-
 .translate-x-0-on-hover            {#hover({#transform(~'translateX(0)');});}
+.translate-x-minus-full-on-hover   {#hover({#transform(~'translateX(-100%)');});}
 .translate-y-0-on-hover            {#hover({#transform(~'translateY(0)');});}
 .translate-y-minus-full-on-hover   {#hover({#transform(~'translateY(-100%)');});}
+.scale-1-on-hover                  {#hover({#transform(~'scale(1)');});}
+.scale-2-on-hover                  {#hover({#transform(~'scale(2)');});}
