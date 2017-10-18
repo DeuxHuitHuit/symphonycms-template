@@ -283,10 +283,6 @@
 			<!-- Js class for auto-jit-image -->
 			<add class="jit-image-bg" />
 
-			<!-- <add data-image-width="" />
-			<add data-image-height="" />
-			 -->
-			 
 			<!-- External attr -->
 			<xsl:copy-of select="$attr"/>
 
@@ -296,7 +292,7 @@
 
 		<!-- image -->
 		<xsl:variable name="computed-image-bg-attr">
-			<add class="jit-image-bg-src hidden" />
+			<add class="jit-image-bg-src display-none" />
 			<xsl:copy-of select="$image-attr" />
 			<add dev-core-element="image" />
 		</xsl:variable>
