@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template name="iframe-copyright-288">
+		<xsl:param name="attr" />
 		<xsl:param name="bg-color" select="'transparent'" />
 		<xsl:param name="text-color" select="'FFF'" />
 		<xsl:param name="logo-color" select="'fff'" />
@@ -9,7 +10,16 @@
 		<xsl:param name="font-size" select="'12'" />
 		<xsl:param name="w" select="'150'" />
 		<xsl:param name="h" select="'28'" />
-		<xsl:param name="word" select="'Credits'" />
+		<xsl:param name="word" >
+			<xsl:choose>
+				<xsl:when test="$url-language = 'fr'">
+					<xsl:text>Crédits</xsl:text>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:text>Credits</xsl:text>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:param>
 		<xsl:param name="text-transform" select="'none'" />
 		<xsl:param name="display" select="'inline'" />
 		<xsl:param name="t-align" select="'left'" />
@@ -47,14 +57,21 @@
 			<xsl:text>&amp;no-logo=</xsl:text><xsl:value-of select="$no-logo" />
 		</xsl:variable>
 		
-		<iframe class="copy-288"
-				src="{$url}"
-				margin="0"
-				border="0"
-				scrolling="no"
-				frameborder="no"
-				width="{$w}"
-				height="{number($h)}"></iframe>
+		<xsl:variable name="computed-attr">
+			<add class="copy-288" />
+			<add src="{$url}" />
+			<add margin="0" />
+			<add border="0" />
+			<add scrolling="no" />
+			<add frameborder="no" />
+			<add width="{$w}" />
+			<add height="{number($h)}" />
+			<xsl:copy-of select="$attr" />
+		</xsl:variable>
 
+		<xsl:call-template name="element">
+			<xsl:with-param name="element" select="'iframe'"/>
+			<xsl:with-param name="attr" select="$computed-attr" />
+		</xsl:call-template>
 	</xsl:template>
 </xsl:stylesheet>
