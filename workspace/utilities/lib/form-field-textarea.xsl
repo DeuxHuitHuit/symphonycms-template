@@ -29,6 +29,9 @@
 		<xsl:param name="ctn-class-empty"/>
 		<xsl:param name="ctn-class-not-empty"/>
 
+		<!-- Inner ctn -->
+		<xsl:param name="inner-ctn-attr" />
+
 		<xsl:param name="label"/>
 		<xsl:param name="label-attr"/>
 		<xsl:param name="label-class-error"/>
@@ -119,6 +122,8 @@
 			<xsl:with-param name="ctn-class-valid" select="$ctn-class-valid" />
 			<xsl:with-param name="ctn-class-empty" select="$ctn-class-empty" />
 			<xsl:with-param name="ctn-class-not-empty" select="$ctn-class-not-empty" />
+
+			<xsl:with-param name="inner-ctn-attr" select="$inner-ctn-attr" />
 
 			<xsl:with-param name="label" select="$label" />
 			<xsl:with-param name="label-attr" select="$computed-label-attr" />
