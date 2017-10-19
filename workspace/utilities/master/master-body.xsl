@@ -96,6 +96,16 @@
 				<!-- BG TRANSITION -->
 				<div id="bg-transition" class="bg-color-white fixed fill z-index-max-minus-5 display-none"></div>
 				
+				<!-- BG_TRANSITION POPUP -->
+				<xsl:call-template name="element">
+					<xsl:with-param name="attr" >
+						<add id="bg-transition-popup" />
+						<add class="fixed fill z-index-max-minus-6" />
+						<add class="display-none" />
+						<xsl:call-template name="bg-transition-popup-attr" />
+					</xsl:with-param>
+				</xsl:call-template>
+				
 				<!-- load progress -->
 				<div id="load-progress" class="z-index-max top left width-0 fixed"></div>
 				
@@ -122,4 +132,6 @@
 	<xsl:template name="body-attr"></xsl:template>
 <!-- PAGE ATTR HOLE =========================================================-->
 	<xsl:template name="page-attr"></xsl:template>
+<!-- BG-TRANSITION-POPUP ATTR HOLE =========================================================-->
+	<xsl:template name="bg-transition-popup-attr"></xsl:template>
 </xsl:stylesheet>
