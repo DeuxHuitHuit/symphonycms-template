@@ -237,6 +237,11 @@
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
 		</xsl:param>
+		<xsl:param name="format" >
+			<xsl:text>/image/1/</xsl:text>
+			<xsl:value-of select="concat($width, '/')" />
+			<xsl:value-of select="$height" />
+		</xsl:param>
 		
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
@@ -255,19 +260,15 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-
-		<xsl:variable name="computed-format">
-			<xsl:text>/image/1/</xsl:text>
-			<xsl:value-of select="concat($width, '/')" />
-			<xsl:value-of select="$height" />
-		</xsl:variable>
 	<!-- /-->
 
 	<!-- Computed attributes -->
 		<!-- Component -->
 		<xsl:variable name="computed-attr">
+			<!-- Add default no-repeat bg class -->
 			<add class="bg-no-repeat" />
 
+			<!-- Add background-image -->
 			<add style="~'background-image:url('{$img-path}');'" />
 
 			<!-- Style: background-position if specified -->
@@ -309,7 +310,7 @@
 					<xsl:with-param name="image" select="$image" />
 					<xsl:with-param name="alt" select="$alt" />
 					<xsl:with-param name="factor" select="$factor" />
-					<xsl:with-param name="format" select="$computed-format" />
+					<xsl:with-param name="format" select="$format" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -328,6 +329,11 @@
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
 		</xsl:param>
+		<xsl:param name="format" >
+			<xsl:text>/image/1/</xsl:text>
+			<xsl:value-of select="concat($width, '/')" />
+			<xsl:value-of select="$height" />
+		</xsl:param>
 
 		<xsl:call-template name="render-image-bg">
 			<xsl:with-param name="position" select="$position" />
@@ -340,6 +346,7 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
+			<xsl:with-param name="format" select="$format" />
 		</xsl:call-template>
 	</xsl:template>
 	
