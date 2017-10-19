@@ -7,60 +7,52 @@
 	<xsl:param name="attr-bg" />
 	<xsl:param name="attr-content" />
 	<xsl:param name="attr-close-btn" />
-	<xsl:param name="inited" select="false()" />
+	<xsl:param name="poped" select="false()" />
 	<xsl:param name="close-btn-content" select="'X'" />
 	<xsl:param name="close-btn-url" select="concat(/data/params/current-path, '/')" />
 	<xsl:param name="close-btn-is-optional" select="false()" />
 	<xsl:param name="content" />
-	
+	<xsl:param name="bg-poped-add-class" select="'pointer-events-all'" />
+	<xsl:param name="bg-poped-rem-class" select="'transparent'" />
+	<xsl:param name="content-poped-add-class" select="'pointer-events-all'" />
+	<xsl:param name="content-poped-rem-class" select="'transparent'" />
+	<xsl:param name="element-bg" select="'div'" />
+
 	<!-- STYLISTICS _________________________________________________________ -->
 	<xsl:variable name="s-popup">
-		<add class="fixed fill z-index-10000" />
+		<add class="fixed fill z-index-max-minus-4" />
 		<add class="pointer-events-none" />
-	</xsl:variable>
 
-	<xsl:variable name="bg-inited-state-class">
-		<xsl:text>scale-9_10 transparent</xsl:text>
+		<xsl:call-template name="set-popup-poped-state">
+			<xsl:with-param name="flag" select="$poped" />
+			<xsl:with-param name="add-class" select="''" />
+			<xsl:with-param name="rem-class" select="''" />
+		</xsl:call-template>
+		<add data-popup-poped-state-follower=".js-popup-bg, .js-popup-content" />
 	</xsl:variable>
 
 	<xsl:variable name="s-bg">
 		<add class="absolute fill" />
-		<add class="transition-transform-opacity transition-duration-fast" />
+		<add class="transition-opacity transition-duration-faster transition-ease-out-quad" />
 
-		<xsl:if test="$inited = true()">
-			<add class="is-popup-inited" />
-			<add class="{$bg-inited-state-class}" />
-		</xsl:if>
-
-		<add data-popup-inited-state-add-class="{$bg-inited-state-class}" />
-		<add data-popup-poped-state-add-class="" />
-		<add data-popup-poped-state-rem-class="{$bg-inited-state-class}" />
-	</xsl:variable>
-
-	<xsl:variable name="content-inited-state-class">
-		<xsl:text>scale-11_10 transparent</xsl:text>
-	</xsl:variable>
-	<xsl:variable name="content-poped-state-add-class">
-		<xsl:text>pointer-events-all</xsl:text>
-	</xsl:variable>
-	<xsl:variable name="content-poped-state-rem-class">
-		<xsl:text>scale-11_10 transparent</xsl:text>
+		<xsl:call-template name="set-popup-poped-state">
+			<xsl:with-param name="flag" select="$poped" />
+			<xsl:with-param name="add-class" select="$bg-poped-add-class" />
+			<xsl:with-param name="rem-class" select="$bg-poped-rem-class" />
+		</xsl:call-template>
 	</xsl:variable>
 
 	<xsl:variable name="s-content">
 		<add class="absolute fill" />
-		<add class="transition-transform-opacity transition-duration-fast" />
-		
-		<xsl:if test="$inited = true()">
-			<add class="is-popup-inited" />
-			<add class="{$content-inited-state-class}" />
-		</xsl:if>
+		<add class="transition-opacity transition-duration-faster transition-ease-out-quad" />
 
-		<add data-popup-inited-state-add-class="{$content-inited-state-class}" />
-		<add data-popup-poped-state-add-class="{$content-poped-state-add-class}" />
-		<add data-popup-poped-state-rem-class="{$content-poped-state-rem-class}" />
+		<xsl:call-template name="set-popup-poped-state">
+			<xsl:with-param name="flag" select="$poped" />
+			<xsl:with-param name="add-class" select="$content-poped-add-class" />
+			<xsl:with-param name="rem-class" select="$content-poped-rem-class" />
+		</xsl:call-template>
 	</xsl:variable>
-	
+
 	<!-- ___________________________________________________________________/-->
 
 	<!-- STRUCTURE DIAGRAM 												   >
@@ -78,27 +70,25 @@
 		<xsl:copy-of select="$attr"/>
 		<add dev-component="popup" />
 	</xsl:variable>
-	
+
 	<xsl:variable name="computed-attr-bg">
 		<xsl:copy-of select="$s-bg"/>
-		
+		<xsl:copy-of select="$attr-bg"/>
 		<!-- FOR POPUP ANIMATION -->
 		<add class="js-popup-bg" />
-		
-		<xsl:copy-of select="$attr-bg"/>
 		<add dev-element="popup-bg" />
 	</xsl:variable>
-	
+
 	<xsl:variable name="computed-attr-content">
 		<xsl:copy-of select="$s-content"/>
-		
+
 		<!-- FOR POPUP ANIMATION -->
 		<add class="js-popup-content" />
-		<add class="overflow-y-scroll overflow-x-hidden" />
+		<add class="overflow-hidden" />
 		<xsl:copy-of select="$attr-content"/>
 		<add dev-element="popup-content" />
 	</xsl:variable>
-	
+
 	<xsl:variable name="computed-attr-close-btn">
 		<xsl:copy-of select="$attr-close-btn"/>
 	</xsl:variable>
@@ -110,26 +100,27 @@
 		<xsl:with-param name="content">
 			<!-- Bg -->
 			<xsl:call-template name="element">
+				<xsl:with-param name="element" select="$element-bg" />
 				<xsl:with-param name="attr" select="$computed-attr-bg"/>
 			</xsl:call-template>
-			
+
 			<!-- Popup Content -->
 			<xsl:call-template name="element">
 				<xsl:with-param name="attr" select="$computed-attr-content"/>
 				<xsl:with-param name="content">
-					
+
 					<xsl:call-template name="popup-close-button">
 						<xsl:with-param name="attr" select="$attr-close-btn"/>
 						<xsl:with-param name="url" select="$close-btn-url" />
 						<xsl:with-param name="content" select="$close-btn-content" />
 						<xsl:with-param name="is-optional" select="$close-btn-is-optional" />
 					</xsl:call-template>
-					
+
 					<!-- content -->
 					<xsl:call-template name="content">
 						<xsl:with-param name="content" select="$content" />
 					</xsl:call-template>
-					
+
 				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:with-param>
@@ -151,6 +142,7 @@
 		<xsl:copy-of select="$s-close-btn"/>
 		<add data-action="toggle" />
 		<add data-auto-modal-popup-selector=".js-popup" />
+		<add data-toggle-fallback-url="{$page-index-url}" />
 
 		<xsl:copy-of select="$attr" />
 		<add dev-component="popup-close-btn" />
@@ -163,5 +155,27 @@
 		<xsl:with-param name="url" select="$url" />
 		<xsl:with-param name="content" select="$content" />
 	</xsl:call-template>
+</xsl:template>
+
+<!-- template to set poped state -->
+<xsl:template name="set-popup-poped-state">
+	<xsl:param name="flag" select="false()" />
+	<xsl:param name="add-class" select="''" />
+	<xsl:param name="rem-class" select="''" />
+
+	<xsl:choose>
+		<xsl:when test="$flag">
+			<add class="{$add-class}" />
+			<rem class="{$rem-class}" />
+			<add class="is-popup-poped" />
+		</xsl:when>
+		<xsl:otherwise>
+			<rem class="{$add-class}" />
+			<add class="{$rem-class}" />
+		</xsl:otherwise>
+	</xsl:choose>
+
+	<add data-popup-poped-state-add-class="{$add-class}" />
+	<add data-popup-poped-state-rem-class="{$rem-class}" />
 </xsl:template>
 </xsl:stylesheet>
