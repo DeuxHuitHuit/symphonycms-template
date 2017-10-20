@@ -42,7 +42,10 @@
 		Used by the framework to track server redirection
 -->
 <xsl:variable name="response-url">
-	<xsl:value-of select="concat(/data/params/current-path, '/')" />
+	<xsl:value-of select="/data/params/current-path" />
+	<xsl:if test="/data/params/current-path != '/'">
+		<xsl:text>/</xsl:text>
+	</xsl:if>
 	<xsl:if test="string-length(/data/params/current-query-string) != 0">
 		<xsl:text>?</xsl:text>
 		<xsl:value-of select="/data/params/current-query-string" disable-output-escaping="yes" />
