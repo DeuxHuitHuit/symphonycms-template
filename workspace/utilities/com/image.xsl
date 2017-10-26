@@ -16,6 +16,7 @@
 
 		<xsl:variable name="has-image" select="string-length($image) != 0" />
 		<xsl:variable name="has-veil-opacity" select="string-length($veil-opacity) != 0" />
+		<xsl:variable name="hide-component" select="$has-image = false() and $enable-veil = false()" />
 
 
 	<!-- STYLISTICS _________________________________________________________ -->
@@ -83,6 +84,7 @@
 	<!--																	/-->
 
 	<!-- STRUCTURE 															 -->
+	<xsl:if test="$hide-component = false()">
 		<xsl:call-template name="element">
 			<xsl:with-param name="attr" select="$computed-attr-ctn" />
 			<xsl:with-param name="content">
@@ -119,6 +121,7 @@
 				</xsl:if>
 			</xsl:with-param> 
 		</xsl:call-template>
+	</xsl:if>
 	<!--																	/-->
 	</xsl:template>
 </xsl:stylesheet>
