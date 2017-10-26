@@ -39,7 +39,7 @@
 			<!-- Basic classes -->
 			<add class="overflow-hidden" />
 			<xsl:choose>
-				<xsl:when test="$is-cover or $is-contain">
+				<xsl:when test="$type = 'cover' or $type = 'contain'">
 					<add class="absolute fill" />
 				</xsl:when>
 				<xsl:otherwise>
@@ -54,7 +54,7 @@
 		<xsl:variable name="computed-attr">
 			<!-- Basic classes -->
 			<xsl:choose>
-				<xsl:when test="$is-cover or $is-contain">
+				<xsl:when test="$type = 'cover' or $type = 'contain'">
 					<add class="absolute fill" />
 				</xsl:when>
 				<xsl:otherwise>
