@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:exslt="http://exslt.org/common"
+	exclude-result-prefixes="exslt">
 
 <!-- Master Meta template -->
 	<xsl:template name="page-metas-alt-link">
@@ -46,17 +48,60 @@
 
 	<xsl:template name="page-alt-link-url-extra">
 		<xsl:param name="lg" />
+		<xsl:param name="entry" select="$page-meta-entry"/>
+
+		<xsl:if test="exslt:object-type($entry) = 'node-set'">
+			<xsl:variable name="extra-entry-handle">
+				<xsl:call-template name="default-value">
+					<xsl:with-param name="lg" select="$lg"/>
+					<xsl:with-param name="a" select="$entry/url/item[@lang = $lg]/@handle" />
+					<xsl:with-param name="b" select="$entry/url/item[@lang = $lg]" />
+					<xsl:with-param name="c" select="$entry/url/@handle" />
+					<xsl:with-param name="d" select="$entry/url" />
+
+					<xsl:with-param name="e" select="$entry/titre/item[@lang = $lg]/@handle" />
+					<xsl:with-param name="f" select="$entry/titre/item[@lang = $lg]" />
+					<xsl:with-param name="g" select="$entry/titre/@handle" />
+					<xsl:with-param name="h" select="$entry/titre" />
+
+					<xsl:with-param name="i" select="$entry/title/item[@lang = $lg]/@handle" />
+					<xsl:with-param name="j" select="$entry/title/item[@lang = $lg]" />
+					<xsl:with-param name="k" select="$entry/title/@handle" />
+					<xsl:with-param name="l" select="$entry/title" />
+
+					<xsl:with-param name="m" select="$entry/nom/item[@lang = $lg]/@handle" />
+					<xsl:with-param name="n" select="$entry/nom/item[@lang = $lg]" />
+					<xsl:with-param name="o" select="$entry/nom/@handle" />
+					<xsl:with-param name="p" select="$entry/nom" />
+
+					<xsl:with-param name="q" select="$entry/name/item[@lang = $lg]/@handle" />
+					<xsl:with-param name="r" select="$entry/name/item[@lang = $lg]" />
+					<xsl:with-param name="s" select="$entry/name/@handle" />
+					<xsl:with-param name="t" select="$entry/name" />
+				</xsl:call-template>
+			</xsl:variable>
+
+			<xsl:if test="string-length($extra-entry-handle) != 0 ">
+				<xsl:value-of select="$extra-handle" />
+				<xsl:text>/</xsl:text>
+			</xsl:if>
+		</xsl:if>
 	</xsl:template>
 
 <!-- page-alt-link-title generator -->
 	<xsl:template name="page-alt-link-title">
 		<xsl:param name="lg" />
 
-		<xsl:if test="count(/data/params/page-types/item[@handle = 'index']) = 0">
-			<xsl:value-of select="/data/plh-page/page/item[@lang=$lg]" />
+		<xsl:call-template name="page-title" >
+			<xsl:with-param name="lg" select="$lg" />
+		</xsl:call-template>
+
+		<xsl:if test="$master-title-append-site-name = true()">
 			<xsl:text> - </xsl:text>
+			<xsl:call-template name="default-site-name">
+				<xsl:with-param name="lg" select="$lg"/>
+			</xsl:call-template>
 		</xsl:if>
-		<xsl:value-of select="$config/site-titre/item[@lang=$lg]" />
 	</xsl:template>
 
 <!-- page-alt-link-rss generator -->
