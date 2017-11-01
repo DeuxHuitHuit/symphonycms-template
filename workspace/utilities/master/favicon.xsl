@@ -11,7 +11,7 @@
 		</xsl:variable>
 
 		<link rel="shortcut icon"     href="{$root}/{$filename}.ico" type="image/vnd.microsoft.icon" />
-		<link rel="icon"              href="{$root}/{$filename}.ico" type="image/ico" />
+		<link rel="icon"              href="{$root}/{$filename}.ico" type="image/x-icon" />
 		<link rel="icon"              href="{$root}/{$filename}.png" type="image/png" />
 		<link rel="apple-touch-icon"  href="{$root}/{$filename}.png" type="image/png" />
 		<link rel="pavatar"           href="{$root}/{$filename}.png" type="image/png" />
