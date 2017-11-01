@@ -46,6 +46,7 @@
 		</xsl:call-template>
 	</xsl:template>
 
+<!-- page alt-link url extra generator -->
 	<xsl:template name="page-alt-link-url-extra">
 		<xsl:param name="lg" />
 		<xsl:param name="entry" select="$page-meta-entry"/>
@@ -82,7 +83,7 @@
 			</xsl:variable>
 
 			<xsl:if test="string-length($extra-entry-handle) != 0 ">
-				<xsl:value-of select="$extra-handle" />
+				<xsl:value-of select="$extra-entry-handle" />
 				<xsl:text>/</xsl:text>
 			</xsl:if>
 		</xsl:if>
@@ -92,16 +93,9 @@
 	<xsl:template name="page-alt-link-title">
 		<xsl:param name="lg" />
 
-		<xsl:call-template name="page-title" >
+		<xsl:call-template name="master-title" >
 			<xsl:with-param name="lg" select="$lg" />
 		</xsl:call-template>
-
-		<xsl:if test="$master-title-append-site-name = true()">
-			<xsl:text> - </xsl:text>
-			<xsl:call-template name="default-site-name">
-				<xsl:with-param name="lg" select="$lg"/>
-			</xsl:call-template>
-		</xsl:if>
 	</xsl:template>
 
 <!-- page-alt-link-rss generator -->
