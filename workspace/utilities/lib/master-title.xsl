@@ -4,7 +4,7 @@
 	xmlns:exslt="http://exslt.org/common"
 	exclude-result-prefixes="exslt">
 
-<!-- Template to override for custom page title algo -->
+<!-- Template to override for custom master title algo -->
 	<xsl:template name="master-title">
 		<xsl:param name="lg" select="$url-language" />
 
