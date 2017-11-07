@@ -47,6 +47,7 @@ module.exports = function cssopruner (grunt) {
 	var chalk = require('chalk');
 	var maxmin = require('maxmin');
 	var assert = require('assert');
+	var walkRules = require('css-tree').walkRules;
 	var modulesLoaded = (new Date()).getTime();
 
 	var arrayize = function (something) {
@@ -111,21 +112,18 @@ module.exports = function cssopruner (grunt) {
 			var wordsToMatched = [];
 			sequence.each(function (seq) {
 				switch (seq.type) {
-					case 'Negation':
-						break;
-
-					case 'SimpleSelector':
-						assert(seq.sequence, 'SimpleSelector sequence is not falsy');
+					case 'Selector':
+						assert(seq.sequence, 'Selector sequence is not falsy');
 						wordsToMatched = wordsToMatched.concat(processSequence(seq.sequence));
 						break;
 
-					case 'Id':
-					case 'Class':
+					case 'IdSelector':
+					case 'ClassSelector':
 						assert(seq.name, seq.type + ' name is not falsy');
 						wordsToMatched.push(seq.name);
 						break;
 
-					case 'Attribute':
+					case 'AttributeSelector':
 						if (!!seq.name.name) {
 							wordsToMatched.push(seq.name.name);
 						}
@@ -145,19 +143,28 @@ module.exports = function cssopruner (grunt) {
 						}
 						break;
 
-					case 'FunctionalPseudo':
-						break;
-
-					case 'PseudoElement':
+					case 'PseudoElementSelector':
 						// ::before, ::after
 						break;
 
-					case 'PseudoClass':
+					case 'PseudoClassSelector':
 						// :hover, :active
 						break;
 
 					case 'Combinator':
 						break;
+						
+					case 'WhiteSpace':
+						break;
+						
+					case 'TypeSelector':
+						break;
+						
+					case 'Percentage':
+						break;
+
+					default:
+						throw new Error('Unknown selector type ' + seq.type);
 				}
 			});
 			return wordsToMatched;
@@ -173,10 +180,10 @@ module.exports = function cssopruner (grunt) {
 		var processSelectors = function (ast, selectors) {
 			var selectorsRemoved = 0;
 			selectors.each(function (selector, item, list) {
-				if (selector.type !== 'SimpleSelector') {
-					throw new Error('Cannot deal with anything else then a simple selector');
+				if (selector.type !== 'Selector') {
+					throw new Error('Cannot deal with anything else then a Selector!');
 				}
-				var wordsToMatched = processSequence(selector.sequence);
+				var wordsToMatched = processSequence(selector.children);
 				var results = _.reduce(wordsToMatched, function (memo, word, index) {
 					if (!memo[word]) {
 						memo[word] = dictionary.has(word) ?
@@ -207,10 +214,10 @@ module.exports = function cssopruner (grunt) {
 		};
 
 		var walkAllRules = function (ast) {
-			csso.walkRules(ast, function (node, item, list) {
-				if (node.type === 'Ruleset') {
+			walkRules(ast, function (node, item, list) {
+				if (node.type === 'Rule') {
 					//ast.stats.rulesetCount++;
-					if (processSelectors(ast, node.selector.selectors) === 0) {
+					if (processSelectors(ast, node.prelude.children) === 0) {
 						list.remove(item);
 						//ast.stats.rulesetRemovedCount++;
 						//ast.stats.rulesetRemoved.push(node);
@@ -220,7 +227,7 @@ module.exports = function cssopruner (grunt) {
 						if (!!node.block.rules) {
 							node.block.rules.each(function (ruleset, item, list) {
 								//ast.stats.rulesetCount++;
-								if (processSelectors(ast, ruleset.selector.selectors) === 0) {
+								if (processSelectors(ast, ruleset.prelude.children) === 0) {
 									list.remove(item);
 									//ast.stats.relesetRemovedCount++;
 									//ast.stats.rulesetRemoved.push(ruleset);
