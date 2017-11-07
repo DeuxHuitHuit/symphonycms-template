@@ -38,18 +38,14 @@
 
 	var updateOverlay = function () {
 		var overlay = $('#dev-heading-overlay');
-		if(overlay.length) {
-			
+		if (overlay.length) {
 			//Clear actual data
 			overlay.empty();
-
 			//Process all title
 			$('h1, h2, h3, h4, h5, h6').each(function () {
 				var t = $(this);
-
 				var projection = $('<div></div>');
 				projection.addClass('absolute border-box');
-
 				projection.text(t[0].nodeName);
 				projection.css({
 					color: 'white',
@@ -66,9 +62,7 @@
 	};
 
 	var specialOverlayFactory = function (params) {
-
 		return function (state) {
-
 			if (state) {
 				//Create overlay
 				$('body').append($('<div id="dev-heading-overlay" class="fixed fill pointer-events-none z-index-max"></div>'));
@@ -77,7 +71,6 @@
 				//Remove overlay
 				$('#dev-heading-overlay').remove();
 			}
-
 		};
 	};
 
@@ -132,12 +125,13 @@
 			var wrap = $('<div />').attr('class', 'margin-bottom-micro');
 			var label = $('<label />');
 			var checkbox = $('<input />').attr('type', 'checkbox').attr('class', 'margin-right-micro');
+			
 			checkbox.addClass('dev-js-chk-' + clas);
-
 			wrap.append(label.append(checkbox).append(clas));
 			if (state) {
 				checkbox.attr('checked', 'checked');
 			}
+
 			checkbox.prop('checked', state);
 			checkbox.on('change', function () {
 				var isChecked = checkbox.prop('checked');
@@ -149,6 +143,7 @@
 					specialCases[clas](isChecked);
 				}
 			});
+
 			if (!!state) {
 				body.addClass(clas);
 			}
@@ -178,17 +173,13 @@
 
 	//Add custom module to keep ui in sync with the framework state
 	if (App && App.modules && App.modules.exports) {
-
 		var refreshSpecialCases = function () {
-			//
-			if(panel.find('.dev-js-chk-show-dom:checked').length) {
+			if (panel.find('.dev-js-chk-show-dom:checked').length) {
 				specialCases['show-dom'](true);
 			}
-
 			if(panel.find('.dev-js-chk-show-js-classes:checked').length) {
 				specialCases['show-js-classes'](true);
 			}
-
 			updateOverlay();
 		};
 
@@ -211,5 +202,4 @@
 			}
 		});
 	}
-	
 })(jQuery, window);
