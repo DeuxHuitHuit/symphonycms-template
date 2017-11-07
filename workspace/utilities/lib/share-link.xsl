@@ -45,7 +45,7 @@
 		
 		<xsl:variable name="computed-attr">
 			<xsl:copy-of select="$attr" />
-			<add data-mailto="{$computed-url}" />
+			<set data-mailto="{$computed-url}" />
 			<rem target="_blank" />
 		</xsl:variable>
 
