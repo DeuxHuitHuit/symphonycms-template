@@ -125,7 +125,7 @@
 			var wrap = $('<div />').attr('class', 'margin-bottom-micro');
 			var label = $('<label />');
 			var checkbox = $('<input />').attr('type', 'checkbox').attr('class', 'margin-right-micro');
-			
+
 			checkbox.addClass('dev-js-chk-' + clas);
 			wrap.append(label.append(checkbox).append(clas));
 			if (state) {
@@ -177,7 +177,7 @@
 			if (panel.find('.dev-js-chk-show-dom:checked').length) {
 				specialCases['show-dom'](true);
 			}
-			if(panel.find('.dev-js-chk-show-js-classes:checked').length) {
+			if (panel.find('.dev-js-chk-show-js-classes:checked').length) {
 				specialCases['show-js-classes'](true);
 			}
 			updateOverlay();
