@@ -15,7 +15,7 @@
 		<xsl:param name="attr-veil" />
 
 		<xsl:variable name="has-image" select="string-length($image) != 0" />
-		<xsl:variable name="has-veil-opacity" select="string-length($veil-opacity) != 0" />
+		<xsl:variable name="has-veil-opacity" select="number($veil-opacity) = $veil-opacity and $veil-opacity &gt;= 0 and $veil-opacity &lt;= 1" />
 		<xsl:variable name="hide-component" select="$has-image = false() and $enable-veil = false()" />
 
 
