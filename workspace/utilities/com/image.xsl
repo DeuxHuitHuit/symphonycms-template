@@ -104,8 +104,15 @@
 								<xsl:with-param name="attr" select="$computed-attr" />
 							</xsl:call-template>
 						</xsl:when>
-						<xsl:otherwise>
+						<xsl:when test="$type = 'resize'">
 							<xsl:call-template name="render-image-resize">
+								<xsl:with-param name="image" select="$image" />
+								<xsl:with-param name="alt" select="$alt" />
+								<xsl:with-param name="attr" select="$computed-attr" />
+							</xsl:call-template>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:call-template name="render-image">
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
