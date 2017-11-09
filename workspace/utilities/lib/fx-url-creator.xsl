@@ -99,7 +99,7 @@
 		</xsl:call-template>
 	</xsl:variable>
 	
-	<xsl:if test="count(types/type[. = 'hidden']) = 0 and (count(types/type[. = 'admin']) = 0 or $is-loggued-in = true())">
+	<xsl:if test="count(types/type[. = 'f288-hidden']) = 0 and count(types/type[. = 'hidden']) = 0 and (count(types/type[. = 'admin']) = 0 or $is-loggued-in = true())">
 		<xsl:call-template name="framework-288-render-page">
 			<xsl:with-param name="handle" select="$handle" />
 			<xsl:with-param name="routes" select="$routes" />
