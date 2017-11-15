@@ -15,12 +15,11 @@
 <!-- tag video avec wrapper. important pour le js -->
 <xsl:template name="video">
 	<xsl:param name="mp4" select="''" />
-	<xsl:param name="ogv" select="''" />
 	<xsl:param name="webm" select="''" />
 	<xsl:param name="attr" select="''" />
 	<xsl:param name="video-attr" select="''" />
 
-	<xsl:if test="string-length($mp4) != 0 or string-length($ogv) != 0 or string-length($webm) != 0">
+	<xsl:if test="string-length($mp4) != 0 or string-length($webm) != 0">
 		<xsl:call-template name="element">
 			<xsl:with-param name="attr" >
 				<add class="js-video-ctn" />
@@ -32,7 +31,6 @@
 			<xsl:with-param name="content">
 				<xsl:call-template name="video-tag">
 					<xsl:with-param name="mp4" select="$mp4" />
-					<xsl:with-param name="ogv" select="$ogv" />
 					<xsl:with-param name="webm" select="$webm" />
 					<xsl:with-param name="attr">
 						<add class="relative" />
@@ -48,11 +46,10 @@
 <!-- tag video uniquement -->
 <xsl:template name="video-tag">
 	<xsl:param name="mp4" select="''" />
-	<xsl:param name="ogv" select="''" />
 	<xsl:param name="webm" select="''" />
 	<xsl:param name="attr" select="''" />
 
-	<xsl:if test="string-length($mp4) != 0 or string-length($ogv) != 0 or string-length($webm) != 0">
+	<xsl:if test="string-length($mp4) != 0 or string-length($webm) != 0">
 		<xsl:call-template name="element">
 			<xsl:with-param name="element" select="'video'" />
 			<xsl:with-param name="attr" >
@@ -71,10 +68,6 @@
 
 				<xsl:if test="string-length($mp4) != 0">
 					<source src="/workspace{$mp4/@path}/{$mp4/filename}" type="video/mp4" />
-				</xsl:if>
-
-				<xsl:if test="string-length($ogv) != 0">
-					<source src="/workspace{$ogv/@path}/{$ogv/filename}" type="video/ogg" />
 				</xsl:if>
 			</xsl:with-param>
 		</xsl:call-template>
