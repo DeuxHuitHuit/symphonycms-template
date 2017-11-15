@@ -37,7 +37,7 @@
 					</a>
 				</xsl:if>
 
-				<xsl:if test="count(/data/params/use-dev) != 0">
+				<xsl:if test="count(/data/params/use-dev) != 0 and $dev = true()">
 					<xsl:choose>
 						<xsl:when test="$debug = true()">
 							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
