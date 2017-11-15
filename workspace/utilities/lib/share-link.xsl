@@ -45,7 +45,7 @@
 		
 		<xsl:variable name="computed-attr">
 			<xsl:copy-of select="$attr" />
-			<xsl:add data-mailto="{$computed-url}" />
+			<set data-mailto="{$computed-url}" />
 			<rem target="_blank" />
 		</xsl:variable>
 
@@ -90,6 +90,33 @@
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="url" select="concat('https://www.facebook.com/sharer/sharer.php?u=', $url)" />
+			<xsl:with-param name="content" select="$content"/>
+		</xsl:call-template>
+	</xsl:template>
+	
+	<xsl:template name="share-link-linkedin">
+		<xsl:param name="attr" />
+		<xsl:param name="content" />
+		<xsl:param name="status" />
+		<xsl:param name="separator" select="' - '" />
+		<xsl:param name="url" />
+
+		<xsl:variable name="computed-status">
+			<xsl:value-of select="$status" />
+			<xsl:choose>
+				<xsl:when test="string-length($status) != 0 and string-length($url) != 0">
+					<xsl:value-of select="$separator" />
+				</xsl:when>
+				<otherwise>
+					<xsl:text> </xsl:text>
+				</otherwise>
+			</xsl:choose>
+			<xsl:value-of select="$url" />
+		</xsl:variable>
+
+		<xsl:call-template name="share-link">
+			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="url" select="concat('https://www.linkedin.com/shareArticle?mini=true&amp;url=', $url, '&amp;title=', $computed-status)" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
