@@ -94,7 +94,7 @@
 		</xsl:call-template>
 	</xsl:template>
 	
-	<xsl:template name="share-link-linkedIn">
+	<xsl:template name="share-link-linkedin">
 		<xsl:param name="attr" />
 		<xsl:param name="content" />
 		<xsl:param name="status" />
