@@ -25,6 +25,7 @@
 		</xsl:call-template>
 	</xsl:template>
 
+	<!-- Requires auto-mailto.js -->
 	<xsl:template name="share-link-email">
 		<xsl:param name="attr" />
 		<xsl:param name="content" />
