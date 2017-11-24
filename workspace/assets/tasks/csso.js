@@ -7,7 +7,8 @@ module.exports = function csso (grunt) {
 			compress: {
 				options: {
 					report: 'gzip',
-					banner: '<%= meta.banner %>\n'
+					banner: '<%= meta.banner %>\n',
+					filename: '<%= pkg.name %>.min.css'
 				},
 				files: {
 					'css/<%= pkg.name %>.min.css': [
