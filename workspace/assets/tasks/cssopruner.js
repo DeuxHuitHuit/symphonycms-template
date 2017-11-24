@@ -47,7 +47,8 @@ module.exports = function cssopruner (grunt) {
 	var chalk = require('chalk');
 	var maxmin = require('maxmin');
 	var assert = require('assert');
-	var walkRules = require('css-tree').walkRules;
+	var cssTree = require('css-tree');
+	var walkRules = cssTree.walkRules;
 	var modulesLoaded = (new Date()).getTime();
 
 	var arrayize = function (something) {
@@ -62,7 +63,6 @@ module.exports = function cssopruner (grunt) {
 
 	var d = 'Prune unused css from csso tree';
 	grunt.registerMultiTask('cssopruner', d, function () {
-		var csso;
 		var start = _.now();
 		var options = this.options({
 			tokenizer: /[a-zA-Z0-9-_$]+/g,
@@ -183,6 +183,7 @@ module.exports = function cssopruner (grunt) {
 				if (selector.type !== 'Selector') {
 					throw new Error('Cannot deal with anything else then a Selector!');
 				}
+
 				var wordsToMatched = processSequence(selector.children);
 				var results = _.reduce(wordsToMatched, function (memo, word, index) {
 					if (!memo[word]) {
@@ -203,7 +204,7 @@ module.exports = function cssopruner (grunt) {
 				}));
 				if (!allMatched) {
 					//ast.stats.removedSelectors.push({
-					//	selector: csso.translate(selector),
+					//	selector: cssTree.translate(selector),
 					//	results: results
 					//});
 					selectorsRemoved++;
@@ -217,6 +218,7 @@ module.exports = function cssopruner (grunt) {
 			walkRules(ast, function (node, item, list) {
 				if (node.type === 'Rule') {
 					//ast.stats.rulesetCount++;
+
 					if (processSelectors(ast, node.prelude.children) === 0) {
 						list.remove(item);
 						//ast.stats.rulesetRemovedCount++;
@@ -227,6 +229,7 @@ module.exports = function cssopruner (grunt) {
 						if (!!node.block.rules) {
 							node.block.rules.each(function (ruleset, item, list) {
 								//ast.stats.rulesetCount++;
+
 								if (processSelectors(ast, ruleset.prelude.children) === 0) {
 									list.remove(item);
 									//ast.stats.relesetRemovedCount++;
@@ -303,7 +306,6 @@ module.exports = function cssopruner (grunt) {
 			csso: {
 				options: {
 					beforeCompress: [function (ast, options, cssoInstance) {
-						csso = cssoInstance;
 						ast.filename = ast.filename || options.filename;
 						walkAllRules(ast);
 					}]
