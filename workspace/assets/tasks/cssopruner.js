@@ -211,7 +211,7 @@ module.exports = function cssopruner (grunt) {
 				}
 				//ast.stats.selectorsSeen++;
 			});
-			return selectors.size - selectorsRemoved;
+			return selectors.getSize() - selectorsRemoved;
 		};
 
 		var walkAllRules = function (ast) {
