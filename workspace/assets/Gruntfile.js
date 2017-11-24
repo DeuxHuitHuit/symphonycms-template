@@ -165,13 +165,16 @@ module.exports = function (grunt) {
 			'ftps_deploy:bundle',
 			'ftps_cleanup'
 		]);
-		grunt.registerTask('css', [
-			'clean:css',
-			'less:production',
+		grunt.registerTask('cssopt', [
 			'xsltimportextractor',
 			'cssoprunerconcatsrc',
 			'cssopruner',
 			'csso'
+		]);
+		grunt.registerTask('css', [
+			'clean:css',
+			'less:production',
+			'cssopt'
 		]);
 		grunt.registerTask('dev', [
 			'js-dev',
