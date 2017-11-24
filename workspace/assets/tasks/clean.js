@@ -42,7 +42,7 @@ module.exports = function clean (grunt) {
 			theme: {
 				src: [
 					'css/theme/__vars*.less',
-					'css/theme/__theme*.less',
+					'css/theme/__theme*.less'
 				]
 			}
 		}
