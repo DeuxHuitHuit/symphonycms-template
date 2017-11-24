@@ -190,6 +190,17 @@ module.exports = function (grunt) {
 			'js',
 			'css'
 		]);
+		grunt.registerTask('ci', [
+			'clean',
+			'dev',
+			'concat:lessCore',
+			'concat:lessLib',
+			'xmlbundle:site',
+			'less:lib',
+			'less:theme',
+			'js',
+			'css'
+		]);
 		grunt.registerTask('default', [
 			'noop'
 		]);
