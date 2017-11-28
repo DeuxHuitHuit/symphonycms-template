@@ -13,7 +13,7 @@
 		<xsl:param name="word" >
 			<xsl:choose>
 				<xsl:when test="$url-language = 'fr'">
-					<xsl:text>Crédits</xsl:text>
+					<xsl:text>CrÃ©dits</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:text>Credits</xsl:text>
