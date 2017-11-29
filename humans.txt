@@ -34,6 +34,15 @@ Interface designer / Designer d'interface
 Julien Baveye
 Graphic designer / Designer graphique
 
+Clément Piganeau
+Graphic designer / Designer graphique
+
+Xavier Murray-Coulombe
+Product designer / Designer de produit numérique
+
+Alexis Malin
+Digital designer / Designer numérique
+
 Nicolas Brassard-Ferron
 Web Software Lead / Directeur du développement web
 
@@ -70,9 +79,6 @@ Project manager / Chargé de compte
 Nada Hatem
 Project manager / Chargée de projet
 
-Géraldine Beaulieu
-Stratégie-conseil / Strategist
-
 Jésabel St-Jean
 Coordinator / Coordonatrice
 
@@ -102,6 +108,6 @@ Anybody that contributed jQuery plugins or other open source project used in thi
 
 Standards: HTML5, CSS3, ES5
 
-Components: jQuery, Velocity.js, TweenMax, LessCss, jQuery.sizing, jQuery.easing, jQuery.cycle, jQuery.scrollTo, framework.js
+Components: jQuery, Velocity.js, TweenMax, LessCss, jQuery.sizing, jQuery.easing, jQuery.scrollTo, framework.js
 
-Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Bash, vi, Grunt, Blood sweat and tears
+Software: Adobe Creative Suite, Eclipse, Notepad++, Sublime Text, Visual Studio Code, Bash, vi, Grunt, Blood sweat and tears
