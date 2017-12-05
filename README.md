@@ -1,4 +1,4 @@
-# Symphony 2 Template [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/DeuxHuitHuit/symphonycms-template.svg)](https://travis-ci.org/DeuxHuitHuit/symphonycms-template)
+# Symphony 2 Template [![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/DeuxHuitHuit/symphonycms-template.svg)](https://travis-ci.org/DeuxHuitHuit/symphonycms-template) ![David DM](https://david-dm.org/DeuxHuitHuit/symphonycms-template.svg)
 
 This is the template we use internally for creating new websites with [Symphony CMS](http://www.getsymphony.com/).
 
