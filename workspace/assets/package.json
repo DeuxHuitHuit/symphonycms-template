@@ -18,6 +18,7 @@
   "dependencies": {
     "async": "^2.6.0",
     "chalk": "^2.3.0",
+    "css-tree": "1.0.0-alpha.26",
     "event-stream": "^3.3.4",
     "grunt": ">=1.0.1",
     "grunt-cli": "^1.2.0",
