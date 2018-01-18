@@ -60,8 +60,8 @@
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="content">
 				
-				<a href="#site-nav" class="visually-hidden">Skip to navigation</a>
 				<a href="#site-pages" class="visually-hidden">Skip to content</a>
+				<a href="#site-nav" class="visually-hidden">Skip to navigation</a>
 				
 				<!-- Site -->
 				<xsl:call-template name="element">
