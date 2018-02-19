@@ -83,7 +83,10 @@
 	.@{name}-@{color-name}@{suffix}               {@{property}: @color;}
 	.@{name}-@{color-name}-on-hover@{suffix}      {#hover({@{property}: @color;});}
 	.@{name}-@{color-name}-on-focus@{suffix}      {#focus({@{property}: @color;});}
-	.@{name}-@{color-name}-when-selected@{suffix} {&.is-selected {@{property}: @color;}}
+	.@{name}-@{color-name}-on-active@{suffix}     {#active({@{property}: @color;});}
+	.@{name}-@{color-name}-on-visited@{suffix}    {#visited({@{property}: @color;});}
+	.@{name}-@{color-name}-on-selected@{suffix}   {&.is-selected {@{property}: @color;}}
+	.@{name}-@{color-name}-when-selected@{suffix} {&.is-selected {@{property}: @color;}} //TO DEPRECATE
 }
 
 #generate-color-class(@suffix, @color-name, @color) {
@@ -96,4 +99,5 @@
 	#generate-color-class(@suffix, @color-name, @color, ~'border-right-color', ~'border-right-color');
 	#generate-color-class(@suffix, @color-name, @color, ~'border-bottom-color', ~'border-bottom-color');
 	#generate-color-class(@suffix, @color-name, @color, ~'border-left-color', ~'border-left-color');
+	#generate-color-class(@suffix, @color-name, @color, ~'text-decoration-color', ~'text-decoration');
 }
