@@ -21,7 +21,7 @@ ga('require', 'linkid');
 </xsl:template>
 
 <xsl:template name="gtm">
-	<xsl:param name="ua" />
+	<xsl:param name="ctn" />
 	<xsl:param name="env" select="''" />
 <script>
 var dataLayer = dataLayer || [];
@@ -32,9 +32,9 @@ var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;
 j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'<xsl:value-of select="$env" />';
 f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','<xsl:value-of select="$ua" />');</script>
+})(window,document,'script','dataLayer','<xsl:value-of select="$ctn" />');</script>
 <noscript>
-	<iframe src="https://www.googletagmanager.com/ns.html?id={$ua}{$env}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	<iframe src="https://www.googletagmanager.com/ns.html?id={$ctn}{$env}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
 </xsl:template>
 

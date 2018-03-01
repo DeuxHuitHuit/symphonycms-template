@@ -59,6 +59,12 @@
 			<xsl:with-param name="element" select="'body'"/>
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="content">
+				<!-- GTM -->
+				<xsl:if test="$debug != true() and string-length($gtm-ctn) != 0">
+					<xsl:call-template name="gtm">
+						<xsl:with-param name="ctn" select="$gtm-ctn" />
+					</xsl:call-template>
+				</xsl:if>
 				
 				<a href="#site-pages" class="visually-hidden">Skip to content</a>
 				<a href="#site-nav" class="visually-hidden">Skip to navigation</a>

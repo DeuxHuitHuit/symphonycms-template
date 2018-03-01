@@ -28,7 +28,8 @@
 
 <!-- Google Analytics -->
 <xsl:variable name="ga-ua" select="''" />
-<xsl:variable name="ga-domain" select="'auto'" />
+<!-- Google Tag Manager -->
+<xsl:variable name="gtm-ctn" select="''" />
 
 <!-- Twitter Card -->
 <xsl:variable name="twitter-card-site" select="$config/twitter-url" />
