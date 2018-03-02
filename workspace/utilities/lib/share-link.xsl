@@ -41,7 +41,7 @@
 		<xsl:variable name="computed-url">
 			<xsl:choose>
 				<xsl:when test="string-length($status) != 0">
-					<xsl:value-of select="concat('?subject=', $encoded-status, ' | NATIONAL',  '&amp;body=', $encoded-body)" />
+					<xsl:value-of select="concat('?subject=', $encoded-status, $separator,  '&amp;body=', $encoded-body)" />
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:value-of select="concat('?body=', $encoded-body)" />
