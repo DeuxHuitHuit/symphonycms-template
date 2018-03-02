@@ -32,7 +32,6 @@
 		<xsl:param name="attr" />
 		<xsl:param name="content" />
 		<xsl:param name="status" />
-		<xsl:param name="separator" select="' - '" />
 		<xsl:param name="url" />
 
 		<xsl:variable name="encoded-status" select="str:encode-uri($status, true())" />
