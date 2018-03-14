@@ -16,7 +16,7 @@
 <!-- DATES -->
 <xsl:variable name="date-format">
 	<xsl:choose>
-		<xsl:when test="$url-language = 'en'">M D Y</xsl:when>
+		<xsl:when test="$url-language = 'en'">M D, Y</xsl:when>
 		<xsl:otherwise>d M Y</xsl:otherwise>
 	</xsl:choose>
 </xsl:variable>
