@@ -78,7 +78,7 @@
 			<xsl:call-template name="format-date">
 				<xsl:with-param name="date" select="$date"/>
 				<xsl:with-param name="format" select="'w, d m Y T'"/>
-				<xsl:with-param name="lg" select="'en'" /> <!-- force date in EN -->
+				<xsl:with-param name="lang" select="'en'" /> <!-- force date in EN -->
 			</xsl:call-template>
 			<xsl:text> </xsl:text>
 			<xsl:value-of select="translate($timezone,':','')"/>
