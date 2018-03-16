@@ -66,7 +66,7 @@
 					</xsl:call-template>
 				</xsl:if>
 				
-				<a href="#site-pages" class="visually-hidden">Skip to content</a>
+				<a href="#site-pages" class="visually-hidden js-tab-reset">Skip to content</a>
 				<a href="#site-nav" class="visually-hidden">Skip to navigation</a>
 				
 				<!-- Site -->
