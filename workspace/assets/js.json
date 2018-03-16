@@ -24,6 +24,8 @@
 		"modules/auto-tracked-scroll.js",
 		"modules/change-state.js",
 		"modules/auto-jit-image.js",
+		"modules/keyboard-nav.js",
+		"modules/tab-navigation.js",
 		
 		"transitions/default-transition.js",
 		
