@@ -32,16 +32,18 @@
 		<xsl:param name="attr" />
 		<xsl:param name="content" />
 		<xsl:param name="status" />
-		<xsl:param name="separator" select="' - '" />
 		<xsl:param name="url" />
+
+		<xsl:variable name="encoded-status" select="str:encode-uri($status, true())" />
+		<xsl:variable name="encoded-body" select="str:encode-uri($url, true())" />
 
 		<xsl:variable name="computed-url">
 			<xsl:choose>
 				<xsl:when test="string-length($status) != 0">
-					<xsl:value-of select="str:encode-uri(concat('?subject=', $status, '&amp;body=', $url), false())" />
+					<xsl:value-of select="concat('?subject=', $encoded-status, '&amp;body=', $encoded-body)" />
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="str:encode-uri(concat('?body=', $url), false())" />
+					<xsl:value-of select="concat('?body=', $encoded-body)" />
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -80,7 +82,7 @@
 
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="url" select="concat('https://twitter.com/home?status=', $computed-status)" />
+			<xsl:with-param name="url" select="concat('https://twitter.com/home?status=', str:encode-uri($computed-status, true()))" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
@@ -92,7 +94,7 @@
 
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="url" select="concat('https://www.facebook.com/sharer/sharer.php?u=', $url)" />
+			<xsl:with-param name="url" select="concat('https://www.facebook.com/sharer/sharer.php?u=', str:encode-uri($url, true()))" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
@@ -105,7 +107,7 @@
 
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="url" select="concat('https://www.linkedin.com/shareArticle?mini=true&amp;url=', $url, '&amp;title=', $status)" />
+			<xsl:with-param name="url" select="concat('https://www.linkedin.com/shareArticle?mini=true&amp;url=', str:encode-uri($url, true()), '&amp;title=', str:encode-uri($status, true()))" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
