@@ -55,8 +55,11 @@ Full Stack Developer / Programmeur
 Frédérick Hamon
 Full Stack Developer / Programmeur
 
+Baptiste Lestavel
+Full Stack Developer / Programmeur
+
 Marc-André Charpentier
-Frontend Designer / Intégrateur
+Product Architect / Architecte de produits
 
 Dominic Blain
 Frontend Designer / Intégrateur
@@ -68,22 +71,31 @@ Vincent Rouleau
 Backend Developer / Programmeur backend
 
 Mathieu Daudelin
-UX Writer / Rédaction expérientielle
+Product Architect & UX Writer / Architecte de produits et Rédaction expérientielle
+
+Thomas St-Amour
+Digital Product Analyst / Analyste produits numériques
 
 Caroline L.Couture
-Project manager / Chargée de compte
+Producer / Productrice
 
 David Mercier
 Project manager / Chargé de compte
-
-Nada Hatem
-Project manager / Chargée de projet
 
 Marie-France Latour
 Project manager / Chargée de projet
 
 Jésabel St-Jean
-Coordinator / Coordonatrice
+Project manager / Chargée de projet
+
+Elena Naggiar Ferreira
+Project manager / Chargée de projet
+
+Camille Dolbec
+Project manager / Chargée de projet
+
+Rebecca Dziedzic
+Project manager / Chargée de projet
 
 Stéphanie Forget
 Content manager - Infographist / Édimestre - Infographiste
