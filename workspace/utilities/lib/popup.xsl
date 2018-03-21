@@ -8,7 +8,7 @@
 	<xsl:param name="attr-content" />
 	<xsl:param name="attr-close-btn" />
 	<xsl:param name="poped" select="false()" />
-	<xsl:param name="close-btn-content" select="'X'" />
+	<xsl:param name="display-close-button" select="true()" />
 	<xsl:param name="close-btn-url" select="concat(/data/params/current-path, '/')" />
 	<xsl:param name="close-btn-is-optional" select="false()" />
 	<xsl:param name="content" />
@@ -65,7 +65,7 @@
 	<xsl:variable name="computed-attr">
 		<xsl:copy-of select="$s-popup"/>
 		<add class="js-popup" />
-		<add data-inner-scroll-selector="js-popup-content" />
+		<add data-inner-scroll-selector=".js-popup-content" />
 
 		<xsl:copy-of select="$attr"/>
 		<add dev-component="popup" />
@@ -109,18 +109,18 @@
 				<xsl:with-param name="attr" select="$computed-attr-content"/>
 				<xsl:with-param name="content">
 
-					<xsl:call-template name="popup-close-button">
-						<xsl:with-param name="attr" select="$attr-close-btn"/>
-						<xsl:with-param name="url" select="$close-btn-url" />
-						<xsl:with-param name="content" select="$close-btn-content" />
-						<xsl:with-param name="is-optional" select="$close-btn-is-optional" />
-					</xsl:call-template>
-
-					<!-- content -->
+					<!-- Popup Content -->
 					<xsl:call-template name="content">
 						<xsl:with-param name="content" select="$content" />
 					</xsl:call-template>
-
+					<!-- Close button -->
+					<xsl:if test="/data/params/amp = 'No' and $display-close-button">
+						<xsl:call-template name="popup-close-button">
+							<xsl:with-param name="attr" select="$computed-attr-close-btn"/>
+							<xsl:with-param name="url" select="$close-btn-url" />
+							<xsl:with-param name="is-optional" select="$close-btn-is-optional" />
+						</xsl:call-template>
+					</xsl:if>
 				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:with-param>
@@ -131,11 +131,16 @@
 <xsl:template name="popup-close-button">
 	<xsl:param name="attr" />
 	<xsl:param name="url" />
-	<xsl:param name="content"/>
+	<xsl:param name="content">
+		<i class="block width-broader width-broad-from-xs width-thin-from-sm">
+			<xsl:call-template name="icon-close" />
+		</i>
+	</xsl:param>
 	<xsl:param name="is-optional" select="false()" />
 
 	<xsl:variable name="s-close-btn">
-		<add class="cursor-pointer" />
+		<add class="cursor-pointer pointer-events-all" />
+		<add class="js-popup-close-btn" />
 	</xsl:variable>
 
 	<xsl:variable name="computed-attr">
