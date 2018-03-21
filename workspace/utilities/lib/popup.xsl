@@ -85,6 +85,7 @@
 		<!-- FOR POPUP ANIMATION -->
 		<add class="js-popup-content" />
 		<add class="overflow-hidden" />
+		<set role="dialog" aria-modal="true" />
 		<xsl:copy-of select="$attr-content"/>
 		<add dev-element="popup-content" />
 	</xsl:variable>
