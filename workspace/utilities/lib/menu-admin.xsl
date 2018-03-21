@@ -7,80 +7,88 @@
 	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
 
 		<xsl:variable name="computed-attr">
-			<add id="menu-admin" />
-			<add class="fixed" />
-			<add class="z-index-max" />
-			<add class="top left" />
-			<add class="color-true-black" />
+			<add class="admin-tool admin-tool-menu" />
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
-		
+
 		<xsl:call-template name="element">
 			<xsl:with-param name="attr" select="$computed-attr"/>
 			<xsl:with-param name="content">
-				<span><xsl:value-of select="/data/events/login-info/name" /></span>
-
-				<span><xsl:text> - </xsl:text></span>
-
-				<a data-action="full" href="/symphony/">Symphony</a>
-
-				<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-					<a data-action="full">
-						<xsl:attribute name="href">
-							<xsl:text>?debug</xsl:text>
-							<xsl:if test="string-length(/data/params/current-query-string) != 0">
-								<xsl:text>&amp;</xsl:text>
-								<xsl:value-of select="/data/params/current-query-string" />
-							</xsl:if>
-						</xsl:attribute>
-						<xsl:text>DEBUG</xsl:text>
-					</a>
-				</xsl:if>
-
-				<xsl:if test="count(/data/params/use-dev) != 0 and $dev = true()">
-					<xsl:choose>
-						<xsl:when test="$debug = true()">
-							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-								<span class="debug">
-									<a data-action="full" href="?use-dev=no">
-										<xsl:text>Use BUILD</xsl:text>
-									</a>
-								</span>
-							</xsl:if>
-						</xsl:when>
-						<xsl:otherwise>
-							<span class="build">
-								<strong>
-									<xsl:choose>
-										<xsl:when test="string-length(/data/build/last) != 0">
-											<xsl:text>Build </xsl:text>
-											<xsl:value-of select="/data/build/last" />
-										</xsl:when>
-										<xsl:when test="$dev = true()">
-											<xsl:text>No build infos found.</xsl:text>
-										</xsl:when>
-									</xsl:choose>
-								</strong>
-							</span>
+				<div class="menu-ctn">
+					<div class="menu-title">
+						<b>Admin</b>
+					</div>
+					<div class="menu-items-ctn">
+						<div class="menu-items-wrapper">
+							<div class="menu-item menu-item-symphony">
+								<a data-action="full" href="/symphony/">Symphony</a>
+							</div>
 
 							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-								<span class="debug">
-									<a data-action="full" href="?use-dev">
-										<xsl:text>Use DEV</xsl:text>
+								<div class="menu-item menu-item-debug">
+									<a data-action="full">
+										<xsl:attribute name="href">
+											<xsl:text>?debug</xsl:text>
+											<xsl:if test="string-length(/data/params/current-query-string) != 0">
+												<xsl:text>&amp;</xsl:text>
+												<xsl:value-of select="/data/params/current-query-string" />
+											</xsl:if>
+										</xsl:attribute>
+										<xsl:text>Debug</xsl:text>
 									</a>
-								</span>
+								</div>
 							</xsl:if>
-						</xsl:otherwise>
-					</xsl:choose>
-				</xsl:if>
 
-				<a data-action="full" href="/symphony/logout/">Déconnexion</a>
+							<xsl:if test="count(/data/params/use-dev) != 0 and $dev = true()">
+								<xsl:choose>
+									<xsl:when test="$debug = true()">
+										<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+											<div class="menu-item menu-item-use-build">
+												<a data-action="full" href="?use-dev=no">
+													<p><xsl:text>Use Build</xsl:text></p>
+												</a>
+											</div>
+										</xsl:if>
+									</xsl:when>
+									<xsl:otherwise>
+										<div class="menu-item menu-item-build-info">
+											<strong>
+												<xsl:choose>
+													<xsl:when test="string-length(/data/build/last) != 0">
+														<xsl:text>Build </xsl:text>
+														<xsl:value-of select="/data/build/last" />
+													</xsl:when>
+													<xsl:when test="$dev = true()">
+														<xsl:text>No build infos found.</xsl:text>
+													</xsl:when>
+												</xsl:choose>
+											</strong>
+										</div>
 
-				<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-					<span class="cache"><xsl:text> Cache: </xsl:text></span>
-					<a data-action="full" href="?flush">Flush page</a>
-					<a data-action="full" href="?flush=site">Flush site</a>
-				</xsl:if>
+										<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+											<div class="menu-item menu-item-use-dev">
+												<a data-action="full" href="?use-dev">
+													<xsl:text>Use Dev</xsl:text>
+												</a>
+											</div>
+										</xsl:if>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:if>
+
+							<div class="menu-item menu-item-logout">
+								<a data-action="full" href="/symphony/logout/">Logout</a>
+							</div>
+
+							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+								<div class="menu-item menu-item-flush">
+									<a data-action="full" href="?flush=site">Flush Cache</a>
+								</div>
+							</xsl:if>
+						</div>
+					</div>
+				</div>
+
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:if>

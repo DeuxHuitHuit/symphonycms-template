@@ -1,14 +1,64 @@
-#menu-admin {
-	
-	span, a {
-		margin: 0 0.5rem;
+@bg-color-admin-tool: #2f77eb;
+@bg-color-admin-tool-darker: #246ce0;
+@color-admin-tool: white;
 
-		&:last-child {
-			margin-right: 0;
+.admin-tool {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	line-height: 1.1em;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	html.mobile & {
+		display: none!important;
+	}
+}
+
+.admin-tool-menu {
+	position: fixed;
+	top:8px; left:8px;
+	z-index: 10000;
+
+	.menu-title {
+		position: relative;
+		z-index: 1;
+		padding: 10px;
+		cursor: pointer;
+	}
+
+	.menu-title,
+	.menu-item {
+		background-color: @bg-color-admin-tool;
+		color: @color-admin-tool;
+		white-space: nowrap;
+	}
+
+	.menu-items-ctn {
+		position: absolute;
+		top: 100%;
+		overflow: hidden;
+		pointer-events: none;
+		.menu-items-wrapper {
+			pointer-events: all;
+			transition: 120ms ease-out;
+			transition-property: transform, opacity;
+			opacity: 0;
+			transform: translateY(-100%);
 		}
-		
-		&.cache {
-			margin-left: 2rem;
+	}
+
+	.menu-item > * {
+		display: block;
+		padding: 10px;
+	}
+	// ~> HOVER
+	.menu-ctn:hover {
+
+		.menu-items-wrapper {
+			opacity: 1;
+			transform: translateY(0);
 		}
+	}
+	.menu-item:hover {
+		background-color: @bg-color-admin-tool-darker;
 	}
 }
