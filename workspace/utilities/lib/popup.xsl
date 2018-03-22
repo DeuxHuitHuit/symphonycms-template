@@ -115,7 +115,7 @@
 						<xsl:with-param name="content" select="$content" />
 					</xsl:call-template>
 					<!-- Close button -->
-					<xsl:if test="/data/params/amp = 'No' and $display-close-button">
+					<xsl:if test="/data/params/amp != 'Yes' and $display-close-button">
 						<xsl:call-template name="popup-close-button">
 							<xsl:with-param name="attr" select="$computed-attr-close-btn"/>
 							<xsl:with-param name="url" select="$close-btn-url" />
