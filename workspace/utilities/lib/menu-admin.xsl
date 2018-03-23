@@ -36,7 +36,6 @@
 
 	<xsl:variable name="computed-attr-item">
 		<add class="menu-item" />
-		<add class="" />
 		<add dev-element="item" />
 	</xsl:variable>
 
