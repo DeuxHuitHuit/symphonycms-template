@@ -4,41 +4,44 @@
 <xsl:template name="menu-admin">
 	<xsl:param name="attr" />
 
-	<xsl:if test="/data/events/login-info/@logged-in = 'true'">
+	<xsl:variable name="is-logged-in" select="/data/events/login-info/@logged-in = 'true'" />
+	<xsl:variable name="is-developper" select="/data/events/login-info/@user-type = 'developer'" />
 
-		<xsl:variable name="computed-attr">
-			<add class="admin-tool admin-tool-menu" />
-			<add class="fixed z-index-10000 text-uppercase" />
-			<xsl:copy-of select="$attr" />
-		</xsl:variable>
+	<xsl:variable name="computed-attr">
+		<add class="admin-tool admin-tool-menu" />
+		<add class="fixed z-index-10000 text-uppercase" />
+		<xsl:copy-of select="$attr" />
+	</xsl:variable>
 
-		<xsl:variable name="computed-attr-title">
-			<add class="menu-title" />
-			<add class="relative z-index-1 cursor-pointer" />
-			<add class="white-space-nowrap" />
-			<add dev-element="title" />
-		</xsl:variable>
+	<xsl:variable name="computed-attr-title">
+		<add class="menu-title" />
+		<add class="relative z-index-1 cursor-pointer" />
+		<add class="white-space-nowrap" />
+		<add dev-element="title" />
+	</xsl:variable>
 
-		<xsl:variable name="computed-attr-items-ctn">
-			<add class="menu-items-ctn" />
-			<add class="absolute top-full overflow-hidden" />
-			<add class="pointer-events-none" />
-			<add dev-element="items-ctn" />
-		</xsl:variable>
+	<xsl:variable name="computed-attr-items-ctn">
+		<add class="menu-items-ctn" />
+		<add class="absolute top-full overflow-hidden" />
+		<add class="pointer-events-none" />
+		<add dev-element="items-ctn" />
+	</xsl:variable>
 
-		<xsl:variable name="computed-attr-items-wrapper">
-			<add class="menu-items-wrapper" />
-			<add class="pointer-events-all" />
-			<add class="transparent" />
-			<add dev-element="items-wrapper" />
-		</xsl:variable>
+	<xsl:variable name="computed-attr-items-wrapper">
+		<add class="menu-items-wrapper" />
+		<add class="pointer-events-all" />
+		<add class="transparent" />
+		<add dev-element="items-wrapper" />
+	</xsl:variable>
 
-		<xsl:variable name="computed-attr-item">
-			<add class="menu-item" />
-			<add class="" />
-			<add dev-element="item" />
-		</xsl:variable>
+	<xsl:variable name="computed-attr-item">
+		<add class="menu-item" />
+		<add class="" />
+		<add dev-element="item" />
+	</xsl:variable>
 
+
+	<xsl:if test="$is-logged-in">
 		<xsl:call-template name="element">
 			<xsl:with-param name="attr" select="$computed-attr"/>
 			<xsl:with-param name="content">
@@ -58,7 +61,7 @@
 							<xsl:call-template name="element">
 								<xsl:with-param name="attr" select="$computed-attr-items-wrapper" />
 								<xsl:with-param name="content">
-									<!-- ITEM -->
+									<!-- ITEM: Symphony -->
 									<xsl:call-template name="element">
 										<xsl:with-param name="attr" select="$computed-attr-item" />
 										<xsl:with-param name="content">
@@ -66,8 +69,8 @@
 										</xsl:with-param>
 									</xsl:call-template>
 
-									<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-										<!-- ITEM -->
+									<!-- ITEM: Debug -->
+									<xsl:if test="$is-developper">
 										<xsl:call-template name="element">
 											<xsl:with-param name="attr" select="$computed-attr-item" />
 											<xsl:with-param name="content">
@@ -88,8 +91,8 @@
 									<xsl:if test="count(/data/params/use-dev) != 0 and $dev = true()">
 										<xsl:choose>
 											<xsl:when test="$debug = true()">
-												<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-													<!-- ITEM -->
+												<xsl:if test="$is-developper">
+													<!-- ITEM: Use Build -->
 													<xsl:call-template name="element">
 														<xsl:with-param name="attr" select="$computed-attr-item" />
 														<xsl:with-param name="content">
@@ -119,8 +122,8 @@
 													</xsl:with-param>
 												</xsl:call-template>
 
-												<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-													<!-- ITEM -->
+												<!-- ITEM: Use Dev -->
+												<xsl:if test="$is-developper">
 													<xsl:call-template name="element">
 														<xsl:with-param name="attr" select="$computed-attr-item" />
 														<xsl:with-param name="content">
@@ -142,7 +145,7 @@
 										</xsl:with-param>
 									</xsl:call-template>
 
-									<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+									<xsl:if test="$is-developper">
 										<!-- ITEM -->
 										<xsl:call-template name="element">
 											<xsl:with-param name="attr" select="$computed-attr-item" />
