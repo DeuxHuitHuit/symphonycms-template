@@ -104,7 +104,7 @@
 												</xsl:if>
 											</xsl:when>
 											<xsl:otherwise>
-												<!-- ITEM -->
+												<!-- ITEM: Build Infos -->
 												<xsl:call-template name="element">
 													<xsl:with-param name="attr" select="$computed-attr-item" />
 													<xsl:with-param name="content">
@@ -137,7 +137,7 @@
 										</xsl:choose>
 									</xsl:if>
 
-									<!-- ITEM -->
+									<!-- ITEM: Logout -->
 									<xsl:call-template name="element">
 										<xsl:with-param name="attr" select="$computed-attr-item" />
 										<xsl:with-param name="content">
@@ -145,8 +145,8 @@
 										</xsl:with-param>
 									</xsl:call-template>
 
+									<!-- ITEM: Flush Cache -->
 									<xsl:if test="$is-developper">
-										<!-- ITEM -->
 										<xsl:call-template name="element">
 											<xsl:with-param name="attr" select="$computed-attr-item" />
 											<xsl:with-param name="content">
