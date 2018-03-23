@@ -49,7 +49,7 @@
 					<xsl:call-template name="element">
 						<xsl:with-param name="attr" select="$computed-attr-title" />
 						<xsl:with-param name="content">
-							<b>Admin</b>
+							<span>Admin</span>
 						</xsl:with-param>
 					</xsl:call-template>
 					<!-- ITEMS CTN -->
@@ -107,7 +107,7 @@
 												<xsl:call-template name="element">
 													<xsl:with-param name="attr" select="$computed-attr-item" />
 													<xsl:with-param name="content">
-														<strong>
+														<span>
 															<xsl:choose>
 																<xsl:when test="string-length(/data/build/last) != 0">
 																	<xsl:text>Build </xsl:text>
@@ -117,7 +117,7 @@
 																	<xsl:text>No build infos found.</xsl:text>
 																</xsl:when>
 															</xsl:choose>
-														</strong>
+														</span>
 													</xsl:with-param>
 												</xsl:call-template>
 
