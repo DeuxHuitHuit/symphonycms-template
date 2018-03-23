@@ -8,85 +8,154 @@
 
 		<xsl:variable name="computed-attr">
 			<add class="admin-tool admin-tool-menu" />
+			<add class="fixed z-index-10000 text-uppercase" />
 			<xsl:copy-of select="$attr" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-title">
+			<add class="menu-title" />
+			<add class="relative z-index-1 cursor-pointer" />
+			<add class="white-space-nowrap" />
+			<add dev-element="title" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-items-ctn">
+			<add class="menu-items-ctn" />
+			<add class="absolute top-full overflow-hidden" />
+			<add class="pointer-events-none" />
+			<add dev-element="items-ctn" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-items-wrapper">
+			<add class="menu-items-wrapper" />
+			<add class="pointer-events-all" />
+			<add class="transparent" />
+			<add dev-element="items-wrapper" />
+		</xsl:variable>
+
+		<xsl:variable name="computed-attr-item">
+			<add class="menu-item" />
+			<add class="" />
+			<add dev-element="item" />
 		</xsl:variable>
 
 		<xsl:call-template name="element">
 			<xsl:with-param name="attr" select="$computed-attr"/>
 			<xsl:with-param name="content">
 				<div class="menu-ctn">
-					<div class="menu-title">
-						<b>Admin</b>
-					</div>
-					<div class="menu-items-ctn">
-						<div class="menu-items-wrapper">
-							<div class="menu-item menu-item-symphony">
-								<a data-action="full" href="/symphony/">Symphony</a>
-							</div>
+					<!-- TITLE -->
+					<xsl:call-template name="element">
+						<xsl:with-param name="attr" select="$computed-attr-title" />
+						<xsl:with-param name="content">
+							<b>Admin</b>
+						</xsl:with-param>
+					</xsl:call-template>
+					<!-- ITEMS CTN -->
+					<xsl:call-template name="element">
+						<xsl:with-param name="attr" select="$computed-attr-items-ctn" />
+						<xsl:with-param name="content">
+							<!-- ITEMS WRAPPER -->
+							<xsl:call-template name="element">
+								<xsl:with-param name="attr" select="$computed-attr-items-wrapper" />
+								<xsl:with-param name="content">
+									<!-- ITEM -->
+									<xsl:call-template name="element">
+										<xsl:with-param name="attr" select="$computed-attr-item" />
+										<xsl:with-param name="content">
+											<a data-action="full" href="/symphony/">Symphony</a>
+										</xsl:with-param>
+									</xsl:call-template>
 
-							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-								<div class="menu-item menu-item-debug">
-									<a data-action="full">
-										<xsl:attribute name="href">
-											<xsl:text>?debug</xsl:text>
-											<xsl:if test="string-length(/data/params/current-query-string) != 0">
-												<xsl:text>&amp;</xsl:text>
-												<xsl:value-of select="/data/params/current-query-string" />
-											</xsl:if>
-										</xsl:attribute>
-										<xsl:text>Debug</xsl:text>
-									</a>
-								</div>
-							</xsl:if>
-
-							<xsl:if test="count(/data/params/use-dev) != 0 and $dev = true()">
-								<xsl:choose>
-									<xsl:when test="$debug = true()">
-										<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-											<div class="menu-item menu-item-use-build">
-												<a data-action="full" href="?use-dev=no">
-													<p><xsl:text>Use Build</xsl:text></p>
+									<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+										<!-- ITEM -->
+										<xsl:call-template name="element">
+											<xsl:with-param name="attr" select="$computed-attr-item" />
+											<xsl:with-param name="content">
+												<a data-action="full">
+													<xsl:attribute name="href">
+														<xsl:text>?debug</xsl:text>
+														<xsl:if test="string-length(/data/params/current-query-string) != 0">
+															<xsl:text>&amp;</xsl:text>
+															<xsl:value-of select="/data/params/current-query-string" />
+														</xsl:if>
+													</xsl:attribute>
+													<xsl:text>Debug</xsl:text>
 												</a>
-											</div>
-										</xsl:if>
-									</xsl:when>
-									<xsl:otherwise>
-										<div class="menu-item menu-item-build-info">
-											<strong>
-												<xsl:choose>
-													<xsl:when test="string-length(/data/build/last) != 0">
-														<xsl:text>Build </xsl:text>
-														<xsl:value-of select="/data/build/last" />
-													</xsl:when>
-													<xsl:when test="$dev = true()">
-														<xsl:text>No build infos found.</xsl:text>
-													</xsl:when>
-												</xsl:choose>
-											</strong>
-										</div>
+											</xsl:with-param>
+										</xsl:call-template>
+									</xsl:if>
 
-										<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-											<div class="menu-item menu-item-use-dev">
-												<a data-action="full" href="?use-dev">
-													<xsl:text>Use Dev</xsl:text>
-												</a>
-											</div>
-										</xsl:if>
-									</xsl:otherwise>
-								</xsl:choose>
-							</xsl:if>
+									<xsl:if test="count(/data/params/use-dev) != 0 and $dev = true()">
+										<xsl:choose>
+											<xsl:when test="$debug = true()">
+												<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+													<!-- ITEM -->
+													<xsl:call-template name="element">
+														<xsl:with-param name="attr" select="$computed-attr-item" />
+														<xsl:with-param name="content">
+															<a data-action="full" href="?use-dev=no">
+																<p><xsl:text>Use Build</xsl:text></p>
+															</a>
+														</xsl:with-param>
+													</xsl:call-template>
+												</xsl:if>
+											</xsl:when>
+											<xsl:otherwise>
+												<!-- ITEM -->
+												<xsl:call-template name="element">
+													<xsl:with-param name="attr" select="$computed-attr-item" />
+													<xsl:with-param name="content">
+														<strong>
+															<xsl:choose>
+																<xsl:when test="string-length(/data/build/last) != 0">
+																	<xsl:text>Build </xsl:text>
+																	<xsl:value-of select="/data/build/last" />
+																</xsl:when>
+																<xsl:when test="$dev = true()">
+																	<xsl:text>No build infos found.</xsl:text>
+																</xsl:when>
+															</xsl:choose>
+														</strong>
+													</xsl:with-param>
+												</xsl:call-template>
 
-							<div class="menu-item menu-item-logout">
-								<a data-action="full" href="/symphony/logout/">Logout</a>
-							</div>
+												<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+													<!-- ITEM -->
+													<xsl:call-template name="element">
+														<xsl:with-param name="attr" select="$computed-attr-item" />
+														<xsl:with-param name="content">
+															<a data-action="full" href="?use-dev">
+																<xsl:text>Use Dev</xsl:text>
+															</a>
+														</xsl:with-param>
+													</xsl:call-template>
+												</xsl:if>
+											</xsl:otherwise>
+										</xsl:choose>
+									</xsl:if>
 
-							<xsl:if test="/data/events/login-info/@user-type = 'developer'">
-								<div class="menu-item menu-item-flush">
-									<a data-action="full" href="?flush=site">Flush Cache</a>
-								</div>
-							</xsl:if>
-						</div>
-					</div>
+									<!-- ITEM -->
+									<xsl:call-template name="element">
+										<xsl:with-param name="attr" select="$computed-attr-item" />
+										<xsl:with-param name="content">
+											<a data-action="full" href="/symphony/logout/">Logout</a>
+										</xsl:with-param>
+									</xsl:call-template>
+
+									<xsl:if test="/data/events/login-info/@user-type = 'developer'">
+										<!-- ITEM -->
+										<xsl:call-template name="element">
+											<xsl:with-param name="attr" select="$computed-attr-item" />
+											<xsl:with-param name="content">
+												<a data-action="full" href="?flush=site">Flush Cache</a>
+											</xsl:with-param>
+										</xsl:call-template>
+									</xsl:if>
+								</xsl:with-param>
+							</xsl:call-template>
+							
+						</xsl:with-param>
+					</xsl:call-template>
 				</div>
 
 			</xsl:with-param>

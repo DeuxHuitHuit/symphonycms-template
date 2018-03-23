@@ -6,7 +6,6 @@
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 11px;
 	line-height: 1.1em;
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	html.mobile & {
 		display: none!important;
@@ -14,36 +13,23 @@
 }
 
 .admin-tool-menu {
-	position: fixed;
 	top:8px; left:8px;
-	z-index: 10000;
 
 	.menu-title {
-		position: relative;
-		z-index: 1;
 		padding: 10px;
-		cursor: pointer;
 	}
 
 	.menu-title,
 	.menu-item {
 		background-color: @bg-color-admin-tool;
 		color: @color-admin-tool;
-		white-space: nowrap;
 	}
 
-	.menu-items-ctn {
-		position: absolute;
-		top: 100%;
-		overflow: hidden;
-		pointer-events: none;
-		.menu-items-wrapper {
-			pointer-events: all;
-			transition: 120ms ease-out;
-			transition-property: transform, opacity;
-			opacity: 0;
-			transform: translateY(-100%);
-		}
+	.menu-items-wrapper {
+		transition: 120ms ease-out;
+		transition-property: transform, opacity;
+		opacity: 0;
+		transform: translateY(-100%);
 	}
 
 	.menu-item > * {
