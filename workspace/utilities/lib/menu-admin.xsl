@@ -64,7 +64,7 @@
 									<xsl:call-template name="element">
 										<xsl:with-param name="attr" select="$computed-attr-item" />
 										<xsl:with-param name="content">
-											<a data-action="full" href="/symphony/">Symphony</a>
+											<a data-action="full" href="/symphony/" tabindex="-1">Symphony</a>
 										</xsl:with-param>
 									</xsl:call-template>
 
@@ -73,7 +73,7 @@
 										<xsl:call-template name="element">
 											<xsl:with-param name="attr" select="$computed-attr-item" />
 											<xsl:with-param name="content">
-												<a data-action="full">
+												<a data-action="full" tabindex="-1">
 													<xsl:attribute name="href">
 														<xsl:text>?debug</xsl:text>
 														<xsl:if test="string-length(/data/params/current-query-string) != 0">
@@ -95,7 +95,7 @@
 													<xsl:call-template name="element">
 														<xsl:with-param name="attr" select="$computed-attr-item" />
 														<xsl:with-param name="content">
-															<a data-action="full" href="?use-dev=no">
+															<a data-action="full" tabindex="-1" href="?use-dev=no">
 																<p><xsl:text>Use Build</xsl:text></p>
 															</a>
 														</xsl:with-param>
@@ -126,7 +126,7 @@
 													<xsl:call-template name="element">
 														<xsl:with-param name="attr" select="$computed-attr-item" />
 														<xsl:with-param name="content">
-															<a data-action="full" href="?use-dev">
+															<a data-action="full" tabindex="-1" href="?use-dev">
 																<xsl:text>Use Dev</xsl:text>
 															</a>
 														</xsl:with-param>
@@ -140,7 +140,7 @@
 									<xsl:call-template name="element">
 										<xsl:with-param name="attr" select="$computed-attr-item" />
 										<xsl:with-param name="content">
-											<a data-action="full" href="/symphony/logout/">Logout</a>
+											<a data-action="full" tabindex="-1" href="/symphony/logout/">Logout</a>
 										</xsl:with-param>
 									</xsl:call-template>
 
@@ -149,7 +149,7 @@
 										<xsl:call-template name="element">
 											<xsl:with-param name="attr" select="$computed-attr-item" />
 											<xsl:with-param name="content">
-												<a data-action="full" href="?flush=site">Flush Cache</a>
+												<a data-action="full" tabindex="-1" href="?flush=site">Flush Cache</a>
 											</xsl:with-param>
 										</xsl:call-template>
 									</xsl:if>
