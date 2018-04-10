@@ -49,7 +49,7 @@
 					<xsl:call-template name="element">
 						<xsl:with-param name="attr" select="$computed-attr-title" />
 						<xsl:with-param name="content">
-							<span>Admin — <xsl:value-of select="/data/events/login-info/name" /></span>
+							<span>Admin — <xsl:value-of select="substring-before(/data/events/login-info/name, ' ')" /></span>
 						</xsl:with-param>
 					</xsl:call-template>
 					<!-- ITEMS CTN -->
