@@ -20,13 +20,12 @@
 			<xsl:choose>
 				<!-- Svg File -->
 				<xsl:when test="exslt:object-type($image) = 'node-set' and (contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff'))">
-
-					<add src="/workspace{$image/@path}/{$image/filename}" />
+					<set src="/workspace{$image/@path}/{$image/filename}" />
 				</xsl:when>
 
 				<!-- Img File -->
 				<xsl:otherwise>
-					<add>
+					<set>
 						<xsl:attribute name="src">
 							<xsl:call-template name="render-image-src">
 								<xsl:with-param name="image" select="$image" />
@@ -35,23 +34,26 @@
 								<xsl:with-param name="use-format" select="string-length($format) != 0" />
 							</xsl:call-template>
 						</xsl:attribute>
-					</add>
+					</set>
 
 					<xsl:if test="string-length($format) != 0 and exslt:object-type($image) = 'node-set' and count($image/filename) = 1">
-						<add data-src-format="{$format}{$image/@path}/{$image/filename}" />
-						<add>
+						<!-- Format -->
+						<set data-src-format="{$format}{$image/@path}/{$image/filename}" />
+
+						<!-- Path original source -->
+						<set>
 							<xsl:attribute name="data-src-original" >
 								<xsl:call-template name="render-image-src">
 									<xsl:with-param name="image" select="$image" />
 									<xsl:with-param name="use-format" select="false()" />
 								</xsl:call-template>
 							</xsl:attribute>
-						</add>
+						</set>
 					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
 
-			<add alt="~'{$alt}'" />
+			<set alt="~'{$alt}'" />
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
 
@@ -176,6 +178,7 @@
 		</xsl:variable>
 
 		<xsl:variable name="computed-attr">
+			<!-- Add basic class -->
 			<xsl:choose>
 				<xsl:when test="$width = '$w' and $height != '$h'">
 					<add class="block width-full" />
@@ -260,7 +263,6 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
-	<!-- /-->
 
 	<!-- Computed attributes -->
 		<!-- Component -->
@@ -292,12 +294,12 @@
 		</xsl:variable>
 
 		<!-- image -->
-		<xsl:variable name="computed-image-bg-attr">
+		<xsl:variable name="computed-image-attr">
+			<!-- Core JS Class for jit image -->
 			<add class="jit-image-bg-src display-none" />
 			<xsl:copy-of select="$image-attr" />
 			<add dev-core-element="image" />
 		</xsl:variable>
-	<!-- /-->
 
 	<!-- STRUCTURE -->
 		<xsl:call-template name="element">
@@ -306,7 +308,7 @@
 			<xsl:with-param name="content">
 				
 				<xsl:call-template name="render-image">
-					<xsl:with-param name="attr" select="$computed-image-bg-attr" />
+					<xsl:with-param name="attr" select="$computed-image-attr" />
 					<xsl:with-param name="image" select="$image" />
 					<xsl:with-param name="alt" select="$alt" />
 					<xsl:with-param name="factor" select="$factor" />
@@ -387,10 +389,13 @@
 		
 		<xsl:variable name="parsed-ratio">
 			<xsl:choose>
+				<!-- No ratio -->
 				<xsl:when test="string-length($ratio) = 0"></xsl:when>
+				<!-- Numeric ratio -->
 				<xsl:when test="number($ratio) = $ratio">
 					<xsl:value-of select="$ratio" />
 				</xsl:when>
+				<!-- Fractionnal ratio -->
 				<xsl:otherwise>
 					<xsl:variable name="ratio-tokens" select="str:tokenize($ratio, '/')" />
 					<xsl:choose>
@@ -426,6 +431,7 @@
 					</xsl:choose>
 				</xsl:variable>
 				
+				<!-- Create URL -->
 				<xsl:text>/image/</xsl:text>
 				<xsl:choose>
 					<xsl:when test="number($parsed-ratio) = $parsed-ratio">2</xsl:when>
@@ -435,7 +441,11 @@
 				<xsl:value-of select="$width" />
 				<xsl:text>/</xsl:text>
 				<xsl:value-of select="$height" />
-				<xsl:if test="number($parsed-ratio) = $parsed-ratio">/5</xsl:if>
+
+				<xsl:if test="number($parsed-ratio) = $parsed-ratio">
+					<xsl:text >/5</xsl:text>
+				</xsl:if>
+
 				<xsl:value-of select="$image/@path" />
 				<xsl:text>/</xsl:text>
 				<xsl:value-of select="$image/filename" />
