@@ -13,6 +13,7 @@
 		<xsl:param name="attr-ctn" />
 		<xsl:param name="attr" />
 		<xsl:param name="attr-veil" />
+		<xsl:param name="with-initial-image" select="true()" />
 
 		<xsl:variable name="has-image" select="string-length($image) != 0" />
 		<xsl:variable name="has-veil-opacity" select="number($veil-opacity) = $veil-opacity and $veil-opacity &gt;= 0 and $veil-opacity &lt;= 1" />
@@ -95,6 +96,7 @@
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
+								<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="$type = 'contain'">
@@ -102,6 +104,7 @@
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
+								<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="$type = 'resize'">
@@ -109,6 +112,7 @@
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
+								<xsl:with-param name="use-src" select="$with-initial-image" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:otherwise>
@@ -116,6 +120,7 @@
 								<xsl:with-param name="image" select="$image" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
+								<xsl:with-param name="use-src" select="$with-initial-image" />
 							</xsl:call-template>
 						</xsl:otherwise>
 					</xsl:choose>
