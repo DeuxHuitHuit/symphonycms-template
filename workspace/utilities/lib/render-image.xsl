@@ -11,6 +11,7 @@
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="ratio" select="''" />
 		<xsl:param name="format" select="''" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -25,16 +26,18 @@
 
 				<!-- Img File -->
 				<xsl:otherwise>
-					<set>
-						<xsl:attribute name="src">
-							<xsl:call-template name="render-image-src">
-								<xsl:with-param name="image" select="$image" />
-								<xsl:with-param name="factor" select="$factor" />
-								<xsl:with-param name="ratio" select="$ratio" />
-								<xsl:with-param name="use-format" select="string-length($format) != 0" />
-							</xsl:call-template>
-						</xsl:attribute>
-					</set>
+					<xsl:if test="$use-src">
+						<set>
+							<xsl:attribute name="src">
+								<xsl:call-template name="render-image-src">
+									<xsl:with-param name="image" select="$image" />
+									<xsl:with-param name="factor" select="$factor" />
+									<xsl:with-param name="ratio" select="$ratio" />
+									<xsl:with-param name="use-format" select="string-length($format) != 0" />
+								</xsl:call-template>
+							</xsl:attribute>
+						</set>
+					</xsl:if>
 
 					<xsl:if test="string-length($format) != 0 and exslt:object-type($image) = 'node-set' and count($image/filename) = 1">
 						<!-- Format -->
@@ -71,6 +74,7 @@
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'$h'" />
 		<xsl:param name="position" select="'5'" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -87,6 +91,7 @@
 			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
+			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
@@ -98,6 +103,7 @@
 		<xsl:param name="factor" select="'8'" />
 		<xsl:param name="ratio" select="''" />
 		<xsl:param name="position" select="'5'" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -115,6 +121,7 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="ratio" select="$ratio" />
 			<xsl:with-param name="format" select="$computed-format" />
+			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
@@ -125,6 +132,7 @@
 		<xsl:param name="image" select="image" />
 		<xsl:param name="factor" select="'8'" />
 		<xsl:param name="position" select="'5'" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -135,6 +143,7 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="ratio" select="'3/4'" />
 			<xsl:with-param name="position" select="$position" />
+			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
@@ -145,6 +154,7 @@
 		<xsl:param name="image" select="image" />
 		<xsl:param name="factor" select="'8'" />
 		<xsl:param name="position" select="'5'" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -155,6 +165,7 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="ratio" select="'9/16'" />
 			<xsl:with-param name="position" select="$position" />
+			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
@@ -166,6 +177,7 @@
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'0'" />
 		<xsl:param name="factor" select="'3'" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -195,6 +207,7 @@
 			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
+			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
@@ -206,6 +219,7 @@
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'$h'" />
+		<xsl:param name="use-src" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -221,6 +235,7 @@
 			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
+			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr"/>
 			<xsl:with-param name="alt" select="$alt" />
 		</xsl:call-template>
