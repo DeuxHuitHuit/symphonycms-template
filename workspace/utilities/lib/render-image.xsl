@@ -460,11 +460,15 @@
 	<xsl:template name="default-image-alt-selector">
 		<xsl:call-template name="default-value">
 			<xsl:with-param name="a" select="image-alt" />
-			<xsl:with-param name="b" select="alt" />
-			<xsl:with-param name="c" select="titre" />
-			<xsl:with-param name="d" select="title" />
-			<xsl:with-param name="e" select="nom" />
-			<xsl:with-param name="f" select="name" />
+			<xsl:with-param name="b" select="image-credit" />
+			<xsl:with-param name="c" select="alt" />
+			<xsl:with-param name="d" select="titre" />
+			<xsl:with-param name="e" select="title" />
+			<xsl:with-param name="f" select="nom" />
+			<xsl:with-param name="g" select="name" />
+			<xsl:with-param name="h" select="legende" />
+			<xsl:with-param name="i" select="legend" />
+			<xsl:with-param name="j" select="caption" />
 		</xsl:call-template>
 	</xsl:template>
 </xsl:stylesheet>
