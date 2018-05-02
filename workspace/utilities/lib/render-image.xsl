@@ -112,9 +112,9 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
 			<xsl:with-param name="use-src" select="$use-src" />
-			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="attr" select="$attr" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -142,9 +142,9 @@
 			<xsl:with-param name="ratio" select="$ratio" />
 			<xsl:with-param name="format" select="$computed-format" />
 			<xsl:with-param name="use-src" select="$use-src" />
-			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="attr" select="$attr" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -164,9 +164,9 @@
 			<xsl:with-param name="ratio" select="'3/4'" />
 			<xsl:with-param name="position" select="$position" />
 			<xsl:with-param name="use-src" select="$use-src" />
-			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="attr" select="$attr" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -186,9 +186,9 @@
 			<xsl:with-param name="ratio" select="'9/16'" />
 			<xsl:with-param name="position" select="$position" />
 			<xsl:with-param name="use-src" select="$use-src" />
-			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="attr" select="$attr" />
 		</xsl:call-template>
 	</xsl:template>
 	
@@ -228,9 +228,9 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
 			<xsl:with-param name="use-src" select="$use-src" />
-			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="attr" select="$computed-attr" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -256,9 +256,9 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="format" select="$computed-format" />
 			<xsl:with-param name="use-src" select="$use-src" />
-			<xsl:with-param name="attr" select="$attr"/>
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="attr" select="$attr"/>
 		</xsl:call-template>
 	</xsl:template>
 
