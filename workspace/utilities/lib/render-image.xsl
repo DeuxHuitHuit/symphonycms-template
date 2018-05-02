@@ -52,6 +52,12 @@
 							</xsl:attribute>
 						</set>
 					</xsl:if>
+					
+					<!-- Amp minimal parameter -->
+					<xsl:if test="/data/params/amp = 'Yes'">
+						<set width="{$image/meta/@width}" />
+						<set height="{$image/meta/@height}" />
+					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
 
