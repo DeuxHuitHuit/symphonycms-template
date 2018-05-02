@@ -5,6 +5,7 @@
 	<xsl:template name="image">
 		<xsl:param name="image" select="image" />
 		<xsl:param name="alt" select="image-alt" />
+		<xsl:param name="bg-position" select="'50% 50%'" />
 		<xsl:param name="veil-opacity" select="veil-opacity" />
 		<xsl:param name="type" select="'resize'" />
 		<xsl:param name="enable-veil" select="false()" />
@@ -93,6 +94,7 @@
 						<xsl:when test="$type = 'cover'">
 							<xsl:call-template name="render-image-bg-cover">
 								<xsl:with-param name="image" select="$image" />
+								<xsl:with-param name="position" select="$bg-position" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
 							</xsl:call-template>
@@ -100,6 +102,7 @@
 						<xsl:when test="$type = 'contain'">
 							<xsl:call-template name="render-image-bg-contain">
 								<xsl:with-param name="image" select="$image" />
+								<xsl:with-param name="position" select="$bg-position" />
 								<xsl:with-param name="alt" select="$alt" />
 								<xsl:with-param name="attr" select="$computed-attr" />
 							</xsl:call-template>
