@@ -251,6 +251,7 @@
 		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'1'" />
 		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -286,7 +287,9 @@
 			<add class="bg-no-repeat" />
 
 			<!-- Add background-image -->
-			<add style="~'background-image:url('{$img-path}');'" />
+			<xsl:if test="$with-initial-image">
+				<add style="~'background-image:url('{$img-path}');'" />
+			</xsl:if>
 
 			<!-- Style: background-position if specified -->
 			<xsl:if test="string-length($position) != 0">
@@ -328,6 +331,7 @@
 					<xsl:with-param name="alt" select="$alt" />
 					<xsl:with-param name="factor" select="$factor" />
 					<xsl:with-param name="format" select="$format" />
+					<xsl:with-param name="use-src" select="false()" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -342,6 +346,7 @@
 		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -364,6 +369,7 @@
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
 			<xsl:with-param name="format" select="$format" />
+			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 		</xsl:call-template>
 	</xsl:template>
 	
@@ -376,6 +382,7 @@
 		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="alt">
 			<xsl:call-template name="default-image-alt-selector" />
@@ -392,6 +399,7 @@
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
+			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 		</xsl:call-template>
 	</xsl:template>
 
