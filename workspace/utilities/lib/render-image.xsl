@@ -12,10 +12,9 @@
 		<xsl:param name="ratio" select="''" />
 		<xsl:param name="format" select="''" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:variable name="computed-attr">
 			<xsl:choose>
@@ -56,7 +55,23 @@
 				</xsl:otherwise>
 			</xsl:choose>
 
-			<set alt="~'{$alt}'" />
+			<!-- Process Alt -->
+			<xsl:choose>
+				<xsl:when test="string-length($alt) != 0">
+					<set alt="~'{$alt}'" />
+				</xsl:when>
+				<xsl:when test="$use-alt-fallback = true()">
+					<xsl:variable name="auto-alt">
+						<xsl:call-template name="default-image-alt-selector" />
+					</xsl:variable>
+					<set alt="~'{$auto-alt}'" />
+				</xsl:when>
+				<xsl:otherwise>
+					<!-- Set Empty alt -->
+					<set alt="" />
+				</xsl:otherwise>
+			</xsl:choose>
+
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
 
@@ -75,10 +90,9 @@
 		<xsl:param name="height" select="'$h'" />
 		<xsl:param name="position" select="'5'" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:variable name="computed-format" >
 			<xsl:text>/image/2/</xsl:text>
@@ -94,6 +108,7 @@
 			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -104,11 +119,10 @@
 		<xsl:param name="ratio" select="''" />
 		<xsl:param name="position" select="'5'" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
-
+		
 		<xsl:variable name="computed-format">
 			<xsl:text>/image/2/$w/$</xsl:text>
 			<xsl:value-of select="$ratio" />
@@ -124,6 +138,7 @@
 			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -133,10 +148,9 @@
 		<xsl:param name="factor" select="'8'" />
 		<xsl:param name="position" select="'5'" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:call-template name="render-image-crop-ratio">
 			<xsl:with-param name="image" select="$image" />
@@ -146,6 +160,7 @@
 			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -155,10 +170,9 @@
 		<xsl:param name="factor" select="'8'" />
 		<xsl:param name="position" select="'5'" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:call-template name="render-image-crop-ratio">
 			<xsl:with-param name="image" select="$image" />
@@ -168,6 +182,7 @@
 			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 		</xsl:call-template>
 	</xsl:template>
 	
@@ -178,10 +193,9 @@
 		<xsl:param name="height" select="'0'" />
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:variable name="computed-format">
 			<xsl:text>/image/1/</xsl:text>
@@ -210,6 +224,7 @@
 			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -220,10 +235,9 @@
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'$h'" />
 		<xsl:param name="use-src" select="true()" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:variable name="computed-format">
 			<xsl:text>/image/4/</xsl:text>
@@ -238,6 +252,7 @@
 			<xsl:with-param name="use-src" select="$use-src" />
 			<xsl:with-param name="attr" select="$attr"/>
 			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 		</xsl:call-template>
 	</xsl:template>
 
@@ -251,11 +266,10 @@
 		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'1'" />
 		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 		<xsl:param name="format" >
 			<xsl:text>/image/1/</xsl:text>
 			<xsl:value-of select="concat($width, '/')" />
@@ -328,10 +342,11 @@
 				<xsl:call-template name="render-image">
 					<xsl:with-param name="attr" select="$computed-image-attr" />
 					<xsl:with-param name="image" select="$image" />
-					<xsl:with-param name="alt" select="$alt" />
 					<xsl:with-param name="factor" select="$factor" />
 					<xsl:with-param name="format" select="$format" />
 					<xsl:with-param name="use-src" select="false()" />
+					<xsl:with-param name="alt" select="$alt" />
+					<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -346,11 +361,10 @@
 		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 		<xsl:param name="format" >
 			<xsl:text>/image/1/</xsl:text>
 			<xsl:value-of select="concat($width, '/')" />
@@ -364,10 +378,11 @@
 			<xsl:with-param name="image-attr" select="$image-attr" />
 			<xsl:with-param name="element" select="$element" />
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
+			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 		</xsl:call-template>
@@ -382,23 +397,23 @@
 		<xsl:param name="image-attr" />
 		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="alt" select="''" />
+		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="alt">
-			<xsl:call-template name="default-image-alt-selector" />
-		</xsl:param>
 
 		<xsl:call-template name="render-image-bg">
 			<xsl:with-param name="position" select="$position" />
 			<xsl:with-param name="size" select="'contain'" />
 			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="image-attr" select="$image-attr" />
-			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="element" select="$element" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
+			<xsl:with-param name="alt" select="$alt" />
+			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 		</xsl:call-template>
 	</xsl:template>
