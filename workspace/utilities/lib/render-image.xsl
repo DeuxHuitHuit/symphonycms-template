@@ -264,20 +264,20 @@
 
 <!-- render-image-bg -->
 	<xsl:template name="render-image-bg">
-		<xsl:param name="position" />
-		<xsl:param name="size" />
+		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="image" select="image" />
+		<xsl:param name="factor" select="'1'" />
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'0'" />
-		<xsl:param name="image" select="image" />
-		<xsl:param name="image-attr" />
-		<xsl:param name="factor" select="'1'" />
-		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
+		<xsl:param name="position" />
+		<xsl:param name="size" />
 		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
-		
+		<xsl:param name="image-attr" />
+
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
 			<xsl:choose>
@@ -342,13 +342,13 @@
 			<xsl:with-param name="content">
 				
 				<xsl:call-template name="render-image">
-					<xsl:with-param name="attr" select="$computed-image-attr" />
 					<xsl:with-param name="image" select="$image" />
 					<xsl:with-param name="factor" select="$factor" />
 					<xsl:with-param name="format" select="$format" />
 					<xsl:with-param name="use-src" select="false()" />
 					<xsl:with-param name="alt" select="$alt" />
 					<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+					<xsl:with-param name="attr" select="$computed-image-attr" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -356,65 +356,65 @@
 
 <!-- render-image-bg-cover -->
 	<xsl:template name="render-image-bg-cover">
-		<xsl:param name="position" select="'50% 50%'" />
+		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="image" select="image" />
+		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'0'" />
-		<xsl:param name="image" select="image" />
-		<xsl:param name="image-attr" />
-		<xsl:param name="factor" select="'3'" />
-		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
+		<xsl:param name="position" select="'50% 50%'" />
 		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
+		<xsl:param name="image-attr" />
 
 		<xsl:call-template name="render-image-bg">
-			<xsl:with-param name="position" select="$position" />
-			<xsl:with-param name="size" select="'cover'" />
-			<xsl:with-param name="image" select="$image" />
-			<xsl:with-param name="image-attr" select="$image-attr" />
 			<xsl:with-param name="element" select="$element" />
-			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="position" select="$position" />
+			<xsl:with-param name="size" select="'cover'" />
 			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
+			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="image-attr" select="$image-attr" />
 		</xsl:call-template>
 	</xsl:template>
 	
 <!-- render-image-bg-contain -->
 	<xsl:template name="render-image-bg-contain">
-		<xsl:param name="position" select="'50% 50%'" />
+		<xsl:param name="element" select="'figure'" />
+		<xsl:param name="image" select="image" />
+		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'0'" />
-		<xsl:param name="image" select="image" />
-		<xsl:param name="image-attr" />
-		<xsl:param name="factor" select="'3'" />
-		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
+		<xsl:param name="position" select="'50% 50%'" />
 		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
+		<xsl:param name="image-attr" />
 
 		<xsl:call-template name="render-image-bg">
-			<xsl:with-param name="position" select="$position" />
-			<xsl:with-param name="size" select="'contain'" />
-			<xsl:with-param name="image" select="$image" />
-			<xsl:with-param name="image-attr" select="$image-attr" />
 			<xsl:with-param name="element" select="$element" />
-			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="image" select="$image" />
 			<xsl:with-param name="factor" select="$factor" />
 			<xsl:with-param name="width" select="$width" />
 			<xsl:with-param name="height" select="$height" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="position" select="$position" />
+			<xsl:with-param name="size" select="'contain'" />
 			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
+			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="image-attr" select="$image-attr" />
 		</xsl:call-template>
 	</xsl:template>
 
