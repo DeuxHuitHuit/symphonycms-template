@@ -274,13 +274,9 @@
 		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
+		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="format" >
-			<xsl:text>/image/1/</xsl:text>
-			<xsl:value-of select="concat($width, '/')" />
-			<xsl:value-of select="$height" />
-		</xsl:param>
 		
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
@@ -369,13 +365,9 @@
 		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
+		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
-		<xsl:param name="format" >
-			<xsl:text>/image/1/</xsl:text>
-			<xsl:value-of select="concat($width, '/')" />
-			<xsl:value-of select="$height" />
-		</xsl:param>
 
 		<xsl:call-template name="render-image-bg">
 			<xsl:with-param name="position" select="$position" />
@@ -405,6 +397,7 @@
 		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
+		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
 
@@ -420,6 +413,7 @@
 			<xsl:with-param name="height" select="$height" />
 			<xsl:with-param name="alt" select="$alt" />
 			<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
 		</xsl:call-template>
 	</xsl:template>
