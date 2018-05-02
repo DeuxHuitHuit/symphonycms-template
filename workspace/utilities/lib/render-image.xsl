@@ -81,11 +81,11 @@
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
 
-		<img>
-			<xsl:call-template name="attr">
-				<xsl:with-param name="attr" select="$computed-attr" />
-			</xsl:call-template>
-		</img>
+		<!-- Reel image element -->
+		<xsl:call-template name="element">
+			<xsl:with-param name="element" select="'img'"/>
+			<xsl:with-param name="attr" select="$computed-attr" />
+		</xsl:call-template>
 	</xsl:template>
 
 <!-- render-image-crop -->
