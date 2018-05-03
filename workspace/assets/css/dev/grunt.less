@@ -9,8 +9,9 @@
 @debug: false;
 @import (reference) "build";
 @import (reference) "../core/__core";
-@import (less) "../dev/generators";
-@import (less) "../lib/__lib";
+@import (reference) "../dev/generators";
+@import (inline) "../lib/__lib-prod.css";
+@import (reference) "../theme/__vars";
 @import (less) "../theme/__theme";
 @import (less) "../theme/_generate";
 @import (less) "../main";
