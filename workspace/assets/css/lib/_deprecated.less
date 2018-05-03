@@ -18,7 +18,6 @@
 .text-no-upper                  {text-transform: none;                    .DEPRECATED(~'Use text-transform-none');}
 .translate-left-none-on-hover   {#hover({#transform(~'translateX(0)');}); .DEPRECATED(~'Use translate-x-0-on-hover');}
 .translate-x-none               {#transform(~'translateX(0)');            .DEPRECATED(~'Use translate-x-0');}
-.translate-x-half               {#transform(~'translateX(50%)');          .DEPRECATED(~'Use translate-x-1_2');}
 .translate-x-minus-1_2-y-minus-1_2,
 .translate-xy-minus-1_2         {#transform(~'translate(-50%, -50%)');    .DEPRECATED(~'Use translate-minus-1_2');}
 .translate-y-none               {#transform(~'translateY(0)');            .DEPRECATED(~'Use translate-y-0');}
@@ -26,24 +25,3 @@
 .transform-origin-top-left      {#transform-origin(top left);             .DEPRECATED(~'Use transform-origin-left-top');}
 .transform-origin-top-right     {#transform-origin(top right);            .DEPRECATED(~'Use transform-origin-right-top');}
 .transform-origin-center-center {#transform-origin(center center);        .DEPRECATED(~'Use transform-origin-center');}
-.scale-50                       {#transform(~'scale(0.5)');               .DEPRECATED(~'Use scale-1_2');}
-.scale-100                      {#transform(~'scale(1)');                 .DEPRECATED(~'Use scale-1');}
-.scale-110                      {#transform(~'scale(1.1)');               .DEPRECATED(~'Use scale-11_10');}
-.scale-120                      {#transform(~'scale(1.2)');               .DEPRECATED(~'Use scale-12_10');}
-.scale-200                      {#transform(~'scale(2)');                 .DEPRECATED(~'Use scale-2');}
-.scale-x-50                     {#transform(~'scaleX(0.5)');              .DEPRECATED(~'Use scale-x-1_2');}
-.scale-x-200                    {#transform(~'scaleX(2)');                .DEPRECATED(~'Use scale-x-2');}
-.scale-y-50                     {#transform(~'scaleY(0.5)');              .DEPRECATED(~'Use scale-y-1_2');}
-.scale-y-200                    {#transform(~'scaleY(2)');                .DEPRECATED(~'Use scale-y-2');}
-.translate-x-half-from-xs {
-	.DEPRECATED(~'Use translate-x-1_2-from-xs');
-	#mq-min-width(@screen-xs, {
-		#transform(translateX(50%));
-	});
-}
-.translate-xy-minus-half-from-sm {
-	.DEPRECATED(~'Use translate-minus-1_2-from-sm');
-	#mq-min-width(@screen-sm, {
-		#transform(~'translate(-50% -50%)');
-	});
-}
