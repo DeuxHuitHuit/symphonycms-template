@@ -10,6 +10,7 @@ module.exports = function (grunt) {
 	var LESS_FILE = 'css/dev/grunt.less';
 	var PAGES_PATH = '../pages/*.xsl';
 	var DEV_LIB_BUNDLE_LESS_FILE = 'css/dev/lib.less';
+	var DEV_LIB_BUNDLE_LESS_FILE_PROD = 'css/dev/lib-prod.less';
 	var DEV_THEME_BUNDLE_LESS_FILE = 'css/dev/theme.less';
 
 	var JSON_JS_FILE = grunt.file.readJSON('./js.json');
@@ -67,11 +68,13 @@ module.exports = function (grunt) {
 			css: {
 				main: LESS_FILE,
 				lib: DEV_LIB_BUNDLE_LESS_FILE,
+				libProd: DEV_LIB_BUNDLE_LESS_FILE_PROD,
 				theme: DEV_THEME_BUNDLE_LESS_FILE,
 				themeLess: 'css/theme/__theme.less',
 				themeCss: 'css/theme/__theme.css',
 				libLess: 'css/lib/__lib.less',
 				libCss: 'css/lib/__lib.css',
+				libCssProd: 'css/lib/__lib-prod.css',
 				coreLess: 'css/core/__core.less'
 			},
 			gruntfile: GRUNT_FILE,
@@ -173,6 +176,7 @@ module.exports = function (grunt) {
 		]);
 		grunt.registerTask('css', [
 			'clean:css',
+			'less:libProduction',
 			'less:production',
 			'cssopt'
 		]);

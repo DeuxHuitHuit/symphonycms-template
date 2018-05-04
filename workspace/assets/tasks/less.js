@@ -24,6 +24,11 @@ module.exports = function jshint (grunt) {
 					'<%= src.css.libCss %>': '<%= src.css.lib %>'
 				}
 			},
+			libProduction: {
+				files: {
+					'<%= src.css.libCssProd %>': '<%= src.css.libProd %>'
+				}
+			},
 			theme: {
 				files: {
 					'<%= src.css.themeCss %>': '<%= src.css.theme %>'
