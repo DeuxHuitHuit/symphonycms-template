@@ -17,6 +17,8 @@
 	<xsl:variable name="default-attr-mode">
 		<xsl:text></xsl:text>
 	</xsl:variable>
+
+	<xsl:variable name="attr-is-amp" select="/data/params/amp = 'Yes'" />
 <!-- 																		/-->
 
 <!-- CORE-FUNCTION: attr ========================================================================-->
@@ -33,6 +35,7 @@
 				<xsl:with-param name="attrResult" select="$initialNodeResult"/>
 			</xsl:apply-templates>
 		</xsl:variable>
+
 	<!-- 																	/-->
 
 	<!-- STRUCTURE 															 -->
@@ -41,7 +44,10 @@
 			<xsl:variable name="attr-name" select="name()" />
 
 			<!-- Exclude all dev- begining attributes -->
-			<xsl:if test="starts-with($attr-name, 'dev-') = false() or $debug = true()">
+			<xsl:if test="
+				(starts-with($attr-name, 'dev-') = false() or $debug = true()) and
+				(starts-with($attr-name, 'amp-') = false() or $attr-is-amp = true())
+				">
 
 				<!-- Output attribute -->
 				<xsl:attribute name="{$attr-name}">
