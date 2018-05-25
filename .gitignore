@@ -8,6 +8,7 @@ node_modules
 project-name.*
 
 workspace/assets/js/libs
+workspace/assets/css/*/__*.*
 
 npm-debug.log
 
