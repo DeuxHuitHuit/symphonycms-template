@@ -59,6 +59,13 @@
 				</xsl:call-template>
 			</xsl:if>
 			
+			<!-- GTM -->
+			<xsl:if test="$debug != true() and string-length($gtm-ctn) != 0">
+				<xsl:call-template name="gtm-head">
+					<xsl:with-param name="ctn" select="$gtm-ctn" />
+				</xsl:call-template>
+			</xsl:if>
+			
 			<!-- EXTRA -->
 			<xsl:call-template name="master-head-extra" />
 			

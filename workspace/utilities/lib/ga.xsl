@@ -23,6 +23,25 @@ ga('require', 'linkid');
 <xsl:template name="gtm">
 	<xsl:param name="ctn" />
 	<xsl:param name="env" select="''" />
+
+	<xsl:call-template name="gtm-head">
+		<xsl:with-param name="ctn" select="$ctn" />
+		<xsl:with-param name="env" select="$env" />
+	</xsl:call-template>
+	<xsl:call-template name="gtm-body">
+		<xsl:with-param name="ctn" select="$ctn" />
+		<xsl:with-param name="env" select="$env" />
+	</xsl:call-template>
+</xsl:template>
+
+<xsl:template name="gtm-head">
+	<xsl:param name="ctn" />
+	<xsl:param name="env" select="''" />
+	<xsl:variable name="js-env">
+		<xsl:if test="string-length($env) != 0">
+			<xsl:value-of select="concat('+&quot;', $env, '&quot;')" />
+		</xsl:if>
+	</xsl:variable>
 <script>
 var dataLayer = dataLayer || [];
 dataLayer.push({'page':{'language':'<xsl:value-of select="$url-language" />'}});
@@ -30,9 +49,14 @@ dataLayer.push({'page':{'language':'<xsl:value-of select="$url-language" />'}});
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
 var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;
-j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'<xsl:value-of select="$env" />';
+j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl<xsl:value-of select="$js-env" />;
 f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','<xsl:value-of select="$ctn" />');</script>
+</xsl:template>
+
+<xsl:template name="gtm-body">
+	<xsl:param name="ctn" />
+	<xsl:param name="env" select="''" />
 <noscript>
 	<iframe src="https://www.googletagmanager.com/ns.html?id={$ctn}{$env}" height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>

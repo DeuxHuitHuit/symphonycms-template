@@ -61,7 +61,7 @@
 			<xsl:with-param name="content">
 				<!-- GTM -->
 				<xsl:if test="$debug != true() and string-length($gtm-ctn) != 0">
-					<xsl:call-template name="gtm">
+					<xsl:call-template name="gtm-body">
 						<xsl:with-param name="ctn" select="$gtm-ctn" />
 					</xsl:call-template>
 				</xsl:if>
