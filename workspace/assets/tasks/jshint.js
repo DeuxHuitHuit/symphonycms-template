@@ -9,12 +9,13 @@ module.exports = function jshint (grunt) {
 				'<%= src.gruntfile %>'
 			],
 			options: {
+				esversion: 5,
 				bitwise: false,
 				camelcase: false,
 				curly: true,
 				eqeqeq: false, // allow ==
 				forin: true,
-				//freeze: true,
+				freeze: true,
 				immed: false, //
 				latedef: true, // late definition
 				newcap: true, // capitalize ctos
@@ -47,7 +48,10 @@ module.exports = function jshint (grunt) {
 					App: true,
 					Loader: true,
 					_: true,
-					module: true
+					module: true,
+					google: true,
+					THREE: true,
+					TWEEN: true
 				}
 			}
 		}
