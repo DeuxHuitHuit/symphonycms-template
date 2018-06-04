@@ -62,4 +62,24 @@ f.parentNode.insertBefore(j,f);
 </noscript>
 </xsl:template>
 
+<xsl:template name="ga-amp">
+	<xsl:param name="ua" />
+	
+<amp-analytics type="googleanalytics">
+	<script type="application/json">
+	{
+	  "vars": {
+	    "account": "<xsl:value-of select="$ua" />"
+	  },
+	  "triggers": {
+	    "trackPageview": {
+	      "on": "visible",
+	      "request": "pageview"
+	    }
+	  }
+	}
+	</script>
+</amp-analytics>
+</xsl:template>
+
 </xsl:stylesheet>
