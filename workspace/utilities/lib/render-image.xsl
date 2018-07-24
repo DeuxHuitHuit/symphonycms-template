@@ -277,11 +277,13 @@
 		<xsl:param name="with-initial-image" select="true()" />
 		<xsl:param name="attr" />
 		<xsl:param name="image-attr" />
+		
+		<xsl:variable name="is-unjittable" select="exslt:object-type($image) = 'node-set' and (contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff'))" />
 
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
 			<xsl:choose>
-				<xsl:when test="exslt:object-type($image) = 'node-set' and (contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff'))">
+				<xsl:when test="$is-unjittable">
 					<xsl:value-of select="concat('/workspace', $image/@path, '/', $image/filename)" />
 				</xsl:when>
 				<xsl:otherwise>
@@ -303,7 +305,7 @@
 			<add class="bg-no-repeat" />
 
 			<!-- Add background-image -->
-			<xsl:if test="$with-initial-image">
+			<xsl:if test="$with-initial-image or $is-unjittable">
 				<add style="~'background-image:url('{$img-path}');'" />
 			</xsl:if>
 
@@ -318,7 +320,9 @@
 			</xsl:if>
 
 			<!-- Js class for auto-jit-image -->
-			<add class="jit-image-bg" />
+			<xsl:if test="not($is-unjittable)">
+				<add class="jit-image-bg" />
+			</xsl:if>
 
 			<!-- External attr -->
 			<xsl:copy-of select="$attr"/>
