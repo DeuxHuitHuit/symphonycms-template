@@ -13,7 +13,9 @@
   "license": "Private. All rights reserved. Deux Huit Huit and others.",
   "scripts": {
     "grunt": "grunt",
-    "build": "grunt build"
+    "build": "grunt build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "async": "2.6.0",
@@ -42,6 +44,8 @@
     "maxmin": "2.1.0",
     "request": "2.83.0",
     "strip-json-comments": "2.0.1",
-    "time-grunt": "1.4.0"
-  }
+    "time-grunt": "1.4.0",
+    "snyk": "^1.88.0"
+  },
+  "snyk": true
 }
