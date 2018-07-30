@@ -27,6 +27,9 @@
     
     ## Allow .well-known folder
     RewriteRule ^.well-known - [S=25,L]
+
+    ## Block autodiscover
+    RewriteRule autodiscover/autodiscover\.xml - [F,L]
 </IfModule>
 
 ### Security
