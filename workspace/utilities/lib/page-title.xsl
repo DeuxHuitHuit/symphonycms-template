@@ -39,9 +39,6 @@
 			<xsl:when test="string-length($custom) != 0">
 				<xsl:value-of select="$custom" />
 			</xsl:when>
-			<xsl:when test="string-length($page-metas/titre) != 0">
-				<xsl:value-of select="$page-metas/titre" />
-			</xsl:when>
 			<xsl:when test="string-length($plh-page-title) != 0">
 				<xsl:value-of select="$plh-page-title" />
 			</xsl:when>
