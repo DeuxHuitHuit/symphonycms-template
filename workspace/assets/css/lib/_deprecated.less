@@ -25,3 +25,20 @@
 .transform-origin-top-left      {#transform-origin(top left);             .DEPRECATED(~'Use transform-origin-left-top');}
 .transform-origin-top-right     {#transform-origin(top right);            .DEPRECATED(~'Use transform-origin-right-top');}
 .transform-origin-center-center {#transform-origin(center center);        .DEPRECATED(~'Use transform-origin-center');}
+[class*="margin-none"],
+[class*="margin-horizontal-none"],
+[class*="margin-vertical-none"],
+[class*="margin-top-none"],
+[class*="margin-bottom-none"],
+[class*="margin-left-none"],
+[class*="margin-right-none"],
+[class*="padding-none"],
+[class*="padding-horizontal-none"],
+[class*="padding-vertical-none"],
+[class*="padding-top-none"],
+[class*="padding-bottom-none"],
+[class*="padding-left-none"],
+[class*="padding-right-none"] {
+	.DEPRECATED(~'Use padding/margin 0 instead of none');
+}
+
