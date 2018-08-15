@@ -41,7 +41,7 @@
 				<xsl:otherwise>
 					<!-- STATE (click): visible ~> OFF -->
 					<add class="js-change-state-click" />
-					<add data-change-state-click-target='.js-struct-modal[data-id="{$ref-id}"]' />
+					<add data-change-state-click-target=".js-struct-modal[data-id='{$id}']" />
 					<add data-change-state-click="visible" />
 					<add data-change-state-action="off" />
 					<add data-change-state-click-target-common-ancestor="#site" />
