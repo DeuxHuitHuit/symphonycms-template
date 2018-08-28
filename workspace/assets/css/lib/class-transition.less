@@ -137,7 +137,7 @@
 .transition-delay-none-on-hover, .transition-delay-0-on-hover {#hover({#transition-delay (0ms)});}
 
 .noanim {
-	&, & * {
+	&, &:after, &:before, & *, & *:after, & *:before {
 		#transition(none) !important;
 	}
 }
