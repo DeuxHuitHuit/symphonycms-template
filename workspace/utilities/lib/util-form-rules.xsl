@@ -6,7 +6,7 @@
 
 <!-- COMPONENT: util-form-rules -->
 	<xsl:template name="util-form-rules">
-		<xsl:if test="count(required) != 0 and required = 'Yes'">
+		<xsl:if test="required = 'Yes'">
 			<xsl:text>required</xsl:text>
 		</xsl:if>
 		<xsl:for-each select="validation/item">
