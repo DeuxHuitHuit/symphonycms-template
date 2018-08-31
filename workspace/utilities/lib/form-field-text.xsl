@@ -38,6 +38,11 @@
 			<add dev-element="label" />
 		</xsl:variable>
 
+		<xsl:variable name="attr-required">
+			<add class="transition-required" />
+			<add dev-element="required" />
+		</xsl:variable>
+
 		<xsl:variable name="attr-input">
 			<add name="{$name}" />
 			<add placeholder="{$placeholder}" />
