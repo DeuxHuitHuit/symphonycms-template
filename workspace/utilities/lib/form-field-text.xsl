@@ -26,12 +26,15 @@
 			</xsl:if>
 			<!-- Rules -->
 			<add data-rules="{$rules}" />
+			<add class="transition-form-field transition-form-field-text" />
+			<add class="js-form-field js-form-field-text" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="form-field-text" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-label">
 			<add for="{$id}" />
+			<add class="transition-label" />
 			<add dev-element="label" />
 		</xsl:variable>
 
@@ -41,10 +44,14 @@
 			<add value="{$value}" />
 			<add type="text" />
 			<add id="{$id}" />
+			<add class="transition-input" />
+			<add class="js-form-field-input" />
 			<add dev-element="input" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-hint">
+			<add class="transition-hint" />
+			<add class="js-form-field-hint" />
 			<add dev-element="hint" />
 		</xsl:variable>
 
