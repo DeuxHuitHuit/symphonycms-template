@@ -71,8 +71,7 @@
 	</xsl:call-template>
 </xsl:variable>
 
-<!-- loggued in info -->
-<xsl:variable name="is-loggued-in" select="/data/events/login-info/@logged-in = 'true'" />
+<xsl:variable name="is-logged-in" select="/data/events/login-info/@logged-in = 'true'" />
 
 <!-- Url language -->
 <xsl:variable name="url-language">
