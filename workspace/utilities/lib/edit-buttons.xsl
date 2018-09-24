@@ -30,7 +30,7 @@
 		<xsl:param name="attr" />
 		<xsl:param name="attr-link" />
 
-		<xsl:if test="$is-loggued-in = true()">
+		<xsl:if test="$is-logged-in = true()">
 				
 			<xsl:variable name="computed-attr">
 				<xsl:copy-of select="$default-edit-button-ctn-style" />
