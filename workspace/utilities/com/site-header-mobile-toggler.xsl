@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template name="site-header-mobile-toggler">
+		<xsl:param name="trait-height" select="'2'" />
 		<xsl:param name="ext-attr" />
 
 		<!-- STYLES /////////////////////////////////////////////////////////////// -->
@@ -36,7 +37,8 @@
 			<add class="block" />
 			<add class="absolute left" />
 			<add class="bg-color-current-color" />
-			<add class="width-full height-2px" />
+			<add class="width-full" />
+			<add style="height: {$trait-height}px;" />
 			<add class="transition-transform-opacity transition-duration-faster" />
 
 			<add class="js-site-header-mobile-toggler-icon-part" />
