@@ -5,6 +5,7 @@
 
 	<xsl:import href="com/site-header.xsl" />
 	<xsl:import href="com/site-header-logo-link.xsl" />
+	<xsl:import href="com/site-header-mobile-toggler.xsl" />
 	<xsl:import href="com/site-footer.xsl" />
 
 	<xsl:import href="com/site-nav.xsl" />
