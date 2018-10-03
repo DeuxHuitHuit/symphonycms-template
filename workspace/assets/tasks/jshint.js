@@ -49,9 +49,7 @@ module.exports = function jshint (grunt) {
 					Loader: true,
 					_: true,
 					module: true,
-					google: true,
-					THREE: true,
-					TWEEN: true
+					google: true
 				}
 			}
 		}
