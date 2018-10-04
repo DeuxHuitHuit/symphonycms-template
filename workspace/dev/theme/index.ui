@@ -17,7 +17,8 @@
 		<body style="background-color: #f0f0f0;">
 			<main>
 				<xsl:apply-templates select="themes/theme[@type = 'site']" mode="colors"/>
-
+				<xsl:apply-templates select="themes/theme[@type = 'site']" mode="dimensions"/>
+				<xsl:apply-templates select="themes/theme[@type = 'site']" mode="spacing"/>
 			</main>
 			<footer>
 				<section class="copyright">
@@ -31,7 +32,7 @@
 	</html>
 </xsl:template>
 
-<!-- Main Views (view containers) -->
+<!-- Main Views (COLORS) -->
 <!-- =================================================== -->
 <xsl:template match="theme" mode="colors">
 
@@ -63,6 +64,62 @@
 
 		<div style="text-align: center; margin-top: 10px;">
 			<xsl:value-of select="name()" />
+		</div>
+	</div>
+</xsl:template>
+
+<!-- Main Views (DIMENSIONS) -->
+<!-- =================================================== -->
+<xsl:template match="theme" mode="dimensions">
+
+	<div style="background-color: white; padding: 20px 20px 20px 0px;">
+		<h2 style="margin-left: 20px;">Dimensions</h2>
+		<div>
+			<xsl:apply-templates select="dimensions/*" mode="dimensions"/>
+		</div>
+	</div>
+
+</xsl:template>
+
+<xsl:template match="*" mode="dimensions" >
+
+	<div>
+
+		<div style="width: {@value}; background-color: black; height: 5px; margin-left: auto; margin-right: auto;">
+		</div>
+
+		<div style="text-align: center; margin-bottom: 25px; margin-top: 5px;">
+			<xsl:value-of select="name()" /><br />
+			<xsl:value-of select="@value" />
+
+		</div>
+	</div>
+</xsl:template>
+
+
+<!-- Main Views (SPACING) -->
+<!-- =================================================== -->
+<xsl:template match="theme" mode="spacing">
+
+	<div style="background-color: white; padding: 20px 20px 20px 0px;">
+		<h2 style="margin-left: 20px;">Spacing</h2>
+		<div>
+			<xsl:apply-templates select="spacing/*" mode="spacing"/>
+		</div>
+	</div>
+
+</xsl:template>
+
+<xsl:template match="*" mode="spacing">
+
+	<div style="display: inline-block; margin-left: 20px;">
+
+		<div style="width: {@value}; height: {@value}; background-color: black;">
+		</div>
+
+		<div style="text-align: center; margin-bottom: 25px; margin-top: 5px;">
+			<xsl:value-of select="name()" /><br />
+			<xsl:value-of select="@value" />
 		</div>
 	</div>
 </xsl:template>
