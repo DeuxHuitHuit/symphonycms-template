@@ -13,10 +13,10 @@
 		<xsl:variable name="computed-attr">
 			<set target="_blank" />
 			<set rel="noopener" />
-			<xsl:copy-of select="$attr" />
-			<add dev-core="share-link" />
 			<set data-ga-cat="share" />
 			<set data-ga-label="{$content}" />
+			<xsl:copy-of select="$attr" />
+			<add dev-core="share-link" />
 		</xsl:variable>
 
 		<xsl:call-template name="optional-button">
