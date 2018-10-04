@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:msxsl="urn:schemas-microsoft-com:xslt"
+	xmlns:ext="http://exslt.org/common"
+	exclude-result-prefixes="ext msxsl">
+
+
+<xsl:template match="/">
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="/workspace/dev/theme/theme.css"/>
+			<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,400i,500,700|Roboto:300,300i,400,400i,500,700" rel="stylesheet"/>
+		</head>
+		<body style="background-color: #f0f0f0;">
+			<main>
+				<xsl:apply-templates select="themes/theme[@type = 'site']" mode="colors"/>
+
+			</main>
+			<footer>
+				<section class="copyright">
+					<span lang="fr">Tous droits réservés © 2018 Deux Huit Huit</span>
+				</section>
+			</footer>
+
+			<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+			<!-- <script src="{$path}assets/js/constrictor.js"></script> -->
+		</body>
+	</html>
+</xsl:template>
+
+<!-- Main Views (view containers) -->
+<!-- =================================================== -->
+<xsl:template match="theme" mode="colors">
+
+	<div style="background-color: white; padding: 20px 20px 20px 0px;">
+		<h2 style="margin-left: 20px;">Colors</h2>
+		<div>
+			<xsl:apply-templates select="colors/type/*" mode="colors"/>
+		</div>
+	</div>
+
+</xsl:template>
+
+<xsl:template match="*" mode="colors" >
+
+	<xsl:variable name="computed-color">
+		<xsl:choose>
+			<xsl:when test="starts-with(@value, '@true-')">
+				<xsl:value-of select="substring-after(@value, '-')" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="@value" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+
+	<div style="display: inline-block; margin-left: 20px;">
+
+		<div style="width: 80px; height: 80px; border-radius: 100%; background-color: {$computed-color};"></div>
+
+		<div style="text-align: center; margin-top: 10px;">
+			<xsl:value-of select="name()" />
+		</div>
+	</div>
+</xsl:template>
+
+</xsl:stylesheet>
