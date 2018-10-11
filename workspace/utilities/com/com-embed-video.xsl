@@ -15,7 +15,6 @@
 	<xsl:variable name="attr">
 		<add class="padding-bottom-9_16 relative z-index-1" />
 		<add class="bg-color-black" />
-		<add class="js-auto-oembed-ctn" />
 		<add data-playing-state-follower=".js-auto-oembed-play" />
 		<xsl:copy-of select="$ext-attr" />
 		<add dev-component="com-embed-video" />
@@ -53,7 +52,7 @@
 	</xsl:variable>
 
 	<xsl:variable name="attr-button-ctn">
-		<add class="flexbox flex-column flex-center" />
+		<add class="flexbox align-items-end" />
 		<add class="absolute fill" />
 	</xsl:variable>
 
@@ -79,8 +78,7 @@
 						<xsl:with-param name="attr" select="$attr-button-ctn" />
 						<xsl:with-param name="content">
 							<!-- BUTTON: play -->
-							<!-- <xsl:call-template name="button-play" /> -->
-							PLAY
+							<xsl:call-template name="button-play" />
 						</xsl:with-param>
 					</xsl:call-template>
 				</xsl:with-param>

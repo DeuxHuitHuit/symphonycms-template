@@ -8,7 +8,10 @@
 
 <!-- DEFAULT -->
 <xsl:template match="*" mode="module-embed-item" priority="0">
+	<xsl:param name="html" select="embed/html" />
+
 	<xsl:variable name="attr">
+		<add class="js-auto-oembed-player" />
 		<xsl:call-template name="util-oembed-attr" />
 		<add dev-element="module-embed-item" />
 	</xsl:variable>
@@ -16,6 +19,14 @@
 	<!-- STRUCTURE -->
 	<xsl:call-template name="element">
 		<xsl:with-param name="attr" select="$attr" />
+		<xsl:with-param name="content">
+			<!-- Script -->
+			<xsl:call-template name="element">
+				<xsl:with-param name="attr" select="$attr-script" />
+				<xsl:with-param name="element" select="'script'" />
+				<xsl:with-param name="content" select="$html" />
+			</xsl:call-template>
+		</xsl:with-param>
 	</xsl:call-template>
 </xsl:template>
 </xsl:stylesheet>

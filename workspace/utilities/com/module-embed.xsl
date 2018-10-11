@@ -29,6 +29,7 @@
 
 		<!-- ATTRIBUTES -->
 		<xsl:variable name="attr">
+			<add class="js-auto-oembed-ctn" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="module-embed" />
 		</xsl:variable>
