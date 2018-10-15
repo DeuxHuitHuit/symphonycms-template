@@ -8,6 +8,11 @@
 	<xsl:param name="autoload" select="'none'" />
 	<xsl:param name="title" select="''" />
 	<xsl:param name="ext-attr" />
+	<xsl:param name="ext-attr-video" />
+	<xsl:param name="ext-attr-placeholder" />
+	<xsl:param name="ext-attr-image" />
+	<xsl:param name="ext-attr-button-ctn" />
+
 
 	<xsl:variable name="has-thumbnail" select="string-length($thumbnail) != 0" />
 
@@ -29,6 +34,7 @@
 			<add data-autoplay="1" />
 		</xsl:if>
 		<add class="js-auto-oembed-player" />
+		<xsl:copy-of select="$ext-attr-video" />
 		<add dev-element="video" />
 	</xsl:variable>
 
@@ -39,6 +45,7 @@
 		<!-- STATE: playing -->
 		<add class="transition-opacity transition-duration-fast transition-ease-standard-out" />
 		<add data-playing-state-add-class="transparent pointer-events-none" />
+		<xsl:copy-of select="$ext-attr-placeholder" />
 		<add dev-element="placeholder" />
 	</xsl:variable>
 
@@ -48,12 +55,14 @@
 		<xsl:if test="$has-thumbnail">
 			<add style="background-image: url({$thumbnail});" />
 		</xsl:if>
+		<xsl:copy-of select="$ext-attr-image" />
 		<add dev-element="image" />
 	</xsl:variable>
 
 	<xsl:variable name="attr-button-ctn">
 		<add class="flexbox align-items-end" />
 		<add class="absolute fill" />
+		<xsl:copy-of select="$ext-attr-button-ctn" />
 	</xsl:variable>
 
 	<!-- STRUCTURE ////////////////////////////////////////////////////////// -->
