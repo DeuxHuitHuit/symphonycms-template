@@ -16,6 +16,11 @@
 		<add dev-element="module-embed-item" />
 	</xsl:variable>
 
+	<xsl:variable name="attr-script">
+		<add type="text/template" />
+		<add dev-element="script" />
+	</xsl:variable>
+
 	<!-- STRUCTURE -->
 	<xsl:call-template name="element">
 		<xsl:with-param name="attr" select="$attr" />
