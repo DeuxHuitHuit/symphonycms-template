@@ -19,7 +19,10 @@
 		<xsl:variable name="computed-attr">
 			<xsl:choose>
 				<!-- Svg File -->
-				<xsl:when test="exslt:object-type($image) = 'node-set' and (contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff'))">
+				<xsl:when test="exslt:object-type($image) = 'node-set' and (
+					(contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff')) or
+					(contains($image/filename, '.svg') or contains($image/filename, '.gif') or contains($image/filename, '.tiff'))
+					)">
 					<set src="/workspace{$image/@path}/{$image/filename}" />
 				</xsl:when>
 
