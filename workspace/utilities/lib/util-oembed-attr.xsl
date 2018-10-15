@@ -7,18 +7,14 @@
 	<xsl:param name="id" select="@id" />
 	<xsl:param name="title" select="title" />
 
-	<set>
-		<xsl:attribute name="data-oembed-id">
-			<xsl:choose>
-				<xsl:when test="$driver = 'YouTube'">
-					<xsl:value-of select="$url" />
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="$id" />
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:attribute>
-	</set>
+	<xsl:choose>
+		<xsl:when test="$driver = 'YouTube'">
+			<set data-oembed-id="$url" />
+		</xsl:when>
+		<xsl:otherwise>
+			<set data-oembed-id="$id" />
+		</xsl:otherwise>
+	</xsl:choose>
 	<set data-oembed-provider="{$driver}" />
 	<set data-oembed-title="{$title}" />
 </xsl:template>
