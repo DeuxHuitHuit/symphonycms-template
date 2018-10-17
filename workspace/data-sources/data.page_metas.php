@@ -20,7 +20,7 @@
 		public $dsParamINCLUDEDELEMENTS = array(
 			'description: formatted',
 			'titre: formatted',
-			'image-partage'
+			'image'
 		);
 
 		public function __construct($env=NULL, $process_params=true) {

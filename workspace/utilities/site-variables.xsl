@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:exslt="http://exslt.org/common"
+	exclude-result-prefixes="exslt">
 
-	<!-- Default site name with current language -->
-	<xsl:variable name="site-name">
-		<xsl:call-template name="default-site-name" />
-	</xsl:variable>
+<xsl:variable name="data" select="/data" />
+<xsl:variable name="params" select="$data/params" />
+<xsl:variable name="config" select="$data/site-config/entry[1]" />
+<xsl:variable name="pages" select="$data/pages/page" />
 
+
+<!-- Default site name with current language -->
+<xsl:variable name="site-name">
+	<xsl:call-template name="default-site-name" />
+</xsl:variable>
+
+<xsl:variable name="site-title" select="$site-name" />
 <xsl:variable name="site-description" select="$config/description" />
-<xsl:variable name="site-share-image" select="$config/image-partage" />
+<xsl:variable name="site-image" select="$config/image" />
 <xsl:variable name="page-metas" select="/data/page-metas/entry[1]" />
 
 <!-- MISC UI ELEMENTS -->
@@ -44,6 +53,9 @@
 	</xsl:choose>
 </xsl:variable>
 <xsl:variable name="twitter-card-domain" select="$config/twitter-site-domain" />
+
+<!-- MONEY DECIMAL FORMAT -->
+<!-- <xsl:decimal-format name="money" decimal-separator='.' grouping-separator='' /> -->
 
 <!-- Default langue if fl-languages not found -->
 <xsl:variable name="default-langue" select="'fr'" />

@@ -14,9 +14,9 @@
 		public $dsParamASSOCIATEDENTRYCOUNTS = 'no';
 		
 		public $dsParamINCLUDEDELEMENTS = array(
-			'site-titre: formatted: all-languages',
+			'titre: formatted: all-languages',
 			'description: formatted',
-			'image-partage',
+			'image',
 			'theme',
 			'twitter-url: formatted',
 			'twitter-user: formatted',
