@@ -48,6 +48,11 @@
 			
 			<!-- Master css -->
 			<xsl:call-template name="master-css" />
+
+			<!-- Admin-tools css -->
+			<xsl:if test="/data/events/login-info/@logged-in = 'true'">
+				<link rel="stylesheet" type="text/css" href="/workspace/utilities/admin-tools/admin-tools.css" />
+			</xsl:if>
 			
 			<!-- RSS -->
 			<xsl:call-template name="page-metas-alt-rss" />

@@ -67,9 +67,6 @@
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="content">
 
-				<!-- COMP: Menu admin -->
-				<xsl:call-template name="menu-admin" />
-
 				<!-- COMP: Site header logo and link to home page -->
 				<xsl:call-template name="site-header-logo-link">
 					<xsl:with-param name="attr" select="$computed-site-header-logo-link-attr"/>
