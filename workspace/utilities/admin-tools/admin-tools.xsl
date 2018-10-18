@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- 
-	Admin tools must be called in the context of the main entry of the page.
-	If called elsewhere, some widgets might break (edit-entry WILL break).
--->
-
-<!-- IMPORTS -->
-<xsl:import href="widgets/widget-flush-cache.xsl" />
-<xsl:import href="widgets/widget-logout.xsl" />
-<xsl:import href="widgets/widget-edit-entry.xsl" />
-<xsl:import href="widgets/widget-debug.xsl" />
+	<!-- IMPORTS -->
+	<xsl:import href="widgets/widget-flush-cache.xsl" />
+	<xsl:import href="widgets/widget-logout.xsl" />
+	<xsl:import href="widgets/widget-edit-entry.xsl" />
+	<xsl:import href="widgets/widget-debug.xsl" />
 
 	<xsl:template name="admin-tools">
 		<xsl:param name="visible" select="visible = 'Yes' or string-length(visible) = 0" />
