@@ -12,11 +12,6 @@
 <xsl:import href="widgets/widget-edit-entry.xsl" />
 <xsl:import href="widgets/widget-debug.xsl" />
 
-<xsl:variable name="is-user" select="/data/events/login-info/@logged-in = 'true'" />
-<xsl:variable name="is-user-author" select="/data/events/login-info/@user-type = 'author'" />
-<xsl:variable name="is-user-admin" select="/data/events/login-info/@user-type = 'admin'" />
-<xsl:variable name="is-user-dev" select="/data/events/login-info/@user-type = 'developer'" />
-
 	<xsl:template name="admin-tools">
 		<xsl:param name="visible" select="visible = 'Yes' or string-length(visible) = 0" />
 
@@ -42,12 +37,14 @@
 			</xsl:choose>
 		</xsl:param>
 
+		<xsl:variable name="is-user" select="/data/events/login-info/@logged-in = 'true'" />
+		<xsl:variable name="is-user-author" select="/data/events/login-info/@user-type = 'author'" />
+		<xsl:variable name="is-user-admin" select="/data/events/login-info/@user-type = 'admin'" />
+		<xsl:variable name="is-user-dev" select="/data/events/login-info/@user-type = 'developer'" />
+
 		<xsl:if test="$is-user">
-
 			<div class="admin-tools">
-
 				<div class="notifier" style="background-color:{$notifier-color};"></div>
-
 				<div class="widgets">
 					<div class="widget" style="margin-left: 20px;margin-top: 5px;font-size: 10px;">
 						<xsl:value-of select="$notifier-label" />
@@ -58,13 +55,11 @@
 					<xsl:if test="$is-user-dev">
 						<xsl:call-template name="widget-debug" />
 					</xsl:if>
-
 				</div>
-
 			</div>
-
 		</xsl:if>
-
 	</xsl:template>
 
 </xsl:stylesheet>
+
+

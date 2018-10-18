@@ -3,9 +3,7 @@
 
 	<xsl:template name="widget-logout">
 		<div class="widget widget-logout">
-
 			<a href="/symphony/logout/">
-
 				<div style="display:flex">
 					<div class="widget-svg">
 						<svg xmlns="http://www.w3.org/2000/svg"
@@ -16,10 +14,10 @@
 					</div>
 					<div class="label"><xsl:text>Logout</xsl:text></div>
 				</div>
-
 			</a>
-			
 		</div>
 	</xsl:template>
-			
+
 </xsl:stylesheet>
+
+

@@ -21,7 +21,6 @@
 
 		<div class="widget widget-edit-entry">
 			<a href="{$url}">
-
 				<div style="display:flex">
 					<div class="widget-svg">
 						<svg xmlns="http://www.w3.org/2000/svg"
@@ -32,9 +31,10 @@
 					</div>
 					<div class="label"><xsl:text>Edit</xsl:text></div>
 				</div>
-
 			</a>
 		</div>
 	</xsl:template>
-			
+
 </xsl:stylesheet>
+
+

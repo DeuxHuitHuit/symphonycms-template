@@ -3,9 +3,7 @@
 
 	<xsl:template name="widget-flush-cache">
 		<div class="widget widget-flush-cache">
-
 			<a href="?flush=site" target="_blank">
-
 				<div style="display:flex">
 					<div class="widget-svg">
 						<svg xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +14,6 @@
 					</div>
 					<div class="label"><xsl:text>Cache</xsl:text></div>
 				</div>
-				
 			</a>
 		</div>
 	</xsl:template>

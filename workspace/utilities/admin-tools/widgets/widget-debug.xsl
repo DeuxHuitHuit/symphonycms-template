@@ -4,7 +4,6 @@
 	<xsl:template name="widget-debug">
 		<div class="widget widget-debug">
 			<a href="{$params/current-url}/?debug">
-				
 				<div style="display:flex">
 					<div class="widget-svg">
 						<svg xmlns="http://www.w3.org/2000/svg"
@@ -15,9 +14,10 @@
 					</div>
 					<div class="label"><xsl:text>Debug</xsl:text></div>
 				</div>
-
 			</a>
 		</div>
 	</xsl:template>
-			
+
 </xsl:stylesheet>
+
+
