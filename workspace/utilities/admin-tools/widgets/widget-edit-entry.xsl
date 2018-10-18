@@ -36,5 +36,3 @@
 	</xsl:template>
 
 </xsl:stylesheet>
-
-

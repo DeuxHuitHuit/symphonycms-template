@@ -19,5 +19,3 @@
 	</xsl:template>
 
 </xsl:stylesheet>
-
-
