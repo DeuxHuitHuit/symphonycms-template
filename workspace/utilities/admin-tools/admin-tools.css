@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
 .admin-tools{
 	position: fixed;
 	top: 10px;
@@ -7,7 +5,7 @@
 	background-color: #2f77eb;
 	color: white;
 	font-size: 14px;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Helevetica', 'Arial' sans-serif;
 	z-index: 99999;
 }
 
