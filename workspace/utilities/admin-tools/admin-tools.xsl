@@ -3,7 +3,7 @@
 
 <!-- 
 	Admin tools must be called in the context of the main entry of the page.
-	If called elsewhere, some widgets might broke (edit-entry WILL broke).
+	If called elsewhere, some widgets might break (edit-entry WILL break).
 -->
 
 <!-- IMPORTS -->
