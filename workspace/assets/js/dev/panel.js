@@ -17,7 +17,7 @@
 	var panel = $('<div />').attr('class', cssClasses);
 
 	var getImportantNodes = function () {
-		return 'h1, h2, h3, h4, h5, h6, footer, header, section, article';
+		return 'h1, h2, h3, h4, h5, h6, main, footer, header, section, article, nav, button, a';
 	};
 
 	var getJsNodes = function (prefix) {
