@@ -88,12 +88,12 @@
 								<xsl:with-param name="type" select="'cover'" />
 							</xsl:call-template>
 						</xsl:when>
-						<xsl:otherwise>
+						<xsl:when test="$has-thumbnail">
 							<!-- Thumbnail -->
 							<xsl:call-template name="element">
 								<xsl:with-param name="attr" select="$attr-thumbnail" />
 							</xsl:call-template>
-						</xsl:otherwise>
+						</xsl:when>
 					</xsl:choose>
 					<!-- Button ctn -->
 					<xsl:call-template name="element">
