@@ -59,13 +59,10 @@
 		
 		<xsl:variable name="computed-attr">
 			<add class="copy-288" />
-			<add src="{$url}" />
-			<add margin="0" />
-			<add border="0" />
-			<add scrolling="no" />
-			<add frameborder="no" />
-			<add width="{$w}" />
-			<add height="{number($h)}" />
+			<set src="{$url}" />
+			<set width="{$w}" />
+			<set height="{number($h)}" />
+			<set style="border:0;margin:0;overflow:hidden;" />
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
 
