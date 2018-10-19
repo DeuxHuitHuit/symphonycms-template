@@ -10,7 +10,7 @@
 	<xsl:param name="ext-attr" />
 	<xsl:param name="ext-attr-video" />
 	<xsl:param name="ext-attr-placeholder" />
-	<xsl:param name="ext-attr-image" />
+	<xsl:param name="ext-attr-thumbnail" />
 	<xsl:param name="ext-attr-button-ctn" />
 
 	<xsl:call-template name="com-embed-video">
@@ -21,7 +21,7 @@
 		<xsl:with-param name="ext-attr" />
 		<xsl:with-param name="ext-attr-video" />
 		<xsl:with-param name="ext-attr-placeholder" />
-		<xsl:with-param name="ext-attr-image" />
+		<xsl:with-param name="ext-attr-thumbnail" />
 		<xsl:with-param name="ext-attr-button-ctn" />
 	</xsl:call-template>
 </xsl:template>
