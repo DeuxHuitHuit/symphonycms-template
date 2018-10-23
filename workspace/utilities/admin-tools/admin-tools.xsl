@@ -6,6 +6,7 @@
 	<xsl:import href="widgets/widget-logout.xsl" />
 	<xsl:import href="widgets/widget-edit-entry.xsl" />
 	<xsl:import href="widgets/widget-debug.xsl" />
+	<xsl:import href="widgets/widget-build.xsl" />
 
 	<xsl:template name="admin-tools">
 		<xsl:param name="visible" select="visible = 'Yes' or string-length(visible) = 0" />
@@ -50,6 +51,7 @@
 					<xsl:if test="$is-user-dev">
 						<xsl:call-template name="widget-debug" />
 					</xsl:if>
+					<xsl:call-template name="widget-build" />
 				</div>
 			</div>
 		</xsl:if>
