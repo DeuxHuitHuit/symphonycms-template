@@ -6,7 +6,7 @@
 <xsl:variable name="data" select="/data" />
 <xsl:variable name="params" select="$data/params" />
 <xsl:variable name="config" select="$data/site-config/entry[1]" />
-<xsl:variable name="pages" select="$data/pages/page" />
+<xsl:variable name="pages" select="$data/pages//page" />
 
 
 <!-- Default site name with current language -->
