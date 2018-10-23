@@ -54,9 +54,6 @@
 </xsl:variable>
 <xsl:variable name="twitter-card-domain" select="$config/twitter-site-domain" />
 
-<!-- MONEY DECIMAL FORMAT -->
-<!-- <xsl:decimal-format name="money" decimal-separator='.' grouping-separator='' /> -->
-
 <!-- Default langue if fl-languages not found -->
 <xsl:variable name="default-langue" select="'fr'" />
 
