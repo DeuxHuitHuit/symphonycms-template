@@ -163,8 +163,6 @@
 
 		$(document).on('keydown', function (e) {
 			if (e.which === global.keys.escape && attached) {
-				var attFx = attached ? 'detach' : 'appendTo';
-				panel[attFx](attached ? undefined : body);
 				panel.detach();
 				attached = false;
 			} else if (e.which === global.keys.pause_break && e.shiftKey) {
