@@ -1,0 +1,7 @@
+#will-change(@property) {
+	will-change: e(%('-webkit-%a', @property));
+	will-change: e(%('-moz-%a', @property));
+	will-change: e(%('-ms-%a', @property));
+	will-change: e(%('-o-%a', @property));
+	will-change: @property;
+}
