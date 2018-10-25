@@ -38,9 +38,6 @@
 		<xsl:param name="lg" select="$url-language" />
 
 		<xsl:choose>
-			<xsl:when test="count($config/titre) != 0">
-				<xsl:value-of select="$config/titre"/>
-			</xsl:when>
 			<xsl:when test="string-length($config/titre) != 0">
 				<xsl:value-of select="$config/titre"/>
 			</xsl:when>
