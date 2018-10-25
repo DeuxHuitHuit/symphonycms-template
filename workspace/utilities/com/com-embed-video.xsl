@@ -100,7 +100,7 @@
 						<xsl:with-param name="attr" select="$attr-button-ctn" />
 						<xsl:with-param name="content">
 							<!-- BUTTON: play -->
-							<xsl:call-template name="button-play" />
+							<!-- <xsl:call-template name="button-play" /> -->
 						</xsl:with-param>
 					</xsl:call-template>
 				</xsl:with-param>
