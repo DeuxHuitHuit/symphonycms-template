@@ -12,15 +12,12 @@
 }
 
 .show-img-without-alt {
-	img {
-		border: 2px solid red;
-	}
-
-	img[alt] {
-		border: 0px solid red;
+	img:not([alt]) {
+		outline-color: red;
+		outline-style: solid;
+		outline-offset: -2px;
 	}
 }
-
 
 .show-classes-on-hover {
 	.js-dev-panel:hover:before {
