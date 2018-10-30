@@ -62,7 +62,7 @@
 	<xsl:variable name="routes">
 		<xsl:text>[</xsl:text>
 			<xsl:choose>
-				<xsl:when test="$multi-langues = 'yes'">
+				<xsl:when test="$multilingual">
 					<!-- main language -->
 					<xsl:for-each select="/data/fl-languages/supported-languages/item [@main = 'yes']">
 						<xsl:call-template name="framework-288-url-creator-page-route">
@@ -136,7 +136,7 @@
 	<!-- Langue -->
 	<xsl:variable name="lg" select="@handle" />
 	<xsl:text>'/</xsl:text>
-	<xsl:if test="$multi-langues = 'yes'">
+	<xsl:if test="$multilingual">
 		<xsl:value-of select="$lg" />
 		<xsl:text>/</xsl:text>
 	</xsl:if>
@@ -144,7 +144,7 @@
 	<!-- parents -->
 	<xsl:for-each select="$item/ancestor::page">
 		<xsl:choose>
-			<xsl:when test="$multi-langues = 'yes'">
+			<xsl:when test="$multilingual">
 				<xsl:value-of select="item [@lang=$lg]/@handle" />
 			</xsl:when>
 			<xsl:otherwise>
@@ -157,7 +157,7 @@
 	<!-- Current (if not index)-->
 	<xsl:if test="$isIndex != 'yes'">
 		<xsl:choose>
-			<xsl:when test="$multi-langues = 'yes'">
+			<xsl:when test="$multilingual">
 				<xsl:value-of select="$item/item [@lang=$lg]/@handle" />
 			</xsl:when>
 			<xsl:otherwise>
