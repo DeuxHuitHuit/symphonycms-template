@@ -53,7 +53,7 @@
 </xsl:variable>
 
 <!-- Lang flag For multi langue -->
-<xsl:variable name="multilingual" select="count(/data/fl-languages/supported-languages/item) &gt; 1" />
+<xsl:variable name="is-multilingual" select="count(/data/fl-languages/supported-languages/item) &gt; 1" />
 
 <!-- Handle de la page courrante -->
 <xsl:variable name="full-page-handle">

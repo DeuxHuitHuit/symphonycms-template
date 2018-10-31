@@ -27,7 +27,7 @@
 					<xsl:with-param name="lg" select="$lg" />
 					<xsl:with-param name="url">
 						<xsl:choose>
-							<xsl:when test="$multilingual">
+							<xsl:when test="$is-multilingual">
 								<xsl:value-of select="item [@lang = $lg]/@handle" />/<xsl:value-of select="$url" />
 							</xsl:when>
 							<xsl:otherwise>
@@ -39,7 +39,7 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:choose>
-					<xsl:when test="$multilingual">
+					<xsl:when test="$is-multilingual">
 						<xsl:text>/</xsl:text><xsl:value-of select="$lg" />
 						<xsl:text>/</xsl:text>
 						<xsl:if test="count(types/type [. = 'index']) = 0">
