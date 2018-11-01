@@ -48,7 +48,6 @@ module.exports = function cssopruner (grunt) {
 	var maxmin = require('maxmin');
 	var assert = require('assert');
 	var cssTree = require('css-tree');
-	var walkRules = cssTree.walkRules;
 	var modulesLoaded = (new Date()).getTime();
 
 	var arrayize = function (something) {
@@ -204,7 +203,7 @@ module.exports = function cssopruner (grunt) {
 				}));
 				if (!allMatched) {
 					//ast.stats.removedSelectors.push({
-					//	selector: cssTree.translate(selector),
+					//	selector: cssTree.generate(selector),
 					//	results: results
 					//});
 					selectorsRemoved++;
@@ -215,7 +214,7 @@ module.exports = function cssopruner (grunt) {
 		};
 
 		var walkAllRules = function (ast) {
-			walkRules(ast, function (node, item, list) {
+			cssTree.walk(ast, function (node, item, list) {
 				if (node.type === 'Rule') {
 					//ast.stats.rulesetCount++;
 
@@ -245,8 +244,52 @@ module.exports = function cssopruner (grunt) {
 					// keyframes
 					// import
 					// ...
+				} else if (node.type === undefined) {
+					// ignore
 				} else {
-					throw new Error('Walked across something unexpected');
+					switch (node.type) {
+						case 'AnPlusB':
+						case 'AtrulePrelude':
+						case 'AttributeSelector':
+						case 'Block':
+						case 'Brackets':
+						case 'CDC':
+						case 'CDO':
+						case 'ClassSelector':
+						case 'Combinator':
+						case 'Comment':
+						case 'Declaration':
+						case 'DeclarationList':
+						case 'Dimension':
+						case 'Function':
+						case 'HexColor':
+						case 'IdSelector':
+						case 'Identifier':
+						case 'MediaFeature':
+						case 'MediaQuery':
+						case 'MediaQueryList':
+						case 'Nth':
+						case 'Number':
+						case 'Operator':
+						case 'Parentheses':
+						case 'Percentage':
+						case 'PseudoClassSelector':
+						case 'PseudoElementSelector':
+						case 'Ratio':
+						case 'Raw':
+						case 'Selector':
+						case 'SelectorList':
+						case 'String':
+						case 'StyleSheet':
+						case 'TypeSelector':
+						case 'UnicodeRange':
+						case 'Url':
+						case 'Value':
+						case 'WhiteSpace':
+							break;
+						default:
+							throw new Error('Walked across something unexpected: ' + node.type);
+					}
 				}
 			});
 			grunt.verbose.writeln('--- Walked and killed', ast.filename);
