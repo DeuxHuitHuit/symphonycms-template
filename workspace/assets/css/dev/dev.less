@@ -10,6 +10,15 @@
 	outline: rgba(255,0,0,36%) 1px solid;
 	outline-offset: 8px;
 }
+
+.show-img-without-alt {
+	img:not([alt]) {
+		outline-color: red;
+		outline-style: solid;
+		outline-offset: -2px;
+	}
+}
+
 .show-classes-on-hover {
 	.js-dev-panel:hover:before {
 		display:none !important;
