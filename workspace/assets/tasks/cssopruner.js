@@ -144,21 +144,11 @@ module.exports = function cssopruner (grunt) {
 
 					case 'PseudoElementSelector':
 						// ::before, ::after
-						break;
-
 					case 'PseudoClassSelector':
 						// :hover, :active
-						break;
-
 					case 'Combinator':
-						break;
-						
 					case 'WhiteSpace':
-						break;
-						
 					case 'TypeSelector':
-						break;
-						
 					case 'Percentage':
 						break;
 
@@ -245,7 +235,7 @@ module.exports = function cssopruner (grunt) {
 					// import
 					// ...
 				} else if (node.type === undefined) {
-					// ignore
+					throw new Error('Walked across a node without type.');
 				} else {
 					switch (node.type) {
 						case 'AnPlusB':
