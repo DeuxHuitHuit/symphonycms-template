@@ -666,9 +666,9 @@ CREATE TABLE IF NOT EXISTS `sym_entries_data_30` (
 
 INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section`, `required`, `sortorder`, `location`, `show_column`) VALUES
 (1, 'Metas', 'metas-tab', 'publish_tabs', 1, 'no', 0, 'main', 'no'),
-(2, 'Site titre', 'site-titre', 'multilingual_textbox', 1, 'yes', 1, 'main', 'yes'),
-(3, 'Image partage', 'image-partage', 'image_upload', 1, 'no', 2, 'sidebar', 'yes'),
-(4, 'Description (Ce texte affichera pour les partages sur les médias sociaux et sur Google)', 'description', 'multilingual_textbox', 1, 'yes', 4, 'main', 'yes'),
+(2, 'Titre', 'Titre', 'multilingual_textbox', 1, 'yes', 1, 'main', 'yes'),
+(3, 'Image', 'image', 'image_upload', 1, 'no', 2, 'sidebar', 'yes'),
+(4, 'Description', 'description', 'multilingual_textbox', 1, 'yes', 4, 'main', 'yes'),
 (5, 'Twitter url', 'twitter-url', 'textbox', 1, 'no', 6, 'main', 'no'),
 (6, 'Twitter user', 'twitter-user', 'textbox', 1, 'no', 7, 'main', 'no'),
 (7, 'Twitter site domain', 'twitter-site-domain', 'textbox', 1, 'no', 8, 'main', 'no'),
@@ -690,7 +690,7 @@ INSERT INTO `sym_fields` (`id`, `label`, `element_name`, `type`, `parent_section
 (23, 'Facebook page id', 'facebook-page-id', 'textbox', 1, 'no', 10, 'main', 'no'),
 (18, 'Page', 'page', 'pages', 4, 'yes', 0, 'main', 'yes'),
 (24, 'Description', 'description', 'multilingual_textbox', 4, 'yes', 2, 'main', 'yes'),
-(25, 'Image partage', 'image-partage', 'image_upload', 4, 'no', 3, 'sidebar', 'yes'),
+(25, 'Image', 'image', 'image_upload', 4, 'no', 3, 'sidebar', 'yes'),
 (29, 'Thème', 'theme', 'colorchooser', 1, 'no', 3, 'sidebar', 'yes'),
 (30, 'Titre', 'titre', 'multilingual_textbox', 4, 'no', 1, 'main', 'yes');
 
