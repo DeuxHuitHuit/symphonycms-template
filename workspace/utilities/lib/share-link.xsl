@@ -82,7 +82,7 @@
 
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="url" select="concat('https://twitter.com/home?status=', str:encode-uri($computed-status, true()))" />
+			<xsl:with-param name="url" select="concat('https://twitter.com/intent/tweet?text=', str:encode-uri($computed-status, true()))" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
