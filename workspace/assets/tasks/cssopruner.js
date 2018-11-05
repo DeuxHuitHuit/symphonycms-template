@@ -30,7 +30,21 @@ module.exports = function cssopruner (grunt) {
 						'br',
 						'active',
 						'hr',
-						/^ui/
+						/^ui/,
+						'chrome',
+						'firefox',
+						'safari',
+						'internetexplorer',
+						'edge',
+						'iphone',
+						'ipad',
+						'ios',
+						'mobile',
+						'android',
+						'phone',
+						'tablet',
+						'touch',
+						'click'
 					],
 					blacklist: ['www', 'version', 'xml']
 				}
