@@ -32,13 +32,20 @@
 	<xsl:param name="ext-attr" />
 
 	<xsl:variable name="attr">
-		<add class="js-auto-oembed-player" />
+		<add class="js-auto-oembed-ctn" />
 		<xsl:call-template name="util-oembed-attr" />
 		<xsl:copy-of select="$ext-attr" />
 		<add dev-element="module-embed-item" />
 	</xsl:variable>
 
+	<xsl:variable name="attr-embed">
+		<add class="js-auto-oembed-player" />
+		<xsl:call-template name="util-oembed-attr" />
+		<add dev-element="embed" />
+	</xsl:variable>
+
 	<xsl:variable name="attr-script">
+		<add class="js-oembed-script" />
 		<add type="text/template" />
 		<add dev-element="script" />
 	</xsl:variable>
@@ -47,11 +54,17 @@
 	<xsl:call-template name="element">
 		<xsl:with-param name="attr" select="$attr" />
 		<xsl:with-param name="content">
-			<!-- Script -->
+			<!-- Embed -->
 			<xsl:call-template name="element">
-				<xsl:with-param name="attr" select="$attr-script" />
-				<xsl:with-param name="element" select="'script'" />
-				<xsl:with-param name="content" select="$html" />
+				<xsl:with-param name="attr" select="$attr-embed" />
+				<xsl:with-param name="content">
+					<!-- Script -->
+					<xsl:call-template name="element">
+						<xsl:with-param name="attr" select="$attr-script" />
+						<xsl:with-param name="element" select="'script'" />
+						<xsl:with-param name="content" select="$html" />
+					</xsl:call-template>
+				</xsl:with-param>
 			</xsl:call-template>
 		</xsl:with-param>
 	</xsl:call-template>
