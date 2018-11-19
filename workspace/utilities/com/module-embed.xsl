@@ -16,9 +16,7 @@
 		(optional) modules/oembed-sc.js
 		(optional) modules/oembed-tw.js
 		(optional) modules/oembed-vm.js
-			 + "https://f.vimeocdn.com/js/froogaloop2.min.js"
 		(optional) modules/oembed-yt.js
-			 + "https://www.youtube.com/player_api"
  -->
 
 <!-- COMPONENT: module-embed -->
