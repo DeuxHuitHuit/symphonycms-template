@@ -812,7 +812,7 @@ INSERT INTO `sym_pages` (`id`, `parent`, `title`, `handle`, `path`, `params`, `d
 --
 
 INSERT INTO `sym_pages_types` (`id`, `page_id`, `type`) VALUES
-(12, 1, 'f288-model-defaultPage'),
+(12, 1, 'f288-model-default-page'),
 (6, 2, '403'),
 (9, 3, '404'),
 (7, 2, 'f288-hidden'),
