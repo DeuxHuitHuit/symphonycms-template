@@ -20,7 +20,6 @@
 		<xsl:variable name="attr">
 			<add class="flex-shrink-0 overflow-hidden" />
 			<add class="relative cursor-pointer" />
-			<add class="transition-site-credits" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="site-credits" />
 		</xsl:variable>
@@ -28,13 +27,11 @@
 		<xsl:variable name="attr-text">
 			<add class="absolute fill z-index-1" />
 			<add class="flexbox align-items-center justify-content-center" />
-			<add class="transition-text" />
 			<add dev-element="text" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-logo">
 			<add class="relative z-index-4" />
-			<add class="transition-logo" />
 			<add dev-element="logo" />
 		</xsl:variable>
 
