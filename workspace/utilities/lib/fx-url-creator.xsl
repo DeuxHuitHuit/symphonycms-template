@@ -181,7 +181,7 @@
 			<xsl:value-of select="substring-after(exsl:node-set($types)[string-length(substring-after(.,'f288-model-')) &gt; 0],'f288-model-')" />
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:text>defaultPage</xsl:text>
+			<xsl:text>default-page</xsl:text>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -189,7 +189,7 @@
 <xsl:template name="framework-288-render-page">
 	<xsl:param name="handle" />
 	<xsl:param name="routes" select="concat('[&quot;', $current-path, '/&quot;]')" />
-	<xsl:param name="model" select="'defaultPage'" />
+	<xsl:param name="model" select="'default-page'" />
 	
 	<xsl:text>App.pages.create({key: '#page-</xsl:text>
 	<xsl:value-of select="$handle" />
