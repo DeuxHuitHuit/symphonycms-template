@@ -55,8 +55,6 @@
 							<xsl:with-param name="word" select="''" />
 							<xsl:with-param name="logo-always-animated" select="'true'" />
 							<xsl:with-param name="display" select="'block'" />
-							<xsl:with-param name="w" select="'117,97'" />
-							<xsl:with-param name="h" select="'24'" />
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
