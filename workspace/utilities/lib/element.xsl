@@ -58,7 +58,7 @@
 					<xsl:when test="$is-heading = true()">
 						<!-- heading content -->
 						<xsl:choose>
-							<xsl:when test="exslt:object-type($content) = 'node-set'">
+							<xsl:when test="$is-node-set">
 
 								<xsl:choose>
 									<xsl:when test="count($content/item) != 0">
