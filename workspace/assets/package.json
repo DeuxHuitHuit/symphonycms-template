@@ -3,7 +3,7 @@
   "title": "ProjectTitle",
   "description": "",
   "version": "0.1.0",
-  "template-version": "3.23.1",
+  "template-version": "3.23.2",
   "homepage": "",
   "private": true,
   "author": {
@@ -48,7 +48,7 @@
     "request": "2.88.0",
     "strip-json-comments": "2.0.1",
     "time-grunt": "2.0.0",
-    "snyk": "^1.106.0"
+    "snyk": "^1.116.4"
   },
   "snyk": true
 }
