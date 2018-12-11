@@ -290,9 +290,9 @@
 		<xsl:param name="image-attr" />
 		
 		<xsl:variable name="is-unjittable" select="exslt:object-type($image) = 'node-set' and (
-					(contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff')) or
-					(contains($image/filename, '.svg') or contains($image/filename, '.gif') or contains($image/filename, '.tiff'))
-					)" />
+			(contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff')) or
+			(contains($image/filename, '.svg') or contains($image/filename, '.gif') or contains($image/filename, '.tiff'))
+			)" />
 
 	<!-- Computed value -->
 		<xsl:variable name="img-path">
