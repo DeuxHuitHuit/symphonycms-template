@@ -1,11 +1,11 @@
-/*! jQuery JIT image - v1.4.1 - build 25 - 2016-03-30
+/*! jQuery JIT image - v1.5.0 - build 27 - 2018-12-14
 * https://github.com/DeuxHuitHuit/jQuery-jit-image
-* Copyright (c) 2016 Deux Huit Huit (https://deuxhuithuit.com/);
-* Licensed  */
+* Copyright (c) 2018 Deux Huit Huit (https://deuxhuithuit.com/);
+* License MIT %> */
 /*
  *  jQuery JIT image - jQuery plugin
  *
- *  Copyright (c) 2013-2016 Deux Huit Huit (http://www.deuxhuithuit.com/)
+ *  Copyright (c) 2013-2018 Deux Huit Huit (https://deuxhuithuit.com/)
  *  Licensed under the MIT LICENSE
  *  (https://raw.github.com/DeuxHuitHuit/jQuery-jit-image/master/LICENSE.txt)
  */
@@ -197,8 +197,25 @@
 		return false;
 	};
 	
+	var _getFixRatioInfo = function (t, o) {
+		var attrImageRatioValue = t.attr(getValue(o.dataAttributeRatio));
+		var imageRatio = parseFloat(attrImageRatioValue);
+		var isFixRatio = !!attrImageRatioValue && imageRatio > 0;
+
+		return {
+			isEnabled: isFixRatio,
+			imageRatio: imageRatio
+		};
+	};
+
 	var _getUrlFromFormat = function (t, o, size) {
 		var format = t.attr(getValue(o.dataAttribute));
+		var fixRatioInfo = _getFixRatioInfo(t, o);
+		var fixRatioState = {
+			isValid: false,
+			width: false,
+			height: false
+		};
 		var urlFormat = {
 			url: format,
 			height: false,
@@ -207,11 +224,38 @@
 		};
 		if (!!format) {
 			if (!o.bypassDefaultFormat) {
+				// Compute format template exist
 				$.each(['width', 'height'], function (i, value) {
 					var pattern = o[value + 'Pattern'];
 					urlFormat[value] = pattern.test(format);
+				});
+
+				// Check for fixed image ratio
+				if (!!urlFormat.width &&
+					!!urlFormat.height &&
+					fixRatioInfo.isEnabled) {
+
+					//Compute good size keeping ratio and covering all the size;
+					if (size.width > 0 && size.height > 0) {
+						var sizeRatio = size.width / size.height;
+						fixRatioState.width = fixRatioInfo.imageRatio >= sizeRatio;
+						fixRatioState.height = !fixRatioState.width;
+						fixRatioState.isValid = true;
+					}
+				}
+
+				// Compute final format url
+				$.each(['width', 'height'], function (i, value) {
+					var pattern = o[value + 'Pattern'];
+					
 					if (urlFormat[value] && size[value] !== undefined) {
-						format = format.replace(pattern, ~~(size[value] * o.devicePixelRatio));
+						if (fixRatioInfo.isEnabled &&
+							fixRatioState.isValid &&
+							fixRatioState[value]) {
+							format = format.replace(pattern, '0');
+						} else {
+							format = format.replace(pattern, ~~(size[value] * o.devicePixelRatio));
+						}
 					}
 				});
 				
@@ -225,6 +269,12 @@
 		}
 		return urlFormat;
 	};
+
+	var _hasRatioChanged = function (size, compareTo) {
+		var sizeRatio = Math.ceil((size.width / size.height) * 100);
+		var compareRatio = Math.ceil((compareTo.width / compareTo.height) * 100);
+		return sizeRatio !== compareRatio;
+	};
 	
 	var _update = function (t, o) {
 		var success = false;
@@ -237,15 +287,18 @@
 			var sizeSucces = !!size && !!urlFormat &&
 				(!urlFormat.width || size.width > 0) &&
 				(!urlFormat.height || size.height > 0);
-			
+
 			if (urlFormatSuccess && sizeSucces) {
 				if (!o.fetchSmallerImages) {
-					if (_isSizeSmallerThen(size, previousSize)) {
+					var fixRatioInfo = _getFixRatioInfo(t, o);
+					var ratioChanged = _hasRatioChanged(size, previousSize);
+					var isSmaller = _isSizeSmallerThen(size, previousSize);
+					if (isSmaller && !ratioChanged) {
 						// abort
 						abort = true;
 					}
 					else {
-						// copy new bigger size
+						// copy new bigger size or with a different ratio size
 						t.data(DATA_KEY).prev = $.extend({}, size);
 					}
 				}
@@ -255,6 +308,7 @@
 					// Only pass the size value if it was matched
 					size.width = urlFormat.width ? size.width : false;
 					size.height = urlFormat.height ? size.height : false;
+
 					// set the image's url and css
 					success = o.set(
 						t,
@@ -330,6 +384,7 @@
 	var _defaults = {
 		container: null,
 		dataAttribute: dataAttribute, // can also be function
+		dataAttributeRatio: 'data-jit-image-ratio',
 		defaultSelector: defaultSelector,
 		containerDataAttribute: 'data-container', // can also be function
 		size: _getSize,
