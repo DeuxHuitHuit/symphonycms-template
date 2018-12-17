@@ -81,6 +81,14 @@
 				</xsl:otherwise>
 			</xsl:choose>
 
+			<!-- Dimensions -->
+			<xsl:if test="string-length($image/meta/@width) != 0">
+				<set data-width="{$image/meta/@width}" />
+			</xsl:if>
+			<xsl:if test="string-length($image/meta/@height) != 0">
+				<set data-height="{$image/meta/@height}" />
+			</xsl:if>
+
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
 

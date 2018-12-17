@@ -50,7 +50,6 @@
 	<xsl:import href="../lib/svg-socials-icons.xsl" />
 
 	<!-- LIB COMPOSITION -->
-	<xsl:import href="../lib/menu-admin.xsl" />
 	<xsl:import href="../lib/iframe-copyright-288.xsl" />
 
 <!-- IMPORT SUB TEMPLATES -->

@@ -26,8 +26,7 @@
 			</xsl:call-template>
 		</xsl:variable>
 		
-		<link title="{$page-title}"
-			  rel="alternate"
+		<link rel="alternate"
 			  hreflang="{@handle}" 
 			  href="{$page-url}"/>
 	</xsl:template>

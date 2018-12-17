@@ -116,6 +116,7 @@
 			'show-js-classes',
 			'show-dom',
 			'show-heading-overlay',
+			'show-img-without-alt',
 			'debug'
 		];
 

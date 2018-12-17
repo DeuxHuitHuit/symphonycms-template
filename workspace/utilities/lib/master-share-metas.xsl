@@ -13,11 +13,11 @@
 
 				<xsl:call-template name="open-graph">
 					<xsl:with-param name="description" select="$page-metas/description" />
-					<xsl:with-param name="image" select="$page-metas/image-partage" />
+					<xsl:with-param name="image" select="$page-metas/image" />
 				</xsl:call-template>
 				<xsl:call-template name="twitter-card">
 					<xsl:with-param name="description" select="$page-metas/description" />
-					<xsl:with-param name="image" select="$page-metas/image-partage" />
+					<xsl:with-param name="image" select="$page-metas/image" />
 				</xsl:call-template>
 					
 				<xsl:call-template name="fb-app-id" />
@@ -43,7 +43,7 @@
 	<xsl:template name="twitter-card">
 		<xsl:param name="title" select="$default-share-page-title" />
 		<xsl:param name="description" select="$site-description" />
-		<xsl:param name="image" select="$site-share-image" />
+		<xsl:param name="image" select="$site-image" />
 		<xsl:param name="image-path" />
 		
 		<xsl:param name="site" select="$twitter-card-site" />
@@ -60,7 +60,7 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:call-template name="get-image-full-path">
-						<xsl:with-param name="image" select="$site-share-image" />
+						<xsl:with-param name="image" select="$site-image" />
 						<xsl:with-param name="image-path" select="$image-path" />
 					</xsl:call-template>
 				</xsl:otherwise>
@@ -93,7 +93,7 @@
 
 	<xsl:template name="open-graph">
 		<xsl:param name="title" select="$default-share-page-title" />
-		<xsl:param name="image" select="$site-share-image" />
+		<xsl:param name="image" select="$site-image" />
 		<xsl:param name="image-path" />
 		<xsl:param name="image-width" select="''" />
 		<xsl:param name="image-height" select="''" />
@@ -112,7 +112,7 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:call-template name="get-image-full-path">
-						<xsl:with-param name="image" select="$site-share-image" />
+						<xsl:with-param name="image" select="$site-image" />
 						<xsl:with-param name="image-path" select="$image-path" />
 					</xsl:call-template>
 				</xsl:otherwise>
@@ -128,7 +128,7 @@
 					<xsl:value-of select="$image/meta/@width" />
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="$site-share-image/meta/@width" />
+					<xsl:value-of select="$site-image/meta/@width" />
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -142,7 +142,7 @@
 					<xsl:value-of select="$image/meta/@height" />
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="$site-share-image/meta/@height" />
+					<xsl:value-of select="$site-image/meta/@height" />
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>

@@ -29,6 +29,16 @@
 				
 				if (file_exists($filePath)) {
 					$fileString = @file_get_contents($filePath);
+					if (!$fileString) {
+						throw new Exception(__('Could not read file on disk from %s', array($filePath)));
+					}
+					
+					if (class_exists('FLang')) {
+						$lang = FLang::getLang();
+						if ($lang) {
+							$fileString = str_replace('$lang', FLang::getLang(), $fileString);
+						}
+					}
 					
 					$json = @json_decode($fileString, true);
 					

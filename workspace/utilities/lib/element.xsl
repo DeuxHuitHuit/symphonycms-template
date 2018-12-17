@@ -16,12 +16,13 @@
 		<xsl:param name="lg" select="$url-language" />
 		<xsl:param name="content" />
 
-	<!-- COMPUTED OPTIONAL FLAG 											 -->
+		<xsl:variable name="is-node-set" select="exslt:object-type($content) = 'node-set'" />
+
 		<xsl:variable name="has-content">
 			<xsl:if test="string-length($content) != 0">
 				<xsl:text>yes</xsl:text>
 			</xsl:if>
-			<xsl:if test="exslt:object-type($content) = 'node-set'">
+			<xsl:if test="$is-node-set">
 				<xsl:if test="count($content/*) != 0">
 					<xsl:text>yes</xsl:text>
 				</xsl:if>
@@ -34,7 +35,6 @@
 		<xsl:variable name="computed-attr">
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
-
 
 		<xsl:variable name="is-heading" select="$element = 'h1' or 
 												$element = 'h2' or 
@@ -57,9 +57,39 @@
 				<xsl:choose>
 					<xsl:when test="$is-heading = true()">
 						<!-- heading content -->
-						<xsl:apply-templates select="exslt:node-set($content)" mode="ninja-heading" >
-							<xsl:with-param name="lg" select="$lg" />
-						</xsl:apply-templates>
+						<xsl:choose>
+							<xsl:when test="$is-node-set">
+
+								<xsl:choose>
+									<xsl:when test="count($content/item) != 0">
+										<xsl:apply-templates select="$content/item[@lang = $lg]" mode="ninja-heading" >
+											<xsl:with-param name="lg" select="$lg" />
+										</xsl:apply-templates>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:apply-templates select="$content" mode="ninja-heading" >
+											<xsl:with-param name="lg" select="$lg" />
+										</xsl:apply-templates>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:variable name="content-nodeset" select="exslt:node-set($content)" />
+
+								<xsl:choose>
+									<xsl:when test="count($content-nodeset/item) != 0">
+										<xsl:apply-templates select="$content-nodeset/item[@lang = $lg]" mode="ninja-heading" >
+											<xsl:with-param name="lg" select="$lg" />
+										</xsl:apply-templates>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:apply-templates select="$content-nodeset" mode="ninja-heading" >
+											<xsl:with-param name="lg" select="$lg" />
+										</xsl:apply-templates>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:otherwise>
+						</xsl:choose>
 					</xsl:when>
 					<xsl:otherwise>
 						<!-- generic content -->

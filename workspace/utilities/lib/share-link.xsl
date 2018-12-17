@@ -13,10 +13,10 @@
 		<xsl:variable name="computed-attr">
 			<set target="_blank" />
 			<set rel="noopener" />
-			<xsl:copy-of select="$attr" />
-			<add dev-core="share-link" />
 			<set data-ga-cat="share" />
 			<set data-ga-label="{$content}" />
+			<xsl:copy-of select="$attr" />
+			<add dev-core="share-link" />
 		</xsl:variable>
 
 		<xsl:call-template name="optional-button">
@@ -82,7 +82,7 @@
 
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="url" select="concat('https://twitter.com/home?status=', str:encode-uri($computed-status, true()))" />
+			<xsl:with-param name="url" select="concat('https://twitter.com/intent/tweet?text=', str:encode-uri($computed-status, true()))" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
