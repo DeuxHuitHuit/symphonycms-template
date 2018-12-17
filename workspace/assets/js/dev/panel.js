@@ -17,7 +17,7 @@
 	var panel = $('<div />').attr('class', cssClasses);
 
 	var getImportantNodes = function () {
-		return 'h1, h2, h3, h4, h5, h6, footer, header, section, article';
+		return 'h1, h2, h3, h4, h5, h6, main, footer, header, section, article, nav, button, a';
 	};
 
 	var getJsNodes = function (prefix) {
@@ -158,10 +158,14 @@
 		_.each(checkboxes, function (c) {
 			inner.append(c);
 		});
+
 		var attached = false;
 
 		$(document).on('keydown', function (e) {
-			if (e.which === global.keys.escape) {
+			if (e.which === global.keys.escape && attached) {
+				panel.detach();
+				attached = false;
+			} else if (e.which === global.keys.pause_break && e.shiftKey) {
 				var attFx = attached ? 'detach' : 'appendTo';
 				panel[attFx](attached ? undefined : body);
 				attached = !attached;

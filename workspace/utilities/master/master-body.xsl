@@ -29,6 +29,7 @@
 			<add class="{$url-language}" />
 			<add class="page-{$full-page-handle}" />
 			<add class="site-base-color" />
+			<add class="min-width-screen-min" />
 			<add data-version="{$version}" />
 			<xsl:copy-of select="$body-style" />
 			<xsl:call-template name="body-attr" />
