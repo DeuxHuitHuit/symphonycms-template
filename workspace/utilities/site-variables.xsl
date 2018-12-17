@@ -61,6 +61,11 @@
 <xsl:variable name="css-path" select="'/workspace/assets/css/'" />
 <xsl:variable name="js-path" select="'/workspace/assets/js/'" />
 
+<!-- Decimal format: french -->
+<xsl:decimal-format name="french" decimal-separator="," grouping-separator=" " />
+<!-- Decimal format: english -->
+<xsl:decimal-format name="english" decimal-separator="." grouping-separator="," />
+
 <!-- Site Page ID -->
 <xsl:variable name="page-index-id" select="'1'" />
 
