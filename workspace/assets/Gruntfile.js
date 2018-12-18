@@ -36,7 +36,13 @@ module.exports = function (grunt) {
 	var visitor = (function () {
 		try {
 			return require('./Gruntcustom.js');
-		} catch (e) {}
+		} catch (e) {
+			if (e.code !== 'MODULE_NOT_FOUND') {
+				grunt.verbose.writeln('Failed to load Gruntcustom.js:', e);
+			} else {
+				grunt.fail.fatal(e);
+			}
+		}
 		var noop = function () {};
 		return {
 			config: noop,
