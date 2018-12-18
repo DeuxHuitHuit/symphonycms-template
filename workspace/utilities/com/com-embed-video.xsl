@@ -20,8 +20,9 @@
 
 	<!-- ATTRIBUTES -->
 	<xsl:variable name="attr">
-		<add class="padding-bottom-9_16 relative z-index-1" />
-		<add class="bg-color-black" />
+		<add class="relative z-index-1" />
+		<!-- Default styles -->
+		<add class="padding-bottom-9_16 bg-color-true-black" />
 		<add data-playing-state-follower=".js-auto-oembed-play" />
 		<xsl:copy-of select="$ext-attr" />
 		<add dev-component="com-embed-video" />
