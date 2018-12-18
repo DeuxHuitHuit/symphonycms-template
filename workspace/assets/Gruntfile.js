@@ -35,10 +35,14 @@ module.exports = function (grunt) {
 	
 	var visitor = (function () {
 		try {
-			return require('./Gruntcustom.js');
+			grunt.verbose.write('Reading Gruntcustom.js...');
+			var r = require('./Gruntcustom.js');
+			grunt.verbose.ok();
+			return r;
 		} catch (e) {
-			if (e.code !== 'MODULE_NOT_FOUND') {
-				grunt.verbose.writeln('Failed to load Gruntcustom.js:', e);
+			grunt.verbose.writeln();
+			if (e.code === 'MODULE_NOT_FOUND') {
+				grunt.verbose.warn('Failed to load Gruntcustom.js: File does not exists.');
 			} else {
 				grunt.fail.fatal(e);
 			}
