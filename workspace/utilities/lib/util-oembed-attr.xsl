@@ -13,12 +13,12 @@
 	<xsl:choose>
 		<xsl:when test="$driver = 'YouTube'">
 			<xsl:if test="$has-url">
-				<set data-oembed-id="$url" />
+				<set data-oembed-id="{$url}" />
 			</xsl:if>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:if test="$has-id">
-				<set data-oembed-id="$id" />
+				<set data-oembed-id="{$id}" />
 			</xsl:if>
 		</xsl:otherwise>
 	</xsl:choose>
