@@ -78,7 +78,7 @@ class eventLogin extends Event
             );
 
             if ($author->isTokenActive()) {
-                $fields['author-token'] = new XMLElement('author-token', $author->createAuthToken());
+                $fields['author-token'] = new XMLElement('author-token', $author->getAuthToken());
             }
 
             // Section
