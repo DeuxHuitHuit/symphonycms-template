@@ -277,25 +277,41 @@
 	<xsl:template name="render-image-bg">
 		<xsl:param name="element" select="'figure'" />
 		<xsl:param name="image" select="image" />
-		<xsl:param name="factor" select="'1'" />
+		<xsl:param name="factor" select="'3'" />
 		<xsl:param name="width" select="'$w'" />
 		<xsl:param name="height" select="'0'" />
 		<xsl:param name="alt" select="''" />
 		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="position" />
 		<xsl:param name="size" />
-		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
+		<xsl:param name="with-auto-direction" select="false()" />
 		<xsl:param name="with-initial-image" select="true()" />
+		<xsl:param name="image-ratio" select="$image/meta/@width div $image/meta/@height" />
+		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="attr" />
 		<xsl:param name="image-attr" />
-		
+
+		<xsl:variable name="is-auto-direction-enabled" select="$with-auto-direction = true() and $image-ratio != 'NaN'" />
 		<xsl:variable name="is-unjittable" select="exslt:object-type($image) = 'node-set' and (
 			(contains($image/@type, 'svg') or contains($image/@type, 'gif') or contains($image/@type, 'tiff')) or
 			(contains($image/filename, '.svg') or contains($image/filename, '.gif') or contains($image/filename, '.tiff'))
 			)" />
 
+		<xsl:variable name="computed-format">
+			<xsl:if test="string-length($format) != 0">
+				<xsl:choose>
+					<xsl:when test="$is-auto-direction-enabled = true() and $is-unjittable = false()">
+						<xsl:value-of select="'/image/1/$w/$h'"/>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:value-of select="$format" />
+					</xsl:otherwise>
+				</xsl:choose>
+			</xsl:if>
+		</xsl:variable>
+
 	<!-- Computed value -->
-		<xsl:variable name="img-path">
+		<xsl:variable name="computed-img-path">
 			<xsl:choose>
 				<xsl:when test="$is-unjittable">
 					<xsl:value-of select="concat('/workspace', $image/@path, '/', $image/filename)" />
@@ -320,7 +336,7 @@
 
 			<!-- Add background-image -->
 			<xsl:if test="$with-initial-image or $is-unjittable">
-				<add style="~'background-image:url('{$img-path}');'" />
+				<add style="~'background-image:url('{$computed-img-path}');'" />
 			</xsl:if>
 
 			<!-- Style: background-position if specified -->
@@ -348,6 +364,9 @@
 		<!-- image -->
 		<xsl:variable name="computed-image-attr">
 			<!-- Core JS Class for jit image -->
+			<xsl:if test="$is-auto-direction-enabled">
+				<set data-jit-image-ratio="{$image-ratio}" />
+			</xsl:if>
 			<add class="jit-image-bg-src display-none" />
 			<xsl:copy-of select="$image-attr" />
 			<add dev-core-element="image" />
@@ -358,16 +377,17 @@
 			<xsl:with-param name="element" select="$element"/>
 			<xsl:with-param name="attr" select="$computed-attr"/>
 			<xsl:with-param name="content">
-				
-				<xsl:call-template name="render-image">
-					<xsl:with-param name="image" select="$image" />
-					<xsl:with-param name="factor" select="$factor" />
-					<xsl:with-param name="format" select="$format" />
-					<xsl:with-param name="use-src" select="false()" />
-					<xsl:with-param name="alt" select="$alt" />
-					<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
-					<xsl:with-param name="attr" select="$computed-image-attr" />
-				</xsl:call-template>
+				<xsl:if test="$is-unjittable = false()">
+					<xsl:call-template name="render-image">
+						<xsl:with-param name="image" select="$image" />
+						<xsl:with-param name="factor" select="$factor" />
+						<xsl:with-param name="format" select="$computed-format" />
+						<xsl:with-param name="use-src" select="false()" />
+						<xsl:with-param name="alt" select="$alt" />
+						<xsl:with-param name="use-alt-fallback" select="$use-alt-fallback" />
+						<xsl:with-param name="attr" select="$computed-image-attr" />
+					</xsl:call-template>
+				</xsl:if>
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
@@ -384,8 +404,14 @@
 		<xsl:param name="position" select="'50% 50%'" />
 		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
+		<xsl:param name="with-auto-direction" select="true()"/>
 		<xsl:param name="attr" />
 		<xsl:param name="image-attr" />
+
+		<xsl:variable name="computed-attr">
+			<xsl:copy-of select="$attr" />
+			<add dev-core="mode:cover" />
+		</xsl:variable>
 
 		<xsl:call-template name="render-image-bg">
 			<xsl:with-param name="element" select="$element" />
@@ -399,7 +425,8 @@
 			<xsl:with-param name="size" select="'cover'" />
 			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
-			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="with-auto-direction" select="$with-auto-direction" />
+			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="image-attr" select="$image-attr" />
 		</xsl:call-template>
 	</xsl:template>
@@ -416,8 +443,14 @@
 		<xsl:param name="position" select="'50% 50%'" />
 		<xsl:param name="format" select="concat('/image/1/', $width, '/', $height)" />
 		<xsl:param name="with-initial-image" select="true()" />
+		<xsl:param name="with-auto-direction" select="true()"/>
 		<xsl:param name="attr" />
 		<xsl:param name="image-attr" />
+
+		<xsl:variable name="computed-attr">
+			<xsl:copy-of select="$attr" />
+			<add dev-core="mode:contain" />
+		</xsl:variable>
 
 		<xsl:call-template name="render-image-bg">
 			<xsl:with-param name="element" select="$element" />
@@ -431,7 +464,8 @@
 			<xsl:with-param name="size" select="'contain'" />
 			<xsl:with-param name="format" select="$format" />
 			<xsl:with-param name="with-initial-image" select="$with-initial-image" />
-			<xsl:with-param name="attr" select="$attr" />
+			<xsl:with-param name="with-auto-direction" select="$with-auto-direction" />
+			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="image-attr" select="$image-attr" />
 		</xsl:call-template>
 	</xsl:template>
