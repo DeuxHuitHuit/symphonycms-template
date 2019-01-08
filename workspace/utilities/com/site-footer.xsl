@@ -24,8 +24,8 @@
 			<xsl:with-param name="attr" select="$computed-attr" />
 			<xsl:with-param name="content">
 				
-				<!-- iframe-288 -->
-				<xsl:call-template name="iframe-copyright-288" />
+				<!-- copyright-288 -->
+				<xsl:call-template name="copyright-288" />
 			</xsl:with-param>
 		</xsl:call-template>
 	<!--																	/-->
