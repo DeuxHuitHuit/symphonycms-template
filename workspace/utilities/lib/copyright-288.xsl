@@ -19,7 +19,7 @@
 		</xsl:variable>
 
 		<xsl:variable name="computed-attr">
-			<add data-href="{$url}" />
+			<set data-href="{$url}" />
 			<add class="js-watermark-ctn" />
 			<xsl:copy-of select="$attr" />
 		</xsl:variable>
