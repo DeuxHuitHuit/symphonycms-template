@@ -78,7 +78,9 @@ class eventLogin extends Event
             );
 
             if ($author->isTokenActive()) {
-                $fields['author-token'] = new XMLElement('author-token', $author->createAuthToken());
+                // TODO: Remove when dropping 2.x
+                $token = is_callable(array($author, 'getAuthToken')) ? $author->getAuthToken() : $author->createAuthToken();
+                $fields['author-token'] = new XMLElement('author-token', $token);
             }
 
             // Section
