@@ -8,7 +8,6 @@
 		<xsl:param name="ga-label" select="concat($url-language, '/', $label)" />
 		<xsl:param name="role" select="'menuitem'" />
 		<xsl:param name="target" select="'_self'" />
-		<xsl:param name="ext-attr" />
 
 		<xsl:variable name="has-ga-cat" select="string-length($ga-cat) != 0" />
 		<xsl:variable name="has-ga-label" select="string-length($ga-label) != 0" />
