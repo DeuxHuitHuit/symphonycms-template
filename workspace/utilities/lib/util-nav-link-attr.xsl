@@ -16,16 +16,16 @@
 		<xsl:variable name="has-target" select="string-length($target) != 0" />
 
 		<xsl:if test="$has-ga-cat">
-			<add data-ga-cat="{$ga-cat}" />
+			<set data-ga-cat="{$ga-cat}" />
 		</xsl:if>
 		<xsl:if test="$has-ga-label">
-			<add data-ga-label="{$ga-label}" />
+			<set data-ga-label="{$ga-label}" />
 		</xsl:if>
 		<xsl:if test="$has-role">
-			<add role="{$role}" />
+			<set role="{$role}" />
 		</xsl:if>
 		<xsl:if test="$has-target">
-			<add target="{$target}" />
+			<set target="{$target}" />
 		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
