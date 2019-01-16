@@ -10,7 +10,8 @@
 	<xsl:import href="com/site-footer.xsl" />
 	<xsl:import href="com/site-nav.xsl" />
 	<xsl:import href="com/site-languages-links.xsl" />
-	
+
+	<xsl:import href="lib/util-nav-link-attr.xsl" />
 	<xsl:import href="lib/oembed-attr.xsl" />
 
 	<!-- ADMIN-TOOLS -->

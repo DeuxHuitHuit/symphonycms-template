@@ -85,11 +85,6 @@
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="content">
 
-				<!-- nav-link (COMP: nav-link) -->
-				<xsl:call-template name="nav-link">
-					<xsl:with-param name="attr" select="$nav-link-attr"/>
-					<xsl:with-param name="selected-attr" select="$nav-link-selected-attr" />
-				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
 	<!--																	/-->
