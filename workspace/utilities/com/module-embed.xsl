@@ -19,6 +19,10 @@
 		(optional) modules/oembed-yt.js
  -->
 
+ <xsl:import href="../lib/util-oembed-attr.xsl" />
+ <xsl:import href="module-embed-item.xsl" />
+ <xsl:import href="com-embed-video.xsl" />
+
 <!-- COMPONENT: module-embed -->
 	<xsl:template name="module-embed" match="item[@section = 'module-embed']" mode="module">
 		<xsl:param name="url" select="url" />
