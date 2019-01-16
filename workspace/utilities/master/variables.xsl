@@ -80,6 +80,10 @@
 <!-- Metas/config variable -->
 <xsl:variable name="config" select="/data/site-config/entry[1]" />
 
+<!-- Casing -->
+<xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿžšœ'" />
+<xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŸŽŠŒ'" />
+
 <!-- Facebook Language based on url-language -->
 <xsl:variable name="facebook-language">
 	<xsl:choose>
