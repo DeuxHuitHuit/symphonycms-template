@@ -55,9 +55,6 @@ Full Stack Developer / Programmeur
 Frédérick Hamon
 Full Stack Developer / Programmeur
 
-Baptiste Lestavel
-Full Stack Developer / Programmeur
-
 Arnaud Crevier
 Full Stack Developer / Programmeur
 
@@ -68,6 +65,9 @@ Dominic Blain
 Frontend Designer / Intégrateur
 
 Alexandra Nantel
+Frontend Designer / Intégrateur
+
+Samuel Le Flaguais
 Frontend Designer / Intégrateur
 
 Vincent Rouleau
@@ -82,9 +82,6 @@ Brand and Digital Product Strategist / Stratège de marque et de produits numér
 David Fuenzalida
 Brand and Digital Product Strategist / Stratège de marque et de produits numériques
 
-Caroline L.Couture
-Producer / Productrice
-
 Jésabel St-Jean
 Project manager / Chargée de projet
 
@@ -95,6 +92,9 @@ Camille Dolbec
 Project manager / Chargée de projet
 
 Rebecca Dziedzic
+Project manager / Chargée de projet
+
+Sandrine Turcotte
 Project manager / Chargée de projet
 
 Stéphanie Forget
