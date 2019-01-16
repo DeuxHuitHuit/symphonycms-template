@@ -68,7 +68,7 @@
 <!-- Url language -->
 <xsl:variable name="url-language">
 	<xsl:choose>
-		<xsl:when test="$multi-langues = 'yes' and count(/data/fl-languages/current-language) = 1">
+		<xsl:when test="$is-multilingual and count(/data/fl-languages/current-language) = 1">
 			<xsl:value-of select="/data/fl-languages/current-language/@handle" />
 		</xsl:when>
 		<xsl:otherwise>
