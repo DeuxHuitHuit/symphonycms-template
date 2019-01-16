@@ -159,8 +159,8 @@ module.exports = function (grunt) {
 		grunt.registerTask('js', [
 			'clean:js',
 			'concat:sources',
-			'uglify',
 			'curl',
+			'uglify',
 			'concat:libs',
 			'optimize-js'
 		]);
