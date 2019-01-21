@@ -46,14 +46,6 @@
 			<!-- author meta -->
 			<xsl:call-template name="author-meta" />
 			
-			<!-- Master css -->
-			<xsl:call-template name="master-css" />
-
-			<!-- Admin-tools css -->
-			<xsl:if test="/data/events/login-info/@logged-in = 'true'">
-				<link rel="stylesheet" type="text/css" href="/workspace/utilities/admin-tools/admin-tools.css" />
-			</xsl:if>
-			
 			<!-- RSS -->
 			<xsl:call-template name="page-metas-alt-rss" />
 			
@@ -71,6 +63,14 @@
 				</xsl:call-template>
 			</xsl:if>
 			
+			<!-- Master css -->
+			<xsl:call-template name="master-css" />
+
+			<!-- Admin-tools css -->
+			<xsl:if test="/data/events/login-info/@logged-in = 'true'">
+				<link rel="stylesheet" type="text/css" href="/workspace/utilities/admin-tools/admin-tools.css" />
+			</xsl:if>
+
 			<!-- EXTRA -->
 			<xsl:call-template name="master-head-extra" />
 			
