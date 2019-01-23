@@ -17,7 +17,7 @@
 			  "name": "<xsl:value-of select="translate($name, ',&quot;', '')" />",
 			  "telephone": "<xsl:value-of select="translate($phone, ',&quot;', '')" />",
 			  "email": "<xsl:value-of select="translate($email, ',&quot;', '')" />",
-			  "contactType": "<xsl:value-of select="translate($conteacttype, ',&quot;', '')" />",
+			  "contactType": "<xsl:value-of select="translate($contact-type, ',&quot;', '')" />",
 			  "serviceType": "<xsl:value-of select="translate($service-type, ',&quot;', '')" />"
 			}
 		  ]
