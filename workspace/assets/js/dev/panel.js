@@ -5,7 +5,11 @@
  */
 
 (function ($, global, undefined) {
-	
+
+	'use strict';
+
+	var ESCPAE_KEY = 27;
+
 	var cssClasses = [
 		'dev-js-panel',
 		'fixed fill',
@@ -163,10 +167,7 @@
 		var attached = false;
 
 		$(document).on('keydown', function (e) {
-			if (e.which === global.keys.escape && attached) {
-				panel.detach();
-				attached = false;
-			} else if (e.which === global.keys.pause_break && e.shiftKey) {
+			if (e.which === ESCPAE_KEY && attached) {
 				var attFx = attached ? 'detach' : 'appendTo';
 				panel[attFx](attached ? undefined : body);
 				attached = !attached;
