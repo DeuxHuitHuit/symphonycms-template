@@ -103,7 +103,7 @@
 	};
 
 	var initDevPanel = function () {
-		var storage = global.AppStorage.session;
+		var storage = App.storage.session;
 		var body = $('body');
 		var inner = $('<div />');
 		var devClasses = [
