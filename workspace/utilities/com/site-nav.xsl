@@ -75,16 +75,30 @@
 
 <!-- REPEAT TEMPLATE : site-nav-links (menu/entry) ==============================================-->
 	<xsl:template match="menu/entry" mode="site-nav-links">
+		<xsl:param name="url" select="url" />
+		<xsl:param name="content" select="title" />
 		<xsl:param name="attr" />
 		<xsl:param name="nav-link-attr" />
 		<xsl:param name="nav-link-selected-attr" />
+
+		<xsl:variable name="attr-nav-link">
+			<xsl:copy-of select="$nav-link-attr" />
+			<xsl:call-template name="util-nav-link-attr" />
+			<add dev-element="nav-link" />
+		</xsl:variable>
 
 	<!-- STRUCTURE															 -->
 		<!-- self: nav-link-ctn -->
 		<xsl:call-template name="element">
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="content">
-
+				<!-- BUTTON: nav-link -->
+				<xsl:call-template name="button">
+					<xsl:with-param name="url" select="$url" />
+					<xsl:with-param name="attr" select="$attr-nav-link" />
+					<xsl:with-param name="failover-element" select="'button'" />
+					<xsl:with-param name="content" select="$content" />
+				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
 	<!--																	/-->
