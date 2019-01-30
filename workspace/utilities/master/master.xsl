@@ -36,7 +36,6 @@
 	<!-- Buttons -->
 	<xsl:import href="../lib/button.xsl" />
 	<xsl:import href="../lib/button-tel.xsl" />
-	<xsl:import href="../lib/edit-buttons.xsl" />
 	<xsl:import href="../lib/revert-language-link.xsl" />
 
 	<!-- titles and texts -->
