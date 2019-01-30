@@ -6,11 +6,13 @@
 		<xsl:param name="label" select="label" />
 		<xsl:param name="ga-cat" select="'menu-nav'" />
 		<xsl:param name="ga-label" select="concat($url-language, '/', $label)" />
+		<xsl:param name="ga-action" select="''" />
 		<xsl:param name="role" select="'menuitem'" />
 		<xsl:param name="target" select="'_self'" />
 
 		<xsl:variable name="has-ga-cat" select="string-length($ga-cat) != 0" />
 		<xsl:variable name="has-ga-label" select="string-length($ga-label) != 0" />
+		<xsl:variable name="has-ga-action" select="string-length($ga-action) != 0" />
 		<xsl:variable name="has-role" select="string-length($role) != 0" />
 		<xsl:variable name="has-target" select="string-length($target) != 0" />
 
@@ -19,6 +21,9 @@
 		</xsl:if>
 		<xsl:if test="$has-ga-label">
 			<set data-ga-label="{$ga-label}" />
+		</xsl:if>
+		<xsl:if test="$has-ga-action">
+			<set data-ga-action="{$ga-action}" />
 		</xsl:if>
 		<xsl:if test="$has-role">
 			<set role="{$role}" />
