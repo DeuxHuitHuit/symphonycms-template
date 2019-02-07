@@ -8,6 +8,7 @@
 		url: Source of content to be embeded
 
 	Dependencies
+		com/module-embed.xsl
 		modules/auto-oembed.js
 		com/oembed.js
 		(optional) modules/oembed-dm.js
