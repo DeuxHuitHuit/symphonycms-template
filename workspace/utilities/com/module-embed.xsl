@@ -44,7 +44,7 @@
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="content">
 				<!-- APPLY: url -->
-				<xsl:apply-templates select="url" mode="module-embed-item" />
+				<xsl:apply-templates select="$url" mode="module-embed-item" />
 			</xsl:with-param> 
 		</xsl:call-template>
 	</xsl:template>
