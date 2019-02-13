@@ -49,7 +49,7 @@
 	<xsl:import href="../lib/svg-socials-icons.xsl" />
 
 	<!-- LIB COMPOSITION -->
-	<xsl:import href="../lib/iframe-copyright-288.xsl" />
+	<xsl:import href="../lib/copyright-288.xsl" />
 
 <!-- IMPORT SUB TEMPLATES -->
 	<xsl:import href="master-head.xsl" />
