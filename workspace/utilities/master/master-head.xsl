@@ -18,7 +18,6 @@
 		
 			<!-- General metas -->
 			<meta charset="utf-8" />
-			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=IE9" />
 			<meta name="viewport" content="width=device-width, initial-scale=1, ui-minimal" />
 			
 			<!-- Master title (title and meta title) -->
