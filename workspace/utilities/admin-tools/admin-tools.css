@@ -54,5 +54,12 @@
 
 .admin-tools .widget-svg{
 	width: 15px;
+	height: 15px;
 	margin-right: 5px;
+}
+
+.admin-tools .widget-svg svg {
+	display: block;
+	width: 100%;
+	height: 100%;
 }
