@@ -15,10 +15,10 @@
 
 	<xsl:template name="master-head">
 		<head>
-		
-			<!-- General metas -->
+			<!--Encoding-->
 			<meta charset="utf-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1, ui-minimal" />
+			<!--Viewport-->
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			
 			<!-- Master title (title and meta title) -->
 			<xsl:call-template name="master-title-header" />
