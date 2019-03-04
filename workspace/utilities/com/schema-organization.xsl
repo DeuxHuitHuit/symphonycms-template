@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:exslt="http://exslt.org/common"
+	exclude-result-prefixes="exslt">
 
 	<xsl:template name="schema-organization">
 		<xsl:param name="phone" select="$config/organization-phone" />
@@ -18,6 +20,27 @@
 			</xsl:if>
 		</xsl:param>
 
+		<xsl:variable name="sameas">
+			<xsl:if test="string-length($config/facebook-url) != 0">
+				<item url="$config/facebook-url" />
+			</xsl:if>
+			<xsl:if test="string-length($config/youtube-url) != 0">
+				<item url="$config/youtube-url" />
+			</xsl:if>
+			<xsl:if test="string-length($config/linkedin-url) != 0">
+				<item url="$config/linkedin-url" />
+			</xsl:if>
+			<xsl:if test="string-length($config/twitter-url) != 0">
+				<item url="$config/twitter-url" />
+			</xsl:if>
+			<xsl:if test="string-length($config/instagram-url) != 0">
+				<item url="$config/instagram-url" />
+			</xsl:if>
+			<xsl:if test="string-length($config/vimeo-url) != 0">
+				<item url="$config/vimeo-url" />
+			</xsl:if>
+		</xsl:variable>		
+
 		<script type="application/ld+json">
 		{
 			"@context": "http://schema.org",
@@ -27,16 +50,20 @@
 			"email": "<xsl:value-of select="translate($email, ',&quot;', '')" />",
 			"name": "<xsl:value-of select="translate($name, ',&quot;', '')" />",
 			"telephone": "<xsl:value-of select="translate($phone, ',&quot;', '')" />",
-			"sameAs": [
-			          "<xsl:value-of select="$config/facebook-url" />",
-			          "<xsl:value-of select="$config/youtube-url" />",
-			          "<xsl:value-of select="$config/linkedin-url" />",
-			          "<xsl:value-of select="$config/twitter-url" />",
-			          "<xsl:value-of select="$config/instagram-url" />",
-			          "<xsl:value-of select="$config/vimeo-url" />"
-			]
+
+			<xsl:if test="string-length($sameas)">
+				"sameAs": [
+					<xsl:apply-templates select="exsl:node-set($sameas)" mode="sameas-item" />
+					]
+			</xsl:if>
 		}
 		</script>
 
 	</xsl:template>
+
+	<xsl:template match="item" mode="sameas-item">
+		<xsl:value-of select="@url" />
+		<xsl:if test="position() != last()"><xsl:text>,</xsl:text></xsl:if>
+	</xsl:template>
+
 </xsl:stylesheet>
