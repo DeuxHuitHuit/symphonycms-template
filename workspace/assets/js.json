@@ -30,9 +30,8 @@
 		"modules/keyboard-nav.js",
 		"modules/tab-navigation.js",
 		"modules/auto-tracked-scroll.js",
-
-		"modules/site-nav-link-selector.js",
 		"modules/auto-change-state-click.js",
+		"modules/link-selector.js",
 		
 		"transitions/default-transition.js",
 		
