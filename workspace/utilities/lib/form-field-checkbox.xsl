@@ -17,6 +17,8 @@
 		<xsl:param name="is-checked" select="false()" />
 		<xsl:param name="ext-attr" />
 
+		<xsl:variable name="has-required" select="string-length($content-required) != 0" />
+
 
 		<!-- ATTRIBUTES -->
 		<xsl:variable name="attr">
@@ -80,7 +82,7 @@
 					<xsl:with-param name="content" select="$label" />
 				</xsl:call-template>
 				<!-- Required -->
-				<xsl:if test="$has-required">
+				<xsl:if test="$has-required and $is-required">
 					<xsl:call-template name="element">
 						<xsl:with-param name="attr" select="$attr-required" />
 						<xsl:with-param name="content" select="$content-required" />

@@ -13,6 +13,14 @@
 		<xsl:param name="is-multiselect" select="false()" />
 		<xsl:param name="is-required" select="contains($rules, 'required')" />
 		<xsl:param name="ext-attr" />
+		<xsl:param name="ext-attr-label" />
+		<xsl:param name="ext-attr-input" />
+		<xsl:param name="ext-attr-required" />
+		<xsl:param name="ext-attr-hint" />
+		<xsl:param name="ext-attr-items-ctn" />
+		<xsl:param name="ext-attr-item" />
+
+		<xsl:variable name="has-required" select="string-length($content-required) != 0" />
 
 		<xsl:variable name="mode">
 			<xsl:choose>
@@ -43,28 +51,33 @@
 		<xsl:variable name="attr-label">
 			<add for="{$id}" />
 			<add class="transition-label" />
+			<xsl:copy-of select="$ext-attr-label" />
 			<add dev-element="label" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-required">
 			<add class="transition-required" />
+			<xsl:copy-of select="$ext-attr-required" />
 			<add dev-element="required" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-items-ctn">
 			<add class="transition-items-ctn" />
+			<xsl:copy-of select="$ext-attr-items-ctn" />
 			<add dev-element="items-ctn" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-item">
 			<add class="transition-item" />
 			<add class="js-form-field-list-item" />
+			<xsl:copy-of select="$ext-attr-item" />
 			<add dev-element="item" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-hint">
 			<add class="transition-hint" />
 			<add class="js-form-field-hint" />
+			<xsl:copy-of select="$ext-attr-hint" />
 			<add dev-element="hint" />
 		</xsl:variable>
 
@@ -81,7 +94,7 @@
 					<xsl:with-param name="content" select="$label" />
 				</xsl:call-template>
 				<!-- Required -->
-				<xsl:if test="$has-required">
+				<xsl:if test="$has-required and $is-required">
 					<xsl:call-template name="element">
 						<xsl:with-param name="attr" select="$attr-required" />
 						<xsl:with-param name="content" select="$content-required" />
