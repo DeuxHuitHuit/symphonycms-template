@@ -21,7 +21,7 @@
 
 	<xsl:if test="string-length($mp4) != 0 or string-length($webm) != 0">
 		<xsl:call-template name="element">
-			<xsl:with-param name="attr" >
+			<xsl:with-param name="attr">
 				<add class="js-video-ctn" />
 
 				<xsl:copy-of select="$attr" />
@@ -52,7 +52,7 @@
 	<xsl:if test="string-length($mp4) != 0 or string-length($webm) != 0">
 		<xsl:call-template name="element">
 			<xsl:with-param name="element" select="'video'" />
-			<xsl:with-param name="attr" >
+			<xsl:with-param name="attr">
 				<add class="js-video" />
 				
 				<add preload="none" />

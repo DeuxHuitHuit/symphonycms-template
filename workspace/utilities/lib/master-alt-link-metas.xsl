@@ -92,7 +92,7 @@
 	<xsl:template name="page-alt-link-title">
 		<xsl:param name="lg" />
 
-		<xsl:call-template name="master-title" >
+		<xsl:call-template name="master-title">
 			<xsl:with-param name="lg" select="$lg" />
 		</xsl:call-template>
 	</xsl:template>

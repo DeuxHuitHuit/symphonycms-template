@@ -8,7 +8,7 @@
 	<xsl:template name="master-title">
 		<xsl:param name="lg" select="$url-language" />
 
-		<xsl:call-template name="default-master-title" >
+		<xsl:call-template name="default-master-title">
 			<xsl:with-param name="lg" select="$lg" />
 		</xsl:call-template>
 	</xsl:template>

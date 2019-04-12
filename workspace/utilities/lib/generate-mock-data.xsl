@@ -6,7 +6,7 @@
 	exclude-result-prefixes="exsl str">
 
 <!-- MOCKING GENERATOR -->
-<xsl:template name="generate-mock-data" >
+<xsl:template name="generate-mock-data">
 	<xsl:param name="model" />
 	<xsl:param name="params" select="/data/params"/>
 	<xsl:param name="entities" select="$model/model/entities"/>
@@ -56,7 +56,7 @@
 	<xsl:param name="definition" />
 	<xsl:param name="is-sub-item" select="false()" />
 
-	<xsl:variable name="entity-type" >
+	<xsl:variable name="entity-type">
 		<xsl:if test="$is-sub-item = true()">
 			<xsl:text>item</xsl:text>
 		</xsl:if>
@@ -67,7 +67,7 @@
 
 	<xsl:variable name="entity-name" select="name()" />
 
-	<xsl:element name="{$entity-type}" >
+	<xsl:element name="{$entity-type}">
 		<xsl:if test="$is-sub-item = true()">
 			<xsl:variable name="parent" select=".."/>
 
@@ -77,7 +77,7 @@
 			</xsl:attribute>
 		</xsl:if>
 
-		<xsl:apply-templates select="@*" mode="generate-mock-entity-value" >
+		<xsl:apply-templates select="@*" mode="generate-mock-entity-value">
 			<xsl:with-param name="model" select="$model" />
 			<xsl:with-param name="entities" select="$entities" />
 			<xsl:with-param name="entity" select="." />
@@ -124,7 +124,7 @@
 				<!-- Single text element -->
 				<xsl:element name="{$field-name}">
 					<!-- Check for handle options -->
-					<xsl:if test="string-length($field-definition/@options) != 0" >
+					<xsl:if test="string-length($field-definition/@options) != 0">
 						<xsl:variable name="options-tokens" select="str:tokenize($field-definition/@options, ' ')" />
 						<xsl:if test="count($options-tokens[text() = 'handle']) != 0">
 							<!-- Output handle -->
@@ -161,10 +161,10 @@
 							</filename>
 
 							<meta>
-								<xsl:attribute name="width" >
+								<xsl:attribute name="width">
 									<xsl:value-of select="$img-data/@width" />
 								</xsl:attribute>
-								<xsl:attribute name="height" >
+								<xsl:attribute name="height">
 									<xsl:value-of select="$img-data/@height" />
 								</xsl:attribute>
 							</meta>
@@ -176,7 +176,7 @@
 							<!-- Find section in definition -->
 							<xsl:variable name="section-tokens" select="str:tokenize($field-definition/@sections, ',')" />
 
-							<xsl:for-each select="str:tokenize($entity/@*[name() = $field-name], ',')" >
+							<xsl:for-each select="str:tokenize($entity/@*[name() = $field-name], ',')">
 								<xsl:variable name="temp" select="text()" />
 
 								<xsl:for-each select="$section-tokens">

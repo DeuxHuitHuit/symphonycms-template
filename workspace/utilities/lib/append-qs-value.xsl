@@ -74,7 +74,7 @@
 
 				<!-- call recursif with next-value -->
 				<xsl:call-template name="append-qs-values-rec">
-					<xsl:with-param name="url" >
+					<xsl:with-param name="url">
 
 						<!-- Append current value to the url -->
 						<xsl:call-template name="append-qs-value">

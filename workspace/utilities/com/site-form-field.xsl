@@ -68,7 +68,7 @@
 		</xsl:variable>
 
 	<!-- Label -->
-		<xsl:variable name="form-field-input-label-default-style" >
+		<xsl:variable name="form-field-input-label-default-style">
 			<xsl:copy-of select="$form-field-input-label-basic-style" />
 		</xsl:variable>
 

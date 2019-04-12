@@ -8,11 +8,11 @@
 	</xsl:template>
 
 	<xsl:template mode="ninja-heading"
-		match="i | strong | bold | em | span | sup | a | button | img | b | abbr | del | br | wbr | u | time | sub | small | s | q | mark | strike" >
+		match="i | strong | bold | em | span | sup | a | button | img | b | abbr | del | br | wbr | u | time | sub | small | s | q | mark | strike">
 		<xsl:param name="lg" select="$url-language" />
 
 		<xsl:element name="{name()}">
-			<xsl:apply-templates select="* | @* | text()" mode="ninja-heading" >
+			<xsl:apply-templates select="* | @* | text()" mode="ninja-heading">
 				<xsl:with-param name="lg" select="$lg" />
 			</xsl:apply-templates>
 		</xsl:element>

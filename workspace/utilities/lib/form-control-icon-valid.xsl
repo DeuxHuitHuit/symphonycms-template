@@ -23,7 +23,7 @@
 	<!-- 																	/-->
 
 	<!-- STRUCTURE 															 -->
-		<!-- <xsl:call-template name="form-control-icon-checked" >
+		<!-- <xsl:call-template name="form-control-icon-checked">
 			<xsl:with-param name="attr" select="$computed-attr" />
 		</xsl:call-template> -->
 		<xsl:call-template name="element">

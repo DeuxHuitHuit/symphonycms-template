@@ -47,7 +47,7 @@
 
 						<!-- Path original source -->
 						<set>
-							<xsl:attribute name="data-src-original" >
+							<xsl:attribute name="data-src-original">
 								<xsl:call-template name="render-image-src">
 									<xsl:with-param name="image" select="$image" />
 									<xsl:with-param name="use-format" select="false()" />
@@ -111,7 +111,7 @@
 		<xsl:param name="use-alt-fallback" select="true()" />
 		<xsl:param name="attr" />
 
-		<xsl:variable name="computed-format" >
+		<xsl:variable name="computed-format">
 			<xsl:text>/image/2/</xsl:text>
 			<xsl:value-of select="concat($width, '/')" />
 			<xsl:value-of select="concat($height, '/')" />

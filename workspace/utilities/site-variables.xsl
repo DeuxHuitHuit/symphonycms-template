@@ -31,7 +31,7 @@
 </xsl:variable>
 
 <!-- DEFAULT SHARE PAGE TITLE -->
-<xsl:variable name="default-share-page-title" >
+<xsl:variable name="default-share-page-title">
 	<xsl:call-template name="master-title" />
 </xsl:variable>
 

@@ -105,7 +105,7 @@
 				
 				<!-- BG_TRANSITION POPUP -->
 				<xsl:call-template name="element">
-					<xsl:with-param name="attr" >
+					<xsl:with-param name="attr">
 						<add id="bg-transition-popup" />
 						<add class="fixed fill z-index-max-minus-6" />
 						<add class="display-none" />

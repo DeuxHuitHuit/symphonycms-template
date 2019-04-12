@@ -62,12 +62,12 @@
 
 								<xsl:choose>
 									<xsl:when test="count($content/item) != 0">
-										<xsl:apply-templates select="$content/item[@lang = $lg]" mode="ninja-heading" >
+										<xsl:apply-templates select="$content/item[@lang = $lg]" mode="ninja-heading">
 											<xsl:with-param name="lg" select="$lg" />
 										</xsl:apply-templates>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:apply-templates select="$content" mode="ninja-heading" >
+										<xsl:apply-templates select="$content" mode="ninja-heading">
 											<xsl:with-param name="lg" select="$lg" />
 										</xsl:apply-templates>
 									</xsl:otherwise>
@@ -78,12 +78,12 @@
 
 								<xsl:choose>
 									<xsl:when test="count($content-nodeset/item) != 0">
-										<xsl:apply-templates select="$content-nodeset/item[@lang = $lg]" mode="ninja-heading" >
+										<xsl:apply-templates select="$content-nodeset/item[@lang = $lg]" mode="ninja-heading">
 											<xsl:with-param name="lg" select="$lg" />
 										</xsl:apply-templates>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:apply-templates select="$content-nodeset" mode="ninja-heading" >
+										<xsl:apply-templates select="$content-nodeset" mode="ninja-heading">
 											<xsl:with-param name="lg" select="$lg" />
 										</xsl:apply-templates>
 									</xsl:otherwise>
@@ -93,7 +93,7 @@
 					</xsl:when>
 					<xsl:otherwise>
 						<!-- generic content -->
-						<xsl:call-template name="content" >
+						<xsl:call-template name="content">
 							<xsl:with-param name="content" select="$content" />
 							<xsl:with-param name="lg" select="$lg" />
 						</xsl:call-template>

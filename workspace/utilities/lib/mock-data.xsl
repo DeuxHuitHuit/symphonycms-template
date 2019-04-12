@@ -13,7 +13,7 @@
 
 
 <xsl:variable name="mock-data-text">
-	<xsl:call-template name="generate-mock-data" >
+	<xsl:call-template name="generate-mock-data">
 		<xsl:with-param name="model" select="$mock-model"/>
 		<xsl:with-param name="entities" select="document('../../fake/entities.xml')/root/entities" />
 		<xsl:with-param name="data-templates" select="$mock-data-templates" />

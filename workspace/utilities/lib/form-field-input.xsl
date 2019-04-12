@@ -88,7 +88,7 @@
 		<xsl:param name="error-flag-is-optional" select="true()" />
 
 		<!-- Required flag -->
-		<xsl:param name="required-flag" ><xsl:call-template name="form-control-icon-required"/></xsl:param>
+		<xsl:param name="required-flag"><xsl:call-template name="form-control-icon-required"/></xsl:param>
 		<xsl:param name="required-flag-attr"/>
 		<xsl:param name="required-flag-class-when-on" select="$default-flag-class-when-on"/>
 		<xsl:param name="required-flag-is-optional" select="true()" />

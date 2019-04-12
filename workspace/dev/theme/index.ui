@@ -45,7 +45,7 @@
 
 </xsl:template>
 
-<xsl:template match="*" mode="colors" >
+<xsl:template match="*" mode="colors">
 
 	<xsl:variable name="computed-color">
 		<xsl:choose>
@@ -81,7 +81,7 @@
 
 </xsl:template>
 
-<xsl:template match="*" mode="dimensions" >
+<xsl:template match="*" mode="dimensions">
 
 	<div>
 

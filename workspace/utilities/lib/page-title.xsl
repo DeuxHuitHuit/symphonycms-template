@@ -7,7 +7,7 @@
 	<xsl:template name="page-title">
 		<xsl:param name="lg" select="$url-language" />
 
-		<xsl:call-template name="default-page-title" >
+		<xsl:call-template name="default-page-title">
 			<xsl:with-param name="lg" select="$lg" />
 		</xsl:call-template>
 	</xsl:template>
@@ -19,7 +19,7 @@
 	<xsl:template name="default-page-title">
 		<xsl:param name="lg" select="$url-language" />
 		<xsl:param name="entry" select="$page-meta-entry"/>
-		<xsl:param name="custom" >
+		<xsl:param name="custom">
 			<xsl:if test="exslt:object-type($entry) = 'node-set'">
 				<xsl:call-template name="default-value">
 					<xsl:with-param name="lg" select="$lg"/>
