@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<xsl:template name="schema-search">
-		<xsl:param name="url" select="'search-page-url'" />
+		<xsl:param name="url" select="'@todo the search page url'" />
 		<script type="application/ld+json">
 		{
 		  "@context": "https://schema.org",
