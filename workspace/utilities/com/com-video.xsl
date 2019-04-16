@@ -51,7 +51,7 @@
 		</xsl:variable>
 
 		<xsl:variable name="attr-video">
-			<add class="width-full height-full bg-color-black" />
+			<add class="width-full height-full" />
 			<!-- OPTION: is-autoplay -->
 			<xsl:if test="$is-autoplay">
 				<set autoplay="autoplay" />
