@@ -15,4 +15,7 @@
 	<!-- ADMIN-TOOLS -->
 	<xsl:import href="admin-tools/admin-tools.xsl" />
 
+	<!-- UTILS -->
+	<xsl:import href="lib/util-image-path.xsl" />
+
 </xsl:stylesheet>
