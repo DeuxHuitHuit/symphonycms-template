@@ -54,17 +54,17 @@
 			<add class="width-full height-full bg-color-black" />
 			<!-- OPTION: is-autoplay -->
 			<xsl:if test="$is-autoplay">
-				<add autoplay="autoplay" />
-				<add playsinline="" />
-				<add muted="muted" />
+				<set autoplay="autoplay" />
+				<set playsinline="" />
+				<set muted="muted" />
 			</xsl:if>
 			<!-- OPTION: is-looping -->
 			<xsl:if test="$is-looping">
-				<add loop="loop" />
+				<set loop="loop" />
 			</xsl:if>
 			<!-- OPTION: has-controls -->
 			<xsl:if test="$has-controls">
-				<add controls="controls" />
+				<set controls="controls" />
 			</xsl:if>
 			<add dev-element="video" />
 		</xsl:variable>
