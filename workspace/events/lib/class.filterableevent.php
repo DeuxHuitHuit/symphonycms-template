@@ -2,6 +2,11 @@
 
 if(!defined('__IN_SYMPHONY__')) die('<h2>Error</h2><p>You cannot directly access this file</p>');
 
+// In Symphony 3.0.0, the class now exists
+if (class_exists('FilterableEvent', true)) {
+    return;
+}
+
 abstract class FilterableEvent extends Event {
     protected $filter_results = array();
     
