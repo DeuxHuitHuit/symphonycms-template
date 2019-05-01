@@ -61,6 +61,13 @@
 <xsl:variable name="css-path" select="'/workspace/assets/css/'" />
 <xsl:variable name="js-path" select="'/workspace/assets/js/'" />
 
+<!-- Handle de la page courrante -->
+<xsl:variable name="full-page-handle">
+	<xsl:call-template name="create-page-handle-by-id">
+		<xsl:with-param name="id" select="$current-page-id" />
+	</xsl:call-template>
+</xsl:variable>
+
 <!-- Decimal format: french -->
 <xsl:decimal-format name="french" decimal-separator="," grouping-separator=" " />
 <!-- Decimal format: english -->

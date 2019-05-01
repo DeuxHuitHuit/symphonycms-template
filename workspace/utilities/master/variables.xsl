@@ -55,13 +55,6 @@
 <!-- Lang flag For multi langue -->
 <xsl:variable name="is-multilingual" select="count(/data/fl-languages/supported-languages/item) &gt; 1" />
 
-<!-- Handle de la page courrante -->
-<xsl:variable name="full-page-handle">
-	<xsl:call-template name="create-page-handle-by-id">
-		<xsl:with-param name="id" select="$current-page-id" />
-	</xsl:call-template>
-</xsl:variable>
-
 <!-- logged in info -->
 <xsl:variable name="is-logged-in" select="/data/events/login-info/@logged-in = 'true'" />
 
