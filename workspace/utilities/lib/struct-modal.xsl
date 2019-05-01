@@ -52,8 +52,8 @@
 		<!-- Element type of background -->
 		<xsl:variable name="element-background">
 			<xsl:choose>
-				<xsl:when test="$is-page"><xsl:text>a</xsl:text></xsl:when>
-				<xsl:otherwise><xsl:text>button</xsl:text></xsl:otherwise>
+				<xsl:when test="$is-page">a</xsl:when>
+				<xsl:otherwise>button</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 
