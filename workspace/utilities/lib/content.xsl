@@ -8,7 +8,7 @@
 		<xsl:param name="lg" select="$url-language"/>
 		
 		<xsl:choose>
-			<xsl:when test="exslt:object-type($content) = 'string'">
+			<xsl:when test="exslt:object-type($content) = 'string' or exslt:object-type($content) = 'number'">
 				<xsl:value-of select="$content" />
 			</xsl:when>
 			<xsl:when test="exslt:object-type($content) = 'RTF'">

@@ -39,6 +39,11 @@ abstract class EmailEvent extends FilterableEvent
         return $this->getFromEmail();
     }
     
+    public function getReplyTo()
+    {
+        return null;
+    }
+
     protected function isValid()
     {
         return true;
@@ -104,7 +109,11 @@ abstract class EmailEvent extends FilterableEvent
         $email = Email::create();
         $email->setSenderEmailAddress($this->getSenderEmail());
         $email->setFrom($this->getFromEmail(), $this->getFromName());
-        $email->setReplyToEmailAddress($this->getFromEmail());
+        $email->setReplyToEmailAddress(
+            $this->getReplyTo() ?
+            $this->getReplyTo() :
+            $this->getFromEmail()
+        );
         $email->setRecipients($this->getReceipients());
         $email->setSubject($this->getSubject());
         $email->setTextPlain($this->getBody()); 
