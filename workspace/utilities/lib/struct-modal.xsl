@@ -31,6 +31,8 @@
 		<xsl:param name="ext-attr-ctn" />
 		<xsl:param name="ext-attr-close-ctn" />
 
+		<xsl:variable name="has-id" select="string-length($id) != 0" />
+
 		<!-- For background and close button -->
 		<xsl:variable name="util-close-attr">
 			<xsl:choose>
@@ -40,11 +42,13 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- STATE (click): visible ~> OFF -->
-					<add class="js-change-state-click" />
-					<add data-change-state-click-target=".js-struct-modal[data-id='{$id}']" />
-					<add data-change-state-click="visible" />
-					<add data-change-state-action="off" />
-					<add data-change-state-click-target-common-ancestor="#site" />
+					<xsl:if test="$has-id">
+						<add class="js-change-state-click" />
+						<add data-change-state-click-target=".js-struct-modal[data-id='{$id}']" />
+						<add data-change-state-click="visible" />
+						<add data-change-state-action="off" />
+						<add data-change-state-click-target-common-ancestor="#site" />
+					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -67,7 +71,9 @@
 			</xsl:if>
 			<add class="transition-struct-modal" />
 			<add class="js-struct-modal" />
-			<add data-id="{$id}" />
+			<xsl:if test="$has-id">
+				<add data-id="{$id}" />
+			</xsl:if>
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="struct-modal" />
 		</xsl:variable>
