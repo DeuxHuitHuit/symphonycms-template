@@ -1,13 +1,19 @@
+os:
+  - linux
+  - windows
 language: node_js
 node_js:
   - 6
   - 8
   - 9
   - 10
+  - 12
 matrix:
   fast_finish: true
   allow_failures:
+    - node_js: 6
     - node_js: 10
+    - node_js: 12
 notifications:
   email: false
 before_install: cd workspace/assets
