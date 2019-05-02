@@ -12,14 +12,14 @@
 
 		<!-- ATTRIBUTES -->
 		<xsl:variable name="attr">
-			<add value="{$value}" />
+			<set value="{$value}" />
 			<!-- OPTION: is disabled -->
 			<xsl:if test="is-disabled">
-				<add disabled="disabled" />
+				<set disabled="disabled" />
 			</xsl:if>
 			<!-- OPTION: is selected -->
 			<xsl:if test="is-selected">
-				<add selected="selected" />
+				<set selected="selected" />
 			</xsl:if>
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="form-field-option" />

@@ -27,40 +27,35 @@
 				<add class="is-required" />
 			</xsl:if>
 			<!-- Rules -->
-			<add data-rules="{$rules}" />
-			<add class="transition-form-field transition-form-field-checkbox" />
+			<set data-rules="{$rules}" />
 			<add class="js-form-field js-form-field-checkbox" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="form-field-checkbox" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-label">
-			<add for="{$id}" />
-			<add class="transition-label" />
+			<set for="{$id}" />
 			<add dev-element="label" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-required">
-			<add class="transition-required" />
 			<add dev-element="required" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-input">
-			<add name="{$name}" />
-			<add value="{$value}" />
-			<add type="checkbox" />
-			<add id="{$id}" />
+			<set name="{$name}" />
+			<set value="{$value}" />
+			<set type="checkbox" />
+			<set id="{$id}" />
 			<!-- OPTION: checked -->
 			<xsl:if test="$is-checked">
-				<add checked="checked" />
+				<set checked="checked" />
 			</xsl:if>
-			<add class="transition-input" />
 			<add class="js-form-field-input" />
 			<add dev-element="input" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-hint">
-			<add class="transition-hint" />
 			<add class="js-form-field-hint" />
 			<add dev-element="hint" />
 		</xsl:variable>

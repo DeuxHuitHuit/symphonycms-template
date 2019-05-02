@@ -33,22 +33,19 @@
 				<add class="is-required" />
 			</xsl:if>
 			<!-- Rules -->
-			<add data-rules="{$rules}" />
-			<add class="transition-form-field transition-form-field-select" />
+			<set data-rules="{$rules}" />
 			<add class="js-form-field js-form-field-select" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="form-field-select" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-label">
-			<add for="{$id}" />
-			<add class="transition-label" />
+			<set for="{$id}" />
 			<xsl:copy-of select="$ext-attr-label" />
 			<add dev-element="label" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-required">
-			<add class="transition-required" />
 			<xsl:copy-of select="$ext-attr-required" />
 			<add dev-element="required" />
 		</xsl:variable>
@@ -59,22 +56,19 @@
 		</xsl:variable>
 
 		<xsl:variable name="attr-input">
-			<add id="{$id}" />
-			<add name="{$name}" />
-			<add class="transition-input" />
+			<set id="{$id}" />
+			<set name="{$name}" />
 			<add class="js-form-field-input" />
 			<xsl:copy-of select="$ext-attr-input" />
 			<add dev-element="input" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-icon">
-			<add class="transition-icon" />
 			<xsl:copy-of select="$ext-attr-icon" />
 			<add dev-element="icon" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-hint">
-			<add class="transition-hint" />
 			<add class="js-form-field-hint" />
 			<xsl:copy-of select="$ext-attr-hint" />
 			<add dev-element="hint" />

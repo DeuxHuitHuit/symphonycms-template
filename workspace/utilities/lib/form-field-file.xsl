@@ -47,8 +47,7 @@
 				<add class="is-required" />
 			</xsl:if>
 			<!-- Rules -->
-			<add data-rules="{$rules}" />
-			<add class="transition-form-field transition-form-field-file" />
+			<set data-rules="{$rules}" />
 			<add class="js-form-field js-form-field-file" />
 			<set data-default-filename="{$label-no-file}" />
 			<xsl:copy-of select="$ext-attr"/>
@@ -56,28 +55,26 @@
 		</xsl:variable>
 
 		<xsl:variable name="attr-label">
-			<add for="{$id}" />
-			<add class="transition-label" />
+			<set for="{$id}" />
 			<xsl:copy-of select="$ext-attr-label"/>
 			<add dev-element="label" />
 		</xsl:variable>
 		
 		<xsl:variable name="attr-label-text">
-			<add for="{$id}" />
+			<set for="{$id}" />
 			<xsl:copy-of select="$ext-attr-label-text" />
 			<add dev-element="label-text" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-required">
-			<add class="transition-required" />
 			<xsl:copy-of select="$ext-attr-required"/>
 			<add dev-element="required" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-input">
-			<add name="{$name}" />
-			<add type="file" />
-			<add id="{$id}" />
+			<set name="{$name}" />
+			<set type="file" />
+			<set id="{$id}" />
 			<add class="display-none" />
 			<add class="js-form-field-input" />
 			<xsl:if test="string-length($accept) != 0">
@@ -88,20 +85,17 @@
 		</xsl:variable>
 
 		<xsl:variable name="attr-hint">
-			<add class="transition-hint" />
 			<add class="js-form-field-hint" />
 			<xsl:copy-of select="$ext-attr-hint"/>
 			<add dev-element="hint" />
 		</xsl:variable>
 		
 		<xsl:variable name="attr-button">
-			<add class="transition-button" />
 			<xsl:copy-of select="$ext-attr-button" />
 			<add dev-element="button" />
 		</xsl:variable>
 		
 		<xsl:variable name="attr-filename">
-			<add class="transition-filename" />
 			<add class="js-form-field-file-label" />
 			<xsl:copy-of select="$ext-attr-filename" />
 			<add dev-element="filename" />
