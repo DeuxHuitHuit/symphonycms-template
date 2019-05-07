@@ -4,21 +4,16 @@
 	exclude-result-prefixes="exslt">
 
 	<xsl:template name="schema-organization">
-		<xsl:param name="phone" select="$config/organization-phone" />
-		<xsl:param name="email" select="$config/organization-email" />
-		<xsl:param name="name" select="$config/organization-name" />
-		<xsl:param name="logo" select="$config/organization-logo" />
-		<xsl:param name="logo-path">
-			<xsl:if test="string-length($logo) != 0">
-				<xsl:if test="string-length($logo/@path) != 0 and string-length($logo/filename) != 0">
-					<xsl:value-of select="$root" />
-					<xsl:text>/workspace</xsl:text>
-					<xsl:value-of select="$logo/@path" />
-					<xsl:text>/</xsl:text>
-					<xsl:value-of select="$logo/filename" />
-				</xsl:if>
-			</xsl:if>
+		<xsl:param name="url" select="$root" />
+		<xsl:param name="logo">
+			<xsl:call-template name="util-image-path">
+				<xsl:with-param name="image" select="$config/logo" />
+			</xsl:call-template>
 		</xsl:param>
+		<xsl:param name="name" select="$config/name" />
+		<xsl:param name="phone" select="$config/phone" />
+		<xsl:param name="email" select="$config/email" />
+		<xsl:param name="contact-type" select="'Customer service'" />
 
 		<xsl:variable name="sameas">
 			<xsl:if test="string-length($config/facebook-url) != 0">
@@ -42,21 +37,26 @@
 		</xsl:variable>		
 
 		<script type="application/ld+json">
-		{
-			"@context": "http://schema.org",
-			"@type": "Organization",
-			"logo": "<xsl:value-of select="$logo-path" />",
-			"url": "<xsl:value-of select="$root" />",
-			"email": "<xsl:value-of select="translate($email, ',&quot;', '')" />",
-			"name": "<xsl:value-of select="translate($name, ',&quot;', '')" />",
-			"telephone": "<xsl:value-of select="translate($phone, ',&quot;', '')" />",
-
-			<xsl:if test="string-length($sameas)">
+			{
+				"@context": "http://schema.org",
+				"@type": "Organization",
+				"url": "<xsl:value-of select="$url" />",
+				"logo": "<xsl:value-of select="$logo" />",
+				"name": "<xsl:value-of select="$name" />",
+				<xsl:if test="string-length($sameas) != 0">
 				"sameAs": [
 					<xsl:apply-templates select="exsl:node-set($sameas)" mode="sameas-item" />
-					]
-			</xsl:if>
-		}
+				]
+				</xsl:if>
+
+				"contactPoint": [{
+				  "@type": "ContactPoint",
+				  "telephone": "<xsl:value-of select="$phone" />",
+				  "email": "<xsl:value-of select="$email" />",
+				  "url": "<xsl:value-of select="$url" />",
+				  "contactType": "<xsl:value-of select="$contact-type" />"
+				}]
+			}
 		</script>
 
 	</xsl:template>
