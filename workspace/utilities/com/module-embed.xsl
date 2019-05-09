@@ -33,6 +33,7 @@
 		<!-- ATTRIBUTES -->
 		<xsl:variable name="attr">
 			<add class="js-auto-oembed-ctn" />
+			<add data-playing-state-follower=".js-auto-oembed-play" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="module-embed" />
 		</xsl:variable>
