@@ -87,14 +87,35 @@
 		</xsl:call-template>
 	</xsl:template>
 
+	<xsl:template name="share-link-facebook-url">
+		<xsl:param name="url" />
+		<xsl:param name="status" />
+
+		<xsl:variable name="computed-url" select="concat('https://www.facebook.com/sharer/sharer.php?u=', str:encode-uri($url, true()))" />
+
+		<xsl:value-of select="$computed-url" />
+		<xsl:if test="string-length($status) != 0">
+			<xsl:value-of select="concat('&amp;quote=', str:encode-uri($status, true()))" />
+		</xsl:if>
+	</xsl:template>
+	
 	<xsl:template name="share-link-facebook">
 		<xsl:param name="attr" />
 		<xsl:param name="content" />
 		<xsl:param name="url" />
-
+		<xsl:param name="status" />
+		
+		<xsl:variable name="computed-url">
+			<!-- COMP: share-link-facebook-url -->
+			<xsl:call-template name="share-link-facebook-url" >
+				<xsl:with-param name="url" select="$url" />
+				<xsl:with-param name="status" select="$status" />
+			</xsl:call-template>
+		</xsl:variable>
+		
 		<xsl:call-template name="share-link">
 			<xsl:with-param name="attr" select="$attr" />
-			<xsl:with-param name="url" select="concat('https://www.facebook.com/sharer/sharer.php?u=', str:encode-uri($url, true()))" />
+			<xsl:with-param name="url" select="$computed-url" />
 			<xsl:with-param name="content" select="$content"/>
 		</xsl:call-template>
 	</xsl:template>
