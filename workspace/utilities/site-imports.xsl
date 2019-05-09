@@ -5,6 +5,7 @@
 	<xsl:import href="recipes/recipes.xsl" />
 
 	<!-- SITE -->
+	<xsl:import href="com/site-svg.xsl" />
 	<xsl:import href="com/site-header.xsl" />
 	<xsl:import href="com/site-header-logo-link.xsl" />
 	<xsl:import href="com/site-footer.xsl" />
