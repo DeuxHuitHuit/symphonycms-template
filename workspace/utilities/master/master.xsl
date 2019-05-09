@@ -44,6 +44,7 @@
 
 	<!-- images -->
 	<xsl:import href="../lib/render-image.xsl" />
+	<xsl:import href="../lib/picture.xsl" />
 	
 	<!-- LIB SVG -->
 	<xsl:import href="../lib/svg-socials-icons.xsl" />
