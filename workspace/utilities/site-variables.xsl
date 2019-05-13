@@ -52,7 +52,16 @@
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:variable>
-<xsl:variable name="twitter-card-domain" select="$config/twitter-site-domain" />
+<xsl:variable name="twitter-card-domain">
+	<xsl:choose>
+		<xsl:when test="string-length($config/twitter-site-domain) != 0">
+			<xsl:value-of select="$config/twitter-site-domain" />
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="/data/params/http-host" />
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:variable>
 
 <!-- Default langue if fl-languages not found -->
 <xsl:variable name="default-langue" select="'fr'" />
