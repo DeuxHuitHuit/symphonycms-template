@@ -15,7 +15,7 @@ module.exports = function jscs (grunt) {
 				config: JSCS_FILE,
 				fix: true,
 				disallowDanglingUnderscores: {
-					allExcept: ['_', '_currentPage']
+					allExcept: ['_', '_currentPage', '_highlightResult']
 				}
 			}
 		}
