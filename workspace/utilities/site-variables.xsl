@@ -66,6 +66,9 @@
 	<xsl:call-template name="create-page-handle-by-id">
 		<xsl:with-param name="id" select="$current-page-id" />
 	</xsl:call-template>
+	<xsl:if test="count(/data/params/page-types/item[substring-before(.,'-models-') = 'f288']) &gt; 0">
+		<xsl:if test="string-length(/data/params/handle) != 0"><xsl:text>-detail</xsl:text></xsl:if>
+	</xsl:if>
 </xsl:variable>
 
 <!-- Decimal format: french -->
