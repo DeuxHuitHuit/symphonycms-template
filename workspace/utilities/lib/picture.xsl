@@ -5,14 +5,14 @@
 
 	<xsl:variable name="default-image-sizes">
 		<sizes>
-			<size height="0" width="430" media="(max-width: 430px)" />
-			<size height="0" width="620" media="(max-width: 620px)" />
-			<size height="0" width="800" media="(max-width: 800px)" />
-			<size height="0" width="960" media="(max-width: 960px)" />
-			<size height="0" width="1100" media="(max-width: 1100px)" />
-			<size height="0" width="1260" media="(max-width: 1260px)" />
-			<size height="0" width="1400" media="(max-width: 1400px)" />
-			<size height="0" width="2000" media="(max-width: 2000px)" />
+			<size request-height="0" request-width="430" media="(max-width: 430px)" />
+			<size request-height="0" request-width="620" media="(max-width: 620px)" />
+			<size request-height="0" request-width="800" media="(max-width: 800px)" />
+			<size request-height="0" request-width="960" media="(max-width: 960px)" />
+			<size request-height="0" request-width="1100" media="(max-width: 1100px)" />
+			<size request-height="0" request-width="1260" media="(max-width: 1260px)" />
+			<size request-height="0" request-width="1400" media="(max-width: 1400px)" />
+			<size request-height="0" request-width="2000" media="(max-width: 2000px)" />
 		</sizes>
 	</xsl:variable>
 
@@ -84,9 +84,9 @@
 		<xsl:param name="image" />
 		<xsl:param name="size" />
 		<xsl:text>/image/1/</xsl:text>
-		<xsl:value-of select="$size/@height" />
+		<xsl:value-of select="$size/@request-height" />
 		<xsl:text>/</xsl:text>
-		<xsl:value-of select="$size/@width" />
+		<xsl:value-of select="$size/@request-width" />
 		<xsl:value-of select="$image/@path" />
 		<xsl:text>/</xsl:text>
 		<xsl:value-of select="$image/filename" />
