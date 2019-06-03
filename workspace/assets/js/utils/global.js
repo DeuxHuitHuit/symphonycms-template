@@ -49,7 +49,11 @@
 			'android',
 			'phone',
 			'tablet',
-			'touch'
+			'chrome',
+			'safari',
+			'internetexplorer',
+			'firefox',
+			'edge'
 		], function (i, c) {
 		if (!!global.App.device[c]) {
 			$('html').addClass(c);

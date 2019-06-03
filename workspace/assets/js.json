@@ -5,6 +5,7 @@
 		"utils/disable.js",
 		"utils/ga.js",
 		"utils/jquery.transitionend.js",
+		"utils/keys.js",
 		
 		"com/article-changer-v3.js",
 		"com/checkpoint-event.js",
