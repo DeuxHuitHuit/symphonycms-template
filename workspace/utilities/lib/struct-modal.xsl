@@ -37,17 +37,17 @@
 		<xsl:variable name="util-close-attr">
 			<xsl:choose>
 				<xsl:when test="$is-page">
-					<add href="{/data/params/current-path}/" />
-					<add data-action="toggle" />
+					<set href="{/data/params/current-path}/" />
+					<set data-action="toggle" />
 				</xsl:when>
 				<xsl:otherwise>
 					<!-- STATE (click): visible ~> OFF -->
 					<xsl:if test="$has-id">
 						<add class="js-change-state-click" />
-						<add data-change-state-click-target=".js-struct-modal[data-id='{$id}']" />
-						<add data-change-state-click="visible" />
-						<add data-change-state-action="off" />
-						<add data-change-state-click-target-common-ancestor="#site" />
+						<set data-change-state-click-target=".js-struct-modal[data-id='{$id}']" />
+						<set data-change-state-click="visible" />
+						<set data-change-state-action="off" />
+						<set data-change-state-click-target-common-ancestor="#site" />
 					</xsl:if>
 				</xsl:otherwise>
 			</xsl:choose>
@@ -72,7 +72,7 @@
 			<add class="transition-struct-modal" />
 			<add class="js-struct-modal" />
 			<xsl:if test="$has-id">
-				<add data-id="{$id}" />
+				<set data-id="{$id}" />
 			</xsl:if>
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="struct-modal" />
