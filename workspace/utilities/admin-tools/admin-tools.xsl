@@ -10,7 +10,8 @@
 
 	<xsl:template name="admin-tools">
 		<xsl:param name="visible" select="visible = 'Yes' or string-length(visible) = 0" />
-
+		<xsl:param name="domain" select="''" />
+		
 		<xsl:param name="notifier-color">
 			<xsl:choose>
 				<xsl:when test="$visible">
@@ -45,7 +46,9 @@
 					<div class="widget" style="margin-left: 20px;margin-top: 5px;font-size: 10px;">
 						<xsl:value-of select="$notifier-label" />
 					</div>
-					<xsl:call-template name="widget-edit-entry" />
+					<xsl:call-template name="widget-edit-entry" >
+						<xsl:with-param name="domain" select="$domain" />
+					</xsl:call-template>
 					<xsl:call-template name="widget-flush-cache" />
 					<xsl:call-template name="widget-logout" />
 					<xsl:if test="$is-user-dev">
