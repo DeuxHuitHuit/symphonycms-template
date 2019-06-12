@@ -17,3 +17,7 @@ notifications:
 before_install: cd workspace/assets
 script:
   - grunt ci
+cache:
+  npm: true
+  directories:
+    - workspace/assets/node_modules
