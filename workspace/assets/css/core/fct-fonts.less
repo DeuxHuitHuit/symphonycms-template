@@ -1,6 +1,6 @@
 // FONTS FUNCTIONS
 // ref: http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
-#font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal, @font-display: swap) {
+#font-face (@font-family, @font-filename: @font-family, @font-weight:normal, @font-style: normal, @font-display: fallback) {
 	font-family: @font-family;
 	src: local('?'),
 		url("@{font-path}@{font-filename}.woff2") format('woff2'),
