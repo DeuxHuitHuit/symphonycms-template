@@ -6,9 +6,9 @@
 
 	'use strict';
 
-	App.device.keys = {};
+	var keys = {};
 
-	App.device.keys.code = {
+	keys.code = {
 		'?': 0,
 		backspace: 8,
 		tab: 9,
@@ -118,7 +118,7 @@
 		single_quote: 222
 	};
 
-	App.device.keys.fromCode = function (code) {
+	keys.fromCode = function (code) {
 		var key = '?';
 		if (!code) {
 			return key;
@@ -135,9 +135,13 @@
 	};
 
 	// Chars
-	App.device.keys.isChar = function (c) {
+	keys.isChar = function (c) {
 		return c === App.device.keys.code.space_bar ||
 			(c > App.device.keys.code['0'] && c <= App.device.keys.code.z);
 	};
+
+	window.App = $.extend(true, window.App, {
+		keys: keys
+	});
 
 })(jQuery);
