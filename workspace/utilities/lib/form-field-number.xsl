@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- COMPONENT: form-field-textarea -->
-	<xsl:template name="form-field-textarea">
+<!-- COMPONENT: form-field-number -->
+	<xsl:template name="form-field-number">
+		<xsl:param name="label" select="label" />
+		<xsl:param name="name" select="name" />
+		<xsl:param name="placeholder" select="placeholder" />
+		<xsl:param name="value" select="value" />
+		<xsl:param name="content-required" select="$form-config/required-flag" />
 		<xsl:param name="id">
 			<xsl:call-template name="util-form-id" />
 		</xsl:param>
@@ -10,12 +15,15 @@
 			<xsl:call-template name="util-form-rules" />
 		</xsl:param>
 		<xsl:param name="is-required" select="contains($rules, 'required')" />
+		<xsl:param name="min" select="min" />
+		<xsl:param name="max" select="max" />
+		<xsl:param name="step" select="step" />
 		<xsl:param name="ext-attr" />
 		<xsl:param name="ext-attr-label" />
 		<xsl:param name="ext-attr-input" />
 		<xsl:param name="ext-attr-required" />
 		<xsl:param name="ext-attr-hint" />
-
+		
 		<xsl:variable name="has-required" select="string-length($content-required) != 0" />
 
 
@@ -27,9 +35,9 @@
 			</xsl:if>
 			<!-- Rules -->
 			<set data-rules="{$rules}" />
-			<add class="js-form-field js-form-field-textarea" />
+			<add class="js-form-field js-form-field-number" />
 			<xsl:copy-of select="$ext-attr"/>
-			<add dev-component="form-field-textarea" />
+			<add dev-component="form-field-number" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-label">
@@ -43,13 +51,29 @@
 			<add dev-element="required" />
 		</xsl:variable>
 
-		<xsl:variable name="attr-textarea">
+		<xsl:variable name="attr-input">
 			<set name="{$name}" />
 			<set placeholder="{$placeholder}" />
+			<set value="{$value}" />
+			<set type="number" />
 			<set id="{$id}" />
-			<add class="js-form-field-textarea" />
-			<xsl:copy-of select="$ext-attr-textarea" />
-			<add dev-element="textarea" />
+			<add class="js-form-field-input" />
+			<xsl:choose>
+				<xsl:when test="string-length($min) != 0">
+					<set min="{$min}" />
+				</xsl:when>
+				<xsl:otherwise>
+					<set min="0" />
+				</xsl:otherwise>
+			</xsl:choose>
+			<xsl:if test="string-length($max) != 0">
+				<set max="{$max}" />
+			</xsl:if>
+			<xsl:if test="string-length($step) != 0">
+				<set step="{$step}" />
+			</xsl:if>
+			<xsl:copy-of select="$ext-attr-input" />
+			<add dev-element="input" />
 		</xsl:variable>
 
 		<xsl:variable name="attr-hint">
@@ -76,11 +100,10 @@
 						<xsl:with-param name="content" select="$content-required" />
 					</xsl:call-template>
 				</xsl:if>
-				<!-- Textarea -->
+				<!-- Input -->
 				<xsl:call-template name="element">
-					<xsl:with-param name="attr" select="$attr-textarea" />
-					<xsl:with-param name="element" select="'textarea'" />
-					<xsl:with-param name="content" select="$value" />
+					<xsl:with-param name="attr" select="$attr-input" />
+					<xsl:with-param name="element" select="'input'" />
 				</xsl:call-template>
 				<!-- Hint -->
 				<xsl:call-template name="element">
