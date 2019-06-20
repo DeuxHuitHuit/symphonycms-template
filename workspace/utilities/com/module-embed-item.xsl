@@ -14,15 +14,15 @@
 	<xsl:param name="ext-attr-button-ctn" />
 
 	<xsl:call-template name="com-embed-video">
-		<xsl:with-param name="thumbnail" select="thumbnail" />
-		<xsl:with-param name="is-autoplay" select="true()" />
-		<xsl:with-param name="autoload" select="'none'" />
-		<xsl:with-param name="title" select="''" />
-		<xsl:with-param name="ext-attr" />
-		<xsl:with-param name="ext-attr-video" />
-		<xsl:with-param name="ext-attr-placeholder" />
-		<xsl:with-param name="ext-attr-thumbnail" />
-		<xsl:with-param name="ext-attr-button-ctn" />
+		<xsl:with-param name="thumbnail" select="$thumbnail" />
+		<xsl:with-param name="is-autoplay" select="$is-autoplay" />
+		<xsl:with-param name="autoload" select="$autoload" />
+		<xsl:with-param name="title" select="$title" />
+		<xsl:with-param name="ext-attr" select="$ext-attr" />
+		<xsl:with-param name="ext-attr-video" select="$ext-attr-video" />
+		<xsl:with-param name="ext-attr-placeholder" select="$ext-attr-placeholder" />
+		<xsl:with-param name="ext-attr-thumbnail" select="$ext-attr-thumbnail" />
+		<xsl:with-param name="ext-attr-button-ctn" select="$ext-attr-button-ctn" />
 	</xsl:call-template>
 </xsl:template>
 
