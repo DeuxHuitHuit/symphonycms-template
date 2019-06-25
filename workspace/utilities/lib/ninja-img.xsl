@@ -14,9 +14,10 @@
 		<xsl:variable name="src" select="@src" />
 		<xsl:variable name="is-gif" select="contains($src, '.gif')" />
 		<xsl:variable name="is-svg" select="contains($src, '.svg')" />
+		<xsl:variable name="is-tiff" select="contains($src, '.tiff')" />
 		<xsl:variable name="is-local" select="contains($src, $root)" />
 		<xsl:choose>
-			<xsl:when test="$is-local and not($is-gif) and not($is-svg)">
+			<xsl:when test="$is-local and not($is-gif) and not($is-svg) and not($is-tiff)">
 				
 				<xsl:variable name="new-path" select="substring-after($src, 'workspace/')" />
 
