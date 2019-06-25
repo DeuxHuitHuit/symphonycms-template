@@ -10,7 +10,7 @@
 
 	<xsl:template name="admin-tools">
 		<xsl:param name="visible" select="visible = 'Yes' or string-length(visible) = 0" />
-		<xsl:param name="domain" select="''" />
+		<xsl:param name="domain" select="$root" />
 		
 		<xsl:param name="notifier-color">
 			<xsl:choose>

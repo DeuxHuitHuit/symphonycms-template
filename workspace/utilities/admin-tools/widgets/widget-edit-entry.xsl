@@ -4,7 +4,7 @@
 	<xsl:template name="widget-edit-entry">
 		<xsl:param name="section" select="../section/@handle" />
 		<xsl:param name="entry-id" select="@id" />
-		<xsl:param name="domain" select="''" />
+		<xsl:param name="domain" select="$root" />
 		<xsl:param name="url">
 			<xsl:choose>
 				<xsl:when test="string-length($section) != 0 and string-length($entry-id) != 0">
@@ -16,14 +16,7 @@
 					<xsl:text>/</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:choose>
-						<xsl:when test="string-length($domain) != 0">
-							<xsl:value-of select="$domain" />
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="$root"/>
-						</xsl:otherwise>
-					</xsl:choose>
+					<xsl:value-of select="$domain" />
 					<xsl:text>/symphony/</xsl:text>
 				</xsl:otherwise>
 			</xsl:choose>
