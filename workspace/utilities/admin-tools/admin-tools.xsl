@@ -10,7 +10,7 @@
 
 	<xsl:template name="admin-tools">
 		<xsl:param name="visible" select="visible = 'Yes' or string-length(visible) = 0" />
-		<xsl:param name="domain" select="$root" />
+		<xsl:param name="url-prefix" select="$root" />
 		
 		<xsl:param name="notifier-color">
 			<xsl:choose>
@@ -47,7 +47,7 @@
 						<xsl:value-of select="$notifier-label" />
 					</div>
 					<xsl:call-template name="widget-edit-entry" >
-						<xsl:with-param name="domain" select="$domain" />
+						<xsl:with-param name="url-prefix" select="$url-prefix" />
 					</xsl:call-template>
 					<xsl:call-template name="widget-flush-cache" />
 					<xsl:call-template name="widget-logout" />
