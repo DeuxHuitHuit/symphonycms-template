@@ -8,7 +8,7 @@
 		<xsl:param name="url">
 			<xsl:choose>
 				<xsl:when test="string-length($section) != 0 and string-length($entry-id) != 0">
-					<xsl:value-of select="$domain" />
+					<xsl:value-of select="$url-prefix" />
 					<xsl:text>/symphony/publish/</xsl:text>
 					<xsl:value-of select="$section"/>
 					<xsl:text>/edit/</xsl:text>
@@ -16,7 +16,7 @@
 					<xsl:text>/</xsl:text>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:value-of select="$domain" />
+					<xsl:value-of select="$url-prefix" />
 					<xsl:text>/symphony/</xsl:text>
 				</xsl:otherwise>
 			</xsl:choose>
