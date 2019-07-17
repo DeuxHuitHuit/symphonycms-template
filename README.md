@@ -1,5 +1,5 @@
 # Symphony 2 Template
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+[![Built with Grunt](https://gruntjs.com/cdn/builtwith.svg)](https://gruntjs.com/)
 [![Build Status](https://travis-ci.org/DeuxHuitHuit/symphonycms-template.svg)](https://travis-ci.org/DeuxHuitHuit/symphonycms-template)
 ![Build status](https://ci.appveyor.com/api/projects/status/29caf8rrkrnq7wex?svg=true)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/DeuxHuitHuit/symphonycms-template.svg)](https://isitmaintained.com/project/DeuxHuitHuit/symphonycms-template "Average time to resolve an issue")
