@@ -69,7 +69,7 @@
 
 		<xsl:variable name="attr">
 			<set srcset="{$srcset}" />
-			<!-- <set type="{$image/@type}" /> seems to be laggy with svg uploads application/octetstream stuff -->
+			<set type="{$image/@type}" />
 			<set media="{$size/@media}" />
 			<add dev-element="picture-source" />
 		</xsl:variable>
