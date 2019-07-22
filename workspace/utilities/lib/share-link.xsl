@@ -64,19 +64,11 @@
 		<xsl:param name="attr" />
 		<xsl:param name="content" />
 		<xsl:param name="status" />
-		<xsl:param name="separator" select="' - '" />
 		<xsl:param name="url" />
 
 		<xsl:variable name="computed-status">
 			<xsl:value-of select="$status" />
-			<xsl:choose>
-				<xsl:when test="string-length($status) != 0 and string-length($url) != 0">
-					<xsl:value-of select="$separator" />
-				</xsl:when>
-				<otherwise>
-					<xsl:text> </xsl:text>
-				</otherwise>
-			</xsl:choose>
+			<xsl:text> </xsl:text>
 			<xsl:value-of select="$url" />
 		</xsl:variable>
 
