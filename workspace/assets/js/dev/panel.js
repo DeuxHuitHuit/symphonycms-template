@@ -163,10 +163,10 @@
 		var attached = false;
 
 		$(document).on('keydown', function (e) {
-			if (e.which === global.keys.escape && attached) {
+			if (e.which === App.device.keys.escape && attached) {
 				panel.detach();
 				attached = false;
-			} else if (e.which === global.keys.pause_break && e.shiftKey) {
+			} else if (e.which === App.device.keys.pause_break && e.shiftKey) {
 				var attFx = attached ? 'detach' : 'appendTo';
 				panel[attFx](attached ? undefined : body);
 				attached = !attached;
