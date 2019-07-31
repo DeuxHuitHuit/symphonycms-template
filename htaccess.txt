@@ -14,8 +14,8 @@
     
     ### No direct PHP access
     RewriteCond %{IS_SUBREQ} false
-    RewriteCond %{THE_REQUEST} .+\.php[?\s].*
-    RewriteRule .+\.php - [F,NS]
+    RewriteCond %{THE_REQUEST} .+\.(php[\d]?|phar)[?\s.\/].*
+    RewriteRule .+\.(php[\d]?|phar) - [F,NS]
     
     ### ASSETS
     RewriteCond %{REQUEST_FILENAME} !-f
