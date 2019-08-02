@@ -5,7 +5,7 @@
 	<xsl:template name="site-header-logo-link">
 		<xsl:param name="url" select="$page-index-url"/>
 		<xsl:param name="attr" />
-		<xsl:param name="site-name" select="$config/site-titre" />
+		<xsl:param name="site-name" select="$site-name" />
 		<xsl:param name="site-name-attr" />
 		<xsl:param name="content" />
 		
