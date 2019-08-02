@@ -21,13 +21,13 @@ module.exports = function uglify (grunt) {
 				screwIE8: true,
 				quoteStyle: 3,
 				drop_console: true,
+				warnings: grunt.option('verbose'),
 				compress: {
 					global_defs: {
 						DEBUG: false
 					},
 					dead_code: true,
-					unused: true,
-					warnings: grunt.option('verbose')
+					unused: true
 				}
 			}
 		}
