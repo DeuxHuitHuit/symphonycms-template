@@ -6,9 +6,6 @@ module.exports = function jshint (grunt) {
 		complexity: {
 			generic: {
 				src: '<%= src.js.src %>',
-				exclude: [
-					'./js/utils/keys.js'
-				],
 				options: {
 					//jsLintXML: 'report.xml', // create XML JSLint-like report
 					errorsOnly: false, // show only maintainability errors
