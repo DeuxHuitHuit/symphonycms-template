@@ -3,9 +3,10 @@
 		"utils/global.js",
 		"utils/css3-generator.js",
 		"utils/disable.js",
-		"utils/ga.js",
 		"utils/jquery.transitionend.js",
 		"utils/keys.js",
+		
+		"fx/tracking.js",
 		
 		"com/article-changer-v3.js",
 		"com/checkpoint-event.js",
