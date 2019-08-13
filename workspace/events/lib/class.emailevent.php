@@ -132,6 +132,8 @@ abstract class EmailEvent extends FilterableEvent
         $infos .= 'Request time: '  . General::sanitize( $_SERVER['REQUEST_TIME'] ) . PHP_EOL;
         $infos .= 'CF IP: '         . General::sanitize( $_SERVER['HTTP_CF_CONNECTING_IP'] ) . PHP_EOL;
         $infos .= 'CF Country : '   . General::sanitize( $_SERVER['HTTP_CF_IPCOUNTRY'] ) . PHP_EOL;
+        $infos .= 'CF Visitor: '    . General::sanitize( $_SERVER['HTTP_CF_VISITOR'] ) . PHP_EOL;
+        $infos .= 'CF Ray : '       . General::sanitize( $_SERVER['HTTP_CF_RAY'] ) . PHP_EOL;
         
         return $infos;
     }
