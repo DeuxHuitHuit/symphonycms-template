@@ -5,11 +5,114 @@
 
 		<!-- Colors -->
 		<colors>
+			<!-- Brand -->
 			<type name="symbolic">
-				<black value="#181818" />
-				<white value="@true-white" />
+				<blue value="@true-blue" />
+				<blue-80 value="rgba(0,0,255,0.8)" />
+				<blue-80-opaque value="#3648ff" />
+				<blue-30 value="rgba(0,0,255,0.3)" />
+				<blue-30-opaque value="#b2bcff" />
+				<blue-10 value="rgba(0,0,255,0.1)" />
+				<blue-10-opaque value="#e5e8ff" />
+				<red value="@true-red" />
+				<red-30 value="rgba(255,0,0,0.3)" />
+				<red-10 value="rgba(255,0,0,0.1)" />
+				<green value="@true-green" />
+				<green-30 value="rgba(0,255,0,0.3)" />
+				<green-10 value="rgba(0,255,0,0.1)" />
 			</type>
 
+			<!-- Black scale -->
+			<type name="symbolic">
+				<black value="@true-black" />
+				<black-80 value="rgba(0,0,0,0.8)" />
+				<black-80-opaque value="#333333" />
+				<black-30 value="rgba(0,0,0,0.3)" />
+				<black-30-opaque value="#b1b1b1" />
+				<black-10 value="rgba(0,0,0,0.1)" />
+				<black-10-opaque value="#e2e2e2" />
+				<black-05 value="rgba(0,0,0,0.05)" />
+				<black-05-opaque value="#f1f1f1" />
+			</type>
+
+			<!-- White scale -->
+			<type name="symbolic">
+				<white value="@true-white" />
+				<white-80 value="rgba(255,255,255,0.8)" />
+				<white-30 value="rgba(255,255,255,0.3)" />
+				<white-10 value="rgba(255,255,255,0.1)" />
+				<white-05 value="rgba(255,255,255,0.05)" />
+			</type>
+
+			<!-- Semantic -->
+			<type name="symbolic">
+				<main-text value="@black-80" />
+				<!-- <main-text-lighter value="@black-30" /> -->
+				<!-- <main-text-darker value="@black" /> -->
+				<main-stroke value="@black-30" />
+				<!-- <main-stroke-lighter value="@black-10" /> -->
+				<main-stroke-darker value="@black-80" />
+				<main-fill value="@black-10" />
+				<!-- <main-fill-lighter value="@black-05" /> -->
+				<!-- <main-fill-darker value="@black-30" /> -->
+				<main-reversed-text value="@white" />
+				<!-- <main-reversed-text-lighter value="@white-80" /> -->
+				<main-reversed-stroke value="@white" />
+				<!-- <main-reversed-stroke-lighter value="@white-80" /> -->
+				<main-reversed-fill value="@black-80-opaque" />
+				<!-- <main-fill-lighter value="@black-30-opaque" /> -->
+				<!-- <main-fill-darker value="@black" /> -->
+				<accent-text value="@blue" />
+				<accent-text-lighter value="@blue-30" />
+				<!-- <accent-text-darker value="@blue" /> -->
+				<accent-stroke value="@blue-30" />
+				<!-- <accent-stroke-lighter value="@blue-10" /> -->
+				<accent-stroke-darker value="@blue" />
+				<accent-fill value="@blue-10" />
+				<!-- <accent-fill-lighter value="@blue-05" /> -->
+				<!-- <accent-fill-darker value="@blue-30" /> -->
+				<accent-reversed-text value="@white" />
+				<!-- <accent-reversed-text-lighter value="@white-80" /> -->
+				<accent-reversed-stroke value="@white" />
+				<!-- <accent-reversed-stroke-lighter value="@white-80" /> -->
+				<accent-reversed-fill value="@blue" />
+				<!-- <accent-fill-lighter value="@blue-80-opaque" /> -->
+				<!-- <accent-fill-darker value="@blue" /> -->
+				<error-text value="@red" />
+				<error-text-lighter value="@red-30" />
+				<!-- <error-text-darker value="@red" /> -->
+				<error-stroke value="@red-30" />
+				<!-- <error-stroke-lighter value="@red-10" /> -->
+				<error-stroke-darker value="@red" />
+				<error-fill value="@red-10" />
+				<!-- <error-fill-lighter value="@red-05" /> -->
+				<!-- <error-fill-darker value="@red-30" /> -->
+				<error-reversed-text value="@white" />
+				<!-- <error-reversed-text-lighter value="@white-80" /> -->
+				<error-reversed-stroke value="@white" />
+				<!-- <error-reversed-stroke-lighter value="@white-80" /> -->
+				<error-reversed-fill value="@red" />
+				<!-- <error-reversed-fill-lighter value="@red-80-opaque" /> -->
+				<!-- <error-reversed-fill-darker value="@red" /> -->
+				<valid-text value="@green" />
+				<valid-text-lighter value="@green-30" />
+				<!-- <valid-text-darker value="@green" /> -->
+				<valid-stroke value="@green-30" />
+				<!-- <valid-stroke-lighter value="@green-10" /> -->
+				<valid-stroke-darker value="@green" />
+				<valid-fill value="@green-10" />
+				<!-- <valid-fill-lighter value="@green-05" /> -->
+				<!-- <valid-fill-darker value="@green-30" /> -->
+				<valid-reversed-text value="@white" />
+				<!-- <valid-reversed-text-lighter value="@white-80" /> -->
+				<valid-reversed-stroke value="@white" />
+				<!-- <valid-reversed-stroke-lighter value="@white-80" /> -->
+				<valid-reversed-fill value="@green" />
+				<!-- <valid-reversed-fill-lighter value="@green-80-opaque" /> -->
+				<!-- <valid-reversed-fill-darker value="@green" /> -->
+			</type>
+
+			<!-- Core -->
 			<type name="core-variables">
 				<!-- <page-load-bg-color      value="@true-black" /> -->
 				<!-- <site-selection-bg-color value="@true-black" /> -->
@@ -17,11 +120,11 @@
 			</type>
 		</colors>
 
-		<!-- spacing -->
+		<!-- Spacing -->
 		<spacing>
 			<!-- <pico     value="0.1rem" /> -->
-			<!-- <nano     value="0.3rem" /> -->
-			<!-- <micro    value="0.5rem" /> -->
+			<nano     value="0.3rem" />
+			<micro    value="0.5rem" />
 			<thinnest value="1rem" />
 			<thinner  value="1.5rem" />
 			<thin     value="2rem" />
@@ -31,21 +134,23 @@
 			<large    value="10rem" />
 			<larger   value="12rem" />
 			<largest  value="16rem" />
-			<!-- <mega     value="24rem" /> -->
-			<!-- <giga     value="54rem" /> -->
-			<!-- <tera     value="78rem" /> -->
+			<!-- <mega     value="22rem" /> -->
+			<!-- <giga     value="34rem" /> -->
+			<!-- <tera     value="48rem" /> -->
+			<security value="unit(@security-root / @unit-root, rem)" />
+			<perimeter value="unit(@perimeter-root / @unit-root, rem)" />
 		</spacing>
 
 		<dimensions>
-			<tiniest  value="@spacing-thinnest * 18" />
-			<!-- <tinier   value="@spacing-thinner * 18" /> -->
-			<!-- <tiny     value="@spacing-thin * 17" /> -->
-			<!-- <smallest value="@spacing-broad * 10" /> -->
-			<!-- <smaller  value="@spacing-broader * 9" /> -->
-			<!-- <small    value="@spacing-broadest * 7" /> -->
-			<!-- <big      value="@spacing-large * 8" /> -->
-			<!-- <bigger   value="@spacing-larger * 8" /> -->
-			<!-- <biggest  value="@spacing-largest * 9" /> -->
+			<tiniest  value="64rem" />
+			<!-- <tinier   value="72rem" /> -->
+			<!-- <tiny     value="80rem" /> -->
+			<!-- <smallest value="100rem" /> -->
+			<!-- <smaller  value="115rem" /> -->
+			<!-- <small    value="130rem" /> -->
+			<!-- <big      value="145rem" /> -->
+			<!-- <bigger   value="160rem" /> -->
+			<!-- <biggest  value="180rem" /> -->
 		</dimensions>
 
 		<typographie>
@@ -55,28 +160,28 @@
 				<!-- <accent value="" /> -->
 			</fonts>
 			<fonts-size>
-				<!-- <miniature value="0.6rem" /> -->
-				<!-- <shortest  value="0.8rem" /> -->
-				<!-- <shorter   value="1.0rem" /> -->
-				<!-- <short     value="1.2rem" /> -->
-				<current   value="1.4rem" />
-				<!-- <tall      value="1.6rem" /> -->
-				<!-- <taller    value="2.0rem" /> -->
-				<!-- <tallest   value="2.4rem" /> -->
-				<!-- <huge      value="2.8rem" /> -->
-				<!-- <huger     value="4.0rem" /> -->
-				<!-- <hugest    value="5.0rem" /> -->
+				<!-- <miniature value="0.8rem" /> -->
+				<shortest  value="~'calc(1.0rem * var(--type-factor))'" />
+				<shorter   value="~'calc(1.4rem * var(--type-factor))'" />
+				<short     value="~'calc(1.6rem * var(--type-factor))'" />
+				<current   value="~'calc(2.1rem * var(--type-factor))'" />
+				<tall      value="~'calc(2.4rem * var(--type-factor))'" />
+				<taller    value="~'calc(3.2rem * var(--type-factor))'" />
+				<tallest   value="~'calc(4.0rem * var(--type-factor))'" />
+				<huge      value="~'calc(5.2rem * var(--type-factor))'" />
+				<huger     value="~'calc(6.0rem * var(--type-factor))'" />
+				<hugest    value="~'calc(7.2rem * var(--type-factor))'" />
 				<!-- <giant     value="10.0rem" /> -->
 			</fonts-size>
 			<line-height>
 				<!-- <compressed value="1.0em" /> -->
-				<!-- <tightest   value="1.26875em" /> -->
-				<!-- <tighter    value="1.42875em" /> -->
-				<!-- <tight      value="1.61285em" /> -->
-				<normal     value="1.8em" />
-				<!-- <loose      value="3.6em" /> -->
-				<!-- <looser     value="4.2em" /> -->
-				<!-- <loosest    value="5.0em" /> -->
+				<tightest   value="1.125em" />
+				<!-- <tighter    value="1.255em" /> -->
+				<!-- <tight      value="1.4em" /> -->
+				<normal     value="1.6em" />
+				<!-- <loose      value="1.8em" /> -->
+				<!-- <looser     value="2em" /> -->
+				<!-- <loosest    value="3em" /> -->
 			</line-height>
 			<letter-spacing>
 				<!-- <narrowest value="-0.14em" /> -->
@@ -121,17 +226,17 @@
 		<transition>
 			<duration>
 				<fastest value="150ms"/>
-				<!-- <faster  value="200ms"/> -->
-				<!-- <fast    value="300ms"/> -->
-				<medium  value="500ms"/>
-				<slow    value="750ms"/>
-				<!-- <slower  value="1000ms"/> -->
-				<!-- <slowest value="10000ms"/> -->
+				<faster  value="300ms"/>
+				<fast    value="500ms"/>
+				<medium  value="750ms"/>
+				<slow    value="1000ms"/>
+				<!-- <slower  value="1500ms"/> -->
+				<!-- <slowest value="3000ms"/> -->
 			</duration>
 			<ease>
-				<standard     value="@ease-in-out-cubic" />
-				<!-- <standard-in  value="@ease-in-quad" /> -->
-				<!-- <standard-out value="@ease-out-quad" /> -->
+				<standard     value="@ease-in-out-expo" />
+				<standard-in  value="@ease-in-expo" />
+				<standard-out value="@ease-out-expo" />
 				<!-- <alternate    value="@ease-in-out-back" /> -->
 
 				<!-- <linear       value="cubic-bezier(0, 0, 1, 1)" /> -->
@@ -146,16 +251,16 @@
 				<!-- <in-out-quad  value="cubic-bezier(0.455, 0.03, 0.515, 0.955)" /> -->
 				<!-- <in-cubic     value="cubic-bezier(0.55, 0.055, 0.675, 0.19)" /> -->
 				<!-- <out-cubic    value="cubic-bezier(0.215, 0.61, 0.355, 1)" /> -->
-				<in-out-cubic value="cubic-bezier(0.645, 0.045, 0.355, 1)" />
+				<!-- <in-out-cubic value="cubic-bezier(0.645, 0.045, 0.355, 1)" /> -->
 
 				<!-- <in-quart     value="cubic-bezier(0.895, 0.03, 0.685, 0.22)" /> -->
 				<!-- <out-quart    value="cubic-bezier(0.165, 0.84, 0.44, 1)" /> -->
 				<!-- <in-out-quart value="cubic-bezier(0.77, 0, 0.175, 1)" /> -->
 				<!-- <in-quint     value="cubic-bezier(0.755, 0.05, 0.855, 0.06)" /> -->
 				<!-- <out-quint    value="cubic-bezier(0.23, 1, 0.32, 1)" /> -->
-				<!-- <in-expo      value="cubic-bezier(0.95, 0.05, 0.795, 0.035)" /> -->
-				<!-- <out-expo     value="cubic-bezier(0.19, 1, 0.22, 1)" /> -->
-				<!-- <in-out-expo  value="cubic-bezier(1, 0, 0, 1)" /> -->
+				<in-expo      value="cubic-bezier(0.95, 0.05, 0.795, 0.035)" />
+				<out-expo     value="cubic-bezier(0.19, 1, 0.22, 1)" />
+				<in-out-expo  value="cubic-bezier(1, 0, 0, 1)" />
 
 				<!-- <in-circ      value="cubic-bezier(0.6, 0.04, 0.98, 0.335)" /> -->
 				<!-- <out-circ     value="cubic-bezier(0.075, 0.82, 0.165, 1)" /> -->

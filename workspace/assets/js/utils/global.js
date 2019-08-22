@@ -49,6 +49,7 @@
 			'android',
 			'phone',
 			'tablet',
+			'touch',
 			'chrome',
 			'safari',
 			'internetexplorer',

@@ -74,7 +74,8 @@ class eventLogin extends Event
             $fields = array(
                 'name' => new XMLElement('name', $author->getFullName()),
                 'username' => new XMLElement('username', $author->get('username')),
-                'email' => new XMLElement('email', $author->get('email'))
+                'email' => new XMLElement('email', $author->get('email')),
+                'gravatar' => new XMLElement('gravatar', md5($author->get('email')))
             );
 
             if ($author->isTokenActive()) {

@@ -2,50 +2,45 @@
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
+	<xsl:import href="../lib/site-title.xsl" />
 	<xsl:import href="../lib/page-title.xsl" />
-	<xsl:import href="../lib/master-title.xsl" />
-	<xsl:import href="../lib/master-share-metas.xsl" />
-	<xsl:import href="../lib/master-canonical-url-meta.xsl" />
-	<xsl:import href="../lib/master-alt-link-metas.xsl" />
-	<xsl:import href="../lib/master-author-metas.xsl" />
-	<xsl:import href="../lib/master-theme-metas.xsl" />
+	<xsl:import href="../lib/full-title.xsl" />
+	<xsl:import href="../lib/meta-title.xsl" />
+	<xsl:import href="../lib/site-description.xsl" />
+	<xsl:import href="../lib/page-description.xsl" />
+	<xsl:import href="../lib/meta-description.xsl" />
+	<xsl:import href="../lib/meta-theme.xsl" />
+	<xsl:import href="../lib/meta-alt-link.xsl" />
+	<xsl:import href="../lib/canonical.xsl" />
+	<xsl:import href="../lib/meta-author.xsl" />
+	<xsl:import href="../lib/twitter-card.xsl" />
+	<xsl:import href="../lib/open-graph.xsl" />
+	<xsl:import href="../lib/meta-share.xsl" />
 
 	<xsl:import href="favicon.xsl" />
 	<xsl:import href="css.xsl" />
 
 	<xsl:template name="master-head">
 		<head>
-			<!--Encoding-->
 			<meta charset="utf-8" />
-			<!--Viewport-->
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
-			
-			<!-- Master title (title and meta title) -->
-			<xsl:call-template name="master-title-header" />
-			
-			<!-- Master share metas 
-					- meta descriptions
-					- facebook openGraph
-					- twitter cart
-			-->
-			<xsl:call-template name="master-share-metas" />
-			
-			<!-- Theme metas -->
-			<xsl:call-template name="master-theme-metas" />
-			
-			<!-- Page Meta Alternate languages Link -->
-			<xsl:call-template name="page-metas-alt-link" />
-			
-			<!-- Canonical-url -->
-			<xsl:call-template name="master-canonical-url-meta" />
-			
-			<!-- Favicon -->
+
+		<!-- 			
+			Pages generated from entries can add custom metas by overwriting the following templates.
+			Examples are given in respective templates.
+				-page-title
+				-page-description 
+				-meta-share (for image)
+		-->
+
+			<xsl:call-template name="meta-title" />
+			<xsl:call-template name="meta-share" />
+			<xsl:call-template name="meta-canonical" />
+			<xsl:call-template name="meta-alt-link" />
 			<xsl:call-template name="favicon" />
-			
-			<!-- author meta -->
-			<xsl:call-template name="author-meta" />
-			
-			<!-- RSS -->
+			<xsl:call-template name="meta-author" />
+			<xsl:call-template name="meta-theme" />
+			<xsl:call-template name="schema-organization" />
 			<xsl:call-template name="page-metas-alt-rss" />
 			
 			<!-- GA -->
@@ -70,11 +65,11 @@
 				<link rel="stylesheet" type="text/css" href="/workspace/utilities/admin-tools/admin-tools.css" />
 			</xsl:if>
 
-			<!-- EXTRA -->
 			<xsl:call-template name="master-head-extra" />
 			
 		</head>
 	</xsl:template>
-		
+
 	<xsl:template name="master-head-extra"></xsl:template>
+	
 </xsl:stylesheet>

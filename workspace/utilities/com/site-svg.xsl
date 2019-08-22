@@ -12,4 +12,5 @@
 			<path fill="currentColor" d="M3.307 4.015l.708-.707 17.677 17.677-.707.707z"/><path fill="currentColor" d="M3.307 20.985L20.986 3.308l.707.707L4.015 21.692z"/>
 		</svg>
 	</xsl:template>
+
 </xsl:stylesheet>

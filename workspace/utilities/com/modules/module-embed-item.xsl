@@ -4,6 +4,7 @@
 <!-- VIDEOS (youtube, vimeo) -->
 <xsl:template match="url[driver = 'YouTube' or driver = 'Vimeo']" mode="module-embed-item">
 	<xsl:param name="thumbnail" select="thumbnail" />
+	<xsl:param name="custom-thumbnail" />
 	<xsl:param name="is-autoplay" select="true()" />
 	<xsl:param name="autoload" select="'none'" />
 	<xsl:param name="title" select="''" />
@@ -15,6 +16,7 @@
 
 	<xsl:call-template name="com-embed-video">
 		<xsl:with-param name="thumbnail" select="$thumbnail" />
+		<xsl:with-param name="custom-thumbnail" select="$custom-thumbnail" />
 		<xsl:with-param name="is-autoplay" select="$is-autoplay" />
 		<xsl:with-param name="autoload" select="$autoload" />
 		<xsl:with-param name="title" select="$title" />

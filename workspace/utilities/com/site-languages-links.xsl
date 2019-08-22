@@ -70,7 +70,7 @@
 		
 	<!-- COMPUTED VALUES 													 -->
 		<xsl:variable name="computed-url">
-			<xsl:call-template name="page-alt-link-url">
+			<xsl:call-template name="alt-link-url">
 				<xsl:with-param name="lg" select="@handle" />
 			</xsl:call-template>
 		</xsl:variable>

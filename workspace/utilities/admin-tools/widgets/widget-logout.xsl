@@ -5,7 +5,7 @@
 		<div class="widget widget-logout">
 			<a href="/symphony/logout/">
 				<div style="display:flex">
-					<div class="widget-svg">
+					<div class="widget-icon">
 						<svg xmlns="http://www.w3.org/2000/svg"
 							preserveAspectRatio="xMidYMin slice"
 							viewBox="0 0 25 25">

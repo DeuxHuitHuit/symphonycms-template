@@ -11,42 +11,48 @@
 		com/module-embed.xsl
 		modules/auto-oembed.js
 		com/oembed.js
+		modules/oembed-vm.js
+		modules/oembed-yt.js
 		(optional) modules/oembed-dm.js
 		(optional) modules/oembed-fb.js
 		(optional) modules/oembed-ig.js
 		(optional) modules/oembed-sc.js
 		(optional) modules/oembed-tw.js
-		(optional) modules/oembed-vm.js
-		(optional) modules/oembed-yt.js
  -->
 
- <xsl:import href="../lib/util-oembed-attr.xsl" />
+ <xsl:import href="../../lib/util-oembed-attr.xsl" />
+ <xsl:import href="../com-embed-video.xsl" />
  <xsl:import href="module-embed-item.xsl" />
- <xsl:import href="com-embed-video.xsl" />
 
 <!-- COMPONENT: module-embed -->
 	<xsl:template name="module-embed" match="item[@section = 'module-embed']" mode="module">
 		<xsl:param name="url" select="url" />
+		<xsl:param name="custom-thumbnail" select="custom-thumbnail" />
 		<xsl:param name="ext-attr" />
 
 
 		<!-- ATTRIBUTES -->
 		<xsl:variable name="attr">
-			<add class="js-auto-oembed-ctn" />
-			<add data-playing-state-follower=".js-auto-oembed-play" />
 			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="module-embed" />
 		</xsl:variable>
 
+		<xsl:variable name="attr-ctn">
+			<add dev-extended-by="module-embed" />
+		</xsl:variable>
+
 
 		<!-- STRUCTURE -->
-		<xsl:call-template name="element">
-			<xsl:with-param name="element" select="'section'" />
-			<xsl:with-param name="attr" select="$attr" />
+		<xsl:call-template name="module">
+			<xsl:with-param name="ext-attr" select="$attr" />
+			<xsl:with-param name="ext-attr-ctn" select="$attr-ctn" />
+			<xsl:with-param name="transition-name" select="'transition-module-embed'" />
 			<xsl:with-param name="content">
 				<!-- APPLY: url -->
-				<xsl:apply-templates select="$url" mode="module-embed-item" />
-			</xsl:with-param> 
+				<xsl:apply-templates select="$url" mode="module-embed-item">
+					<xsl:with-param name="custom-thumbnail" select="$custom-thumbnail" />
+				</xsl:apply-templates>
+			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
 </xsl:stylesheet>

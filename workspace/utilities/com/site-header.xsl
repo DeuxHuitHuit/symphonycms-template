@@ -1,98 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- COMPONENT: site-header =====================================================================-->
+<!-- COMPONENT: site-header -->
 	<xsl:template name="site-header">
-		<xsl:param name="attr" />
+		<xsl:param name="main-menu" select="$menus/main" />
+		<xsl:param name="ext-attr" />
 
-	<!-- STYLES ____________________________________________________________ -->
-		<!-- site-header-->
-		<xsl:variable name="site-header-style">
-			
-		</xsl:variable>
 
-		<!-- site-header-logo-link -->
-		<xsl:variable name="site-header-logo-link-extend-style">
-			<add dev-extended-by="site-header" />
-		</xsl:variable>
-
-		<!-- site-nav -->
-		<xsl:variable name="site-nav-extend-style">
-			<add dev-extended-by="site-header" />
-		</xsl:variable>
-
-		<!-- site-lang-links -->
-		<xsl:variable name="site-lang-links-extend-style">
-			<add dev-extended-by="site-header" />
-		</xsl:variable>
-	<!-- ___________________________________________________________________/-->
-
-	<!-- STRUCTURE DIAGRAMS 												   >
-		|- SELF : <header> site-header
-		|		|- COMP : site-header-logo-link
-		|		|		: _CONTENT_
-		|>>>>>>>|>>>>>>>:- TPLT : site-header-logo
-		|		|		:		:...
-		|
-		|		|- COMP : site-nav
-		|		|- COMP : site-lang-links
-																			/-->
-
-	<!-- COMPUTED ATTRIBUTES 												 -->
-		<xsl:variable name="computed-attr">
-			<add role="menubar" />
-
-			<xsl:copy-of select="$site-header-style"/>
-			<xsl:copy-of select="$attr"/>
+		<!-- ATTRIBUTES -->
+		<xsl:variable name="attr">
+			<add class="flexbox" />
+			<add class="padding-vertical-broad" />
+			<add class="padding-horizontal-security" />
+			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="site-header" />
 		</xsl:variable>
 
-		<xsl:variable name="computed-site-header-logo-link-attr">
-			<xsl:copy-of select="$site-header-logo-link-extend-style" />
+		<xsl:variable name="attr-logo-ctn">
+			<add class="flex-grow-1" />
+			<add dev-element="logo-ctn" />
 		</xsl:variable>
 
-		<xsl:variable name="computed-site-nav-attr">
-			<xsl:copy-of select="$site-nav-extend-style"/>
-			<add id="site-nav" />
+		<xsl:variable name="attr-nav-ctn">
+			<add dev-element="nav-ctn" />
 		</xsl:variable>
 
-		<xsl:variable name="computed-site-lang-links-attr">
-			<xsl:copy-of select="$site-lang-links-extend-style" />
+		<xsl:variable name="attr-lang-ctn">
+			<add dev-element="lang-ctn" />
 		</xsl:variable>
-	<!--																	/-->
 
-	<!-- STRUCTURE 															 -->
+
+		<!-- STRUCTURE -->
 		<xsl:call-template name="element">
 			<xsl:with-param name="element" select="'header'" />
-			<xsl:with-param name="attr" select="$computed-attr" />
+			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="content">
-
-				<!-- COMP: Site header logo and link to home page -->
-				<xsl:call-template name="site-header-logo-link">
-					<xsl:with-param name="attr" select="$computed-site-header-logo-link-attr"/>
+				<!-- Logo ctn -->
+				<xsl:call-template name="element">
+					<xsl:with-param name="attr" select="$attr-logo-ctn" />
 					<xsl:with-param name="content">
-
-						<!-- TPLT: site-header-logo -->
-						<xsl:call-template name="site-header-logo" />
+						<!-- Site Logo -->
+						<xsl:call-template name="site-logo" />
 					</xsl:with-param>
 				</xsl:call-template>
-
-				<!-- COMP: site-nav -->
-				<xsl:call-template name="site-nav">
-					<xsl:with-param name="attr" select="$computed-site-nav-attr"/>
+				<!-- Nav ctn -->
+				<xsl:call-template name="element">
+					<xsl:with-param name="attr" select="$attr-nav-ctn" />
+					<xsl:with-param name="content">
+						<!-- Site Nav -->
+						<xsl:call-template name="site-nav" />
+					</xsl:with-param>
 				</xsl:call-template>
-
-				<!-- COMP: Alt languages buttons-->
-				<xsl:call-template name="site-languages-links">
-					<xsl:with-param name="attr" select="$computed-site-lang-links-attr"/>
+				<!-- Lang ctn -->
+				<xsl:call-template name="element">
+					<xsl:with-param name="attr" select="$attr-lang-ctn" />
+					<xsl:with-param name="content">
+						<!-- Lang -->
+						<!-- <xsl:call-template name="site-lang" /> -->
+					</xsl:with-param>
 				</xsl:call-template>
-			</xsl:with-param> <!-- End header -->
+			</xsl:with-param> 
 		</xsl:call-template>
-	<!--																	/-->
-	</xsl:template>
-
-<!-- TPLT: site-header-logo =====================================================================-->
-	<xsl:template name="site-header-logo">
-		
 	</xsl:template>
 </xsl:stylesheet>

@@ -28,7 +28,6 @@
 	<xsl:import href="../lib/attr.xsl" />
 	<xsl:import href="../lib/content.xsl" />
 	<xsl:import href="../lib/ninja.xsl" />
-	<xsl:import href="../lib/svg-icons.xsl" />
 
 	<!-- LIB CORE UI -->
 	<!-- elements -->
@@ -42,12 +41,9 @@
 	<xsl:import href="../lib/heading.xsl" />
 	<xsl:import href="../lib/text.xsl" />
 
-	<!-- images -->
-	<xsl:import href="../lib/render-image.xsl" />
+	<!-- Media -->
 	<xsl:import href="../lib/picture.xsl" />
-	
-	<!-- LIB SVG -->
-	<xsl:import href="../lib/svg-socials-icons.xsl" />
+	<xsl:import href="../lib/video.xsl" />
 
 	<!-- LIB COMPOSITION -->
 	<xsl:import href="../lib/copyright-288.xsl" />

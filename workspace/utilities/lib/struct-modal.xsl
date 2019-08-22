@@ -69,6 +69,10 @@
 			<xsl:if test="$is-visible">
 				<add class="is-visible" />
 			</xsl:if>
+			<!-- OPTION: is-page -->
+			<xsl:if test="$is-page">
+				<add class="js-modal-page" />
+			</xsl:if>
 			<add class="transition-struct-modal" />
 			<add class="js-struct-modal" />
 			<xsl:if test="$has-id">
