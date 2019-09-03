@@ -5,7 +5,6 @@
 		"utils/disable.js",
 		"utils/jquery.transitionend.js",
 		"utils/keys.js",
-		"utils/keys.js",
 		"fx/tracking.js",
 		
 		"com/article-changer-v3.js",
