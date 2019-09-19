@@ -7,7 +7,6 @@
 		<colors>
 			<type name="symbolic">
 				<black value="#181818" />
-				<white value="@true-white" />
 			</type>
 
 			<type name="core-variables">
@@ -18,8 +17,6 @@
 		<!-- spacing -->
 		<spacing>
 			<thin     value="2rem" />
-			<broad    value="4rem" />
-			<large    value="10rem" />
 		</spacing>
 
 		<dimensions>
