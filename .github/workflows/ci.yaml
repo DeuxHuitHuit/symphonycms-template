@@ -16,11 +16,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: cd into workspace/assets
-      run: cd workspace/assets
     - name: npm install
       run: npm install
+      working-directory: workspace/assets
       env:
         CI: true
     - name: grunt ci
+      working-directory: workspace/assets
       run: npm run grunt ci
