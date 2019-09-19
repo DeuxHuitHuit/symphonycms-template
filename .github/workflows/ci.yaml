@@ -5,6 +5,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
 
     strategy:
+      max-parallel: 6
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macOS-latest]
         node-version: [8.x, 10.x]
