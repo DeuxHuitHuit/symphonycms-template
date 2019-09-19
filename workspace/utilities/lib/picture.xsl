@@ -20,7 +20,7 @@
 		<xsl:param name="image" select="image" />
 		<xsl:param name="alt" select="alt" />
 		<xsl:param name="sizes" select="exsl:node-set($default-image-sizes)/sizes" />
-		<xsl:param name="use-sizes" select="$image/@type != 'image/gif' and $image/@type != 'image/svg+xml'"/>
+		<xsl:param name="use-sizes" select="$image/@type != 'image/gif' and $image/@type != 'image/svg+xml' and $image/@type != 'image/tiff'"/>
 		<xsl:param name="ext-attr" />
 		<xsl:param name="ext-attr-image" />
 
