@@ -20,15 +20,9 @@
 			</xsl:call-template>
 		</xsl:variable>
 
-		<xsl:variable name="page-title">
-			<xsl:call-template name="page-alt-link-title">
-				<xsl:with-param name="lg" select="@handle" />
-			</xsl:call-template>
-		</xsl:variable>
-		
 		<link rel="alternate"
-			  hreflang="{@handle}" 
-			  href="{$page-url}"/>
+			hreflang="{@handle}"
+			href="{$root}{$page-url}" />
 	</xsl:template>
 
 <!-- page-alt-link generator -->
