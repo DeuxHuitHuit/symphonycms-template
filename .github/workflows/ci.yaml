@@ -9,7 +9,7 @@ jobs:
         operating-system: [ubuntu-latest, windows-latest, macOS-latest]
         node-version: [8.x, 10.x, 12.x]
 
-    name: node ${{ matrix.node-version }} Test on ${{ matrix.operating-system }}
+    name: ${{ matrix.operating-system }} - ${{ matrix.node-version }}
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -24,3 +24,5 @@ jobs:
     - name: grunt ci
       working-directory: workspace/assets
       run: npm run grunt ci
+      env:
+        NODE_OPTIONS: --max_old_space_size=8192
