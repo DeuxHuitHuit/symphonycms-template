@@ -1,0 +1,26 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        node-version: [8.x, 10.x, 12.x]
+
+    name: node ${{ matrix.node-version }} Test on ${{ matrix.operating-system }}
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: cd into workspace/assets
+      run: cd workspace/assets
+    - name: npm install
+      run: npm install
+      env:
+        CI: true
+    - name: grunt ci
+      run: npm run grunt ci
