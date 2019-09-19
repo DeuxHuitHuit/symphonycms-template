@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../../../dev/theme/index.ui" ?>
+<themes>
+	<theme type="site">
+
+		<!-- Colors -->
+		<colors>
+			<type name="symbolic">
+				<black value="#181818" />
+				<white value="@true-white" />
+			</type>
+
+			<type name="core-variables">
+
+			</type>
+		</colors>
+
+		<!-- spacing -->
+		<spacing>
+			<thin     value="2rem" />
+			<broad    value="4rem" />
+			<large    value="10rem" />
+		</spacing>
+
+		<dimensions>
+			<tiniest  value="@spacing-thin * 18" />
+		</dimensions>
+
+		<typographie>
+			<fonts>
+				<base   value="'Helvetica', sans-serif" />
+			</fonts>
+			<fonts-size>
+				<current   value="1.4rem" />
+			</fonts-size>
+			<line-height>
+				<normal     value="1.8em" />
+			</line-height>
+			<letter-spacing>
+				<!-- <narrowest value="-0.14em" /> -->
+			</letter-spacing>
+		</typographie>
+		<opacity>
+			<transparent           value="0" />
+			<opaque                value="1" />
+		</opacity>
+		<border>
+			<size>
+				<slimmest value="1px" />
+			</size>
+			<radius>
+				<sharpest value="2px" />
+			</radius>
+		</border>
+		<transition>
+			<duration>
+				<fastest value="150ms"/>
+			</duration>
+			<ease>
+				<standard     value="linear" />
+			</ease>
+		</transition>
+	</theme>
+</themes>

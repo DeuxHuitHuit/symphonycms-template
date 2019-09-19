@@ -16,6 +16,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Replace theme.xml
+      run: mv workspace/assets/css/vars/theme-ci.xml workspace/assets/css/vars/theme.xml
     - name: npm install
       run: npm install
       working-directory: workspace/assets
