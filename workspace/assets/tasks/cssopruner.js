@@ -44,7 +44,8 @@ module.exports = function cssopruner (grunt) {
 						'phone',
 						'tablet',
 						'touch',
-						'click'
+						'click',
+						'grecaptcha-badge'
 					],
 					blacklist: ['www', 'version', 'xml']
 				}
