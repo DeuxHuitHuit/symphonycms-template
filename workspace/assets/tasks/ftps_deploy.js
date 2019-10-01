@@ -58,6 +58,13 @@ module.exports = function ftps_deploy (grunt) {
 					],
 					dest: FTP_FILE.default.path + relativePath
 				}]
+			},
+			custom: {
+				files: [{
+					cwd: '.',
+					src: [],
+					dest: FTP_FILE.default.path + 'workspace/assets/'
+				}]
 			}
 		}
 	});
@@ -73,7 +80,7 @@ module.exports = function ftps_deploy (grunt) {
 	});
 
 	// push
-	grunt.registerTask('push', ['ftps_boot', 'ftps_deploy:build', 'ftps_cleanup']);
+	grunt.registerTask('push', ['ftps_boot', 'ftps_deploy:build', 'ftps_deploy:custom', 'ftps_cleanup']);
 	
 	// uploadfile
 	grunt.registerTask('uploadfile', ['ftps_boot', 'ftps_deploy:file', 'ftps_cleanup']);
