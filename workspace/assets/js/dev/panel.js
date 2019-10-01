@@ -88,6 +88,10 @@
 		};
 	};
 
+	var designMode = function (state) {
+		window.document.designMode = !!state ? 'on' : 'off';
+	};
+
 	var specialCases = {
 		'show-js-classes': specialClassesFactory({
 			prefix: 'js-',
@@ -99,7 +103,8 @@
 			getValue: getNodeName,
 			getSelector: getImportantNodes
 		}),
-		'show-heading-overlay': specialOverlayFactory()
+		'show-heading-overlay': specialOverlayFactory(),
+		'design-mode': designMode
 	};
 
 	var initDevPanel = function () {
@@ -117,7 +122,8 @@
 			'show-dom',
 			'show-heading-overlay',
 			'show-img-without-alt',
-			'debug'
+			'debug',
+			'design-mode'
 		];
 
 		var checkboxes = _.map(devClasses, function (clas) {
