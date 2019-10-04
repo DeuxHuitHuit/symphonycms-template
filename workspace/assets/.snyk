@@ -69,3 +69,8 @@ patch:
         patched: '2019-07-04T04:11:51.944Z'
     - grunt-complexity > grunt > grunt-legacy-log > grunt-legacy-log-utils > lodash:
         patched: '2019-07-04T04:11:51.944Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T04:19:45.286Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-04T04:19:45.286Z'
