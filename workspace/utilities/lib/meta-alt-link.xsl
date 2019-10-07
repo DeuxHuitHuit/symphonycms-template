@@ -6,7 +6,7 @@
 	</xsl:template>
 
 	<xsl:template name="meta-alt-link-default">
-		<xsl:apply-templates select="/data/fl-languages/supported-languages/item[@handle != $url-language]" mode="meta-alt-link" />
+		<xsl:apply-templates select="/data/fl-languages/supported-languages/item" mode="meta-alt-link" />
 	</xsl:template>
 
 	<xsl:template match="fl-languages/supported-languages/item" mode="meta-alt-link">
@@ -15,7 +15,7 @@
 				<xsl:with-param name="lg" select="@handle" />
 			</xsl:call-template>
 		</xsl:param>
-		<link rel="alternate" hreflang="{@handle}"  href="{$url}"/>
+		<link rel="alternate" hreflang="{@handle}"  href="{$root}{$url}"/>
 	</xsl:template>
 
 	<xsl:template name="alt-link-url">
