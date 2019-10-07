@@ -57,7 +57,7 @@
 			<xsl:with-param name="content">
 				<!-- BUTTON: link -->
 				<xsl:call-template name="button-link">
-					<xsl:with-param name="label" select="'LinkedIn'" />
+					<xsl:with-param name="label" select="'Instagram'" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -78,7 +78,7 @@
 			<xsl:with-param name="content">
 				<!-- BUTTON: link -->
 				<xsl:call-template name="button-link">
-					<xsl:with-param name="label" select="'LinkedIn'" />
+					<xsl:with-param name="label" select="'Youtube'" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -120,7 +120,7 @@
 			<xsl:with-param name="content">
 				<!-- BUTTON: link -->
 				<xsl:call-template name="button-link">
-					<xsl:with-param name="label" select="'LinkedIn'" />
+					<xsl:with-param name="label" select="'Pinterest'" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
@@ -141,7 +141,7 @@
 			<xsl:with-param name="content">
 				<!-- BUTTON: link -->
 				<xsl:call-template name="button-link">
-					<xsl:with-param name="label" select="'LinkedIn'" />
+					<xsl:with-param name="label" select="'Vimeo'" />
 				</xsl:call-template>
 			</xsl:with-param>
 		</xsl:call-template>
