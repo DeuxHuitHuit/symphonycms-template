@@ -36,7 +36,7 @@
     "grunt-contrib-uglify": "4.0.0",
     "grunt-contrib-watch": "1.1.0",
     "grunt-csso": "2.2.4",
-    "grunt-curl": "2.5.0",
+    "grunt-curl": "2.5.1",
     "grunt-ftps-deploy": "0.1.16",
     "grunt-jscs": "3.0.1",
     "grunt-optimize-js": "0.6.0",
