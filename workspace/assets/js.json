@@ -9,8 +9,6 @@
 		
 		"com/article-changer-v3.js",
 		"com/checkpoint-event.js",
-		"com/form.js",
-		"com/form-field.js",
 		"com/oembed.js",
 		"com/video.js",
 
@@ -44,11 +42,6 @@
 		"modules/auto-copy-on-click.js",
 		"modules/link-selector.js",
 		"modules/watermark.js",
-		"modules/form-dyn.js",
-		"modules/form-dyn-loading.js",
-		"modules/form-dyn-messages.js",
-		"modules/form-dyn-reset.js",
-		"modules/auto-invisible-recaptcha.js",
 		
 		"transitions/default-transition.js",
 		

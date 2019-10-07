@@ -22,6 +22,19 @@
 <xsl:import href="util-form-id.xsl" />
 <xsl:import href="util-form-rules.xsl" />
 
+<!-- 
+	Displays a dynamic form
+
+	Dependencies
+		com/form.js
+		com/form-field.js
+		modules/form-dyn.js
+		modules/form-dyn-loading.js
+		modules/form-dyn-messages.js
+		modules/form-dyn-reset.js
+		modules/auto-invisible-recaptcha.js
+ -->
+
 <!-- COMPONENT: form-dyn -->
 	<xsl:template name="form-dyn" match="entry | item" mode="form-dyn">
 		<xsl:param name="fields" select="fields/item" />
