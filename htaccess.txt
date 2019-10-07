@@ -24,6 +24,12 @@
     
     ## Block json config
     RewriteRule ^workspace\/assets\/(.+)\.json - [F,L]
+
+    # Protect user upload
+    RewriteRule ^workspace\/user-uploads\/(.*)$ - [F]
+
+    # Protect user downloads
+    RewriteRule ^workspace\/user-protected-downloads\/(.*)$ - [F]
     
     ## Allow .well-known folder
     RewriteRule ^.well-known - [S=25,L]
@@ -41,4 +47,3 @@
     #Header always set X-XSS-Protection "X-XSS-Protection: 1; mode=block"
     #Header always set X-Content-Type-Options nosniff
 </IfModule>
-
