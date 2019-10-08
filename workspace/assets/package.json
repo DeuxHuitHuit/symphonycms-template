@@ -23,7 +23,7 @@
   "dependencies": {
     "async": "2.6.2",
     "chalk": "2.4.2",
-    "css-tree": "1.0.0-alpha.29",
+    "css-tree": "1.0.0-alpha.35",
     "event-stream": "4.0.1",
     "grunt": "1.0.4",
     "grunt-cli": "1.3.2",
