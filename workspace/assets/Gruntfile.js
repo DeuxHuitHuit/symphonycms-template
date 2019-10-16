@@ -8,7 +8,6 @@ module.exports = function (grunt) {
 	var GRUNT_FILE = 'Gruntfile.js';
 	var BUILD_FILE = 'build.json';
 	var LESS_FILE = 'css/dev/grunt.less';
-	var PAGES_PATH = '../pages/*.xsl';
 	var DEV_LIB_BUNDLE_LESS_FILE = 'css/dev/lib.less';
 	var DEV_LIB_BUNDLE_LESS_FILE_PROD = 'css/dev/lib-prod.less';
 	var DEV_THEME_BUNDLE_LESS_FILE = 'css/dev/theme.less';
@@ -107,12 +106,6 @@ module.exports = function (grunt) {
 		watch: {
 			files: SRC_FILES.concat(GRUNT_FILE),
 			tasks: ['dev', 'css']
-		},
-
-		xsltimportextractor: {
-			options: {
-				pagesPath: PAGES_PATH
-			}
 		},
 
 		cssopruner: {
