@@ -2,8 +2,16 @@
 
 module.exports = function xsltimportextractor (grunt) {
 	// Set default config
-	
-	grunt.registerTask('xsltimportextractor', 'DESCRIPTION', function () {
+	grunt.config.merge({
+		xsltimportextractor: {
+			options: {
+				pagesPath: '../pages/*.xsl',
+				allowFilesNotFound: true
+			}
+		}
+	});
+
+	grunt.registerTask('xsltimportextractor', 'Builds a list of all used xslt files', function () {
 		var options = this.options();
 		var libxmljs = require('libxmljs');
 		var pages = grunt.file.expand(options.pagesPath);
@@ -45,24 +53,24 @@ module.exports = function xsltimportextractor (grunt) {
 						});
 
 						//Truncate a part
-						var splitedBasePath = basePath.split('/');
+						var splittedBasePath = basePath.split('/');
 
-						if (splitedBasePath.length > 1) {
+						if (splittedBasePath.length > 1) {
 							var newBasePath = '';
 							var x = 1;
 
-							splitedBasePath.forEach(function (item) {
+							splittedBasePath.forEach(function (item) {
 								if (x == 1) {
 									//always keep first ../
 									newBasePath += item + '/';
 									x += 1;
-								} else if (splitedBasePath.length - x > countRemove) {
+								} else if (splittedBasePath.length - x > countRemove) {
 									newBasePath += item + '/';
 									x += 1;
 								}
 							});
 
-							//Fix ../ if not enought
+							//Fix ../ if not enough
 							while (x < countRemove) {
 								newBasePath += '../';
 								x += 1;
@@ -74,9 +82,7 @@ module.exports = function xsltimportextractor (grunt) {
 						basePath += f.substring(0, lastSlash + 1);
 					}
 
-				} //else {
-				//Do nothing
-				//}
+				}
 
 				var fixedFilePath = basePath + f.substring(lastSlash + 1);
 
@@ -96,7 +102,10 @@ module.exports = function xsltimportextractor (grunt) {
 							imports.forEach(processImports);
 						}
 					} else {
-						grunt.log.writeln('xsltimportextractor: File not found: ' + fixedFilePath);
+						(options.allowFilesNotFound ?
+							grunt.verbose.writeln :
+							grunt.fail.fatal
+						)('Error: File not found: ' + fixedFilePath);
 					}
 					
 					level -= 1;
