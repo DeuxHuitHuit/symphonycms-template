@@ -194,6 +194,7 @@ module.exports = function (grunt) {
 			'xmlbundle:site',
 			'svninfo',
 			'buildnum',
+			'dev',
 			'js',
 			'css'
 		]);
