@@ -188,13 +188,13 @@ module.exports = function (grunt) {
 			'css-dev'
 		]);
 		grunt.registerTask('build', [
+			'dev',
 			'clean:bundleLess',
 			'concat:lessCore',
 			'concat:lessLib',
 			'xmlbundle:site',
 			'svninfo',
 			'buildnum',
-			'dev',
 			'js',
 			'css'
 		]);
