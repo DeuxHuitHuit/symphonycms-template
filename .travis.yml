@@ -13,7 +13,7 @@ matrix:
     - node_js: 13
 env:
   global:
-    - NODE_OPTIONS=--max_old_space_size=8192
+    - NODE_OPTIONS=--max_old_space_size=8192 --optimize_for_size
 notifications:
   email: false
 before_install: cd workspace/assets
