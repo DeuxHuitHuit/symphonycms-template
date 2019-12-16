@@ -92,7 +92,6 @@
 
 					<xsl:call-template name="framework-288-render-page">
 						<xsl:with-param name="handle" select="concat($handle, '-detail')" />
-						<xsl:with-param name="routes" select="$routes" />
 						<xsl:with-param name="routes">
 							<xsl:call-template name="framework-288-page-routes">
 								<xsl:with-param name="item" select="$item" />
