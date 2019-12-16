@@ -1,6 +1,5 @@
 # Test against the latest version of this Node.js version
 environment:
-  NODE_OPTIONS: --max_old_space_size=8192
   matrix:
     - nodejs_version: "8"
     - nodejs_version: "10"
