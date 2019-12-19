@@ -8,12 +8,12 @@
 			<!-- Brand -->
 			<type name="symbolic">
 				<blue value="@true-blue" />
-				<blue-80 value="rgba(0,0,255,0.8)" />
-				<blue-80-opaque value="#3648ff" />
+				<!-- <blue-80 value="rgba(0,0,255,0.8)" /> -->
+				<!-- <blue-80-opaque value="#3648ff" /> -->
 				<blue-30 value="rgba(0,0,255,0.3)" />
-				<blue-30-opaque value="#b2bcff" />
+				<!-- <blue-30-opaque value="#b2bcff" /> -->
 				<blue-10 value="rgba(0,0,255,0.1)" />
-				<blue-10-opaque value="#e5e8ff" />
+				<!-- <blue-10-opaque value="#e5e8ff" /> -->
 				<red value="@true-red" />
 				<red-30 value="rgba(255,0,0,0.3)" />
 				<red-10 value="rgba(255,0,0,0.1)" />
@@ -28,20 +28,20 @@
 				<black-80 value="rgba(0,0,0,0.8)" />
 				<black-80-opaque value="#333333" />
 				<black-30 value="rgba(0,0,0,0.3)" />
-				<black-30-opaque value="#b1b1b1" />
+				<!-- <black-30-opaque value="#b1b1b1" /> -->
 				<black-10 value="rgba(0,0,0,0.1)" />
-				<black-10-opaque value="#e2e2e2" />
-				<black-05 value="rgba(0,0,0,0.05)" />
-				<black-05-opaque value="#f1f1f1" />
+				<!-- <black-10-opaque value="#e2e2e2" /> -->
+				<!-- <black-05 value="rgba(0,0,0,0.05)" /> -->
+				<!-- <black-05-opaque value="#f1f1f1" /> -->
 			</type>
 
 			<!-- White scale -->
 			<type name="symbolic">
 				<white value="@true-white" />
-				<white-80 value="rgba(255,255,255,0.8)" />
+				<!-- <white-80 value="rgba(255,255,255,0.8)" />
 				<white-30 value="rgba(255,255,255,0.3)" />
 				<white-10 value="rgba(255,255,255,0.1)" />
-				<white-05 value="rgba(255,255,255,0.05)" />
+				<white-05 value="rgba(255,255,255,0.05)" /> -->
 			</type>
 
 			<!-- Semantic -->
