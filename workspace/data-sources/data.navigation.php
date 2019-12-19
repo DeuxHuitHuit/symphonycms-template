@@ -1,6 +1,6 @@
 <?php
 
-require_once(EXTENSIONS.'/page_lhandles/lib/class.datasource.MultilingualNavigation.php');
+// require_once(EXTENSIONS.'/page_lhandles/lib/class.datasource.MultilingualNavigation.php');
 
 class datasourcenavigation extends MultilingualNavigationDatasource
 {
