@@ -2,6 +2,10 @@
 
 // require_once(EXTENSIONS.'/page_lhandles/lib/class.datasource.MultilingualNavigation.php');
 
+if (!class_exists('MultilingualNavigationDatasource')) {
+    class MultilingualNavigationDatasource extends NavigationDatasource {}
+}
+
 class datasourcenavigation extends MultilingualNavigationDatasource
 {
     public $dsParamROOTELEMENT = 'navigation';
