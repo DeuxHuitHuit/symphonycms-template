@@ -9,7 +9,7 @@
 			  "url": "<xsl:value-of select="$root" />",
 			  "potentialAction": {
 			    "@type": "SearchAction",
-			    "target": "https://query.example.com/search?q={search_term_string}",
+			    "target": "<xsl:value-of select="$url" /><xsl:text>?q={search_term_string}</xsl:text>",
 			    "query-input": "required name=search_term_string"
 			  }
 			}
