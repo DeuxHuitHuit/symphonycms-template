@@ -13,11 +13,13 @@ matrix:
 # Install scripts. (runs after repo cloning)
 install:
   - cd workspace/assets
-  # Get the latest stable version of Node.js or io.js
+  # Get the latest stable version of Node.js
   - ps: Install-Product node $env:nodejs_version
   # install modules
   - npm install
   - npm install -g grunt-cli
+  # Replace theme.xml: appveyor does not have enough ram for this
+  - ps: mv -Force -Path workspace/assets/css/vars/theme-ci.xml -Destination workspace/assets/css/vars/theme.xml
 
 # Post-install test scripts.
 test_script:
