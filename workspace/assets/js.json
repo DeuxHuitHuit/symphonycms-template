@@ -42,8 +42,7 @@
 		"pages/default-detail-page.js"
 	],
 	"libs": [
-		"lib/jquery.sizing.min.js",
-		"lib/jquery.jit-image.min.js"
+		
 	],
 	"dev": [
 		"dev/dev.js",
