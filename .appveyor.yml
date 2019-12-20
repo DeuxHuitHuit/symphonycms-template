@@ -19,7 +19,7 @@ install:
   - npm install
   - npm install -g grunt-cli
   # Replace theme.xml: appveyor does not have enough ram for this
-  - ps: mv -Force -Path workspace/assets/css/vars/theme-ci.xml -Destination workspace/assets/css/vars/theme.xml
+  - ps: mv -Force -Path css/vars/theme-ci.xml -Destination css/vars/theme.xml
 
 # Post-install test scripts.
 test_script:
