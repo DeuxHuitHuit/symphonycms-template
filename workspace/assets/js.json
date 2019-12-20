@@ -9,10 +9,6 @@
 		
 		"com/article-changer-v3.js",
 		"com/checkpoint-event.js",
-		"com/oembed.js",
-
-		"modules/oembed-yt.js",
-		"modules/oembed-vm.js",
 		
 		"modules/site-error.js",
 		"modules/site-loader.js",
@@ -31,8 +27,6 @@
 		"modules/page-load-errors.js",
 		"modules/page-load.js",
 		"modules/change-state.js",
-		"modules/auto-oembed.js",
-		"modules/auto-video.js",
 		"modules/keyboard-nav.js",
 		"modules/tab-navigation.js",
 		"modules/auto-tracked-scroll.js",
