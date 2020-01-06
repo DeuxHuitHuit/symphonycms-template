@@ -7,10 +7,10 @@
 	<xsl:variable name="allowArgsName" select="'f288-allowArgs'" />
 
 	<xsl:template name="framework-288-url-creator">
-		<xsl:apply-templates select="/data/pages" mode="framework-288-url-creator" />
+		<xsl:apply-templates select="/data/navigation" mode="framework-288-url-creator" />
 	</xsl:template>
 
-	<xsl:template match="data/pages" mode="framework-288-url-creator">
+	<xsl:template match="data/navigation" mode="framework-288-url-creator">
 		<script>
 			<!-- All pages except index -->
 			<xsl:for-each select="page">

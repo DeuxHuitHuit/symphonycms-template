@@ -1,106 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- COMPONENT: site-nav ========================================================================-->
+<!-- COMPONENT: site-nav -->
 	<xsl:template name="site-nav">
-		<xsl:param name="attr" />
-		<xsl:param name="nav-link-ctn-attr" />
-		<xsl:param name="nav-link-attr" />
-		<xsl:param name="nav-link-selected-attr" />
+		<xsl:param name="items" select="$menus/main/item" />
+		<xsl:param name="ext-attr" />
 
-	<!-- DEFAULT STYLES _____________________________________________________-->
-		<xsl:variable name="site-nav-style">
-		</xsl:variable>
 
-		<xsl:variable name="nav-link-ctn-style">
-		</xsl:variable>
-
-		<xsl:variable name="nav-link-style">
-		</xsl:variable>
-
-		<xsl:variable name="nav-link-selected-style">
-		</xsl:variable>
-	<!--____________________________________________________________________/-->
-
-	<!-- STRUCTURE DIAGRAMS 												   >
-		|- SELF : <nav> site-nav
-		|		:-(RPT) : site-nav-links (menu/entry)
-		|		:		|- nav-link-ctn
-		|		:		|		|- CORE : nav-link
-																			/-->
-
-	<!-- COMPUTED ATTRIBUTES 												 -->
-		<xsl:variable name="computed-attr">
+		<!-- ATTRIBUTES -->
+		<xsl:variable name="attr">
+			<add class="flexbox" />
+			<xsl:copy-of select="$recipe-gutter-h-button" />
+			<xsl:copy-of select="$recipe-gutter-h-button" />
 			<add role="menu" />
-			<xsl:copy-of select="$site-nav-style" />
-			<xsl:copy-of select="$attr" />
+			<xsl:copy-of select="$ext-attr"/>
 			<add dev-component="site-nav" />
 		</xsl:variable>
 
-		<xsl:variable name="computed-nav-link-ctn-attr">
-			<xsl:copy-of select="$nav-link-ctn-style" />
-			<xsl:copy-of select="$nav-link-ctn-attr" />
-			<add dev-element="nav-link-ctn" />
+		<xsl:variable name="attr-item">
+			<xsl:copy-of select="$recipe-gutter-h-button-item" />
+			<xsl:copy-of select="$recipe-gutter-h-button-item" />
+			<add dev-element="item" />
 		</xsl:variable>
 
-		<xsl:variable name="computed-nav-link-attr">
-			<xsl:copy-of select="$nav-link-style" />
-			<xsl:copy-of select="$nav-link-attr" />
-			<add dev-element="nav-link" />
-		</xsl:variable>
 
-		<xsl:variable name="computed-nav-link-selected-attr">
-			<xsl:copy-of select="$nav-link-selected-style" />
-			<xsl:copy-of select="$nav-link-selected-attr" />
-		</xsl:variable>
-	<!--																	/-->
-
-	<!-- STRUCTURE															 -->
-		<!-- self: <nav> -->
+		<!-- STRUCTURE -->
 		<xsl:call-template name="element">
-			<xsl:with-param name="element" select="'nav'"/>
-			<xsl:with-param name="attr" select="$computed-attr" />
-			<xsl:with-param name="content">
-
-				<!-- REPEAT: site-nav-links -->
-				<xsl:apply-templates select="/data/menu/entry" mode="site-nav-links">
-					<xsl:with-param name="attr" select="$computed-nav-link-ctn-attr" />
-					<xsl:with-param name="nav-link-attr" select="$computed-nav-link-attr" />
-					<xsl:with-param name="nav-link-selected-attr" select="$computed-nav-link-selected-attr" />
-				</xsl:apply-templates>
-			</xsl:with-param>
-		</xsl:call-template>
-	<!--																	/-->
-	</xsl:template>
-
-<!-- REPEAT TEMPLATE : site-nav-links (menu/entry) ==============================================-->
-	<xsl:template match="menu/entry" mode="site-nav-links">
-		<xsl:param name="url" select="url" />
-		<xsl:param name="content" select="title" />
-		<xsl:param name="attr" />
-		<xsl:param name="nav-link-attr" />
-		<xsl:param name="nav-link-selected-attr" />
-
-		<xsl:variable name="attr-nav-link">
-			<xsl:copy-of select="$nav-link-attr" />
-			<xsl:call-template name="util-nav-link-attr" />
-			<add dev-element="nav-link" />
-		</xsl:variable>
-
-	<!-- STRUCTURE															 -->
-		<!-- self: nav-link-ctn -->
-		<xsl:call-template name="element">
+			<xsl:with-param name="element" select="'nav'" />
 			<xsl:with-param name="attr" select="$attr" />
 			<xsl:with-param name="content">
-				<!-- BUTTON: nav-link -->
-				<xsl:call-template name="button">
-					<xsl:with-param name="url" select="$url" />
-					<xsl:with-param name="attr" select="$attr-nav-link" />
-					<xsl:with-param name="failover-element" select="'button'" />
-					<xsl:with-param name="content" select="$content" />
-				</xsl:call-template>
-			</xsl:with-param>
+				<xsl:apply-templates select="$items" mode="site-nav-item">
+					<xsl:with-param name="ext-attr" select="$attr-item" />
+				</xsl:apply-templates>
+			</xsl:with-param> 
 		</xsl:call-template>
-	<!--																	/-->
 	</xsl:template>
 </xsl:stylesheet>

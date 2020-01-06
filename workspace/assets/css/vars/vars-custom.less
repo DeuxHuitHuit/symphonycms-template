@@ -4,3 +4,34 @@
 
 //@font-face { #font-face ('name', 'file-name', 400); } //normal
 //@font-face { #font-face ('name', 'file-name', 700); } //bold
+
+
+// Unit: Value in px or vw represented by 1rem
+// Fluid breakpoint: Where we switch from vw to px
+// Security: Horizontal padding of site's content
+// Perimeter: Max width of site's content
+
+@unit-root: 10;
+@fluid-breakpoint-root: unit(@screen-md);
+@security-root: 60;
+@perimeter-root: @fluid-breakpoint-root - @security-root * 2;
+
+
+@unit-in-vw: unit(@unit-root * 100 / @fluid-breakpoint-root, vw);
+@unit-in-px: unit(@unit-root, px);
+
+html {
+	font-size: @unit-in-vw;
+	--type-factor: 2;
+
+	// Tablet
+	#mq-min-width(@screen-xs, {
+		--type-factor: 1.25;
+	});
+
+	// Desktop
+	#mq-min-width(unit(@fluid-breakpoint-root, px), {
+		font-size: @unit-in-px;
+		--type-factor: 1;
+	});
+}

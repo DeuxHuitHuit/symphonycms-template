@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<!-- Site reference code -->
-<xsl:variable name="site-ref" select="/data/package/name" />
+	<xsl:variable name="data" select="/data" />
+	<xsl:variable name="params" select="$data/params" />
+	<xsl:variable name="config" select="$data/site-config/entry[1]" />
+	<xsl:variable name="site-ref" select="$data/package/name" />
+	<xsl:variable name="pages" select="$data/pages/page" />
+	<xsl:variable name="root" select="$data/params/root" />
+	<xsl:variable name="current-page-id" select="$data/params/current-page-id" />
+	<xsl:variable name="current-page" select="$data/params/current-page" />
+	<xsl:variable name="this-year" select="$params/this-year" />
+	<xsl:variable name="today" select="$params/today" />
+
+	<xsl:variable name="current-time" select="$params/current-time" />
+	<xsl:variable name="website-name" select="$params/website-name" />
+	<xsl:variable name="page-title" select="$params/page-title" />
+	<xsl:variable name="current-url" select="$params/current-url" />
+	<xsl:variable name="current-path" select="$params/current-path" />
+	<xsl:variable name="workspace" select="$params/workspace" />
 
 <!-- Dev env -->
 <xsl:variable name="dev" select="contains($root, '.288dev.com') or contains($root, '.288dev.local')" />
 
-<!-- Numero de build, si disponible et valide -->
+<!-- Build Number -->
 <xsl:variable name="build">
 	<xsl:if test="
 		/data/params/use-dev != 'yes' and
@@ -16,7 +31,7 @@
 	</xsl:if>
 </xsl:variable>
 
-<!-- Numero de version -->
+<!-- Version Number -->
 <xsl:variable name="version">
 	<xsl:value-of select="/data/package/version" />
 	<xsl:if test="string-length($build) != 0">
@@ -37,10 +52,7 @@
 	count(/data/params/url-ndbg) = 0 and
 	(count(/data/params/use-dev) = 0 or /data/params/use-dev = 'yes')" />
 
-<!-- 
-	Response url :
-		Used by the framework to track server redirection
--->
+<!-- Response url : Used by the framework to track server redirection -->
 <xsl:variable name="response-url">
 	<xsl:value-of select="/data/params/current-path" />
 	<xsl:if test="/data/params/current-path != '/'">
@@ -52,7 +64,7 @@
 	</xsl:if>
 </xsl:variable>
 
-<!-- Lang flag For multi langue -->
+<!-- Lang flag -->
 <xsl:variable name="is-multilingual" select="count(/data/fl-languages/supported-languages/item) &gt; 1" />
 
 <!-- logged in info -->
@@ -65,17 +77,10 @@
 			<xsl:value-of select="/data/fl-languages/current-language/@handle" />
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:value-of select="$default-langue" />
+			<xsl:value-of select="'en'" />
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:variable>
-
-<!-- Metas/config variable -->
-<xsl:variable name="config" select="/data/site-config/entry[1]" />
-
-<!-- Casing -->
-<xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿžšœ'" />
-<xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŸŽŠŒ'" />
 
 <!-- Facebook Language based on url-language -->
 <xsl:variable name="facebook-language">

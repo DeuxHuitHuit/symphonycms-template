@@ -23,6 +23,7 @@
 		<add class="relative z-index-1" />
 		<!-- Default styles -->
 		<add class="padding-bottom-9_16 bg-color-true-black" />
+		<add class="js-auto-oembed-ctn" />
 		<add data-playing-state-follower=".js-auto-oembed-play" />
 		<xsl:copy-of select="$ext-attr" />
 		<add dev-component="com-embed-video" />
@@ -50,6 +51,11 @@
 		<add data-playing-state-add-class="transparent pointer-events-none" />
 		<xsl:copy-of select="$ext-attr-placeholder" />
 		<add dev-element="placeholder" />
+	</xsl:variable>
+
+	<xsl:variable name="attr-custom-thumbnail">
+		<add class="object-fit-cover" />
+		<add dev-element="custom-thumbnail" />
 	</xsl:variable>
 
 	<xsl:variable name="attr-thumbnail">
@@ -84,9 +90,9 @@
 					<xsl:choose>
 						<xsl:when test="$has-custom-thumbnail">
 							<!-- Custom Thumbnail -->
-							<xsl:call-template name="image">
+							<xsl:call-template name="picture">
 								<xsl:with-param name="image" select="$custom-thumbnail" />
-								<xsl:with-param name="type" select="'cover'" />
+								<xsl:with-param name="ext-attr-image" select="$attr-custom-thumbnail" />
 							</xsl:call-template>
 						</xsl:when>
 						<xsl:when test="$has-thumbnail">

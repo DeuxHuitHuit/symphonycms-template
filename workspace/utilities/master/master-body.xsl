@@ -53,6 +53,20 @@
 			<set data-response-url="{$response-url}" />
 			<xsl:call-template name="page-attr" />
 		</xsl:variable>
+
+		<xsl:variable name="attr-bg-transition">
+			<add class="bg-color-white fixed fill z-index-max-minus-5 display-none" />
+			<add id="bg-transition" />
+			<add dev-element="bg-transition" />
+		</xsl:variable>
+
+		<xsl:variable name="attr-bg-transition-modal">
+			<add id="bg-transition-modal" />
+			<add class="fixed fill z-index-max-minus-6" />
+			<add class="display-none" />
+			<xsl:call-template name="bg-transition-modal-attr" />
+			<add dev-element="bg-transition-modal" />
+		</xsl:variable>
 	<!--																	/-->
 
 	<!-- STRUCTURE 															 -->
@@ -87,8 +101,7 @@
 								<xsl:call-template name="element">
 									<xsl:with-param name="attr" select="$computed-page-attr" />
 									<xsl:with-param name="content">
-										
-										<!-- page-content -->
+										<!-- Content -->
 										<xsl:apply-templates select="data" />
 									</xsl:with-param>
 								</xsl:call-template> <!-- end page -->
@@ -99,22 +112,19 @@
 						<xsl:call-template name="site-footer" />
 					</xsl:with-param> <!-- End site -->
 				</xsl:call-template>
+
+				<!-- SITE LOADER -->
+				<xsl:call-template name="site-loader" />
 				
 				<!-- BG TRANSITION -->
-				<div id="bg-transition" class="bg-color-white fixed fill z-index-max-minus-5 display-none"></div>
-				
-				<!-- BG_TRANSITION POPUP -->
 				<xsl:call-template name="element">
-					<xsl:with-param name="attr">
-						<add id="bg-transition-popup" />
-						<add class="fixed fill z-index-max-minus-6" />
-						<add class="display-none" />
-						<xsl:call-template name="bg-transition-popup-attr" />
-					</xsl:with-param>
+					<xsl:with-param name="attr" select="$attr-bg-transition" />
 				</xsl:call-template>
 				
-				<!-- load progress -->
-				<div id="load-progress" class="z-index-max top left width-0 fixed"></div>
+				<!-- BG TRANSITION modal -->
+				<xsl:call-template name="element">
+					<xsl:with-param name="attr" select="$attr-bg-transition-modal" />
+				</xsl:call-template>
 				
 				<!-- Block user agent -->
 				<xsl:call-template name="block-user-agent-light">
@@ -139,6 +149,6 @@
 	<xsl:template name="body-attr"></xsl:template>
 <!-- PAGE ATTR HOLE =========================================================-->
 	<xsl:template name="page-attr"></xsl:template>
-<!-- BG-TRANSITION-POPUP ATTR HOLE =========================================================-->
-	<xsl:template name="bg-transition-popup-attr"></xsl:template>
+<!-- BG-TRANSITION-modal ATTR HOLE =========================================================-->
+	<xsl:template name="bg-transition-modal-attr"></xsl:template>
 </xsl:stylesheet>

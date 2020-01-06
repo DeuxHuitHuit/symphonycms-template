@@ -1,0 +1,315 @@
+//=========================
+// = FORMS 
+//=========================
+
+.transition-form-dyn {
+	// SUCCESS
+	&.is-success {
+		.transition-form-message {
+			background-color: @valid-fill;
+			color: @valid-text;
+		}
+	}
+	// ERROR
+	&.is-error {
+		.transition-form-message {
+			background-color: @error-fill;
+			color: @error-text;
+		}
+	}
+
+	// LOADING
+	&.is-loading {
+		.transition-form-field,
+		.transition-form-submit {
+			pointer-events: none;
+			opacity: 0.2;
+		}
+	}
+
+	// COMPLETED
+	&.is-completed {
+		.transition-form-field,
+		.transition-form-submit {
+			pointer-events: none;
+			opacity: 0.2;
+		}
+	}
+
+	// FIELD: text
+	.transition-form-field-text {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-input {
+				border-color: @main-stroke-darker;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-input {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			.transition-input {
+				border-color: @accent-stroke-darker;
+				color: @accent-text;
+				#placeholder(@accent-text-lighter);
+			}
+		}
+	}
+	// FIELD: number
+	.transition-form-field-number {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-input {
+				border-color: @main-stroke-darker;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-input {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			.transition-input {
+				border-color: @accent-stroke-darker;
+				color: @accent-text;
+				#placeholder(@accent-text-lighter);
+			}
+		}
+	}
+	// FIELD: textarea;
+	.transition-form-field-textarea {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-textarea {
+				border-color: @main-stroke-darker;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-textarea {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			.transition-textarea {
+				border-color: @accent-stroke-darker;
+				color: @accent-text;
+				#placeholder(@accent-text-lighter);
+			}
+		}
+	}
+	// FIELD: select;
+	.transition-form-field-select {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-select {
+				border-color: @main-stroke-darker;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-select {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			.transition-select {
+				border-color: @accent-stroke-darker;
+				color: @accent-text;
+				#placeholder(@accent-text-lighter);
+			}
+		}
+	}
+	// FIELD: file;
+	.transition-form-field-file {
+		.transition-button {
+			#hover({
+				background-color: @accent-fill;
+			});
+		}
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-button {
+				background-color: @main-reversed-fill;
+				color: @main-reversed-text;
+				#hover({
+					background-color: @accent-reversed-fill;
+					color: @accent-reversed-text;
+				});
+			}
+			.transition-input {
+				border-color: @main-stroke-darker;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-input {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			.transition-input {
+				border-color: @accent-stroke-darker;
+				color: @accent-text;
+				#placeholder(@accent-text-lighter);
+			}
+		}
+	}
+	// FIELD: checkbox;
+	.transition-form-field-checkbox {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-input:checked {
+				border-color: @main-stroke-darker;
+				background-color: @main-reversed-fill;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-input {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			
+		}
+	}
+	// FIELD: radio;
+	.transition-form-field-radio {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-input:checked {
+				border-color: @main-stroke-darker;
+				background-color: @main-reversed-fill;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-input {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			
+		}
+	}
+	// FIELD: list;
+	.transition-form-field-list {
+		// ~> EMPTY
+		&.is-empty {
+			
+		}
+		// ~> FILLED
+		&.is-filled {
+			.transition-input:checked {
+				border-color: @main-stroke-darker;
+				background-color: @main-reversed-fill;
+			}
+		}
+		// ~> VALID
+		&.is-valid {
+
+		}
+		// ~> INVALID
+		&.is-invalid {
+			color: @error-text;
+			.transition-input {
+				border-color: @error-stroke-darker;
+				color: @error-text;
+				#placeholder(@error-text-lighter);
+			}
+		}
+		// ~> FOCUSED
+		&.is-focused {
+			
+		}
+	}
+}

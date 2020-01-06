@@ -5,7 +5,6 @@
 		"utils/disable.js",
 		"utils/jquery.transitionend.js",
 		"utils/keys.js",
-		
 		"fx/tracking.js",
 		
 		"com/article-changer-v3.js",
@@ -28,12 +27,14 @@
 		"modules/page-load-errors.js",
 		"modules/page-load.js",
 		"modules/change-state.js",
-		"modules/auto-jit-image.js",
 		"modules/keyboard-nav.js",
 		"modules/tab-navigation.js",
 		"modules/auto-tracked-scroll.js",
 		"modules/auto-change-state-click.js",
+		"modules/auto-native-share.js",
+		"modules/auto-copy-on-click.js",
 		"modules/link-selector.js",
+		"modules/watermark.js",
 		
 		"transitions/default-transition.js",
 		
@@ -41,8 +42,7 @@
 		"pages/default-detail-page.js"
 	],
 	"libs": [
-		"lib/jquery.sizing.min.js",
-		"lib/jquery.jit-image.min.js"
+		
 	],
 	"dev": [
 		"dev/dev.js",

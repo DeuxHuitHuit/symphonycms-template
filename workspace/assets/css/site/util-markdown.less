@@ -1,0 +1,207 @@
+//=========================
+// = HIGHLIGHT
+//=========================
+
+.markdown-highlight {
+	.highlight {
+		background-color: @accent-fill;
+	}
+}
+
+
+//=========================
+// = BOLD ITALIC
+//=========================
+
+.markdown-bold-italic {
+	em {
+		font-style: italic;
+	}
+	strong {
+		font-weight: 700;
+	}
+}
+
+//=========================
+// = IFRAMES
+//=========================
+
+.markdown-iframes {
+	.iframe-ctn {
+		max-width: 100%;
+	}
+	iframe {
+		max-width: 100%;
+	}
+}
+
+
+//=========================
+// = LISTS
+//=========================
+
+.markdown-lists {
+	ul, ol {
+		padding-left: @spacing-thin;
+		list-style-type: none;
+		box-sizing: border-box;
+
+		li {
+			position: relative;
+		}
+	}
+
+	// Unordered list
+	ul li:before {
+		content: '';
+		display: inline-block;
+		position: absolute;
+		left: ~'calc(-1 * @{spacing-thin})';
+		top: 0.8em;
+		width: 6px;
+		height: 6px;
+		border-radius: 100%;
+		box-sizing: border-box;
+		background-color: currentColor;
+	}
+
+	// Ordered list
+	ol {
+		counter-reset: item;
+		counter-reset: item-2;
+		counter-reset: item-3;
+		li {
+			counter-increment: item;
+			&:before {
+				content: counter(item) ". ";
+				left: ~'calc(-1 * @{spacing-thin})';
+				// top: 0.85em;
+				position: absolute;
+				margin-right: @spacing-thinnest;
+			}
+		}
+	}
+
+	ul, ol {
+		// Unordered list (level 2)
+		& > ul li:before {
+			background-color: initial;
+			border: 1px solid currentColor;
+		}
+		// Ordered list (level 2)
+		& > ol li {
+			counter-increment: item-2;
+			&:before { content: counter(item-2, lower-latin) ". "; }
+		}
+		& > ul, ol {
+			// Ordered list (level 3)
+			& > ol li {
+				counter-increment: item-3;
+				&:before { content: counter(item-3, lower-roman) ". "; }
+			}
+		}
+	}
+}
+
+//=========================
+// = SMALL
+//=========================
+
+.markdown-small {
+	small {
+		// SYNC with: recipe-text-small;
+		font-size: @font-short;
+		font-weight: 400;
+		line-height: @line-height-normal;
+		display: inline-block;
+	}
+}
+
+//=========================
+// = TABLE
+//=========================
+
+.markdown-table {
+	.table-ctn {
+		max-width: 100%;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	table {
+		min-width: 500px;
+		overflow-x: auto;
+
+		border-top: 1px solid currentColor;
+		border-left: 1px solid currentColor;
+		border-spacing: 0;
+
+		th, td {
+			border-bottom: 1px solid currentColor;
+			border-right: 1px solid currentColor;
+			position: relative;
+
+			padding: @spacing-nano @spacing-thinnest;
+			#mq-min-width(@screen-sm, {
+				padding: @spacing-thinner @spacing-thin;
+			});
+		}
+	}
+}
+
+//=========================
+// = QUOTE
+//=========================
+
+.markdown-quote {
+	blockquote {
+		border-left: @border-slimmest solid currentColor;
+		padding-left: @spacing-broad;
+	}
+}
+
+//=========================
+// = SUPERIOR
+//=========================
+
+.markdown-superior {
+	sup {
+		font-size: 0.6em;
+	}
+}
+
+//=========================
+// = LINE
+//=========================
+
+.markdown-line {
+	hr {
+		width: 100%;
+		border-top: @border-slimmest solid currentColor;
+		opacity: 0.1;
+	}
+}
+
+//=========================
+// = IMAGE
+//=========================
+
+.markdown-images {
+	img {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+//=========================
+// = INTERVAL
+//=========================
+
+.markdown-interval {
+	// Interval
+	& > * {
+		margin-top: @spacing-thin;
+		&:first-child {
+			margin-top: 0!important;
+		}
+	}
+}

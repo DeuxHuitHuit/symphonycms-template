@@ -8,9 +8,10 @@
 <!-- LIB -->
 <xsl:import href="../lib/content.xsl" />
 <xsl:import href="../lib/page-title.xsl" />
-<xsl:import href="../lib/master-title.xsl" />
+<xsl:import href="../lib/site-title.xsl" />
+<xsl:import href="../lib/full-title.xsl" />
 <xsl:import href="../lib/create-page-url.xsl" />
-<xsl:import href="../lib/render-image.xsl" />
+<xsl:import href="../lib/picture.xsl" />
 
 <xsl:output method="xml"
 	omit-xml-declaration="yes"
