@@ -9,14 +9,32 @@
 				<black value="#181818" />
 			</type>
 
-			<type name="core-variables">
-
+			<type name="symbolic">
+				<accent-text value="@black" />
+				<accent-fill value="@black" />
+				<valid-fill value="@black" />
+				<valid-text value="@black" />
+				<error-fill value="@black" />
+				<error-text value="@black" />
+				<main-stroke-darker value="@black" />
+				<main-reversed-fill value="@black" />
+				<main-reversed-text value="@black" />
+				<error-text-lighter value="@black" />
+				<error-stroke-darker value="@black" />
+				<accent-text-lighter value="@black" />
+				<accent-stroke-darker value="@black" />
+				<accent-reversed-fill value="@black"/>
+				<accent-reversed-text value="@black"/>
 			</type>
 		</colors>
 
 		<!-- spacing -->
 		<spacing>
+			<nano     value="1rem" />
+			<thinnest value="1.2rem" />
+			<thinner  value="1.4rem" />
 			<thin     value="2rem" />
+			<broad    value="4rem" />
 		</spacing>
 
 		<dimensions>
@@ -28,7 +46,7 @@
 				<base   value="'Helvetica', sans-serif" />
 			</fonts>
 			<fonts-size>
-				<current   value="1.4rem" />
+				<short   value="1.4rem" />
 			</fonts-size>
 			<line-height>
 				<normal     value="1.8em" />
