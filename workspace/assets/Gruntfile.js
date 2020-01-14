@@ -143,6 +143,7 @@ module.exports = function (grunt) {
 		grunt.registerTask('noop', []);
 		grunt.registerTask('verbose', 'turns verbose on', function () {
 			grunt.option('verbose', true);
+			grunt.verbose.ok('Verbose mode is on');
 		});
 		grunt.registerTask('js-dev', [
 			'jscs',
