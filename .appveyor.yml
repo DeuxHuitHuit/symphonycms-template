@@ -34,4 +34,4 @@ build: off
 
 # Cache deps
 cache:
-  - workspace/assets/npm_modules -> workspace/assets/package-lock.json
+  - workspace/assets/node_modules -> workspace/assets/package-lock.json
