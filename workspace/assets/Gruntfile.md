@@ -10,7 +10,8 @@ If you need more info on a task, add the `--verbose` flag to your command.
 
 # Targets
 
-The default target will run most of the tasks, which is probably not what you want while working on the project.
+The default target will run most of the tasks, which is probably not what you
+want while working on the project.
 Please use the target that matches what you want to do.
 
 # The build does not works
@@ -82,5 +83,23 @@ grunt clean:build
 We use `jit-grunt` to only load needed node modules.
 We use the custom tasks feature to split the configuration across multiple files.
 Tasks files must be name like the task name.
-Custom tasks must load the normal plug-ins via our `grunt.gruntLoad` and `grunt.gruntContribLoad ` functions.
- 
+Custom tasks must load the normal plug-ins via our `grunt.gruntLoad` and
+`grunt.gruntContribLoad ` functions.
+
+# Build sequences
+
+## JS
+
+The JS build is quite simple. After a quick clean of the build files,
+it first concatenates all the source files into a single one.
+Then it will download the external js files. It will then uglify the source code,
+append all external code before it and then run optimize js on all the code.
+
+There is no need to create "dev" builds, as all relevant files will be directly
+loaded by the html.
+
+## CSS
+
+The CSS build is the most complex one. First of, it is composed of multiple stages.
+It is also required to build a minimal build in order to get a "dev" version running.
+
