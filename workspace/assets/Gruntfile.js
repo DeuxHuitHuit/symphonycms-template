@@ -139,6 +139,9 @@ module.exports = function (grunt) {
 		// Project configuration.
 		grunt.initConfig(config);
 
+		// Always show stack
+		grunt.option('stack', true);
+
 		// Default tasks.
 		grunt.registerTask('noop', []);
 		grunt.registerTask('verbose', 'turns verbose on', function () {
