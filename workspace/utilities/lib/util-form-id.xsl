@@ -9,8 +9,8 @@
 	<xsl:template name="util-form-id">
 		<xsl:param name="prefix" select="'form-field'" />
 		<xsl:param name="random-number" select="translate(number(math:random() * 10000000), '.', '')" />
-		<xsl:param name="name" select="name" />
+		<xsl:param name="id" select="@id" />
 
-		<xsl:value-of select="concat($prefix, '-', $random-number, '-', $name)"/>
+		<xsl:value-of select="concat($prefix, '-', $id, '-', $random-number)"/>
 	</xsl:template>
 </xsl:stylesheet>
