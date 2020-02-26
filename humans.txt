@@ -28,13 +28,10 @@ Art director / Directeur artistique
 Louis-Pierre Chouinard
 Art director / Directeur artistique
 
-Frédéric Lord
-Interface designer / Designer d'interface
-
 Julien Baveye
 Graphic designer / Designer graphique
 
-Clément Piganeau
+Anne Sylvestre
 Graphic designer / Designer graphique
 
 Xavier Murray-Coulombe
@@ -43,25 +40,28 @@ Digital product designer / Designer de produits numériques
 Xavier-Cédric Gareau-Bergeron
 Digital product designer / Designer de produits numériques
 
+Dominic Provost
+Digital product designer / Designer de produits numériques
+
 Nicolas Brassard-Ferron
 Web Software Lead / Directeur du développement web
-
-Pascal Piché
-Full Stack Developer / Programmeur
 
 Patrick Martel
 Full Stack Developer / Programmeur
 
-Frédérick Hamon
+Frederick Hamon
 Full Stack Developer / Programmeur
 
 Arnaud Crevier
 Full Stack Developer / Programmeur
 
-Ulysse Corbeil
+François St-Germain
 Full Stack Developer / Programmeur
 
-François St-Germain
+Félix Guérin
+Full Stack Developer / Programmeur
+
+Gabriel Váradi
 Full Stack Developer / Programmeur
 
 Marc-André Charpentier
@@ -78,9 +78,6 @@ Frontend Designer / Intégrateur
 
 Vincent Rouleau
 Backend Developer / Programmeur backend
-
-Mathieu Daudelin
-Product Architect & UX Writer / Architecte de produits et Rédaction expérientielle
 
 Marie-France Latour
 Brand and Digital Product Strategist / Stratège de marque et de produits numériques
@@ -103,10 +100,13 @@ Project manager / Chargée de projet
 Sandrine Turcotte
 Project manager / Chargée de projet
 
+Jolen Côté Croteau
+Project manager / Chargée de projet
+
 Stéphanie Forget
 Content manager - Infographist / Édimestre - Infographiste
 
-Jolen Côté Croteau
+Sabrina Rousseau
 Coordinator / Coordonnatrice
 
 Twitter: https://twitter.com/DeuxHuitHuit
