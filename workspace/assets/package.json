@@ -45,7 +45,7 @@
     "libxmljs": "0.19.7",
     "lodash": "4.17.15",
     "maxmin": "2.1.0",
-    "request": "2.88.0",
+    "request": "2.88.2",
     "strip-json-comments": "3.0.1",
     "time-grunt": "2.0.0",
     "snyk": "1.*"
