@@ -1,4 +1,5 @@
 .admin-tools{
+	display: block!important;
 	position: fixed;
 	top: 10px;
 	left: 10px;
