@@ -84,9 +84,9 @@
 		<xsl:param name="image" />
 		<xsl:param name="size" />
 		<xsl:text>/image/1/</xsl:text>
-		<xsl:value-of select="$size/@request-height" />
-		<xsl:text>/</xsl:text>
 		<xsl:value-of select="$size/@request-width" />
+		<xsl:text>/</xsl:text>
+		<xsl:value-of select="$size/@request-height" />
 		<xsl:value-of select="$image/@path" />
 		<xsl:text>/</xsl:text>
 		<xsl:value-of select="$image/filename" />
