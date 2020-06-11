@@ -9,7 +9,7 @@
 	<xsl:template name="full-title-default">
 		<xsl:param name="lg" />
 		<xsl:choose>
-			<xsl:when test="count($params/page-type/item[@handle = 'index']) != 0">
+			<xsl:when test="count($params/page-types/item[@handle = 'index']) != 0 and string-length($params/handle) = 0">
 				<xsl:value-of select="$site-title" />
 			</xsl:when>
 			<xsl:otherwise>
