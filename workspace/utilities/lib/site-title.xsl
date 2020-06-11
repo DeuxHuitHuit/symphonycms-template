@@ -5,17 +5,7 @@
 		<xsl:param name="title" />
 		<xsl:param name="config-title" select="$config/title" />
 		<xsl:param name="params-title" select="$params/website-name" />
-		<xsl:call-template name="site-title-default">
-			<xsl:with-param name="title" select="$title" />
-			<xsl:with-param name="config-title" select="$config/title" />
-			<xsl:with-param name="params-title" select="$params/website-name" />
-		</xsl:call-template>
-	</xsl:template>
 
-	<xsl:template name="site-title-default">
-		<xsl:param name="title" />
-		<xsl:param name="config-title" select="$config/title" />
-		<xsl:param name="params-title" select="$params/website-name" />
 		<xsl:choose>
 			<xsl:when test="string-length($title) != 0">
 				<xsl:value-of select="$title" />
@@ -27,6 +17,7 @@
 				<xsl:value-of select="$params-title" />
 			</xsl:otherwise>
 		</xsl:choose>
+
 	</xsl:template>
 
 </xsl:stylesheet>
