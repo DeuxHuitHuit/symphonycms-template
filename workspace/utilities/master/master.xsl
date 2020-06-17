@@ -43,6 +43,7 @@
 
 	<!-- Media -->
 	<xsl:import href="../lib/picture.xsl" />
+	<xsl:import href="../lib/image.xsl" />
 	<xsl:import href="../lib/video.xsl" />
 
 	<!-- LIB COMPOSITION -->
