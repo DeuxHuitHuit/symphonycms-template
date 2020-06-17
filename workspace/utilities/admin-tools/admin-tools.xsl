@@ -18,7 +18,7 @@
 		<xsl:variable name="is-user-dev" select="/data/events/login-info/@user-type = 'developer'" />
 
 		<xsl:if test="$is-user">
-			<div class="admin-tools">
+			<div class="admin-tools" style="display:none;">
 				<div class="notifier"></div>
 				<div class="widgets">
 					<xsl:call-template name="widget-edit-entry" >
