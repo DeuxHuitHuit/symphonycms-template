@@ -7,7 +7,7 @@
 		"utils/keys.js",
 		"fx/tracking.js",
 		
-		"com/article-changer-v3.js",
+		"com/article-changer.js",
 		"com/checkpoint-event.js",
 		
 		"modules/site-error.js",
