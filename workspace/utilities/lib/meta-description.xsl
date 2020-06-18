@@ -10,7 +10,7 @@
 		</xsl:param>
 		<xsl:param name="description">
 			<xsl:choose>
-				<xsl:when test="string-length($page-description) != 0">
+				<xsl:when test="string-length($page-description) != 0 and string-length($params/handle) = 0">
 					<xsl:value-of select="$page-description" />
 				</xsl:when>
 				<xsl:when test="string-length($site-description) != 0">
