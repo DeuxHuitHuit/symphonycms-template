@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-	<xsl:variable name="data" select="/data" />
-	<xsl:variable name="params" select="$data/params" />
-	<xsl:variable name="config" select="$data/site-config/entry[1]" />
-	<xsl:variable name="site-ref" select="$data/package/name" />
-	<xsl:variable name="pages" select="$data/pages/page" />
-	<xsl:variable name="root" select="$data/params/root" />
-	<xsl:variable name="current-page-id" select="$data/params/current-page-id" />
-	<xsl:variable name="current-page" select="$data/params/current-page" />
-	<xsl:variable name="this-year" select="$params/this-year" />
-	<xsl:variable name="today" select="$params/today" />
+<xsl:variable name="data" select="/data" />
+<xsl:variable name="params" select="$data/params" />
+<xsl:variable name="config" select="$data/site-config/entry[1]" />
+<xsl:variable name="site-ref" select="$data/package/name" />
+<xsl:variable name="pages" select="$data/pages/page" />
+<xsl:variable name="root" select="$data/params/root" />
+<xsl:variable name="current-page-id" select="$data/params/current-page-id" />
+<xsl:variable name="current-page" select="$data/params/current-page" />
+<xsl:variable name="this-year" select="$params/this-year" />
+<xsl:variable name="today" select="$params/today" />
 
-	<xsl:variable name="current-time" select="$params/current-time" />
-	<xsl:variable name="website-name" select="$params/website-name" />
-	<xsl:variable name="page-title" select="$params/page-title" />
-	<xsl:variable name="current-url" select="$params/current-url" />
-	<xsl:variable name="current-path" select="$params/current-path" />
-	<xsl:variable name="workspace" select="$params/workspace" />
+<xsl:variable name="current-time" select="$params/current-time" />
+<xsl:variable name="website-name" select="$params/website-name" />
+<xsl:variable name="page-title" select="$params/page-title" />
+<xsl:variable name="current-url" select="$params/current-url" />
+<xsl:variable name="current-path" select="$params/current-path" />
+<xsl:variable name="workspace" select="$params/workspace" />
+
+<xsl:variable name="site-title">
+	<xsl:call-template name="site-title" />
+</xsl:variable>
 
 <!-- Dev env -->
 <xsl:variable name="dev" select="contains($root, '.288dev.com') or contains($root, '.288dev.local')" />
