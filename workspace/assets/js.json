@@ -25,7 +25,6 @@
 		"modules/route-not-found.js",
 		"modules/page-not-found.js",
 		"modules/page-load-errors.js",
-		"modules/page-load.js",
 		"modules/change-state.js",
 		"modules/keyboard-nav.js",
 		"modules/tab-navigation.js",
