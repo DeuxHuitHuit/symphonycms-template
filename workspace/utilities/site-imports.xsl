@@ -56,7 +56,7 @@
 	<xsl:import href="lib/util-auto-handle.xsl" />
 	<xsl:import href="lib/util-rewrite-markdown.xsl" />
 	<xsl:import href="lib/util-transition-scroll-attr.xsl" />
-	<xsl:import href="lib/util-ficelle.xsl" />
+	<!-- <xsl:import href="lib/util-ficelle.xsl" /> -->
 	<xsl:import href="lib/util-count.xsl" />
 	<xsl:import href="com/util-auto-url.xsl" />
 	<xsl:import href="com/util-module-interval-attr.xsl" />
