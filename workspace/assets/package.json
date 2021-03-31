@@ -33,7 +33,7 @@
     "grunt-contrib-csslint": "2.0.0",
     "grunt-contrib-jshint": "2.1.0",
     "grunt-contrib-less": "2.0.0",
-    "grunt-contrib-uglify": "4.0.1",
+    "grunt-contrib-uglify": "5.0.1",
     "grunt-contrib-watch": "1.1.0",
     "grunt-csso": "2.2.4",
     "grunt-curl": "2.5.1",
