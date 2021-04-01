@@ -48,7 +48,7 @@
     "request": "2.88.2",
     "strip-json-comments": "3.0.1",
     "time-grunt": "2.0.0",
-    "snyk": "1.*"
+    "snyk": "1.518.0"
   },
   "snyk": true
 }
